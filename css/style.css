@@ -1,0 +1,143 @@
+/* --- 基本的なリセットと設定 --- */
+*, *::before, *::after { box-sizing: border-box; }
+body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, figure, figcaption, blockquote, dl, dd, button { margin: 0; padding: 0; border: none; background: none; cursor: pointer; }
+ul, ol { list-style: none; }
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; height: auto; vertical-align: middle; border-style: none; }
+body { font-family: "Noto Sans JP", sans-serif; line-height: 1.6; color: #333; background-color: #fff; letter-spacing: 0.05em; }
+
+/* --- コンテナ設定 --- */
+.header-container, .footer-container, .section-title-container, .achievement-card-list, .achievement-tabs { max-width: 1180px; margin-left: auto; margin-right: auto; padding-left: 15px; padding-right: 15px; }
+.section-padding { padding-top: 64px; padding-bottom: 64px; }
+
+/* --- ヘッダー --- */
+.site-header { background-color: #fff; border-bottom: 1px solid #e6e6e6; position: sticky; top: 0; z-index: 100; }
+.header-container { display: flex; justify-content: space-between; align-items: center; height: 86px; max-width: none; padding-left: 30px; padding-right: 30px; }
+.site-logo { flex-shrink: 0; }
+.site-logo img {
+    /* ロゴの高さを調整 */
+    height: 50px; /* ← 値を大きくしました */
+    width: auto;
+}
+.global-nav { flex-grow: 1; display: flex; justify-content: flex-end; }
+.global-nav ul { display: flex; align-items: center; }
+.global-nav li { margin-left: 16px; }
+.global-nav a { color: #333; font-weight: bold; font-size: 14px; letter-spacing: 0.05em; transition: color 0.3s ease; white-space: nowrap; }
+.global-nav a:hover { color: #17a7cc; }
+.btn-nav { display: inline-block; padding: 8px 18px; color: #fff !important; border-radius: 3px; font-size: 14px; font-weight: bold; transition: background-color 0.3s ease; line-height: 1.5; }
+.btn-red { background-color: #dd3333; }
+.btn-red:hover { background-color: #b32929; color: #fff !important; }
+.btn-blue { background-color: #0d3283; }
+.btn-blue:hover { background-color: #082258; color: #fff !important; }
+.hamburger-button { display: none; background: none; border: none; cursor: pointer; padding: 0; width: 30px; height: 24px; position: relative; z-index: 101; }
+.hamburger-button span { display: block; background-color: #333; height: 3px; width: 100%; position: absolute; left: 0; transition: all 0.3s ease; border-radius: 3px; }
+.hamburger-button span:nth-child(1) { top: 0; }
+.hamburger-button span:nth-child(2) { top: 10px; }
+.hamburger-button span:nth-child(3) { bottom: 0; }
+
+/* --- メインコンテンツエリア --- */
+.site-main { padding-top: 86px; }
+
+/* --- ファーストビュー（ヒーローイメージ） --- */
+.hero-section { width: 100%; height: 500px; position: relative; margin-top: -86px; }
+.hero-image { width: 100%; height: 100%; background-size: cover; background-position: center center; background-repeat: no-repeat; position: absolute; top: 0; left: 0; }
+.hero-sp { display: none; }
+
+/* --- ピンクの告知セクション --- */
+.osarublog-pink-section { background: linear-gradient(135deg, #ED4484 0%, #FBB67D 100%); padding-top: 80px; padding-bottom: 80px; position: relative; overflow: hidden; font-family: "Noto Sans JP", sans-serif; }
+.osarublog-pink-section::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 50px; background-color: #ffffff; clip-path: polygon(0 100%, 0 0, 100% 0, 100% 100%, 75% 85%, 50% 100%, 25% 85%); }
+.osarublog-pink-section::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 50px; background-color: #ffffff; }
+.osarublog-pink-section-inner { max-width: 780px; margin: 0 auto; padding: 0 15px; position: relative; z-index: 1; text-align: center; }
+.osarublog-sub-text { display: inline-block; background-color: #ffffff; color: #333333; padding: 8px 20px; font-size: 16px; font-weight: bold; border-radius: 3px; margin-bottom: 25px; }
+.osarublog-main-heading { color: #ffffff; font-size: 40px; font-weight: bold; line-height: 1.6; margin-top: 0; margin-bottom: 40px; letter-spacing: 0.1em; }
+.osarublog-banner img { max-width: 100%; height: auto; display: block; margin: 0 auto; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+
+/* --- 講座一覧セクション --- */
+.course-list-section { background-color: #fff; }
+.section-title-container { text-align: center; margin-bottom: 32px; }
+.section-subtitle { display: block; font-size: 14px; color: #555; margin-bottom: 8px; }
+.section-title { font-size: 40px; font-weight: bold; color: #333; letter-spacing: 0.1em; }
+.course-slider-container { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 20px; margin-bottom: 16px; gap: 10px; }
+.course-slide { flex: 0 0 auto; width: 40%; scroll-snap-align: center; }
+.course-slide img { display: block; width: 100%; border-radius: 5px; }
+.course-thumbnail-container { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
+.course-thumbnail { width: 150px; opacity: 0.6; cursor: pointer; }
+.course-thumbnail:first-child { opacity: 1; }
+.course-thumbnail img { display: block; width: 100%; border-radius: 3px; }
+
+/* --- 受講生実績セクション --- */
+.achievement-section { background-color: #f9f9f9; }
+.accordion-toggle { display: flex; align-items: center; justify-content: space-between; width: 100%; background-color: #0d3283; color: #fff; padding: 12px 20px; border-radius: 5px; font-size: 16px; font-weight: bold; margin-top: 20px; margin-bottom: 32px; }
+.accordion-icon-check { color: #7bdcb5; margin-right: 8px; }
+.accordion-icon-plus { font-size: 20px; }
+.achievement-tabs { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-bottom: 40px; }
+.tab-button { padding: 10px 25px; font-size: 14px; font-weight: bold; background-color: #eee; color: #555; border-radius: 3px; transition: all 0.3s ease; }
+.tab-button:hover { background-color: #ddd; }
+.tab-button.active { background-color: #0d3283; color: #fff; }
+.achievement-card-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.achievement-card { background-color: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: box-shadow 0.3s ease; }
+.achievement-card:hover { box-shadow: 0 5px 15px rgba(0,0,0,0.15); }
+.achievement-card a { display: block; color: #333; }
+.achievement-card img { display: block; width: 100%; }
+.achievement-card p { font-size: 15px; font-weight: bold; padding: 15px; line-height: 1.5; }
+
+/* --- フッター --- */
+.site-footer { background-color: #0d3283; color: #ffffff; padding-top: 64px; }
+.footer-container { padding-bottom: 0; }
+.footer-widgets { display: flex; flex-wrap: wrap; gap: 30px 30px; margin-bottom: 60px; }
+.widget-area { flex-grow: 1; flex-shrink: 1; }
+.footer-widget-1 { flex-basis: 20%; min-width: 200px; }
+.footer-widget-2, .footer-widget-3, .footer-widget-4 { flex-basis: 20%; min-width: 150px; }
+.widget-area h4 { font-size: 16px; margin-bottom: 20px; font-weight: bold; padding-bottom: 0; border-bottom: none; }
+.widget-area ul li { margin-bottom: 12px; }
+.widget-area ul li a { color: #eee; font-size: 14px; transition: color 0.3s ease; }
+.widget-area ul li a:hover { color: #fff; }
+.footer-logo { max-width: 200px; margin-bottom: 25px; }
+.footer-sns { display: flex; gap: 10px; }
+.footer-sns a { display: flex; justify-content: center; align-items: center; color: #0d3283; background-color: #ffffff; width: 36px; height: 36px; text-align: center; border-radius: 5px; font-size: 16px; font-weight: bold; border: none; transition: opacity 0.3s ease; }
+.footer-sns a svg { /* SVGアイコンのサイズ調整 */
+    width: 18px;
+    height: 18px;
+}
+.footer-sns a:hover { opacity: 0.8; }
+.site-copyright { background-color: #ffffff; color: #333333; padding: 20px 0; text-align: center; }
+.site-copyright small { font-size: 12px; }
+
+/* --- レスポンシブ対応 (959px以下) --- */
+@media screen and (max-width: 959px) {
+    .header-container { height: 60px; padding-left: 15px; padding-right: 15px; }
+    .site-logo img {
+        /* スマホでのロゴ高さ */
+        height: 40px; /* ← 少し大きく */
+    }
+    .pc-nav { display: none; }
+    .sp-nav { display: block; }
+    .site-main { padding-top: 60px; }
+    .hero-section { height: 60vh; margin-top: -60px; }
+    .hero-pc { display: none; }
+    .hero-sp { display: block; }
+    .osarublog-pink-section { padding-top: 60px; padding-bottom: 60px; }
+    .osarublog-pink-section::before, .osarublog-pink-section::after { height: 30px; }
+    .osarublog-main-heading { font-size: 28px; margin-bottom: 30px; }
+    .osarublog-sub-text { font-size: 14px; padding: 6px 15px; margin-bottom: 20px; }
+    .section-padding { padding-top: 48px; padding-bottom: 48px; }
+    .section-title { font-size: 32px; }
+    .course-slide { width: 60%; }
+    .course-thumbnail-container { justify-content: flex-start; overflow-x: auto; padding-bottom: 10px; }
+    .course-thumbnail { width: 100px; flex-shrink: 0; }
+    .accordion-toggle { font-size: 15px; padding: 10px 15px; }
+    .tab-button { padding: 8px 15px; font-size: 13px;}
+    .achievement-card-list { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
+    .achievement-card p { font-size: 14px; padding: 12px;}
+    .widget-area { flex-basis: calc(50% - 15px); min-width: calc(50% - 15px); }
+    .footer-widget-1 { flex-basis: 100%; min-width: 100%; text-align: center; }
+    .footer-logo { margin-left: auto; margin-right: auto; }
+    .footer-sns { justify-content: center; }
+}
+/* さらに小さい画面 (480px以下) */
+@media screen and (max-width: 480px) {
+    .section-title { font-size: 28px; }
+    .course-slide { width: 80%; }
+    .achievement-card-list { grid-template-columns: 1fr; }
+    .widget-area { flex-basis: 100%; min-width: 100%; }
+}
