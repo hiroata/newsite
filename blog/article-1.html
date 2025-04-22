@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="2025年に注目すべきマーケティングトレンド5選。デジタルマーケティングの最新動向と効果的な活用方法をご紹介します。">
+    <title>2025年に注目すべきマーケティングトレンド5選 - おさるマーケ大学ブログ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" href="../images/favicon.ico">
+    <meta property="og:title" content="2025年に注目すべきマーケティングトレンド5選 - おさるマーケ大学ブログ">
+    <meta property="og:description" content="2025年に注目すべきマーケティングトレンド5選。デジタルマーケティングの最新動向と効果的な活用方法をご紹介します。">
+    <meta property="og:image" content="../images/blog-1.jpg">
+    <meta property="og:type" content="article">
+    <style>
+        .article-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            gap: 40px;
+        }
+        .article-main {
+            flex: 1;
+        }
+        .article-sidebar {
+            width: 300px;
+            flex-shrink: 0;
+        }
+        
+        /* 記事ヘッダー */
+        .article-header {
+            margin-bottom: 40px;
+        }
+        .article-back {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #666;
+        }
+        .article-back:hover {
+            color: #0d3283;
+        }
+        .article-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+        .article-category {
+            color: #0d3283;
+            font-weight: bold;
+        }
+        .article-title {
+            font-size: 32px;
+            font-weight: bold;
+            line-height: 1.4;
+            margin-bottom: 30px;
+        }
+        .article-featured-image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        /* 記事本文 */
+        .article-content {
+            line-height: 1.8;
+            margin-bottom: 50px;
+        }
+        .article-content h2 {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #0d3283;
+        }
+        .article-content h3 {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 30px 0 15px;
+        }
+        .article-content p {
+            margin-bottom: 20px;
+        }
+        .article-content ul, .article-content ol {
+            margin: 20px 0;
+            padding-left: 25px;
+        }
+        .article-content li {
+            margin-bottom: 10px;
+        }
+        .article-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .article-content a {
+            color: #0d3283;
+            text-decoration: underline;
+        }
+        .article-content a:hover {
+            color: #092058;
+        }
+        .article-content blockquote {
+            border-left: 4px solid #0d3283;
+            padding-left: 20px;
+            font-style: italic;
+            margin: 20px 0;
+            color: #555;
+        }
+        
+        /* 著者情報 */
+        .author-box {
+            display: flex;
+            gap: 20px;
+            background-color: #f9f9f9;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+        .author-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .author-info {
+            flex-grow: 1;
+        }
+        .author-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .author-bio {
+            line-height: 1.6;
+            font-size: 14px;
+            color: #555;
+        }
+        
+        /* 関連記事 */
+        .related-articles {
+            margin-bottom: 50px;
+        }
+        .related-title {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #0d3283;
+        }
+        .related-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .related-item {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .related-item:hover {
+            transform: translateY(-5px);
+        }
+        .related-image {
+            width: 100%;
+            height: 150px;
+        }
+        .related-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .related-content {
+            padding: 15px;
+        }
+        .related-item-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        .related-meta {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        /* SNSシェア */
+        .share-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 50px;
+        }
+        .share-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .share-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        .share-button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+        .share-twitter {
+            background-color: #1DA1F2;
+        }
+        .share-facebook {
+            background-color: #4267B2;
+        }
+        .share-linkedin {
+            background-color: #0A66C2;
+        }
+        .share-button:hover {
+            transform: scale(1.1);
+        }
+        
+        /* サイドバー */
+        .sidebar-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        .sidebar-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #0d3283;
+        }
+        .popular-posts {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .popular-post {
+            display: flex;
+            gap: 15px;
+        }
+        .popular-post-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 5px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        .popular-post-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .popular-post-content {
+            flex-grow: 1;
+        }
+        .popular-post-title {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+        .popular-post-meta {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .category-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .category-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .category-item:last-child {
+            border-bottom: none;
+        }
+        .category-count {
+            background-color: #f5f5f5;
+            border-radius: 20px;
+            padding: 2px 10px;
+            font-size: 12px;
+        }
+        
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .tag-item {
+            background-color: #f5f5f5;
+            border-radius: 20px;
+            padding: 5px 12px;
+            font-size: 13px;
+            transition: all 0.3s ease;
+        }
+        .tag-item:hover {
+            background-color: #0d3283;
+            color: white;
+        }
+        
+        /* モバイル対応 */
+        @media (max-width: 900px) {
+            .article-container {
+                flex-direction: column;
+            }
+            .article-sidebar {
+                width: 100%;
+            }
+            .author-box {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .related-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <div class="site-logo">
+                <a href="../index.html"><img src="../images/logo.png" alt="おさるマーケ大学 ロゴ"></a>
+            </div>
+            <nav class="global-nav pc-nav">
+                <ul>
+                    <li><a href="../index.html">ホーム</a></li>
+                    <li><a href="../course/index.html">おさるマーケ大学とは</a></li>
+                    <li><a href="../event/index.html">イベント・作業会</a></li>
+                    <li><a href="../seminar/index.html">セミナー</a></li>
+                    <li><a href="../achievement/index.html" class="btn-nav btn-red">受講生実績</a></li>
+                    <li><a href="../free-seminar.html" class="btn-nav btn-blue">無料セミナー</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger-button sp-nav" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="page-container section-padding">
+            <div class="article-container">
+                <div class="article-main">
+                    <div class="article-header">
+                        <a href="index.html" class="article-back">← ブログ一覧に戻る</a>
+                        <div class="article-meta">
+                            <span class="article-date">2025年4月15日</span>
+                            <span class="article-category">マーケティング</span>
+                            <span class="article-author">投稿者: おさる</span>
+                        </div>
+                        <h1 class="article-title">2025年に注目すべきマーケティングトレンド5選</h1>
+                        <img src="../images/blog-1.jpg" alt="2025年マーケティングトレンド" class="article-featured-image">
+                    </div>
+                    
+                    <div class="article-content">
+                        <p>デジタルマーケティングの世界は常に進化し続けています。新しいテクノロジーやプラットフォームの登場、ユーザー行動の変化、アルゴリズムの更新など、マーケティング担当者は常に最新動向をキャッチアップする必要があります。</p>
+                        
+                        <p>2025年に入り、特に注目すべきマーケティングトレンドが浮上してきました。本記事では、ビジネス成長に欠かせない最新マーケティングトレンドを5つ紹介します。これらのトレンドを理解し、自社のマーケティング戦略に取り入れることで、競合他社との差別化を図ることができるでしょう。</p>
+                        
+                        <h2>1. AIを活用したハイパーパーソナライゼーション</h2>
+                        
+                        <p>マーケティングにおけるパーソナライゼーションは、もはや新しい概念ではありません。しかし、2025年に入り、AIの進化によって「ハイパーパーソナライゼーション」と呼ばれる新たなレベルのカスタマイズが可能になりました。</p>
+                        
+                        <p>ハイパーパーソナライゼーションとは、単に名前やプリファレンスだけでなく、ユーザーの行動パターン、感情状態、コンテキスト（文脈）などをリアルタイムで分析し、極めて個人的な体験を提供することです。</p>
+                        
+                        <p>例えば、あるECサイトでは、ユーザーの過去の購買履歴や閲覧行動だけでなく、天候、時間帯、デバイスタイプ、さらには表情認識技術を用いたムードの分析まで取り入れて、完全にカスタマイズされたショッピング体験を提供しています。</p>
+                        
+                        <p>このトレンドを活用するには：</p>
+                        <ul>
+                            <li>AIツールを導入して顧客データを多角的に分析する</li>
+                            <li>複数の接点からデータを収集・統合するCDP（顧客データプラットフォーム）の活用</li>
+                            <li>リアルタイムでのコンテンツやオファーの調整が可能なシステムの構築</li>
+                        </ul>
+                        
+                        <h2>2. 音声検索最適化（Voice Search Optimization）</h2>
+                        
+                        <p>音声アシスタントの普及により、音声検索の利用率は年々上昇しています。2025年には、全検索の40%以上が音声で行われると予測されています。</p>
+                        
+                        <p>テキスト検索と音声検索では、ユーザーの行動パターンが大きく異なります。音声検索では、より自然な会話形式でキーワードが使われ、質問形式の検索が増加する傾向にあります。</p>
+                        
+                        <p>例えば、テキスト検索では「東京 おすすめ ラーメン」と入力するところ、音声検索では「東京で一番おいしいラーメン屋さんはどこですか？」というようなフレーズが使われます。</p>
+                        
+                        <p>音声検索最適化のポイント：</p>
+                        <ul>
+                            <li>自然な会話形式の長いキーワードフレーズを意識したコンテンツ作成</li>
+                            <li>「誰が」「どこで」「いつ」「なぜ」などの疑問詞を含むコンテンツの充実</li>
+                            <li>FAQセクションの拡充</li>
+                            <li>Google検索結果の「フィーチャードスニペット」を獲得するためのコンテンツ構成</li>
+                        </ul>
+                        
+                        <h2>3. 没入型インタラクティブコンテンツの台頭</h2>
+                        
+                        <p>静的なコンテンツから双方向のインタラクティブコンテンツへのシフトが加速しています。特にAR（拡張現実）、VR（仮想現実）、360°動画などを活用した没入型コンテンツが、ユーザーエンゲージメントを大きく向上させることが明らかになっています。</p>
+                        
+                        <p>2025年の調査によると、インタラクティブコンテンツは静的コンテンツと比較して：</p>
+                        <ul>
+                            <li>滞在時間が2倍以上長くなる</li>
+                            <li>コンバージョン率が30%以上向上する</li>
+                            <li>ソーシャルメディアでのシェア率が4倍高くなる</li>
+                        </ul>
+                        
+                        <p>インタラクティブコンテンツの例：</p>
+                        <ul>
+                            <li>クイズやアセスメント</li>
+                            <li>インタラクティブな製品デモ</li>
+                            <li>AR体験（例：家具の配置シミュレーション）</li>
+                            <li>VRツアー（例：不動産内見、旅行先プレビュー）</li>
+                            <li>カスタムコンフィギュレーター（例：自動車、アパレル）</li>
+                        </ul>
+                        
+                        <h2>4. サステナビリティ・マーケティングの主流化</h2>
+                        
+                        <p>環境意識の高まりを受け、サステナビリティ（持続可能性）は2025年のマーケティングにおいて無視できないトレンドとなっています。特にZ世代やミレニアル世代の消費者は、ブランドの環境や社会に対する姿勢を重視する傾向が強まっています。</p>
+                        
+                        <p>多くの消費者は、環境に配慮した製品やサービスに対して、プレミアム価格を支払う意思があることも調査で明らかになっています。しかし、単なる「グリーンウォッシング」（環境への取り組みを装うだけのマーケティング）は逆効果であり、本質的な取り組みと透明性のある情報発信が求められます。</p>
+                        
+                        <p>サステナビリティ・マーケティングの実践方法：</p>
+                        <ul>
+                            <li>製品・サービスの環境負荷低減の取り組みを具体的に伝える</li>
+                            <li>サプライチェーン全体の透明性を高める</li>
+                            <li>環境認証の取得と明示</li>
+                            <li>ソーシャルメディアを活用した持続可能な取り組みの発信</li>
+                            <li>環境・社会問題に関連するコーズマーケティング</li>
+                        </ul>
+                        
+                        <h2>5. プライバシーファーストのマーケティング戦略</h2>
+                        
+                        <p>プライバシー規制の強化と消費者のプライバシー意識の高まりを受け、2025年のマーケティングでは「プライバシーファースト」の姿勢が不可欠となっています。特に、サードパーティCookieの段階的廃止によって、データ収集と活用の戦略を根本から見直す必要が出てきました。</p>
+                        
+                        <p>プライバシーファーストのマーケティングとは、消費者のプライバシーを尊重しながら、価値提供を通じて自発的にデータを提供してもらう関係構築を目指すアプローチです。</p>
+                        
+                        <p>プライバシーファーストのマーケティング戦略：</p>
+                        <ul>
+                            <li>ファーストパーティデータ（自社で直接収集するデータ）の強化</li>
+                            <li>透明性のあるデータポリシーとオプトイン（同意）の仕組み</li>
+                            <li>プライバシーに配慮したパーソナライゼーション</li>
+                            <li>コンテキスト広告（閲覧中のコンテンツに関連する広告）の活用</li>
+                            <li>プライバシー保護をブランド価値として発信</li>
+                        </ul>
+                        
+                        <h2>まとめ：2025年のマーケティング戦略に取り入れるべきこと</h2>
+                        
+                        <p>上記5つのトレンドは、それぞれが独立したものではなく、相互に関連し合っています。例えば、AIを活用したハイパーパーソナライゼーションを実現する際には、プライバシーファーストの姿勢が必要です。また、サステナビリティ・マーケティングとインタラクティブコンテンツを組み合わせることで、より効果的なメッセージ発信が可能になります。</p>
+                        
+                        <p>2025年のマーケティング戦略を構築する際には、これらのトレンドを単に追いかけるのではなく、自社のビジネス目標や顧客ニーズと照らし合わせながら、最適な形で取り入れていくことが重要です。また、テクノロジーの活用と人間的なつながりのバランスを保つことも、成功への鍵となるでしょう。</p>
+                        
+                        <p>おさるマーケ大学では、これらの最新トレンドを取り入れたマーケティング講座を随時開催しています。実践的なスキルを身につけたい方は、ぜひ<a href="../seminar/index.html">セミナー情報</a>をチェックしてみてください。</p>
+                    </div>
+                    
+                    <div class="author-box">
+                        <img src="../images/profile-osaru.jpg" alt="おさるのプロフィール写真" class="author-image">
+                        <div class="author-info">
+                            <h3 class="author-name">おさる</h3>
+                            <div class="author-bio">
+                                <p>マーケティングコンサルタント、おさるマーケ大学学長。大手IT企業でのマーケティング責任者を経て独立。これまでに500社以上のビジネスをサポートし、累計売上100億円以上の実績を持つ。InstagramやTwitterなどのSNSでは合計50万人以上のフォロワーを抱え、実践的なマーケティングノウハウを発信している。著書に「お金と幸福の法則」「SNSマーケティング完全ガイド」など。</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="share-box">
+                        <h3 class="share-title">この記事をシェアする</h3>
+                        <div class="share-buttons">
+                            <a href="#" class="share-button share-twitter">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></path></svg>
+                            </a>
+                            <a href="#" class="share-button share-facebook">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="1em" height="1em" fill="currentColor"><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/></svg>
+                            </a>
+                            <a href="#" class="share-button share-linkedin">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="1em" height="1em" fill="currentColor"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="related-articles">
+                        <h3 class="related-title">関連記事</h3>
+                        <div class="related-list">
+                            <a href="#" class="related-item">
+                                <div class="related-image">
+                                    <img src="../images/blog-3.jpg" alt="関連記事サムネイル">
+                                </div>
+                                <div class="related-content">
+                                    <h4 class="related-item-title">「ノー」と言わせない提案書の作り方：成約率が2倍になった実践事例</h4>
+                                    <div class="related-meta">2025年4月5日</div>
+                                </div>
+                            </a>
+                            <a href="#" class="related-item">
+                                <div class="related-image">
+                                    <img src="../images/blog-4.jpg" alt="関連記事サムネイル">
+                                </div>
+                                <div class="related-content">
+                                    <h4 class="related-item-title">小さな会社が大企業に勝つ方法：差別化戦略の実践ガイド</h4>
+                                    <div class="related-meta">2025年4月1日</div>
+                                </div>
+                            </a>
+                            <a href="#" class="related-item">
+                                <div class="related-image">
+                                    <img src="../images/blog-2.jpg" alt="関連記事サムネイル">
+                                </div>
+                                <div class="related-content">
+                                    <h4 class="related-item-title">Instagram最新アルゴリズム対策：フォロワーが激増する投稿テクニック</h4>
+                                    <div class="related-meta">2025年4月10日</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="article-sidebar">
+                    <div class="sidebar-section">
+                        <h3 class="sidebar-title">人気記事</h3>
+                        <div class="popular-posts">
+                            <div class="popular-post">
+                                <div class="popular-post-image">
+                                    <img src="../images/blog-2.jpg" alt="人気記事サムネイル">
+                                </div>
+                                <div class="popular-post-content">
+                                    <h4 class="popular-post-title">Instagram最新アルゴリズム対策：フォロワーが激増する投稿テクニック</h4>
+                                    <div class="popular-post-meta">2025年4月10日</div>
+                                </div>
+                            </div>
+                            <div class="popular-post">
+                                <div class="popular-post-image">
+                                    <img src="../images/blog-5.jpg" alt="人気記事サムネイル">
+                                </div>
+                                <div class="popular-post-content">
+                                    <h4 class="popular-post-title">月商10万円から100万円へ：ハンドメイド作家が実践した3つの施策</h4>
+                                    <div class="popular-post-meta">2025年3月25日</div>
+                                </div>
+                            </div>
+                            <div class="popular-post">
+                                <div class="popular-post-image">
+                                    <img src="../images/blog-3.jpg" alt="人気記事サムネイル">
+                                </div>
+                                <div class="popular-post-content">
+                                    <h4 class="popular-post-title">「ノー」と言わせない提案書の作り方：成約率が2倍になった実践事例</h4>
+                                    <div class="popular-post-meta">2025年4月5日</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="sidebar-section">
+                        <h3 class="sidebar-title">カテゴリー</h3>
+                        <div class="category-list">
+                            <a href="#" class="category-item">
+                                <span>マーケティング</span>
+                                <span class="category-count">15</span>
+                            </a>
+                            <a href="#" class="category-item">
+                                <span>SNS活用</span>
+                                <span class="category-count">23</span>
+                            </a>
+                            <a href="#" class="category-item">
+                                <span>セールス</span>
+                                <span class="category-count">12</span>
+                            </a>
+                            <a href="#" class="category-item">
+                                <span>ビジネス成長</span>
+                                <span class="category-count">18</span>
+                            </a>
+                            <a href="#" class="category-item">
+                                <span>事例紹介</span>
+                                <span class="category-count">9</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="sidebar-section">
+                        <h3 class="sidebar-title">タグクラウド</h3>
+                        <div class="tag-cloud">
+                            <a href="#" class="tag-item">AI活用</a>
+                            <a href="#" class="tag-item">マーケティング</a>
+                            <a href="#" class="tag-item">トレンド</a>
+                            <a href="#" class="tag-item">音声検索</a>
+                            <a href="#" class="tag-item">インタラクティブ</a>
+                            <a href="#" class="tag-item">サステナビリティ</a>
+                            <a href="#" class="tag-item">プライバシー</a>
+                            <a href="#" class="tag-item">2025年</a>
+                            <a href="#" class="tag-item">戦略</a>
+                            <a href="#" class="tag-item">マーケティング戦略</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-widgets">
+                <div class="widget-area footer-widget-1">
+                    <img src="../images/logo-white.png" alt="おさるマーケ大学 ロゴ白" class="footer-logo">
+                    <div class="footer-sns">
+                        <a href="#" aria-label="YouTube"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="1em" height="1em" fill="currentColor"><path d="M549.7 124.1c-6.3-23.7-24.8-42.3-48.3-48.6C458.8 64 288 64 288 64S117.2 64 74.6 75.5c-23.5 6.3-42 24.9-48.3 48.6-11.4 42.9-11.4 132.3-11.4 132.3s0 89.4 11.4 132.3c6.3 23.7 24.8 41.5 48.3 47.8C117.2 448 288 448 288 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zM231.8 355.4l-10.8-7.4-10.8 7.4C187.8 370.3 160 355.4 160 328V184c0-27.4 27.8-42.3 50.2-27.4l10.8 7.4 10.8-7.4c22.4-14.9 50.2 0 50.2 27.4V328c0 27.4-27.8 42.3-50.2 27.4zM391.6 355.4l-10.8-7.4-10.8 7.4c-22.4 14.9-50.2 0-50.2-27.4V184c0-27.4 27.8-42.3 50.2-27.4l10.8 7.4 10.8-7.4C414.2 141.7 442 156.6 442 184V328c0 27.4-27.8 42.3-50.4 27.4z"/></svg></a>
+                        <a href="#" aria-label="X (Twitter)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg></a>
+                        <a href="#" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="1em" height="1em" fill="currentColor"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9 26.3 26.2 58 34.4 93.9 36.2 37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg></a>
+                    </div>
+                </div>
+                <div class="widget-area footer-widget-2">
+                    <h4>おさるマーケ大学とは</h4>
+                    <ul>
+                        <li><a href="../course/marketing.html">総合マーケティング講座</a></li>
+                        <li><a href="../course/utage.html">UTAGE講座</a></li>
+                        <li><a href="../course/instagram.html">インスタ講座</a></li>
+                        <li><a href="../course/store.html">店舗経営講座</a></li>
+                        <li><a href="../course/sales.html">セールス講座</a></li>
+                    </ul>
+                </div>
+                <div class="widget-area footer-widget-3">
+                    <h4>イベント・その他</h4>
+                    <ul>
+                        <li><a href="../event/index.html">イベント・合宿</a></li>
+                        <li><a href="../event/index.html">作業会・懇親会</a></li>
+                        <li><a href="index.html">ブログ</a></li>
+                        <li><a href="../book/index.html">おさるマーケ大学書籍</a></li>
+                    </ul>
+                </div>
+                <div class="widget-area footer-widget-4">
+                    <h4>運営情報</h4>
+                    <ul>
+                        <li><a href="../owner.html">運営者情報</a></li>
+                        <li><a href="../terms.html">利用規約</a></li>
+                        <li><a href="../privacy.html">プライバシーポリシー</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="site-copyright">
+                <small>© 2025 おさるマーケ大学</small>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/script.js"></script>
+</body>
+</html>

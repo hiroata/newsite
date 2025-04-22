@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="おさるマーケ大学のセミナー＆個別相談 構築講座の詳細ページです。効果的なセールス手法を実践的に学ぶことができます。">
+    <title>セミナー＆個別相談 構築講座 - おさるマーケ大学 (コピーサイト)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" href="../images/favicon.ico">
+    <meta property="og:title" content="セミナー＆個別相談 構築講座 - おさるマーケ大学">
+    <meta property="og:description" content="おさるマーケ大学のセミナー＆個別相談 構築講座の詳細ページです。効果的なセールス手法を実践的に学ぶことができます。">
+    <meta property="og:image" content="../images/ogp_image.jpg">
+    <meta property="og:type" content="article">
+    <style>
+        .course-detail {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .course-header {
+            margin-bottom: 40px;
+        }
+        .course-image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin: 20px 0 30px;
+        }
+        .course-overview {
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+        .overview-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #0d3283;
+        }
+        .overview-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .overview-item {
+            display: flex;
+            flex-direction: column;
+        }
+        .overview-label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #0d3283;
+        }
+        .overview-value {
+            font-size: 16px;
+        }
+        .course-description {
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+        .course-section {
+            margin-bottom: 40px;
+        }
+        .section-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #0d3283;
+        }
+        .curriculum-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .curriculum-item {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .curriculum-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .curriculum-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .curriculum-details {
+            font-size: 14px;
+            color: #666;
+        }
+        .instructor-section {
+            display: flex;
+            gap: 30px;
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+        .instructor-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .instructor-info {
+            flex-grow: 1;
+        }
+        .instructor-name {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .instructor-bio {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .testimonial-section {
+            margin-bottom: 40px;
+        }
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .testimonial-card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .testimonial-content {
+            position: relative;
+            padding: 15px 0;
+            margin-bottom: 15px;
+            font-style: italic;
+            color: #555;
+            line-height: 1.6;
+        }
+        .testimonial-content:before {
+            content: '"';
+            font-size: 50px;
+            color: #0d3283;
+            opacity: 0.2;
+            position: absolute;
+            top: -15px;
+            left: -5px;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+        .testimonial-name {
+            font-weight: bold;
+        }
+        .testimonial-detail {
+            font-size: 12px;
+            color: #777;
+        }
+        .cta-section {
+            background-color: #0d3283;
+            color: white;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .cta-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .cta-text {
+            font-size: 16px;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #dd3333;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .cta-button:hover {
+            background-color: #b32929;
+        }
+        .faq-section {
+            margin-bottom: 40px;
+        }
+        .faq-item {
+            margin-bottom: 15px;
+        }
+        .faq-question {
+            background-color: #f5f5f5;
+            padding: 15px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-answer {
+            padding: 15px 20px;
+            border: 1px solid #eee;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+            line-height: 1.6;
+            display: none;
+        }
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+        
+        @media (max-width: 767px) {
+            .course-overview {
+                padding: 20px;
+            }
+            .overview-content {
+                grid-template-columns: 1fr;
+            }
+            .instructor-section {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .cta-section {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <div class="site-logo">
+                <a href="../index.html"><img src="../images/logo.png" alt="おさるマーケ大学 ロゴ"></a>
+            </div>
+            <nav class="global-nav pc-nav">
+                <ul>
+                    <li><a href="../index.html">ホーム</a></li>
+                    <li><a href="index.html">おさるマーケ大学とは</a></li>
+                    <li><a href="../event/index.html">イベント・作業会</a></li>
+                    <li><a href="../seminar/index.html">セミナー</a></li>
+                    <li><a href="../achievement/index.html" class="btn-nav btn-red">受講生実績</a></li>
+                    <li><a href="../free-seminar.html" class="btn-nav btn-blue">無料セミナー</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger-button sp-nav" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="page-container section-padding">
+            <div class="course-detail">
+                <div class="course-header">
+                    <h1>セミナー＆個別相談 構築講座</h1>
+                    <p>効果的なセミナー運営と個別相談のスキルを体系的に学び、高収益ビジネスモデルを構築するための実践講座です。初心者からプロまで、あらゆるレベルの方に対応しています。</p>
+                    <img src="../images/course-slide-5.jpg" alt="セールス講座" class="course-image">
+                </div>
+                
+                <div class="course-overview">
+                    <h2 class="overview-title">講座概要</h2>
+                    <div class="overview-content">
+                        <div class="overview-item">
+                            <span class="overview-label">受講期間</span>
+                            <span class="overview-value">3ヶ月間</span>
+                        </div>
+                        <div class="overview-item">
+                            <span class="overview-label">受講料</span>
+                            <span class="overview-value">220,000円（税込）</span>
+                        </div>
+                        <div class="overview-item">
+                            <span class="overview-label">対象レベル</span>
+                            <span class="overview-value">初級〜上級</span>
+                        </div>
+                        <div class="overview-item">
+                            <span class="overview-label">受講形式</span>
+                            <span class="overview-value">オンライン + 対面実践</span>
+                        </div>
+                        <div class="overview-item">
+                            <span class="overview-label">次回開講</span>
+                            <span class="overview-value">2025年6月1日</span>
+                        </div>
+                        <div class="overview-item">
+                            <span class="overview-label">定員</span>
+                            <span class="overview-value">15名</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="course-description">
+                    <h2 class="section-title">講座の特徴</h2>
+                    <p>おさるマーケ大学のセミナー＆個別相談構築講座は、「集客力」「セールス力」「コンテンツ設計力」の3つを軸に、高収益を生み出すセミナービジネスの構築方法を学ぶことができます。特に価値の高い個別相談への導線設計と、リピート率を高めるフォローアップの手法に重点を置いています。</p>
+                    <p>この講座では座学だけでなく、実際にセミナーを開催し、個別相談を実施する実践演習を通じて、リアルなスキルを身につけることができます。また、おさる独自の「UTAGEシステム」を活用した自動化の仕組みも学べるため、効率的なビジネス運営が可能になります。</p>
+                    <p>セミナービジネスを始めたい方、すでに実施しているが成約率を上げたい方、オンラインとオフラインを組み合わせたハイブリッドモデルを構築したい方など、様々なニーズに対応したカリキュラムをご用意しています。</p>
+                </div>
+                
+                <div class="course-section">
+                    <h2 class="section-title">カリキュラム</h2>
+                    <ul class="curriculum-list">
+                        <li class="curriculum-item">
+                            <div class="curriculum-header">
+                                <h3 class="curriculum-title">Module 1: セミナービジネスの全体設計</h3>
+                                <span class="curriculum-details">3週間</span>
+                            </div>
+                            <div class="curriculum-content">
+                                <p>セミナービジネスの基本構造と収益モデルを理解し、自分のビジネスに最適なセミナー形式を設計します。無料セミナーから有料プログラム、個別相談までの導線設計の基本を学びます。</p>
+                            </div>
+                        </li>
+                        <li class="curriculum-item">
+                            <div class="curriculum-header">
+                                <h3 class="curriculum-title">Module 2: 集客力の強化</h3>
+                                <span class="curriculum-details">3週間</span>
+                            </div>
+                            <div class="curriculum-content">
+                                <p>SNSやメルマガ、広告を活用したセミナー集客の方法を学びます。特に「理想のお客様」を明確にし、ターゲットに響くメッセージ設計と集客チャネルの選定方法を習得します。</p>
+                            </div>
+                        </li>
+                        <li class="curriculum-item">
+                            <div class="curriculum-header">
+                                <h3 class="curriculum-title">Module 3: 魅力的なセミナーコンテンツ設計</h3>
+                                <span class="curriculum-details">4週間</span>
+                            </div>
+                            <div class="curriculum-content">
+                                <p>参加者の満足度を高め、次のステップに進みたくなるセミナーコンテンツの作り方を学びます。情報提供と販売の絶妙なバランス、参加者の心をつかむプレゼンテーション技術を習得します。</p>
+                            </div>
+                        </li>
+                        <li class="curriculum-item">
+                            <div class="curriculum-header">
+                                <h3 class="curriculum-title">Module 4: 個別相談の設計と実施</h3>
+                                <span class="curriculum-details">3週間</span>
+                            </div>
+                            <div class="curriculum-content">
+                                <p>セミナーから個別相談への導線設計と、成約率を高める個別相談の進め方を学びます。クライアントの悩みを深堀りし、最適なソリューションを提案するためのヒアリング技術を身につけます。</p>
+                            </div>
+                        </li>
+                        <li class="curriculum-item">
+                            <div class="curriculum-header">
+                                <h3 class="curriculum-title">Module 5: UTAGEを活用した自動化と効率化</h3>
+                                <span class="curriculum-details">4週間</span>
+                            </div>
+                            <div class="curriculum-content">
+                                <p>UTAGEシステムを活用した申し込み管理、フォローメール配信、顧客管理の自動化方法を学びます。効率的なビジネス運営のための時間管理術も習得します。</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="instructor-section">
+                    <img src="../images/instructor-yoshida.jpg" alt="吉田講師" class="instructor-image">
+                    <div class="instructor-info">
+                        <h3 class="instructor-name">吉田 健太郎 講師</h3>
+                        <div class="instructor-bio">
+                            <p>セミナービジネスコンサルタント。これまでに200回以上のセミナーを開催し、累計参加者数は5,000名を超える。セミナーからの個別相談成約率は平均40%を達成。特にオンラインとオフラインを組み合わせたハイブリッドセミナーモデルを得意とする。</p>
+                            <p>おさるマーケ大学では2021年から講師を務め、100名以上の卒業生を輩出。卒業生の多くが半年以内にセミナービジネスで月収50万円以上を達成している。著書に「1日4時間労働で年収1,000万円を稼ぐセミナービジネスの作り方」がある。</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-section">
+                    <h2 class="section-title">受講生の声</h2>
+                    <div class="testimonial-grid">
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <p>この講座を受ける前は、セミナーを開催しても個別相談につなげられず苦戦していました。しかし、吉田先生のセールストークの組み立て方と心理的ハードルを下げる声掛けの技術を学んで実践したところ、成約率が10%から35%にアップ！今では毎月安定して100万円の売上が出ています。</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <img src="../images/testimonial-1.jpg" alt="鈴木さん" class="testimonial-avatar">
+                                <div>
+                                    <div class="testimonial-name">鈴木さん</div>
+                                    <div class="testimonial-detail">キャリアコンサルタント</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <p>UTAGEを使った自動化の部分が特に役立ちました。セミナー申し込みから個別相談のフォローまで、ほとんどが自動化できるようになり、作業時間が半分以下に。その分、コンテンツ開発に時間を使えるようになって、セミナーの質も上がりました。投資して本当に良かったです。</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <img src="../images/testimonial-2.jpg" alt="田中さん" class="testimonial-avatar">
+                                <div>
+                                    <div class="testimonial-name">田中さん</div>
+                                    <div class="testimonial-detail">起業コンサルタント</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <p>人前で話すのが苦手で、セミナー講師なんて無理だと思っていました。でも、この講座ではプレゼンの組み立て方から話し方まで、初心者でもできるように段階的に教えてくれます。今では月1回セミナーを開催し、毎回5名ほどの個別相談契約につながっています。</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <img src="../images/testimonial-3.jpg" alt="佐藤さん" class="testimonial-avatar">
+                                <div>
+                                    <div class="testimonial-name">佐藤さん</div>
+                                    <div class="testimonial-detail">Webデザイナー</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="cta-section">
+                    <h2 class="cta-title">6月開講クラスの申し込み受付中！</h2>
+                    <p class="cta-text">3ヶ月で高収益セミナービジネスを構築するためのスキルを身につけませんか？定員15名、先着順での受付となります。</p>
+                    <a href="#" class="cta-button">受講を申し込む</a>
+                </div>
+                
+                <div class="faq-section">
+                    <h2 class="section-title">よくある質問</h2>
+                    <div class="faq-list">
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>セミナー経験が全くない状態でも受講できますか？</span>
+                                <span>+</span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>はい、もちろん受講いただけます。むしろ、白紙の状態から始める方がスムーズに学ぶことができる場合も多いです。講座内では、人前で話すことが苦手な方でも実践できる、スライド作成のコツやトークスクリプトの作り方なども丁寧に解説しています。</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>UTAGE講座を受講していなくても大丈夫ですか？</span>
+                                <span>+</span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>問題ありません。UTAGEについては講座内で必要な機能を解説します。ただし、より深くUTAGEを活用したい方は、UTAGE講座との併用をおすすめしています。当講座を受講される方には、UTAGE講座の特別割引も用意しておりますので、お気軽にご相談ください。</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>オンラインのみの参加は可能ですか？</span>
+                                <span>+</span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>基本的には対面での実践演習もカリキュラムに含まれていますが、遠方にお住まいの方や、やむを得ない事情がある方については、オンラインでの代替プログラムも用意しています。その場合も、実際のセミナー実践はZoomなどを使って行いますので、実践的なスキルを身につけることができます。ご希望の方は、お申し込み時にその旨をお知らせください。</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>講座修了後のサポートはありますか？</span>
+                                <span>+</span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>卒業後6ヶ月間は質問対応のサポートを行っています。また、卒業生コミュニティへの参加権が付与され、同期生や先輩受講生との情報交換や協業の機会も得られます。さらに、月1回のフォローアップZoomセッションも開催しており、継続的にスキルアップできる環境を整えています。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-widgets">
+                <div class="widget-area footer-widget-1">
+                    <img src="../images/logo-white.png" alt="おさるマーケ大学 ロゴ白" class="footer-logo">
+                    <div class="footer-sns">
+                        <a href="#" aria-label="YouTube"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="1em" height="1em" fill="currentColor"><path d="M549.7 124.1c-6.3-23.7-24.8-42.3-48.3-48.6C458.8 64 288 64 288 64S117.2 64 74.6 75.5c-23.5 6.3-42 24.9-48.3 48.6-11.4 42.9-11.4 132.3-11.4 132.3s0 89.4 11.4 132.3c6.3 23.7 24.8 41.5 48.3 47.8C117.2 448 288 448 288 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zM231.8 355.4l-10.8-7.4-10.8 7.4C187.8 370.3 160 355.4 160 328V184c0-27.4 27.8-42.3 50.2-27.4l10.8 7.4 10.8-7.4c22.4-14.9 50.2 0 50.2 27.4V328c0 27.4-27.8 42.3-50.2 27.4zM391.6 355.4l-10.8-7.4-10.8 7.4c-22.4 14.9-50.2 0-50.2-27.4V184c0-27.4 27.8-42.3 50.2-27.4l10.8 7.4 10.8-7.4C414.2 141.7 442 156.6 442 184V328c0 27.4-27.8 42.3-50.4 27.4z"/></svg></a>
+                        <a href="#" aria-label="X (Twitter)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg></a>
+                        <a href="#" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="1em" height="1em" fill="currentColor"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9 26.3 26.2 58 34.4 93.9 36.2 37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg></a>
+                    </div>
+                </div>
+                <div class="widget-area footer-widget-2">
+                    <h4>おさるマーケ大学とは</h4>
+                    <ul>
+                        <li><a href="marketing.html">総合マーケティング講座</a></li>
+                        <li><a href="utage.html">UTAGE講座</a></li>
+                        <li><a href="instagram.html">インスタ講座</a></li>
+                        <li><a href="store.html">店舗経営講座</a></li>
+                        <li><a href="#">セールス講座</a></li> <!-- このページ -->
+                    </ul>
+                </div>
+                <div class="widget-area footer-widget-3">
+                    <h4>イベント・その他</h4>
+                    <ul>
+                        <li><a href="../event/index.html">イベント・合宿</a></li>
+                        <li><a href="../event/index.html">作業会・懇親会</a></li>
+                        <li><a href="../blog/index.html">ブログ</a></li>
+                        <li><a href="../book/index.html">おさるマーケ大学書籍</a></li>
+                    </ul>
+                </div>
+                <div class="widget-area footer-widget-4">
+                    <h4>運営情報</h4>
+                    <ul>
+                        <li><a href="../owner.html">運営者情報</a></li>
+                        <li><a href="../terms.html">利用規約</a></li>
+                        <li><a href="../privacy.html">プライバシーポリシー</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="site-copyright">
+                <small>© 2025 おさるマーケ大学</small>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/script.js"></script>
+</body>
+</html>
