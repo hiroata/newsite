@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="おさるマーケ大学の店舗経営講座の詳細ページです。実店舗ビジネスにおける効果的なマーケティング手法を実践的に学ぶことができます。">
+    <title>店舗経営講座 - おさるマーケ大学 (コピーサイト)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" href="../images/favicon.ico">
+    <meta property="og:title" content="店舗経営講座 - おさるマーケ大学">
+    <meta property="og:description" content="おさるマーケ大学の店舗経営講座の詳細ページです。実店舗ビジネスにおける効果的なマーケティング手法を実践的に学ぶことができます。">
+    <meta property="og:image" content="../images/ogp_image.jpg">
+    <meta property="og:type" content="article">
+    <style>
+        .course-detail {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .course-header {
+            margin-bottom: 40px;
+        }
+        .course-image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin: 20px 0 30px;
+        }
+        .course-overview {
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+        .overview-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #0d3283;
+        }
+        .overview-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .overview-item {
+            display: flex;
+            flex-direction: column;
+        }
+        .overview-label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #0d3283;
+        }
+        .overview-value {
+            font-size: 16px;
+        }
+        .course-description {
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+        .course-section {
+            margin-bottom: 40px;
+        }
+        .section-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #0d3283;
+        }
+        .curriculum-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .curriculum-item {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .curriculum-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .curriculum-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .curriculum-details {
+            font-size: 14px;
+            color: #666;
+        }
+        .instructor-section {
+            display: flex;
+            gap: 30px;
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+        .instructor-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .instructor-info {
+            flex-grow: 1;
+        }
+        .instructor-name {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .instructor-bio {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .testimonial-section {
+            margin-bottom: 40px;
+        }
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .testimonial-card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .testimonial-content {
+            position: relative;
+            padding: 15px 0;
+            margin-bottom: 15px;
+            font-style: italic;
+            color: #555;
+            line-height: 1.6;
+        }
+        .testimonial-content:before {
+            content: '"';
+            font-size: 50px;
+            color: #0d3283;
+            opacity: 0.2;
+            position: absolute;
+            top: -15px;
+            left: -5px;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+        .testimonial-name {
+            font-weight: bold;
+        }
+        .testimonial-detail {
+            font-size: 12px;
+            color: #777;
+        }
+        .cta-section {
+            background-color: #0d3283;
+            color: white;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .cta-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .cta-text {
+            font-size: 16px;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #dd3333;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .cta-button:hover {
+            background-color: #b32929;
+        }
+        .faq-section {
+            margin-bottom: 40px;
+        }
+        .faq-item {
+            margin-bottom: 15px;
+        }
+        .faq-question {
+            background-color: #f5f5f5;
+            padding: 15px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-answer {
+            padding: 15px 20px;
+            border: 1px solid #eee;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+            line-height: 1.6;
+            display: none;
+        }
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+        
+        @media (max-width: 767px) {
+            .course-overview {
+                padding: 20px;
+            }
+            .overview-content {
+                grid-template-columns: 1fr;
+            }
+            .instructor-section {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .cta-section {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <div class="site-logo">
+                <a href="../index.html"><img src="../images/logo.png" alt="おさるマーケ大学 ロゴ"></a>
+            </div>
+            <nav class="global-nav pc-nav">
+                <ul>
+                    <li><a href="../index.html">ホーム</a></li>
+                    <li><a href="index.html">おさるマーケ大学とは</a></li>
+                    <li><a href="../event/index.html">イベント・作業会</a></li>
+                    <li><a href="../seminar/index.html">セミナー</a></li>
+                    <li><a href="../achievement/index.html" class="btn-nav btn-red">受講生実績</a></li>
+                    <li><a href="../free-seminar.html" class="btn-nav btn-blue">無料セミナー</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger-button sp-nav" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="page-container section-padding">
+            <div class="course-detail">
+                <div class="course-header">
+                    <h1>店舗経営講座</h1>
+                    <p>実店舗ビジネスにおける効果的なマーケティング手法を実践的に学ぶ講座です。集客からリピーター育成まで、店舗経営に必要なノウハウを体系的に習得できます。</p>
+                    <img src="../images/course-slide-4.jpg" alt="店舗経営講座" class="course-image">
+                </div>
+                
+                <div class="course-overview">
+                    <h2 class="overview-title">講座概要</h2>
+                    <div class="overview-content">
+                        <div class="overview-item">
+                            <span class="overview-label">受講期間</span>
+                            <span class="overview-value">4ヶ月間</span>
+                        </div>
+                        <div class="overview-item">
+                            <span class="overview-label">受講料</span>
+                            <span class="overview-value">280,000円（税込）</span>
+                        </div>
+                        <div class="overview-item">
+                            <span class="overview-label">対象レベル</span>
+                            <span class="overview-value">初級〜上級</span>
+                        </div>
+                        <div class="overview-item">
+                            <span class="overview-label">受講形式</span>
+                            <span class="overview-value">オンライン + 対面サポート</span>
+                        </div>
+                        <div class="overview-item">
+                            <span class="overview-label">次回開講</span>
+                            <span class="overview-value">2025年6月1日</span>
+                        </div>
+                        <div class="overview-item">
+                            <span class="overview-label">定員</span>
+                            <span class="overview-value">20名</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="course-description">
+                    <h2 class="section-title">講座の特徴</h2>
+                    <p>おさるマーケ大学の店舗経営講座は、「集客」「売上アップ」「リピーター育成」の3つの軸で、実店舗ビジネスの成功法則を学ぶことができます。座学だけでなく、実際の店舗でのフィールドワークや、受講生同士のディスカッションを通じて、実践的なスキルを身につけることができます。</p>
+                    <p>実店舗を既に経営している方だけでなく、これから開業を考えている方にも最適な内容となっています。飲食店、アパレル、美容室、エステサロンなど、業種を問わず応用可能なマーケティング手法を学べます。</p>
+                </div>
+                
+                <div class="course-section">
+                    <h2 class="section-title">カリキュラム</h2>
+                    <ul class="curriculum-list">
+                        <li class="curriculum-item">
+                            <div class="curriculum-header">
+                                <h3 class="curriculum-title">Module 1: 店舗コンセプト設計とブランディング</h3>
+                                <span class="curriculum-details">3週間</span>
+                            </div>
+                            <div class="curriculum-content">
+                                <p>店舗の独自性を打ち出し、競合と差別化するためのコンセプト設計とブランディング手法を学びます。ターゲット顧客の明確化から、店舗デザイン、メニュー・商品構成まで、一貫性のあるブランド構築を実践します。</p>
+                            </div>
+                        </li>
+                        <li class="curriculum-item">
+                            <div class="curriculum-header">
+                                <h3 class="curriculum-title">Module 2: 実店舗集客の基本戦略</h3>
+                                <span class="curriculum-details">4週間</span>
+                            </div>
+                            <div class="curriculum-content">
+                                <p>オンライン・オフラインを組み合わせた効果的な集客方法を学びます。Googleマップ最適化、SNS活用、チラシ配布、イベント開催など、店舗タイプ別の集客施策を網羅的に解説します。</p>
+                            </div>
+                        </li>
+                        <li class="curriculum-item">
+                            <div class="curriculum-header">
+                                <h3 class="curriculum-title">Module 3: 店内接客と顧客体験の最適化</h3>
+                                <span class="curriculum-details">3週間</span>
+                            </div>
+                            <div class="curriculum-content">
+                                <p>来店客の満足度を高め、リピーターに変えるための接客術と店内オペレーションの改善方法を学びます。顧客心理に基づいた接客ワークフローの構築方法を実践します。</p>
+                            </div>
+                        </li>
+                        <li class="curriculum-item">
+                            <div class="curriculum-header">
+                                <h3 class="curriculum-title">Module 4: デジタルツールを活用した顧客管理</h3>
+                                <span class="curriculum-details">3週間</span>
+                            </div>
+                            <div class="curriculum-content">
+                                <p>CRMツールやPOSシステム、予約システムなどのデジタルツールを活用し、顧客データを収集・分析する方法を学びます。データに基づく経営判断の実践方法を解説します。</p>
+                            </div>
+                        </li>
+                        <li class="curriculum-item">
+                            <div class="curriculum-header">
+                                <h3 class="curriculum-title">Module 5: リピーター育成と顧客LTV最大化</h3>
+                                <span class="curriculum-details">3週間</span>
+                            </div>
+                            <div class="curriculum-content">
+                                <p>一度来店した顧客を定期的なリピーターに育て、顧客生涯価値（LTV）を最大化するための戦略を学びます。ポイントカード、会員制度、メルマガなどの具体的な施策を実践します。</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="instructor-section">
+                    <img src="../images/instructor-tanaka.jpg" alt="田中講師" class="instructor-image">
+                    <div class="instructor-info">
+                        <h3 class="instructor-name">田中 誠一 講師</h3>
+                        <div class="instructor-bio">
+                            <p>飲食店経営コンサルタント。東京都内で5店舗の飲食店を経営しながら、年間50店舗以上のコンサルティングを行う。特に赤字店舗の再生に定評があり、これまでに100店舗以上の黒字化に成功。</p>
+                            <p>おさるマーケ大学では2022年から講師を務め、実践的なノウハウを伝授している。著書に「小さな店舗の大きな利益」「リピーター獲得の科学」など。</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-section">
+                    <h2 class="section-title">受講生の声</h2>
+                    <div class="testimonial-grid">
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <p>講座で学んだメニュー構成の見直しとSNS活用法を実践したところ、わずか2ヶ月で売上が30%アップしました。特に顧客データの分析方法を学べたことが大きな収穫でした。</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <img src="../images/testimonial-saito.jpg" alt="斎藤さん" class="testimonial-avatar">
+                                <div>
+                                    <div class="testimonial-name">斎藤さん</div>
+                                    <div class="testimonial-detail">美容室オーナー</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <p>カフェをオープンする前に受講しました。開業準備から集客計画まで、体系的に学べたおかげで、オープン初月から黒字化することができました。講師の実践的なアドバイスが本当に役立ちました。</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <img src="../images/testimonial-yamamoto.jpg" alt="山本さん" class="testimonial-avatar">
+                                <div>
+                                    <div class="testimonial-name">山本さん</div>
+                                    <div class="testimonial-detail">カフェオーナー</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <p>アパレルショップを3店舗経営していますが、コロナ禍で厳しい状況でした。この講座でデジタルマーケティングとオンライン販売の方法を学び、新たな収益源を確立することができました。</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <img src="../images/testimonial-suzuki.jpg" alt="鈴木さん" class="testimonial-avatar">
+                                <div>
+                                    <div class="testimonial-name">鈴木さん</div>
+                                    <div class="testimonial-detail">アパレルショップオーナー</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="cta-section">
+                    <h2 class="cta-title">6月開講クラスの申し込み受付中！</h2>
+                    <p class="cta-text">4ヶ月で店舗経営のスキルを習得し、売上アップとリピーター育成を実現しませんか？定員20名、先着順での受付となります。</p>
+                    <a href="#" class="cta-button">受講を申し込む</a>
+                </div>
+                
+                <div class="faq-section">
+                    <h2 class="section-title">よくある質問</h2>
+                    <div class="faq-list">
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>店舗を持っていない場合でも受講できますか？</span>
+                                <span>+</span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>はい、これから開業を考えている方も受講いただけます。むしろ開業前に学ぶことで、オープン後の失敗を未然に防ぐことができるでしょう。講座内では、開業準備から集客、経営安定化までの流れも解説しています。</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>講座はどのような形式で行われますか？</span>
+                                <span>+</span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>基本的にはオンライン講義（ライブ配信＋録画）で進行します。月に1回程度、東京・大阪・福岡でオフライン勉強会も開催しており、参加は任意です。また、週1回のグループコンサルティングと月1回の個別相談も含まれています。</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>受講料の分割払いは可能ですか？</span>
+                                <span>+</span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>はい、3回・6回・12回の分割払いに対応しています。クレジットカード決済の場合は、各カード会社の分割払い規定に従います。また、銀行振込の場合は、当社の分割払いプランをご利用いただけます。詳細はお申し込み時にご案内いたします。</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>講座修了後のサポートはありますか？</span>
+                                <span>+</span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>講座修了後も6ヶ月間は質問対応を行っています。また、卒業生コミュニティへの参加権が付与され、定期的な情報交換や勉強会に参加いただけます。さらに、上級講座や専門講座への優待価格での参加も可能です。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-widgets">
+                <div class="widget-area footer-widget-1">
+                    <img src="../images/logo-white.png" alt="おさるマーケ大学 ロゴ白" class="footer-logo">
+                    <div class="footer-sns">
+                        <a href="#" aria-label="YouTube"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="1em" height="1em" fill="currentColor"><path d="M549.7 124.1c-6.3-23.7-24.8-42.3-48.3-48.6C458.8 64 288 64 288 64S117.2 64 74.6 75.5c-23.5 6.3-42 24.9-48.3 48.6-11.4 42.9-11.4 132.3-11.4 132.3s0 89.4 11.4 132.3c6.3 23.7 24.8 41.5 48.3 47.8C117.2 448 288 448 288 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zM231.8 355.4l-10.8-7.4-10.8 7.4C187.8 370.3 160 355.4 160 328V184c0-27.4 27.8-42.3 50.2-27.4l10.8 7.4 10.8-7.4c22.4-14.9 50.2 0 50.2 27.4V328c0 27.4-27.8 42.3-50.2 27.4zM391.6 355.4l-10.8-7.4-10.8 7.4c-22.4 14.9-50.2 0-50.2-27.4V184c0-27.4 27.8-42.3 50.2-27.4l10.8 7.4 10.8-7.4C414.2 141.7 442 156.6 442 184V328c0 27.4-27.8 42.3-50.4 27.4z"/></svg></a>
+                        <a href="#" aria-label="X (Twitter)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg></a>
+                        <a href="#" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="1em" height="1em" fill="currentColor"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9 26.3 26.2 58 34.4 93.9 36.2 37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg></a>
+                    </div>
+                </div>
+                <div class="widget-area footer-widget-2">
+                    <h4>おさるマーケ大学とは</h4>
+                    <ul>
+                        <li><a href="marketing.html">総合マーケティング講座</a></li>
+                        <li><a href="utage.html">UTAGE講座</a></li>
+                        <li><a href="instagram.html">インスタ講座</a></li>
+                        <li><a href="#" aria-current="page">店舗経営講座</a></li>
+                        <li><a href="sales.html">セールス講座</a></li>
+                    </ul>
+                </div>
+                <div class="widget-area footer-widget-3">
+                    <h4>イベント・その他</h4>
+                    <ul>
+                        <li><a href="../event/index.html">イベント・合宿</a></li>
+                        <li><a href="../event/index.html">作業会・懇親会</a></li>
+                        <li><a href="../book/index.html">おさるマーケ大学書籍</a></li>
+                    </ul>
+                </div>
+                <div class="widget-area footer-widget-4">
+                    <h4>運営情報</h4>
+                    <ul>
+                        <li><a href="../owner.html">運営者情報</a></li>
+                        <li><a href="../terms.html">利用規約</a></li>
+                        <li><a href="../privacy.html">プライバシーポリシー</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="site-copyright">
+                <small>© 2025 おさるマーケ大学</small>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/script.js"></script>
+</body>
+</html>

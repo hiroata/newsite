@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="おさるマーケ大学受講生の実績紹介ページです。実際の成功事例をご覧いただけます。">
+    <title>受講生実績 - おさるマーケ大学 (コピーサイト)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" href="../images/favicon.ico">
+    <meta property="og:title" content="受講生実績 - おさるマーケ大学">
+    <meta property="og:description" content="おさるマーケ大学受講生の実績紹介ページです。実際の成功事例をご覧いただけます。">
+    <meta property="og:image" content="../images/ogp_image.jpg">
+    <meta property="og:type" content="article">
+    <style>
+        .achievement-section {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .achievement-filter {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0 30px;
+        }
+        .filter-button {
+            padding: 8px 15px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .filter-button:hover, .filter-button.active {
+            background-color: #0d3283;
+            color: white;
+        }
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .achievement-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .achievement-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        .achievement-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .achievement-content {
+            padding: 20px;
+        }
+        .achievement-tag {
+            display: inline-block;
+            background-color: #f0f0f0;
+            color: #333;
+            font-size: 12px;
+            padding: 4px 8px;
+            border-radius: 3px;
+            margin-bottom: 10px;
+        }
+        .achievement-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        .achievement-excerpt {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        .achievement-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: #888;
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 50px;
+        }
+        .page-number {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: #f5f5f5;
+            transition: all 0.3s ease;
+        }
+        .page-number:hover, .page-number.active {
+            background-color: #0d3283;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <div class="site-logo">
+                <a href="../index.html"><img src="../images/logo.png" alt="おさるマーケ大学 ロゴ"></a>
+            </div>
+            <nav class="global-nav pc-nav">
+                <ul>
+                    <li><a href="../index.html">ホーム</a></li>
+                    <li><a href="../course/index.html">おさるマーケ大学とは</a></li>
+                    <li><a href="../event/index.html">イベント・作業会</a></li>
+                    <li><a href="../seminar/index.html">セミナー</a></li>
+                    <li><a href="#" aria-current="page" class="btn-nav btn-red">受講生実績</a></li>
+                    <li><a href="../free-seminar.html" class="btn-nav btn-blue">無料セミナー</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger-button sp-nav" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="page-container section-padding">
+            <div class="achievement-section">
+                <h1>受講生実績</h1>
+                <p>おさるマーケ大学の各講座を受講された方々の実績をご紹介します。実際の成功事例を通して、当講座の効果をご確認ください。</p>
+                
+                <div class="achievement-filter">
+                    <button class="filter-button active">すべて</button>
+                    <button class="filter-button">総合マーケティング講座</button>
+                    <button class="filter-button">UTAGE講座</button>
+                    <button class="filter-button">インスタ講座</button>
+                    <button class="filter-button">店舗経営講座</button>
+                    <button class="filter-button">セールス講座</button>
+                </div>
+                
+                <div class="achievement-grid">
+                    <div class="achievement-card">
+                        <a href="moezo.html">
+                            <img src="../images/achieve-1.jpg" alt="もえぞう氏の実績" class="achievement-image">
+                            <div class="achievement-content">
+                                <span class="achievement-tag">協業事例</span>
+                                <h3 class="achievement-title">1ローンチで！3,000万円→8,800万円→累計3億円！</h3>
+                                <p class="achievement-excerpt">おさるマーケ大学との協業により、短期間で売上を大幅に伸ばした成功事例をご紹介します。</p>
+                                <div class="achievement-meta">
+                                    <span>もえぞう様</span>
+                                    <span>2025年2月10日</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="achievement-card">
+                        <a href="cocona.html">
+                            <img src="../images/achieve-2.jpg" alt="ここな氏の実績" class="achievement-image">
+                            <div class="achievement-content">
+                                <span class="achievement-tag">総合マーケティング講座</span>
+                                <h3 class="achievement-title">8年間月100万円を超えられず開始3か月で月100万円を突破した秘密</h3>
+                                <p class="achievement-excerpt">ハンドメイドアクセサリー作家のここなさんが、長年の売上停滞を打破した方法とは？</p>
+                                <div class="achievement-meta">
+                                    <span>ここな様</span>
+                                    <span>2025年1月25日</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="achievement-card">
+                        <a href="#">
+                            <img src="../images/achievement-fujita.jpg" alt="藤田氏の実績" class="achievement-image">
+                            <div class="achievement-content">
+                                <span class="achievement-tag">インスタ講座</span>
+                                <h3 class="achievement-title">フォロワー0からの挑戦！半年で5万フォロワー達成した戦略とは</h3>
+                                <p class="achievement-excerpt">飲食店オーナーの藤田さんがインスタグラムで集客に成功した秘訣を大公開！</p>
+                                <div class="achievement-meta">
+                                    <span>藤田様</span>
+                                    <span>2025年1月15日</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="achievement-card">
+                        <a href="#">
+                            <img src="../images/achievement-tanaka.jpg" alt="田中氏の実績" class="achievement-image">
+                            <div class="achievement-content">
+                                <span class="achievement-tag">UTAGE講座</span>
+                                <h3 class="achievement-title">自動化で労働時間50%削減！売上は2倍に</h3>
+                                <p class="achievement-excerpt">コンサルタントの田中さんがUTAGE導入で実現した、働き方改革と売上アップの両立事例。</p>
+                                <div class="achievement-meta">
+                                    <span>田中様</span>
+                                    <span>2024年12月20日</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="achievement-card">
+                        <a href="#">
+                            <img src="../images/achievement-saito.jpg" alt="斎藤氏の実績" class="achievement-image">
+                            <div class="achievement-content">
+                                <span class="achievement-tag">店舗経営講座</span>
+                                <h3 class="achievement-title">コロナ禍でも売上30%アップ！リピート率が劇的に改善した理由</h3>
+                                <p class="achievement-excerpt">美容室オーナーの斎藤さんが実践した、顧客満足度を高めるための3つの戦略。</p>
+                                <div class="achievement-meta">
+                                    <span>斎藤様</span>
+                                    <span>2024年11月15日</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="achievement-card">
+                        <a href="#">
+                            <img src="../images/achievement-yamada.jpg" alt="山田氏の実績" class="achievement-image">
+                            <div class="achievement-content">
+                                <span class="achievement-tag">セールス講座</span>
+                                <h3 class="achievement-title">成約率10%→35%に！営業トークを根本から変えた驚きの手法</h3>
+                                <p class="achievement-excerpt">保険営業の山田さんが学んだ、顧客の心をつかむ「共感型セールストーク」の秘密。</p>
+                                <div class="achievement-meta">
+                                    <span>山田様</span>
+                                    <span>2024年10月30日</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="achievement-card">
+                        <a href="#">
+                            <img src="../images/achievement-suzuki.jpg" alt="鈴木氏の実績" class="achievement-image">
+                            <div class="achievement-content">
+                                <span class="achievement-tag">総合マーケティング講座</span>
+                                <h3 class="achievement-title">EC初心者が月商300万円を達成！わずか4ヶ月の道のり</h3>
+                                <p class="achievement-excerpt">主婦の鈴木さんが、趣味から始めたハンドメイド石鹸ビジネスを軌道に乗せた方法。</p>
+                                <div class="achievement-meta">
+                                    <span>鈴木様</span>
+                                    <span>2024年10月5日</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="achievement-card">
+                        <a href="#">
+                            <img src="../images/achievement-watanabe.jpg" alt="渡辺氏の実績" class="achievement-image">
+                            <div class="achievement-content">
+                                <span class="achievement-tag">インスタ講座</span>
+                                <h3 class="achievement-title">写真の「撮り方」だけで売上3倍！商品写真の重要性</h3>
+                                <p class="achievement-excerpt">アクセサリーショップオーナーの渡辺さんが実践した、売れる商品写真の撮影テクニック。</p>
+                                <div class="achievement-meta">
+                                    <span>渡辺様</span>
+                                    <span>2024年9月20日</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="pagination">
+                    <a href="#" class="page-number active">1</a>
+                    <a href="#" class="page-number">2</a>
+                    <a href="#" class="page-number">3</a>
+                    <a href="#" class="page-number">4</a>
+                    <a href="#" class="page-number">5</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-widgets">
+                <div class="widget-area footer-widget-1">
+                    <img src="../images/logo-white.png" alt="おさるマーケ大学 ロゴ白" class="footer-logo">
+                    <div class="footer-sns">
+                        <a href="#" aria-label="YouTube"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="1em" height="1em" fill="currentColor"><path d="M549.7 124.1c-6.3-23.7-24.8-42.3-48.3-48.6C458.8 64 288 64 288 64S117.2 64 74.6 75.5c-23.5 6.3-42 24.9-48.3 48.6-11.4 42.9-11.4 132.3-11.4 132.3s0 89.4 11.4 132.3c6.3 23.7 24.8 41.5 48.3 47.8C117.2 448 288 448 288 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zM231.8 355.4l-10.8-7.4-10.8 7.4C187.8 370.3 160 355.4 160 328V184c0-27.4 27.8-42.3 50.2-27.4l10.8 7.4 10.8-7.4c22.4-14.9 50.2 0 50.2 27.4V328c0 27.4-27.8 42.3-50.2 27.4zM391.6 355.4l-10.8-7.4-10.8 7.4c-22.4 14.9-50.2 0-50.2-27.4V184c0-27.4 27.8-42.3 50.2-27.4l10.8 7.4 10.8-7.4C414.2 141.7 442 156.6 442 184V328c0 27.4-27.8 42.3-50.4 27.4z"/></svg></a>
+                        <a href="#" aria-label="X (Twitter)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg></a>
+                        <a href="#" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="1em" height="1em" fill="currentColor"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9 26.3 26.2 58 34.4 93.9 36.2 37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg></a>
+                    </div>
+                </div>
+                <div class="widget-area footer-widget-2">
+                    <h4>おさるマーケ大学とは</h4>
+                    <ul>
+                        <li><a href="../course/marketing.html">総合マーケティング講座</a></li>
+                        <li><a href="../course/utage.html">UTAGE講座</a></li>
+                        <li><a href="../course/instagram.html">インスタ講座</a></li>
+                        <li><a href="../course/store.html">店舗経営講座</a></li>
+                        <li><a href="../course/sales.html">セールス講座</a></li>
+                    </ul>
+                </div>
+                <div class="widget-area footer-widget-3">
+                    <h4>イベント・その他</h4>
+                    <ul>
+                        <li><a href="../event/index.html">イベント・合宿</a></li>
+                        <li><a href="../event/index.html">作業会・懇親会</a></li>
+                        <li><a href="../book/index.html">おさるマーケ大学書籍</a></li>
+                    </ul>
+                </div>
+                <div class="widget-area footer-widget-4">
+                    <h4>運営情報</h4>
+                    <ul>
+                        <li><a href="../owner.html">運営者情報</a></li>
+                        <li><a href="../terms.html">利用規約</a></li>
+                        <li><a href="../privacy.html">プライバシーポリシー</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="site-copyright">
+                <small>© 2025 おさるマーケ大学</small>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/script.js"></script>
+</body>
+</html>
