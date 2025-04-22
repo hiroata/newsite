@@ -1,5 +1,5 @@
 /**
- * おさるマーケ大学 JavaScriptファイル
+ * オートファネル大学 JavaScriptファイル
  * 各種インタラクティブ機能を実装
  */
 document.addEventListener('DOMContentLoaded', function() {
