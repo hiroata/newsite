@@ -8,6 +8,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="images/favicon.ico">
+    <meta property="og:title" content="オートファネル大学">
+    <meta property="og:description" content="オートファネル大学は、マーケティングの自動化と効率化に特化した教育プラットフォームです。">
+    <meta property="og:image" content="images/ogp_image.jpg">
+    <meta property="og:type" content="website">
 </head>
 <body>
 
@@ -20,9 +25,9 @@
                 <ul>
                     <li><a href="index.html" aria-current="page">ホーム</a></li>
                     <li><a href="course/index.html">オートファネル大学とは</a></li>
-                    <li><a href="blog/index.html">ブログ</a></li>
-                    <li><a href="seminar/index.html">オンライン講座</a></li>
-                    <li><a href="achievement/index.html" class="btn-nav btn-red">お客様の声</a></li>
+                    <li><a href="event/index.html">イベント・作業会</a></li>
+                    <li><a href="seminar/index.html">セミナー</a></li>
+                    <li><a href="achievement/index.html" class="btn-nav btn-red">受講生実績</a></li>
                     <li><a href="free-seminar.html" class="btn-nav btn-blue">無料セミナー</a></li>
                 </ul>
             </nav>
@@ -64,10 +69,34 @@
                         <p>【マーケ講座受講生実績】8年間月100万円を超えられず開始3か月で月100万円を突破した秘密【YUKI×ここな対談】</p>
                     </a>
                 </div>
-                <div class="achievement-card"><a href="#"><img src="images/achieve-3.jpg" alt="実績3"><p>...</p></a></div>
-                <div class="achievement-card"><a href="#"><img src="images/achieve-4.jpg" alt="実績4"><p>...</p></a></div>
-                <div class="achievement-card"><a href="#"><img src="images/achieve-5.jpg" alt="実績5"><p>...</p></a></div>
-                <div class="achievement-card"><a href="#"><img src="images/achieve-6.jpg" alt="実績6"><p>...</p></a></div>
+                <div class="achievement-card">
+                    <a href="achievement/customer3.html">
+                        <img src="images/achieve-3.jpg" alt="実績3">
+                        <p>【オートウェビナーファネル実績】24時間販売の自動化動線完成！【UTAGE構築代行丸投げちゃん事例】</p>
+                    </a>
+                </div>
+                <div class="achievement-card">
+                    <a href="achievement/customer4.html">
+                        <img src="images/achieve-4.jpg" alt="実績4">
+                        <p>【オートウェビナーファネル実績】移行初月に月商8桁達成！【UTAGE構築代行丸投げちゃん事例】</p>
+                    </a>
+                </div>
+                <div class="achievement-card">
+                    <a href="achievement/customer5.html">
+                        <img src="images/achieve-5.jpg" alt="実績5">
+                        <p>【個別相談＆サブスクファネル実績】手作業対応ゼロ、新規商談が24時間自動化！【UTAGE構築代行丸投げちゃん事例】</p>
+                    </a>
+                </div>
+                <div class="achievement-card">
+                    <a href="achievement/index.html">
+                        <img src="images/achievement-more.jpg" alt="実績一覧">
+                        <p>もっと実績を見る</p>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="more-button-container">
+                <a href="achievement/index.html" class="btn-more">受講生実績一覧を見る</a>
             </div>
         </section>
 
@@ -78,85 +107,87 @@
                 <h2 class="section-title">オンライン講座一覧</h2>
             </div>
             <div class="online-courses-grid">
-                <!-- 講座1: ランディングページ作成初級講座 -->
+                <!-- 講座1: 総合マーケティング講座 -->
                 <div class="course-card">
                     <div class="course-image">
-                        <img src="images/course-lp.jpg" alt="ランディングページ作成初級講座">
-                        <div class="course-level">初級</div>
+                        <img src="images/course-marketing.jpg" alt="総合マーケティング講座">
+                        <div class="course-level">初級〜上級</div>
                     </div>
                     <div class="course-content">
-                        <h3 class="course-title">ランディングページ作成初級講座</h3>
-                        <p class="course-description">「なぜ売れないの？」その悩み、LPが原因かもしれません。本講座では、購入ボタンをクリックしたくなる「売れるLP」の法則を徹底解説。ヘッドライン作成から顧客の心を掴むストーリー構成、信頼構築の要素まで、成約率を2倍、3倍に高めるテクニックを習得できます。デザインセンスがなくても、この型に当てはめるだけでプロ顔負けのLPが作れるようになります。</p>
-                        <a href="course/lp.html" class="course-button">詳細を見る</a>
+                        <h3 class="course-title">総合マーケティング講座</h3>
+                        <p class="course-description">ビジネスで成果を出すために必要なマーケティングの基礎から応用まで、体系的に学べる講座です。顧客心理の理解、市場分析、ブランディング、セールスコピー作成、広告運用など、実践的なスキルを網羅的に習得できます。</p>
+                        <a href="course/marketing.html" class="course-button">詳細を見る</a>
                     </div>
                 </div>
 
-                <!-- 講座2: 動画編集初級講座 -->
+                <!-- 講座2: UTAGE講座 -->
                 <div class="course-card">
                     <div class="course-image">
-                        <img src="images/course-video.jpg" alt="動画編集初級講座">
-                        <div class="course-level">初級</div>
+                        <img src="images/course-utage.jpg" alt="UTAGE講座">
+                        <div class="course-level">中級</div>
                     </div>
                     <div class="course-content">
-                        <h3 class="course-title">動画編集初級講座</h3>
-                        <p class="course-description">「最後まで見てもらえない…」そんな悩みを解決する動画編集スキルが身につきます。冒頭10秒で視聴者を惹きつけるオープニング作成術、視聴者を飽きさせないカット編集テクニック、感情を動かす音楽・効果音の選び方まで、初心者でも実践できる編集ノウハウを提供。Adobe PremiereやFilmoraなどの編集ソフトの基本操作から、目を引くエフェクト技術まで、すぐに使える実践的スキルが身につきます。</p>
-                        <a href="course/video.html" class="course-button">詳細を見る</a>
+                        <h3 class="course-title">UTAGE講座</h3>
+                        <p class="course-description">マーケティング自動化ツール「UTAGE」を使いこなすための実践講座。リード獲得から育成、セールスまでの一連の流れを自動化し、売上を上げながら時間的自由を手に入れる方法を学びます。</p>
+                        <a href="course/utage.html" class="course-button">詳細を見る</a>
                     </div>
                 </div>
 
-                <!-- 講座3: ステップメール設計初級講座 -->
+                <!-- 講座3: インスタ講座 -->
                 <div class="course-card">
                     <div class="course-image">
-                        <img src="images/course-step-mail.jpg" alt="ステップメール設計初級講座">
-                        <div class="course-level">初級</div>
+                        <img src="images/course-instagram.jpg" alt="インスタ講座">
+                        <div class="course-level">初級〜中級</div>
                     </div>
                     <div class="course-content">
-                        <h3 class="course-title">ステップメール設計初級講座</h3>
-                        <p class="course-description">「メールを送っても反応がない…」そんな悩みを解消するステップメールの極意を学べます。見込み客を熱狂的なファンに変える7ステップのメール設計術、開封率を50%以上に高めるタイトルの作り方、購入意欲を高める心理トリガーの活用法まで網羅。自動で見込み客を育成し、商品購入へと導くシナリオ作成のコツを伝授します。メール1通ごとの役割を明確にし、計画的に成約率を高めるノウハウが身につきます。</p>
-                        <a href="course/step-mail.html" class="course-button">詳細を見る</a>
+                        <h3 class="course-title">インスタ講座</h3>
+                        <p class="course-description">Instagramを活用して集客・売上アップを実現するための戦略的アプローチを学びます。フォロワーを増やす投稿テクニック、ストーリーズの効果的な使い方、リール動画の作成方法など実践的なノウハウを提供。</p>
+                        <a href="course/instagram.html" class="course-button">詳細を見る</a>
                     </div>
                 </div>
 
-    
-
-                <!-- 講座4: オートファネル構築初級講座 -->
+                <!-- 講座4: 店舗経営講座 -->
                 <div class="course-card">
                     <div class="course-image">
-                        <img src="images/course-auto-funnel.jpg" alt="オートファネル構築初級講座">
-                        <div class="course-level">初級</div>
+                        <img src="images/course-store.jpg" alt="店舗経営講座">
+                        <div class="course-level">中級〜上級</div>
                     </div>
                     <div class="course-content">
-                        <h3 class="course-title">オートファネル構築初級講座</h3>
-                        <p class="course-description">「集客はしているのに売上に繋がらない…」その悩み、セールスファネルで解決します。理想的な見込み客を集め、信頼関係を構築し、自動的に商品購入へと導くオートファネルの設計方法を学びます。リード獲得からクロージングまでの5ステップ設計、各段階での最適なコンテンツ設計、UTAGEなどのツールを使った実装方法まで、理論と実践の両面から解説。構築後も継続的に収益を生み出すファネル最適化の秘訣も伝授します。</p>
-                        <a href="course/auto-funnel.html" class="course-button">詳細を見る</a>
+                        <h3 class="course-title">店舗経営講座</h3>
+                        <p class="course-description">実店舗とオンラインを組み合わせたハイブリッド戦略で収益を最大化する方法を学びます。集客の仕組み化、リピート率向上、客単価アップ、スタッフ育成など、店舗経営者に必要なスキルを総合的に習得できます。</p>
+                        <a href="course/store.html" class="course-button">詳細を見る</a>
                     </div>
                 </div>
 
-                <!-- 講座5: Youtubeサムネ作成初級講座 -->
+                <!-- 講座5: セールス講座 -->
                 <div class="course-card">
                     <div class="course-image">
-                        <img src="images/course-youtube-thumbnail.jpg" alt="Youtubeサムネ作成初級講座">
-                        <div class="course-level">初級</div>
+                        <img src="images/course-sales.jpg" alt="セールス講座">
+                        <div class="course-level">初級〜上級</div>
                     </div>
                     <div class="course-content">
-                        <h3 class="course-title">Youtubeサムネ作成初級講座</h3>
-                        <p class="course-description">「再生数が伸びない…」その原因はサムネイルかもしれません。視聴者の目を引き、クリックしたくなるサムネイル作成の極意を学びましょう。インパクトを与える色彩選択のルール、瞬時に内容を伝える構図設計、文字サイズ・フォントの最適な使い方まで、CTR（クリック率）を2倍に高めるテクニックを解説。実際のヒット動画のサムネイル分析から、ジャンル別の効果的なデザインパターンまで、すぐに実践できる知識が身につきます。</p>
-                        <a href="course/youtube-thumbnail.html" class="course-button">詳細を見る</a>
+                        <h3 class="course-title">セールス講座</h3>
+                        <p class="course-description">お客様に「買いたい」と思ってもらえる販売技術と心理学を学びます。信頼関係の構築、ニーズの引き出し方、効果的な提案方法、クロージングテクニックなど、成約率を高めるための実践的なスキルを習得できます。</p>
+                        <a href="course/sales.html" class="course-button">詳細を見る</a>
                     </div>
                 </div>
 
-                <!-- 講座6: Canvaデザイン初級講座 -->
+                <!-- 講座6: 丸投げちゃんサービス -->
                 <div class="course-card">
                     <div class="course-image">
-                        <img src="images/course-canva.jpg" alt="Canvaデザイン初級講座">
-                        <div class="course-level">初級</div>
+                        <img src="images/course-marunage.jpg" alt="UTAGE構築代行丸投げちゃん">
+                        <div class="course-level">サービス</div>
                     </div>
                     <div class="course-content">
-                        <h3 class="course-title">Canvaデザイン初級講座</h3>
-                        <p class="course-description">「デザインセンスがない…」そんな悩みを持つ方でも、Canvaを使えば驚くほど美しいデザインが作れるようになります。SNS投稿、バナー、チラシ、プレゼン資料など、あらゆるビジュアルコンテンツを簡単に作成するテクニックを伝授。テンプレートのカスタマイズから、プロ級の配色テクニック、読みやすいフォント選びのコツ、効果的な写真・イラストの使い方まで、デザイン初心者でも即実践できるノウハウが満載です。Canvaの隠れた便利機能も徹底解説します。</p>
-                        <a href="course/canva.html" class="course-button">詳細を見る</a>
+                        <h3 class="course-title">UTAGE構築代行丸投げちゃん</h3>
+                        <p class="course-description">マーケティングの自動化に必要な「UTAGE」の構築をプロに任せられるサービスです。あなたのビジネスに最適なセールスファネルを設計し、システム構築から運用サポートまで一貫して提供します。</p>
+                        <a href="service/marunage.html" class="course-button">詳細を見る</a>
                     </div>
                 </div>
+            </div>
+            
+            <div class="more-button-container">
+                <a href="course/index.html" class="btn-more">全講座・サービスを見る</a>
             </div>
         </section>
 
@@ -251,7 +282,9 @@
                 </div>
             </div>
             
-            
+            <div class="more-button-container">
+                <a href="blog/index.html" class="btn-more">ブログ記事一覧を見る</a>
+            </div>
         </section>
 
     </main>
@@ -268,24 +301,21 @@
                     </div>
                 </div>
                  <div class="widget-area footer-widget-2">
-                    <h4>オンライン講座一覧</h4>
+                    <h4>オートファネル大学とは</h4>
                     <ul>
-                        <li><a href="course/lp.html">ランディングページ作成初級講座</a></li>
-                        <li><a href="course/video.html">動画編集初級講座</a></li>
-                        <li><a href="course/step-mail.html">ステップメール設計初級講座</a></li>
-                        <li><a href="course/auto-funnel.html">オートファネル構築初級講座</a></li>
-                        <li><a href="course/youtube-thumbnail.html">Youtubeサムネ作成初級講座</a></li>
-                        <li><a href="course/canva.html">Canvaデザイン初級講座</a></li>
+                        <li><a href="course/marketing.html">総合マーケティング講座</a></li>
+                        <li><a href="course/utage.html">UTAGE講座</a></li>
+                        <li><a href="course/instagram.html">インスタ講座</a></li>
+                        <li><a href="course/store.html">店舗経営講座</a></li>
+                        <li><a href="course/sales.html">セールス講座</a></li>
                     </ul>
                 </div>
                  <div class="widget-area footer-widget-3">
-                    <h4>無料コンテンツ</h4>
+                    <h4>イベント・その他</h4>
                     <ul>
-                        <li><a href="blog/index.html">ブログ</a></li>
-                        <li><a href="book/index.html">電子書籍</a></li>
-                        <li><a href="free-seminar.html">無料セミナー</a></li>
-                        <li><a href="free-consultation.html">無料相談</a></li>
-                        <li><a href="achievement/index.html">お客様の声</a></li>
+                        <li><a href="event/index.html">イベント・合宿</a></li>
+                        <li><a href="event/workshop.html">作業会・懇親会</a></li>
+                        <li><a href="book/index.html">オートファネル大学書籍</a></li>
                     </ul>
                 </div>
                  <div class="widget-area footer-widget-4">

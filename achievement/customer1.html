@@ -25,6 +25,13 @@
         .achievement-image {
             border-radius: 8px;
             margin-bottom: 30px;
+            background-color: #f0f0f0;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-style: italic;
         }
         .interview-section {
             background-color: #f9f9f9;
@@ -53,7 +60,12 @@
             width: 120px;
             height: 120px;
             border-radius: 50%;
-            object-fit: cover;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-style: italic;
             flex-shrink: 0;
         }
         .profile-info {
@@ -195,9 +207,17 @@
             margin: 30px 0;
             text-align: center;
         }
-        .seminar-banner img {
+        .seminar-banner-placeholder {
             max-width: 100%;
+            height: 200px;
             border-radius: 8px;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 10px;
         }
         .btn-more {
             display: inline-block;
@@ -242,11 +262,15 @@
                     <h1>【UTAGE構築代行丸投げちゃん】株式会社笑認 髙安様 ご利用者インタビュー</h1>
                 </div>
                 
-                <img src="../images/takayasu-main.jpg" alt="髙安様インタビュー" class="achievement-image">
+                <div class="achievement-image">
+                    インタビュー画像が表示されます
+                </div>
                 
                 <!-- プロフィール情報 -->
                 <div class="profile-box">
-                    <img src="../images/profile-takayasu.jpg" alt="髙安敏行様のプロフィール写真" class="profile-image">
+                    <div class="profile-image">
+                        プロフィール写真
+                    </div>
                     <div class="profile-info">
                         <h3 class="profile-name">髙安 敏行 様</h3>
                         <p><strong>会社：</strong>株式会社笑認 代表取締役 / ハートサービスグループ 専務取締役</p>
@@ -330,7 +354,9 @@
                     <div class="interview-answer">髙安： これは私のビジネス感覚やこだわりにも通じることですが、当社は「何をやるか」や「いくらでやるか」よりも「誰とやるか」を非常に重視しています。前田さんという、UTAGEのサービスをバックでサポートしていただける方が、私たちにとって良いパートナーだと感じました。<br><br>価格はそれなりにかかると思いますが、それ以上のパフォーマンスや、私たちが実現したいことを一緒に叶えられる関係、そしてその成功を一緒に喜べるパートナーの方が望ましいと考えています。そこはお金では買えない価値だと思っています。</div>
                 </div>
                 
-                <img src="../images/takayasu-utage.jpg" alt="UTAGE導入効果" class="achievement-image">
+                <div class="achievement-image">
+                    UTAGE導入効果の図が表示されます
+                </div>
                 
                 <div id="section3" class="section-header">
                     <h2>導入後の変化と効果</h2>
@@ -369,7 +395,9 @@
                     </div>
                     
                     <div class="seminar-banner">
-                        <img src="../images/panorama-system.jpg" alt="パノラマ人事評価システム">
+                        <div class="seminar-banner-placeholder">
+                            パノラマ人事評価システムの画像が表示されます
+                        </div>
                         <p>髙安氏が開発した離職率を1%にする人事評価システム</p>
                         <a href="#" class="btn-more">詳細はこちら</a>
                     </div>
