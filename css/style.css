@@ -1,143 +1,814 @@
-/* --- 基本的なリセットと設定 --- */
-*, *::before, *::after { box-sizing: border-box; }
-body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, figure, figcaption, blockquote, dl, dd, button { margin: 0; padding: 0; border: none; background: none; cursor: pointer; }
-ul, ol { list-style: none; }
-a { text-decoration: none; color: inherit; }
-img { max-width: 100%; height: auto; vertical-align: middle; border-style: none; }
-body { font-family: "Noto Sans JP", sans-serif; line-height: 1.6; color: #333; background-color: #fff; letter-spacing: 0.05em; }
+/* 
+ * オートファネル大学 スタイルシート
+ * 
+ * このファイルには、オートファネル大学ウェブサイトのスタイル定義が含まれています。
+ * サイト全体に共通するスタイルや各セクション固有のスタイルが含まれます。
+ */
 
-/* --- コンテナ設定 --- */
-.header-container, .footer-container, .section-title-container, .achievement-card-list, .achievement-tabs { max-width: 1180px; margin-left: auto; margin-right: auto; padding-left: 15px; padding-right: 15px; }
-.section-padding { padding-top: 64px; padding-bottom: 64px; }
+/* ===== 基本スタイル ===== */
+*, *::before, *::after { 
+    box-sizing: border-box; 
+}
 
-/* --- ヘッダー --- */
-.site-header { background-color: #fff; border-bottom: 1px solid #e6e6e6; position: sticky; top: 0; z-index: 100; }
-.header-container { display: flex; justify-content: space-between; align-items: center; height: 86px; max-width: none; padding-left: 30px; padding-right: 30px; }
-.site-logo { flex-shrink: 0; }
+body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, figure, figcaption, blockquote, dl, dd { 
+    margin: 0; 
+    padding: 0; 
+}
+
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+    color: #333;
+    line-height: 1.6;
+    background-color: #f8f9fa;
+    letter-spacing: 0.05em;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+    border-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.section-padding {
+    padding: 64px 0;
+}
+
+@media (max-width: 768px) {
+    .section-padding {
+        padding: 48px 0;
+    }
+}
+
+/* ===== ヘッダー (以前のスタイルを適用) ===== */
+.site-header {
+    background-color: #fff;
+    border-bottom: 1px solid #e6e6e6;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 86px; /* 以前のヘッダー高さを維持 */
+}
+
 .site-logo img {
-    /* ロゴの高さを調整 */
-    height: 50px; /* ← 値を大きくしました */
+    height: 50px; /* 以前のロゴサイズを維持 */
     width: auto;
 }
-.global-nav { flex-grow: 1; display: flex; justify-content: flex-end; }
-.global-nav ul { display: flex; align-items: center; }
-.global-nav li { margin-left: 16px; }
-.global-nav a { color: #333; font-weight: bold; font-size: 14px; letter-spacing: 0.05em; transition: color 0.3s ease; white-space: nowrap; }
-.global-nav a:hover { color: #17a7cc; }
-.btn-nav { display: inline-block; padding: 8px 18px; color: #fff !important; border-radius: 3px; font-size: 14px; font-weight: bold; transition: background-color 0.3s ease; line-height: 1.5; }
-.btn-red { background-color: #dd3333; }
-.btn-red:hover { background-color: #b32929; color: #fff !important; }
-.btn-blue { background-color: #0d3283; }
-.btn-blue:hover { background-color: #082258; color: #fff !important; }
-.hamburger-button { display: none; background: none; border: none; cursor: pointer; padding: 0; width: 30px; height: 24px; position: relative; z-index: 101; }
-.hamburger-button span { display: block; background-color: #333; height: 3px; width: 100%; position: absolute; left: 0; transition: all 0.3s ease; border-radius: 3px; }
-.hamburger-button span:nth-child(1) { top: 0; }
-.hamburger-button span:nth-child(2) { top: 10px; }
-.hamburger-button span:nth-child(3) { bottom: 0; }
 
-/* --- メインコンテンツエリア --- */
-.site-main { padding-top: 86px; }
+.global-nav {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+}
 
-/* --- ファーストビュー（ヒーローイメージ） --- */
-.hero-section { width: 100%; height: 500px; position: relative; margin-top: -86px; }
-.hero-image { width: 100%; height: 100%; background-size: cover; background-position: center center; background-repeat: no-repeat; position: absolute; top: 0; left: 0; }
-.hero-sp { display: none; }
+.global-nav ul {
+    display: flex;
+    align-items: center;
+}
 
-/* --- ピンクの告知セクション --- */
-.osarublog-pink-section { background: linear-gradient(135deg, #ED4484 0%, #FBB67D 100%); padding-top: 80px; padding-bottom: 80px; position: relative; overflow: hidden; font-family: "Noto Sans JP", sans-serif; }
-.osarublog-pink-section::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 50px; background-color: #ffffff; clip-path: polygon(0 100%, 0 0, 100% 0, 100% 100%, 75% 85%, 50% 100%, 25% 85%); }
-.osarublog-pink-section::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 50px; background-color: #ffffff; }
-.osarublog-pink-section-inner { max-width: 780px; margin: 0 auto; padding: 0 15px; position: relative; z-index: 1; text-align: center; }
-.osarublog-sub-text { display: inline-block; background-color: #ffffff; color: #333333; padding: 8px 20px; font-size: 16px; font-weight: bold; border-radius: 3px; margin-bottom: 25px; }
-.osarublog-main-heading { color: #ffffff; font-size: 40px; font-weight: bold; line-height: 1.6; margin-top: 0; margin-bottom: 40px; letter-spacing: 0.1em; }
-.osarublog-banner img { max-width: 100%; height: auto; display: block; margin: 0 auto; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+.global-nav li {
+    margin-left: 16px;
+}
 
-/* --- 講座一覧セクション --- */
-.course-list-section { background-color: #fff; }
-.section-title-container { text-align: center; margin-bottom: 32px; }
-.section-subtitle { display: block; font-size: 14px; color: #555; margin-bottom: 8px; }
-.section-title { font-size: 40px; font-weight: bold; color: #333; letter-spacing: 0.1em; }
-.course-slider-container { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 20px; margin-bottom: 16px; gap: 10px; }
-.course-slide { flex: 0 0 auto; width: 40%; scroll-snap-align: center; }
-.course-slide img { display: block; width: 100%; border-radius: 5px; }
-.course-thumbnail-container { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
-.course-thumbnail { width: 150px; opacity: 0.6; cursor: pointer; }
-.course-thumbnail:first-child { opacity: 1; }
-.course-thumbnail img { display: block; width: 100%; border-radius: 3px; }
+.global-nav a {
+    color: #333;
+    font-weight: bold;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
 
-/* --- 受講生実績セクション --- */
-.achievement-section { background-color: #f9f9f9; }
-.accordion-toggle { display: flex; align-items: center; justify-content: space-between; width: 100%; background-color: #0d3283; color: #fff; padding: 12px 20px; border-radius: 5px; font-size: 16px; font-weight: bold; margin-top: 20px; margin-bottom: 32px; }
-.accordion-icon-check { color: #7bdcb5; margin-right: 8px; }
-.accordion-icon-plus { font-size: 20px; }
-.achievement-tabs { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-bottom: 40px; }
-.tab-button { padding: 10px 25px; font-size: 14px; font-weight: bold; background-color: #eee; color: #555; border-radius: 3px; transition: all 0.3s ease; }
-.tab-button:hover { background-color: #ddd; }
-.tab-button.active { background-color: #0d3283; color: #fff; }
-.achievement-card-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-.achievement-card { background-color: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: box-shadow 0.3s ease; }
-.achievement-card:hover { box-shadow: 0 5px 15px rgba(0,0,0,0.15); }
-.achievement-card a { display: block; color: #333; }
-.achievement-card img { display: block; width: 100%; }
-.achievement-card p { font-size: 15px; font-weight: bold; padding: 15px; line-height: 1.5; }
+.global-nav a:not(.btn-nav):hover {
+    color: #17a7cc;
+}
 
-/* --- フッター --- */
-.site-footer { background-color: #0d3283; color: #ffffff; padding-top: 64px; }
-.footer-container { padding-bottom: 0; }
-.footer-widgets { display: flex; flex-wrap: wrap; gap: 30px 30px; margin-bottom: 60px; }
-.widget-area { flex-grow: 1; flex-shrink: 1; }
-.footer-widget-1 { flex-basis: 20%; min-width: 200px; }
-.footer-widget-2, .footer-widget-3, .footer-widget-4 { flex-basis: 20%; min-width: 150px; }
-.widget-area h4 { font-size: 16px; margin-bottom: 20px; font-weight: bold; padding-bottom: 0; border-bottom: none; }
-.widget-area ul li { margin-bottom: 12px; }
-.widget-area ul li a { color: #eee; font-size: 14px; transition: color 0.3s ease; }
-.widget-area ul li a:hover { color: #fff; }
-.footer-logo { max-width: 200px; margin-bottom: 25px; }
-.footer-sns { display: flex; gap: 10px; }
-.footer-sns a { display: flex; justify-content: center; align-items: center; color: #0d3283; background-color: #ffffff; width: 36px; height: 36px; text-align: center; border-radius: 5px; font-size: 16px; font-weight: bold; border: none; transition: opacity 0.3s ease; }
-.footer-sns a svg { /* SVGアイコンのサイズ調整 */
+/* 以前のボタンスタイルを適用 */
+.btn-nav {
+    display: inline-block;
+    padding: 8px 18px;
+    color: #fff !important;
+    border-radius: 3px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    line-height: 1.5;
+}
+
+.btn-red {
+    background-color: #dd3333;
+}
+
+.btn-red:hover {
+    background-color: #b32929;
+    color: #fff !important;
+}
+
+.btn-blue {
+    background-color: #0d3283;
+}
+
+.btn-blue:hover {
+    background-color: #082258;
+    color: #fff !important;
+}
+
+.hamburger-button {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 24px;
+    position: relative;
+    z-index: 101;
+}
+
+.hamburger-button span {
+    display: block;
+    background-color: #333;
+    height: 3px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    transition: all 0.3s ease;
+    border-radius: 3px;
+}
+
+.hamburger-button span:nth-child(1) {
+    top: 0;
+}
+
+.hamburger-button span:nth-child(2) {
+    top: 10px;
+}
+
+.hamburger-button span:nth-child(3) {
+    bottom: 0;
+}
+
+/* ===== ヒーローセクション ===== */
+.hero-section {
+    height: 500px;
+    position: relative;
+    margin-top: -86px; /* ヘッダーの高さを考慮 */
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.hero-sp {
+    display: none;
+}
+
+@media (max-width: 959px) {
+    .hero-section {
+        height: 60vh;
+        margin-top: -60px;
+    }
+    
+    .hero-pc {
+        display: none;
+    }
+    
+    .hero-sp {
+        display: block;
+    }
+}
+
+/* ===== ピンクセクション (以前のスタイルを適用) ===== */
+.osarublog-pink-section {
+    background: linear-gradient(135deg, #ED4484 0%, #FBB67D 100%);
+    padding-top: 80px;
+    padding-bottom: 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.osarublog-pink-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #ffffff;
+    clip-path: polygon(0 100%, 0 0, 100% 0, 100% 100%, 75% 85%, 50% 100%, 25% 85%);
+}
+
+.osarublog-pink-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #ffffff;
+}
+
+.osarublog-pink-section-inner {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 15px;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.osarublog-sub-text {
+    display: inline-block;
+    background-color: #ffffff;
+    color: #333333;
+    padding: 8px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 3px;
+    margin-bottom: 25px;
+}
+
+.osarublog-main-heading {
+    color: #ffffff;
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 1.6;
+    margin-top: 0;
+    margin-bottom: 40px;
+    letter-spacing: 0.1em;
+}
+
+.osarublog-banner img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* ===== セクションタイトル ===== */
+.section-title-container {
+    text-align: center;
+    margin-bottom: 40px;
+    max-width: 1180px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.section-subtitle {
+    display: block;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.section-title {
+    font-size: 40px;
+    font-weight: bold;
+    color: #333;
+    letter-spacing: 0.1em;
+}
+
+@media (max-width: 959px) {
+    .section-title {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 28px;
+    }
+}
+
+/* ===== コースリストセクション ===== */
+.course-list-section {
+    background-color: #fff;
+}
+
+.course-slider-container {
+    max-width: 1000px;
+    margin: 0 auto 30px;
+}
+
+.course-slide {
+    text-align: center;
+}
+
+.course-slide img {
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.course-thumbnail-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.course-thumbnail img {
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+/* ===== 実績・お客様の声セクション ===== */
+.achievement-section {
+    background-color: #f9f9f9;
+}
+
+.accordion-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background-color: #0d3283;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 32px;
+}
+
+.accordion-icon-check {
+    color: #7bdcb5;
+    margin-right: 8px;
+}
+
+.accordion-icon-plus {
+    font-size: 20px;
+}
+
+.achievement-tabs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 40px;
+    max-width: 1180px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.tab-button {
+    padding: 10px 25px;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #eee;
+    color: #555;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.tab-button:hover {
+    background-color: #ddd;
+}
+
+.tab-button.active {
+    background-color: #0d3283;
+    color: #fff;
+}
+
+.achievement-card-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 1180px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.achievement-card {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.achievement-card:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.achievement-card a {
+    display: block;
+    color: #333;
+}
+
+.achievement-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.achievement-card p {
+    padding: 15px;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 1.4;
+}
+
+/* ===== ブログセクション（新機能） ===== */
+.blog-section {
+    background-color: #fff;
+    padding: 80px 15px;
+}
+
+.blog-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+.blog-item {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.blog-item:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.blog-meta {
+    display: flex;
+    gap: 10px;
+    font-size: 13px;
+    color: #666;
+    padding: 15px 15px 0;
+}
+
+.blog-category {
+    color: #0d3283;
+    font-weight: bold;
+}
+
+.blog-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.blog-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.blog-title {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.4;
+    margin: 15px 15px 10px;
+    color: #333;
+}
+
+.blog-excerpt {
+    font-size: 14px;
+    color: #555;
+    margin: 0 15px 15px;
+    flex-grow: 1;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.blog-readmore {
+    display: inline-block;
+    margin: 0 15px 15px;
+    color: #0d3283;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.blog-readmore:hover {
+    color: #c0392b;
+    text-decoration: underline;
+}
+
+.highlight {
+    background-color: #ffecb3;
+    padding: 0 3px;
+}
+
+.text-red {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+.more-button-container {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.btn-more {
+    display: inline-block;
+    padding: 12px 40px;
+    background-color: #0d3283;
+    color: white;
+    border-radius: 3px; /* 以前のボタンスタイルに合わせる */
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-more:hover {
+    background-color: #082258;
+}
+
+/* ===== フッター (以前のスタイルを適用) ===== */
+.site-footer {
+    background-color: #0d3283;
+    color: #ffffff;
+    padding-top: 64px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.footer-widgets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.widget-area {
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.footer-widget-1 {
+    flex-basis: 20%;
+    min-width: 200px;
+}
+
+.footer-widget-2, .footer-widget-3, .footer-widget-4 {
+    flex-basis: 20%;
+    min-width: 150px;
+}
+
+.widget-area h4 {
+    font-size: 16px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.widget-area ul li {
+    margin-bottom: 12px;
+}
+
+.widget-area ul li a {
+    color: #eee;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.widget-area ul li a:hover {
+    color: #fff;
+}
+
+.footer-logo {
+    max-width: 200px;
+    margin-bottom: 25px;
+}
+
+.footer-sns {
+    display: flex;
+    gap: 10px;
+}
+
+.footer-sns a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #0d3283;
+    background-color: #ffffff;
+    width: 36px;
+    height: 36px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: opacity 0.3s ease;
+}
+
+.footer-sns a svg {
     width: 18px;
     height: 18px;
 }
-.footer-sns a:hover { opacity: 0.8; }
-.site-copyright { background-color: #ffffff; color: #333333; padding: 20px 0; text-align: center; }
-.site-copyright small { font-size: 12px; }
 
-/* --- レスポンシブ対応 (959px以下) --- */
-@media screen and (max-width: 959px) {
-    .header-container { height: 60px; padding-left: 15px; padding-right: 15px; }
-    .site-logo img {
-        /* スマホでのロゴ高さ */
-        height: 40px; /* ← 少し大きく */
-    }
-    .pc-nav { display: none; }
-    .sp-nav { display: block; }
-    .site-main { padding-top: 60px; }
-    .hero-section { height: 60vh; margin-top: -60px; }
-    .hero-pc { display: none; }
-    .hero-sp { display: block; }
-    .osarublog-pink-section { padding-top: 60px; padding-bottom: 60px; }
-    .osarublog-pink-section::before, .osarublog-pink-section::after { height: 30px; }
-    .osarublog-main-heading { font-size: 28px; margin-bottom: 30px; }
-    .osarublog-sub-text { font-size: 14px; padding: 6px 15px; margin-bottom: 20px; }
-    .section-padding { padding-top: 48px; padding-bottom: 48px; }
-    .section-title { font-size: 32px; }
-    .course-slide { width: 60%; }
-    .course-thumbnail-container { justify-content: flex-start; overflow-x: auto; padding-bottom: 10px; }
-    .course-thumbnail { width: 100px; flex-shrink: 0; }
-    .accordion-toggle { font-size: 15px; padding: 10px 15px; }
-    .tab-button { padding: 8px 15px; font-size: 13px;}
-    .achievement-card-list { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
-    .achievement-card p { font-size: 14px; padding: 12px;}
-    .widget-area { flex-basis: calc(50% - 15px); min-width: calc(50% - 15px); }
-    .footer-widget-1 { flex-basis: 100%; min-width: 100%; text-align: center; }
-    .footer-logo { margin-left: auto; margin-right: auto; }
-    .footer-sns { justify-content: center; }
+.footer-sns a:hover {
+    opacity: 0.8;
 }
-/* さらに小さい画面 (480px以下) */
+
+.site-copyright {
+    background-color: #ffffff;
+    color: #333333;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.site-copyright small {
+    font-size: 12px;
+}
+
+/* ===== レスポンシブ対応 ===== */
+@media screen and (max-width: 959px) {
+    .header-container {
+        height: 60px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    
+    .site-logo img {
+        height: 40px;
+    }
+    
+    .pc-nav {
+        display: none;
+    }
+    
+    .sp-nav {
+        display: block;
+    }
+    
+    .site-main {
+        padding-top: 60px;
+    }
+    
+    .osarublog-pink-section {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+    
+    .osarublog-pink-section::before, .osarublog-pink-section::after {
+        height: 30px;
+    }
+    
+    .osarublog-main-heading {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+    
+    .osarublog-sub-text {
+        font-size: 14px;
+        padding: 6px 15px;
+        margin-bottom: 20px;
+    }
+    
+    .course-slide {
+        width: 60%;
+    }
+    
+    .course-thumbnail-container {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 10px;
+    }
+    
+    .course-thumbnail {
+        width: 100px;
+        flex-shrink: 0;
+    }
+    
+    .accordion-toggle {
+        font-size: 15px;
+        padding: 10px 15px;
+    }
+    
+    .tab-button {
+        padding: 8px 15px;
+        font-size: 13px;
+    }
+    
+    .achievement-card-list {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 15px;
+    }
+    
+    .achievement-card p {
+        font-size: 14px;
+        padding: 12px;
+    }
+    
+    .blog-list {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+    }
+    
+    .footer-widget-1 {
+        flex-basis: 100%;
+        min-width: 100%;
+        text-align: center;
+    }
+    
+    .footer-logo {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .footer-sns {
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .blog-list {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .pc-only {
+        display: none;
+    }
+    
+    .blog-image {
+        height: 180px;
+    }
+    
+    .blog-title {
+        font-size: 16px;
+        margin: 10px 10px 8px;
+    }
+    
+    .blog-meta {
+        font-size: 12px;
+        padding: 10px 10px 0;
+    }
+    
+    .blog-excerpt {
+        font-size: 13px;
+        margin: 0 10px 10px;
+    }
+    
+    .blog-readmore {
+        margin: 0 10px 10px;
+        font-size: 13px;
+    }
+}
+
 @media screen and (max-width: 480px) {
-    .section-title { font-size: 28px; }
-    .course-slide { width: 80%; }
-    .achievement-card-list { grid-template-columns: 1fr; }
-    .widget-area { flex-basis: 100%; min-width: 100%; }
+    .course-slide {
+        width: 80%;
+    }
+    
+    .achievement-card-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .widget-area {
+        flex-basis: 100%;
+        min-width: 100%;
+    }
 }
