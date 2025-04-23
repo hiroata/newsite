@@ -3,279 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="オートファネル大学のブログです。マーケティングやビジネスに関する最新情報や実践的なノウハウをご紹介します。">
-    <title>ブログ - オートファネル大学</title>
+    <meta name="description" content="オートファネル大学のブログ記事一覧です。IT導入補助金、マーケティング自動化、ウェブサイト構築、オンラインビジネスなど、事業成長に役立つ最新情報をお届けします。">
+    <title>ブログ一覧 - オートファネル大学ブログ</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style.css"> <!-- 外部CSSの内容は反映していません。必要に応じて調整してください。 -->
     <link rel="icon" href="../images/favicon.ico">
-    <meta property="og:title" content="ブログ - オートファネル大学">
-    <meta property="og:description" content="オートファネル大学のブログです。マーケティングやビジネスに関する最新情報や実践的なノウハウをご紹介します。">
-    <meta property="og:image" content="../images/ogp_image.jpg">
-    <meta property="og:type" content="article">
+    <meta property="og:title" content="ブログ一覧 - オートファネル大学ブログ">
+    <meta property="og:description" content="オートファネル大学のブログ記事一覧です。IT導入補助金、マーケティング自動化、ウェブサイト構築、オンラインビジネスなど、事業成長に役立つ最新情報をお届けします。">
+    <meta property="og:image" content="../images/og-blog-list.jpg"> <!-- 記事一覧ページのOGP画像を想定 -->
+    <meta property="og:type" content="website">
     <style>
-        .blog-container {
-            max-width: 1100px;
+        /* GitHubのindex.htmlのCSSを元に、ブログ一覧部分のスタイルを追加・調整 */
+        body {
+             font-family: 'Noto Sans JP', sans-serif;
+             color: #333;
+             line-height: 1.8;
+             /* 全体の背景色などは外部CSSまたはbodyタグスタイルで指定されている可能性 */
+        }
+        
+        .page-container {
+            max-width: 1200px; /* GitHubのindex.htmlに合わせて調整 */
             margin: 0 auto;
-            display: flex;
-            gap: 40px;
+            padding: 60px 15px; /* 上下の余白を追加 */
         }
-        .blog-main {
-            flex: 1;
-        }
-        .blog-sidebar {
-            width: 300px;
-            flex-shrink: 0;
-        }
-        .page-title {
-            margin-bottom: 30px;
-        }
-        .blog-description {
-            margin-bottom: 40px;
-            line-height: 1.7;
-        }
-        
-        /* カテゴリータブ */
-        .category-tabs {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 30px;
-        }
-        .category-tab {
-            padding: 8px 15px;
-            background-color: #f5f5f5;
-            border-radius: 20px;
-            font-size: 14px;
-            transition: all 0.3s ease;
-        }
-        .category-tab:hover, .category-tab.active {
-            background-color: #0d3283;
-            color: white;
-        }
-        
-        /* ブログカード */
+
         .blog-list {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-            margin-bottom: 50px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* PC表示時は3列 */
+            gap: 30px; /* 記事間の隙間 */
         }
-        .blog-card {
-            display: flex;
+
+        .blog-item {
             background-color: white;
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 3px 10px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
+            display: flex; /* Flexboxを使って縦方向に並べる */
+            flex-direction: column;
+            height: 100%; /* グリッドアイテムの高さを合わせる */
         }
-        .blog-card:hover {
+
+        .blog-item:hover {
             transform: translateY(-5px);
         }
-        .blog-card-image {
-            width: 280px;
-            flex-shrink: 0;
-        }
-        .blog-card-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .blog-card-content {
-            padding: 25px;
-            flex-grow: 1;
+
+        .blog-meta {
             display: flex;
-            flex-direction: column;
-        }
-        .blog-card-meta {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 15px;
+            gap: 10px;
             font-size: 13px;
             color: #666;
+            padding: 15px 15px 0; /* 上部のみパディング */
         }
-        .blog-card-category {
+
+        .blog-category {
             color: #0d3283;
             font-weight: bold;
         }
-        .blog-card-title {
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 15px;
-            line-height: 1.4;
-        }
-        .blog-card-excerpt {
-            margin-bottom: 20px;
-            line-height: 1.6;
-            color: #555;
-            flex-grow: 1;
-        }
-        .blog-card-link {
-            align-self: flex-start;
-            padding: 8px 15px;
-            background-color: #0d3283;
-            color: white;
-            border-radius: 5px;
-            font-size: 14px;
-            transition: background-color 0.3s ease;
-        }
-        .blog-card-link:hover {
-            background-color: #092058;
-        }
-        
-        /* ページネーション */
-        .pagination {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-        }
-        .page-number {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background-color: #f5f5f5;
-            transition: all 0.3s ease;
-        }
-        .page-number:hover, .page-number.active {
-            background-color: #0d3283;
-            color: white;
-        }
-        
-        /* サイドバー */
-        .sidebar-section {
-            background-color: white;
-            border-radius: 10px;
-            padding: 25px;
-            margin-bottom: 30px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-        }
-        .sidebar-title {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #0d3283;
-        }
-        .popular-posts {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        .popular-post {
-            display: flex;
-            gap: 15px;
-        }
-        .popular-post-image {
-            width: 80px;
-            height: 80px;
-            border-radius: 5px;
+
+        .blog-image {
+            width: 100%;
+            height: 200px; /* 画像の高さ指定 */
             overflow: hidden;
-            flex-shrink: 0;
         }
-        .popular-post-image img {
+
+        .blog-image img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: cover; /* 画像をコンテナに合わせてトリミング */
         }
-        .popular-post-content {
-            flex-grow: 1;
-        }
-        .popular-post-title {
-            font-size: 14px;
+
+        .blog-title {
+            font-size: 18px;
             font-weight: bold;
-            margin-bottom: 5px;
             line-height: 1.4;
+            margin: 15px 15px 10px; /* タイトルの上下左右余白 */
+            color: #333; /* タイトル色 */
         }
-        .popular-post-meta {
-            font-size: 12px;
-            color: #666;
-        }
-        
-        .category-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .category-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
-        }
-        .category-item:last-child {
-            border-bottom: none;
-        }
-        .category-count {
-            background-color: #f5f5f5;
-            border-radius: 20px;
-            padding: 2px 10px;
-            font-size: 12px;
-        }
-        
-        .tag-cloud {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .tag-item {
-            background-color: #f5f5f5;
-            border-radius: 20px;
-            padding: 5px 12px;
-            font-size: 13px;
-            transition: all 0.3s ease;
-        }
-        .tag-item:hover {
-            background-color: #0d3283;
-            color: white;
-        }
-        
-        .search-form {
-            display: flex;
-            gap: 10px;
-        }
-        .search-input {
-            flex-grow: 1;
-            padding: 10px 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+
+        .blog-excerpt {
             font-size: 14px;
+            color: #555;
+            margin: 0 15px 15px; /* リード文の余白 */
+             flex-grow: 1; /* リード文が残りのスペースを埋める */
         }
-        .search-button {
-            padding: 10px 15px;
-            background-color: #0d3283;
-            color: white;
-            border-radius: 5px;
-            font-size: 14px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
+
+        .blog-readmore {
+            display: inline-block;
+            margin: 0 15px 15px; /* ボタンの余白 */
+            color: #0d3283; /* リンク色 */
+            font-weight: bold;
+            text-decoration: none; /* 下線削除 */
+            transition: color 0.3s ease;
         }
-        .search-button:hover {
-            background-color: #092058;
+
+        .blog-readmore:hover {
+            color: #c0392b; /* ホバー色 */
+            text-decoration: underline; /* ホバーで下線表示 */
         }
-        
+
+         /* 元のarticle-content内のスタイルも一部流用 */
+         .highlight {
+            background-color: #ffecb3;
+            padding: 0 3px;
+        }
+         .text-red {
+            color: #e74c3c; /* CTAボタンと同じ赤色 */
+            font-weight: bold; /* 太字も追加 */
+        }
+
+
         /* モバイル対応 */
-        @media (max-width: 900px) {
-            .blog-container {
-                flex-direction: column;
+        @media (max-width: 768px) { /* タブレット・スマホ表示 */
+            .blog-list {
+                grid-template-columns: 1fr; /* 1列表示 */
+                gap: 20px;
             }
-            .blog-sidebar {
-                width: 100%;
-            }
-            .blog-card {
-                flex-direction: column;
-            }
-            .blog-card-image {
-                width: 100%;
-                height: 200px;
-            }
+             .page-container {
+                 padding: 40px 15px;
+             }
+             .blog-item {
+                 height: auto; /* 高さを自動に */
+             }
+             .blog-image {
+                 height: 180px; /* モバイルでの画像の高さ調整 */
+             }
+             .blog-title {
+                 font-size: 16px;
+                 margin: 10px 10px 8px;
+             }
+             .blog-meta {
+                font-size: 12px;
+                padding: 10px 10px 0;
+             }
+             .blog-excerpt {
+                 font-size: 13px;
+                 margin: 0 10px 10px;
+             }
+             .blog-readmore {
+                 margin: 0 10px 10px;
+                 font-size: 13px;
+             }
         }
     </style>
+    <!-- サイト全体の共通ヘッダーやフッターのスタイルは、GitHubのstyle.cssや別途記述されている可能性があります。 -->
+    <!-- ここには記事一覧の表示に必要なスタイルのみ記述しています。 -->
 </head>
 <body>
+    <!-- ヘッダー -->
+    <!-- GitHubリポジトリのheaderタグの内容を想定して記述 -->
     <header class="site-header">
         <div class="header-container">
             <div class="site-logo">
@@ -294,212 +172,208 @@
             <button class="hamburger-button sp-nav" aria-label="メニューを開く"><span></span><span></span><span></span></button>
         </div>
     </header>
+    <!-- / ヘッダー -->
 
+    <!-- メインコンテンツ -->
     <main class="site-main">
         <div class="page-container section-padding">
-            <h1 class="page-title">ブログ</h1>
-            
-            <div class="blog-container">
-                <div class="blog-main">
-                    <div class="blog-description">
-                        <p>オートファネル大学のブログでは、マーケティングやビジネスに関する最新情報や実践的なノウハウをご紹介します。各分野のプロフェッショナルが執筆する記事を通じて、あなたのビジネス成長をサポートします。</p>
+            <h1>ブログ一覧</h1> <!-- ページタイトルを追加 -->
+
+            <div class="blog-list">
+
+                <!-- 以下に生成したブログ記事リストが挿入されます -->
+
+                <!-- 記事1: IT導入補助金でデジタル化を加速！成功のコツ -->
+                <div class="blog-item">
+                    <div class="blog-meta">
+                        <span class="blog-date">2025年4月20日</span>
+                        <span class="blog-category">補助金・助成金</span>
                     </div>
-                    
-                    <div class="category-tabs">
-                        <a href="#" class="category-tab active">すべて</a>
-                        <a href="#" class="category-tab">マーケティング</a>
-                        <a href="#" class="category-tab">ビジネス成長</a>
-                        <a href="#" class="category-tab">補助金・助成金</a>
-                        <a href="#" class="category-tab">DX推進</a>
-                        <a href="#" class="category-tab">事例紹介</a>
-                    </div>
-                    
-                    <div class="blog-list">
-                        <article class="blog-card">
-                            <div class="blog-card-image">
-                                <img src="../images/blog-3.jpg" alt="IT導入補助金記事サムネイル">
-                            </div>
-                            <div class="blog-card-content">
-                                <div class="blog-card-meta">
-                                    <span class="blog-card-date">2025年4月20日</span>
-                                    <span class="blog-card-category">補助金・助成金</span>
-                                </div>
-                                <h2 class="blog-card-title">IT導入補助金でデジタル化を加速！成功のコツ</h2>
-                                <div class="blog-card-excerpt">
-                                    <p>中小企業や個人事業主の皆さん、業務効率化やコスト削減に悩んでいませんか？デジタル化の必要性は感じているものの、高額な初期投資に二の足を踏んでいる方も多いのではないでしょうか。そんな悩みを解決するのがIT導入補助金です。最大450万円の支援を受けながら、業務効率化や売上アップを実現しましょう！</p>
-                                </div>
-                                <a href="article-1.html" class="blog-card-link">続きを読む</a>
-                            </div>
-                        </article>
-                        
-                        <article class="blog-card">
-                            <div class="blog-card-image">
-                                <img src="../images/blog-4.jpg" alt="記事サムネイル">
-                            </div>
-                            <div class="blog-card-content">
-                                <div class="blog-card-meta">
-                                    <span class="blog-card-date">2025年4月15日</span>
-                                    <span class="blog-card-category">ビジネス成長</span>
-                                </div>
-                                <h2 class="blog-card-title">小さな会社が大企業に勝つ方法：差別化戦略の実践ガイド</h2>
-                                <div class="blog-card-excerpt">
-                                    <p>リソースや知名度で大企業に敵わなくても、適切な差別化戦略を取ることで、小さな会社が市場で存在感を示し、成長することは可能です。本記事では、実際に大手競合がひしめく業界で成功を収めた中小企業の事例を分析し、あなたのビジネスに応用できる差別化のポイントを紹介します。</p>
-                                </div>
-                                <a href="#" class="blog-card-link">続きを読む</a>
-                            </div>
-                        </article>
-                        
-                        <article class="blog-card">
-                            <div class="blog-card-image">
-                                <img src="../images/blog-5.jpg" alt="記事サムネイル">
-                            </div>
-                            <div class="blog-card-content">
-                                <div class="blog-card-meta">
-                                    <span class="blog-card-date">2025年4月10日</span>
-                                    <span class="blog-card-category">事例紹介</span>
-                                </div>
-                                <h2 class="blog-card-title">月商10万円から100万円へ：ハンドメイド作家が実践した3つの施策</h2>
-                                <div class="blog-card-excerpt">
-                                    <p>「趣味」から「ビジネス」へ。多くのハンドメイド作家が抱える課題です。オートファネル大学の卒業生である陶芸作家・山田さんは、長年月商10万円前後で停滞していましたが、3つの施策を実践することで、わずか4ヶ月で月商100万円を達成しました。本記事では、その具体的な取り組みを詳しく解説します。</p>
-                                </div>
-                                <a href="#" class="blog-card-link">続きを読む</a>
-                            </div>
-                        </article>
-                        
-                        <article class="blog-card">
-                            <div class="blog-card-image">
-                                <img src="../images/blog-1.jpg" alt="記事サムネイル">
-                            </div>
-                            <div class="blog-card-content">
-                                <div class="blog-card-meta">
-                                    <span class="blog-card-date">2025年4月5日</span>
-                                    <span class="blog-card-category">マーケティング</span>
-                                </div>
-                                <h2 class="blog-card-title">2025年に注目すべきマーケティングトレンド5選</h2>
-                                <div class="blog-card-excerpt">
-                                    <p>デジタルマーケティングの世界は常に進化し続けています。2025年に入り、AIの活用がさらに進み、パーソナライゼーションの重要性が増しています。本記事では、ビジネス成長に欠かせない最新マーケティングトレンドを5つ紹介します。特に注目すべきは、音声検索最適化とインタラクティブコンテンツの活用です。</p>
-                                </div>
-                                <a href="#" class="blog-card-link">続きを読む</a>
-                            </div>
-                        </article>
-                        
-                        <article class="blog-card">
-                            <div class="blog-card-image">
-                                <img src="../images/blog-2.jpg" alt="記事サムネイル">
-                            </div>
-                            <div class="blog-card-content">
-                                <div class="blog-card-meta">
-                                    <span class="blog-card-date">2025年4月1日</span>
-                                    <span class="blog-card-category">DX推進</span>
-                                </div>
-                                <h2 class="blog-card-title">DX成功の鍵：中小企業が押さえるべき3つのポイント</h2>
-                                <div class="blog-card-excerpt">
-                                    <p>DX（デジタルトランスフォーメーション）は大企業だけのものではありません。むしろ、中小企業こそDXによる業務効率化や新たな顧客体験の創出が生き残りの鍵となります。本記事では、限られた予算と人材でDXを成功させるために押さえるべき3つのポイントを具体的な事例とともに解説します。</p>
-                                </div>
-                                <a href="#" class="blog-card-link">続きを読む</a>
-                            </div>
-                        </article>
-                    </div>
-                    
-                    <div class="pagination">
-                        <a href="#" class="page-number active">1</a>
-                        <a href="#" class="page-number">2</a>
-                        <a href="#" class="page-number">3</a>
-                        <a href="#" class="page-number">4</a>
-                        <a href="#" class="page-number">5</a>
-                    </div>
+                    <a href="article-1.html">
+                        <div class="blog-image"><img src="../images/blog-3.jpg" alt="IT導入補助金でデジタル化を加速！成功のコツ"></div>
+                        <h3 class="blog-title">IT導入補助金でデジタル化を加速！成功のコツ</h3>
+                    </a>
+                    <p class="blog-excerpt">中小企業や個人事業主の皆さん、業務効率化やコスト削減に悩んでいませんか？デジタル化の必要性は感じているものの、高額な初期投資に二の足を踏んでいる方も多いのではないでしょうか。そんな悩みを解決するのが<span class="highlight">IT導入補助金</span>です。本記事では、2025年度のIT導入補助金制度の最新情報と、補助金を活用したデジタル化成功のコツをご紹介します。補助金を賢く活用して、<span class="highlight">最大450万円の支援</span>を受けながら、業務効率化や売上アップを実現しましょう！</p>
+                    <a href="article-1.html" class="blog-readmore">続きを読む ></a>
                 </div>
-                
-                <div class="blog-sidebar">
-                    <div class="sidebar-section">
-                        <h3 class="sidebar-title">検索</h3>
-                        <form class="search-form">
-                            <input type="text" class="search-input" placeholder="記事を検索...">
-                            <button type="submit" class="search-button">検索</button>
-                        </form>
+
+                <!-- 記事2: マーケティング自動化ツール比較15選 – 中小企業が導入すべき理由と選び方のポイント -->
+                <div class="blog-item">
+                    <div class="blog-meta">
+                        <span class="blog-date">2025年4月25日</span>
+                        <span class="blog-category">マーケティング自動化</span>
                     </div>
-                    
-                    <div class="sidebar-section">
-                        <h3 class="sidebar-title">人気記事</h3>
-                        <div class="popular-posts">
-                            <div class="popular-post">
-                                <div class="popular-post-image">
-                                    <img src="../images/blog-3.jpg" alt="人気記事サムネイル">
-                                </div>
-                                <div class="popular-post-content">
-                                    <h4 class="popular-post-title">IT導入補助金でデジタル化を加速！成功のコツ</h4>
-                                    <div class="popular-post-meta">2025年4月20日</div>
-                                </div>
-                            </div>
-                            <div class="popular-post">
-                                <div class="popular-post-image">
-                                    <img src="../images/blog-5.jpg" alt="人気記事サムネイル">
-                                </div>
-                                <div class="popular-post-content">
-                                    <h4 class="popular-post-title">月商10万円から100万円へ：ハンドメイド作家が実践した3つの施策</h4>
-                                    <div class="popular-post-meta">2025年4月10日</div>
-                                </div>
-                            </div>
-                            <div class="popular-post">
-                                <div class="popular-post-image">
-                                    <img src="../images/blog-1.jpg" alt="人気記事サムネイル">
-                                </div>
-                                <div class="popular-post-content">
-                                    <h4 class="popular-post-title">2025年に注目すべきマーケティングトレンド5選</h4>
-                                    <div class="popular-post-meta">2025年4月5日</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="sidebar-section">
-                        <h3 class="sidebar-title">カテゴリー</h3>
-                        <div class="category-list">
-                            <a href="#" class="category-item">
-                                <span>マーケティング</span>
-                                <span class="category-count">12</span>
-                            </a>
-                            <a href="#" class="category-item">
-                                <span>ビジネス成長</span>
-                                <span class="category-count">15</span>
-                            </a>
-                            <a href="#" class="category-item">
-                                <span>補助金・助成金</span>
-                                <span class="category-count">8</span>
-                            </a>
-                            <a href="#" class="category-item">
-                                <span>DX推進</span>
-                                <span class="category-count">10</span>
-                            </a>
-                            <a href="#" class="category-item">
-                                <span>事例紹介</span>
-                                <span class="category-count">7</span>
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="sidebar-section">
-                        <h3 class="sidebar-title">タグクラウド</h3>
-                        <div class="tag-cloud">
-                            <a href="#" class="tag-item">IT導入補助金</a>
-                            <a href="#" class="tag-item">デジタル化</a>
-                            <a href="#" class="tag-item">マーケティング</a>
-                            <a href="#" class="tag-item">業務効率化</a>
-                            <a href="#" class="tag-item">集客</a>
-                            <a href="#" class="tag-item">売上アップ</a>
-                            <a href="#" class="tag-item">事例紹介</a>
-                            <a href="#" class="tag-item">DX</a>
-                            <a href="#" class="tag-item">戦略</a>
-                            <a href="#" class="tag-item">補助金</a>
-                            <a href="#" class="tag-item">中小企業</a>
-                            <a href="#" class="tag-item">2025年</a>
-                        </div>
-                    </div>
+                    <a href="article-2.html">
+                        <div class="blog-image"><img src="../images/blog-marketing-automation.jpg" alt="マーケティング自動化ツール比較15選 – 中小企業が導入すべき理由と選び方のポイント"></div>
+                        <h3 class="blog-title">マーケティング自動化ツール比較15選 – 中小企業が導入すべき理由と選び方のポイント</h3>
+                    </a>
+                    <p class="blog-excerpt">中小企業や個人事業主の皆さん、日々のマーケティング業務に時間や手間がかかりすぎていませんか？メール配信、SNS更新、顧客フォローなど、やりたいことはたくさんあるのに、人手が足りずに十分な施策が打てない…そんな悩みを抱えている方は多いのではないでしょうか。そこで注目されているのが、<span class="highlight">マーケティング自動化（MA）ツール</span>です。本記事では、中小企業がMAツールを導入すべき理由から、失敗しないツールの選び方、そしておすすめのツール候補までを詳しく解説します。</p>
+                    <a href="article-2.html" class="blog-readmore">続きを読む ></a>
                 </div>
+
+                <!-- 記事3: 売れる仕組みを自動化する3つのステップと必須ツール(Utageで実現) -->
+                <div class="blog-item">
+                    <div class="blog-meta">
+                        <span class="blog-date">2025年5月1日</span>
+                        <span class="blog-category">ファネル構築</span>
+                    </div>
+                    <a href="article-3.html">
+                        <div class="blog-image"><img src="../images/blog-funnel.jpg" alt="売れる仕組みを自動化する3つのステップと必須ツール(Utageで実現)"></div>
+                        <h3 class="blog-title">売れる仕組みを自動化する3つのステップと必須ツール(Utageで実現)</h3>
+                    </a>
+                    <p class="blog-excerpt">あなたのビジネスには、「見込み客を集めて、信頼関係を築き、最終的に商品やサービスを購入してもらう」という一連の流れ、つまり<span class="highlight">「売れる仕組み＝セールスファネル」</span>がありますか？ 多くの事業者がこの仕組みを構築しようと試みますが、手動での運用には限界があり、時間と労力が膨大にかかってしまいます。そこで必要になるのが、「売れる仕組み」を自動化することです。本記事では、セールスファネルを自動化するための<span class="text-red">重要な3つのステップ</span>と、それを強力にサポートする<span class="highlight">オールインワンツール「Utage」</span>を使った具体的な実現方法を解説します。自動化によって、あなたのビジネスは劇的に効率化され、売上アップへとつながるでしょう！🚀</p>
+                    <a href="article-3.html" class="blog-readmore">続きを読む ></a>
+                </div>
+
+                <!-- 記事4: 顧客管理・育成を効率化! おすすめCRMツール比較 -->
+                <div class="blog-item">
+                    <div class="blog-meta">
+                        <span class="blog-date">2025年5月3日</span>
+                        <span class="blog-category">顧客管理・育成</span>
+                    </div>
+                    <a href="article-4.html">
+                        <div class="blog-image"><img src="../images/blog-crm.jpg" alt="顧客管理・育成を効率化! おすすめCRMツール比較"></div>
+                        <h3 class="blog-title">顧客管理・育成を効率化! おすすめCRMツール比較</h3>
+                    </a>
+                    <p class="blog-excerpt">「お客様の情報があちこちに散らばっていて、誰にどんなアプローチをしたか分からない…」「一度買ってくれたお客様へのフォローができていない…」中小企業や個人事業主の皆さん、このようなお悩みはありませんか？ 🤔 顧客との良好な関係を築き、維持・発展させることは、<span class="text-red">ビジネスの安定成長と売上アップ</span>のために不可欠です。しかし、顧客が増えるほど手動での管理は難しくなります。そこで役立つのが、<span class="highlight">CRM（Customer Relationship Management：顧客関係管理）ツール</span>です。本記事では、CRMツールを導入すべき理由から、失敗しない選び方、そして中小企業におすすめのツール候補までを徹底解説します！✨</p>
+                    <a href="article-4.html" class="blog-readmore">続きを読む ></a>
+                </div>
+
+                <!-- 記事5: 【初心者必見】オンラインビジネス立ち上げを成功させるための支援サービス -->
+                <div class="blog-item">
+                    <div class="blog-meta">
+                        <span class="blog-date">2025年5月8日</span>
+                        <span class="blog-category">オンラインビジネス</span>
+                    </div>
+                    <a href="article-5.html">
+                        <div class="blog-image"><img src="../images/blog-online-business-support.jpg" alt="【初心者必見】オンラインビジネス立ち上げを成功させるための支援サービス"></div>
+                        <h3 class="blog-title">【初心者必見】オンラインビジネス立ち上げを成功させるための支援サービス</h3>
+                    </a>
+                    <p class="blog-excerpt">「オンラインビジネスに興味はあるけど、何から始めればいいか分からない…」「一人で立ち上げるのは不安だな…」と感じているオンラインビジネス初心者の皆さん、ご安心ください！ 😌 最近は、オンラインビジネスの立ち上げを<span class="highlight">手厚くサポートしてくれる様々な支援サービス</span>があります。インターネット上でビジネスを展開するには、ウェブサイトやLPの構築、集客戦略、決済システムの導入など、専門的な知識やスキルが必要です。これらをゼロから一人で学ぶのは非常に時間がかかり、途中で挫折してしまう人も少なくありません。
+
+                </div>
+
+                <!-- 記事6: デジタルコンテンツ販売で月100万円を稼ぐ!おすすめプラットフォームと成功戦略 -->
+                <div class="blog-item">
+                    <div class="blog-meta">
+                        <span class="blog-date">2025年5月6日</span>
+                        <span class="blog-category">デジタルコンテンツ販売</span>
+                    </div>
+                    <a href="article-6.html">
+                        <div class="blog-image"><img src="../images/blog-digital-content.jpg" alt="デジタルコンテンツ販売で月100万円を稼ぐ!おすすめプラットフォームと成功戦略"></div>
+                        <h3 class="blog-title">デジタルコンテンツ販売で月100万円を稼ぐ!おすすめプラットフォームと成功戦略</h3>
+                    </a>
+                    <p class="blog-excerpt">あなたの持つ知識、スキル、経験、アイデア…これらを「デジタルコンテンツ」として販売し、大きな収益を得られる時代です！ 📚📈 動画講座、電子書籍、コンサルティング、オンラインサロンなど、形のない商品だからこそ、場所や時間にとらわれずに販売でき、利益率も高いのが魅力です。「でも、どうやって作って、どこで売ればいいの？」「本当に月100万円も稼げるの？」そんな疑問をお持ちの方もいるでしょう。本記事では、デジタルコンテンツ販売で<span class="text-red">月100万円という目標を達成するための具体的な戦略</span>と、初心者でも始めやすい<span class="highlight">おすすめのデジタルコンテンツ販売プラットフォーム</span>を徹底比較してご紹介します！</p>
+                    <a href="article-6.html" class="blog-readmore">続きを読む ></a>
+                </div>
+
+                 <!-- 記事7: UTAGE構築代行サービスの選び方 - 自社の目的に合った最適なパートナー選定法 -->
+                 <div class="blog-item">
+                    <div class="blog-meta">
+                         <span class="blog-date">2025年5月25日</span> <!-- 仮の日付 -->
+                         <span class="blog-category">サポート・代行サービス</span> <!-- 仮のカテゴリ -->
+                    </div>
+                    <a href="article-7.html">
+                         <div class="blog-image"><img src="../images/blog-utage-agency.jpg" alt="UTAGE構築代行サービスの選び方 - 自社の目的に合った最適なパートナー選定法"></div> <!-- 仮の画像 -->
+                         <h3 class="blog-title">UTAGE構築代行サービスの選び方 - 自社の目的に合った最適なパートナー選定法</h3>
+                    </a>
+                    <p class="blog-excerpt">オンラインビジネスに強力な「売れる仕組み」を構築したいけれど、Utageの設定やLP作成、自動化シナリオ構築を自分で行うのは時間やスキル的に難しい…と感じている方はいませんか？ そんな時に頼りになるのが、Utage構築代行サービスです。本記事では、自社の目的や状況に合った最適なUtage構築代行パートナーを選ぶための重要なポイントと、失敗しないための注意点を徹底解説します。信頼できるプロの力を借りて、最短でビジネスを軌道に乗せましょう！</p>
+                    <a href="article-7.html" class="blog-readmore">続きを読む ></a>
+                 </div>
+
+                <!-- 記事8: 【費用相場】プロに依頼する集客代行サービスのメリットとデメリット -->
+                <div class="blog-item">
+                    <div class="blog-meta">
+                        <span class="blog-date">2025年5月10日</span>
+                        <span class="blog-category">サポート・代行サービス</span>
+                    </div>
+                    <a href="article-8.html">
+                        <div class="blog-image"><img src="../images/blog-lead-generation-agency.jpg" alt="【費用相場】プロに依頼する集客代行サービスのメリットとデメリット"></div>
+                        <h3 class="blog-title">【費用相場】プロに依頼する集客代行サービスのメリットとデメリット</h3>
+                    </a>
+                    <p class="blog-excerpt">「集客がうまくいかない…」「何から手をつければ良いか分からない…」「本業が忙しくて集客に時間がかけられない…」中小企業や個人事業主の皆さんにとって、集客はビジネスの生命線であり、多くの方が悩みを抱えているのではないでしょうか？ 😥 そんな時、<span class="highlight">「集客代行サービス」</span>という選択肢があります。これは、集客のプロに自社の集客活動の一部または全てを任せるサービスです。しかし、「費用はどれくらいかかるの？」「本当に効果があるの？」と疑問に思う方もいるでしょう。</p>
+                    <a href="article-8.html" class="blog-readmore">続きを読む ></a>
+                </div>
+
+                <!-- 記事9: UTAGEシステムとは?導入企業の売上が平均30%アップした理由を徹底解説 -->
+                <div class="blog-item">
+                    <div class="blog-meta">
+                        <span class="blog-date">2025年5月12日</span>
+                        <span class="blog-category">UTAGE</span>
+                    </div>
+                    <a href="article-9.html">
+                        <div class="blog-image"><img src="../images/blog-utage-intro.jpg" alt="UTAGEシステムとは?導入企業の売上が平均30%アップした理由を徹底解説"></div>
+                        <h3 class="blog-title">UTAGEシステムとは?導入企業の売上が平均30%アップした理由を徹底解説</h3>
+                    </a>
+                    <p class="blog-excerpt">オンラインビジネスの成功に欠かせないマーケティング。LP作成、メール・LINE配信、顧客管理、決済システム…これらのツールを個別に契約・連携させるのは、設定が大変だったり、コストがかさんだり、管理が煩雑になったりと、様々な課題があります。そこで、今多くの企業や個人事業主から注目されているのが<span class="highlight">オールインワンマーケティングツール「Utage」</span>です。実は、<span class="text-red">Utageを導入した企業の売上が平均30%アップした</span>というデータもあります（※）。本記事では、なぜUtageがそれほどまでに成果に繋がるのか、その理由と機能を徹底的に解説します！📈🚀</p>
+                    <a href="article-9.html" class="blog-readmore">続きを読む ></a>
+                </div>
+
+                 <!-- 記事10: マーケティング自動化は初心者でもできる?始め方と注意点 -->
+                 <div class="blog-item">
+                    <div class="blog-meta">
+                        <span class="blog-date">2025年5月15日</span>
+                        <span class="blog-category">マーケティング自動化</span>
+                    </div>
+                    <a href="article-10.html">
+                         <div class="blog-image"><img src="../images/blog-ma-beginner.jpg" alt="マーケティング自動化は初心者でもできる?始め方と注意点"></div>
+                         <h3 class="blog-title">マーケティング自動化は初心者でもできる?始め方と注意点</h3>
+                    </a>
+                    <p class="blog-excerpt">「マーケティング自動化（MA）」と聞くと、「難しそう…」「大企業が使うものじゃないの？」と感じる方も多いかもしれません。しかし、実は<span class="highlight">中小企業や個人事業主でも、マーケティング自動化は十分に可能であり、大きなメリット</span>をもたらします！初心者の方でも安心して始められるよう、基本的な始め方と注意点を分かりやすく解説します。🔰🚀</p>
+                    <a href="article-10.html" class="blog-readmore">続きを読む ></a>
+                 </div>
+
+                <!-- 記事11: 会員サイト構築サービス比較10選 - 目的別に選ぶべき最適なツールと成功事例 -->
+                <div class="blog-item">
+                    <div class="blog-meta">
+                        <span class="blog-date">2025年5月17日</span>
+                        <span class="blog-category">コンテンツ・会員サイト</span>
+                    </div>
+                    <a href="article-11.html">
+                        <div class="blog-image"><img src="../images/blog-membership-site.jpg" alt="会員サイト構築サービス比較10選 - 目的別に選ぶべき最適なツールと成功事例"></div>
+                        <h3 class="blog-title">会員サイト構築サービス比較10選 - 目的別に選ぶべき最適なツールと成功事例</h3>
+                    </a>
+                    <p class="blog-excerpt">あなたの知識やスキル、提供するサービスに「ファン」はいますか？ 特定の熱心な顧客やコミュニティメンバーに向けて、限定コンテンツを提供したり、継続的なサポートを行ったりしたいと考えたことはありませんか？ 😌 そんなニーズに応えるのが<span class="highlight">「会員サイト」</span>です。会員サイトを構築することで、ファンとの関係を強化し、ストック型の安定した収益を得ることが可能になります。しかし、「どうやって作ればいいの？」「どのサービスが良いの？」と悩む方もいるでしょう。
+
+                </div>
+
+                <!-- 記事12: 経営者の時間を取り戻す!ビジネス自動化で実現する働き方改革と利益向上の両立 -->
+                <div class="blog-item">
+                    <div class="blog-meta">
+                        <span class="blog-date">2025年5月19日</span>
+                        <span class="blog-category">ビジネス自動化</span>
+                    </div>
+                    <a href="article-12.html">
+                        <div class="blog-image"><img src="../images/blog-business-automation.jpg" alt="経営者の時間を取り戻す!ビジネス自動化で実現する働き方改革と利益向上の両立"></div>
+                        <h3 class="blog-title">経営者の時間を取り戻す!ビジネス自動化で実現する働き方改革と利益向上の両立</h3>
+                    </a>
+                    <p class="blog-excerpt">中小企業の経営者の皆さん、日々の業務に追われ、「自分の時間が全くない」「もっと戦略的な仕事に集中したいのに…」と感じていませんか？ 😨 多くの経営者が、売上管理、経理、顧客対応、スタッフ管理、雑務など、プレイヤーとしての業務に多くの時間を費やし、<span class="text-red">本来やるべき「経営」の時間が持てずにいます</span>。この状況を打破し、<span class="highlight">時間創出と利益向上を同時に実現する鍵</span>となるのが<span class="highlight">「ビジネス自動化」</span>です。本記事では、ビジネス自動化の重要性、自動化できる業務の種類、そして自動化を実現するための具体的な方法とツールをご紹介します。
+
+                </div>
+
+                <!-- 記事13: メルマガ配信システム比較10選 - 開封率とクリック率を高める機能別おすすめツール -->
+                <div class="blog-item">
+                    <div class="blog-meta">
+                        <span class="blog-date">2025年5月20日</span>
+                        <span class="blog-category">メール・LINE配信</span>
+                    </div>
+                    <a href="article-13.html">
+                        <div class="blog-image"><img src="../images/blog-mail-system.jpg" alt="メルマガ配信システム比較10選 - 開封率とクリック率を高める機能別おすすめツール"></div>
+                        <h3 class="blog-title">メルマガ配信システム比較10選 - 開封率とクリック率を高める機能別おすすめツール</h3>
+                    </a>
+                    <p class="blog-excerpt">メールマーケティングは、見込み客の獲得から顧客育成、リピート促進まで、幅広い目的で活用できる効果的な手法です。特にメルマガは、<span class="highlight">コストを抑えつつ、読者と継続的にコミュニケーションを取り、関係性を深める</span>ために非常に有効です。しかし、単にメールを送るだけでは、なかなか読んでもらえません…そこで必要になるのが、機能性の高い<span class="highlight">「メルマガ配信システム」</span>です。本記事では、<span class="text-red">開封率とクリック率を高めるために重要な機能</span>に焦点を当てて、<span class="highlight">おすすめのメルマガ配信システム10選を徹底比較</span>します！📈📧</p>
+                    <a href="article-13.html" class="blog-readmore">続きを読む ></a>
+                </div>
+
+                <!-- / 記事リストの終わり -->
+
             </div>
         </div>
     </main>
+    <!-- / メインコンテンツ -->
 
+    <!-- フッター -->
+    <!-- GitHubリポジトリのfooterタグの内容を想定して記述 -->
     <footer class="site-footer">
         <div class="footer-container">
             <div class="footer-widgets">
@@ -508,7 +382,7 @@
                     <div class="footer-sns">
                         <a href="#" aria-label="YouTube"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="1em" height="1em" fill="currentColor"><path d="M549.7 124.1c-6.3-23.7-24.8-42.3-48.3-48.6C458.8 64 288 64 288 64S117.2 64 74.6 75.5c-23.5 6.3-42 24.9-48.3 48.6-11.4 42.9-11.4 132.3-11.4 132.3s0 89.4 11.4 132.3c6.3 23.7 24.8 41.5 48.3 47.8C117.2 448 288 448 288 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zM231.8 355.4l-10.8-7.4-10.8 7.4C187.8 370.3 160 355.4 160 328V184c0-27.4 27.8-42.3 50.2-27.4l10.8 7.4 10.8-7.4c22.4-14.9 50.2 0 50.2 27.4V328c0 27.4-27.8 42.3-50.2 27.4zM391.6 355.4l-10.8-7.4-10.8 7.4c-22.4 14.9-50.2 0-50.2-27.4V184c0-27.4 27.8-42.3 50.2-27.4l10.8 7.4 10.8-7.4C414.2 141.7 442 156.6 442 184V328c0 27.4-27.8 42.3-50.4 27.4z"/></svg></a>
                         <a href="#" aria-label="X (Twitter)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg></a>
-                        <a href="#" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="1em" height="1em" fill="currentColor"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9 26.3 26.2 58 34.4 93.9 36.2 37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg></a>
+                        <a href="#" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="1em" height="1em" fill="currentColor"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9 26.3 26.2 58 34.4 93.9 36.2 37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8 19.6 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg></a>
                     </div>
                 </div>
                 <div class="widget-area footer-widget-2">
@@ -544,6 +418,11 @@
             </div>
         </div>
     </footer>
-    <script src="../js/script.js"></script>
+    <!-- / フッター -->
+
+    <!-- スクリプト -->
+    <script src="../js/script.js"></script> <!-- 外部JSは含まれていないため参照のみ -->
+    <!-- / スクリプト -->
+
 </body>
 </html>
