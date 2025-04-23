@@ -22,16 +22,13 @@
         .achievement-header {
             margin-bottom: 30px;
         }
-        .achievement-image {
+        .achievement-image-container {
             border-radius: 8px;
             margin-bottom: 30px;
             background-color: #f0f0f0;
-            height: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #666;
-            font-style: italic;
+            padding: 20px;
+            text-align: center;
+            color: #333;
         }
         .interview-section {
             background-color: #f9f9f9;
@@ -56,17 +53,10 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             margin: 40px 0;
         }
-        .profile-image {
+        .profile-image-container {
             width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background-color: #f0f0f0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #666;
-            font-style: italic;
             flex-shrink: 0;
+            text-align: center;
         }
         .profile-info {
             flex-grow: 1;
@@ -147,91 +137,6 @@
             font-size: 1.1em;
             margin-top: 0;
         }
-        .benefit-points {
-            margin-bottom: 30px;
-        }
-        .benefit-points h4 {
-            border-bottom: 2px solid #0d3283;
-            padding-bottom: 10px;
-        }
-        .benefit-points ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-        .benefit-points li {
-            background-color: #f5f5f5;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-left: 3px solid #0d3283;
-        }
-        .message-section {
-            margin-bottom: 40px;
-            background-color: #f5f5f5;
-            padding: 20px;
-            border-radius: 8px;
-        }
-        .message-section h3 {
-            color: #0d3283;
-            border-bottom: 2px solid #0d3283;
-            padding-bottom: 10px;
-        }
-        .message-content {
-            margin-bottom: 20px;
-        }
-        .message-content p {
-            line-height: 1.6;
-        }
-        .author {
-            text-align: right;
-        }
-        .author p {
-            font-weight: bold;
-            color: #0d3283;
-            margin: 0;
-        }
-        .promo-section {
-            margin-bottom: 40px;
-            border: 2px solid #0d3283;
-            padding: 20px;
-            border-radius: 8px;
-        }
-        .promo-section h3 {
-            color: #0d3283;
-            text-align: center;
-            margin-top: 0;
-        }
-        .promo-message p {
-            line-height: 1.6;
-        }
-        .seminar-banner {
-            margin: 30px 0;
-            text-align: center;
-        }
-        .seminar-banner-placeholder {
-            max-width: 100%;
-            height: 200px;
-            border-radius: 8px;
-            background-color: #f0f0f0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #666;
-            font-style: italic;
-            margin-bottom: 10px;
-        }
-        .btn-more {
-            display: inline-block;
-            background-color: #0d3283;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 15px;
-            transition: background-color 0.3s;
-        }
-        .btn-more:hover {
-            background-color: #0a2563;
-        }
     </style>
 </head>
 <body>
@@ -262,14 +167,15 @@
                     <h1>【UTAGE構築代行丸投げちゃん】株式会社笑認 髙安様 ご利用者インタビュー</h1>
                 </div>
                 
-                <div class="achievement-image">
-                    インタビュー画像が表示されます
+                <div class="achievement-image-container">
+                    <h2>髙安様のUTAGE導入事例インタビュー</h2>
+                    <p>UTAGE構築代行丸投げちゃんでの成功事例</p>
                 </div>
                 
                 <!-- プロフィール情報 -->
                 <div class="profile-box">
-                    <div class="profile-image">
-                        プロフィール写真
+                    <div class="profile-image-container">
+                        <h4>髙安 敏行 様</h4>
                     </div>
                     <div class="profile-info">
                         <h3 class="profile-name">髙安 敏行 様</h3>
@@ -313,16 +219,6 @@
                     <p>"結果として、UTAGEのシステムを通じて新規の依頼や新しいつながりをいただき、非常に嬉しく思っています。今でも、私の本を読んでくださった方から問い合わせや導入依頼があります。実は昨日も、当社ハートサービスグループで3月にオープン予定のデイサービス事業と介護用品ジムのスタッフ募集に対し、私の本を読んでQRコードを読み込み、話を聞きに来てくださった方を最終面接で採用したばかりです。これは本当に嬉しかったですし、情報発信の効果だと実感しています。"</p>
                 </div>
 
-                <div class="benefit-points">
-                    <h4>構築代行の主なメリット</h4>
-                    <ul>
-                        <li>✓ 著書と連動したマーケティングファネルの構築により新規顧客獲得</li>
-                        <li>✓ 情報発信の自動化で人材採用にも成功</li>
-                        <li>✓ ビジネスの本質に集中できる時間の確保</li>
-                        <li>✓ 専門的なマーケティング知識と経験に基づいた設計</li>
-                    </ul>
-                </div>
-                
                 <!-- インタビューセクション -->
                 <div id="section1" class="section-header">
                     <h2>UTAGE導入前の悩み・課題</h2>
@@ -354,8 +250,9 @@
                     <div class="interview-answer">髙安： これは私のビジネス感覚やこだわりにも通じることですが、当社は「何をやるか」や「いくらでやるか」よりも「誰とやるか」を非常に重視しています。前田さんという、UTAGEのサービスをバックでサポートしていただける方が、私たちにとって良いパートナーだと感じました。<br><br>価格はそれなりにかかると思いますが、それ以上のパフォーマンスや、私たちが実現したいことを一緒に叶えられる関係、そしてその成功を一緒に喜べるパートナーの方が望ましいと考えています。そこはお金では買えない価値だと思っています。</div>
                 </div>
                 
-                <div class="achievement-image">
-                    UTAGE導入効果の図が表示されます
+                <div class="achievement-image-container">
+                    <h3>UTAGE導入による効果</h3>
+                    <p>自動化によるマーケティング効率化と新規顧客獲得</p>
                 </div>
                 
                 <div id="section3" class="section-header">
@@ -371,34 +268,27 @@
                     <h2>迷っている方へのメッセージ</h2>
                 </div>
                 
-                <div class="message-section">
-                    <div class="message-content">
-                        <p><strong>前田：</strong>視聴者の方に、率直なご意見をお聞きしたいのですが、構築代行というとやり取りのストレスや思いを汲み取ってもらえないことが起こりやすいと思います。その点、弊社の「丸投げちゃん」のコミュニケーションはいかがでしたか？</p>
-                        <p><strong>髙安：</strong>その点は本当にノーストレスでした。私たちが実現したいことをヒアリングの中でしっかり読み取っていただき、私たちが表現する以上のものを形にしていただいたことは本当にすごいと思いました。まさにマーケティングの神様だと感じるほどでした。私も大学院やビジネススクールでマーケティングを学びましたが、フレームワークをしっかり学んだ知識を実務経験と組み合わせて表現していただいたと感じました。本当に良かったと思います。</p>
-                        <p>おそらくこれをご覧になっている方は、自分自身の思いや素晴らしい商品・サービスをお持ちで、それをたくさんの方に提供したいと考えていると思います。現代は時は金なりで、時間は非常に貴重です。どのみち様々なコースや人材、自分の時間を使うことでコストがかかるものですから、その時間をお金で買い、さらに自分が持っている以上のパフォーマンスを引き出せるのは非常にコスパが高いと思います。その時間を、本来自分しかできない事業や仕事に充てることが、ビジネス成功の一因だと思います。構築やマーケティングの経験が豊富な、いわゆる「餅は餅屋」のプロにお願いすることをお勧めします。</p>
-                    </div>
-                    <div class="author">
-                        <p>株式会社笑認 代表取締役 髙安 敏行 様</p>
-                    </div>
+                <div class="interview-section">
+                    <div class="interview-question">前田：視聴者の方に、率直なご意見をお聞きしたいのですが、構築代行というとやり取りのストレスや思いを汲み取ってもらえないことが起こりやすいと思います。その点、弊社の「丸投げちゃん」のコミュニケーションはいかがでしたか？</div>
+                    <div class="interview-answer">髙安：その点は本当にノーストレスでした。私たちが実現したいことをヒアリングの中でしっかり読み取っていただき、私たちが表現する以上のものを形にしていただいたことは本当にすごいと思いました。まさにマーケティングの神様だと感じるほどでした。私も大学院やビジネススクールでマーケティングを学びましたが、フレームワークをしっかり学んだ知識を実務経験と組み合わせて表現していただいたと感じました。本当に良かったと思います。</div>
+                    <div class="interview-answer">おそらくこれをご覧になっている方は、自分自身の思いや素晴らしい商品・サービスをお持ちで、それをたくさんの方に提供したいと考えていると思います。現代は時は金なりで、時間は非常に貴重です。どのみち様々なコースや人材、自分の時間を使うことでコストがかかるものですから、その時間をお金で買い、さらに自分が持っている以上のパフォーマンスを引き出せるのは非常にコスパが高いと思います。その時間を、本来自分しかできない事業や仕事に充てることが、ビジネス成功の一因だと思います。構築やマーケティングの経験が豊富な、いわゆる「餅は餅屋」のプロにお願いすることをお勧めします。</div>
                 </div>
                 
                 <div id="section5" class="section-header">
                     <h2>離職率を改善するアプローチ</h2>
                 </div>
                 
-                <div class="promo-section">
+                <div class="interview-section">
                     <h3>離職率を1%に改善する人事評価システム</h3>
-                    <div class="promo-message">
+                    <div class="interview-answer">
                         <p>現在、世の中では人手不足が言われていますが、私はそれよりも、企業が社員に求めるものと、新しい人材が企業に求めるもののミスマッチが起きていると感じています。弊社のシステムは「パノラマ人事評価システム」と名付けていますが、人が人を評価することは非常に難しいものです。離職率を下げていくためには、まず「人が人に関心を持つ」ことが重要だと考えています。</p>
                         <p>関心を持つ際にどこを見るかが、人間関係を構築する上で大切です。「笑認」という名前が示すように、通常の「承認」とは、人の良いところに目を向け、その人の強みや長所を認めることだと思います。これが人間関係や企業と従業員の関係、評価においてとても重要なのです。</p>
                         <p>私は人に対する仕組みは性善説で考えるべきだと思います。会社の様々な仕組みは性悪説で運営している企業も多いですが、私たちの最大の理念は「世界で承認し合う世界を作る」ことです。人事評価システムを売ることが目的ではなく、みんなが認め合える世界を作るというビジョンを達成するために、まずは企業内でスタッフ同士が認め合えるような仕組みづくりを行っています。</p>
                     </div>
                     
-                    <div class="seminar-banner">
-                        <div class="seminar-banner-placeholder">
-                            パノラマ人事評価システムの画像が表示されます
-                        </div>
-                        <p>髙安氏が開発した離職率を1%にする人事評価システム</p>
+                    <div class="achievement-image-container">
+                        <h3>パノラマ人事評価システムの詳細</h3>
+                        <p>離職率を1%にする人事評価システム</p>
                         <a href="#" class="btn-more">詳細はこちら</a>
                     </div>
                 </div>
