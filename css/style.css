@@ -10,6 +10,10 @@
     box-sizing: border-box; 
 }
 
+html, body {
+    overflow-x: hidden; /* 横方向のスクロールを防止 */
+}
+
 body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, figure, figcaption, blockquote, dl, dd { 
     margin: 0; 
     padding: 0; 
@@ -21,6 +25,7 @@ body {
     line-height: 1.6;
     background-color: #f8f9fa;
     letter-spacing: 0.05em;
+    position: relative; /* サブ要素の位置決め基準 */
 }
 
 img {
@@ -174,26 +179,23 @@ button {
 
 /* ===== ヒーローセクション ===== */
 .hero-section {
-    height: 500px;
+    height: 650px; /* 高さをさらに増やして全体が表示されるように */
     position: relative;
-    margin-top: -86px; /* ヘッダーの高さを考慮 */
+    margin-top: -86px; /* ヘッダーの高さに合わせる */
+    overflow: hidden; /* はみ出した部分を隠す */
 }
 
 .hero-image {
     width: 100%;
     height: 100%;
-    background-position: center;
+    background-position: center; /* 中央に戻す */
     background-size: cover;
     background-repeat: no-repeat;
 }
 
-.hero-sp {
-    display: none;
-}
-
 @media (max-width: 959px) {
     .hero-section {
-        height: 60vh;
+        height: 70vh; /* モバイル表示時の高さを調整 */
         margin-top: -60px;
     }
     
@@ -206,8 +208,8 @@ button {
     }
 }
 
-/* ===== ピンクセクション (以前のスタイルを適用) ===== */
-.osarublog-pink-section {
+/* ===== ピンクセクション (旧osarublogからYUKIblogに変更) ===== */
+.YUKIblog-pink-section {
     background: linear-gradient(135deg, #ED4484 0%, #FBB67D 100%);
     padding-top: 80px;
     padding-bottom: 80px;
@@ -215,7 +217,7 @@ button {
     overflow: hidden;
 }
 
-.osarublog-pink-section::before {
+.YUKIblog-pink-section::before {
     content: '';
     position: absolute;
     top: 0;
@@ -226,7 +228,7 @@ button {
     clip-path: polygon(0 100%, 0 0, 100% 0, 100% 100%, 75% 85%, 50% 100%, 25% 85%);
 }
 
-.osarublog-pink-section::after {
+.YUKIblog-pink-section::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -236,7 +238,7 @@ button {
     background-color: #ffffff;
 }
 
-.osarublog-pink-section-inner {
+.YUKIblog-pink-section-inner {
     max-width: 780px;
     margin: 0 auto;
     padding: 0 15px;
@@ -245,7 +247,7 @@ button {
     text-align: center;
 }
 
-.osarublog-sub-text {
+.YUKIblog-sub-text {
     display: inline-block;
     background-color: #ffffff;
     color: #333333;
@@ -256,23 +258,29 @@ button {
     margin-bottom: 25px;
 }
 
-.osarublog-main-heading {
+.YUKIblog-main-heading {
     color: #ffffff;
-    font-size: 40px;
+    font-size: 36px;
     font-weight: bold;
     line-height: 1.6;
     margin-top: 0;
     margin-bottom: 40px;
     letter-spacing: 0.1em;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
-.osarublog-banner img {
+.YUKIblog-banner img {
     max-width: 100%;
     height: auto;
     display: block;
     margin: 0 auto;
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.YUKIblog-banner img:hover {
+    transform: translateY(-5px);
 }
 
 /* ===== セクションタイトル ===== */
@@ -304,50 +312,32 @@ button {
     .section-title {
         font-size: 32px;
     }
+    
+    .YUKIblog-main-heading {
+        font-size: 28px;
+    }
+    
+    .YUKIblog-sub-text {
+        font-size: 14px;
+        padding: 6px 15px;
+    }
 }
 
 @media (max-width: 480px) {
     .section-title {
         font-size: 28px;
     }
-}
-
-/* ===== コースリストセクション ===== */
-.course-list-section {
-    background-color: #fff;
-}
-
-.course-slider-container {
-    max-width: 1000px;
-    margin: 0 auto 30px;
-}
-
-.course-slide {
-    text-align: center;
-}
-
-.course-slide img {
-    border-radius: 5px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-.course-thumbnail-container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.course-thumbnail img {
-    width: 100px;
-    height: 100px;
-    border-radius: 5px;
-    object-fit: cover;
+    
+    .YUKIblog-main-heading {
+        font-size: 24px;
+    }
 }
 
 /* ===== 実績・お客様の声セクション ===== */
 .achievement-section {
     background-color: #f9f9f9;
+    position: relative;
+    z-index: 1;
 }
 
 .accordion-toggle {
@@ -423,6 +413,8 @@ button {
     overflow: hidden;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     transition: box-shadow 0.3s ease;
+    display: block !important; /* 強制的に表示 */
+    visibility: visible !important; /* 強制的に表示 */
 }
 
 .achievement-card:hover {
@@ -438,6 +430,7 @@ button {
     width: 100%;
     height: 180px;
     object-fit: cover;
+    display: block !important; /* 強制的に表示 */
 }
 
 .achievement-card p {
@@ -447,10 +440,109 @@ button {
     line-height: 1.4;
 }
 
+/* ===== オンライン講座一覧セクション ===== */
+.online-courses-section {
+    background-color: #f8f9fa;
+    padding: 80px 15px;
+    position: relative;
+    z-index: 1;
+}
+
+.online-courses-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+.course-card {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.course-image {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+}
+
+.course-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.course-level {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #0d3283;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.course-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.course-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    line-height: 1.4;
+    color: #333;
+}
+
+.course-description {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.course-button {
+    display: inline-block;
+    background-color: #0d3283;
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 3px;
+    font-weight: bold;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    align-self: flex-start;
+}
+
+.course-button:hover {
+    background-color: #082258;
+    color: white;
+}
+
 /* ===== ブログセクション（新機能） ===== */
 .blog-section {
     background-color: #fff;
     padding: 80px 15px;
+    position: relative;
+    z-index: 1;
 }
 
 .blog-list {
@@ -569,6 +661,8 @@ button {
     background-color: #0d3283;
     color: #ffffff;
     padding-top: 64px;
+    position: relative; /* 下の要素の制御のため */
+    z-index: 10; /* 下の要素より前面に */
 }
 
 .footer-container {
@@ -657,6 +751,8 @@ button {
     color: #333333;
     padding: 20px 0;
     text-align: center;
+    position: relative; /* 位置調整 */
+    z-index: 2; /* 重ね順を高く */
 }
 
 .site-copyright small {
@@ -664,6 +760,12 @@ button {
 }
 
 /* ===== レスポンシブ対応 ===== */
+@media screen and (max-width: 1024px) {
+    .online-courses-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media screen and (max-width: 959px) {
     .header-container {
         height: 60px;
@@ -687,39 +789,24 @@ button {
         padding-top: 60px;
     }
     
-    .osarublog-pink-section {
+    .YUKIblog-pink-section {
         padding-top: 60px;
         padding-bottom: 60px;
     }
     
-    .osarublog-pink-section::before, .osarublog-pink-section::after {
+    .YUKIblog-pink-section::before, .YUKIblog-pink-section::after {
         height: 30px;
     }
     
-    .osarublog-main-heading {
+    .YUKIblog-main-heading {
         font-size: 28px;
         margin-bottom: 30px;
     }
     
-    .osarublog-sub-text {
+    .YUKIblog-sub-text {
         font-size: 14px;
         padding: 6px 15px;
         margin-bottom: 20px;
-    }
-    
-    .course-slide {
-        width: 60%;
-    }
-    
-    .course-thumbnail-container {
-        justify-content: flex-start;
-        overflow-x: auto;
-        padding-bottom: 10px;
-    }
-    
-    .course-thumbnail {
-        width: 100px;
-        flex-shrink: 0;
     }
     
     .accordion-toggle {
@@ -769,6 +856,10 @@ button {
         gap: 20px;
     }
     
+    .online-courses-grid {
+        grid-template-columns: 1fr;
+    }
+    
     .pc-only {
         display: none;
     }
@@ -796,13 +887,21 @@ button {
         margin: 0 10px 10px;
         font-size: 13px;
     }
+    
+    .course-image {
+        height: 200px;
+    }
+    
+    .course-title {
+        font-size: 16px;
+    }
+    
+    .course-description {
+        font-size: 13px;
+    }
 }
 
 @media screen and (max-width: 480px) {
-    .course-slide {
-        width: 80%;
-    }
-    
     .achievement-card-list {
         grid-template-columns: 1fr;
     }
@@ -811,4 +910,43 @@ button {
         flex-basis: 100%;
         min-width: 100%;
     }
+}
+
+/* ===== 画像ギャラリーの非表示（最下部サムネイル対応） ===== */
+/* フッター後の不要なサムネイルのみを対象に */
+.site-footer + div:not(.achievement-section):not(.online-courses-section):not(.blog-section),
+.site-footer ~ div:not(.achievement-section):not(.online-courses-section):not(.blog-section),
+.site-footer ~ img,
+.site-main > div:last-child:not(.achievement-section):not(.online-courses-section):not(.blog-section):not(.YUKIblog-pink-section) {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    width: 0 !important;
+    opacity: 0 !important;
+    position: absolute !important;
+    overflow: hidden !important;
+    z-index: -999 !important;
+    pointer-events: none !important;
+}
+
+/* コンテンツを正しく終わらせる */
+body::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* サイト全体の構造を保持 */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+footer {
+    flex-shrink: 0;
 }
