@@ -3,342 +3,905 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="オートファネル大学受講生の髙安敏行様の実績紹介ページです。書籍運動ファネルで全国から商談申込&採用が増加した事例をご紹介します。">
-    <title>髙安様実績紹介 - オートファネル大学</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="icon" href="../images/favicon.ico">
-    <meta property="og:title" content="髙安様実績紹介 - オートファネル大学">
-    <meta property="og:description" content="オートファネル大学受講生の髙安敏行様の実績紹介ページです。UTAGE構築代行丸投げちゃんの導入事例をご紹介します。">
-    <meta property="og:image" content="../images/ogp_image.jpg">
-    <meta property="og:type" content="article">
+    <title>株式会社笑認 髙安様 - UTAGE導入事例</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        .achievement-detail {
-            max-width: 800px;
-            margin: 0 auto;
+        /* 基本スタイル */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
-        .achievement-header {
-            margin-bottom: 30px;
-        }
-        .achievement-image-container {
-            border-radius: 8px;
-            margin-bottom: 30px;
-            background-color: #f0f0f0;
-            padding: 20px;
-            text-align: center;
+        
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
             color: #333;
-        }
-        .interview-section {
+            line-height: 1.7;
             background-color: #f9f9f9;
-            padding: 25px;
+            font-size: 16px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
             border-radius: 8px;
-            margin-bottom: 30px;
         }
-        .interview-question {
+        
+        .section-image {
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* ヘッダー用のスタイル */
+        .site-header {
+            background-color: #fff;
+            border-bottom: 1px solid #e6e6e6;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 86px;
+        }
+        
+        .site-logo img {
+            height: 50px;
+            width: auto;
+        }
+        
+        .global-nav {
+            flex-grow: 1;
+            display: flex;
+            justify-content: flex-end;
+        }
+        
+        .global-nav ul {
+            display: flex;
+            align-items: center;
+            list-style: none;
+        }
+        
+        .global-nav li {
+            margin-left: 16px;
+        }
+        
+        .global-nav a {
+            color: #333;
             font-weight: bold;
-            color: #0d3283;
-            margin-bottom: 10px;
+            font-size: 14px;
+            transition: color 0.3s ease;
+            text-decoration: none;
         }
-        .interview-answer {
+        
+        .global-nav a:not(.btn-nav):hover {
+            color: #17a7cc;
+        }
+        
+        .btn-nav {
+            display: inline-block;
+            padding: 8px 18px;
+            color: #fff !important;
+            border-radius: 3px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            line-height: 1.5;
+            text-decoration: none;
+        }
+        
+        .btn-red {
+            background-color: #dd3333;
+        }
+        
+        .btn-red:hover {
+            background-color: #b32929;
+            color: #fff !important;
+        }
+        
+        .btn-blue {
+            background-color: #0d3283;
+        }
+        
+        .btn-blue:hover {
+            background-color: #082258;
+            color: #fff !important;
+        }
+        
+        /* メインヘッダー */
+        .header {
+            background: linear-gradient(135deg, #0d3283 0%, #082258 100%);
+            color: white;
+            padding: 40px 0;
+        }
+        
+        .main-header-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+        }
+        
+        .header-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.3;
+            color: #fff;
+        }
+        
+        .header-subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
             margin-bottom: 20px;
         }
-        .profile-box {
-            display: flex;
-            gap: 20px;
+        
+        /* メイン成果セクション */
+        .main-results {
             background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            margin: 40px 0;
-        }
-        .profile-image-container {
-            width: 120px;
-            flex-shrink: 0;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+            padding: 35px;
+            margin-top: -60px;
+            position: relative;
+            z-index: 10;
             text-align: center;
         }
-        .profile-info {
-            flex-grow: 1;
-        }
-        .profile-name {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        .results-box {
-            background-color: #0d3283;
-            color: white;
-            padding: 25px;
+        
+        /* 目次 */
+        .toc {
+            background-color: #f5f5f5;
             border-radius: 8px;
-            margin-bottom: 30px;
+            padding: 25px;
+            margin: 40px 0;
         }
-        .results-title {
+        
+        .toc-title {
             font-size: 20px;
             font-weight: bold;
             margin-bottom: 15px;
-            text-align: center;
-        }
-        .results-list {
             display: flex;
-            justify-content: space-around;
-            text-align: center;
+            align-items: center;
+            color: #0d3283;
+        }
+        
+        .toc-title i {
+            margin-right: 10px;
+            color: #0d3283;
+        }
+        
+        .toc-list {
+            list-style-type: none;
+        }
+        
+        .toc-list li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .toc-list li i {
+            position: absolute;
+            left: 0;
+            top: 5px;
+            color: #0d3283;
+        }
+        
+        .toc-list a {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+        
+        .toc-list a:hover {
+            color: #0d3283;
+        }
+        
+        /* プロフィールセクション */
+        .profile-section {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+            overflow: hidden;
+        }
+        
+        .profile-header {
+            background-color: #f0f7ff;
+            padding: 20px;
+            border-bottom: 1px solid #e1eeff;
+            display: flex;
+            align-items: center;
+        }
+        
+        .profile-header i {
+            margin-right: 10px;
+            color: #0d3283;
+            font-size: 20px;
+        }
+        
+        .profile-header h2 {
+            margin: 0;
+            color: #0d3283;
+            font-size: 1.3rem;
+        }
+        
+        .profile-details {
+            display: flex;
             flex-wrap: wrap;
+            padding: 25px;
         }
-        .results-item {
-            margin: 10px;
+        
+        .profile-info {
+            flex: 1;
         }
-        .results-number {
-            font-size: 32px;
+        
+        .profile-name {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            color: #0d3283;
+            display: flex;
+            align-items: center;
+        }
+        
+        .profile-name i {
+            margin-right: 10px;
+            color: #0d3283;
+        }
+        
+        .profile-company {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            color: #666;
+            display: flex;
+            align-items: center;
+        }
+        
+        .profile-company i {
+            margin-right: 10px;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .profile-description p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+        
+        /* 成果ボックス */
+        .results-section {
+            background: linear-gradient(135deg, #0d3283 0%, #1a5cb5 100%);
+            color: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin: 40px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .results-section::before {
+            content: '';
+            position: absolute;
+            right: -50px;
+            top: -50px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+        }
+        
+        .results-title {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .results-title i {
+            margin-right: 10px;
+            color: #ffdd57;
+        }
+        
+        .results-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+        }
+        
+        .result-item {
+            flex: 1;
+            min-width: 150px;
+            padding: 20px 10px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        
+        .result-item:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255,255,255,0.2);
+        }
+        
+        .result-number {
+            font-size: 2.5rem;
             font-weight: bold;
             margin-bottom: 5px;
             color: #7bdcb5;
         }
-        .results-label {
-            font-size: 14px;
+        
+        .result-label {
+            font-size: 0.9rem;
         }
-        .toc {
-            background-color: #f5f5f5;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 30px;
-        }
-        .toc h3 {
-            margin-top: 0;
-            border-bottom: 2px solid #ddd;
-            padding-bottom: 10px;
-        }
-        .toc ol {
-            padding-left: 20px;
-        }
-        .toc li {
-            margin-bottom: 10px;
-        }
-        .toc a {
-            color: #0d3283;
-            text-decoration: none;
-        }
-        .section-header {
-            background-color: #0d3283;
-            color: white;
-            padding: 10px 20px;
-            margin: 40px 0 20px;
-            border-radius: 8px;
-        }
+        
+        /* 引用ボックス */
         .highlight-box {
             background-color: #fff9e5;
-            padding: 20px;
             border-left: 5px solid #f39800;
-            margin-bottom: 30px;
+            padding: 25px;
+            margin: 40px 0;
             border-radius: 0 8px 8px 0;
+            position: relative;
         }
+        
+        .highlight-box::before {
+            content: '"';
+            position: absolute;
+            top: 5px;
+            left: 15px;
+            font-size: 60px;
+            color: rgba(243, 152, 0, 0.2);
+            font-family: serif;
+            line-height: 1;
+        }
+        
         .highlight-box p {
+            font-size: 1.05rem;
+            color: #333;
+            font-weight: 500;
+            line-height: 1.7;
+            position: relative;
+            padding-left: 15px;
+        }
+        
+        /* セクションヘッダー */
+        .section-header {
+            background: linear-gradient(135deg, #0d3283 0%, #1a5cb5 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 40px 0 20px;
+            font-size: 1.3rem;
             font-weight: bold;
-            font-size: 1.1em;
-            margin-top: 0;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-header i {
+            margin-right: 10px;
+        }
+        
+        .section-header::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 40px;
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.15) 100%);
+        }
+        
+        /* インタビューQ&A */
+        .interview-section {
+            margin-bottom: 50px;
+        }
+        
+        .interview-qa {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+        
+        .interview-question {
+            color: #0d3283;
+            font-weight: bold;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-left: 4px solid #0d3283;
+            line-height: 1.5;
+            background-color: #f0f7ff;
+            border-radius: 0 8px 8px 0;
+            position: relative;
+        }
+        
+        .interview-question::before {
+            content: 'Q';
+            position: absolute;
+            left: -14px;
+            top: 15px;
+            width: 24px;
+            height: 24px;
+            background-color: #0d3283;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+        
+        .interview-answer {
+            padding-left: 20px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .interview-answer::before {
+            content: 'A';
+            position: absolute;
+            left: -14px;
+            top: 0;
+            width: 24px;
+            height: 24px;
+            background-color: #ff6347;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+        
+        .interview-answer p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+        
+        .interview-answer p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* CTA セクション */
+        .cta-section {
+            background: linear-gradient(135deg, #0d3283 0%, #1a5cb5 100%);
+            color: white;
+            border-radius: 8px;
+            padding: 40px 30px;
+            text-align: center;
+            margin: 50px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before,
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+        }
+        
+        .cta-section::before {
+            top: -100px;
+            right: -100px;
+        }
+        
+        .cta-section::after {
+            bottom: -100px;
+            left: -100px;
+        }
+        
+        .cta-title {
+            font-size: 1.7rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .cta-title i {
+            margin-right: 15px;
+            color: #ffdd57;
+        }
+        
+        .cta-description {
+            margin-bottom: 25px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: #7bdcb5;
+            color: #0d3283;
+            padding: 12px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            font-size: 1.05rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        
+        .cta-button:hover {
+            background-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        
+        /* ナビゲーション */
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin: 40px 0;
+        }
+        
+        .nav-button {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+        
+        .nav-button:hover {
+            transform: translateY(-3px);
+            color: #0d3283;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+        
+        .nav-prev::before {
+            content: '←';
+            margin-right: 10px;
+        }
+        
+        .nav-next::after {
+            content: '→';
+            margin-left: 10px;
+        }
+        
+        /* ハイライト */
+        .highlight {
+            background-color: #fffde7;
+            padding: 2px 0;
+            font-weight: 500;
+            box-shadow: 4px 0 0 #fffde7, -4px 0 0 #fffde7;
+            box-decoration-break: clone;
+        }
+        
+        .yellow-highlight {
+            background-color: #ffff00;
+            padding: 2px 0;
+            font-weight: bold;
+            box-shadow: 4px 0 0 #ffff00, -4px 0 0 #ffff00;
+            box-decoration-break: clone;
+        }
+        
+        .red-text {
+            color: #ff0000;
+            font-weight: bold;
+        }
+        
+        .bold-text {
+            font-weight: bold;
+        }
+        
+        .badge {
+            display: inline-block;
+            background-color: #ff6347;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+        
+        /* レスポンシブ対応 */
+        @media (max-width: 768px) {
+            .header-title {
+                font-size: 1.8rem;
+            }
+            
+            .profile-details {
+                flex-direction: column;
+            }
+            
+            .section-header {
+                font-size: 1.2rem;
+            }
+            
+            .results-grid {
+                flex-direction: column;
+                max-width: 280px;
+                margin: 0 auto;
+            }
+        }
+        
+        /* アニメーション */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
         }
     </style>
 </head>
 <body>
+    <!-- サイトヘッダー -->
     <header class="site-header">
         <div class="header-container">
             <div class="site-logo">
-                <a href="../index.html"><img src="../images/logo.png" alt="オートファネル大学 ロゴ"></a>
+                <a href="index.html"><img src="images/logo.png" alt="オートファネル大学 ロゴ"></a>
             </div>
             <nav class="global-nav pc-nav">
                 <ul>
-                    <li><a href="../index.html">ホーム</a></li>
-                    <li><a href="../course/index.html">オートファネル大学とは</a></li>
-                    <li><a href="../event/index.html">イベント・作業会</a></li>
-                    <li><a href="../seminar/index.html">セミナー</a></li>
-                    <li><a href="../achievement/index.html" class="btn-nav btn-red">受講生実績</a></li>
-                    <li><a href="../free-seminar.html" class="btn-nav btn-blue">無料セミナー</a></li>
+                    <li><a href="index.html">ホーム</a></li>
+                    <li><a href="course/index.html">オートファネル大学とは</a></li>
+                    <li><a href="blog/index.html">ブログ</a></li>
+                    <li><a href="seminar/index.html">オンライン講座</a></li>
+                    <li><a href="achievement/index.html" class="btn-nav btn-red">お客様の声</a></li>
+                    <li><a href="free-seminar.html" class="btn-nav btn-blue">無料セミナー</a></li>
                 </ul>
             </nav>
-            <button class="hamburger-button sp-nav" aria-label="メニューを開く"><span></span><span></span><span></span></button>
         </div>
     </header>
 
-    <main class="site-main">
-        <div class="page-container section-padding">
-            <div class="achievement-detail">
-                <div class="achievement-header">
-                    <a href="index.html">← 受講生実績一覧に戻る</a>
-                    <h1>【UTAGE構築代行丸投げちゃん】株式会社笑認 髙安様 ご利用者インタビュー</h1>
-                </div>
-                
-                <div class="achievement-image-container">
-                    <h2>髙安様のUTAGE導入事例インタビュー</h2>
-                    <p>UTAGE構築代行丸投げちゃんでの成功事例</p>
-                </div>
-                
-                <!-- プロフィール情報 -->
-                <div class="profile-box">
-                    <div class="profile-image-container">
-                        <h4>髙安 敏行 様</h4>
-                    </div>
-                    <div class="profile-info">
-                        <h3 class="profile-name">髙安 敏行 様</h3>
-                        <p><strong>会社：</strong>株式会社笑認 代表取締役 / ハートサービスグループ 専務取締役</p>
-                        <p><strong>事業内容：</strong>「パノラマ人事評価システム360」開発、クリーニングや介護事業、理美容事業などの労働集約型事業運営。離職率を20%から1%へと改善した実績。著書『離職率1%の会社が編み出した 超人材定着術』</p>
-                    </div>
-                </div>
-                
-                <!-- 目次 -->
-                <div class="toc">
-                    <h3>目次</h3>
-                    <ol>
-                        <li><a href="#section1">UTAGE導入前の悩み・課題</a></li>
-                        <li><a href="#section2">「丸投げちゃん」を選んだ理由</a></li>
-                        <li><a href="#section3">導入後の変化と効果</a></li>
-                        <li><a href="#section4">迷っている方へのアドバイス</a></li>
-                        <li><a href="#section5">離職率を改善するアプローチ</a></li>
-                    </ol>
-                </div>
-                
-                <!-- 成果実績セクション -->
-                <div class="results-box">
-                    <h3 class="results-title">UTAGE導入後の効果</h3>
-                    <div class="results-list">
-                        <div class="results-item">
-                            <div class="results-number">20%→1%</div>
-                            <div class="results-label">離職率改善</div>
-                        </div>
-                        <div class="results-item">
-                            <div class="results-number">220名</div>
-                            <div class="results-label">従業員規模</div>
-                        </div>
-                        <div class="results-item">
-                            <div class="results-number">35期</div>
-                            <div class="results-label">事業継続年数</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="highlight-box">
-                    <p>"結果として、UTAGEのシステムを通じて新規の依頼や新しいつながりをいただき、非常に嬉しく思っています。今でも、私の本を読んでくださった方から問い合わせや導入依頼があります。実は昨日も、当社ハートサービスグループで3月にオープン予定のデイサービス事業と介護用品ジムのスタッフ募集に対し、私の本を読んでQRコードを読み込み、話を聞きに来てくださった方を最終面接で採用したばかりです。これは本当に嬉しかったですし、情報発信の効果だと実感しています。"</p>
-                </div>
-
-                <!-- インタビューセクション -->
-                <div id="section1" class="section-header">
-                    <h2>UTAGE導入前の悩み・課題</h2>
-                </div>
-                
-                <div class="interview-section">
-                    <div class="interview-question">前田： 皆さん、こんにちは。「UTAGE構築代行丸投げちゃん」の前田です。本日は、社員同士が相互に評価・承認し合う新しい人事システム「パノラマ人事評価システム360」を開発し、離職率を20%から1%へと劇的に改善された実績をお持ちの株式会社笑認の代表取締役、髙安敏行様をお迎えしております。</div>
-                    <div class="interview-answer">髙安： ありがとうございます。</div>
-                    
-                    <div class="interview-question">前田： 髙安様は、著書『離職率1%の会社が編み出した 超人材定着術』の執筆や、セミナー講師としてもご活躍中です。今回は、弊社の「UTAGE構築代行丸投げちゃん」をご利用いただいたご縁で、髙安様にお話を伺います。どうぞよろしくお願いいたします。</div>
-                    <div class="interview-answer">髙安： よろしくお願いします。</div>
-                    
-                    <div class="interview-question">前田： では髙安様、簡単に自己紹介をお願いいたします。</div>
-                    <div class="interview-answer">髙安： はい。皆さん初めまして。株式会社笑認代表の髙安敏行と申します。こう見えて、私47歳です。ちょっと上に見られるんですけど。私自身が現在笑認の代表取締役を務める一方で、ハートサービスグループという、クリーニングや介護事業、理美容事業といった労働集約型の事業を専務取締役として運営しています。<br><br>今期が35期目を迎え、従業員は約220名ほどの規模になっています。株式会社笑認では、グループ会社の人事評価や人材定着の仕組みを私が長年構築してきました。その取り組みの結果、前田さんからご紹介いただいたように離職率1%を実現し、現在はその仕組みを人手不足で困っている企業に提供しています。前田さんには、その仕組みの普及のためにご協力いただいているご縁で、本日はこの場に参加させていただいております。</div>
-                    
-                    <div class="interview-question">前田： 髙安様、ありがとうございます。では、ここからお話を伺っていきたいのですが、まず、UTAGEの構築代行を利用する前に、どのような悩みや課題がありましたか？</div>
-                    <div class="interview-answer">髙安： はい、ありがとうございます。UTAGEの構築代行を依頼する前は、メールの問い合わせや様々なマーケティング配信などを人力に頼っていたため、対応を忘れたり遅れたりすることがありました。そこでUTAGEのシステムを知り、導入を検討しました。<br><br>ただ、UTAGEの仕組みを使いこなすためには新たに習得したり運用したりする時間や人員が必要となり、その部分で課題を感じていました。そこで構築代行サービスを利用させていただくことにしました。</div>
-                </div>
-                
-                <div id="section2" class="section-header">
-                    <h2>「丸投げちゃん」を選んだ理由</h2>
-                </div>
-                
-                <div class="interview-section">
-                    <div class="interview-question">前田： 個別相談を受けていただいたかと思いますが、弊社の「UTAGE構築代行丸投げちゃん」のサービスを選んだ理由は何ですか？</div>
-                    <div class="interview-answer">髙安： 理由は2点あります。まず、お話をさせていただく中で、前田さんが非常にシステムを理解されている方だと感じたこと。そしてもう一点は、前田さん自身がUTAGEの仕組みを使って既に良い実績を上げられていた、成功事例をお持ちだったことです。この2点が決め手となりました。</div>
-                    
-                    <div class="interview-question">前田： そうですか。他のサービスを検討すれば、もう少し安かったり納期が短かったりする選択肢もあったかもしれません。弊社は比較的価格が高めで、しっかりと時間をかけてサービスを提供しています。そういった中で、より安くて早い代行を探さなかった理由を振り返るとどのようなことが考えられますか？</div>
-                    <div class="interview-answer">髙安： これは私のビジネス感覚やこだわりにも通じることですが、当社は「何をやるか」や「いくらでやるか」よりも「誰とやるか」を非常に重視しています。前田さんという、UTAGEのサービスをバックでサポートしていただける方が、私たちにとって良いパートナーだと感じました。<br><br>価格はそれなりにかかると思いますが、それ以上のパフォーマンスや、私たちが実現したいことを一緒に叶えられる関係、そしてその成功を一緒に喜べるパートナーの方が望ましいと考えています。そこはお金では買えない価値だと思っています。</div>
-                </div>
-                
-                <div class="achievement-image-container">
-                    <h3>UTAGE導入による効果</h3>
-                    <p>自動化によるマーケティング効率化と新規顧客獲得</p>
-                </div>
-                
-                <div id="section3" class="section-header">
-                    <h2>導入後の変化と効果</h2>
-                </div>
-                
-                <div class="interview-section">
-                    <div class="interview-question">前田： 出版を機に、UTAGEを使って認知から個別相談やサービスを知っていただくようなファネルを組んでおくことは、実践された髙安様からするとおすすめですか？</div>
-                    <div class="interview-answer">髙安： はい、それは絶対にやっておいた方がいいと思います。より深く情報提供したり思いを伝えたりする意味で、一件一件の問い合わせに個別に返答するのは大変ですし、適切に対応できないこともあります。そういった意味では、UTAGEの仕組みを使って情報を届けることは非常に重要だと感じています。</div>
-                </div>
-                
-                <div id="section4" class="section-header">
-                    <h2>迷っている方へのメッセージ</h2>
-                </div>
-                
-                <div class="interview-section">
-                    <div class="interview-question">前田：視聴者の方に、率直なご意見をお聞きしたいのですが、構築代行というとやり取りのストレスや思いを汲み取ってもらえないことが起こりやすいと思います。その点、弊社の「丸投げちゃん」のコミュニケーションはいかがでしたか？</div>
-                    <div class="interview-answer">髙安：その点は本当にノーストレスでした。私たちが実現したいことをヒアリングの中でしっかり読み取っていただき、私たちが表現する以上のものを形にしていただいたことは本当にすごいと思いました。まさにマーケティングの神様だと感じるほどでした。私も大学院やビジネススクールでマーケティングを学びましたが、フレームワークをしっかり学んだ知識を実務経験と組み合わせて表現していただいたと感じました。本当に良かったと思います。</div>
-                    <div class="interview-answer">おそらくこれをご覧になっている方は、自分自身の思いや素晴らしい商品・サービスをお持ちで、それをたくさんの方に提供したいと考えていると思います。現代は時は金なりで、時間は非常に貴重です。どのみち様々なコースや人材、自分の時間を使うことでコストがかかるものですから、その時間をお金で買い、さらに自分が持っている以上のパフォーマンスを引き出せるのは非常にコスパが高いと思います。その時間を、本来自分しかできない事業や仕事に充てることが、ビジネス成功の一因だと思います。構築やマーケティングの経験が豊富な、いわゆる「餅は餅屋」のプロにお願いすることをお勧めします。</div>
-                </div>
-                
-                <div id="section5" class="section-header">
-                    <h2>離職率を改善するアプローチ</h2>
-                </div>
-                
-                <div class="interview-section">
-                    <h3>離職率を1%に改善する人事評価システム</h3>
-                    <div class="interview-answer">
-                        <p>現在、世の中では人手不足が言われていますが、私はそれよりも、企業が社員に求めるものと、新しい人材が企業に求めるもののミスマッチが起きていると感じています。弊社のシステムは「パノラマ人事評価システム」と名付けていますが、人が人を評価することは非常に難しいものです。離職率を下げていくためには、まず「人が人に関心を持つ」ことが重要だと考えています。</p>
-                        <p>関心を持つ際にどこを見るかが、人間関係を構築する上で大切です。「笑認」という名前が示すように、通常の「承認」とは、人の良いところに目を向け、その人の強みや長所を認めることだと思います。これが人間関係や企業と従業員の関係、評価においてとても重要なのです。</p>
-                        <p>私は人に対する仕組みは性善説で考えるべきだと思います。会社の様々な仕組みは性悪説で運営している企業も多いですが、私たちの最大の理念は「世界で承認し合う世界を作る」ことです。人事評価システムを売ることが目的ではなく、みんなが認め合える世界を作るというビジョンを達成するために、まずは企業内でスタッフ同士が認め合えるような仕組みづくりを行っています。</p>
-                    </div>
-                    
-                    <div class="achievement-image-container">
-                        <h3>パノラマ人事評価システムの詳細</h3>
-                        <p>離職率を1%にする人事評価システム</p>
-                        <a href="#" class="btn-more">詳細はこちら</a>
-                    </div>
-                </div>
-            </div>
+    <div class="header">
+        <div class="main-header-container">
+            <h1 class="header-title">株式会社笑認 髙安様 - UTAGE導入事例</h1>
+            <p class="header-subtitle">離職率20%→1%への劇的改善を実現した「パノラマ人事評価システム360」開発者</p>
         </div>
-    </main>
-
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-widgets">
-                <div class="widget-area footer-widget-1">
-                    <img src="../images/logo-white.png" alt="オートファネル大学 ロゴ白" class="footer-logo">
-                    <div class="footer-sns">
-                        <a href="#" aria-label="YouTube"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="1em" height="1em" fill="currentColor"><path d="M549.7 124.1c-6.3-23.7-24.8-42.3-48.3-48.6C458.8 64 288 64 288 64S117.2 64 74.6 75.5c-23.5 6.3-42 24.9-48.3 48.6-11.4 42.9-11.4 132.3-11.4 132.3s0 89.4 11.4 132.3c6.3 23.7 24.8 41.5 48.3 47.8C117.2 448 288 448 288 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zM231.8 355.4l-10.8-7.4-10.8 7.4C187.8 370.3 160 355.4 160 328V184c0-27.4 27.8-42.3 50.2-27.4l10.8 7.4 10.8-7.4c22.4-14.9 50.2 0 50.2 27.4V328c0 27.4-27.8 42.3-50.2 27.4zM391.6 355.4l-10.8-7.4-10.8 7.4c-22.4 14.9-50.2 0-50.2-27.4V184c0-27.4 27.8-42.3 50.2-27.4l10.8 7.4 10.8-7.4C414.2 141.7 442 156.6 442 184V328c0 27.4-27.8 42.3-50.4 27.4z"/></svg></a>
-                        <a href="#" aria-label="X (Twitter)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg></a>
-                        <a href="#" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="1em" height="1em" fill="currentColor"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9 26.3 26.2 58 34.4 93.9 36.2 37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg></a>
+    </div>
+    
+    <div class="container">
+        <!-- メイン成果バナー -->
+        <div class="main-results">
+            <h2 style="font-size: 1.7rem; color: #ff6347; margin-bottom: 15px;">
+                <i class="fas fa-trophy"></i> <span class="yellow-highlight">UTAGE構築代行丸投げちゃん導入成功事例</span>
+            </h2>
+            <p style="font-size: 1.1rem;">
+                <span class="red-text">離職率20%→1%</span>を実現した人事評価システム開発者が語る
+                <br>UTAGE導入の効果とビジネス成長への影響
+            </p>
+        </div>
+        
+        <!-- プロフィールセクション -->
+        <section class="profile-section">
+            <div class="profile-header">
+                <i class="fas fa-user-check"></i>
+                <h2>UTAGE構築代行丸投げちゃんでの成功事例</h2>
+                <span class="badge pulse">CASE STUDY</span>
+            </div>
+            <div class="profile-details">
+                <div class="profile-info">
+                    <h3 class="profile-name">
+                        <i class="fas fa-user-tie"></i> 髙安 敏行 様
+                    </h3>
+                    <p class="profile-company">
+                        <i class="fas fa-building"></i> 株式会社笑認 代表取締役 / ハートサービスグループ 専務取締役
+                    </p>
+                    <div class="profile-description">
+                        <p>「パノラマ人事評価システム360」開発、クリーニングや介護事業、理美容事業などの労働集約型事業運営。<span class="yellow-highlight">離職率を20%から1%へと改善した実績</span>。著書『離職率1%の会社が編み出した 超人材定着術』</p>
                     </div>
                 </div>
-                <div class="widget-area footer-widget-2">
-                    <h4>オートファネル大学とは</h4>
-                    <ul>
-                        <li><a href="../course/marketing.html">総合マーケティング講座</a></li>
-                        <li><a href="../course/utage.html">UTAGE講座</a></li>
-                        <li><a href="../course/instagram.html">インスタ講座</a></li>
-                        <li><a href="../course/store.html">店舗経営講座</a></li>
-                        <li><a href="../course/sales.html">セールス講座</a></li>
-                    </ul>
+            </div>
+            <div class="section-image">
+                <img src="profile-image.jpg" alt="髙安敏行様プロフィール">
+            </div>
+        </section>
+        
+        <!-- 目次 -->
+        <section class="toc">
+            <h3 class="toc-title">
+                <i class="fas fa-list"></i> 目次
+            </h3>
+            <ol class="toc-list">
+                <li><i class="fas fa-angle-right"></i> <a href="#section1">UTAGE導入前の悩み・課題</a></li>
+                <li><i class="fas fa-angle-right"></i> <a href="#section2">「丸投げちゃん」を選んだ理由</a></li>
+                <li><i class="fas fa-angle-right"></i> <a href="#section3">導入後の変化と効果</a></li>
+                <li><i class="fas fa-angle-right"></i> <a href="#section4">迷っている方へのメッセージ</a></li>
+                <li><i class="fas fa-angle-right"></i> <a href="#section5">離職率を改善するアプローチ</a></li>
+            </ol>
+        </section>
+        
+        <!-- 成果セクション -->
+        <section class="results-section">
+            <h2 class="results-title">
+                <i class="fas fa-chart-line"></i> UTAGE導入後の効果
+            </h2>
+            <div class="results-grid">
+                <div class="result-item">
+                    <div class="result-number">20%→1% <i class="fas fa-arrow-down" style="color: #7bdcb5; font-size: 1.5rem;"></i></div>
+                    <div class="result-label">離職率改善</div>
                 </div>
-                <div class="widget-area footer-widget-3">
-                    <h4>イベント・その他</h4>
-                    <ul>
-                        <li><a href="../event/index.html">イベント・合宿</a></li>
-                        <li><a href="../event/index.html">作業会・懇親会</a></li>
-                        <li><a href="../book/index.html">オートファネル大学書籍</a></li>
-                    </ul>
+                <div class="result-item">
+                    <div class="result-number">220名 <i class="fas fa-users" style="color: #7bdcb5; font-size: 1.2rem;"></i></div>
+                    <div class="result-label">従業員規模</div>
                 </div>
-                <div class="widget-area footer-widget-4">
-                    <h4>運営情報</h4>
-                    <ul>
-                        <li><a href="../owner.html">運営者情報</a></li>
-                        <li><a href="../terms.html">利用規約</a></li>
-                        <li><a href="../privacy.html">プライバシーポリシー</a></li>
-                    </ul>
+                <div class="result-item">
+                    <div class="result-number">35期 <i class="fas fa-history" style="color: #7bdcb5; font-size: 1.2rem;"></i></div>
+                    <div class="result-label">事業継続年数</div>
                 </div>
             </div>
-            <div class="site-copyright">
-                <small>© 2025 オートファネル大学</small>
-            </div>
+        </section>
+        
+        <!-- 引用セクション -->
+        <div class="highlight-box">
+            <p>"結果として、<span class="yellow-highlight">UTAGEのシステムを通じて新規の依頼や新しいつながりをいただき</span>、非常に嬉しく思っています。今でも、私の本を読んでくださった方から問い合わせや導入依頼があります。実は昨日も、当社ハートサービスグループで3月にオープン予定のデイサービス事業と介護用品ジムのスタッフ募集に対し、<span class="red-text">私の本を読んでQRコードを読み込み、話を聞きに来てくださった方を最終面接で採用したばかりです</span>。これは本当に嬉しかったですし、情報発信の効果だと実感しています。"</p>
         </div>
-    </footer>
-    <script src="../js/script.js"></script>
+        
+        <!-- インタビューセクション -->
+        <section class="interview-section" id="section1">
+            <h2 class="section-header">
+                <i class="fas fa-question-circle"></i> UTAGE導入前の悩み・課題
+            </h2>
+            <div class="section-image">
+                <img src="challenge-image.jpg" alt="導入前の課題">
+            </div>
+            <div class="interview-qa">
+                <div class="interview-question">前田： 皆さん、こんにちは。「UTAGE構築代行丸投げちゃん」の前田です。本日は、社員同士が相互に評価・承認し合う新しい人事システム「パノラマ人事評価システム360」を開発し、離職率を20%から1%へと劇的に改善された実績をお持ちの株式会社笑認の代表取締役、髙安敏行様をお迎えしております。</div>
+                <div class="interview-answer">
+                    <p>髙安： ありがとうございます。</p>
+                </div>
+                
+                <div class="interview-question">前田： 髙安様は、著書『離職率1%の会社が編み出した 超人材定着術』の執筆や、セミナー講師としてもご活躍中です。今回は、弊社の「UTAGE構築代行丸投げちゃん」をご利用いただいたご縁で、髙安様にお話を伺います。どうぞよろしくお願いいたします。</div>
+                <div class="interview-answer">
+                    <p>髙安： よろしくお願いします。</p>
+                </div>
+                
+                <div class="interview-question">前田： では髙安様、簡単に自己紹介をお願いいたします。</div>
+                <div class="interview-answer">
+                    <p>髙安： はい。皆さん初めまして。株式会社笑認代表の髙安敏行と申します。こう見えて、私47歳です。ちょっと上に見られるんですけど。私自身が現在笑認の代表取締役を務める一方で、ハートサービスグループという、クリーニングや介護事業、理美容事業といった<span class="bold-text">労働集約型の事業を専務取締役として運営</span>しています。</p>
+                    <p>今期が35期目を迎え、従業員は約220名ほどの規模になっています。株式会社笑認では、グループ会社の人事評価や人材定着の仕組みを私が長年構築してきました。その取り組みの結果、前田さんからご紹介いただいたように<span class="yellow-highlight">離職率1%を実現</span>し、現在はその仕組みを人手不足で困っている企業に提供しています。前田さんには、その仕組みの普及のためにご協力いただいているご縁で、本日はこの場に参加させていただいております。</p>
+                </div>
+                
+                <div class="interview-question">前田： 髙安様、ありがとうございます。では、ここからお話を伺っていきたいのですが、まず、UTAGEの構築代行を利用する前に、どのような悩みや課題がありましたか？</div>
+                <div class="interview-answer">
+                    <p>髙安： はい、ありがとうございます。UTAGEの構築代行を依頼する前は、<span class="red-text">メールの問い合わせや様々なマーケティング配信などを人力に頼っていたため、対応を忘れたり遅れたりすることがありました</span>。そこでUTAGEのシステムを知り、導入を検討しました。</p>
+                    <p>ただ、UTAGEの仕組みを使いこなすためには新たに習得したり運用したりする時間や人員が必要となり、その部分で課題を感じていました。そこで<span class="yellow-highlight">構築代行サービスを利用させていただく</span>ことにしました。</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="interview-section" id="section2">
+            <h2 class="section-header">
+                <i class="fas fa-check-circle"></i> 「丸投げちゃん」を選んだ理由
+            </h2>
+            <div class="section-image">
+                <img src="reason-image.jpg" alt="選んだ理由">
+            </div>
+            <div class="interview-qa">
+                <div class="interview-question">前田： 個別相談を受けていただいたかと思いますが、弊社の「UTAGE構築代行丸投げちゃん」のサービスを選んだ理由は何ですか？</div>
+                <div class="interview-answer">
+                    <p>髙安： 理由は2点あります。まず、お話をさせていただく中で、<span class="bold-text">前田さんが非常にシステムを理解されている方だと感じたこと</span>。そしてもう一点は、<span class="yellow-highlight">前田さん自身がUTAGEの仕組みを使って既に良い実績を上げられていた、成功事例をお持ちだった</span>ことです。この2点が決め手となりました。</p>
+                </div>
+                
+                <div class="interview-question">前田： そうですか。他のサービスを検討すれば、もう少し安かったり納期が短かったりする選択肢もあったかもしれません。弊社は比較的価格が高めで、しっかりと時間をかけてサービスを提供しています。そういった中で、より安くて早い代行を探さなかった理由を振り返るとどのようなことが考えられますか？</div>
+                <div class="interview-answer">
+                    <p>髙安： これは私のビジネス感覚やこだわりにも通じることですが、当社は<span class="red-text">「何をやるか」や「いくらでやるか」よりも「誰とやるか」を非常に重視</span>しています。前田さんという、UTAGEのサービスをバックでサポートしていただける方が、私たちにとって良いパートナーだと感じました。</p>
+                    <p>価格はそれなりにかかると思いますが、それ以上のパフォーマンスや、私たちが実現したいことを一緒に叶えられる関係、そしてその成功を一緒に喜べるパートナーの方が望ましいと考えています。<span class="yellow-highlight">そこはお金では買えない価値</span>だと思っています。</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="interview-section" id="section3">
+            <h2 class="section-header">
+                <i class="fas fa-chart-bar"></i> 導入後の変化と効果
+            </h2>
+            <div class="section-image">
+                <img src="effect-image.jpg" alt="導入後の効果">
+            </div>
+            <div class="interview-qa">
+                <div class="interview-question">前田： 出版を機に、UTAGEを使って認知から個別相談やサービスを知っていただくようなファネルを組んでおくことは、実践された髙安様からするとおすすめですか？</div>
+                <div class="interview-answer">
+                    <p>髙安： はい、<span class="red-text">それは絶対にやっておいた方がいい</span>と思います。より深く情報提供したり思いを伝えたりする意味で、一件一件の問い合わせに個別に返答するのは大変ですし、適切に対応できないこともあります。そういった意味では、<span class="yellow-highlight">UTAGEの仕組みを使って情報を届けることは非常に重要</span>だと感じています。</p>
+                </div>
+            </div>
+            
+            <!-- ポイント要約ボックス -->
+            <div style="background-color: #f0f7ff; border-radius: 8px; padding: 20px; margin-top: 20px;">
+                <h4 style="color: #0d3283; margin-bottom: 15px; font-size: 1.1rem;">
+                    <i class="fas fa-lightbulb"></i> UTAGE導入の主なメリット
+                </h4>
+                <ul style="padding-left: 25px;">
+                    <li><span class="bold-text">自動対応の実現</span> — 問い合わせや情報提供の自動化</li>
+                    <li><span class="bold-text">時間の節約</span> — 本業に集中できる時間の確保</li>
+                    <li><span class="bold-text">専門的サポート</span> — システムに詳しいプロの支援</li>
+                    <li><span class="bold-text">成功実績の信頼</span> — 実績のあるパートナーシップ</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section class="interview-section" id="section4">
+            <h2 class="section-header">
+                <i class="fas fa-comment-dots"></i> 迷っている方へのメッセージ
+            </h2>
+            <div class="section-image">
+                <img src="message-image.jpg" alt="迷っている方へのメッセージ">
+            </div>
+            <div class="interview-qa">
+                <div class="interview-question">前田：視聴者の方に、率直なご意見をお聞きしたいのですが、構築代行というとやり取りのストレスや思いを汲み取ってもらえないことが起こりやすいと思います。その点、弊社の「丸投げちゃん」のコミュニケーションはいかがでしたか？</div>
+                <div class="interview-answer">
+                    <p>髙安：その点は<span class="red-text">本当にノーストレスでした</span>。私たちが実現したいことをヒアリングの中でしっかり読み取っていただき、私たちが表現する以上のものを形にしていただいたことは本当にすごいと思いました。まさに<span class="yellow-highlight">マーケティングの神様だと感じるほど</span>でした。私も大学院やビジネススクールでマーケティングを学びましたが、フレームワークをしっかり学んだ知識を実務経験と組み合わせて表現していただいたと感じました。本当に良かったと思います。</p>
+                    <p>おそらくこれをご覧になっている方は、自分自身の思いや素晴らしい商品・サービスをお持ちで、それをたくさんの方に提供したいと考えていると思います。現代は時は金なりで、時間は非常に貴重です。どのみち様々なコースや人材、自分の時間を使うことでコストがかかるものですから、<span class="bold-text">その時間をお金で買い、さらに自分が持っている以上のパフォーマンスを引き出せるのは非常にコスパが高い</span>と思います。その時間を、本来自分しかできない事業や仕事に充てることが、ビジネス成功の一因だと思います。<span class="yellow-highlight">構築やマーケティングの経験が豊富な、いわゆる「餅は餅屋」のプロにお願いする</span>ことをお勧めします。</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="interview-section" id="section5">
+            <h2 class="section-header">
+                <i class="fas fa-users"></i> 離職率を改善するアプローチ
+            </h2>
+            <div class="section-image">
+                <img src="approach-image.jpg" alt="離職率改善アプローチ">
+            </div>
+            <div class="interview-qa">
+                <h3 style="margin-bottom: 20px; color: #0d3283; display: flex; align-items: center;">
+                    <i class="fas fa-medal" style="margin-right: 10px;"></i> 離職率を1%に改善する人事評価システム
+                </h3>
+                <div class="interview-answer">
+                    <p>現在、世の中では人手不足が言われていますが、私はそれよりも、<span class="yellow-highlight">企業が社員に求めるものと、新しい人材が企業に求めるもののミスマッチが起きている</span>と感じています。弊社のシステムは「パノラマ人事評価システム」と名付けていますが、人が人を評価することは非常に難しいものです。離職率を下げていくためには、まず「人が人に関心を持つ」ことが重要だと考えています。</p>
+                    <p>関心を持つ際にどこを見るかが、人間関係を構築する上で大切です。「笑認」という名前が示すように、通常の「承認」とは、<span class="bold-text">人の良いところに目を向け、その人の強みや長所を認めること</span>だと思います。これが人間関係や企業と従業員の関係、評価においてとても重要なのです。</p>
+                    <p>私は人に対する仕組みは<span class="red-text">性善説で考えるべき</span>だと思います。会社の様々な仕組みは性悪説で運営している企業も多いですが、私たちの最大の理念は「<span class="yellow-highlight">世界で承認し合う世界を作る</span>」ことです。人事評価システムを売ることが目的ではなく、みんなが認め合える世界を作るというビジョンを達成するために、まずは企業内でスタッフ同士が認め合えるような仕組みづくりを行っています。</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CTA セクション -->
+        <section class="cta-section">
+            <h2 class="cta-title">
+                <i class="fas fa-rocket"></i> あなたも「UTAGE構築代行丸投げちゃん」で成功事例を作りませんか？
+            </h2>
+            <p class="cta-description">
+                煩わしいシステム構築をプロに任せて、本来の業務に集中しましょう。髙安様のように、マーケティングを自動化し、効率的なビジネス運営を実現できます。
+            </p>
+            <a href="https://utage-marunage.com/it-hojo/" class="cta-button pulse">
+                <i class="fas fa-calendar-check"></i> 無料相談を予約する
+            </a>
+        </section>
+        
+        <!-- ナビゲーション -->
+        <div class="navigation">
+            <a href="#" class="nav-button nav-prev">前の事例</a>
+            <a href="#" class="nav-button nav-next">次の事例</a>
+        </div>
+    </div>
 </body>
 </html>

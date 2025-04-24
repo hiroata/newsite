@@ -912,22 +912,6 @@ button {
     }
 }
 
-/* ===== 画像ギャラリーの非表示（最下部サムネイル対応） ===== */
-/* フッター後の不要なサムネイルのみを対象に */
-.site-footer + div:not(.achievement-section):not(.online-courses-section):not(.blog-section),
-.site-footer ~ div:not(.achievement-section):not(.online-courses-section):not(.blog-section),
-.site-footer ~ img,
-.site-main > div:last-child:not(.achievement-section):not(.online-courses-section):not(.blog-section):not(.YUKIblog-pink-section) {
-    display: none !important;
-    visibility: hidden !important;
-    height: 0 !important;
-    width: 0 !important;
-    opacity: 0 !important;
-    position: absolute !important;
-    overflow: hidden !important;
-    z-index: -999 !important;
-    pointer-events: none !important;
-}
 
 /* コンテンツを正しく終わらせる */
 body::after {
