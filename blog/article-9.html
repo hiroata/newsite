@@ -8,93 +8,371 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css"> <!-- 外部CSSは含まれていないため、インラインスタイルを主に反映 -->
+    <!-- 外部CSSファイルがあればここにリンク（今回は<style>タグ内に全て記述します） -->
+    <!-- <link rel="stylesheet" href="../css/style.css"> -->
     <link rel="icon" href="../images/favicon.ico">
     <meta property="og:title" content="UTAGEシステムとは?導入企業の売上が平均30%アップした理由を徹底解説 - オートファネル大学ブログ">
     <meta property="og:description" content="UTAGEシステム導入企業で売上が平均30%アップしている理由を徹底解説。オールインワン機能で、集客から販売までの仕組みを効率化・自動化する方法を紹介します。">
     <meta property="og:image" content="../images/blog-utage-intro.jpg"> <!-- サムネイル画像を想定 -->
     <meta property="og:type" content="article">
     <style>
-        /* 前回提示されたstyleタグ内のCSSを優先的に反映 */
+        /* カラーパレット定義 */
+        :root {
+            /* 見出しバーの色 */
+            --heading-green-bar: #4CAF50; /* Green 500 */
+            /* 見出し背景の色 */
+            --heading-bg-green: #E8F5E9; /* Green 50 */
+
+            /* 薄めのハイライト背景色 */
+            --highlight-bg-green: #E8F5E9; /* Green 50 */
+            --highlight-bg-blue: #E3F2FD; /* Blue 50 */
+            --highlight-bg-yellow: #FFFDE7; /* Yellow 50 */
+            --highlight-bg-pink: #FCE4EC; /* Pink 50 */
+            --highlight-bg-red: #FFEBEE; /* Red 50 */
+
+            /* 太字色字の文字色 */
+            --text-green: #388E3C; /* Green 700 */
+            --text-blue: #1976D2;  /* Blue 700 */
+            /* --text-yellow: #FBC02D; 黄色の文字色は視認性が悪い可能性が高いので引き続きコメントアウト */
+            --text-pink: #C2185B;  /* Pink 800 */
+            --text-red: #D32F2F;   /* Red 700 */
+            --text-darkblue: #0d3283; /* 元のリンク色など */
+
+
+            /* 一般的な文字色 */
+            --text-normal: #333;
+
+            /* レイアウト用背景色 */
+            --layout-bg: #F5F7FA; /* 薄い青灰色の背景 */
+
+            /* ボーダー色 */
+            --border-light: #eee;
+
+            /* 目次アクティブ色 */
+            --toc-active-color: var(--text-darkblue); /* 青色に */
+        }
+
+        /* HeaderのCSS（トップページからコピー） */
+        .site-header {
+             background-color: white; /* 背景色 */
+             box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* 影 */
+             position: sticky; /* 必要に応じて固定 */
+             top: 0;
+             width: 100%;
+             z-index: 1000; /* 他の要素より前面に */
+        }
+        .header-container {
+             max-width: 1200px; /* サイト全体の最大幅に合わせる */
+             margin: 0 auto;
+             padding: 10px 20px; /* 上下のパディング、左右はページコンテナに合わせる */
+             display: flex;
+             align-items: center; /* 要素を垂直中央に揃える */
+             justify-content: space-between; /* 要素間にスペースを均等に入れる */
+        }
+        .site-logo img {
+             height: 40px; /* ロゴの高さ調整 */
+             display: block;
+        }
+        .global-nav ul {
+             list-style: none;
+             margin: 0;
+             padding: 0;
+             display: flex;
+             align-items: center;
+        }
+        .global-nav li {
+             margin-left: 20px; /* メニュー間のスペース */
+        }
+        .global-nav a {
+             text-decoration: none;
+             color: var(--text-normal); /* 通常の文字色 */
+             font-weight: 700;
+             transition: color 0.3s ease;
+        }
+        .global-nav a:hover {
+             color: var(--text-darkblue); /* ホバー時の色 */
+        }
+        .btn-nav {
+             padding: 8px 15px; /* ボタンのパディング */
+             border-radius: 5px; /* ボタンの角丸 */
+             color: white !important; /* ボタンの文字色は白に固定 */
+             font-weight: bold;
+        }
+        .btn-red {
+             background-color: #e74c3c; /* 赤ボタンの色 */
+             transition: background-color 0.3s ease;
+        }
+        .btn-red:hover {
+             background-color: #c0392b; /* 赤ボタンのホバー色 */
+        }
+         .btn-blue {
+             background-color: #3498db; /* 青ボタンの色 */
+              transition: background-color 0.3s ease;
+         }
+         .btn-blue:hover {
+             background-color: #2980b9; /* 青ボタンのホバー色 */
+         }
+
+        /* ハンバーガーメニュー（モバイル用） */
+        .hamburger-button {
+            display: none; /* PCでは非表示 */
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1100;
+        }
+        .hamburger-button span {
+             display: block;
+             width: 25px;
+             height: 3px;
+             background-color: var(--text-normal);
+             margin-bottom: 5px;
+             transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .hamburger-button span:last-child {
+             margin-bottom: 0;
+        }
+        /* モバイル用ナビゲーションのスタイル */
+        .global-nav.sp-nav {
+            /* display: none; */ /* JSで制御 */
+            position: absolute;
+            top: 100%; /* Headerのすぐ下に配置 */
+            left: 0;
+            width: 100%;
+            background-color: white;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            display: none; /* 初期状態では非表示 */
+            z-index: 999; /* Headerより下 */
+        }
+        .global-nav.sp-nav.is-open { /* JSでis-openクラスを付与 */
+            display: block;
+        }
+        .global-nav.sp-nav ul {
+            flex-direction: column;
+            padding: 10px 20px;
+        }
+        .global-nav.sp-nav li {
+            margin: 10px 0;
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 10px;
+        }
+        .global-nav.sp-nav li:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .global-nav.sp-nav a {
+            display: block; /* クリック領域を広げる */
+            font-size: 16px;
+            text-align: center;
+        }
+        /* /HeaderのCSSここまで */
+
+
         body {
-             font-family: 'Noto Sans JP', sans-serif;
-             color: #333;
-             line-height: 1.8;
-             /* 全体の背景色などは外部CSSまたはbodyタグスタイルで指定されている可能性 */
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.8; /* 行間を少し広げる */
+            color: var(--text-normal);
+            background-color: var(--layout-bg); /* 全体の背景色 */
+            margin: 0;
+            padding: 0;
         }
-        
-        .article-container {
-            max-width: 900px;
+
+        /* Headerの下にコンテンツを配置するためのパディング（HeaderがStickyで固定されるため不要） */
+        main {
+             padding-top: 0; /* HeaderがStickyで上に固定されるため、mainのpaddingは不要 */
+        }
+
+        .page-container {
+            max-width: 1200px; /* 全体コンテナの最大幅に合わせる */
             margin: 0 auto;
-            display: flex;
-            gap: 40px;
-            padding: 0 15px; /* モバイル対応考慮 */
+            padding: 20px; /* 全体のパディング */
         }
-        .article-main {
-            flex: 1;
+
+        /* === 記事タイトル部分 === */
+        /* 記事タイトル部分はカラム構造の外に出し、中央寄せにする */
+        .article-page-title {
+            text-align: center; /* 中央寄せ */
+            margin-bottom: 30px;
+            padding: 20px; /* タイトル周りのパディング */
+            /* 背景色、影、角丸は本文・サイドバーセクションに適用するためここには不要 */
         }
-        .article-sidebar {
-            width: 300px;
-            flex-shrink: 0;
+
+        .article-page-title img.header-icon {
+            height: 40px; /* アイコンの高さ */
+            margin-bottom: 10px;
         }
-        
-        /* 記事ヘッダー */
-        .article-header {
-            margin-bottom: 40px;
-        }
-        .article-back {
-            display: inline-block;
-            margin-bottom: 20px;
-            color: #666;
-            text-decoration: none; /* 下線を削除 */
-        }
-        .article-back:hover {
-            color: #0d3283;
-            text-decoration: underline; /* ホバーで下線表示 */
-        }
-        .article-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 20px;
-            font-size: 14px;
-            color: #666;
-        }
-        .article-category {
-            color: #0d3283;
-            font-weight: bold;
-        }
-        .article-title {
+
+        .article-page-title h1 {
             font-size: 32px;
             font-weight: bold;
             line-height: 1.4;
-            margin-bottom: 30px;
+            margin: 0 0 10px 0;
         }
-        .article-featured-image {
-            width: 100%;
-            height: auto;
+
+        .article-page-meta {
+            font-size: 14px;
+            color: #666;
+            /* 元のHTMLの.article-metaから移設 */
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center; /* 中央寄せ */
+        }
+         .article-page-meta .article-category {
+             color: var(--text-darkblue); /* カテゴリ色を合わせる */
+             font-weight: bold;
+         }
+
+        /* === 3カラムレイアウト === */
+        .article-container {
+            display: flex;
+            gap: 30px; /* カラム間の隙間 */
+            /* max-width: 1000px; */ /* 必要に応じてカラム部分の最大幅を制限 */
+             /* margin: 0 auto; */ /* 必要に応じてカラム部分を中央寄せ */
+        }
+
+        /* 左サイドバー (いいね、シェアボタン) */
+        .article-left-sidebar {
+            flex-basis: 80px; /* 固定幅 (1/8は画面幅によるので、デザインに合わせ固定が現実的) */
+            flex-shrink: 0; /* 縮まない */
+            flex-grow: 0; /* 伸びない */
+            /* position: sticky; */ /* スクロール追従させたい場合 (要調整) */
+            /* top: 20px; */ /* スクロール追従の開始位置 */
+            /* height: fit-content; */ /* 内容に合わせて高さを調整 */
+            padding: 15px; /* 内側のパディング */
+             margin-top: 20px; /* タイトルエリアとの隙間を調整 */
+        }
+
+        .social-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .social-button {
+             display: flex;
+             flex-direction: column;
+             align-items: center;
+             font-size: 12px;
+             color: #666;
+             text-decoration: none;
+             cursor: pointer;
+             transition: color 0.3s ease, fill 0.3s ease;
+        }
+        .social-button svg {
+            width: 24px;
+            height: 24px;
+            margin-bottom: 5px;
+            fill: #666;
+        }
+        .social-button:hover {
+            color: var(--text-darkblue);
+        }
+         .social-button:hover svg {
+            fill: var(--text-darkblue);
+         }
+
+        /* 中央メインコンテンツ (記事本文、記事下著者、記事下シェア、関連記事) */
+        .article-main {
+            flex-basis: 0; /* flex-growで幅を決定 */
+            flex-grow: 5; /* 5/7 の比率 (左サイドバーの固定幅を除いた残りスペースに対して) */
+            max-width: 700px; /* 中央カラムの現実的な最大幅を制限（任意） */
+            min-width: 400px; /* 最小幅を確保 */
+            background-color: #fff; /* 背景色 */
             border-radius: 10px;
-            margin-bottom: 30px;
-            object-fit: cover; /* 画像の表示方法 */
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            padding: 30px;
+            margin-top: 20px; /* タイトルエリアとの隙間を調整 */
         }
-        
+
+        /* 右サイドバー (プロフィール、目次、ウィジェット) */
+        /* クラス名を .article-right-sidebar に修正 */
+        .article-right-sidebar {
+            flex-basis: 0; /* flex-growで幅を決定 */
+            flex-grow: 2; /* 2/7 の比率 (左サイドバーの固定幅を除いた残りスペースに対して) */
+            min-width: 250px; /* 最小幅を確保 */
+             margin-top: 20px; /* タイトルエリアとの隙間を調整 */
+        }
+
+        /* サイドバーの各セクションの共通スタイル */
+         .sidebar-section {
+            background-color: #fff; /* サイドバー各セクションの背景色 */
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px; /* セクション間の隙間 */
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        /* 目次セクションの追従設定 */
+        /* 目次は、サイドバーの親である.article-right-sidebarの中で sticky にする */
+        /* 目次セクション自体に適用 */
+        .sidebar-toc {
+             position: sticky; /* スクロール追従 */
+             top: 20px; /* 上からのオフセット距離 */
+             /* right-sidebarのpadding内におさまるように調整 */
+             /* スクロール中に他の要素と重なる場合は、z-indexなどを調整 */
+        }
+
+        /* サイドバーのタイトル */
+        .sidebar-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--text-darkblue); /* 既存のサイドバータイトル下線に合わせる */
+        }
+
+
+        /* 記事本文内の既存スタイル */
+        /* .article-back は本文の上でなく、記事タイトルエリアの上にあるため、本文div内に移動し、スタイルを維持 */
+        .article-back {
+             display: inline-block; /* 表示に戻す */
+             margin-bottom: 20px;
+             color: #666;
+             text-decoration: none;
+             transition: color 0.3s ease;
+        }
+        .article-back:hover {
+             color: var(--text-darkblue);
+        }
+
+        /* Featured Image - 本文エリア内に配置 */
+         .article-featured-image {
+             max-width: 100%;
+             height: auto;
+             border-radius: 5px; /* 前回のデザインに合わせる */
+             margin: 0 0 30px 0; /* 本文の上に配置するためマージン調整 */
+             object-fit: cover;
+         }
+
         /* 記事本文 */
         .article-content {
             line-height: 1.8;
-            margin-bottom: 50px;
+            /* margin-bottom: 50px; */ /* Related Articlesの上に移動したため調整 */
+            color: var(--text-normal); /* 本文の文字色を調整 */
+        }
+
+        /* 見出しのスタイル（緑バー + 薄背景） */
+        /* 前回のデザインの見出しスタイルを適用 */
+        .article-content h2,
+        .article-content h3 {
+            font-weight: bold;
+            margin: 40px 0 20px;
+            padding: 10px 15px; /* テキストの周りのパディング */
+            border-left: 8px solid var(--heading-green-bar); /* 左側の緑バー */
+            background-color: var(--heading-bg-green); /* 薄い背景色 */
+            border-radius: 4px;
+            line-height: 1.5;
         }
         .article-content h2 {
             font-size: 24px;
-            font-weight: bold;
-            margin: 40px 0 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #0d3283;
         }
         .article-content h3 {
             font-size: 20px;
-            font-weight: bold;
-            margin: 30px 0 15px;
         }
+
         .article-content p {
             margin-bottom: 20px;
         }
@@ -105,23 +383,34 @@
         .article-content li {
             margin-bottom: 10px;
         }
+         /* テーブルスタイル調整 */
+         /* 前回のデザインのテーブルスタイルを適用 */
          .article-content table {
             width: 100%;
-            border-collapse: collapse;
+            border-collapse: separate; /* collapseから変更 */
             margin: 20px 0;
             background-color: #f9f9f9;
-             border-radius: 8px; /* 新しいCSSの指定 */
-             overflow: hidden; /* 新しいCSSの指定 */
-             box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* 新しいCSSの指定 */
-             border-spacing: 0; /* 新しいCSSの指定 */
+             border-radius: 8px; /* 角丸 */
+             overflow: hidden; /* 角丸からはみ出さないように */
+             box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* 影 */
+             border-spacing: 0; /* セル間の隙間をなくす */
         }
-        .article-content th, .article-content td {
-             border: 1px solid #eee; /* 新しいCSSの指定 */
-            padding: 12px; /* 新しいCSSの指定 */
+        .article-content table th, .article-content table td {
+            padding: 12px;
             text-align: left;
+            border-bottom: 1px solid var(--border-light); /* 下線 */
+             border-right: 1px solid var(--border-light); /* 右線 */
         }
-         .article-content th {
-            background-color: #e74c3c; /* 新しいCSSの指定 */
+         .article-content table th:last-child,
+         .article-content table td:last-child {
+            border-right: none; /* 最後の列の右線は削除 */
+         }
+         .article-content table tr:last-child td {
+            border-bottom: none; /* 最後の行の下線は削除 */
+         }
+
+         .article-content table th {
+            background-color: var(--heading-green-bar); /* 見出し色に合わせる */
             color: white;
             font-weight: bold;
          }
@@ -138,130 +427,192 @@
             height: auto;
             border-radius: 5px;
             margin: 20px 0;
+            object-fit: cover; /* 画像の表示方法 */
         }
         .article-content a {
-            color: #0d3283;
+            color: var(--text-darkblue); /* リンク色は既存テーマに合わせる */
             text-decoration: underline;
+             transition: color 0.3s ease;
         }
         .article-content a:hover {
-            color: #092058;
+            color: #092058; /* リンク色は既存テーマに合わせる */
         }
         .article-content blockquote {
-            border-left: 4px solid #0d3283;
+            border-left: 4px solid var(--heading-green-bar); /* ブロッククォートの線も緑系に */
             padding-left: 20px;
             font-style: italic;
             margin: 20px 0;
             color: #555;
         }
-        
-        /* 著者情報 */
-        .author-box {
+
+        /* 薄めのハイライトスタイル (背景色 + 太字) */
+        /* 前回のデザインのハイライトスタイルを適用 */
+        .highlight-green { background-color: var(--highlight-bg-green); font-weight: bold; padding: 0 3px; }
+        .highlight-blue { background-color: var(--highlight-bg-blue); font-weight: bold; padding: 0 3px; }
+        .highlight-yellow { background-color: var(--highlight-bg-yellow); font-weight: bold; padding: 0 3px; }
+        .highlight-pink { background-color: var(--highlight-bg-pink); font-weight: bold; padding: 0 3px; }
+        .highlight-red { background-color: var(--highlight-bg-red); font-weight: bold; padding: 0 3px; }
+        /* 既存のhighlightクラスも薄い黄色ハイライトに */
+        .highlight {
+            background-color: var(--highlight-bg-yellow); /* 薄い黄色ハイライトに統一 */
+            font-weight: bold;
+            padding: 0 3px;
+        }
+
+        /* 太字色字スタイル (文字色 + 太字, 背景なし) */
+        /* 前回のデザインの色字スタイルを適用 */
+        .text-green { color: var(--text-green); font-weight: bold; }
+        .text-blue { color: var(--text-blue); font-weight: bold; }
+        /* .text-yellow { color: var(--text-yellow); font-weight: bold; } */ /* 黄色の文字色は視認性が悪い可能性が高いのでコメントアウト */
+        .text-pink { color: var(--text-pink); font-weight: bold; }
+        .text-red { color: var(--text-red); font-weight: bold; }
+
+
+        /* 会話コンテナ */
+        /* 前回のデザインの会話コンテナスタイルを適用 */
+        .conversation-container {
+            display: flex;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .character-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
+            flex-shrink: 0;
+        }
+        /* サンプルCSSに合わせてアイコン画像を共通に */
+        .conversation-container.yuki .character-icon {
+            background-image: url('../images/profile-YUKI.jpg'); /* YUKIのアイコン */
+        }
+        .conversation-container.nyanta .character-icon {
+             background-image: url('../images/profile-nyanta.jpg'); /* ニャン太のアイコンを想定 (画像パスは適宜修正してください) */
+        }
+
+        .conversation-content {
+            flex-grow: 1;
+            margin-left: 15px;
+        }
+        .character-name {
+            font-weight: bold;
+            color: var(--text-darkblue);
+            margin-bottom: 5px;
+        }
+         /* 会話テキストのスタイルを新しいCSSに合わせて調整 */
+        .conversation-content p {
+            margin: 0; /* pタグのデフォルトマージンをリセット */
+            color: var(--text-normal); /* 新しいCSSの指定 */
+        }
+        /* 会話内のハイライト・色字も適用 */
+        .conversation-container .highlight-green { background-color: var(--highlight-bg-green); font-weight: bold; padding: 0 3px; }
+        .conversation-container .highlight-blue { background-color: var(--highlight-bg-blue); font-weight: bold; padding: 0 3px; }
+        .conversation-container .highlight-yellow { background-color: var(--highlight-bg-yellow); font-weight: bold; padding: 0 3px; }
+        .conversation-container .highlight-pink { background-color: var(--highlight-bg-pink); font-weight: bold; padding: 0 3px; }
+        .conversation-container .highlight-red { background-color: var(--highlight-bg-red); font-weight: bold; padding: 0 3px; }
+         .conversation-container .highlight { /* 会話内の既存highlightも薄い黄色ハイライトに */
+             background-color: var(--highlight-bg-yellow);
+             font-weight: bold;
+             padding: 0 3px;
+         }
+        .conversation-container .text-green { color: var(--text-green); font-weight: bold; }
+        .conversation-container .text-blue { color: var(--text-blue); font-weight: bold; }
+        /* .conversation-container .text-yellow { color: var(--text-yellow); font-weight: bold; } */
+        .conversation-container .text-pink { color: var(--text-pink); font-weight: bold; }
+        .conversation-container .text-red { color: var(--text-red); font-weight: bold; }
+
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #e74c3c;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin: 20px auto; /* 中央寄せ */
+            display: block; /* 中央寄せのため */
+            width: fit-content; /* 中央寄せのため */
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+        .cta-button:hover {
+            background-color: #c0392b;
+        }
+
+        /* 著者情報（記事下部） */
+         /* 前回のデザインに合わせる */
+         .author-box {
             display: flex;
             gap: 20px;
             background-color: #f9f9f9;
             padding: 25px;
             border-radius: 10px;
-            margin-bottom: 40px;
-        }
-        .author-image {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-        .author-info {
-            flex-grow: 1;
-        }
-        .author-name {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        .author-bio {
-            line-height: 1.6;
-            font-size: 14px;
-            color: #555;
-        }
-        
-        /* 関連記事 */
-        .related-articles {
-            margin-bottom: 50px;
-        }
-        .related-title {
-            font-size: 22px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #0d3283;
-        }
-        .related-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        .related-item {
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-            text-decoration: none; /* リンクの下線を削除 */
-            color: inherit; /* 親要素の色を継承 */
-        }
-        .related-item:hover {
-            transform: translateY(-5px);
-        }
-        .related-image {
-            width: 100%;
-            height: 150px;
-            display: block; /* imgが親要素のサイズになるように */
-        }
-        .related-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .related-content {
-            padding: 15px;
-        }
-        .related-item-title {
-            font-size: 16px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            line-height: 1.4;
-        }
-        .related-meta {
-            font-size: 12px;
-            color: #666;
-        }
-        
-        /* SNSシェア */
+            margin-bottom: 40px; /* 記事下の余白 */
+         }
+          .author-image {
+             width: 100px;
+             height: 100px;
+             border-radius: 50%;
+             object-fit: cover;
+         }
+         .author-info {
+             flex-grow: 1;
+         }
+         .author-name {
+             font-size: 18px;
+             font-weight: bold;
+             margin-bottom: 10px;
+         }
+          .author-bio {
+             line-height: 1.6;
+             font-size: 14px;
+             color: #555;
+         }
+
+
+        /* 記事下SNSシェア */
+        /* 前回のデザインに合わせる */
         .share-box {
-            display: flex;
-            flex-direction: column;
+            display: flex; /* flexboxを維持 */
             align-items: center;
-            margin-bottom: 50px;
+            justify-content: center; /* 横並び中央寄せ */
+            margin-bottom: 40px; /* 前回のデザインに合わせる */
+            padding: 25px; /* 背景色と角丸のためにpaddingを追加 */
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            gap: 20px; /* タイトルとボタンの間に隙間 */
         }
         .share-title {
             font-size: 18px;
             font-weight: bold;
-            margin-bottom: 15px;
+             flex-shrink: 0; /* タイトルが縮まないように */
         }
         .share-buttons {
             display: flex;
             gap: 15px;
+             flex-grow: 1; /* ボタンコンテナが伸びるように */
+             justify-content: center; /* ボタンをコンテナ内で中央寄せ */
         }
         .share-button {
-            width: 50px;
-            height: 50px;
+            width: 40px; /* サイズ調整 */
+            height: 40px; /* サイズ調整 */
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 20px;
+            font-size: 18px; /* サイズ調整 */
             transition: all 0.3s ease;
             text-decoration: none; /* リンクの下線を削除 */
+        }
+        .share-button svg { /* SVGアイコンのサイズ調整 */
+             width: 1em;
+             height: 1em;
+             fill: currentColor;
         }
         .share-twitter {
             background-color: #1DA1F2;
@@ -275,262 +626,411 @@
         .share-button:hover {
             transform: scale(1.1);
         }
-        
-        /* サイドバー */
-        .article-sidebar {
-            width: 300px; /* PC表示時の幅 */
-            flex-shrink: 0;
-        }
-        .sidebar-section {
-            background-color: white;
-            border-radius: 10px;
-            padding: 25px;
-            margin-bottom: 30px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-        }
-        .sidebar-title {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #0d3283;
-        }
-        .popular-posts {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        .popular-post {
-            display: flex;
-            gap: 15px;
-            text-decoration: none; /* リンクの下線を削除 */
-            color: inherit; /* 親要素の色を継承 */
-        }
-         .popular-post:hover .popular-post-title {
-             color: #0d3283; /* ホバーで色変更 */
+
+
+        /* Related Articles */
+         /* 前回のデザインに合わせる */
+         .related-articles {
+             margin-top: 30px; /* 本文との余白 */
+             padding: 30px; /* 背景色と角丸、影のためにpaddingを追加 */
+             background-color: #fff;
+             border-radius: 10px;
+             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
          }
-        .popular-post-image {
-            width: 80px;
-            height: 80px;
-            border-radius: 5px;
-            overflow: hidden;
-            flex-shrink: 0;
-        }
-         .popular-post-image img {
-             width: 100%;
-             height: 100%;
+          .related-title {
+             font-size: 20px; /* 少し小さく */
+             margin-bottom: 20px;
+             padding-bottom: 10px;
+             border-bottom: 2px solid var(--text-darkblue);
+          }
+          .related-list {
+             gap: 15px; /* 間隔調整 */
+             display: grid; /* 新しいCSSの指定 */
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* 新しいCSSの指定 */
+          }
+          .related-item {
+             box-shadow: none; /* 影をなくすか薄く */
+             border: 1px solid var(--border-light); /* 枠線をつける */
+             border-radius: 8px; /* 角丸追加 */
+             overflow: hidden; /* 画像の角丸のため */
+             background-color: #fff; /* 背景色 */
+             transition: transform 0.3s ease, box-shadow 0.3s ease;
+             text-decoration: none; /* リンクの下線を削除 */
+             color: inherit; /* 親要素の色を継承 */
+          }
+          .related-item:hover {
+             transform: translateY(-3px);
+             box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+          }
+          .related-image {
+            height: 120px; /* 画像の高さを調整 */
+             display: block;
+          }
+          .related-image img {
+             width: 100%; /* 親要素に合わせて幅を100%に */
+             height: 100%; /* 親要素に合わせて高さを100%に */
              object-fit: cover;
+          }
+          .related-content {
+             padding: 10px; /* パディング調整 */
+          }
+          .related-item-title {
+             font-size: 15px; /* 少し小さく */
+             margin-bottom: 5px;
+             line-height: 1.4;
+          }
+           .related-meta {
+             font-size: 11px; /* 少し小さく */
+              color: #666;
+           }
+
+        /* 著者情報（サイドバー用） */
+        .sidebar-author-profile {
+             display: flex;
+             flex-direction: column;
+             align-items: center;
+             text-align: center;
+             padding: 0; /* sidebar-sectionにpaddingがあるのでここは0 */
+        }
+        .sidebar-author-profile .author-image {
+             width: 80px;
+             height: 80px;
+             border-radius: 50%;
+             object-fit: cover;
+             margin-bottom: 10px;
+        }
+        .sidebar-author-profile .author-name {
+             font-size: 18px;
+             font-weight: bold;
+             margin-bottom: 5px;
          }
-        .popular-post-content {
-            flex-grow: 1;
+         .sidebar-author-profile .author-title {
+             font-size: 14px;
+             color: #555;
+             margin-bottom: 10px;
+         }
+         .sidebar-author-profile .author-sns a {
+             margin: 0 5px;
+             color: #666;
+         }
+         .sidebar-author-profile .author-sns a:hover {
+             color: var(--text-darkblue);
+         }
+         .sidebar-author-profile .author-bio {
+             font-size: 13px;
+             color: #555;
+             line-height: 1.6;
+             text-align: left; /* プロフィール本文は左寄せ */
+             margin-top: 15px;
+             border-top: 1px solid var(--border-light);
+             padding-top: 15px;
+         }
+         .sidebar-author-profile .author-link {
+             display: inline-block;
+             margin-top: 10px;
+             font-size: 13px;
+             color: var(--text-darkblue);
+         }
+         /* プロフィール下のボタン */
+         .sidebar-author-profile .cta-button {
+              margin: 15px auto 0 auto; /* 上余白調整、下はpタグに任せる */
+         }
+         .sidebar-author-profile .button-hint {
+             text-align:center;
+             font-size:12px;
+             color:#666;
+             margin-top:10px;
+         }
+
+
+        /* 目次スタイル */
+        .sidebar-toc .sidebar-title {
+             margin-top: 0; /* 目次タイトル上余白調整 */
         }
-        .popular-post-title {
-            font-size: 14px;
+        .toc-list {
+             list-style: none;
+             padding: 0;
+             margin: 0;
+        }
+        .toc-list li {
+             margin-bottom: 8px;
+             font-size: 14px;
+        }
+        .toc-list a {
+             color: #555;
+             text-decoration: none;
+             display: block; /* クリック領域を広げる */
+             padding: 3px 0;
+             transition: color 0.3s ease, text-decoration 0.3s ease;
+        }
+        .toc-list a:hover {
+             color: var(--text-darkblue);
+             text-decoration: underline;
+        }
+        /* 目次アクティブ時のスタイル */
+         .toc-list a.active {
+            color: var(--toc-active-color); /* アクティブ時の文字色 */
             font-weight: bold;
-            margin-bottom: 5px;
-            line-height: 1.4;
-             transition: color 0.3s ease;
+            /* background-color: var(--highlight-bg-blue); */ /* 必要であれば背景色も */
+         }
+
+        .toc-list ul { /* 子階層の目次 */
+             padding-left: 15px;
+             margin-top: 5px;
         }
-        .popular-post-meta {
-            font-size: 12px;
-            color: #666;
-        }
-        
-        .category-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .category-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
-            text-decoration: none; /* リンクの下線を削除 */
-            color: inherit; /* 親要素の色を継承 */
-            transition: color 0.3s ease;
-        }
-        .category-item:last-child {
-            border-bottom: none;
-        }
-        .category-item:hover {
-             color: #0d3283; /* ホバーで色変更 */
-        }
-        .category-count {
-            background-color: #f5f5f5;
-            border-radius: 20px;
-            padding: 2px 10px;
-            font-size: 12px;
-        }
-        
-        .tag-cloud {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .tag-item {
-            background-color: #f5f5f5;
-            border-radius: 20px;
-            padding: 5px 12px;
+        .toc-list ul li {
             font-size: 13px;
-            transition: all 0.3s ease;
-            text-decoration: none; /* リンクの下線を削除 */
-            color: inherit; /* 親要素の色を継edos */
         }
-        .tag-item:hover {
-            background-color: #0d3283;
-            color: white;
-        }
-        
-        /* 会話コンテナ - 新しいスタイルに合わせる */
-        .conversation-container {
-            display: flex;
-            background-color: #f8f9fa;
-            border-radius: 10px;
-            padding: 15px;
-            margin: 20px 0;
-        }
-        .character-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background-size: cover;
-            flex-shrink: 0;
-        }
-        /* サンプルCSSに合わせてアイコン画像を共通に */
-        .conversation-container.yuki .character-icon,
-        .conversation-container.nyanta .character-icon {
-            background-image: url('../images/profile-YUKI.jpg');
-            background-position: center;
-        }
-        .conversation-content {
-            flex-grow: 1;
-            margin-left: 15px;
-        }
-        .character-name {
-            font-weight: bold;
-            color: #0d3283;
-            margin-bottom: 5px;
-        }
-         /* 会話テキストのスタイルを新しいCSSに合わせて調整 */
-        .conversation-content p {
-            margin: 0; /* pタグのデフォルトマージンをリセット */
-            color: #555; /* 新しいCSSの指定 */
-        }
-        .highlight {
-            background-color: #ffecb3;
-            padding: 0 3px;
-        }
-        .cta-button {
-            display: inline-block;
-            padding: 15px 30px;
-            background-color: #e74c3c;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            margin: 20px auto; /* 左右中央寄せ */
-            display: block; /* 中央寄せのため */
-            width: fit-content; /* 中央寄せのため */
-            text-align: center;
-            transition: background-color 0.3s ease;
-        }
-        .cta-button:hover {
-            background-color: #c0392b;
+        /* アクティブな目次項目などのスタイルは別途CSSやJSで実装 */
+
+        /* 人気記事、カテゴリー、タグクラウドは削除 */
+        .popular-posts, .category-list, .tag-cloud {
+            display: none;
         }
 
-        /* 新規追加スタイル */
-        .text-red {
-            color: #e74c3c; /* CTAボタンと同じ赤色 */
-            font-weight: bold; /* 太字も追加 */
-        }
-        
+
+        /* FooterのCSS（指定された新しいものを使用） */
+         .site-footer {
+             background-color: #0d3283; /* フッターの背景色 */
+             color: white; /* 文字色 */
+             padding: 40px 20px; /* 上下のパディング、左右はページコンテナに合わせる */
+         }
+          .site-footer a {
+             color: white; /* フッター内のリンク色 */
+             text-decoration: none;
+              transition: color 0.3s ease;
+          }
+          .site-footer a:hover {
+             color: rgba(255, 255, 255, 0.8); /* ホバー時の色 */
+          }
+         .footer-container {
+             max-width: 1200px; /* サイト全体の最大幅に合わせる */
+             margin: 0 auto;
+         }
+          .footer-widgets {
+             display: flex;
+             flex-wrap: wrap; /* 折り返し */
+             gap: 30px; /* ウィジェット間の隙間 */
+             margin-bottom: 30px;
+          }
+           .widget-area {
+             flex-basis: 200px; /* 各ウィジェットの基準幅 */
+             flex-grow: 1; /* 均等に伸びる */
+             /* min-width: 150px; */ /* 最小幅 */
+           }
+           .footer-logo {
+             height: 40px; /* フッターロゴの高さ */
+             display: block;
+             margin-bottom: 15px;
+           }
+            .footer-sns a {
+               display: inline-block;
+                margin-right: 10px; /* SNSアイコンの間隔 */
+                font-size: 20px; /* アイコンサイズ */
+                color: white; /* アイコン色 */
+                 transition: color 0.3s ease;
+            }
+            .footer-sns a:last-child {
+               margin-right: 0;
+            }
+             .footer-sns a:hover {
+                 color: rgba(255, 255, 255, 0.8);
+             }
+            .widget-area h4 {
+               font-size: 16px;
+               font-weight: bold;
+               margin-bottom: 15px;
+               border-bottom: 1px solid rgba(255, 255, 255, 0.3); /* 下線 */
+               padding-bottom: 10px;
+            }
+             .widget-area ul {
+               list-style: none;
+               padding: 0;
+               margin: 0;
+             }
+             .widget-area li {
+               margin-bottom: 10px;
+             }
+            .site-copyright {
+               text-align: center;
+               font-size: 12px;
+               color: rgba(255, 255, 255, 0.6);
+            }
+        /* /FooterのCSSここまで */
+
+
         /* モバイル対応 */
         @media (max-width: 900px) {
+            /* Header */
+            .site-header {
+                 position: static; /* モバイルでは追従しない */
+            }
+            .header-container {
+                 padding: 10px; /* パディング調整 */
+            }
+            .pc-nav {
+                 display: none; /* PC用ナビを非表示 */
+            }
+            .hamburger-button {
+                 display: block; /* ハンバーガーメニューを表示 */
+            }
+             /* モバイルナビゲーションのスタイル（JSと組み合わせて実装） */
+             .global-nav.sp-nav.is-open { /* JSでis-openクラスを付与 */
+                 display: block;
+             }
+
+
+            /* 3カラムレイアウト */
             .article-container {
-                flex-direction: column;
-                gap: 30px; /* モバイル時の隙間調整 */
+                flex-direction: column; /* 縦並び */
+                gap: 20px; /* 前回のデザインに合わせる */
+                margin-top: 0;
                 padding: 0 15px;
             }
-            .article-main {
-                width: 100%; /* 幅を合わせる */
-            }
-            .article-sidebar {
+            .article-left-sidebar,
+            .article-main,
+            .article-right-sidebar { /* クラス名修正 */
+                flex-basis: auto;
+                flex-grow: 0;
                 width: 100%;
+                padding: 0;
+                margin-top: 0;
             }
-            .article-title {
-                 font-size: 24px; /* フォントサイズ調整 */
+             /* 各コンテンツブロックの内側のパディングをモバイル用に調整 */
+             /* article-mainは記事本文と関連投稿、シェアボックス、著者情報を含むのでpaddingはそのまま */
+             /* .article-main { padding: 20px; } */
+             .sidebar-section { padding: 20px; } /* サイドバーセクションのパディング */
+
+
+            .article-left-sidebar {
+                 order: 2; /* 本文の下に移動 */
+                 flex-direction: row; /* ボタンを横並びに */
+                 justify-content: center; /* 中央寄せ */
+                 padding: 10px 0; /* 上下のパディング */
+                 background-color: #fff; /* 背景追加 */
+                 border-radius: 10px;
+                 box-shadow: 0 2px 8px rgba(0,0,0,0.05);
                  margin-bottom: 20px;
             }
-            .article-header {
-                margin-bottom: 30px;
+             .social-buttons {
+                 flex-direction: row; /* ボタンを横並びに */
+                 gap: 20px; /* 間隔調整 */
+             }
+             .social-button {
+                 flex-direction: row; /* アイコンとテキストを横並びに */
+                 align-items: center;
+                 gap: 5px;
+             }
+             .social-button svg {
+                 margin-bottom: 0;
+             }
+
+            .article-main { order: 1; /* 本文を一番上に */ }
+            .article-right-sidebar { order: 3; /* サイドバーを本文の下に */ } /* クラス名修正 */
+
+             /* 目次の追従解除 */
+             .sidebar-toc {
+                 position: static;
+                 top: auto;
+             }
+
+            /* 記事タイトル周り */
+            .article-page-title h1 {
+                font-size: 24px;
             }
-             .article-content h2 {
-                 font-size: 20px; /* フォントサイズ調整 */
-                 margin: 30px 0 15px;
-             }
-             .article-content h3 {
-                 font-size: 18px; /* フォントサイズ調整 */
-                 margin: 25px 0 12px;
-             }
-             .article-content p {
-                margin-bottom: 15px;
-             }
-             .article-content ul, .article-content ol {
-                margin: 15px 0;
-             }
-            .author-box {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                padding: 20px;
-                margin-bottom: 30px;
+            .article-page-title {
+                 padding: 15px;
+                 margin-bottom: 20px;
             }
-             .author-image {
-                 width: 80px;
-                 height: 80px;
-             }
-            .related-list {
-                grid-template-columns: 1fr;
-                gap: 15px; /* 隙間調整 */
+             /* featured image モバイルでの調整 */
+            .article-featured-image {
+                margin-top: 20px; /* タイトルメタとの隙間 */
+                margin-bottom: 20px;
             }
-            .related-articles {
-                margin-bottom: 30px;
-            }
+
+             /* 記事下SNSシェア モバイル対応 */
             .share-box {
-                 margin-bottom: 30px;
-            }
-            .sidebar-section {
+                 flex-direction: column; /* 縦並びに戻す */
+                 gap: 15px;
                  padding: 20px;
                  margin-bottom: 20px;
             }
-             .sidebar-title {
-                 font-size: 16px; /* フォントサイズ調整 */
-                 margin-bottom: 15px;
+            .share-buttons {
+                 justify-content: center; /* 中央寄せ */
+            }
+
+            /* Related Articles */
+             /* 前回のデザインに合わせる */
+             .related-articles {
+                 padding: 20px; /* パディング追加 */
+                 background-color: #fff;
+                 border-radius: 10px;
+                 box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+                 margin-top: 20px; /* 本文との余白調整 */
              }
-            .conversation-container {
-                flex-direction: column;
-                padding: 12px;
-                margin: 15px 0;
-            }
-            .conversation-content {
-                margin-left: 0;
-                margin-top: 10px;
-            }
-            .character-icon {
-                margin: 0 auto;
-                 width: 50px; /* サイズ調整 */
-                 height: 50px; /* サイズ調整 */
-            }
-             .cta-button {
-                 padding: 10px 20px;
-                 margin: 15px auto;
+             .related-list {
+                 grid-template-columns: 1fr; /* 1カラム表示 */
+             }
+             .related-item {
+                 border: none; /* 枠線解除 */
+                 box-shadow: none; /* 影解除 */
+                 border-bottom: 1px solid var(--border-light); /* 下線のみ */
+                 border-radius: 0;
+                 padding-bottom: 15px;
+             }
+             .related-item:last-child {
+                 border-bottom: none;
+                 padding-bottom: 0;
+             }
+             .related-item:hover {
+                  transform: none; /* ホバー効果解除 */
+                  box-shadow: none;
+             }
+             .related-image {
+                 display: none; /* モバイルでは画像非表示など調整 */
+             }
+             .related-content {
+                 padding: 0; /* パディング解除 */
+             }
+              .related-item-title {
+                  font-size: 16px; /* 少し大きく */
+              }
+              .related-meta {
+                  font-size: 12px;
+              }
+
+            /* Footer */
+             .site-footer {
+                 padding: 30px 10px; /* パディング調整 */
+             }
+             .footer-widgets {
+                 flex-direction: column; /* 縦並び */
+                 gap: 20px; /* 間隔調整 */
+             }
+             .widget-area {
+                 flex-basis: auto;
+                 flex-grow: 0;
+                 width: 100%; /* 横幅いっぱい */
+                 text-align: center; /* 中央寄せ */
+             }
+             .widget-area ul {
+                 text-align: center; /* リスト中央寄せ */
+             }
+             .widget-area li {
+                 display: inline-block; /* 横並び */
+                 margin: 5px 10px; /* 間隔調整 */
+             }
+             .footer-logo {
+                 margin: 0 auto 15px auto; /* 中央寄せ */
+             }
+             .footer-sns {
+                 text-align: center; /* SNSアイコン中央寄せ */
              }
         }
     </style>
 </head>
 <body>
-    <!-- ヘッダー -->
+    <!-- Header（トップページからコピー） -->
     <header class="site-header">
         <div class="header-container">
             <div class="site-logo">
@@ -540,45 +1040,93 @@
                 <ul>
                     <li><a href="../index.html">ホーム</a></li>
                     <li><a href="../course/index.html">オートファネル大学とは</a></li>
-                    <li><a href="../event/index.html">イベント・作業会</a></li>
-                    <li><a href="../seminar/index.html">セミナー</a></li>
+                    <li><a href="index.html">ブログ</a></li> <!-- ブログトップへのリンク -->
+                    <li><a href="../seminar/index.html">オンライン講座</a></li>
                     <li><a href="../achievement/index.html" class="btn-nav btn-red">受講生実績</a></li>
                     <li><a href="../free-seminar.html" class="btn-nav btn-blue">無料セミナー</a></li>
                 </ul>
             </nav>
             <button class="hamburger-button sp-nav" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+             <!-- モバイル用ナビゲーション（非表示にしておき、JSで出し分け） -->
+             <nav class="global-nav sp-nav">
+                 <ul>
+                     <li><a href="../index.html">ホーム</a></li>
+                     <li><a href="../course/index.html">オートファネル大学とは</a></li>
+                     <li><a href="index.html">ブログ</a></li> <!-- ブログトップへのリンク -->
+                     <li><a href="../seminar/index.html">オンライン講座</a></li>
+                     <li><a href="../achievement/index.html" class="btn-nav btn-red">受講生実績</a></li>
+                     <li><a href="../free-seminar.html" class="btn-nav btn-blue">無料セミナー</a></li>
+                 </ul>
+             </nav>
         </div>
     </header>
+    <!-- /Headerここまで -->
 
-    <!-- メインコンテンツ -->
     <main class="site-main">
-        <div class="page-container section-padding"> <!-- section-paddingはおそらく外部CSSで定義 -->
+        <div class="page-container">
+
+            <!-- 記事タイトルとメタ情報（カラムの外） -->
+            <!-- 元のHTMLのarticle-headerの内容をここに配置 -->
+            <div class="article-page-title">
+                 <!-- スクショのアイコンに合わせて調整（必要に応じて画像を差し替え） -->
+                 <!-- <img src="../images/flower-icon.png" alt="記事アイコン" class="header-icon"> -->
+                 <!-- タイトルにハイライトクラス適用 -->
+                 <h1 class="article-title"><span class="highlight-green">UTAGEシステムとは</span>?導入企業の売上が<span class="highlight-blue">平均30%アップした理由</span>を徹底解説</h1> <!-- タイトル修正、highlightクラス追加 -->
+                 <div class="article-page-meta">
+                     <span class="article-date">2025年5月12日</span> <!-- 日付を更新 -->
+                     <span class="article-category">UTAGE</span> <!-- カテゴリを更新 -->
+                     <span class="article-author">投稿者: YUKI</span> <!-- 投稿者情報を追加 -->
+                 </div>
+                 <!-- Featured Imageは本文エリア内に移動 -->
+             </div>
+
+            <!-- 記事本文とサイドバーのコンテナ -->
             <div class="article-container">
-                <div class="article-main">
-                    <div class="article-header">
-                        <a href="index.html" class="article-back">← ブログ一覧に戻る</a>
-                        <div class="article-meta">
-                            <span class="article-date">2025年5月12日</span> <!-- 日付を更新 -->
-                            <span class="article-category">UTAGE</span> <!-- カテゴリを更新 -->
-                            <span class="article-author">投稿者: YUKI</span>
-                        </div>
-                        <h1 class="article-title">UTAGEシステムとは?導入企業の売上が平均30%アップした理由を徹底解説</h1>
-                        <img src="../images/blog-utage-intro.jpg" alt="Utageシステムのイメージ画像" class="article-featured-image"> <!-- 画像を更新 -->
+                <!-- 左サイドバー（いいね、シェア） -->
+                <div class="article-left-sidebar">
+                    <div class="social-buttons">
+                         <a href="#" class="social-button">
+                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5c0-48.4-39.6-88-88-88c-41.6 0-77.4 28.7-86.8 69.5c-9.4-40.8-45.1-69.5-86.8-69.5c-48.4 0-88 39.6-88 88v5c0 41.5 17.2 81.2 47.6 109.5z"/></svg>
+                             <span>712</span> <!-- カウントはサンプル -->
+                         </a>
+                         <a href="#" class="social-button">
+                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M0 48V487.7C0 501.1 10.9 512 24.3 512c5.1 0 10.2-1.5 14.3-4.3L192 416 345.4 507.7c4.1 2.8 9.2 4.3 14.3 4.3c13.4 0 24.3-10.9 24.3-24.3V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48z"/></svg>
+                             <span>257</span> <!-- カウントはサンプル -->
+                         </a>
+                         <a href="#" class="social-button">
+                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
+                             <span>X</span>
+                         </a>
+                          <a href="#" class="social-button">
+                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/></svg>
+                              <span>FB</span>
+                         </a>
+                          <a href="#" class="social-button">
+                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M361.5 1.2c5 2.1 16.9 5.1 28.5 11.7c27.7 15.9 41.7 41.4 46.2 80.2l.3 2.1c.7 12.9-.7 21.4-2.6 29.5c-2.3 9.8-8.1 17.1-23.1 33.3c-1.9 2.1-3.8 4.6-5.9 7.1c-15.7 17.7-25.7 30-36.8 42.6c-11.6 13.5-21.2 26.3-30.8 41c-4.8 7.6-8.9 15.3-13.3 23.2L331 283.3c.3 15.6-.8 26-2.9 34c-1.9 7.6-7.4 13.9-23.3 30.8c-1.6 1.7-3.5 4-5.7 6.5c-15.5 18.7-24.3 30.4-35.6 42.9c-11.3 12.6-21.1 25.7-30.9 40.6c-4.9 7.7-9.1 15.5-13.4 23.2L289.3 391.8c.4 15.6-1 26-3.1 34c-2 7.6-7.6 14-23.6 31c-1.6 1.8-3.5 4.1-5.7 6.6c-15.5 18.7-24.3 30.3-35.5 42.8c-11.3 12.6-21.1 25.7-30.9 40.6c-5 7.7-9.1 15.5-13.5 23.2L247.5 470c-.2 16.3-1.3 24.7-5.8 31.4c-2.9 4.2-6.5 7-11.1 9c-5.2 2.2-12.9 3.3-22.3 3.3c-10.7 0-19.6-1.4-25.8-3.6c-4.4-1.5-8.2-4-11.9-7.7c-2.9-2.9-6.3-6.3-10.4-10.9c-4-4.6-7.3-8.5-10.7-12.8L95.9 417.2c-3.2-4.1-6.1-7.9-9.2-11.8l-34-44.7C14.7 317.1 0 286.2 0 245.6C0 123.3 87.8 32.7 193.1 2.5c3.8-1.1 7.5-1.7 11.3-1.7H240c13.3 0 24 10.7 24 24V96c0 13.3-10.7 24-24 24H208 192c-10.1 0-19.6 4-26.5 11.5l-20 20c-3.6 3.6-5.6 8.4-5.6 13.5c0 5.1 2 9.9 5.6 13.5l32 32c7.8 7.8 20.5 7.8 28.3 0l48-48c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6L248 271.4c-15.6 15.6-15.6 40.9 0 56.6l20 20c3.6 3.6 8.4 5.6 13.5 5.6s9.9-2 13.5-5.6l56-56c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6l-20 20c-3.6 3.6-5.6 8.4-5.6 13.5s2 9.9 5.6 13.5l56 56c6.2 6.2 16.4 6.2 22.6 0s6.2-16.4 0-22.6L473.4 359c-3.6-3.6-5.6-8.4-5.6-13.5s2-9.9 5.6-13.5l20-20c3.6-3.6 8.4-5.6 13.5-5.6s9.9 2 13.5 5.6l32 32c.9-.9 1.7-1.8 2.5-2.6c18.9-20 32.7-36.3 42.6-52.2c-16.3-8.7-27.5-21.1-35-37.9c-4.5-10.1-6.6-20.5-6.6-31.2V144 128c0-26.5-21.5-48-48-48H416 384c-13.3 0-24-10.7-24-24V24C360 10.7 349.3 0 336 0H240 208c-13.3 0-24 10.7-24 24z"/></svg>
+                              <span>B!</span>
+                         </a>
                     </div>
-                    
+                </div>
+
+                <!-- 中央メインコンテンツ -->
+                <div class="article-main">
+                     <a href="index.html" class="article-back">← ブログ一覧に戻る</a>
                     <div class="article-content">
-                        <p>オンラインビジネスを成功させるために重要な要素は何でしょうか？ 💡 魅力的な商品・サービス、質の高いコンテンツ、そして効率的な集客・販売の「仕組み」です。</p>
+                        <!-- 元のHTMLの Featured Imageを本文直下に配置 -->
+                        <img src="../images/blog-utage-intro.jpg" alt="Utageシステムのイメージ画像" class="article-featured-image">
 
-                        <p>特に、集客から見込み客の育成、そして販売・決済、さらに顧客管理までをスムーズに連携させる仕組み、すなわち<span class="highlight">「セールスファネル」の構築と自動化</span>が、売上を安定的に伸ばす鍵となります。しかし、これを複数のツールで行うのは非常に煩雑で、費用も時間もかかります。</p>
+                        <p><span class="highlight-yellow">オンラインビジネスを成功させるために重要な要素は何でしょうか？</span> 💡 魅力的な商品・サービス、質の高いコンテンツ、そして効率的な集客・販売の<span class="highlight-yellow">「仕組み」</span>です。</p> <!-- 黄色ハイライト追加 -->
 
-                        <p>そこで、今多くの企業や個人事業主から注目されているのが<span class="highlight">オールインワンマーケティングツール「Utage」</span>です。実は、<span class="text-red">Utageを導入した企業の売上が平均30%アップした</span>というデータもあります（※）。本記事では、なぜUtageがそれほどまでに成果に繋がるのか、その理由と機能を徹底的に解説します！📈🚀</p>
+                        <p><span class="highlight-yellow">特に</span>、集客から見込み客の育成、そして販売・決済、さらに顧客管理までをスムーズに連携させる仕組み、すなわち<span class="highlight-blue">「セールスファネル」の構築と自動化</span>が、<span class="highlight-green">売上を安定的に伸ばす鍵</span>となります。<span class="highlight-yellow">しかし</span>、これを複数のツールで行うのは<span class="highlight-yellow">非常に煩雑</span>で、<span class="highlight-yellow">費用も時間もかかります</span>。</p> <!-- highlightをhighlight-blue/greenに変更、黄色ハイライト追加 -->
+
+                        <p><span class="highlight-yellow">そこで</span>、今多くの企業や個人事業主から注目されているのが<span class="highlight-red">オールインワンマーケティングツール「Utage」</span>です。<span class="highlight-green">実は</span>、<span class="text-red">Utageを導入した企業の売上が平均30%アップした</span>というデータもあります（※）。<span class="highlight-pink">本記事では</span>、なぜUtageがそれほどまでに成果に繋がるのか、その理由と機能を徹底的に解説します！📈🚀</p> <!-- highlightをhighlight-red/green/pinkに変更 -->
                         <small>（※Utage導入企業様の事例に基づく平均値であり、全ての企業で同様の成果を保証するものではありません。）</small>
 
                         <div class="conversation-container yuki">
                             <div class="character-icon"></div>
                             <div class="conversation-content">
                                 <p class="character-name">YUKI</p>
-                                <p>Utageって、オンラインビジネスに必要なツールが全部一つになったシステムなんだよ。LP作成、メール配信、LINE配信、決済、顧客管理とか、色々な機能がパックになっているんだ。</p>
+                                <p>Utageって、オンラインビジネスに必要なツールが<span class="highlight-yellow">全部一つになったシステム</span>なんだよ。<span class="highlight-yellow">LP作成、メール配信、LINE配信、決済、顧客管理とか、色々な機能がパックになっている</span>んだ。</p> <!-- 黄色ハイライト追加 -->
                             </div>
                         </div>
 
@@ -586,105 +1134,105 @@
                             <div class="character-icon"></div>
                             <div class="conversation-content">
                                 <p class="character-name">ニャン太</p>
-                                <p>ニャー！それってすごいニャ！😲 個別に契約する手間も省けるし、ツール同士の連携で悩むこともないニャね！</p>
+                                <p>ニャー！それってすごいニャ！😲 <span class="highlight-yellow">個別に契約する手間も省ける</span>し、<span class="highlight-yellow">ツール同士の連携で悩むこともない</span>ニャね！</p> <!-- 黄色ハイライト追加 -->
                             </div>
                         </div>
 
                         <p>この記事は特に以下のような方におすすめです：</p>
 
                         <ul>
-                            <li>オンラインビジネスの売上を伸ばしたいと考えている方</li>
-                            <li>集客から販売までのプロセスを効率化・自動化したい方</li>
-                            <li>複数のマーケティングツール管理に疲れている方</li>
-                            <li>オールインワンのマーケティングツールを探している方</li>
-                            <li>Utageがどんなツールなのか詳しく知りたい方</li>
+                            <li>オンラインビジネスの<span class="text-red">売上を伸ばしたい</span>と考えている方</li> <!-- text-red追加 -->
+                            <li><span class="highlight-green">集客から販売までのプロセスを効率化・自動化</span>したい方</li> <!-- highlight-green追加 -->
+                            <li><span class="highlight-yellow">複数のマーケティングツール管理に疲れている</span>方</li> <!-- 黄色ハイライト追加 -->
+                            <li><span class="highlight-blue">オールインワンのマーケティングツール</span>を探している方</li> <!-- highlight-blue追加 -->
+                            <li>Utageが<span class="highlight-yellow">どんなツールなのか詳しく知りたい</span>方</li> <!-- 黄色ハイライト追加 -->
                         </ul>
 
-                        <h2>1. Utageシステムが売上30%アップに貢献する理由</h2>
+                        <h2 id="section1"><span class="highlight-green">Utageシステム</span>が売上30%アップに貢献する理由</h2> <!-- IDをsection1に設定、highlight-green追加 -->
 
-                        <p>Utageの導入企業で成果が出やすい主な理由は、その<span class="highlight">「オールインワン」</span>であることと、<span class="text-red">「自動化」</span>に特化した機能設計にあります。</p>
+                        <p><span class="highlight-blue">Utageの導入企業で成果が出やすい主な理由</span>は、その<span class="highlight-red">「オールインワン」</span>であることと、<span class="text-red">「自動化」</span>に特化した機能設計にあります。</p> <!-- highlightを具体的な色クラスに変更 -->
 
-                        <h3>1-1. シームレスな「売れる仕組み」が構築できる</h3>
+                        <h3 id="section1-1">シームレスな「売れる仕組み」が構築できる</h3> <!-- IDをsection1-1に設定 -->
 
-                        <p>前述の通り、UtageはLP作成、メール・LINE配信、決済、顧客管理といった、セールスファネルの各段階に必要な機能を全て内包しています。これにより、</p>
+                        <p>前述の通り、UtageはLP作成、メール・LINE配信、決済、顧客管理といった、セールスファネルの各段階に必要な機能を<span class="highlight-yellow">全て内包</span>しています。<span class="highlight-green">これにより</span>、</p> <!-- 黄色ハイライト追加 -->
                         <p><strong>集客（LP） → 育成（ステップメール/LINE） → 販売（決済付きLP） → 顧客管理</strong></p>
-                        <p>といった<span class="highlight">一連の流れを、一つのシステム内でスムーズに連携・自動化</span>できます。ツール間のデータ移行や設定の手間がなくなり、見込み客の取りこぼしを防ぎ、効率的に購入へと導く仕組みが簡単に作れます。</p>
+                        <p>といった<span class="highlight-blue">一連の流れを、一つのシステム内でスムーズに連携・自動化</span>できます。<span class="highlight-yellow">ツール間のデータ移行や設定の手間がなくなり</span>、見込み客の取りこぼしを防ぎ、効率的に購入へと導く仕組みが<span class="highlight-yellow">簡単に作れます</span>。</p> <!-- highlightをhighlight-blueに変更、黄色ハイライト追加 -->
 
                         <div class="conversation-container nyanta">
                             <div class="character-icon"></div>
                             <div class="conversation-content">
                                 <p class="character-name">ニャン太</p>
-                                <p>ニャー！お客さんがLPを見てくれた後、自動でメールを送ったり、LINEでフォローしたり…手間なく全部自動でやってくれるんだニャ！🤩</p>
+                                <p>ニャー！お客さんがLPを見てくれた後、<span class="highlight-yellow">自動でメールを送ったり、LINEでフォローしたり</span>…手間なく全部自動でやってくれるんだニャ！🤩</p> <!-- 黄色ハイライト追加 -->
                             </div>
                         </div>
 
-                        <h3>1-2. 強力な自動化機能で業務効率が劇的に向上</h3>
+                        <h3 id="section1-2">強力な自動化機能で業務効率が劇的に向上</h3> <!-- IDをsection1-2に設定 -->
 
-                        <p>Utageの真骨頂は、その<span class="highlight">シナリオ自動化機能</span>です。「LPを閲覧した人」「特定メールを開封した人」「商品を購入した人」など、顧客の行動をトリガーとして、あらかじめ設定しておいたステップメール配信、LINEメッセージ送信、タグ付け、特定コンテンツへのアクセス権付与などを自動で実行できます。これにより、</p>
+                        <p>Utageの真骨頂は、その<span class="highlight-green">シナリオ自動化機能</span>です。「LPを閲覧した人」「特定メールを開封した人」「商品を購入した人」など、<span class="highlight-blue">顧客の行動をトリガーとして</span>、あらかじめ設定しておいた<span class="highlight-pink">ステップメール配信、LINEメッセージ送信、タグ付け、特定コンテンツへのアクセス権付与などを自動で実行</span>できます。<span class="highlight-yellow">これにより</span>、</p> <!-- highlightクラスを具体的な色クラスに変更 -->
                         <ul>
-                            <li>⏱️ 毎日手動で行っていたメール配信や顧客フォローの時間をゼロに</li>
-                            <li>🎯 顧客一人ひとりの状況に合わせた最適な情報提供</li>
-                            <li>💰 高単価商品へのアップセル・クロスセルを自動で促進</li>
+                            <li>⏱️ <span class="highlight-green">毎日手動で行っていたメール配信や顧客フォローの時間をゼロに</span></li> <!-- highlight-green追加 -->
+                            <li>🎯 顧客一人ひとりの状況に合わせた<span class="highlight-blue">最適な情報提供</span></li> <!-- highlight-blue追加 -->
+                            <li>💰 高単価商品への<span class="highlight-red">アップセル・クロスセルを自動で促進</span></li> <!-- highlight-red追加 -->
                         </ul>
                         <p>といったことが可能になり、<span class="text-red">マーケティング・セールス業務の効率が劇的に向上し、売上アップに直結</span>します。</p>
 
-                        <h3>1-3. 初心者でも使いやすい直感的な操作性</h3>
+                        <h3 id="section1-3">初心者でも使いやすい直感的な操作性</h3> <!-- IDをsection1-3に設定 -->
 
-                        <p>「多機能なツールは難しそう…」と感じるかもしれませんが、Utageは<span class="highlight">オンラインビジネス初心者でも迷わず使えるように設計</span>されています。ドラッグ＆ドロップでLPを作成したり、フローチャートを見ながら自動化シナリオを設定したりと、直感的な操作が可能です。これにより、ツールの使い方を覚える時間よりも、戦略を考えたりコンテンツを作成したりする時間に集中できます。</p>
+                        <p>「<span class="highlight-yellow">多機能なツールは難しそう…</span>」と感じるかもしれませんが、Utageは<span class="highlight-green">オンラインビジネス初心者でも迷わず使えるように設計</span>されています。<span class="highlight-yellow">ドラッグ＆ドロップでLPを作成したり、フローチャートを見ながら自動化シナリオを設定したり</span>と、<span class="highlight-blue">直感的な操作が可能</span>です。<span class="highlight-yellow">これにより</span>、ツールの使い方を覚える時間よりも、戦略を考えたりコンテンツを作成したりする時間に集中できます。</p> <!-- 黄色ハイライト追加、highlight-green/blue追加 -->
 
                         <div class="conversation-container yuki">
                             <div class="character-icon"></div>
                             <div class="conversation-content">
                                 <p class="character-name">YUKI</p>
-                                <p>難しくて使いこなせないツールだと、結局使わなくなってしまってもったいないもんね。Utageは「これなら自分でもできそう！」って思えるような、分かりやすい操作画面が特徴なんだ。</p>
+                                <p>難しくて使いこなせないツールだと、<span class="highlight-yellow">結局使わなくなってしまってもったいない</span>もんね。<span class="highlight-green">Utageは「これなら自分でもできそう！」って思えるような、分かりやすい操作画面が特徴</span>なんだ。</p> <!-- 黄色ハイライト追加、highlight-green追加 -->
                             </div>
                         </div>
 
 
-                        <h2>2. Utageシステムの主要機能</h2>
+                        <h2 id="section2">Utageシステムの主要機能</h2> <!-- IDをsection2に設定 -->
 
-                        <p>Utageが提供する主な機能は以下の通りです。これらの機能が連携し合うことで、強力な売れる仕組みが実現します。</p>
+                        <p><span class="highlight-blue">Utageが提供する主な機能</span>は以下の通りです。これらの機能が連携し合うことで、<span class="highlight-green">強力な売れる仕組みが実現</span>します。</p> <!-- highlight-blue/green追加 -->
 
                         <ul>
-                            💻 <strong>LP・ウェブサイト作成</strong>：豊富なテンプレートと直感的なエディタで高品質なページを制作</li>
-                            📧 <strong>メールマーケティング</strong>：ステップメール、メルマガ、効果測定、セグメント配信</li>
-                            📱 <strong>LINEマーケティング</strong>：LINE公式アカウント連携、ステップ配信、個別メッセージ</li>
-                            📝 <strong>フォーム作成</strong>：登録フォーム、問い合わせフォーム、アンケートフォーム</li>
-                            💳 <strong>決済機能</strong>：Stripe等連携、LP一体型決済、定期課金対応</li>
-                            📚 <strong>会員サイト作成</strong>：会員限定コンテンツ配信、顧客管理</li>
-                            📈 <strong>分析機能</strong>：アクセス解析、CVR、開封率など詳細なデータ分析</li>
-                            🔄 <strong>シナリオ自動化</strong>：顧客行動に基づく複雑な自動化フロー設定</li>
+                            <li>💻 <span class="text-blue"><strong>LP・ウェブサイト作成</strong></span>：豊富なテンプレートと直感的なエディタで高品質なページを制作</li>
+                            <li>📧 <span class="text-blue"><strong>メールマーケティング</strong></span>：ステップメール、メルマガ、効果測定、セグメント配信</li>
+                            <li>📱 <span class="text-blue"><strong>LINEマーケティング</strong></span>：LINE公式アカウント連携、ステップ配信、個別メッセージ</li>
+                            <li>📝 <span class="text-blue"><strong>フォーム作成</strong></span>：登録フォーム、問い合わせフォーム、アンケートフォーム</li>
+                            <li>💳 <span class="text-blue"><strong>決済機能</strong></span>：Stripe等連携、LP一体型決済、定期課金対応</li>
+                            <li>📚 <span class="text-blue"><strong>会員サイト作成</strong></span>：会員限定コンテンツ配信、顧客管理</li>
+                            <li>📈 <span class="text-blue"><strong>分析機能</strong></span>：アクセス解析、CVR、開封率など詳細なデータ分析</li>
+                            <li>🔄 <span class="text-blue"><strong>シナリオ自動化</strong></span>：顧客行動に基づく複雑な自動化フロー設定</li>
                         </ul>
-                        <p><span class="text-red">これらの機能が全て一つのプラットフォームで提供される</span>ため、ツール間の連携や管理の手間が一切ありません。</p>
+                        <p><span class="text-red">これらの機能が全て一つのプラットフォームで提供される</span>ため、<span class="highlight-yellow">ツール間の連携や管理の手間が一切ありません</span>。</p> <!-- 黄色ハイライト追加 -->
 
                          <img src="../images/utage-functions.jpg" alt="Utageの主要機能一覧イメージ" /> <!-- 機能一覧図を想定 -->
 
 
-                        <h2>3. どんなビジネスでUtageは活用できる？</h2>
+                        <h2 id="section3">どんなビジネスでUtageは活用できる？</h2> <!-- IDをsection3に設定 -->
 
-                        <p>Utageは、様々な業種・規模のオンラインビジネスで活用されています。</p>
+                        <p>Utageは、<span class="highlight-green">様々な業種・規模のオンラインビジネスで活用</span>されています。</p> <!-- highlight-green追加 -->
 
                         <ul>
-                            ✅ <strong>オンライン講座・スクール販売</strong>：LPで受講生を集め、ステップメールで育成し、会員サイトで講座コンテンツを提供。</li>
-                            ✅ <strong>デジタルコンテンツ販売</strong>：電子書籍、テンプレートなどの販売ページ作成と決済。</li>
-                            ✅ <strong>コーチング・コンサルティング</strong>：体験セッションへの誘導、個別相談の申し込み受付、クライアント管理。</li>
-                            ✅ <strong>店舗ビジネスのオンライン化</strong>：予約受付、顧客管理、メールやLINEでの情報発信。</li>
-                            ✅ <strong>アフィリエイト・情報発信</strong>：メルマガリスト獲得用LP、ステップメールでの教育。</li>
+                            <li>✅ <span class="text-blue"><strong>オンライン講座・スクール販売</strong></span>：LPで受講生を集め、ステップメールで育成し、会員サイトで講座コンテンツを提供。</li>
+                            <li>✅ <span class="text-blue"><strong>デジタルコンテンツ販売</strong></span>：電子書籍、テンプレートなどの販売ページ作成と決済。</li>
+                            <li>✅ <span class="text-blue"><strong>コーチング・コンサルティング</strong></span>：体験セッションへの誘導、個別相談の申し込み受付、クライアント管理。</li>
+                            <li>✅ <span class="text-blue"><strong>店舗ビジネスのオンライン化</strong></span>：予約受付、顧客管理、メールやLINEでの情報発信。</li>
+                            <li>✅ <span class="text-blue"><strong>アフィリエイト・情報発信</strong></span>：メルマガリスト獲得用LP、ステップメールでの教育。</li>
                         </ul>
-                        <p>特に、<span class="highlight">商品単価が高めであったり、見込み客との信頼構築（育成）が重要なビジネス</span>と相性が良いと言われています。</p>
+                        <p><span class="highlight-blue">特に</span>、<span class="highlight-green">商品単価が高めであったり、見込み客との信頼構築（育成）が重要なビジネス</span>と<span class="highlight-yellow">相性が良い</span>と言われています。</p> <!-- highlight-blue/green/yellow追加 -->
 
-                        <h2>4. まとめ：Utageであなたのビジネスも売上アップを！</h2>
+                        <h2 id="section4"><span class="highlight-green">まとめ</span>：<span class="highlight-blue">Utage</span>であなたのビジネスも売上アップを！</h2> <!-- IDをsection4に設定、highlight-green/blue追加 -->
 
-                        <p>Utageシステムが導入企業で平均30%もの売上アップを実現している理由は、オンラインビジネスの根幹である「売れる仕組み」を、<span class="highlight">オールインワンかつ強力な自動化機能で、誰でも簡単に構築・運用できる</span>点にあります。複数のツールを使い分ける煩雑さから解放され、マーケティング活動全体の効率が劇的に向上。見込み客を効率的に育成し、販売へと繋げる自動化シナリオが、成果を最大化します。</p>
+                        <p><span class="highlight-green">Utageシステムが導入企業で平均30%もの売上アップを実現している理由</span>は、オンラインビジネスの根幹である「売れる仕組み」を、<span class="highlight-blue">オールインワンかつ強力な自動化機能で、誰でも簡単に構築・運用できる</span>点にあります。<span class="highlight-yellow">複数のツールを使い分ける煩雑さから解放</span>され、マーケティング活動全体の<span class="text-red">効率が劇的に向上</span>。見込み客を<span class="highlight-green">効率的に育成</span>し、販売へと繋げる自動化シナリオが、<span class="text-red">成果を最大化</span>します。</p> <!-- highlight-green/blue/yellow追加、text-red追加 -->
 
-                        <p>もしあなたが、オンラインビジネスの売上を伸ばしたい、日々のマーケティング業務を効率化したい、見込み客育成や顧客フォローを自動化したいと考えているなら、Utageは間違いなく強力な味方となるでしょう。💪🔥</p>
+                        <p>もしあなたが、<span class="highlight-yellow">オンラインビジネスの売上を伸ばしたい</span>、<span class="highlight-yellow">日々のマーケティング業務を効率化したい</span>、<span class="highlight-yellow">見込み客育成や顧客フォローを自動化したい</span>と考えているなら、Utageは間違いなく<span class="highlight-green">強力な味方</span>となるでしょう。💪🔥</p> <!-- 黄色ハイライト追加、highlight-green追加 -->
 
-                        <p>ぜひこの機会にUtageを検討し、あなたのビジネスも売上平均30%アップを目指してください！🚀📈</p>
+                        <p><span class="highlight-blue">ぜひこの機会にUtageを検討し</span>、あなたのビジネスも<span class="text-red">売上平均30%アップ</span>を目指してください！🚀📈</p> <!-- highlight-blue追加、text-red追加 -->
 
                         <p><a href="/consultation" class="cta-button">Utageシステムについて無料相談する</a></p>
                     </div>
                     
-                    <!-- 著者情報 -->
+                    <!-- 著者情報 - 中央メインコンテンツ内に配置 -->
                     <div class="author-box">
                         <img src="../images/profile-YUKI.jpg" alt="YUKIのプロフィール写真" class="author-image">
                         <div class="author-info">
@@ -697,7 +1245,7 @@
                         </div>
                     </div>
                     
-                    <!-- SNSシェア -->
+                    <!-- SNSシェア - 中央メインコンテンツ内に配置 -->
                     <div class="share-box">
                         <h3 class="share-title">この記事をシェアする</h3>
                         <div class="share-buttons">
@@ -712,8 +1260,8 @@
                             </a>
                         </div>
                     </div>
-                    
-                    <!-- 関連記事 -->
+
+                    <!-- 関連記事 - 中央メインコンテンツ内に配置 -->
                     <div class="related-articles">
                         <h3 class="related-title">関連記事</h3>
                         <div class="related-list">
@@ -748,88 +1296,50 @@
                         </div>
                     </div>
                 </div>
-                
-                <!-- サイドバー -->
-                <div class="article-sidebar">
-                    <div class="sidebar-section">
-                        <h3 class="sidebar-title">人気記事</h3>
-                        <div class="popular-posts">
-                            <!-- サンプルデータに合わせてPlaceholderリンクと画像を配置 -->
-                            <a href="#" class="popular-post">
-                                <div class="popular-post-image">
-                                    <img src="../images/blog-3.jpg" alt="人気記事サムネイル">
-                                </div>
-                                <div class="popular-post-content">
-                                    <h4 class="popular-post-title">IT導入補助金でデジタル化を加速！成功のコツ</h4>
-                                    <div class="popular-post-meta">2025年4月20日</div>
-                                </div>
-                            </a>
-                            <a href="#" class="popular-post">
-                                <div class="popular-post-image">
-                                    <img src="../images/blog-5.jpg" alt="人気記事サムネイル">
-                                </div>
-                                <div class="popular-post-content">
-                                    <h4 class="popular-post-title">月商10万円から100万円へ：ハンドメイド作家が実践した3つの施策</h4>
-                                    <div class="popular-post-meta">2025年4月10日</div>
-                                </div>
-                            </a>
-                            <a href="#" class="popular-post">
-                                <div class="popular-post-image">
-                                    <img src="../images/blog-1.jpg" alt="人気記事サムネイル">
-                                </div>
-                                <div class="popular-post-content">
-                                    <h4 class="popular-post-title">2025年に注目すべきマーケティングトレンド5選</h4>
-                                    <div class="popular-post-meta">2025年4月5日</div>
-                                </div>
-                            </a>
-                        </div>
+
+                <!-- 右サイドバー -->
+                <!-- クラス名を .article-right-sidebar に修正 -->
+                <div class="article-right-sidebar">
+                    <!-- プロフィール -->
+                    <div class="sidebar-section sidebar-author-profile">
+                         <img src="../images/profile-YUKI.jpg" alt="YUKIのプロフィール写真" class="author-image">
+                         <h3 class="author-name">YUKI</h3>
+                         <p class="author-title">マーケティングコンサルタント</p>
+                         <div class="author-sns">
+                             <a href="#" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg></a>
+                              <a href="#" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="1em" height="1em" fill="currentColor"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9 26.3 26.2 58 34.4 93.9 36.2 37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8 19.6 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg></a>
+                         </div>
+                         <p class="author-bio">
+                             株式会社CLAN代表取締役社長｜デジタルスキル教育と構築代行事業を経営｜
+                             168名の受講生が学ぶスキル習得スクールを運営、法人向けUTAGE構築代行実績は70社以上｜
+                             IT導入補助金支援事業者として、企業のDX推進をサポート。
+                         </p>
+                         <a href="#" class="author-link">プロフィール詳細</a>
+                         <!-- サイドバーCTAボタンのテキストを更新 -->
+                         <a href="/free-consultation" class="cta-button">無料相談をする</a>
+                         <p class="button-hint">無料相談をするには→</p>
                     </div>
-                    
-                    <div class="sidebar-section">
-                        <h3 class="sidebar-title">カテゴリー</h3>
-                        <div class="category-list">
-                             <!-- サンプルデータに合わせてPlaceholderリンクとカウントを配置 -->
-                            <a href="#" class="category-item">
-                                <span>マーケティング</span>
-                                <span class="category-count">12</span>
-                            </a>
-                            <a href="#" class="category-item">
-                                <span>ビジネス成長</span>
-                                <span class="category-count">15</span>
-                            </a>
-                            <a href="#" class="category-item">
-                                <span>補助金・助成金</span>
-                                <span class="category-count">8</span>
-                            </a>
-                            <a href="#" class="category-item">
-                                <span>DX推進</span>
-                                <span class="category-count">10</span>
-                            </a>
-                            <a href="#" class="category-item">
-                                <span>事例紹介</span>
-                                <span class="category-count">7</span>
-                            </a>
-                        </div>
+
+                    <!-- 目次 -->
+                    <!-- 目次追従は、.sidebar-toc自体にstickyを適用 -->
+                    <div class="sidebar-section sidebar-toc">
+                         <h3 class="sidebar-title">目次</h3>
+                         <ul class="toc-list">
+                            <li><a href="#section1">Utageシステムが売上30%アップに貢献する理由<span class="toc-dot"></span></a>
+                                <ul>
+                                    <li><a href="#section1-1">シームレスな「売れる仕組み」が構築できる<span class="toc-dot"></span></a></li>
+                                    <li><a href="#section1-2">強力な自動化機能で業務効率が劇的に向上<span class="toc-dot"></span></a></li>
+                                    <li><a href="#section1-3">初心者でも使いやすい直感的な操作性<span class="toc-dot"></span></a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#section2">Utageシステムの主要機能<span class="toc-dot"></span></a></li>
+                            <li><a href="#section3">どんなビジネスでUtageは活用できる？<span class="toc-dot"></span></a></li>
+                            <li><a href="#section4">まとめ：Utageであなたのビジネスも売上アップを！<span class="toc-dot"></span></a></li>
+                         </ul>
                     </div>
-                    
-                    <div class="sidebar-section">
-                        <h3 class="sidebar-title">タグクラウド</h3>
-                        <div class="tag-cloud">
-                             <!-- サンプルデータに合わせてPlaceholderリンクとタグを配置 -->
-                            <a href="#" class="tag-item">IT導入補助金</a>
-                            <a href="#" class="tag-item">デジタル化</a>
-                            <a href="#" class="tag-item">マーケティング</a>
-                            <a href="#" class="tag-item">業務効率化</a>
-                            <a href="#" class="tag-item">集客</a>
-                            <a href="#" class="tag-item">売上アップ</a>
-                            <a href="#" class="tag-item">事例紹介</a>
-                            <a href="#" class="tag-item">DX</a>
-                            <a href="#" class="tag-item">戦略</a>
-                            <a href="#" class="tag-item">補助金</a>
-                            <a href="#" class="tag-item">中小企業</a>
-                            <a href="#" class="tag-item">2025年</a>
-                        </div>
-                    </div>
+
+                    <!-- 人気記事、カテゴリー、タグクラウドはHTMLごと削除 -->
+
                 </div>
             </div>
         </div>
@@ -858,12 +1368,13 @@
                     </ul>
                 </div>
                 <div class="widget-area footer-widget-3">
-                    <h4>イベント・その他</h4>
+                    <h4>無料コンテンツ</h4>
                     <ul>
-                        <li><a href="../event/index.html">イベント・合宿</a></li>
-                        <li><a href="../event/index.html">作業会・懇親会</a></li>
                         <li><a href="index.html">ブログ</a></li>
-                        <li><a href="../book/index.html">オートファネル大学書籍</a></li>
+                        <li><a href="../book/index.html">電子書籍</a></li>
+                        <li><a href="../free-seminar.html">無料セミナー</a></li>
+                        <li><a href="../free-consultation.html">無料相談</a></li>
+                        <li><a href="../achievement/index.html">お客様の声</a></li>
                     </ul>
                 </div>
                 <div class="widget-area footer-widget-4">
