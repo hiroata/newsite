@@ -7,7 +7,7 @@
     <title>オートファネル大学</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="images/favicon.ico">
     <meta property="og:title" content="オートファネル大学">
@@ -15,6 +15,207 @@
     <meta property="og:image" content="images/ogp_image.jpg">
     <meta property="og:type" content="website">
     <style>
+        /* リーピー風ヘッダースタイル */
+        .site-header {
+            background-color: #fff;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10px 20px;
+        }
+        .site-logo {
+            flex: 0 0 auto;
+            max-width: 183px;
+        }
+        .site-logo img {
+            width: 100%;
+            height: auto;
+        }
+        .global-nav {
+            display: flex;
+            align-items: center;
+        }
+        .global-nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .global-nav li {
+            margin: 0 15px;
+        }
+        .global-nav a {
+            color: #333;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+        .global-nav a:hover {
+            color: #ff3a3a;
+        }
+        .global-nav a[aria-current="page"]::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #ff3a3a;
+        }
+        
+        /* CTAボタンスタイル */
+        .header-cta {
+            display: flex;
+            align-items: center;
+        }
+        .btn-document {
+            display: flex;
+            align-items: center;
+            color: #333;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 8px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            margin-right: 10px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        .btn-document:hover {
+            background-color: #f5f5f5;
+        }
+        .btn-document svg {
+            margin-right: 5px;
+            width: 16px;
+            height: 16px;
+        }
+        .btn-contact {
+            background-color: #ff3a3a;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .btn-contact:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(255, 58, 58, 0.3);
+        }
+        .free-label {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #fff;
+            color: #ff3a3a;
+            font-size: 10px;
+            padding: 2px 5px;
+            border-radius: 10px;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        /* スマホ用ハンバーガーメニュー */
+        .hamburger-button {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            position: relative;
+            width: 30px;
+            height: 30px;
+        }
+        .hamburger-button span {
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: #333;
+            transition: all 0.3s ease;
+        }
+        .hamburger-button span:nth-child(1) {
+            top: 8px;
+        }
+        .hamburger-button span:nth-child(2) {
+            top: 16px;
+        }
+        .hamburger-button span:nth-child(3) {
+            top: 24px;
+        }
+        .hamburger-button.active span:nth-child(1) {
+            transform: rotate(45deg);
+            top: 16px;
+        }
+        .hamburger-button.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger-button.active span:nth-child(3) {
+            transform: rotate(-45deg);
+            top: 16px;
+        }
+        
+        /* スマホ用フッター固定CTA */
+        .sp-fix-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #fff;
+            z-index: 999;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        }
+        .sp-fix-cta ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .sp-fix-cta li {
+            flex: 1;
+        }
+        .sp-fix-cta a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            text-decoration: none;
+            font-size: 12px;
+            color: #333;
+        }
+        .sp-fix-cta .mail {
+            background-color: #ff3a3a;
+        }
+        .sp-fix-cta .mail a {
+            color: #fff;
+        }
+        .sp-fix-cta .book a {
+            color: #333;
+        }
+        .sp-fix-cta img {
+            width: 24px;
+            height: 24px;
+            margin-bottom: 5px;
+        }
+        
         /* 重大告知バナーのスタイル */
         .important-notice {
             background: linear-gradient(135deg, #f06, #ff9966);
@@ -24,6 +225,7 @@
             font-weight: bold;
             position: relative;
             z-index: 100;
+            margin-top: 70px; /* ヘッダーの高さ分調整 */
         }
         .important-notice a {
             color: white;
@@ -43,6 +245,7 @@
         .important-notice-button:hover {
             transform: scale(1.05);
         }
+        
         /* 補助金バナーのスタイル */
         .subsidy-banner {
             display: block;
@@ -61,6 +264,33 @@
             border-radius: 8px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
+        
+        /* レスポンシブ対応 */
+        @media (max-width: 1024px) {
+            .global-nav li {
+                margin: 0 10px;
+            }
+            .global-nav a {
+                font-size: 14px;
+            }
+        }
+        @media (max-width: 768px) {
+            .pc-nav {
+                display: none;
+            }
+            .hamburger-button {
+                display: block;
+            }
+            .sp-fix-cta {
+                display: block;
+            }
+            .header-cta {
+                display: none;
+            }
+            .important-notice {
+                margin-top: 60px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -76,13 +306,32 @@
                     <li><a href="course/index.html">オートファネル大学とは</a></li>
                     <li><a href="blog/index.html">ブログ</a></li>
                     <li><a href="seminar/index.html">オンライン講座</a></li>
-                    <li><a href="achievement/index.html" class="btn-nav btn-red">お客様の声</a></li>
-                    <li><a href="free-seminar.html" class="btn-nav btn-blue">無料セミナー</a></li>
+                    <li><a href="achievement/index.html">お客様の声</a></li>
                 </ul>
             </nav>
+            <div class="header-cta">
+                <a href="document.html" class="btn-document">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <path d="M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zM256 0V128H384L256 0zM112 256H272c8.8 0 16 7.2 16 16s-7.2 16-16 16H112c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H272c8.8 0 16 7.2 16 16s-7.2 16-16 16H112c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H272c8.8 0 16 7.2 16 16s-7.2 16-16 16H112c-8.8 0-16-7.2-16-16s7.2-16 16-16z"/>
+                    </svg>
+                    資料請求する
+                </a>
+                <a href="contact.html" class="btn-contact">
+                    まずは相談する
+                    <span class="free-label">無料</span>
+                </a>
+            </div>
             <button class="hamburger-button sp-nav" aria-label="メニューを開く"><span></span><span></span><span></span></button>
         </div>
     </header>
+
+    <!-- スマホ用フッター固定CTA -->
+    <div class="sp-fix-cta">
+        <ul>
+            <li class="mail"><a href="contact.html">まずは相談する <img src="images/icon-mail.svg" alt=""></a></li>
+            <li class="book"><a href="document.html">資料請求する <img src="images/icon-pdf.svg" alt=""></a></li>
+        </ul>
+    </div>
 
     <!-- 重大告知バナー -->
     <div class="important-notice">
