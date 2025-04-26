@@ -4,51 +4,440 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="オートファネル大学の運営者情報ページです。株式会社CLANの代表 前田由紀子のプロフィールと会社概要をご紹介します。">
-    <title>運営者情報 - オートファネル大学 (コピーサイト)</title>
+    <title>運営者情報 - オートファネル大学</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <!-- 既存のCSSファイルがあればそのまま -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="images/favicon.ico">
     <meta property="og:title" content="運営者情報 - オートファネル大学">
     <meta property="og:description" content="株式会社CLANの代表 前田由紀子のプロフィールと会社概要。">
     <meta property="og:image" content="images/ogp_image.jpg">
     <meta property="og:type" content="article">
+
     <style>
-        .owner-detail {
-            max-width: 800px;
+        /* 運営者情報ページの新スタイル */
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: #333;
+            line-height: 1.6; /* 行間を調整 */
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8; /* 全体の背景色を少し明るく */
+        }
+
+        .owner-container {
+            max-width: 1000px; /* 最大幅を少し広げる */
             margin: 0 auto;
+            padding: 0 20px;
         }
-        .owner-section {
-            margin-bottom: 40px;
+
+        /* セクション上下の余白 */
+        .section-padding {
+             padding-top: 80px;
+             padding-bottom: 80px;
         }
-        .owner-section h2 {
-            font-size: 20px;
-            font-weight: bold;
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            padding-top: 40px; /* 上部余白を追加 */
+        }
+        
+        .page-title {
+            font-size: 36px; /* タイトル大きめに */
+            font-weight: 700; /* 太字 */
             margin-bottom: 15px;
+            color: #0d3283; /* ブランドカラーに */
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05); /* 薄い影 */
+        }
+        
+        .page-header p {
+            font-size: 18px;
+            color: #555;
+        }
+
+        /* タイトルの下線 */
+        .page-header:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #f06; /* アクセントカラーに */
+            margin: 20px auto 0;
+            border-radius: 2px;
+        }
+
+        /* 会社概要・プロフィールセクション共通 */
+        .company-section, .profile-section {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 80px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* 影を強調 */
+            background-color: #fff; /* 白背景 */
+        }
+        
+        .company-section {
+             background: #f9f9f9; /* 会社概要は少しグレー背景 */
+        }
+
+        .company-info, .profile-info {
+            flex: 1;
+            padding: 40px;
+            min-width: 300px; /* 狭い画面での折り返し調整 */
+        }
+        
+        .company-image {
+            flex-basis: 45%; /* 画像エリアを少し広げる */
+            background-image: url('images/company-office.jpg'); /* 仮画像 */
+            background-size: cover;
+            background-position: center;
+            min-height: 350px; /* 高さ調整 */
+            order: 2; /* モバイルで下に表示 */
+        }
+
+        .profile-photo {
+            flex-basis: 40%; /* 画像エリア調整 */
+            background-image: url('images/profile-photo.jpg'); /* 仮画像 */
+            background-size: cover;
+            background-position: center;
+            min-height: 400px; /* 高さ調整 */
+            order: 1; /* モバイルで上に表示 */
+        }
+
+        .profile-info {
+            order: 2; /* モバイルで下に表示 */
+        }
+        
+        .section-title {
+            font-size: 28px; /* 大きめに */
+            font-weight: 700;
+            margin-bottom: 30px; /* 余白調整 */
             padding-bottom: 10px;
-            border-bottom: 2px solid #0d3283;
-        }
-        .owner-section ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-        .owner-section ul li {
-            margin-bottom: 10px;
-            line-height: 1.6;
-        }
-        .owner-section ul li strong {
-            display: inline-block;
-            width: 100px;
+            border-bottom: 3px solid #0d3283; /* 下線を太く */
             color: #0d3283;
         }
-        .owner-section p {
-            margin-bottom: 15px;
-            line-height: 1.8;
+
+        /* DT/DD スタイル */
+        .company-details, .profile-details {
+            margin-bottom: 0;
         }
+        
+        .company-details dt, .profile-details dt {
+            font-weight: 700;
+            margin-top: 20px; /* 上部余白 */
+            margin-bottom: 5px; /* 下部余白を少し減らす */
+            color: #0d3283; /* 項目名をブランドカラーに */
+            font-size: 16px;
+        }
+        
+        .company-details dd, .profile-details dd {
+            margin-bottom: 15px; /* 余白調整 */
+            margin-left: 0; /* デフォルトのインデントをリセット */
+            padding-left: 15px; /* 左パディングでインデント */
+            line-height: 1.7;
+            /* 赤いポチ関連のスタイルを削除 */
+            /* position: relative; */
+        }
+
+        /* 赤いポチのスタイルを削除 */
+        /*
+        .company-details dd:before, .profile-details dd:before {
+             content: '・'; 
+             position: absolute;
+             left: 0;
+             color: #f06; 
+             font-weight: 700;
+        }
+        */
+
+        .profile-details dt {
+             margin-top: 25px; /* プロフィールの方を少し開ける */
+        }
+
+        /* プロフィール特定のスタイル */
+        .profile-name {
+            font-size: 32px; /* 大きく */
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        .profile-position {
+            font-size: 18px;
+            color: #0d3283;
+            margin-bottom: 30px; /* 余白調整 */
+            font-weight: 500;
+        }
+        
+        .profile-bio {
+            line-height: 1.8;
+            margin-bottom: 30px;
+            color: #555;
+        }
+
+        /* チームセクション */
+        .team-section {
+            margin-bottom: 80px;
+            text-align: center; /* 中央揃え */
+        }
+        
+        .team-intro {
+            max-width: 800px;
+            margin: 0 auto 50px; /* 余白調整 */
+            line-height: 1.8;
+            color: #555;
+            font-size: 17px;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+            text-align: left; /* カード内のテキストは左寄せ */
+        }
+        
+        .team-member {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12); /* ホバー時の影 */
+        }
+        
+        .member-image {
+            width: 100%;
+            padding-top: 100%; /* 1:1 アスペクト比 */
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .member-info {
+            padding: 20px;
+        }
+        
+        .member-name {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .member-position {
+            font-size: 14px;
+            color: #0d3283;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .member-bio {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* メッセージセクション */
+        .message-section {
+            margin-bottom: 80px;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%); /* より落ち着いたグラデーション */
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+        
+        .message-title {
+            font-size: 30px; /* 大きめに */
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #0d3283;
+        }
+        
+        .message-content {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+            font-size: 16px;
+            color: #555;
+        }
+        
+        .message-content p {
+            margin-bottom: 20px;
+        }
+        
+        /* CTA部分のスタイル */
+        .cta-section {
+            margin: 80px auto;
+            padding: 60px 30px; /* 上下パディングを増やす */
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/cta-background.jpg'); /* オーバーレイと画像 */
+            background-size: cover;
+            background-position: center;
+            border-radius: 12px;
+            text-align: center;
+            color: white; /* テキストを白に */
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2); /* 影を強調 */
+            position: relative; /* 擬似要素のために必要 */
+            z-index: 0; /* コンテンツの下になるように */
+        }
+
+        /* CTAコンテンツはオーバーレイより手前に */
+        .cta-section > * {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cta-title {
+            font-size: 32px; /* 大きめに */
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* テキスト影 */
+        }
+        
+        .cta-description {
+            margin-bottom: 40px; /* 余白調整 */
+            font-size: 18px; /* 大きめに */
+            line-height: 1.8;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2); /* テキスト影 */
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #f06 !important; /* アクセントカラー */
+            padding: 18px 45px; /* ボタンを大きく */
+            border-radius: 50px;
+            font-weight: 700; /* 太字 */
+            font-size: 18px; /* 大きめに */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            min-width: 200px; /* ボタンの最小幅 */
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px); /* ホバーでさらに持ち上がる */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* ホバー時の影 */
+        }
+
+        /* フッターのSNSアイコンの色調整 (既存のCSSに追記または変更) */
+        .footer-sns a svg {
+             fill: #ccc; /* フッターのアイコン色を薄く */
+             transition: fill 0.3s ease;
+        }
+        .footer-sns a:hover svg {
+             fill: #fff; /* ホバーで白く */
+        }
+
+        /* レスポンシブ対応 */
+        @media (max-width: 767px) {
+            .section-padding {
+                padding-top: 50px;
+                padding-bottom: 50px;
+            }
+
+            .page-header {
+                 margin-bottom: 40px;
+                 padding-top: 20px;
+            }
+
+            .page-title {
+                font-size: 28px;
+            }
+            
+            .company-section, .profile-section {
+                flex-direction: column; /* 縦並び */
+                margin-bottom: 50px;
+            }
+
+            .company-image, .profile-photo {
+                flex-basis: auto; /* flex-basisをリセット */
+                width: 100%; /* 幅100% */
+                min-height: 250px; /* 高さ調整 */
+                order: 1; /* 画像を常に上に */
+            }
+            
+            .company-info, .profile-info {
+                flex-basis: auto; /* flex-basisをリセット */
+                width: 100%; /* 幅100% */
+                padding: 30px;
+                order: 2; /* 情報は常に下に */
+            }
+            
+            .section-title {
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr; /* 1列表示 */
+                gap: 20px; /* 余白調整 */
+            }
+
+            .member-image {
+                 padding-top: 75%; /* モバイルでは少し横長に (4:3) */
+            }
+            
+            .message-section {
+                padding: 40px 20px;
+                margin-bottom: 50px;
+            }
+            
+            .message-title {
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+
+            .message-content {
+                 font-size: 15px;
+            }
+            
+            .cta-section {
+                padding: 40px 20px;
+                margin-top: 50px;
+                margin-bottom: 50px;
+            }
+            
+            .cta-title {
+                font-size: 24px;
+            }
+
+            .cta-description {
+                 font-size: 15px;
+                 margin-bottom: 30px;
+            }
+
+            .cta-button {
+                 font-size: 16px;
+                 padding: 15px 30px;
+                 min-width: auto;
+            }
+        }
+
+        /* PCとSPでの画像/情報ブロックの順序調整 */
+        @media (min-width: 768px) {
+             .company-image { order: 2; }
+             .company-info { order: 1; }
+             .profile-photo { order: 1; }
+             .profile-info { order: 2; }
+             .member-image { padding-top: 100%; } /* PCは正方形に */
+        }
+
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header class="site-header">
         <div class="header-container">
             <div class="site-logo">
@@ -58,63 +447,147 @@
                 <ul>
                     <li><a href="index.html">ホーム</a></li>
                     <li><a href="course/index.html">オートファネル大学とは</a></li>
-                    <li><a href="event/index.html">イベント・作業会</a></li>
-                    <li><a href="seminar/index.html">セミナー</a></li>
-                    <li><a href="achievement/index.html" class="btn-nav btn-red">受講生実績</a></li>
+                    <li><a href="blog/index.html">ブログ</a></li>
+                    <li><a href="seminar/index.html">オンライン講座</a></li>
+                    <li><a href="achievement/index.html" class="btn-nav btn-red">お客様の声</a></li>
                     <li><a href="free-seminar.html" class="btn-nav btn-blue">無料セミナー</a></li>
                 </ul>
             </nav>
             <button class="hamburger-button sp-nav" aria-label="メニューを開く"><span></span><span></span><span></span></button>
         </div>
     </header>
+    <!-- End Header -->
 
+    <!-- Main Content -->
     <main class="site-main">
-        <div class="page-container section-padding">
-            <div class="owner-detail">
-                <h1>運営者情報</h1>
+        <div class="owner-container section-padding">
+            <div class="page-header">
+                <h1 class="page-title">運営者情報</h1>
+                <p>株式会社CLANについてご紹介します</p>
+            </div>
+            
+            <!-- Company Section -->
+            <div class="company-section">
+                <div class="company-info">
+                    <h2 class="section-title">会社概要</h2>
+                    <dl class="company-details">
+                        <dt>社名</dt>
+                        <dd>株式会社CLAN</dd>
+                        
+                        <dt>所在地</dt>
+                        <dd>〒892-0851 鹿児島県鹿児島市上竜尾町1番2号</dd>
+                        
+                        <dt>代表者</dt>
+                        <dd>前田 由紀子</dd>
+                        
+                        <dt>資本金</dt>
+                        <dd>3,000,000円</dd>
+                        
+                        <dt>連絡先</dt>
+                        <dd><a href="mailto:info@clanbiz.net">info@clanbiz.net</a></dd>
+                        
+                        <dt>受付時間</dt>
+                        <dd>9:00〜18:00（土日祝を除く）</dd>
+                        
+                        <dt>事業内容</dt>
+                        <dd>セールスファネル構築代行</dd>
+                    </dl>
+                </div>
+                <div class="company-image"></div>
+            </div>
+            <!-- End Company Section -->
+            
+            <!-- Profile Section -->
+            <div class="profile-section">
+                <div class="profile-photo"></div>
+                <div class="profile-info">
+                    <h2 class="section-title">代表プロフィール</h2>
+                    <h3 class="profile-name">前田 由紀子</h3>
+                    <p class="profile-position">Web集客コンサルタント / UTAGE構築・運用スペシャリスト</p>
+                    
+                    <div class="profile-bio">
+                        <p>1980年鹿児島県生まれ。高校卒業後、ブルガリなどのハイブランドで13年間勤務。2011年、ローフードとファスティングの事業で福岡で起業。協会設立を経て、東京・青山に料理教室を開講。現在、株式会社CLANの代表取締役として活動中。</p>
+                    </div>
+                    
+                    <dl class="profile-details">
+                        <dt>著書</dt>
+                        <dd><a href="https://www.amazon.co.jp/dp/B09X1Y2L4F" target="_blank" rel="noopener noreferrer">美人は7日でつくられる</a></dd>
+                        
+                        <dt>専門分野</dt>
+                        <dd>オートマーケティング、セールスファネル構築、集客戦略策定</dd>
+                        
+                        <dt>実績</dt>
+                        <dd>UTAGE構築代行による売上改善事例300件以上</dd>
+                    </dl>
+                </div>
+            </div>
+            <!-- End Profile Section -->
+            
+            <!-- Team Section -->
+            <div class="team-section">
+                <h2 class="section-title">私たちのチーム</h2>
+                <p class="team-intro">株式会社CLANには、マーケティング戦略から実装まで、幅広いスキルを持ったプロフェッショナルが集まっています。一人ひとりが専門分野を持ち、お客様のビジネス成長を全力でサポートします。</p>
                 
-                <div class="owner-section">
-                    <h2>会社概要</h2>
-                    <ul>
-                        <li><strong>社名：</strong>株式会社CLAN</li>
-                        <li><strong>所在地：</strong>〒892-0851 鹿児島県鹿児島市上竜尾町1番2号</li>
-                        <li><strong>代表者：</strong>前田 由紀子</li>
-                        <li><strong>資本金：</strong>3,000,000円</li>
-                        <li><strong>連絡先：</strong><a href="mailto:info@clanbiz.net">info@clanbiz.net</a></li>
-                        <li><strong>受付時間：</strong>9:00〜18:00（土日祝を除く）</li>
-                        <li><strong>事業内容：</strong>セールスファネル構築代行</li>
-                    </ul>
+                <div class="team-grid">
+                    <!-- チームメンバー1 -->
+                    <div class="team-member">
+                        <div class="member-image" style="background-image: url('images/team-member1.jpg');"></div>
+                        <div class="member-info">
+                            <h3 class="member-name">山田 太郎</h3>
+                            <p class="member-position">マーケティングディレクター</p>
+                            <p class="member-bio">集客戦略立案と広告運用のプロフェッショナル。Google広告・Meta広告の認定資格を多数保有し、数百社の広告運用実績あり。ROI重視のマーケティング戦略が得意。</p>
+                        </div>
+                    </div>
+                    
+                    <!-- チームメンバー2 -->
+                    <div class="team-member">
+                        <div class="member-image" style="background-image: url('images/team-member2.jpg');"></div>
+                        <div class="member-info">
+                            <h3 class="member-name">佐藤 美咲</h3>
+                            <p class="member-position">ウェブデザイナー</p>
+                            <p class="member-bio">UIデザインと顧客体験設計が専門。ユーザビリティを重視した美しいウェブデザインを提供。ECサイトやLPの改善により平均コンバージョン率1.5倍の実績。</p>
+                        </div>
+                    </div>
+                    
+                    <!-- チームメンバー3 -->
+                    <div class="team-member">
+                        <div class="member-image" style="background-image: url('images/team-member3.jpg');"></div>
+                        <div class="member-info">
+                            <h3 class="member-name">鈴木 健太</h3>
+                            <p class="member-position">ファネル構築スペシャリスト</p>
+                            <p class="member-bio">自動化ツールと集客の連携が得意。UTAGEを活用した複雑な自動化システムの構築により、クライアントの業務効率化と売上向上を実現。</p>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="owner-section">
-                    <h2>代表プロフィール</h2>
-                    <p><strong>名前：</strong>前田 由紀子</p>
-                    <p><strong>肩書：</strong>Web集客コンサルタント / UTAGE構築・運用スペシャリスト</p>
-                    <p><strong>略歴：</strong></p>
-                    <ul>
-                        <li>1980年 鹿児島県生まれ</li>
-                        <li>高校卒業後、ブルガリなどのハイブランドで13年間勤務</li>
-                        <li>2011年、ローフードとファスティングの事業で福岡で起業</li>
-                        <li>協会設立を経て、東京・青山に料理教室を開講</li>
-                        <li>現在、株式会社CLANの代表取締役として活動中</li>
-                    </ul>
-                    <p><strong>著書：</strong><a href="https://www.amazon.co.jp/dp/B09X1Y2L4F" target="_blank" rel="noopener noreferrer">美人は7日でつくられる</a></p>
-                </div>
-
-                <div class="owner-section">
-                    <h2>メッセージ</h2>
+            </div>
+            <!-- End Team Section -->
+            
+            <!-- Message Section -->
+            <div class="message-section">
+                <h2 class="message-title">メッセージ</h2>
+                <div class="message-content">
                     <p>セールスファネルの力で、あなたのビジネスを「理想の未来」へ。</p>
                     <p>私自身、かつてはWebマーケティングの知識が全くなく、集客に苦労した経験があります。試行錯誤を重ねる中でWeb集客、特にセールスファネルの構築がビジネスの成長に不可欠であることを痛感しました。</p>
                     <p>そして「UTAGE」という強力なツールに出会い、その可能性に魅了されました。しかし、多くの中小企業や個人事業主の方々が「UTAGE」の導入・運用に苦戦している現状も目の当たりにしました。</p>
                     <p>「専門知識がない」「時間がない」「何から手をつければ良いかわからない」そんな悩みを抱える皆様の力になりたい。その想いから、「UTAGE構築代行丸投げちゃん」のサービスは生まれました。</p>
-                    <p>私たちは、単なる代行業者ではありません。お客様のビジネスの「理想の未来」を共に描き、共に成長するパートナーです。UTAGEの導入から、戦略立案、コンテンツ制作、広告運用、そして効果測定まで、Web集客に必要なすべてを、私たちプロフェッショナルチームが「まるなげ」でサポートします。</p>
-                    <p>お客様は、本来のビジネスに集中しながら、Web集客の成果を最大化することができます。</p>
-                    <p>「Web集客で、もっとビジネスを成長させたい」「UTAGEを導入したが、使いこなせていない」「時間やリソースが足りない」そんなお悩みをお持ちの方は、ぜひ一度、私たちにご相談ください。あなたのビジネスの可能性を最大限に引き出す、最適な戦略をご提案いたします。</p>
+                    <p>私たちは、単なる代行業者ではありません。お客様のビジネスの「理想の未来」を共に描き、共に成長するパートナーです。</p>
                 </div>
             </div>
+            <!-- End Message Section -->
+            
+            <!-- CTA Section -->
+            <div class="cta-section">
+                <h2 class="cta-title">期間限定・UTAGE丸投げちゃんにIT導入補助金が使えます！</h2>
+                <p class="cta-description">UTAGE構築代行サービスがIT導入補助金の対象になりました。最大450万円の補助金を活用して、あなたのビジネスにオートファネルを導入するチャンスです。期間限定のこの機会をお見逃しなく！</p>
+                <a href="https://utage-marunage.com/it-hojo/" class="cta-button" target="_blank">詳細はこちら</a>
+            </div>
+            <!-- End CTA Section -->
+
         </div>
     </main>
+    <!-- End Main Content -->
 
+    <!-- Footer -->
     <footer class="site-footer">
         <div class="footer-container">
             <div class="footer-widgets">
@@ -138,27 +611,6 @@
                         </a>
                     </div>
                 </div>
-                <div class="widget-area footer-widget-2">
-                    <h4>オンライン講座一覧</h4>
-                    <ul>
-                        <li><a href="course/lp.html">ランディングページ作成初級講座</a></li>
-                        <li><a href="course/video.html">動画編集初級講座</a></li>
-                        <li><a href="course/step-mail.html">ステップメール設計初級講座</a></li>
-                        <li><a href="course/auto-funnel.html">オートファネル構築初級講座</a></li>
-                        <li><a href="course/youtube-thumbnail.html">Youtubeサムネ作成初級講座</a></li>
-                        <li><a href="course/canva.html">Canvaデザイン初級講座</a></li>
-                    </ul>
-                </div>
-                <div class="widget-area footer-widget-3">
-                    <h4>無料コンテンツ</h4>
-                    <ul>
-                        <li><a href="blog/index.html">ブログ</a></li>
-                        <li><a href="book/index.html">電子書籍</a></li>
-                        <li><a href="free-seminar.html">無料セミナー</a></li>
-                        <li><a href="free-consultation.html">無料相談</a></li>
-                        <li><a href="achievement/index.html">お客様の声</a></li>
-                    </ul>
-                </div>
                 <div class="widget-area footer-widget-4">
                     <h4>運営情報</h4>
                     <ul>
@@ -173,7 +625,10 @@
             </div>
         </div>
     </footer>
+    <!-- End Footer -->
 
+    <!-- Existing Script -->
     <script src="js/script.js"></script>
+    <!-- End Existing Script -->
 </body>
 </html>

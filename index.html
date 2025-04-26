@@ -14,6 +14,54 @@
     <meta property="og:description" content="オートファネル大学は、マーケティングの自動化と効率化に特化した教育プラットフォームです。">
     <meta property="og:image" content="images/ogp_image.jpg">
     <meta property="og:type" content="website">
+    <style>
+        /* 重大告知バナーのスタイル */
+        .important-notice {
+            background: linear-gradient(135deg, #f06, #ff9966);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-weight: bold;
+            position: relative;
+            z-index: 100;
+        }
+        .important-notice a {
+            color: white;
+            text-decoration: underline;
+        }
+        .important-notice-button {
+            display: inline-block;
+            background-color: white;
+            color: #f06 !important;
+            padding: 8px 20px;
+            border-radius: 30px;
+            margin-top: 10px;
+            font-weight: bold;
+            text-decoration: none !important;
+            transition: transform 0.3s ease;
+        }
+        .important-notice-button:hover {
+            transform: scale(1.05);
+        }
+        /* 補助金バナーのスタイル */
+        .subsidy-banner {
+            display: block;
+            width: 100%;
+            max-width: 1000px;
+            margin: 50px auto 30px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .subsidy-banner:hover {
+            transform: translateY(-5px);
+        }
+        .subsidy-banner img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+    </style>
 </head>
 <body>
 
@@ -36,7 +84,19 @@
         </div>
     </header>
 
+    <!-- 重大告知バナー -->
+    <div class="important-notice">
+        <p>重大告知</p>
+        <h2>期間限定・UTAGE丸投げちゃんにIT導入補助金が使えます！</h2>
+        <a href="https://utage-marunage.com/it-hojo/" class="important-notice-button" target="_blank">詳細はこちら</a>
+    </div>
+
     <main class="site-main">
+        <!-- 補助金バナー -->
+        <a href="https://utage-marunage.com/it-hojo/" class="subsidy-banner" target="_blank">
+            <img src="images/it-subsidy-banner.jpg" alt="IT導入補助金でデジタル化を加速！成功のコツ">
+        </a>
+        
         <section class="hero-section">
             <div class="hero-image hero-pc" style="background-image: url('images/hero-pc.jpg');"></div>
             <div class="hero-image hero-sp" style="background-image: url('images/hero-sp.jpg');"></div>
