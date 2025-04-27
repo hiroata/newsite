@@ -1,32 +1,44 @@
-/* 
+/*
  * オートファネル大学 スタイルシート
- * 
+ *
  * このファイルには、オートファネル大学ウェブサイトのスタイル定義が含まれています。
  * サイト全体に共通するスタイルや各セクション固有のスタイルが含まれます。
  */
 
 /* ===== 基本スタイル ===== */
-*, *::before, *::after { 
-    box-sizing: border-box; 
+*, *::before, *::after {
+    box-sizing: border-box;
 }
 
 html, body {
     overflow-x: hidden; /* 横方向のスクロールを防止 */
 }
 
-body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, figure, figcaption, blockquote, dl, dd { 
-    margin: 0; 
-    padding: 0; 
+body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, figure, figcaption, blockquote, dl, dd {
+    margin: 0;
+    padding: 0;
 }
 
 body {
     font-family: 'Noto Sans JP', sans-serif;
     color: #333;
     line-height: 1.6;
-    background-color: #f8f9fa;
+    background-color: #fff; /* 全体の背景色 */
     letter-spacing: 0.05em;
     position: relative; /* サブ要素の位置決め基準 */
+    min-height: 100vh; /* フッターを最下部に固定するための設定 */
+    display: flex; /* フッターを最下部に固定するための設定 */
+    flex-direction: column; /* フッターを最下部に固定するための設定 */
 }
+
+main {
+    flex: 1 0 auto; /* メインコンテンツが領域を埋めるようにする */
+}
+
+footer {
+    flex-shrink: 0; /* フッターが縮まないようにする */
+}
+
 
 img {
     max-width: 100%;
@@ -53,162 +65,892 @@ button {
 }
 
 .section-padding {
-    padding: 64px 0;
+    padding: 80px 0; /* 各セクションの上下パディング */
 }
 
 @media (max-width: 768px) {
     .section-padding {
-        padding: 48px 0;
+        padding: 50px 0;
     }
 }
 
-/* ===== ヘッダー (以前のスタイルを適用) ===== */
+/* Utility Classes (リーピー様参考) */
+.inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+ .inner-lg {
+     max-width: 1400px;
+     margin: 0 auto;
+     padding: 0 20px;
+ }
+ .inner-md {
+     max-width: 1000px;
+     margin: 0 auto;
+     padding: 0 20px;
+ }
+ .flex {
+     display: flex;
+ }
+ .flex-j-between {
+     justify-content: space-between;
+ }
+ .flex-a-ctr {
+     align-items: center;
+ }
+ .flex-c-wrap {
+     flex-wrap: wrap;
+ }
+.pos_rel { position: relative; }
+.pos_ab { position: absolute; }
+.txt-ctr { text-align: center; }
+.mgn-btm8 { margin-bottom: 8px; }
+.mgn-btm16 { margin-bottom: 16px; }
+.mgn-btm24 { margin-bottom: 24px; }
+.mgn-btm32 { margin-bottom: 32px; }
+.mgn-btm40 { margin-bottom: 40px; }
+.mgn-btm56 { margin-bottom: 56px; }
+.mgn-btm64 { margin-bottom: 64px; }
+ .mgn-btm72 { margin-bottom: 72px; }
+.mgn-btm80 { margin-bottom: 80px; }
+ .mgn-top80 { margin-top: 80px; }
+
+
+/* ===== ヘッダー ===== */
 .site-header {
     background-color: #fff;
-    border-bottom: 1px solid #e6e6e6;
-    position: sticky;
+    /* position: sticky; */ /* stickyはヘッダーとコンテンツの重なりが発生しやすいためfixedに変更 */
+    position: fixed;
     top: 0;
+    left: 0;
+    width: 100%;
     z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    height: 60px; /* ヘッダーの高さを固定 */
+    display: flex; /* 中央寄せのため */
+    align-items: center; /* 中央寄せのため */
 }
 
 .header-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 30px;
+    padding: 0 20px; /* 上下パディングはheightで確保 */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 86px; /* 以前のヘッダー高さを維持 */
+    width: 100%; /* Flexアイテムとして幅いっぱい */
 }
 
+.site-logo {
+     flex: 0 0 auto;
+     max-width: 140px; /* ロゴを少し小さく */
+}
 .site-logo img {
-    height: 50px; /* 以前のロゴサイズを維持 */
-    width: auto;
-}
-
-.global-nav {
-    flex-grow: 1;
-    display: flex;
-    justify-content: flex-end;
+    width: 100%;
+    height: auto;
 }
 
 .global-nav ul {
     display: flex;
-    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .global-nav li {
-    margin-left: 16px;
+    margin: 0 15px;
 }
 
 .global-nav a {
     color: #333;
-    font-weight: bold;
-    font-size: 14px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
     transition: color 0.3s ease;
+    position: relative;
+    padding: 5px 0;
+}
+.global-nav a:hover {
+    color: #ff3a3a; /* オートファネル大学のメインカラー */
+}
+.global-nav a[aria-current="page"]::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #ff3a3a;
 }
 
-.global-nav a:not(.btn-nav):hover {
-    color: #17a7cc;
-}
 
-/* 以前のボタンスタイルを適用 */
-.btn-nav {
-    display: inline-block;
-    padding: 8px 18px;
-    color: #fff !important;
-    border-radius: 3px;
-    font-size: 14px;
+/* Header CTA Button Style (リーピー様参考) */
+.header-cta {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* ボタン間の隙間 */
+}
+.header-cta a {
+    display: flex;
+    align-items: center;
+    padding: 8px 15px; /* リーピー様調整 */
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 13px; /* リーピー様サイズ */
+    font-weight: 700; /* リーピー様太さ */
+    transition: all 0.3s ease;
+}
+.btn-document {
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #ddd; /* リーピー様調整 */
+    box-shadow: 0 1px 2px rgba(0,0,0,0.08); /* リーピー様参考 */
+}
+.btn-document:hover {
+    background-color: #f5f5f5;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.12); /* リーピー様参考 */
+}
+ .btn-document svg { /* アイコンのスタイル */
+     margin-right: 5px;
+     width: 1em; /* フォントサイズに合わせる */
+     height: 1em;
+     fill: currentColor; /* テキスト色を適用 */
+ }
+
+.btn-contact {
+    background-color: #ff3a3a; /* オートファネル大学のメインカラー */
+    color: #fff;
+    position: relative;
+    overflow: hidden; /* 無料ラベルの背景がはみ出さないように */
+    box-shadow: 0 1px 2px rgba(0,0,0,0.08); /* リーピー様参考 */
+    /* 右側のパディングを増やして無料ラベルのスペースを確保 */
+    padding-right: 30px; /* 元のボタンサイズに合わせて微調整 */
+}
+.btn-contact:hover {
+    background-color: #e03333; /* ホバー時の色を少し暗く */
+     transform: translateY(-2px); /* リーピー様参考 */
+     box-shadow: 0 4px 10px rgba(255, 58, 58, 0.3); /* リーピー様参考 */
+}
+.btn-contact .free-label { /* 無料ラベル */
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #fff;
+    color: #ff3a3a;
+    font-size: 9px; /* サイズをさらに小さく */
+    padding: 1px 4px; /* パディング調整 */
+    border-bottom-left-radius: 4px; /* リーピー様参考 */
     font-weight: bold;
-    transition: background-color 0.3s ease;
-    line-height: 1.5;
+    width: 25px; /* 無料ラベルの幅調整 */
+    height: 16px; /* 無料ラベルの高さ調整 */
+    display: flex; /* 中央寄せ */
+    align-items: center;
+    justify-content: center;
+    line-height: 1; /* テキストの行高調整 */
+    /* ラベルの位置を微調整 */
+    top: -1px;
+    right: -1px;
 }
 
-.btn-red {
-    background-color: #dd3333;
-}
 
-.btn-red:hover {
-    background-color: #b32929;
-    color: #fff !important;
-}
-
-.btn-blue {
-    background-color: #0d3283;
-}
-
-.btn-blue:hover {
-    background-color: #082258;
-    color: #fff !important;
-}
-
+/* Hamburger Button */
 .hamburger-button {
-    display: none;
+    display: none; /* PCでは非表示 */
     background: none;
     border: none;
     cursor: pointer;
-    padding: 0;
-    width: 30px;
-    height: 24px;
+    padding: 10px;
     position: relative;
-    z-index: 101;
+    width: 30px;
+    height: 30px;
+    z-index: 1001; /* ヘッダーより前面に */
 }
-
 .hamburger-button span {
     display: block;
-    background-color: #333;
-    height: 3px;
-    width: 100%;
     position: absolute;
-    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #333;
     transition: all 0.3s ease;
-    border-radius: 3px;
+    left: 0; /* 中央寄せの調整 */
+}
+.hamburger-button span:nth-child(1) { top: 8px; }
+.hamburger-button span:nth-child(2) { top: 14px; /* 間隔調整 */ }
+.hamburger-button span:nth-child(3) { bottom: 8px; /* 間隔調整 */ } /* bottom指定に変更 */
+.hamburger-button.active span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg); /* 中央に移動して回転 */
+}
+.hamburger-button.active span:nth-child(2) { opacity: 0; }
+.hamburger-button.active span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg); /* 中央に移動して回転 */
 }
 
-.hamburger-button span:nth-child(1) {
-    top: 0;
-}
-
-.hamburger-button span:nth-child(2) {
-    top: 10px;
-}
-
-.hamburger-button span:nth-child(3) {
+/* SP Fixed CTA */
+.sp-fix-cta {
+    display: none; /* PCでは非表示 */
+    position: fixed;
     bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    z-index: 999;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
 }
+.sp-fix-cta ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.sp-fix-cta li {
+    flex: 1;
+}
+.sp-fix-cta a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0; /* 上下のパディング調整 */
+    text-decoration: none;
+    font-size: 12px;
+    color: #333;
+    font-weight: 500;
+}
+.sp-fix-cta .mail {
+    background-color: #ff3a3a;
+}
+.sp-fix-cta .mail a {
+    color: #fff;
+    font-weight: 700;
+}
+.sp-fix-cta .book a {
+    color: #333;
+}
+.sp-fix-cta img,
+.sp-fix-cta svg { /* アイコンのスタイル */
+    width: 24px;
+    height: 24px;
+    margin-bottom: 3px; /* テキストとの間隔 */
+    fill: currentColor; /* 親要素の色を適用 */
+}
+
+
+/* Important Notice (重大告知バナー) */
+.important-notice {
+    background: linear-gradient(135deg, #f06, #ff9966);
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-weight: bold;
+    position: relative;
+    z-index: 10; /* 背景装飾より前面 */
+    margin: 30px auto; /* 上下のマージン調整、中央寄せ */
+     max-width: 1000px; /* 補助金バナーと同じ幅に */
+     border-radius: 8px; /* 角丸追加 */
+     box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* 影追加 */
+}
+.important-notice h2 {
+    font-size: 24px; /* サイズ調整 */
+    line-height: 1.4;
+    margin: 0.5em 0;
+}
+.important-notice p {
+    font-size: 14px;
+    margin: 0 0 0.5em 0;
+}
+.important-notice a {
+    color: white;
+    text-decoration: underline;
+}
+.important-notice-button {
+    display: inline-block;
+    background-color: white;
+    color: #f06 !important;
+    padding: 8px 20px;
+    border-radius: 30px;
+    margin-top: 10px;
+    font-weight: bold;
+    text-decoration: none !important;
+    transition: transform 0.3s ease;
+}
+.important-notice-button:hover {
+    transform: scale(1.05);
+}
+
+/* Subsidy Banner (補助金バナー) */
+.subsidy-banner {
+    display: block;
+    width: 100%;
+    max-width: 1000px;
+    margin: 30px auto 50px auto; /* 上下のマージン調整、中央寄せ */
+    text-align: center;
+    transition: transform 0.3s ease;
+    z-index: 10; /* 背景装飾より前面 */
+    position: relative;
+}
+.subsidy-banner:hover {
+    transform: translateY(-5px);
+}
+.subsidy-banner img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
 
 /* ===== ヒーローセクション ===== */
 .hero-section {
-    height: 650px; /* 高さをさらに増やして全体が表示されるように */
     position: relative;
-    margin-top: -86px; /* ヘッダーの高さに合わせる */
-    overflow: hidden; /* はみ出した部分を隠す */
+    width: 100%;
+    background-color: #e0f7ff; /* リーピー様参考の背景色 */
+    /* ヘッダーの高さ60px + 余裕分で上部パディング */
+    padding: 100px 0 80px 0; /* 上下パディング調整 */
+    overflow: hidden; /* 背景図形がはみ出さないように */
+    /* ヘッダーと重ならないように、ヘッダーの高さ分のネガティブマージンを削除 */
+    /* margin-top: -86px; */
+    /* margin-top: -60px; */ /* SP */
+}
+ /* site-mainのpadding-topは削除されるため、ヒーローセクションで調整 */
+ .site-main {
+     /* padding-top: 60px; */ /* 提供CSSから削除 */
+ }
+
+.hero-container { /* コンテンツのラッパー */
+    position: relative;
+    z-index: 10; /* 背景より前面に */
+    display: flex; /* リーピー様参考レイアウト */
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.hero-text {
+    flex-basis: 60%; /* リーピー様参考の幅 */
+    max-width: 700px; /* 最大幅 */
+    padding-right: 40px; /* 相談件数ブロックとの間隔 */
+}
+.hero-catch {
+    font-size: 48px; /* 大きめのフォントサイズ */
+    font-weight: 700;
+    margin: 0 0 20px 0;
+    line-height: 1.3;
+}
+.hero-lead {
+    font-size: 18px;
+    margin: 0 0 40px 0;
+    color: #555;
+}
+.hero-cta-buttons {
+    display: flex;
+    gap: 15px; /* ボタン間の隙間 */
+    margin-bottom: 40px;
+}
+/* ヒーローセクション内のCTAボタンは、ヘッダーのスタイルを再利用または調整 */
+.hero-cta-buttons .btn-contact,
+.hero-cta-buttons .btn-document {
+    padding: 12px 25px; /* 少し大きめに */
+    font-size: 16px;
+}
+/* ヒーローセクション内の無料相談ボタンのラベル位置調整 */
+.hero-cta-buttons .btn-contact {
+     padding-right: 40px; /* 右側のパディング調整 */
+}
+.hero-cta-buttons .btn-contact .free-label {
+    width: 35px; /* ラベル幅調整 */
+    height: 22px; /* ラベル高さ調整 */
+    font-size: 11px; /* フォントサイズ調整 */
+    top: -1px; /* 位置微調整 */
+    right: -1px; /* 位置微調整 */
+    border-bottom-left-radius: 6px; /* 角丸調整 */
 }
 
-.hero-image {
+
+.consultation-count { /* 相談件数ブロック (リーピー様参考) */
+    flex-basis: 40%; /* リーピー様参考の幅 */
+    max-width: 400px; /* 最大幅 */
+    background-color: rgba(255, 255, 255, 0.8); /* 半透明の背景 */
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    overflow: hidden; /* リストのスクロール用 */
+    max-height: 300px; /* 高さを固定 */
+}
+.consultation-count-header h3 {
+    margin: 0 0 5px 0;
+    font-size: 16px;
+    color: #555;
+    font-weight: 500;
+}
+.consultation-count-header p {
+    margin: 0 0 15px 0;
+    font-size: 28px; /* 件数のサイズ */
+    font-weight: 700;
+    color: #333;
+}
+.consultation-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+    color: #555;
+    overflow-y: auto; /* 縦スクロール */
+    max-height: 200px; /* リストの最大高さ */
+}
+.consultation-list li {
+    border-bottom: 1px dashed #eee; /* 区切り線 */
+    padding: 8px 0;
+}
+.consultation-list li:last-child {
+    border-bottom: none;
+}
+.consultation-list .date {
+    font-weight: 500;
+    margin-right: 10px;
+    min-width: 80px; /* 日付の幅を固定 */
+    display: inline-block;
+}
+
+/* Hero Background Decorations (リーピー様参考 - SVGとCSSで再現) */
+.hero-bg-deco {
+    position: absolute;
+    opacity: 0.6; /* 透明度 */
+    z-index: 1; /* コンテンツより奥に */
+}
+.hero-bg-triangle1 {
+    top: -100px;
+    left: -100px;
+    width: 600px;
+    height: 600px;
+    fill: #80d4d4; /* リーピー様参考色 */
+}
+.hero-bg-triangle2 {
+    bottom: -100px;
+    right: -100px;
+    width: 800px;
+    height: 800px;
+    fill: #4fbfec; /* リーピー様参考色 */
+}
+.hero-bg-circle1 {
+    top: 50px;
+    right: 100px;
+    width: 150px;
+    height: 150px;
+    background-color: #4fbfec; /* リーピー様参考色 */
+    border-radius: 50%;
+}
+.hero-bg-circle2 {
+    bottom: 50px;
+    left: 200px;
+    width: 100px;
+    height: 100px;
+    background-color: #80d4d4; /* リーピー様参考色 */
+    border-radius: 50%;
+}
+
+
+/* ===== セクション共通スタイル ===== */
+.section-title-container {
+    text-align: center;
+    margin-bottom: 40px;
+    max-width: 1180px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.section-subtitle {
+    display: block;
+    font-size: 14px;
+    color: #ff3a3a; /* オートファネル大学のメインカラー */
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.section-title {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0;
+    color: #333;
+    letter-spacing: 0.05em;
+}
+
+@media (max-width: 959px) { /* 提供CSSのブレークポイント */
+     .section-title {
+         font-size: 28px;
+     }
+     .YUKIblog-main-heading { /* 提供CSS */
+         font-size: 28px;
+     }
+     .YUKIblog-sub-text { /* 提供CSS */
+         font-size: 14px;
+         padding: 6px 15px;
+     }
+ }
+
+@media (max-width: 480px) { /* 提供CSSのブレークポイント */
+     .section-title {
+         font-size: 24px; /* さらに小さく */
+     }
+      .YUKIblog-main-heading { /* 提供CSS */
+         font-size: 24px;
+     }
+}
+
+
+/* ===== 実績・お客様の声セクション ===== */
+.achievement-section {
+    background-color: #f8f9fa; /* 提供CSSの背景色 */
+    position: relative;
+    z-index: 1;
+    padding: 80px 0; /* 上下パディング調整 */
+}
+
+.achievement-card-list {
+    display: grid;
+    /* デフォルトはauto-fitで可変（SPは1列になる想定） */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1180px; /* 提供CSSの最大幅 */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px; /* 提供CSSのパディング */
+    padding-right: 15px; /* 提供CSSのパディング */
+}
+
+/* PC表示時のみ3列に固定 (1025px以上) */
+@media (min-width: 1025px) {
+    .achievement-card-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+/* Tablet表示時も3列 (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .achievement-card-list {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px; /* 隙間調整 */
+    }
+     .achievement-card img { height: 180px; } /* 画像高さ調整 */
+}
+
+
+.achievement-card {
+    background-color: #fff; /* 提供CSS */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease; /* hoverアニメーション追加 */
+    display: block; /* FlexやGridの子要素として表示 */
+    visibility: visible; /* 表示 */
+    height: 100%; /* カードの高さを揃える */
+}
+
+.achievement-card:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    transform: translateY(-5px); /* hoverアニメーション追加 */
+}
+
+.achievement-card a {
+    display: block;
+    color: #333;
+}
+
+.achievement-card img {
+    width: 100%;
+    height: 200px; /* 画像の高さを固定 (PC用) */
+    object-fit: cover;
+    display: block; /* 表示 */
+}
+
+.achievement-card p {
+    padding: 15px;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 1.4;
+}
+
+
+/* ===== オンライン講座一覧セクション ===== */
+.online-courses-section {
+    background-color: #f8f9fa;
+    padding: 80px 15px; /* 提供CSSのパディング */
+    position: relative;
+    z-index: 1;
+}
+
+.online-courses-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* PCは3列 */
+    gap: 30px;
+    max-width: 1180px; /* 提供CSS */
+    margin: 0 auto;
+}
+
+/* Tablet表示時2列 (提供CSS) */
+@media screen and (max-width: 1024px) {
+    .online-courses-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px; /* 隙間調整 */
+    }
+    .course-card img { height: 180px; } /* 画像高さ調整 */
+}
+/* SP表示時1列 (提供CSS) */
+@media screen and (max-width: 768px) {
+    .online-courses-grid {
+        grid-template-columns: 1fr;
+        gap: 20px; /* 隙間調整 */
+    }
+     .course-card img { height: 160px; } /* 画像高さ調整 */
+     .course-content { padding: 10px 15px; } /* パディング調整 */
+     .course-title { font-size: 16px; margin-bottom: 5px; } /* タイトル調整 */
+     .course-description { font-size: 13px; margin-bottom: 10px; -webkit-line-clamp: 3; min-height: 4.5em;} /* 説明文調整 */
+     .course-button { padding: 8px 15px; font-size: 13px; } /* ボタン調整 */
+}
+
+
+.course-card {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.course-image {
+    position: relative;
+    height: 200px; /* 画像の高さを固定 (PC用) */
+    overflow: hidden;
+}
+
+.course-image img {
     width: 100%;
     height: 100%;
-    background-position: center; /* 中央に戻す */
-    background-size: cover;
-    background-repeat: no-repeat;
+    object-fit: cover;
 }
 
-@media (max-width: 959px) {
-    .hero-section {
-        height: 70vh; /* モバイル表示時の高さを調整 */
-        margin-top: -60px;
-    }
-    
-    .hero-pc {
-        display: none;
-    }
-    
-    .hero-sp {
-        display: block;
-    }
+.course-level {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ff3a3a; /* オートファネル大学のメインカラー */
+    color: white;
+    padding: 5px 12px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: bold;
 }
 
-/* ===== ピンクセクション (旧yukiblogからYUKIblogに変更) ===== */
+.course-content {
+    padding: 20px; /* 提供CSS */
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.course-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    line-height: 1.4;
+    color: #333;
+}
+
+.course-description {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex-grow: 1;
+     overflow: hidden; /* 省略表示のための追加 */
+     display: -webkit-box;
+     -webkit-line-clamp: 4; /* 省略表示のための追加 */
+     -webkit-box-orient: vertical; /* 省略表示のための追加 */
+     min-height: 6em; /* 高さ固定 */
+}
+
+.course-button {
+    display: inline-block;
+    background-color: #ff3a3a; /* オートファネル大学のメインカラー */
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 4px; /* 角丸調整 */
+    font-weight: bold;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    align-self: flex-start;
+}
+
+.course-button:hover {
+    background-color: #e03333; /* ホバー時の色 */
+    color: white;
+}
+
+
+/* ===== ブログセクション ===== */
+.blog-section {
+    background-color: #fff; /* 提供CSS */
+    padding: 80px 15px; /* 提供CSSのパディング */
+    position: relative;
+    z-index: 1;
+}
+
+.blog-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1180px; /* 提供CSS */
+    margin: 0 auto;
+}
+
+/* SP表示時1列 (提供CSS) */
+@media screen and (max-width: 768px) {
+    .blog-list {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+     .blog-image { height: 180px; } /* 画像高さ */
+     .blog-title { font-size: 16px; margin: 10px 10px 8px;} /* タイトル調整 */
+     .blog-meta { font-size: 12px; padding: 10px 10px 0;} /* メタ調整 */
+     .blog-excerpt { font-size: 13px; margin: 0 10px 10px; } /* 抜粋調整 */
+     .blog-readmore { margin: 0 10px 10px; font-size: 13px;} /* 続きを読む調整 */
+
+     .blog-item.pc-only { /* pc-onlyクラスを持つ要素はSPで非表示 */
+         display: none;
+     }
+}
+
+
+.blog-item {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease; /* hoverアニメーション追加 */
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* カードの高さを揃える */
+}
+
+.blog-item:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    transform: translateY(-5px); /* hoverアニメーション追加 */
+}
+
+.blog-item a {
+    display: block;
+    color: #333;
+}
+
+.blog-meta {
+    display: flex;
+    gap: 10px;
+    font-size: 13px;
+    color: #666;
+    padding: 15px 15px 0;
+}
+
+.blog-category {
+    color: #ff3a3a; /* オートファネル大学のメインカラー */
+    font-weight: bold;
+}
+
+.blog-image {
+    width: 100%;
+    height: 200px; /* 画像の高さを固定 (PC用) */
+    overflow: hidden;
+}
+
+.blog-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.blog-title {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.4;
+    margin: 15px 15px 10px;
+    color: #333;
+    overflow: hidden; /* 省略表示 */
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* 2行でカット */
+    -webkit-box-orient: vertical;
+    min-height: 3em; /* 高さ固定 */
+}
+
+.blog-excerpt {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+    margin: 0 15px 15px;
+    flex-grow: 1;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* 3行でカット */
+    -webkit-box-orient: vertical;
+     min-height: 4.5em; /* 高さ固定 */
+}
+
+.highlight { /* 元のスタイル */
+    background-color: yellow;
+    padding: 0 2px;
+}
+.blog-excerpt .highlight { /* 今回追加したhighlightクラスのスタイル */
+    background-color: #ffecb3;
+    padding: 0 3px;
+}
+
+.blog-readmore {
+    display: inline-block;
+    margin: 0 15px 15px;
+    color: #ff3a3a; /* オートファネル大学のメインカラー */
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.blog-readmore:hover {
+    color: #e03333; /* ホバー時の色 */
+    text-decoration: underline;
+}
+
+.more-button-container {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.btn-more { /* 提供CSSのスタイル */
+    display: inline-block;
+    padding: 12px 40px;
+    background-color: #ff3a3a; /* オートファネル大学のメインカラー */
+    color: white;
+    border-radius: 4px; /* 角丸調整 */
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-more:hover {
+    background-color: #e03333; /* ホバー時の色 */
+}
+
+
+/* ===== ピンクセクション (提供CSS) ===== */
 .YUKIblog-pink-section {
     background: linear-gradient(135deg, #ED4484 0%, #FBB67D 100%);
     padding-top: 80px;
@@ -236,6 +978,8 @@ button {
     width: 100%;
     height: 50px;
     background-color: #ffffff;
+    /* 上の図形と対称になるように調整 */
+    clip-path: polygon(0 0, 25% 15%, 50% 0, 75% 15%, 100% 0, 100% 100%, 0 100%);
 }
 
 .YUKIblog-pink-section-inner {
@@ -283,415 +1027,191 @@ button {
     transform: translateY(-5px);
 }
 
-/* ===== セクションタイトル ===== */
-.section-title-container {
-    text-align: center;
-    margin-bottom: 40px;
-    max-width: 1180px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 15px;
-    padding-right: 15px;
-}
+/* 提供CSSの不要なセレクタを削除 */
+/* .accordion-toggle { ... } */
+/* .accordion-icon-check { ... } */
+/* .accordion-icon-plus { ... } */
+/* .achievement-tabs { ... } */
+/* .tab-button { ... } */
+/* .tab-button:hover { ... } */
+/* .tab-button.active { ... } */
+/* .text-red { ... } */
 
-.section-subtitle {
+
+/* Contact CTA Section (フッター直前) */
+.contact-cta-section {
+    background-color: #ff3a3a; /* オートファネル大学のメインカラー */
+    color: #fff;
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+}
+.contact-cta-container {
+    position: relative;
+    z-index: 10;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+}
+.contact-cta-subtitle {
     display: block;
     font-size: 14px;
-    color: #555;
-    margin-bottom: 8px;
-}
-
-.section-title {
-    font-size: 40px;
-    font-weight: bold;
-    color: #333;
-    letter-spacing: 0.1em;
-}
-
-@media (max-width: 959px) {
-    .section-title {
-        font-size: 32px;
-    }
-    
-    .YUKIblog-main-heading {
-        font-size: 28px;
-    }
-    
-    .YUKIblog-sub-text {
-        font-size: 14px;
-        padding: 6px 15px;
-    }
-}
-
-@media (max-width: 480px) {
-    .section-title {
-        font-size: 28px;
-    }
-    
-    .YUKIblog-main-heading {
-        font-size: 24px;
-    }
-}
-
-/* ===== 実績・お客様の声セクション ===== */
-.achievement-section {
-    background-color: #f9f9f9;
-    position: relative;
-    z-index: 1;
-}
-
-.accordion-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    background-color: #0d3283;
     color: #fff;
-    padding: 12px 20px;
-    border-radius: 5px;
+    opacity: 0.8;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+.contact-cta-title {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0 0 20px 0;
+    color: #fff;
+}
+.contact-cta-lead {
     font-size: 16px;
-    font-weight: bold;
-    margin-top: 20px;
-    margin-bottom: 32px;
+    margin: 0 0 40px 0;
+    color: #fff;
+    opacity: 0.9;
 }
-
-.accordion-icon-check {
-    color: #7bdcb5;
-    margin-right: 8px;
-}
-
-.accordion-icon-plus {
-    font-size: 20px;
-}
-
-.achievement-tabs {
+.contact-cta-buttons {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 40px;
-    max-width: 1180px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 15px;
-    padding-right: 15px;
+    gap: 20px;
+    margin-top: 30px; /* 上のテキストとの間隔 */
 }
-
-.tab-button {
-    padding: 10px 25px;
-    font-size: 14px;
-    font-weight: bold;
-    background-color: #eee;
-    color: #555;
-    border-radius: 3px;
+/* コンタクトCTAセクション内のボタン */
+.contact-cta-buttons .btn {
+    display: flex;
+    align-items: center;
+    padding: 12px 25px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
     transition: all 0.3s ease;
 }
-
-.tab-button:hover {
-    background-color: #ddd;
-}
-
-.tab-button.active {
-    background-color: #0d3283;
-    color: #fff;
-}
-
-.achievement-card-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    max-width: 1180px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-.achievement-card {
+.contact-cta-buttons .btn-contact {
     background-color: #fff;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    transition: box-shadow 0.3s ease;
-    display: block !important; /* 強制的に表示 */
-    visibility: visible !important; /* 強制的に表示 */
-}
-
-.achievement-card:hover {
-    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-}
-
-.achievement-card a {
-    display: block;
-    color: #333;
-}
-
-.achievement-card img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    display: block !important; /* 強制的に表示 */
-}
-
-.achievement-card p {
-    padding: 15px;
-    font-size: 15px;
-    font-weight: bold;
-    line-height: 1.4;
-}
-
-/* ===== オンライン講座一覧セクション ===== */
-.online-courses-section {
-    background-color: #f8f9fa;
-    padding: 80px 15px;
+    color: #ff3a3a;
+    border: 1px solid #fff;
     position: relative;
-    z-index: 1;
-}
-
-.online-courses-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    max-width: 1180px;
-    margin: 0 auto;
-}
-
-.course-card {
-    background-color: #fff;
-    border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+    /* 右側のパディングを増やして無料ラベルのスペースを確保 */
+    padding-right: 40px; /* 元25px + 無料ラベル幅 */
 }
-
-.course-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-}
-
-.course-image {
-    position: relative;
-    height: 180px;
-    overflow: hidden;
-}
-
-.course-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.course-level {
+.contact-cta-buttons .btn-contact .free-label { /* 無料ラベル */
     position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: #0d3283;
-    color: white;
-    padding: 5px 12px;
-    border-radius: 3px;
-    font-size: 12px;
+    top: 0;
+    right: 0;
+    background-color: #ff3a3a;
+    color: #fff;
+    font-size: 10px;
+    padding: 2px 5px;
+    border-bottom-left-radius: 4px;
     font-weight: bold;
+    /* 幅と高さを固定して角に合わせて配置 */
+    width: 35px; /* 無料ラベルの幅調整 */
+    height: 22px; /* 無料ラベルの高さ調整 */
+    display: flex; /* 中央寄せ */
+    align-items: center;
+    justify-content: center;
+    line-height: 1; /* テキストの行高調整 */
+    top: -1px; /* 位置微調整 */
+    right: -1px; /* 位置微調整 */
+     border-bottom-left-radius: 6px; /* 角丸調整 */
+}
+.contact-cta-buttons .btn-contact:hover {
+    background-color: #f5f5f5;
+}
+.contact-cta-buttons .btn-document {
+    background-color: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+}
+.contact-cta-buttons .btn-document:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.contact-cta-buttons .btn-document svg { /* アイコンのスタイル */
+    margin-right: 5px;
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
 }
 
-.course-content {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-}
-
-.course-title {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 12px;
-    line-height: 1.4;
-    color: #333;
-}
-
-.course-description {
-    font-size: 14px;
-    color: #555;
-    line-height: 1.6;
-    margin-bottom: 20px;
-    flex-grow: 1;
-}
-
-.course-button {
-    display: inline-block;
-    background-color: #0d3283;
-    color: white;
-    text-align: center;
-    padding: 10px 20px;
-    border-radius: 3px;
-    font-weight: bold;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
-    align-self: flex-start;
-}
-
-.course-button:hover {
-    background-color: #082258;
-    color: white;
-}
-
-/* ===== ブログセクション（新機能） ===== */
-.blog-section {
-    background-color: #fff;
-    padding: 80px 15px;
-    position: relative;
+/* Contact CTA Background Decorations */
+.contact-cta-bg-deco {
+    position: absolute;
+    opacity: 0.2; /* 透明度 */
     z-index: 1;
 }
-
-.blog-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 30px;
-    max-width: 1180px;
-    margin: 0 auto;
+.contact-cta-bg-triangle1 {
+    top: -50px;
+    left: -50px;
+    width: 300px;
+    height: 300px;
+    fill: #fff;
+}
+.contact-cta-bg-triangle2 {
+    bottom: -50px;
+    right: -50px;
+    width: 400px;
+    height: 400px;
+    fill: #fff;
+}
+.contact-cta-bg-circle1 {
+    top: 30px;
+    right: 50px;
+    width: 80px;
+    height: 80px;
+    background-color: #fff;
+    border-radius: 50%;
+}
+.contact-cta-bg-circle2 {
+    bottom: 30px;
+    left: 100px;
+    width: 60px;
+    height: 60px;
+    background-color: #fff;
+    border-radius: 50%;
 }
 
-.blog-item {
-    background-color: white;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    transition: box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
 
-.blog-item:hover {
-    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-}
-
-.blog-meta {
-    display: flex;
-    gap: 10px;
-    font-size: 13px;
-    color: #666;
-    padding: 15px 15px 0;
-}
-
-.blog-category {
-    color: #0d3283;
-    font-weight: bold;
-}
-
-.blog-image {
-    width: 100%;
-    height: 200px;
-    overflow: hidden;
-}
-
-.blog-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.blog-title {
-    font-size: 18px;
-    font-weight: bold;
-    line-height: 1.4;
-    margin: 15px 15px 10px;
-    color: #333;
-}
-
-.blog-excerpt {
-    font-size: 14px;
-    color: #555;
-    margin: 0 15px 15px;
-    flex-grow: 1;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-}
-
-.blog-readmore {
-    display: inline-block;
-    margin: 0 15px 15px;
-    color: #0d3283;
-    font-weight: bold;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.blog-readmore:hover {
-    color: #c0392b;
-    text-decoration: underline;
-}
-
-.highlight {
-    background-color: #ffecb3;
-    padding: 0 3px;
-}
-
-.text-red {
-    color: #e74c3c;
-    font-weight: bold;
-}
-
-.more-button-container {
-    text-align: center;
-    margin-top: 40px;
-}
-
-.btn-more {
-    display: inline-block;
-    padding: 12px 40px;
-    background-color: #0d3283;
-    color: white;
-    border-radius: 3px; /* 以前のボタンスタイルに合わせる */
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-}
-
-.btn-more:hover {
-    background-color: #082258;
-}
-
-/* ===== フッター (以前のスタイルを適用) ===== */
+/* ===== フッター ===== */
 .site-footer {
-    background-color: #0d3283;
-    color: #ffffff;
-    padding-top: 64px;
-    position: relative; /* 下の要素の制御のため */
-    z-index: 10; /* 下の要素より前面に */
+    background-color: #0d3283; /* 提供CSSのフッター背景色 */
+    color: #ffffff; /* 提供CSSの文字色 */
+    padding-top: 64px; /* 提供CSSのパディング */
+    position: relative;
+    z-index: 10;
 }
 
 .footer-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 15px;
+    padding: 0 15px; /* 提供CSSのパディング */
 }
 
 .footer-widgets {
     display: flex;
     flex-wrap: wrap;
-    gap: 30px;
-    margin-bottom: 60px;
+    gap: 30px; /* 提供CSSの隙間 */
+    margin-bottom: 60px; /* 提供CSSのマージン */
 }
 
 .widget-area {
     flex-grow: 1;
     flex-shrink: 1;
+    /* 提供CSSのflex-basisとmin-widthを統合 */
+    flex-basis: 20%;
+    min-width: 150px; /* SP表示時の最小幅 */
 }
 
 .footer-widget-1 {
-    flex-basis: 20%;
-    min-width: 200px;
+     flex-basis: 20%; /* 提供CSS */
+     min-width: 200px; /* 提供CSS */
 }
 
-.footer-widget-2, .footer-widget-3, .footer-widget-4 {
-    flex-basis: 20%;
-    min-width: 150px;
-}
 
 .widget-area h4 {
     font-size: 16px;
@@ -700,237 +1220,361 @@ button {
 }
 
 .widget-area ul li {
-    margin-bottom: 12px;
+    margin-bottom: 12px; /* 提供CSS */
 }
 
 .widget-area ul li a {
-    color: #eee;
+    color: #eee; /* 提供CSSの文字色 */
     font-size: 14px;
     transition: color 0.3s ease;
 }
 
 .widget-area ul li a:hover {
-    color: #fff;
+    color: #fff; /* 提供CSSのホバー色 */
 }
 
 .footer-logo {
-    max-width: 200px;
-    margin-bottom: 25px;
+    max-width: 200px; /* 提供CSS */
+    margin-bottom: 25px; /* 提供CSS */
 }
 
 .footer-sns {
     display: flex;
-    gap: 10px;
+    gap: 10px; /* 提供CSS */
 }
 
 .footer-sns a {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #0d3283;
-    background-color: #ffffff;
-    width: 36px;
-    height: 36px;
+    color: #0d3283; /* 提供CSSの色 */
+    background-color: #ffffff; /* 提供CSSの背景色 */
+    width: 36px; /* 提供CSS */
+    height: 36px; /* 提供CSS */
     text-align: center;
-    border-radius: 5px;
+    border-radius: 5px; /* 提供CSS */
     font-size: 16px;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease; /* 提供CSS */
 }
 
 .footer-sns a svg {
-    width: 18px;
-    height: 18px;
+    width: 18px; /* 提供CSS */
+    height: 18px; /* 提供CSS */
+    fill: currentColor; /* 色継承 */
 }
 
 .footer-sns a:hover {
-    opacity: 0.8;
+    opacity: 0.8; /* 提供CSS */
 }
 
 .site-copyright {
-    background-color: #ffffff;
-    color: #333333;
-    padding: 20px 0;
+    background-color: #ffffff; /* 提供CSSの背景色 */
+    color: #333333; /* 提供CSSの文字色 */
+    padding: 20px 0; /* 提供CSSのパディング */
     text-align: center;
-    position: relative; /* 位置調整 */
-    z-index: 2; /* 重ね順を高く */
+    position: relative;
+    z-index: 2;
 }
 
 .site-copyright small {
     font-size: 12px;
 }
 
+
 /* ===== レスポンシブ対応 ===== */
-@media screen and (max-width: 1024px) {
-    .online-courses-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+
+/* 1025px以上 (PC) */
+@media (min-width: 1025px) {
+     /* お客様の声 3列 */
+     .achievement-card-list {
+         grid-template-columns: repeat(3, 1fr);
+     }
+     .achievement-card img { height: 200px; } /* PC画像高さ */
+     .achievement-card p { font-size: 15px; } /* PCテキストサイズ */
+
+     /* オンライン講座 3列 */
+      .online-courses-grid {
+         grid-template-columns: repeat(3, 1fr);
+      }
+      .course-card img { height: 200px; } /* PC画像高さ */
+      .course-content { padding: 15px; }
+      .course-title { font-size: 18px; margin-bottom: 10px;}
+      .course-description { font-size: 14px; margin-bottom: 15px; -webkit-line-clamp: 4; min-height: 6em;}
+      .course-button { padding: 10px 20px; font-size: 14px; }
+
 }
 
-@media screen and (max-width: 959px) {
-    .header-container {
-        height: 60px;
-        padding-left: 15px;
-        padding-right: 15px;
-    }
-    
-    .site-logo img {
-        height: 40px;
-    }
-    
-    .pc-nav {
-        display: none;
-    }
-    
-    .sp-nav {
-        display: block;
-    }
-    
-    .site-main {
-        padding-top: 60px;
-    }
-    
-    .YUKIblog-pink-section {
-        padding-top: 60px;
-        padding-bottom: 60px;
-    }
-    
-    .YUKIblog-pink-section::before, .YUKIblog-pink-section::after {
-        height: 30px;
-    }
-    
-    .YUKIblog-main-heading {
-        font-size: 28px;
-        margin-bottom: 30px;
-    }
-    
-    .YUKIblog-sub-text {
-        font-size: 14px;
-        padding: 6px 15px;
-        margin-bottom: 20px;
-    }
-    
-    .accordion-toggle {
-        font-size: 15px;
-        padding: 10px 15px;
-    }
-    
-    .tab-button {
-        padding: 8px 15px;
-        font-size: 13px;
-    }
-    
-    .achievement-card-list {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 15px;
-    }
-    
-    .achievement-card p {
-        font-size: 14px;
-        padding: 12px;
-    }
-    
-    .blog-list {
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 20px;
-    }
-    
-    .footer-widget-1 {
-        flex-basis: 100%;
-        min-width: 100%;
-        text-align: center;
-    }
-    
-    .footer-logo {
-        margin-left: auto;
-        margin-right: auto;
-    }
-    
-    .footer-sns {
-        justify-content: center;
-    }
-}
 
+/* 960px - 1024px (提供CSSのブレークポイントに合わせて調整) */
+@media screen and (min-width: 960px) and (max-width: 1024px) {
+     /* 提供CSSのスタイル */
+     .header-container { padding-left: 30px; padding-right: 30px; }
+     .site-main { /* padding-top: 60px; */ } /* ヒーローセクションで調整するため削除 */
+
+     /* Tablet specific adjustments (769px - 1024px 頃) */
+     .global-nav li { margin: 0 8px; }
+     .global-nav a { font-size: 13px; }
+     .header-cta a { padding: 8px 15px; font-size: 13px; }
+     .header-cta .free-label { font-size: 9px; top: -6px; right: -6px; width: 25px; height: 16px; }
+     .btn-contact { padding-right: 25px; } /* 右側パディング調整 */
+     .site-logo { max-width: 150px; }
+
+     /* お客様の声 3列 (Tablet) */
+     .achievement-card-list {
+         grid-template-columns: repeat(3, 1fr);
+         gap: 20px; /* 隙間調整 */
+     }
+     .achievement-card img { height: 180px; } /* 画像高さ調整 */
+
+
+     /* オンライン講座 2列 (提供CSS) */
+     .online-courses-grid {
+         grid-template-columns: repeat(2, 1fr);
+         gap: 20px; /* 隙間調整 */
+     }
+     .course-card img { height: 180px; } /* 画像高さ調整 */
+     .course-content { padding: 12px 15px; } /* パディング調整 */
+     .course-title { font-size: 17px; margin-bottom: 8px; } /* タイトル調整 */
+     .course-description { font-size: 13px; margin-bottom: 15px; -webkit-line-clamp: 4; min-height: 6em;} /* 説明文調整 */
+     .course-button { padding: 9px 18px; font-size: 13px; } /* ボタン調整 */
+
+     /* セクションタイトル */
+      .section-title { font-size: 28px; }
+
+     /* コンタクトCTAセクション */
+      .contact-cta-title { font-size: 28px; }
+ }
+
+
+/* 769px - 959px (提供CSSのブレークポイントに合わせて調整) */
+@media screen and (min-width: 769px) and (max-width: 959px) {
+     /* 提供CSSのスタイル */
+     .hero-section {
+         height: 70vh; /* 提供CSS */
+         /* margin-top: -60px; */ /* fixedヘッダーなので不要 */
+         padding-top: 100px; /* ヘッダー高さ + 余裕分 */
+     }
+     .hero-pc { display: none; } /* 提供CSS */
+     .hero-sp { display: block; } /* 提供CSS */
+
+      .YUKIblog-pink-section { /* 提供CSS */
+         padding-top: 60px;
+         padding-bottom: 60px;
+     }
+     .YUKIblog-pink-section::before, .YUKIblog-pink-section::after { /* 提供CSS */
+         height: 30px;
+     }
+     .YUKIblog-main-heading { font-size: 28px; margin-bottom: 30px; } /* 提供CSS */
+     .YUKIblog-sub-text { font-size: 14px; padding: 6px 15px; margin-bottom: 20px; } /* 提供CSS */
+     .accordion-toggle { font-size: 15px; padding: 10px 15px; } /* 提供CSS */
+     .tab-button { padding: 8px 15px; font-size: 13px; } /* 提供CSS */
+     .achievement-card p { font-size: 14px; padding: 12px; } /* 提供CSS */
+     .footer-widget-1 { flex-basis: 100%; min-width: 100%; text-align: center; } /* 提供CSS */
+     .footer-logo { margin-left: auto; margin-right: auto; } /* 提供CSS */
+     .footer-sns { justify-content: center; } /* 提供CSS */
+
+     /* お客様の声 3列 */
+     .achievement-card-list {
+         grid-template-columns: repeat(3, 1fr);
+         gap: 15px; /* 隙間調整 */
+     }
+     .achievement-card img { height: 180px; } /* 画像高さ調整 */
+
+     /* オンライン講座 2列 */
+     .online-courses-grid {
+         grid-template-columns: repeat(2, 1fr);
+         gap: 15px; /* 隙間調整 */
+     }
+      .course-card img { height: 180px; } /* 画像高さ調整 */
+      .course-content { padding: 12px 15px; } /* パディング調整 */
+      .course-title { font-size: 17px; margin-bottom: 8px; } /* タイトル調整 */
+      .course-description { font-size: 13px; margin-bottom: 15px; -webkit-line-clamp: 4; min-height: 6em;} /* 説明文調整 */
+      .course-button { padding: 9px 18px; font-size: 13px; } /* ボタン調整 */
+
+     /* ブログ 2列 */
+     .blog-list {
+         grid-template-columns: repeat(2, 1fr);
+         gap: 20px; /* 隙間調整 */
+     }
+
+ }
+
+
+/* 768px以下 (SP) */
 @media screen and (max-width: 768px) {
-    .blog-list {
-        grid-template-columns: 1fr;
+    /* ヘッダー */
+    .site-header { height: 60px; } /* SPヘッダー高さ */
+    .header-container { padding: 0 15px; } /* SPパディング */
+    .site-logo { max-width: 120px; } /* SPロゴサイズ */
+
+    /* ハンバーガーボタン */
+    .pc-nav, .header-cta { display: none; }
+    .hamburger-button { display: block; }
+
+    /* SP固定CTA */
+    .sp-fix-cta { display: block; }
+
+    /* ヒーローセクション */
+    .hero-section {
+         padding: 80px 0 40px 0; /* 上部パディング調整 */
+         height: auto; /* 高さ固定解除 */
+         margin-top: 0; /* ネガティブマージン解除 */
+    }
+    .hero-container {
+        flex-direction: column; /* 縦並び */
+        align-items: center; /* 中央寄せ */
+        padding: 0 15px;
+    }
+    .hero-text {
+        flex-basis: 100%;
+        padding-right: 0;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    .hero-catch { font-size: 32px; margin-bottom: 15px; }
+    .hero-lead { font-size: 15px; margin-bottom: 30px; }
+    .hero-cta-buttons { justify-content: center; gap: 10px; }
+    .hero-cta-buttons .btn-contact,
+    .hero-cta-buttons .btn-document { padding: 10px 20px; font-size: 14px; }
+     /* ヒーローセクションSP無料相談ラベル */
+     .hero-cta-buttons .btn-contact { padding-right: 35px; }
+     .hero-cta-buttons .btn-contact .free-label { width: 30px; height: 18px; font-size: 10px; }
+
+
+    .consultation-count {
+        flex-basis: 100%;
+        max-width: 100%; /* 幅いっぱい */
+        padding: 15px; /* SPパディング */
+    }
+    .consultation-count-header h3 { font-size: 15px; margin-bottom: 3px;}
+    .consultation-count-header p { font-size: 24px; margin-bottom: 10px;}
+    .consultation-list { max-height: 150px; } /* リストの高さ調整 */
+    .consultation-list li { font-size: 13px; padding: 6px 0;}
+    .consultation-list .date { min-width: 70px; margin-right: 5px;}
+
+
+    /* 重大告知バナー */
+    .important-notice { margin: 20px auto; padding: 12px 15px; } /* SP上下マージン・パディング */
+     .important-notice h2 { font-size: 18px; margin: 0.4em 0;}
+     .important-notice p { font-size: 13px; margin: 0 0 0.4em 0;}
+     .important-notice-button { padding: 6px 15px; font-size: 13px;}
+
+    /* 補助金バナー */
+    .subsidy-banner { margin: 20px auto 40px auto; } /* SP上下マージン調整 */
+
+
+    /* セクション共通 */
+    .section-padding { padding: 50px 0; }
+    .section-title-container { margin-bottom: 30px; padding: 0 15px;}
+    .section-subtitle { font-size: 13px; }
+    .section-title { font-size: 24px; }
+
+    /* お客様の声 */
+    .achievement-section { padding: 50px 0;} /* SP上下パディング */
+    .achievement-card-list {
+        grid-template-columns: 1fr; /* SPは1列表示 */
         gap: 20px;
+        padding-left: 15px; /* SPパディング */
+        padding-right: 15px; /* SPパディング */
     }
-    
+    .achievement-card img { height: 160px; } /* 画像高さ調整 */
+    .achievement-card p { font-size: 14px; } /* テキストサイズ調整 */
+
+
+    /* オンライン講座一覧 */
+    .online-courses-section { padding: 50px 15px;} /* SPパディング */
     .online-courses-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* SPは1列表示 */
+        gap: 20px;
+        max-width: 100%; /* 幅調整 */
     }
-    
+     .course-card img { height: 160px; } /* 画像高さ調整 */
+     .course-content { padding: 10px 15px; } /* パディング調整 */
+     .course-title { font-size: 16px; margin-bottom: 5px; } /* タイトル調整 */
+     .course-description { font-size: 13px; margin-bottom: 10px; -webkit-line-clamp: 3; min-height: 4.5em;} /* 説明文調整 */
+     .course-button { padding: 8px 15px; font-size: 13px; } /* ボタン調整 */
+
+
+    /* ブログ */
+    .blog-section { padding: 50px 15px; } /* SPパディング */
+    .blog-list {
+        grid-template-columns: 1fr; /* SPは1列 */
+        gap: 20px;
+        max-width: 100%; /* 幅調整 */
+    }
+    .blog-item.pc-only { display: none; } /* pc-onlyはSPで非表示 */
+    .blog-meta, .blog-title, .blog-excerpt, .blog-readmore { padding-left: 10px; padding-right: 10px; }
+    .blog-title { font-size: 15px; min-height: auto; -webkit-line-clamp: 2; } /* 高さ調整 */
+    .blog-excerpt { font-size: 13px; min-height: auto; -webkit-line-clamp: 3; } /* 高さ調整 */
+    .blog-readmore { font-size: 13px; }
+
+
+    /* Contact CTA Section */
+    .contact-cta-section { padding: 50px 0; }
+     .contact-cta-container { padding: 0 15px;}
+     .contact-cta-subtitle { font-size: 13px; }
+     .contact-cta-title { font-size: 24px; margin-bottom: 15px; }
+     .contact-cta-lead { font-size: 14px; margin-bottom: 30px; }
+     .contact-cta-buttons { flex-direction: column; gap: 15px; }
+     .contact-cta-buttons .btn { padding: 10px 20px; font-size: 14px; justify-content: center; }
+      /* コンタクトCTAセクションSP無料相談ラベル */
+      .contact-cta-buttons .btn-contact { padding-right: 35px; }
+      .contact-cta-buttons .btn-contact .free-label { width: 30px; height: 18px; font-size: 10px; }
+
+
+    /* フッター */
+    .site-footer { padding-top: 40px;} /* SPパディング */
+    .footer-container { padding: 0 15px;} /* SPパディング */
+    .footer-widgets { flex-direction: column; gap: 20px;} /* 縦並び */
+    .widget-area { flex-basis: 100%; min-width: 100%; margin-bottom: 20px; }
+    .footer-widget-1 { margin-bottom: 30px; text-align: center; }
+    .footer-logo { margin: 0 auto 20px auto; max-width: 150px; } /* SPロゴサイズ */
+    .footer-sns { justify-content: center; }
+    .widget-area h4 { font-size: 15px; margin-bottom: 15px;}
+    .widget-area ul li { margin-bottom: 8px;}
+    .widget-area ul li a { font-size: 13px;}
+    .site-copyright { padding-top: 15px; }
+
+}
+
+/* 480px以下 (スマホ縦) */
+@media screen and (max-width: 480px) {
+     .hero-catch { font-size: 28px; }
+     .hero-cta-buttons { flex-direction: column; }
+     .hero-cta-buttons .btn-contact,
+     .hero-cta-buttons .btn-document { width: 100%; justify-content: center; }
+
+     .contact-cta-title { font-size: 20px; }
+     .contact-cta-buttons .btn { width: 100%; justify-content: center; }
+
+     .achievement-card-list { grid-template-columns: 1fr; } /* 念のため */
+     .online-courses-grid { grid-template-columns: 1fr; } /* 念のため */
+     .blog-list { grid-template-columns: 1fr; } /* 念のため */
+}
+
+
+/* Hide PC-only elements on mobile */
+@media (max-width: 768px) {
     .pc-only {
         display: none;
     }
-    
-    .blog-image {
-        height: 180px;
-    }
-    
-    .blog-title {
-        font-size: 16px;
-        margin: 10px 10px 8px;
-    }
-    
-    .blog-meta {
-        font-size: 12px;
-        padding: 10px 10px 0;
-    }
-    
-    .blog-excerpt {
-        font-size: 13px;
-        margin: 0 10px 10px;
-    }
-    
-    .blog-readmore {
-        margin: 0 10px 10px;
-        font-size: 13px;
-    }
-    
-    .course-image {
-        height: 200px;
-    }
-    
-    .course-title {
-        font-size: 16px;
-    }
-    
-    .course-description {
-        font-size: 13px;
+    .sp-nav { /* ハンバーガーボタン */
+        display: block;
     }
 }
-
-@media screen and (max-width: 480px) {
-    .achievement-card-list {
-        grid-template-columns: 1fr;
+/* Hide SP-only elements on PC */
+@media (min-width: 769px) {
+    .sp-nav { /* ハンバーガーボタン */
+        display: none !important;
     }
-    
-    .widget-area {
-        flex-basis: 100%;
-        min-width: 100%;
-    }
+     .pc-only { /* pc-onlyクラスを持つ要素はPCで表示 */
+         display: block;
+     }
 }
 
-
-/* コンテンツを正しく終わらせる */
-body::after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-/* サイト全体の構造を保持 */
-body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
-main {
-    flex: 1 0 auto;
-}
-
-footer {
-    flex-shrink: 0;
-}
+/* 提供CSSのその他スタイル */
+/* .site-main { padding-top: 60px; } */ /* ヒーローセクションのpadding-topで調整するため削除 */
+/* .hero-pc, .hero-sp { ... } */ /* HTMLで背景画像を指定しているため削除 */
+/* .text-red { ... } */ /* 本HTMLで使用しないため削除 */
+/* .accordion-toggle, .accordion-icon-check, .accordion-icon-plus, .achievement-tabs, .tab-button { ... } */ /* 本HTMLで使用しないため削除 */
+/* .more-button-container, .btn-more { ... } */ /* ボタンは別途HTMLで定義済み、提供CSSのスタイルはbtn-moreに移植 */

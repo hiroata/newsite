@@ -3,170 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="オートファネル大学のブログ記事一覧です。IT導入補助金、マーケティング自動化、ウェブサイト構築、オンラインビジネスなど、事業成長に役立つ最新情報をお届けします。">
-    <title>ブログ一覧 - オートファネル大学ブログ</title>
+    <meta name="description" content="オートファネル大学は、マーケティング自動化と効率化の理念、選ばれる理由、提供サービスを紹介します。">
+    <title>オートファネル大学とは | オートファネル大学</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="icon" href="../images/favicon.ico">
-    <meta property="og:title" content="ブログ一覧 - オートファネル大学ブログ">
-    <meta property="og:description" content="オートファネル大学のブログ記事一覧です。IT導入補助金、マーケティング自動化、ウェブサイト構築、オンラインビジネスなど、事業成長に役立つ最新情報をお届けします。">
-    <meta property="og:image" content="../images/og-blog-list.jpg">
-    <meta property="og:type" content="website">
-    <style>
-        /* GitHubのindex.htmlのCSSを元に、ブログ一覧部分のスタイルを追加・調整 */
-        body {
-             font-family: 'Noto Sans JP', sans-serif;
-             color: #333;
-             line-height: 1.8;
-             /* 全体の背景色などは外部CSSまたはbodyタグスタイルで指定されている可能性 */
-        }
-        
-        .page-container {
-            max-width: 1200px; /* GitHubのindex.htmlに合わせて調整 */
-            margin: 0 auto;
-            padding: 60px 15px; /* 上下の余白を追加 */
-        }
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css"> <!-- 共通CSSを読み込み -->
+    <link rel="icon" href="images/favicon.ico">
+    <meta property="og:title" content="オートファネル大学とは">
+    <meta property="og:description" content="オートファネル大学は、マーケティング自動化と効率化の理念、選ばれる理由、提供サービスを紹介します。">
+    <!-- OGP画像は共通またはページ固有のものを設定 -->
+    <meta property="og:image" content="images/ogp_image_about.jpg"> <!-- 仮の画像パス -->
+    <meta property="og:type" content="article"> <!-- ウェブサイトの一部であることを示すarticleでも良い -->
 
-        .blog-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* PC表示時は3列 */
-            gap: 30px; /* 記事間の隙間 */
-        }
+    <!-- style.cssに全てのスタイルを記述するため、ここにはスタイルタグは不要 -->
 
-        .blog-item {
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-            display: flex; /* Flexboxを使って縦方向に並べる */
-            flex-direction: column;
-            height: 100%; /* グリッドアイテムの高さを合わせる */
-        }
-
-        .blog-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .blog-meta {
-            display: flex;
-            gap: 10px;
-            font-size: 13px;
-            color: #666;
-            padding: 15px 15px 0; /* 上部のみパディング */
-        }
-
-        .blog-category {
-            color: #0d3283;
-            font-weight: bold;
-        }
-
-        .blog-image {
-            width: 100%;
-            height: 200px; /* 画像の高さ指定 */
-            overflow: hidden;
-        }
-
-        .blog-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* 画像をコンテナに合わせてトリミング */
-        }
-
-        .blog-title {
-            font-size: 18px;
-            font-weight: bold;
-            line-height: 1.4;
-            margin: 15px 15px 10px; /* タイトルの上下左右余白 */
-            color: #333; /* タイトル色 */
-        }
-
-        .blog-excerpt {
-            font-size: 14px;
-            color: #555;
-            margin: 0 15px 15px; /* リード文の余白 */
-             flex-grow: 1; /* リード文が残りのスペースを埋める */
-        }
-
-        .blog-readmore {
-            display: inline-block;
-            margin: 0 15px 15px; /* ボタンの余白 */
-            color: #0d3283; /* リンク色 */
-            font-weight: bold;
-            text-decoration: none; /* 下線削除 */
-            transition: color 0.3s ease;
-        }
-
-        .blog-readmore:hover {
-            color: #c0392b; /* ホバー色 */
-            text-decoration: underline; /* ホバーで下線表示 */
-        }
-
-         /* 元のarticle-content内のスタイルも一部流用 */
-         .highlight {
-            background-color: #ffecb3;
-            padding: 0 3px;
-        }
-         .text-red {
-            color: #e74c3c; /* CTAボタンと同じ赤色 */
-            font-weight: bold; /* 太字も追加 */
-        }
-
-
-        /* モバイル対応 */
-        @media (max-width: 768px) { /* タブレット・スマホ表示 */
-            .blog-list {
-                grid-template-columns: 1fr; /* 1列表示 */
-                gap: 20px;
-            }
-             .page-container {
-                 padding: 40px 15px;
-             }
-             .blog-item {
-                 height: auto; /* 高さを自動に */
-             }
-             .blog-image {
-                 height: 180px; /* モバイルでの画像の高さ調整 */
-             }
-             .blog-title {
-                 font-size: 16px;
-                 margin: 10px 10px 8px;
-             }
-             .blog-meta {
-                font-size: 12px;
-                padding: 10px 10px 0;
-             }
-             .blog-excerpt {
-                 font-size: 13px;
-                 margin: 0 10px 10px;
-             }
-             .blog-readmore {
-                 margin: 0 10px 10px;
-                 font-size: 13px;
-             }
-        }
-    </style>
 </head>
 <body>
-    <!-- トップページと統一したヘッダー -->
+
+    <!-- SVG Symbol Definitions for Icons (共通で使用するためここにも記述するか、共通ファイル化) -->
+    <!-- 簡易的にトップページのものをコピーしてここに埋め込みます -->
+    <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <symbol id="icon-pdf" viewBox="0 0 512 512">
+            <style type="text/css">
+                .st0{fill:#4B4B4B;}
+            </style>
+            <g>
+                <path class="st0" d="M378.413,0H208.297h-13.182L185.8,9.314L57.02,138.102l-9.314,9.314v13.176v265.514
+                    c0,47.36,38.528,85.895,85.896,85.895h244.811c47.353,0,85.881-38.535,85.881-85.895V85.896C464.294,38.528,425.766,0,378.413,0z
+                    M432.497,426.105c0,29.877-24.214,54.091-54.084,54.091H133.602c-29.884,0-54.098-24.214-54.098-54.091V160.591h83.716
+                    c24.885,0,45.077-20.178,45.077-45.07V31.804h170.116c29.87,0,54.084,24.214,54.084,54.092V426.105z"/>
+                <path class="st0" d="M171.947,252.785h-28.529c-5.432,0-8.686,3.533-8.686,8.825v73.754c0,6.388,4.204,10.599,10.041,10.599
+                    c5.711,0,9.914-4.21,9.914-10.599v-22.406c0-0.545,0.279-0.817,0.824-0.817h16.436c20.095,0,32.188-12.226,32.188-29.612
+                    C204.136,264.871,192.182,252.785,171.947,252.785z M170.719,294.888h-15.208c-0.545,0-0.824-0.272-0.824-0.81v-23.23
+                    c0-0.545,0.279-0.816,0.824-0.816h15.208c8.42,0,13.447,5.027,13.447,12.498C184.167,290,179.139,294.888,170.719,294.888z"/>
+                <path class="st0" d="M361.167,252.785h-44.812c-5.432,0-8.7,3.533-8.7,8.825v73.754c0,6.388,4.218,10.599,10.055,10.599
+                    c5.697,0,9.914-4.21,9.914-10.599v-26.351c0-0.538,0.265-0.81,0.81-0.81h26.086c5.837,0,9.23-3.532,9.23-8.56
+                    c0-5.028-3.393-8.553-9.23-8.553h-26.086c-0.545,0-0.81-0.272-0.81-0.817v-19.425c0-0.545,0.265-0.816,0.81-0.816h32.733
+                    c5.572,0,9.245-3.666,9.245-8.553C370.411,256.45,366.738,252.785,361.167,252.785z"/>
+            </g>
+        </symbol>
+        <symbol id="svg-triangle-color" viewBox="0 0 147.35 133">
+             <style>
+                .cls-1{fill:none;}
+                .cls-2{clip-path:url(#clip-path-triangle);} /* IDをユニークに */
+                .cls-3{fill:#80d4d4;}
+                .cls-4{fill:#3bb68b;}
+                .cls-5{fill:#4fbfec;}
+            </style>
+            <clipPath id="clip-path-triangle" transform="translate(0 0)">
+                <rect class="cls-1" width="147.35" height="133"/>
+            </clipPath>
+            <g class="cls-2">
+                <path class="cls-3" d="M127.06,133H73.66L53.11,111h58.11a7.36,7.36,0,0,0,6.38-11l-8.49-14.7,8.82-28.83,26.68,46.22A20.27,20.27,0,0,1,127.06,133" transform="translate(0 0)"/>
+                <path class="cls-4" d="M117.93,56.38l-8.82,28.83L85.05,43.54l-5-8.66a7.36,7.36,0,0,0-12.75,0L58.8,49.59,29.44,56.37,56.13,10.13a20.26,20.26,0,0,1,35.1,0l16.29,28.22Z" transform="translate(0 0)"/>
+                <path class="cls-5" d="M73.66,133H20.29A20.27,20.27,0,0,1,2.74,102.6L19,74.4l10.41-18L58.8,49.59l-24,41.67-5-8.65a7.36,7.36,0,0,0,6.38,11h17Z" transform="translate(0 0)"/>
+            </g>
+        </symbol>
+        <symbol viewBox="0 0 576 512" id="svg-youtube">
+            <path d="M549.7 124.1c-6.3-23.7-24.8-42.3-48.3-48.6C458.8 64 288 64 288 64S117.2 64 74.6 75.5c-23.5 6.3-42 24.9-48.3 48.6-11.4 42.9-11.4 132.3-11.4 132.3s0 89.4 11.4 132.3c6.3 23.7 24.8 41.5 48.3 47.8C117.2 448 288 448 288 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zM231.8 355.4l-10.8-7.4-10.8 7.4C187.8 370.3 160 355.4 160 328V184c0-27.4 27.8-42.3 50.2-27.4l10.8 7.4 10.8-7.4c22.4-14.9 50.2 0 50.2 27.4V328c0 27.4-27.8 42.3-50.2 27.4zM391.6 355.4l-10.8-7.4-10.8 7.4c-22.4 14.9-50.2 0-50.2-27.4V184c0-27.4 27.8-42.3 50.2-27.4l10.8 7.4 10.8-7.4C414.2 141.7 442 156.6 442 184V328c0 27.4-27.8 42.3-50.4 27.4z"/>
+        </symbol>
+        <symbol viewBox="0 0 512 512" id="svg-x">
+             <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/>
+         </symbol>
+         <symbol viewBox="0 0 448 512" id="svg-instagram">
+             <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9 26.3 26.2 58 34.4 93.9 36.2 37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+         </symbol>
+    </defs>
+</svg>
+
+
     <header class="site-header">
         <div class="header-container">
-            <div class="site-logo">
-                <a href="../index.html"><img src="../images/logo.png" alt="オートファネル大学 ロゴ"></a>
+            <!-- ロゴ画像を削除し、テキストリンクに変更 -->
+            <div class="site-logo-text">
+                <a href="index.html">CLAN</a>
             </div>
             <nav class="global-nav pc-nav">
                 <ul>
-                    <li><a href="../index.html">ホーム</a></li>
-                    <li><a href="../course/index.html">オートファネル大学とは</a></li>
-                    <li><a href="../blog/index.html" aria-current="page">ブログ</a></li>
-                    <li><a href="../seminar/index.html">オンライン講座</a></li>
-                    <li><a href="../achievement/index.html" class="btn-nav btn-red">お客様の声</a></li>
-                    <li><a href="../free-seminar.html" class="btn-nav btn-blue">無料セミナー</a></li>
+                    <li><a href="index.html">ホーム</a></li>
+                    <li><a href="about.html" aria-current="page">オートファネル大学とは</a></li>
+                    <li><a href="blog/index.html">ブログ</a></li>
+                    <li><a href="seminar/index.html">オンライン講座</a></li>
+                    <li><a href="achievement/index.html">お客様の声</a></li>
                 </ul>
             </nav>
+            <div class="header-cta">
+                <a href="document.html" class="btn-document">
+                     <svg><use xlink:href="#icon-pdf"></use></svg>
+                    資料請求する
+                </a>
+                <!-- ヘッダーの「無料」ラベルは削除 -->
+                <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
+                    まずは相談する
+                </a>
+            </div>
             <button class="hamburger-button sp-nav" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+             <!-- スマホ用ナビゲーションメニュー（表示/非表示はJS/CSSで制御） -->
+             <!-- リーピー様のハンバーガーメニューは非常に複雑なので、ここではシンプルな例示 -->
+             <!-- <nav class="sp-nav-menu">
+                 <ul>
+                     <li><a href="index.html">ホーム</a></li>
+                     <li><a href="about.html">オートファネル大学とは</a></li>
+                     <li><a href="blog/index.html">ブログ</a></li>
+                     <li><a href="seminar/index.html">オンライン講座</a></li>
+                     <li><a href="achievement/index.html">お客様の声</a></li>
+                     <li><a href="document.html">資料請求する</a></li>
+                     <li><a href="https://utage-marunage.com/it-hojo/">まずは相談する</a></li>
+                 </ul>
+             </nav> -->
         </div>
     </header>
     <!-- / ヘッダー -->

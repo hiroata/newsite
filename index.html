@@ -3,307 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="オートファネル大学はマーケティングの自動化と効率化に特化した教育プラットフォームです。">
-    <title>オートファネル大学</title>
+    <meta name="description" content="オートファネル大学は、マーケティング自動化と効率化の理念、選ばれる理由、提供サービスを紹介します。">
+    <title>オートファネル大学とは | オートファネル大学</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css"> <!-- 共通CSSを読み込み -->
     <link rel="icon" href="images/favicon.ico">
-    <meta property="og:title" content="オートファネル大学">
-    <meta property="og:description" content="オートファネル大学は、マーケティングの自動化と効率化に特化した教育プラットフォームです。">
-    <meta property="og:image" content="images/ogp_image.jpg">
-    <meta property="og:type" content="website">
-    <style>
-        /* リーピー風ヘッダースタイル */
-        .site-header {
-            background-color: #fff;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-        .header-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 10px 20px;
-        }
-        .site-logo {
-            flex: 0 0 auto;
-            max-width: 183px;
-        }
-        .site-logo img {
-            width: 100%;
-            height: auto;
-        }
-        .global-nav {
-            display: flex;
-            align-items: center;
-        }
-        .global-nav ul {
-            display: flex;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-        .global-nav li {
-            margin: 0 15px;
-        }
-        .global-nav a {
-            color: #333;
-            text-decoration: none;
-            font-size: 15px;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            position: relative;
-            padding: 5px 0;
-        }
-        .global-nav a:hover {
-            color: #ff3a3a;
-        }
-        .global-nav a[aria-current="page"]::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: #ff3a3a;
-        }
-        
-        /* CTAボタンスタイル */
-        .header-cta {
-            display: flex;
-            align-items: center;
-        }
-        .btn-document {
-            display: flex;
-            align-items: center;
-            color: #333;
-            background-color: #fff;
-            border: 1px solid #ddd;
-            padding: 8px 15px;
-            border-radius: 4px;
-            text-decoration: none;
-            margin-right: 10px;
-            font-size: 14px;
-            transition: all 0.3s ease;
-        }
-        .btn-document:hover {
-            background-color: #f5f5f5;
-        }
-        .btn-document svg {
-            margin-right: 5px;
-            width: 16px;
-            height: 16px;
-        }
-        .btn-contact {
-            background-color: #ff3a3a;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 14px;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-        .btn-contact:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(255, 58, 58, 0.3);
-        }
-        .free-label {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background-color: #fff;
-            color: #ff3a3a;
-            font-size: 10px;
-            padding: 2px 5px;
-            border-radius: 10px;
-            font-weight: bold;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        /* スマホ用ハンバーガーメニュー */
-        .hamburger-button {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 10px;
-            position: relative;
-            width: 30px;
-            height: 30px;
-        }
-        .hamburger-button span {
-            display: block;
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            background-color: #333;
-            transition: all 0.3s ease;
-        }
-        .hamburger-button span:nth-child(1) {
-            top: 8px;
-        }
-        .hamburger-button span:nth-child(2) {
-            top: 16px;
-        }
-        .hamburger-button span:nth-child(3) {
-            top: 24px;
-        }
-        .hamburger-button.active span:nth-child(1) {
-            transform: rotate(45deg);
-            top: 16px;
-        }
-        .hamburger-button.active span:nth-child(2) {
-            opacity: 0;
-        }
-        .hamburger-button.active span:nth-child(3) {
-            transform: rotate(-45deg);
-            top: 16px;
-        }
-        
-        /* スマホ用フッター固定CTA */
-        .sp-fix-cta {
-            display: none;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: #fff;
-            z-index: 999;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-        }
-        .sp-fix-cta ul {
-            display: flex;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-        .sp-fix-cta li {
-            flex: 1;
-        }
-        .sp-fix-cta a {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 10px;
-            text-decoration: none;
-            font-size: 12px;
-            color: #333;
-        }
-        .sp-fix-cta .mail {
-            background-color: #ff3a3a;
-        }
-        .sp-fix-cta .mail a {
-            color: #fff;
-        }
-        .sp-fix-cta .book a {
-            color: #333;
-        }
-        .sp-fix-cta img {
-            width: 24px;
-            height: 24px;
-            margin-bottom: 5px;
-        }
-        
-        /* 重大告知バナーのスタイル */
-        .important-notice {
-            background: linear-gradient(135deg, #f06, #ff9966);
-            color: white;
-            text-align: center;
-            padding: 15px;
-            font-weight: bold;
-            position: relative;
-            z-index: 100;
-            margin-top: 70px; /* ヘッダーの高さ分調整 */
-        }
-        .important-notice a {
-            color: white;
-            text-decoration: underline;
-        }
-        .important-notice-button {
-            display: inline-block;
-            background-color: white;
-            color: #f06 !important;
-            padding: 8px 20px;
-            border-radius: 30px;
-            margin-top: 10px;
-            font-weight: bold;
-            text-decoration: none !important;
-            transition: transform 0.3s ease;
-        }
-        .important-notice-button:hover {
-            transform: scale(1.05);
-        }
-        
-        /* 補助金バナーのスタイル */
-        .subsidy-banner {
-            display: block;
-            width: 100%;
-            max-width: 1000px;
-            margin: 50px auto 30px;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-        .subsidy-banner:hover {
-            transform: translateY(-5px);
-        }
-        .subsidy-banner img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        /* レスポンシブ対応 */
-        @media (max-width: 1024px) {
-            .global-nav li {
-                margin: 0 10px;
-            }
-            .global-nav a {
-                font-size: 14px;
-            }
-        }
-        @media (max-width: 768px) {
-            .pc-nav {
-                display: none;
-            }
-            .hamburger-button {
-                display: block;
-            }
-            .sp-fix-cta {
-                display: block;
-            }
-            .header-cta {
-                display: none;
-            }
-            .important-notice {
-                margin-top: 60px;
-            }
-        }
-    </style>
+    <meta property="og:title" content="オートファネル大学とは">
+    <meta property="og:description" content="オートファネル大学は、マーケティング自動化と効率化の理念、選ばれる理由、提供サービスを紹介します。">
+    <!-- OGP画像は共通またはページ固有のものを設定 -->
+    <meta property="og:image" content="images/ogp_image_about.jpg"> <!-- 仮の画像パス -->
+    <meta property="og:type" content="article"> <!-- ウェブサイトの一部であることを示すarticleでも良い -->
+
+    <!-- style.cssに全てのスタイルを記述するため、ここにはスタイルタグは不要 -->
+
 </head>
 <body>
 
+    <!-- SVG Symbol Definitions for Icons (共通で使用するためここにも記述するか、共通ファイル化) -->
+    <!-- 簡易的にトップページのものをコピーしてここに埋め込みます -->
+    <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <symbol id="icon-pdf" viewBox="0 0 512 512">
+            <style type="text/css">
+                .st0{fill:#4B4B4B;}
+            </style>
+            <g>
+                <path class="st0" d="M378.413,0H208.297h-13.182L185.8,9.314L57.02,138.102l-9.314,9.314v13.176v265.514
+                    c0,47.36,38.528,85.895,85.896,85.895h244.811c47.353,0,85.881-38.535,85.881-85.895V85.896C464.294,38.528,425.766,0,378.413,0z
+                    M432.497,426.105c0,29.877-24.214,54.091-54.084,54.091H133.602c-29.884,0-54.098-24.214-54.098-54.091V160.591h83.716
+                    c24.885,0,45.077-20.178,45.077-45.07V31.804h170.116c29.87,0,54.084,24.214,54.084,54.092V426.105z"/>
+                <path class="st0" d="M171.947,252.785h-28.529c-5.432,0-8.686,3.533-8.686,8.825v73.754c0,6.388,4.204,10.599,10.041,10.599
+                    c5.711,0,9.914-4.21,9.914-10.599v-22.406c0-0.545,0.279-0.817,0.824-0.817h16.436c20.095,0,32.188-12.226,32.188-29.612
+                    C204.136,264.871,192.182,252.785,171.947,252.785z M170.719,294.888h-15.208c-0.545,0-0.824-0.272-0.824-0.81v-23.23
+                    c0-0.545,0.279-0.816,0.824-0.816h15.208c8.42,0,13.447,5.027,13.447,12.498C184.167,290,179.139,294.888,170.719,294.888z"/>
+                <path class="st0" d="M361.167,252.785h-44.812c-5.432,0-8.7,3.533-8.7,8.825v73.754c0,6.388,4.218,10.599,10.055,10.599
+                    c5.697,0,9.914-4.21,9.914-10.599v-26.351c0-0.538,0.265-0.81,0.81-0.81h26.086c5.837,0,9.23-3.532,9.23-8.56
+                    c0-5.028-3.393-8.553-9.23-8.553h-26.086c-0.545,0-0.81-0.272-0.81-0.817v-19.425c0-0.545,0.265-0.816,0.81-0.816h32.733
+                    c5.572,0,9.245-3.666,9.245-8.553C370.411,256.45,366.738,252.785,361.167,252.785z"/>
+            </g>
+        </symbol>
+        <symbol id="svg-triangle-color" viewBox="0 0 147.35 133">
+             <style>
+                .cls-1{fill:none;}
+                .cls-2{clip-path:url(#clip-path-triangle);} /* IDをユニークに */
+                .cls-3{fill:#80d4d4;}
+                .cls-4{fill:#3bb68b;}
+                .cls-5{fill:#4fbfec;}
+            </style>
+            <clipPath id="clip-path-triangle" transform="translate(0 0)">
+                <rect class="cls-1" width="147.35" height="133"/>
+            </clipPath>
+            <g class="cls-2">
+                <path class="cls-3" d="M127.06,133H73.66L53.11,111h58.11a7.36,7.36,0,0,0,6.38-11l-8.49-14.7,8.82-28.83,26.68,46.22A20.27,20.27,0,0,1,127.06,133" transform="translate(0 0)"/>
+                <path class="cls-4" d="M117.93,56.38l-8.82,28.83L85.05,43.54l-5-8.66a7.36,7.36,0,0,0-12.75,0L58.8,49.59,29.44,56.37,56.13,10.13a20.26,20.26,0,0,1,35.1,0l16.29,28.22Z" transform="translate(0 0)"/>
+                <path class="cls-5" d="M73.66,133H20.29A20.27,20.27,0,0,1,2.74,102.6L19,74.4l10.41-18L58.8,49.59l-24,41.67-5-8.65a7.36,7.36,0,0,0,6.38,11h17Z" transform="translate(0 0)"/>
+            </g>
+        </symbol>
+        <symbol viewBox="0 0 576 512" id="svg-youtube">
+            <path d="M549.7 124.1c-6.3-23.7-24.8-42.3-48.3-48.6C458.8 64 288 64 288 64S117.2 64 74.6 75.5c-23.5 6.3-42 24.9-48.3 48.6-11.4 42.9-11.4 132.3-11.4 132.3s0 89.4 11.4 132.3c6.3 23.7 24.8 41.5 48.3 47.8C117.2 448 288 448 288 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zM231.8 355.4l-10.8-7.4-10.8 7.4C187.8 370.3 160 355.4 160 328V184c0-27.4 27.8-42.3 50.2-27.4l10.8 7.4 10.8-7.4c22.4-14.9 50.2 0 50.2 27.4V328c0 27.4-27.8 42.3-50.2 27.4zM391.6 355.4l-10.8-7.4-10.8 7.4c-22.4 14.9-50.2 0-50.2-27.4V184c0-27.4 27.8-42.3 50.2-27.4l10.8 7.4 10.8-7.4C414.2 141.7 442 156.6 442 184V328c0 27.4-27.8 42.3-50.4 27.4z"/>
+        </symbol>
+        <symbol viewBox="0 0 512 512" id="svg-x">
+             <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/>
+         </symbol>
+         <symbol viewBox="0 0 448 512" id="svg-instagram">
+             <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9 26.3 26.2 58 34.4 93.9 36.2 37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+         </symbol>
+    </defs>
+</svg>
+
+
     <header class="site-header">
         <div class="header-container">
-            <div class="site-logo">
-                <a href="index.html"><img src="images/logo.png" alt="オートファネル大学 ロゴ"></a>
+            <!-- ロゴ画像を削除し、テキストリンクに変更 -->
+            <div class="site-logo-text">
+                <a href="index.html">CLAN</a>
             </div>
             <nav class="global-nav pc-nav">
                 <ul>
-                    <li><a href="index.html" aria-current="page">ホーム</a></li>
-                    <li><a href="course/index.html">オートファネル大学とは</a></li>
+                    <li><a href="index.html">ホーム</a></li>
+                    <li><a href="about.html" aria-current="page">オートファネル大学とは</a></li>
                     <li><a href="blog/index.html">ブログ</a></li>
                     <li><a href="seminar/index.html">オンライン講座</a></li>
                     <li><a href="achievement/index.html">お客様の声</a></li>
@@ -311,51 +91,101 @@
             </nav>
             <div class="header-cta">
                 <a href="document.html" class="btn-document">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                        <path d="M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zM256 0V128H384L256 0zM112 256H272c8.8 0 16 7.2 16 16s-7.2 16-16 16H112c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H272c8.8 0 16 7.2 16 16s-7.2 16-16 16H112c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H272c8.8 0 16 7.2 16 16s-7.2 16-16 16H112c-8.8 0-16-7.2-16-16s7.2-16 16-16z"/>
-                    </svg>
+                     <svg><use xlink:href="#icon-pdf"></use></svg>
                     資料請求する
                 </a>
-                <a href="contact.html" class="btn-contact">
+                <!-- ヘッダーの「無料」ラベルは削除 -->
+                <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
                     まずは相談する
-                    <span class="free-label">無料</span>
                 </a>
             </div>
             <button class="hamburger-button sp-nav" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+             <!-- スマホ用ナビゲーションメニュー（表示/非表示はJS/CSSで制御） -->
+             <!-- リーピー様のハンバーガーメニューは非常に複雑なので、ここではシンプルな例示 -->
+             <!-- <nav class="sp-nav-menu">
+                 <ul>
+                     <li><a href="index.html">ホーム</a></li>
+                     <li><a href="about.html">オートファネル大学とは</a></li>
+                     <li><a href="blog/index.html">ブログ</a></li>
+                     <li><a href="seminar/index.html">オンライン講座</a></li>
+                     <li><a href="achievement/index.html">お客様の声</a></li>
+                     <li><a href="document.html">資料請求する</a></li>
+                     <li><a href="https://utage-marunage.com/it-hojo/">まずは相談する</a></li>
+                 </ul>
+             </nav> -->
         </div>
     </header>
 
     <!-- スマホ用フッター固定CTA -->
     <div class="sp-fix-cta">
         <ul>
-            <li class="mail"><a href="contact.html">まずは相談する <img src="images/icon-mail.svg" alt=""></a></li>
-            <li class="book"><a href="document.html">資料請求する <img src="images/icon-pdf.svg" alt=""></a></li>
+            <li class="mail"><a href="https://utage-marunage.com/it-hojo/">まずは相談する <img src="images/icon-mail.svg" alt=""></a></li>
+            <li class="book"><a href="document.html">資料請求する <svg><use xlink:href="#icon-pdf"></use></svg></a></li>
         </ul>
     </div>
 
-    <!-- 重大告知バナー -->
-    <div class="important-notice">
-        <p>重大告知</p>
-        <h2>期間限定・UTAGE丸投げちゃんにIT導入補助金が使えます！</h2>
-        <a href="https://utage-marunage.com/it-hojo/" class="important-notice-button" target="_blank">詳細はこちら</a>
-    </div>
-
     <main class="site-main">
-        <!-- 補助金バナー -->
-        <a href="https://utage-marunage.com/it-hojo/" class="subsidy-banner" target="_blank">
-            <img src="images/it-subsidy-banner.jpg" alt="IT導入補助金でデジタル化を加速！成功のコツ">
-        </a>
-        
+
+        <!-- Hero Section (リーピー様風に再構築) -->
         <section class="hero-section">
-            <div class="hero-image hero-pc" style="background-image: url('images/hero-pc.jpg');"></div>
-            <div class="hero-image hero-sp" style="background-image: url('images/hero-sp.jpg');"></div>
+            <!-- 背景装飾 -->
+             <svg class="hero-bg-deco hero-bg-triangle1"><use xlink:href="#svg-triangle-color"></use></svg>
+             <svg class="hero-bg-deco hero-bg-triangle2"><use xlink:href="#svg-triangle-color"></use></svg>
+             <span class="hero-bg-deco hero-bg-circle1"></span>
+             <span class="hero-bg-deco hero-bg-circle2"></span>
+
+             <div class="hero-container">
+                 <div class="hero-text">
+                     <h2 class="hero-catch">
+                         あなたのビジネスに、<br>自動で売上を生む仕組みを。
+                     </h2>
+                     <p class="hero-lead">
+                         オートファネル大学は、マーケティングの自動化と効率化に特化したオンライン教育プラットフォームです。<br>
+                         専門知識ゼロから、あなたのビジネスを次のステージへ引き上げる自動化ファネル構築スキルを習得できます。
+                     </p>
+                     <div class="hero-cta-buttons">
+                         <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
+                             まずは相談する
+                             <span class="free-label">無料</span>
+                         </a>
+                         <a href="document.html" class="btn-document">
+                             <svg><use xlink:href="#icon-pdf"></use></svg>
+                             資料請求する
+                         </a>
+                     </div>
+                 </div>
+                 <div class="consultation-count">
+                     <div class="consultation-count-header">
+                         <h3>相談件数（累計）</h3>
+                         <p><span>4,850</span>件</p> <!-- ダミーの件数 -->
+                     </div>
+                     <ul class="consultation-list">
+                         <!-- ダミーの相談リスト -->
+                         <li><span class="date">2024.07.20</span> ○○県○○市の△△様より、お問い合わせいただきました。</li>
+                         <li><span class="date">2024.07.19</span> 東京都□□区の✕✕様より、資料請求をお申込みいただきました。</li>
+                         <li><span class="date">2024.07.18</span> 当校の受講生様より、ご紹介いただきました。</li>
+                         <li><span class="date">2024.07.17</span> 神奈川県の◎◎様より、無料相談にお申し込みいただきました。</li>
+                         <li><span class="date">2024.07.16</span> 大阪府の▲▲様より、お問い合わせいただきました。</li>
+                         <li><span class="date">2024.07.15</span> 北海道の●●様より、資料請求をお申込みいただきました。</li>
+                         <li><span class="date">2024.07.14</span> 愛知県の◆◆様より、無料相談にお申し込みいただきました。</li>
+                         <li><span class="date">2024.07.13</span> 福岡県の★★様より、お問い合わせいただきました。</li>
+                          <!-- 必要に応じてさらにリスト項目を追加 -->
+                     </ul>
+                 </div>
+             </div>
+
+            <!-- 既存のヒーロー画像部分は削除または別の目的で利用 -->
+            <!-- <div class="hero-image hero-pc" style="background-image: url('images/hero-pc.jpg');"></div>
+            <div class="hero-image hero-sp" style="background-image: url('images/hero-sp.jpg');"></div> -->
         </section>
 
-        <section class="achievement-section section-padding">
+
+        <section class="achievement-section section-padding inner-lg">
             <div class="section-title-container">
+                 <span class="section-subtitle">＼ 受講生様の成功事例 ／</span>
                  <h2 class="section-title">お客様の声</h2>
             </div>
-            
+
             <div class="achievement-card-list">
                 <div class="achievement-card">
                     <a href="achievement/customer1.html">
@@ -396,8 +226,23 @@
             </div>
         </section>
 
+         <!-- 重大告知バナー -->
+         <!-- お客様の声の下に移動 -->
+         <div class="important-notice">
+             <p>重大告知</p>
+             <h2>期間限定・UTAGE丸投げちゃんにIT導入補助金が使えます！</h2>
+             <a href="https://utage-marunage.com/it-hojo/" class="important-notice-button" target="_blank">詳細はこちら</a>
+         </div>
+
+         <!-- 補助金バナー -->
+         <!-- お客様の声の下に移動 -->
+         <a href="https://utage-marunage.com/it-hojo/" class="subsidy-banner" target="_blank">
+             <img src="images/it-subsidy-banner.jpg" alt="IT導入補助金でデジタル化を加速！成功のコツ">
+         </a>
+
+
         <!-- オンライン講座一覧セクション -->
-        <section class="online-courses-section section-padding">
+        <section class="online-courses-section section-padding inner">
             <div class="section-title-container">
                 <span class="section-subtitle">＼ スキルアップでビジネスを加速 ／</span>
                 <h2 class="section-title">オンライン講座一覧</h2>
@@ -484,12 +329,12 @@
         </section>
 
         <!-- ブログ記事セクション -->
-        <section class="blog-section section-padding">
+        <section class="blog-section section-padding inner">
             <div class="section-title-container">
                 <span class="section-subtitle">＼ 最新情報をチェック ／</span>
                 <h2 class="section-title">ブログ記事</h2>
             </div>
-            
+
             <div class="blog-list">
                 <!-- 記事1 -->
                 <div class="blog-item">
@@ -550,7 +395,7 @@
                 <div class="blog-item pc-only">
                     <div class="blog-meta">
                         <span class="blog-date">2025年5月6日</span>
-                        <span class="blog-category">デジタルコンテンツ販売</span>
+                        <span class="blog-category">数字コンテンツ販売</span>
                     </div>
                     <a href="blog/article-6.html">
                         <div class="blog-image"><img src="images/blog-digital-content.jpg" alt="デジタルコンテンツ販売で月100万円を稼ぐ!おすすめプラットフォームと成功戦略"></div>
@@ -575,6 +420,35 @@
             </div>
         </section>
 
+         <!-- Contact CTA Section (フッター直前) -->
+         <section class="contact-cta-section">
+             <!-- 背景装飾 -->
+             <svg class="contact-cta-bg-deco contact-cta-bg-triangle1"><use xlink:href="#svg-triangle-color"></use></svg>
+             <svg class="contact-cta-bg-deco contact-cta-bg-triangle2"><use xlink:href="#svg-triangle-color"></use></svg>
+             <span class="contact-cta-bg-deco contact-cta-bg-circle1"></span>
+             <span class="contact-cta-bg-deco contact-cta-bg-circle2"></span>
+
+             <div class="contact-cta-container">
+                 <span class="contact-cta-subtitle">Contact</span>
+                 <h2 class="contact-cta-title">まずは無料でご相談ください</h2>
+                 <p class="contact-cta-lead">
+                     オートファネルの構築やマーケティングの自動化について、<br class="pc-only">
+                     専門家があなたの状況をお伺いし、最適なステップをご提案します。<br class="pc-only">
+                     まずはお気軽にお問い合わせください。
+                 </p>
+                 <div class="contact-cta-buttons">
+                     <a href="https://utage-marunage.com/it-hojo/" class="btn btn-contact">
+                         無料相談してみる
+                         <span class="free-label">無料</span>
+                     </a>
+                     <a href="document.html" class="btn btn-document">
+                         <svg><use xlink:href="#icon-pdf"></use></svg>
+                         資料請求する
+                     </a>
+                 </div>
+             </div>
+         </section>
+
     </main>
 
     <footer class="site-footer">
@@ -583,20 +457,12 @@
                 <div class="widget-area footer-widget-1">
                     <img src="images/logo-white.png" alt="オートファネル大学 ロゴ白" class="footer-logo">
                     <div class="footer-sns">
-                        <a href="#" aria-label="YouTube">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="1em" height="1em" fill="currentColor">
-                                <path d="M549.7 124.1c-6.3-23.7-24.8-42.3-48.3-48.6C458.8 64 288 64 288 64S117.2 64 74.6 75.5c-23.5 6.3-42 24.9-48.3 48.6-11.4 42.9-11.4 132.3-11.4 132.3s0 89.4 11.4 132.3c6.3 23.7 24.8 41.5 48.3 47.8C117.2 448 288 448 288 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zM231.8 355.4l-10.8-7.4-10.8 7.4C187.8 370.3 160 355.4 160 328V184c0-27.4 27.8-42.3 50.2-27.4l10.8 7.4 10.8-7.4c22.4-14.9 50.2 0 50.2 27.4V328c0 27.4-27.8 42.3-50.2 27.4zM391.6 355.4l-10.8-7.4-10.8 7.4c-22.4 14.9-50.2 0-50.2-27.4V184c0-27.4 27.8-42.3 50.2-27.4l10.8 7.4 10.8-7.4C414.2 141.7 442 156.6 442 184V328c0 27.4-27.8 42.3-50.4 27.4z"/>
-                            </svg>
-                        </a>
+                        <!-- YouTubeアイコンを削除 -->
                         <a href="#" aria-label="X (Twitter)">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor">
-                                <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/>
-                            </svg>
+                            <svg><use xlink:href="#svg-x"></use></svg>
                         </a>
                         <a href="#" aria-label="Instagram">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="1em" height="1em" fill="currentColor">
-                                <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9 26.3 26.2 58 34.4 93.9 36.2 37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
-                            </svg>
+                            <svg><use xlink:href="#svg-instagram"></use></use>
                         </a>
                     </div>
                 </div>
@@ -636,6 +502,8 @@
         </div>
     </footer>
 
+    <!-- 既存のJSファイルを読み込みます -->
     <script src="js/script.js"></script>
+    <!-- もしハンバーガーメニューのJSなどが必要であれば、script.js内に記述するか別途JSファイルを用意してください -->
 </body>
 </html>

@@ -3,509 +3,550 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="オートファネル大学のブログ記事一覧です。IT導入補助金、マーケティング自動化、ウェブサイト構築、オンラインビジネスなど、事業成長に役立つ最新情報をお届けします。">
-    <title>ブログ一覧 - オートファネル大学ブログ</title>
+    <!-- タイトルと説明文をセミナー案内ページに修正 -->
+    <meta name="description" content="オートファネル大学が開催するオンライン講座・セミナー一覧です。マーケティング自動化、集客、セールスに関する実践的な学びの機会を提供します。">
+    <title>オンライン講座・セミナー一覧 | オートファネル大学</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="icon" href="../images/favicon.ico">
-    <meta property="og:title" content="ブログ一覧 - オートファネル大学ブログ">
-    <meta property="og:description" content="オートファネル大学のブログ記事一覧です。IT導入補助金、マーケティング自動化、ウェブサイト構築、オンラインビジネスなど、事業成長に役立つ最新情報をお届けします。">
-    <meta property="og:image" content="../images/og-blog-list.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css"> <!-- style.cssへのパスを親ディレクトリ../css/に修正 -->
+    <link rel="icon" href="../images/favicon.ico"> <!-- faviconへのパスを親ディレクトリ../images/に修正 -->
+    <!-- OGPタグをセミナー案内ページに修正 -->
+    <meta property="og:title" content="オンライン講座・セミナー一覧 | オートファネル大学">
+    <meta property="og:description" content="オートファネル大学が開催するオンライン講座・セミナー一覧です。マーケティング自動化、集客、セールスに関する実践的な学びの機会を提供します。">
+    <!-- OGP画像はセミナー案内共通のものを設定 -->
+    <meta property="og:image" content="../images/ogp_image_seminar.jpg"> <!-- 仮の画像パス -->
     <meta property="og:type" content="website">
+
+    <!-- style.cssに全てのスタイルを記述するため、ここにはスタイルタグは不要 -->
+
     <style>
-        /* GitHubのindex.htmlのCSSを元に、ブログ一覧部分のスタイルを追加・調整 */
-        body {
-             font-family: 'Noto Sans JP', sans-serif;
-             color: #333;
-             line-height: 1.8;
-             /* 全体の背景色などは外部CSSまたはbodyタグスタイルで指定されている可能性 */
+        /* セミナーページ固有のスタイル (style.cssに追加することも可能) */
+        .page-hero-section {
+            background-color: #e0f7ff; /* Heroセクションと同じ背景色 */
+            padding: 100px 0 60px 0; /* ヘッダー高さ + 上下パディング */
+            text-align: center;
         }
-        
-        .page-container {
-            max-width: 1200px; /* GitHubのindex.htmlに合わせて調整 */
+        .page-hero-container {
+            max-width: 800px;
             margin: 0 auto;
-            padding: 60px 15px; /* 上下の余白を追加 */
+            padding: 0 20px;
         }
-
-        .blog-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* PC表示時は3列 */
-            gap: 30px; /* 記事間の隙間 */
+        .page-hero-title {
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #333;
         }
-
-        .blog-item {
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-            display: flex; /* Flexboxを使って縦方向に並べる */
-            flex-direction: column;
-            height: 100%; /* グリッドアイテムの高さを合わせる */
-        }
-
-        .blog-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .blog-meta {
-            display: flex;
-            gap: 10px;
-            font-size: 13px;
-            color: #666;
-            padding: 15px 15px 0; /* 上部のみパディング */
-        }
-
-        .blog-category {
-            color: #0d3283;
-            font-weight: bold;
-        }
-
-        .blog-image {
-            width: 100%;
-            height: 200px; /* 画像の高さ指定 */
-            overflow: hidden;
-        }
-
-        .blog-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* 画像をコンテナに合わせてトリミング */
-        }
-
-        .blog-title {
+        .page-hero-lead {
             font-size: 18px;
-            font-weight: bold;
-            line-height: 1.4;
-            margin: 15px 15px 10px; /* タイトルの上下左右余白 */
-            color: #333; /* タイトル色 */
+            color: #555;
         }
 
-        .blog-excerpt {
+        .seminar-section .section-title-container {
+             margin-bottom: 40px; /* セクションタイトル下のマージン */
+        }
+
+        .seminar-list, .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 画面幅に応じて列数を調整 */
+            gap: 30px;
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        .seminar-card {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%; /* カードの高さを揃える */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .seminar-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+
+        .seminar-header {
+            background-color: #f8f9fa; /* ヘッダー背景色 */
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap; /* タイトルとバッジが折り返すように */
+        }
+
+        .seminar-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin: 0;
+            color: #333;
+            flex-grow: 1; /* タイトルが領域を埋めるように */
+            margin-right: 10px; /* バッジとの隙間 */
+            line-height: 1.4;
+        }
+
+        .seminar-badge {
+            display: inline-block;
+            font-size: 12px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-left: 5px;
+            white-space: nowrap; /* バッジが改行されないように */
+        }
+        .badge-new {
+            background-color: #ff3a3a;
+            color: #fff;
+        }
+        .badge-limited {
+            background-color: #ff9800;
+            color: #fff;
+        }
+         .badge-featured { /* 人気バッジ用 */
+             background-color: #0d3283; /* 青系の色 */
+             color: #fff;
+         }
+         .badge-full { /* 満席バッジ用 */
+             background-color: #999; /* グレーアウト */
+             color: #fff;
+         }
+
+
+        .seminar-type {
             font-size: 14px;
             color: #555;
-            margin: 0 15px 15px; /* リード文の余白 */
-             flex-grow: 1; /* リード文が残りのスペースを埋める */
+            font-weight: 500;
+            margin-top: 5px;
+            flex-shrink: 0; /* 縮まない */
         }
 
-        .blog-readmore {
+        .seminar-content {
+            padding: 15px;
+            flex-grow: 1; /* 残り領域を埋める */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .seminar-info {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 15px;
+        }
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .info-item:last-child {
+             margin-bottom: 0;
+        }
+        .info-icon {
+            margin-right: 8px;
+            color: #ff3a3a; /* アイコンの色 */
+        }
+
+        .seminar-description {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+             flex-grow: 1; /* テキストが伸びるように */
+        }
+        .seminar-description p {
+            margin-bottom: 1em;
+        }
+        .seminar-description ul {
+             list-style: disc; /* リストスタイル */
+             padding-left: 20px; /* 左余白 */
+             margin-bottom: 1em;
+        }
+         .seminar-description li {
+             margin-bottom: 0.5em;
+         }
+
+        .seminar-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto; /* フッターを下部に固定 */
+        }
+
+        .seminar-price {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0d3283; /* 価格の色 */
+        }
+        .seminar-price:empty { /* 価格が空の場合は表示しない */
+             display: none;
+        }
+
+
+        .register-button {
             display: inline-block;
-            margin: 0 15px 15px; /* ボタンの余白 */
-            color: #0d3283; /* リンク色 */
+            background-color: #ff3a3a;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+        .register-button:hover {
+            background-color: #e03333;
+        }
+
+
+        .seminar-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
+            max-width: 1180px;
+            margin: 40px auto; /* 上下マージン */
+            padding: 0 15px;
+        }
+        .seminar-tabs .tab-button {
+            padding: 8px 15px;
+            font-size: 14px;
             font-weight: bold;
-            text-decoration: none; /* 下線削除 */
-            transition: color 0.3s ease;
+            background-color: #eee;
+            color: #555;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+        .seminar-tabs .tab-button:hover {
+             background-color: #ddd;
+        }
+        .seminar-tabs .tab-button.active {
+            background-color: #ff3a3a; /* アクティブタブの色 */
+            color: #fff;
         }
 
-        .blog-readmore:hover {
-            color: #c0392b; /* ホバー色 */
-            text-decoration: underline; /* ホバーで下線表示 */
-        }
-
-         /* 元のarticle-content内のスタイルも一部流用 */
-         .highlight {
-            background-color: #ffecb3;
-            padding: 0 3px;
-        }
-         .text-red {
-            color: #e74c3c; /* CTAボタンと同じ赤色 */
-            font-weight: bold; /* 太字も追加 */
-        }
+        @media (max-width: 768px) {
+            .page-hero-title { font-size: 32px;}
+            .page-hero-lead { font-size: 16px;}
+            .page-hero-section { padding: 80px 0 40px 0; }
 
 
-        /* モバイル対応 */
-        @media (max-width: 768px) { /* タブレット・スマホ表示 */
-            .blog-list {
-                grid-template-columns: 1fr; /* 1列表示 */
+            .seminar-list, .featured-grid {
+                grid-template-columns: 1fr; /* SPは1列 */
                 gap: 20px;
+                padding: 0 15px; /* SPパディング */
             }
-             .page-container {
-                 padding: 40px 15px;
+             .seminar-header { padding: 12px 15px; }
+             .seminar-title { font-size: 16px;}
+             .seminar-type { font-size: 13px;}
+             .seminar-content { padding: 12px 15px; }
+             .seminar-info { font-size: 13px; margin-bottom: 10px;}
+             .info-item { margin-bottom: 5px;}
+             .seminar-description { font-size: 13px; margin-bottom: 10px;}
+             .seminar-footer { flex-direction: column; align-items: flex-start; gap: 10px;}
+             .seminar-price { font-size: 16px;}
+             .register-button { align-self: stretch; text-align: center;} /* ボタンを幅いっぱいに */
+
+             .seminar-tabs {
+                 gap: 8px;
+                 margin: 30px auto; /* 上下マージン */
+                 padding: 0 15px;
              }
-             .blog-item {
-                 height: auto; /* 高さを自動に */
-             }
-             .blog-image {
-                 height: 180px; /* モバイルでの画像の高さ調整 */
-             }
-             .blog-title {
-                 font-size: 16px;
-                 margin: 10px 10px 8px;
-             }
-             .blog-meta {
-                font-size: 12px;
-                padding: 10px 10px 0;
-             }
-             .blog-excerpt {
-                 font-size: 13px;
-                 margin: 0 10px 10px;
-             }
-             .blog-readmore {
-                 margin: 0 10px 10px;
+             .seminar-tabs .tab-button {
+                 padding: 6px 12px;
                  font-size: 13px;
              }
         }
+
+        @media (max-width: 480px) {
+             .page-hero-title { font-size: 28px;}
+             .page-hero-lead { font-size: 15px;}
+             .seminar-list, .featured-grid { gap: 15px; }
+        }
+
     </style>
+
 </head>
 <body>
-    <!-- トップページと統一したヘッダー -->
+
+    <!-- SVG Symbol Definitions for Icons (共通で使用するためここにも記述するか、共通ファイル化) -->
+    <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <symbol id="icon-pdf" viewBox="0 0 512 512">
+            <style type="text/css">
+                .st0{fill:#4B4B4B;}
+            </style>
+            <g>
+                <path class="st0" d="M378.413,0H208.297h-13.182L185.8,9.314L57.02,138.102l-9.314,9.314v13.176v265.514
+                    c0,47.36,38.528,85.895,85.896,85.895h244.811c47.353,0,85.881-38.535,85.881-85.895V85.896C464.294,38.528,425.766,0,378.413,0z
+                    M432.497,426.105c0,29.877-24.214,54.091-54.084,54.091H133.602c-29.884,0-54.098-24.214-54.098-54.091V160.591h83.716
+                    c24.885,0,45.077-20.178,45.077-45.07V31.804h170.116c29.87,0,54.084,24.214,54.084,54.092V426.105z"/>
+                <path class="st0" d="M171.947,252.785h-28.529c-5.432,0-8.686,3.533-8.686,8.825v73.754c0,6.388,4.204,10.599,10.041,10.599
+                    c5.711,0,9.914-4.21,9.914-10.599v-22.406c0-0.545,0.279-0.817,0.824-0.817h16.436c20.095,0,32.188-12.226,32.188-29.612
+                    C204.136,264.871,192.182,252.785,171.947,252.785z M170.719,294.888h-15.208c-0.545,0-0.824-0.272-0.824-0.81v-23.23
+                    c0-0.545,0.279-0.816,0.824-0.816h15.208c8.42,0,13.447,5.027,13.447,12.498C184.167,290,179.139,294.888,170.719,294.888z"/>
+                <path class="st0" d="M361.167,252.785h-44.812c-5.432,0-8.7,3.533-8.7,8.825v73.754c0,6.388,4.218,10.599,10.055,10.599
+                    c5.697,0,9.914-4.21,9.914-10.599v-26.351c0-0.538,0.265-0.81,0.81-0.81h26.086c5.837,0,9.23-3.532,9.23-8.56
+                    c0-5.028-3.393-8.553-9.23-8.553h-26.086c-0.545,0-0.81-0.272-0.81-0.817v-19.425c0-0.545,0.265-0.816,0.81-0.816h32.733
+                    c5.572,0,9.245-3.666,9.245-8.553C370.411,256.45,366.738,252.785,361.167,252.785z"/>
+            </g>
+        </symbol>
+        <symbol id="svg-triangle-color" viewBox="0 0 147.35 133">
+             <style>
+                .cls-1{fill:none;}
+                .cls-2{clip-path:url(#clip-path-triangle);} /* IDをユニークに */
+                .cls-3{fill:#80d4d4;}
+                .cls-4{fill:#3bb68b;}
+                .cls-5{fill:#4fbfec;}
+            </style>
+            <clipPath id="clip-path-triangle" transform="translate(0 0)">
+                <rect class="cls-1" width="147.35" height="133"/>
+            </clipPath>
+            <g class="cls-2">
+                <path class="cls-3" d="M127.06,133H73.66L53.11,111h58.11a7.36,7.36,0,0,0,6.38-11l-8.49-14.7,8.82-28.83,26.68,46.22A20.27,20.27,0,0,1,127.06,133" transform="translate(0 0)"/>
+                <path class="cls-4" d="M117.93,56.38l-8.82,28.83L85.05,43.54l-5-8.66a7.36,7.36,0,0,0-12.75,0L58.8,49.59,29.44,56.37,56.13,10.13a20.26,20.26,0,0,1,35.1,0l16.29,28.22Z" transform="translate(0 0)"/>
+                <path class="cls-5" d="M73.66,133H20.29A20.27,20.27,0,0,1,2.74,102.6L19,74.4l10.41-18L58.8,49.59l-24,41.67-5-8.65a7.36,7.36,0,0,0,6.38,11h17Z" transform="translate(0 0)"/>
+            </g>
+        </symbol>
+        <symbol viewBox="0 0 576 512" id="svg-youtube">
+            <path d="M549.7 124.1c-6.3-23.7-24.8-42.3-48.3-48.6C458.8 64 288 64 288 64S117.2 64 74.6 75.5c-23.5 6.3-42 24.9-48.3 48.6-11.4 42.9-11.4 132.3-11.4 132.3s0 89.4 11.4 132.3c6.3 23.7 24.8 41.5 48.3 47.8C117.2 448 288 448 288 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zM231.8 355.4l-10.8-7.4-10.8 7.4C187.8 370.3 160 355.4 160 328V184c0-27.4 27.8-42.3 50.2-27.4l10.8 7.4 10.8-7.4c22.4-14.9 50.2 0 50.2 27.4V328c0 27.4-27.8 42.3-50.2 27.4zM391.6 355.4l-10.8-7.4-10.8 7.4c-22.4 14.9-50.2 0-50.2-27.4V184c0-27.4 27.8-42.3 50.2-27.4l10.8 7.4 10.8-7.4C414.2 141.7 442 156.6 442 184V328c0 27.4-27.8 42.3-50.4 27.4z"/>
+        </symbol>
+        <symbol viewBox="0 0 512 512" id="svg-x">
+             <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/>
+         </symbol>
+         <symbol viewBox="0 0 448 512" id="svg-instagram">
+             <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9 26.3 26.2 58 34.4 93.9 36.2 37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+         </symbol>
+    </defs>
+</svg>
+
+
+    <!-- ヘッダー -->
     <header class="site-header">
         <div class="header-container">
-            <div class="site-logo">
-                <a href="../index.html"><img src="../images/logo.png" alt="オートファネル大学 ロゴ"></a>
+            <!-- ロゴ画像を削除し、テキストリンクに変更 -->
+            <div class="site-logo-text">
+                <a href="../index.html">CLAN</a> <!-- index.htmlへのパスを親ディレクトリに修正 -->
             </div>
             <nav class="global-nav pc-nav">
                 <ul>
-                    <li><a href="../index.html">ホーム</a></li>
-                    <li><a href="../course/index.html">オートファネル大学とは</a></li>
-                    <li><a href="../blog/index.html" aria-current="page">ブログ</a></li>
-                    <li><a href="../seminar/index.html">オンライン講座</a></li>
-                    <li><a href="../achievement/index.html" class="btn-nav btn-red">お客様の声</a></li>
-                    <li><a href="../free-seminar.html" class="btn-nav btn-blue">無料セミナー</a></li>
+                    <li><a href="../index.html">ホーム</a></li> <!-- パスを親ディレクトリに修正 -->
+                    <li><a href="../about.html">オートファネル大学とは</a></li> <!-- パスを親ディレクトリに修正 -->
+                    <li><a href="../blog/index.html">ブログ</a></li> <!-- パスを親ディレクトリに修正 -->
+                    <li><a href="index.html" aria-current="page">オンライン講座</a></li> <!-- 現在ページ -->
+                    <li><a href="../achievement/index.html">お客様の声</a></li> <!-- パスを親ディレクトリに修正 -->
                 </ul>
             </nav>
+            <div class="header-cta">
+                <a href="../document.html" class="btn-document"> <!-- パスを親ディレクトリに修正 -->
+                     <svg><use xlink:href="#icon-pdf"></use></svg>
+                    資料請求する
+                </a>
+                <!-- ヘッダーの「無料」ラベルは削除 -->
+                <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
+                    まずは相談する
+                </a>
+            </div>
             <button class="hamburger-button sp-nav" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+             <!-- スマホ用ナビゲーションメニュー（表示/非表示はJS/CSSで制御） -->
+             <!-- 必要に応じてここにメニューコンテンツを記述 -->
         </div>
     </header>
     <!-- / ヘッダー -->
 
-    <main class="site-main">
-        <div class="page-container section-padding">
-            <div class="seminar-section">
-                <h1>セミナー</h1>
-                <p>オートファネル大学が開催するセミナーのご案内です。集客やマーケティングに関する最新の知識やノウハウを学べる機会にぜひご参加ください。</p>
-                
-                <div class="featured-seminars">
-                    <h2 class="section-heading">注目のセミナー</h2>
-                    
-                    <div class="featured-grid">
-                        <div class="seminar-card">
-                            <div class="seminar-header">
-                                <h3 class="seminar-title">0から始めるInstagram集客マスターセミナー <span class="seminar-badge badge-new">NEW</span></h3>
-                                <span class="seminar-type">オンライン</span>
-                            </div>
-                            <div class="seminar-content">
-                                <div class="seminar-info">
-                                    <div class="info-item">
-                                        <span class="info-icon">📅</span>
-                                        <span>2025年5月20日（火）</span>
-                                    </div>
-                                    <div class="info-item">
-                                        <span class="info-icon">🕒</span>
-                                        <span>19:00〜21:00</span>
-                                    </div>
-                                    <div class="info-item">
-                                        <span class="info-icon">👥</span>
-                                        <span>定員30名</span>
-                                    </div>
-                                </div>
-                                <div class="seminar-description">
-                                    <p>Instagramを活用した集客の基礎から応用まで、すぐに実践できるノウハウを詰め込んだセミナーです。「フォロワーが増えない」「投稿を続けられない」という悩みを解決します。</p>
-                                </div>
-                                <div class="seminar-footer">
-                                    <div class="seminar-price">5,500円（税込）</div>
-                                    <a href="#" class="register-button">申し込む</a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="seminar-card">
-                            <div class="seminar-header">
-                                <h3 class="seminar-title">UTAGEで実現する自動集客システム構築セミナー <span class="seminar-badge badge-limited">残席わずか</span></h3>
-                                <span class="seminar-type">会場開催</span>
-                            </div>
-                            <div class="seminar-content">
-                                <div class="seminar-info">
-                                    <div class="info-item">
-                                        <span class="info-icon">📅</span>
-                                        <span>2025年5月25日（日）</span>
-                                    </div>
-                                    <div class="info-item">
-                                        <span class="info-icon">🕒</span>
-                                        <span>13:00〜17:00</span>
-                                    </div>
-                                    <div class="info-item">
-                                        <span class="info-icon">📍</span>
-                                        <span>東京都渋谷区</span>
-                                    </div>
-                                    <div class="info-item">
-                                        <span class="info-icon">👥</span>
-                                        <span>定員20名</span>
-                                    </div>
-                                </div>
-                                <div class="seminar-description">
-                                    <p>UTAGEを活用して自動で集客から販売までのシステムを構築する方法を学びます。実際に成果を出している事例を交えながら、具体的な設計方法を解説します。</p>
-                                </div>
-                                <div class="seminar-footer">
-                                    <div class="seminar-price">15,000円（税込）</div>
-                                    <a href="#" class="register-button">申し込む</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="seminar-tabs">
-                    <button class="tab-button active">すべて</button>
-                    <button class="tab-button">オンライン</button>
-                    <button class="tab-button">会場開催</button>
-                    <button class="tab-button">無料</button>
-                    <button class="tab-button">初心者向け</button>
-                    <button class="tab-button">中級者向け</button>
-                </div>
-                
-                <div class="seminar-list">
-                    <div class="seminar-card">
-                        <div class="seminar-header">
-                            <h3 class="seminar-title">0から始めるInstagram集客マスターセミナー <span class="seminar-badge badge-new">NEW</span></h3>
-                            <span class="seminar-type">オンライン</span>
-                        </div>
-                        <div class="seminar-content">
-                            <div class="seminar-info">
-                                <div class="info-item">
-                                    <span class="info-icon">📅</span>
-                                    <span>2025年5月20日（火）</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-icon">🕒</span>
-                                    <span>19:00〜21:00</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-icon">👥</span>
-                                    <span>定員30名</span>
-                                </div>
-                            </div>
-                            <div class="seminar-description">
-                                <p>Instagramを活用した集客の基礎から応用まで、すぐに実践できるノウハウを詰め込んだセミナーです。初心者の方でも分かりやすく解説します。</p>
-                                <ul>
-                                    <li>集客できるアカウントの作り方</li>
-                                    <li>フォロワーが増える投稿のコツ</li>
-                                    <li>効果的なハッシュタグ戦略</li>
-                                    <li>リール動画の活用方法</li>
-                                </ul>
-                            </div>
-                            <div class="seminar-footer">
-                                <div class="seminar-price">5,500円（税込）</div>
-                                <a href="#" class="register-button">申し込む</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="seminar-card">
-                        <div class="seminar-header">
-                            <h3 class="seminar-title">UTAGEで実現する自動集客システム構築セミナー <span class="seminar-badge badge-limited">残席わずか</span></h3>
-                            <span class="seminar-type">会場開催</span>
-                        </div>
-                        <div class="seminar-content">
-                            <div class="seminar-info">
-                                <div class="info-item">
-                                    <span class="info-icon">📅</span>
-                                    <span>2025年5月25日（日）</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-icon">🕒</span>
-                                    <span>13:00〜17:00</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-icon">📍</span>
-                                    <span>東京都渋谷区</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-icon">👥</span>
-                                    <span>定員20名</span>
-                                </div>
-                            </div>
-                            <div class="seminar-description">
-                                <p>UTAGEを活用して自動で集客から販売までのシステムを構築する方法を学びます。実際に成果を出している事例を交えながら、具体的な設計方法を解説します。</p>
-                                <p>※ UTAGEの基本的な操作方法を理解している方向けのセミナーです。</p>
-                            </div>
-                            <div class="seminar-footer">
-                                <div class="seminar-price">15,000円（税込）</div>
-                                <a href="#" class="register-button">申し込む</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="seminar-card">
-                        <div class="seminar-header">
-                            <h3 class="seminar-title">売上が3倍になる商品説明ページの作り方 <span class="seminar-badge badge-featured">人気</span></h3>
-                            <span class="seminar-type">オンライン</span>
-                        </div>
-                        <div class="seminar-content">
-                            <div class="seminar-info">
-                                <div class="info-item">
-                                    <span class="info-icon">📅</span>
-                                    <span>2025年6月5日（木）</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-icon">🕒</span>
-                                    <span>20:00〜22:00</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-icon">👥</span>
-                                    <span>定員50名</span>
-                                </div>
-                            </div>
-                            <div class="seminar-description">
-                                <p>成約率を高める商品説明ページの構成やコピーライティングのコツを伝授します。ECサイトやランディングページの改善に役立つ内容です。</p>
-                            </div>
-                            <div class="seminar-footer">
-                                <div class="seminar-price">8,800円（税込）</div>
-                                <a href="#" class="register-button">申し込む</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="seminar-card">
-                        <div class="seminar-header">
-                            <h3 class="seminar-title">売れるストーリーライティング入門</h3>
-                            <span class="seminar-type">オンライン</span>
-                        </div>
-                        <div class="seminar-content">
-                            <div class="seminar-info">
-                                <div class="info-item">
-                                    <span class="info-icon">📅</span>
-                                    <span>2025年6月15日（日）</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-icon">🕒</span>
-                                    <span>10:00〜12:00</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-icon">👥</span>
-                                    <span>定員30名</span>
-                                </div>
-                            </div>
-                            <div class="seminar-description">
-                                <p>顧客の心を動かすストーリーの作り方を学ぶセミナーです。商品やサービスの魅力を伝えるための効果的なストーリーテリング手法を解説します。</p>
-                            </div>
-                            <div class="seminar-footer">
-                                <div class="seminar-price">6,600円（税込）</div>
-                                <a href="#" class="register-button">申し込む</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="seminar-card">
-                        <div class="seminar-header">
-                            <h3 class="seminar-title">はじめてのWebマーケティング講座 <span class="seminar-badge badge-new">NEW</span></h3>
-                            <span class="seminar-type">会場開催</span>
-                        </div>
-                        <div class="seminar-content">
-                            <div class="seminar-info">
-                                <div class="info-item">
-                                    <span class="info-icon">📅</span>
-                                    <span>2025年6月22日（日）</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-icon">🕒</span>
-                                    <span>13:30〜16:30</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-icon">📍</span>
-                                    <span>東京都新宿区</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-icon">👥</span>
-                                    <span>定員15名</span>
-                                </div>
-                            </div>
-                            <div class="seminar-description">
-                                <p>Webマーケティングの基礎を学びたい初心者向けセミナーです。SEO、広告運用、SNS活用など、Webマーケティングの全体像を分かりやすく解説します。</p>
-                            </div>
-                            <div class="seminar-footer">
-                                <div class="seminar-price">無料</div>
-                                <a href="#" class="register-button">申し込む</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="seminar-card">
-                        <div class="seminar-header">
-                            <h3 class="seminar-title">Google広告最新活用術 <span class="seminar-badge badge-full">満席</span></h3>
-                            <span class="seminar-type">オンライン</span>
-                        </div>
-                        <div class="seminar-content">
-                            <div class="seminar-info">
-                                <div class="info-item">
-                                    <span class="info-icon">📅</span>
-                                    <span>2025年5月10日（土）</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-icon">🕒</span>
-                                    <span>14:00〜16:00</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-icon">👥</span>
-                                    <span>定員20名</span>
-                                </div>
-                            </div>
-                            <div class="seminar-description">
-                                <p>Google広告の最新機能や効果的な運用方法について学ぶセミナーです。AI機能の活用方法や、予算を抑えながらも効果を最大化する戦略を解説します。</p>
-                            </div>
-                            <div class="seminar-footer">
-                                <div class="seminar-price">9,800円（税込）</div>
-                                <a href="#" class="register-button" style="background-color: #999;">キャンセル待ち</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
+    <!-- スマホ用フッター固定CTA -->
+    <div class="sp-fix-cta">
+        <ul>
+            <li class="mail"><a href="https://utage-marunage.com/it-hojo/">まずは相談する <img src="../images/icon-mail.svg" alt=""></a></li> <!-- パスを親ディレクトリに修正 -->
+            <li class="book"><a href="../document.html">資料請求する <svg><use xlink:href="#icon-pdf"></use></svg></a></li> <!-- パスを親ディレクトリに修正 -->
+        </ul>
+    </div>
 
+
+    <!-- メインコンテンツ -->
+    <main class="site-main">
+        <!-- ページタイトル/ファーストビューセクション -->
+        <section class="page-hero-section">
+            <div class="page-hero-container inner">
+                 <h1 class="page-hero-title">オンライン講座一覧</h1> <!-- ページタイトルを「オンライン講座一覧」に修正 -->
+                 <p class="page-hero-lead">
+                     マーケティング自動化と効率化を学ぶ実践的なオンライン講座です。<br>
+                     初心者からステップアップできる多彩な講座をご用意しています。
+                 </p>
+            </div>
+        </section>
+
+        <!-- オンライン講座一覧セクション -->
+        <!-- index.htmlのオンライン講座一覧セクションを流用 -->
+         <section class="online-courses-section section-padding inner">
+             <!-- セクションタイトルはPage Heroで表示するため削除 -->
+            <!-- <div class="section-title-container">
+                <span class="section-subtitle">＼ スキルアップでビジネスを加速 ／</span>
+                <h2 class="section-title">オンライン講座一覧</h2>
+            </div> -->
+             <div class="online-courses-grid">
+                 <!-- 講座1: ランディングページ作成初級講座 -->
+                 <div class="course-card">
+                     <div class="course-image">
+                         <img src="../images/course-lp.jpg" alt="ランディングページ作成初級講座"> <!-- パスを親ディレクトリに修正 -->
+                         <div class="course-level">初級</div>
+                     </div>
+                     <div class="course-content">
+                         <h3 class="course-title">ランディングページ作成初級講座</h3>
+                         <p class="course-description">「なぜ売れないの？」その悩み、LPが原因かもしれません。本講座では、購入ボタンをクリックしたくなる「売れるLP」の法則を徹底解説。ヘッドライン作成から顧客の心を掴むストーリー構成、信頼構築の要素まで、成約率を2倍、3倍に高めるテクニックを習得できます。デザインセンスがなくても、この型に当てはめるだけでプロ顔負けのLPが作れるようになります。</p>
+                         <a href="lp.html" class="course-button">Coming Soon</a> <!-- 同一ディレクトリ内の個別講座ページへのリンク -->
+                     </div>
+                 </div>
+
+                 <!-- 講座2: 動画編集初級講座 -->
+                 <div class="course-card">
+                     <div class="course-image">
+                         <img src="../images/course-video.jpg" alt="動画編集初級講座"> <!-- パスを親ディレクトリに修正 -->
+                         <div class="course-level">初級</div>
+                     </div>
+                     <div class="course-content">
+                         <h3 class="course-title">動画編集初級講座</h3>
+                         <p class="course-description">「最後まで見てもらえない…」そんな悩みを解決する動画編集スキルが身につきます。冒頭10秒で視聴者を惹きつけるオープニング作成術、視聴者を飽きさせないカット編集テクニック、感情を動かす音楽・効果音の選び方まで、初心者でも実践できる編集ノウハウを提供。Adobe PremiereやFilmoraなどの編集ソフトの基本操作から、目を引くエフェクト技術まで、すぐに使える実践的スキルが身につきます。</p>
+                         <a href="video.html" class="course-button">Coming Soon</a> <!-- 同一ディレクトリ内の個別講座ページへのリンク -->
+                     </div>
+                 </div>
+
+                 <!-- 講座3: ステップメール設計初級講座 -->
+                 <div class="course-card">
+                     <div class="course-image">
+                         <img src="../images/course-step-mail.jpg" alt="ステップメール設計初級講座"> <!-- パスを親ディレクトリに修正 -->
+                         <div class="course-level">初級</div>
+                     </div>
+                     <div class="course-content">
+                         <h3 class="course-title">ステップメール設計初級講座</h3>
+                         <p class="course-description">「メールを送っても反応がない…」そんな悩みを解消するステップメールの極意を学べます。見込み客を熱狂的なファンに変える7ステップのメール設計術、開封率を50%以上に高めるタイトルの作り方、購入意欲を高める心理トリガーの活用法まで網羅。自動で見込み客を育成し、商品購入へと導くシナリオ作成のコツを伝授します。メール1通ごとの役割を明確にし、計画的に成約率を高めるノウハウが身につきます。</p>
+                         <a href="step-mail.html" class="course-button">Coming Soon</a> <!-- 同一ディレクトリ内の個別講座ページへのリンク -->
+                     </div>
+                 </div>
+
+                 <!-- 講座4: オートファネル構築初級講座 -->
+                 <div class="course-card">
+                     <div class="course-image">
+                         <img src="../images/course-auto-funnel.jpg" alt="オートファネル構築初級講座"> <!-- パスを親ディレクトリに修正 -->
+                         <div class="course-level">初級</div>
+                     </div>
+                     <div class="course-content">
+                         <h3 class="course-title">オートファネル構築初級講座</h3>
+                         <p class="course-description">「集客はしているのに売上に繋がらない…」その悩み、セールスファネルで解決します。理想的な見込み客を集め、信頼関係を構築し、自動的に商品購入へと導くオートファネルの設計方法を学びます。リード獲得からクロージングまでの5ステップ設計、各段階での最適なコンテンツ設計、UTAGEなどのツールを使った実装方法まで、理論と実践の両面から解説。構築後も継続的に収益を生み出すファネル最適化の秘訣も伝授します。</p>
+                         <a href="auto-funnel.html" class="course-button">Coming Soon</a> <!-- 同一ディレクトリ内の個別講座ページへのリンク -->
+                     </div>
+                 </div>
+
+                 <!-- 講座5: Youtubeサムネ作成初級講座 -->
+                 <div class="course-card">
+                     <div class="course-image">
+                         <img src="../images/course-youtube-thumbnail.jpg" alt="Youtubeサムネ作成初級講座"> <!-- パスを親ディレクトリに修正 -->
+                         <div class="course-level">初級</div>
+                     </div>
+                     <div class="course-content">
+                         <h3 class="course-title">Youtubeサムネ作成初級講座</h3>
+                         <p class="course-description">「再生数が伸びない…」その原因はサムネイルかもしれません。視聴者の目を引き、クリックしたくなるサムネイル作成の極意を学びましょう。インパクトを与える色彩選択のルール、瞬時に内容を伝える構図設計、文字サイズ・フォントの最適な使い方まで、CTR（クリック率）を2倍に高めるテクニックを解説。実際のヒット動画のサムネイル分析から、ジャンル別の効果的なデザインパターンまで、すぐに実践できる知識が身につきます。</p>
+                         <a href="youtube-thumbnail.html" class="course-button">Coming Soon</a> <!-- 同一ディレクトリ内の個別講座ページへのリンク -->
+                     </div>
+                 </div>
+
+                 <!-- 講座6: Canvaデザイン初級講座 -->
+                 <div class="course-card">
+                     <div class="course-image">
+                         <img src="../images/course-canva.jpg" alt="Canvaデザイン初級講座"> <!-- パスを親ディレクトリに修正 -->
+                         <div class="course-level">初級</div>
+                     </div>
+                     <div class="course-content">
+                         <h3 class="course-title">Canvaデザイン初級講座</h3>
+                         <p class="course-description">「デザインセンスがない…」そんな悩みを持つ方でも、Canvaを使えば驚くほど美しいデザインが作れるようになります。SNS投稿、バナー、チラシ、プレゼン資料など、あらゆるビジュアルコンテンツを簡単に作成するテクニックを伝授。テンプレートのカスタマイズから、プロ級の配色テクニック、読みやすいフォント選びのコツ、効果的な写真・イラストの使い方まで、デザイン初心者でも即実践できるノウハウが満載です。Canvaの隠れた便利機能も徹底解説します。</p>
+                         <a href="canva.html" class="course-button">Coming Soon</a> <!-- 同一ディレクトリ内の個別講座ページへのリンク -->
+                     </div>
+                 </div>
+             </div>
+         </section>
+        <!-- / オンライン講座一覧セクション -->
+
+
+        <!-- Contact CTA Section (フッター直前) -->
+         <section class="contact-cta-section">
+             <!-- 背景装飾 -->
+             <svg class="contact-cta-bg-deco contact-cta-bg-triangle1"><use xlink:href="#svg-triangle-color"></use></svg>
+             <svg class="contact-cta-bg-deco contact-cta-bg-triangle2"><use xlink:href="#svg-triangle-color"></use></svg>
+             <span class="contact-cta-bg-deco contact-cta-bg-circle1"></span>
+             <span class="contact-cta-bg-deco contact-cta-bg-circle2"></span>
+
+             <div class="contact-cta-container">
+                 <span class="contact-cta-subtitle">Contact</span>
+                 <h2 class="contact-cta-title">まずは無料でご相談ください</h2>
+                 <p class="contact-cta-lead">
+                     オートファネルの構築やマーケティングの自動化について、<br class="pc-only">
+                     専門家があなたの状況をお伺いし、最適なステップをご提案します。<br class="pc-only">
+                     まずはお気軽にお問い合わせください。
+                 </p>
+                 <div class="contact-cta-buttons">
+                     <a href="https://utage-marunage.com/it-hojo/" class="btn btn-contact">
+                         無料相談してみる
+                         <span class="free-label">無料</span>
+                     </a>
+                     <a href="../document.html" class="btn btn-document"> <!-- パスを親ディレクトリに修正 -->
+                         <svg><use xlink:href="#icon-pdf"></use></svg>
+                         資料請求する
+                     </a>
+                 </div>
+             </div>
+         </section>
+
+    </main>
+    <!-- / メインコンテンツ -->
+
+    <!-- フッター -->
     <footer class="site-footer">
         <div class="footer-container">
             <div class="footer-widgets">
                 <div class="widget-area footer-widget-1">
-                    <img src="images/logo-white.png" alt="オートファネル大学 ロゴ白" class="footer-logo">
+                    <img src="../images/logo-white.png" alt="オートファネル大学 ロゴ白" class="footer-logo"> <!-- パスを親ディレクトリに修正 -->
                     <div class="footer-sns">
-                        <a href="#" aria-label="YouTube">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="1em" height="1em" fill="currentColor">
-                                <path d="M549.7 124.1c-6.3-23.7-24.8-42.3-48.3-48.6C458.8 64 288 64 288 64S117.2 64 74.6 75.5c-23.5 6.3-42 24.9-48.3 48.6-11.4 42.9-11.4 132.3-11.4 132.3s0 89.4 11.4 132.3c6.3 23.7 24.8 41.5 48.3 47.8C117.2 448 288 448 288 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zM231.8 355.4l-10.8-7.4-10.8 7.4C187.8 370.3 160 355.4 160 328V184c0-27.4 27.8-42.3 50.2-27.4l10.8 7.4 10.8-7.4c22.4-14.9 50.2 0 50.2 27.4V328c0 27.4-27.8 42.3-50.2 27.4zM391.6 355.4l-10.8-7.4-10.8 7.4c-22.4 14.9-50.2 0-50.2-27.4V184c0-27.4 27.8-42.3 50.2-27.4l10.8 7.4 10.8-7.4C414.2 141.7 442 156.6 442 184V328c0 27.4-27.8 42.3-50.4 27.4z"/>
-                            </svg>
-                        </a>
+                        <!-- YouTubeアイコンを削除 -->
                         <a href="#" aria-label="X (Twitter)">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor">
-                                <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/>
-                            </svg>
+                            <svg><use xlink:href="#svg-x"></use></svg>
                         </a>
                         <a href="#" aria-label="Instagram">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="1em" height="1em" fill="currentColor">
-                                <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9 26.3 26.2 58 34.4 93.9 36.2 37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
-                            </svg>
+                            <svg><use xlink:href="#svg-instagram"></use></use>
                         </a>
                     </div>
                 </div>
                 <div class="widget-area footer-widget-2">
                     <h4>オンライン講座一覧</h4>
                     <ul>
-                        <li><a href="course/lp.html">ランディングページ作成初級講座</a></li>
-                        <li><a href="course/video.html">動画編集初級講座</a></li>
-                        <li><a href="course/step-mail.html">ステップメール設計初級講座</a></li>
-                        <li><a href="course/auto-funnel.html">オートファネル構築初級講座</a></li>
-                        <li><a href="course/youtube-thumbnail.html">Youtubeサムネ作成初級講座</a></li>
-                        <li><a href="course/canva.html">Canvaデザイン初級講座</a></li>
+                        <li><a href="lp.html">ランディングページ作成初級講座</a></li> <!-- 同一ディレクトリ内の個別講座ページへのリンク -->
+                        <li><a href="video.html">動画編集初級講座</a></li> <!-- 同一ディレクトリ内の個別講座ページへのリンク -->
+                        <li><a href="step-mail.html">ステップメール設計初級講座</a></li> <!-- 同一ディレクトリ内の個別講座ページへのリンク -->
+                        <li><a href="auto-funnel.html">オートファネル構築初級講座</a></li> <!-- 同一ディレクトリ内の個別講座ページへのリンク -->
+                        <li><a href="youtube-thumbnail.html">Youtubeサムネ作成初級講座</a></li> <!-- 同一ディレクトリ内の個別講座ページへのリンク -->
+                        <li><a href="canva.html">Canvaデザイン初級講座</a></li> <!-- 同一ディレクトリ内の個別講座ページへのリンク -->
                     </ul>
                 </div>
                 <div class="widget-area footer-widget-3">
                     <h4>無料コンテンツ</h4>
                     <ul>
-                        <li><a href="blog/index.html">ブログ</a></li>
-                        <li><a href="book/index.html">電子書籍</a></li>
-                        <li><a href="free-seminar.html">無料セミナー</a></li>
-                        <li><a href="free-consultation.html">無料相談</a></li>
-                        <li><a href="achievement/index.html">お客様の声</a></li>
+                        <li><a href="../blog/index.html">ブログ</a></li> <!-- パスを親ディレクトリに修正 -->
+                        <li><a href="../book/index.html">電子書籍</a></li> <!-- パスを親ディレクトリに修正 -->
+                        <li><a href="../free-seminar.html">無料セミナー</a></li> <!-- パスを親ディレクトリに修正 -->
+                        <li><a href="../free-consultation.html">無料相談</a></li> <!-- パスを親ディレクトリに修正 -->
+                        <li><a href="../achievement/index.html">お客様の声</a></li> <!-- パスを親ディレクトリに修正 -->
                     </ul>
                 </div>
                 <div class="widget-area footer-widget-4">
                     <h4>運営情報</h4>
                     <ul>
-                        <li><a href="owner.html">運営者情報</a></li>
-                        <li><a href="terms.html">利用規約</a></li>
-                        <li><a href="privacy.html">プライバシーポリシー</a></li>
+                        <li><a href="../owner.html">運営者情報</a></li> <!-- パスを親ディレクトリに修正 -->
+                        <li><a href="../terms.html">利用規約</a></li> <!-- パスを親ディレクトリに修正 -->
+                        <li><a href="../privacy.html">プライバシーポリシー</a></li> <!-- パスを親ディレクトリに修正 -->
                     </ul>
                 </div>
             </div>
@@ -514,7 +555,8 @@
             </div>
         </div>
     </footer>
+    <!-- / フッター -->
 
-    <script src="js/script.js"></script>
+    <script src="../js/script.js"></script> <!-- パスを親ディレクトリに修正 -->
 </body>
 </html>
