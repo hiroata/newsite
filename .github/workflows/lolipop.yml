@@ -1,0 +1,24 @@
+name: Deploy to Lolipop
+
+on:
+  push:
+    branches:
+      - master   # ←あなたのメインブランチ名。もし違えばここ直してね（例：master）
+
+jobs:
+  ftp-deploy:
+    name: FTP Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@4.3.4
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: ${{ secrets.FTP_REMOTE_ROOT }}
+          local-dir: ./  # ローカルリポジトリの中身をまるごとアップロード
