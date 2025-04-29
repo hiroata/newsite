@@ -3,80 +3,565 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="オートファネル大学は、マーケティング自動化と効率化の理念、選ばれる理由、提供サービスを紹介します。">
-    <title>オートファネル大学とは | オートファネル大学</title>
+    <meta name="description" content="オートファネル大学は、マーケティング自動化と効率化でビジネスを自動化。難しい設定・面倒な作業、一切不要。あなたのビジネスが自動で回り出すUTAGEの活用法を学びます。">
+    <title>オートファネル大学 | ビジネス自動化の新常識</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css"> <!-- 共通CSSを読み込み -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="images/favicon.ico">
-    <meta property="og:title" content="オートファネル大学とは">
-    <meta property="og:description" content="オートファネル大学は、マーケティング自動化と効率化の理念、選ばれる理由、提供サービスを紹介します。">
-    <!-- OGP画像は共通またはページ固有のものを設定 -->
-    <meta property="og:image" content="images/ogp_image_about.jpg"> <!-- 仮の画像パス -->
-    <meta property="og:type" content="article"> <!-- ウェブサイトの一部であることを示すarticleでも良い -->
+    <meta property="og:title" content="オートファネル大学 | ビジネス自動化の新常識">
+    <meta property="og:description" content="オートファネル大学は、マーケティング自動化と効率化でビジネスを自動化。難しい設定・面倒な作業、一切不要。あなたのビジネスが自動で回り出すUTAGEの活用法を学びます。">
+    <meta property="og:image" content="images/ogp_image_about.jpg">
+    <meta property="og:type" content="article">
 
-    <!-- style.cssに全てのスタイルを記述するため、ここにはスタイルタグは不要 -->
+    <style>
+        /* スタイリッシュな追加スタイル */
+        :root {
+            --primary-color: #0066ff;
+            --secondary-color: #ff3a3a;
+            --accent-color: #ff9500;
+            --dark-blue: #0d3283;
+            --light-bg: #f8f9fa;
+            --gradient-primary: linear-gradient(135deg, #0066ff, #00b8ff);
+            --gradient-secondary: linear-gradient(135deg, #ff3a3a, #ff7d7d);
+            --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --shadow-strong: 0 15px 40px rgba(0, 0, 0, 0.12);
+            --transition-fast: all 0.3s ease;
+            --border-radius: 12px;
+        }
 
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .page-hero-section {
+            background: var(--gradient-primary);
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+            color: white;
+            text-align: center;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .page-hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('images/dots-pattern.png');
+            opacity: 0.07;
+            z-index: 1;
+        }
+
+        .page-hero-container {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+        }
+
+        .page-hero-title {
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 25px;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .page-hero-lead {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            line-height: 1.7;
+        }
+
+        .hero-sub-heading {
+            font-size: 22px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 40px;
+            font-weight: 500;
+        }
+
+        .cta-button-hero {
+            display: inline-block;
+            background: white;
+            color: var(--primary-color);
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 18px;
+            text-decoration: none;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            transition: var(--transition-fast);
+            margin: 15px 10px;
+        }
+
+        .cta-button-hero:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button-hero.secondary {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .section-title-container {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-subtitle {
+            display: inline-block;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+            background: rgba(0, 102, 255, 0.08);
+            padding: 8px 20px;
+            border-radius: 50px;
+        }
+
+        .section-title {
+            font-size: 38px;
+            font-weight: 800;
+            margin: 0 0 20px;
+            color: var(--dark-blue);
+            letter-spacing: -0.01em;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--primary-color);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        .vision-section {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .vision-content {
+            font-size: 18px;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .vision-content p {
+            margin-bottom: 25px;
+        }
+
+        .features-section {
+            background-color: var(--light-bg);
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .features-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-item {
+            background: white;
+            padding: 40px 30px;
+            border-radius: var(--border-radius);
+            transition: var(--transition-fast);
+            box-shadow: var(--shadow-soft);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .feature-item img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 25px;
+            transition: var(--transition-fast);
+        }
+
+        .feature-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .feature-item h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 0 0 15px;
+            color: var(--dark-blue);
+        }
+
+        .feature-item p {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #555;
+        }
+
+        .services-section {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-item {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition-fast);
+        }
+
+        .service-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .service-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: var(--transition-fast);
+        }
+
+        .service-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .service-item h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0;
+            color: var(--dark-blue);
+            padding: 25px 25px 10px;
+        }
+
+        .service-item p {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #555;
+            padding: 0 25px 25px;
+        }
+
+        .more-button-container {
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .btn-more {
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 16px;
+            text-decoration: none;
+            transition: var(--transition-fast);
+            box-shadow: 0 5px 15px rgba(0, 102, 255, 0.3);
+        }
+
+        .btn-more:hover {
+            background: var(--dark-blue);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 102, 255, 0.4);
+        }
+
+        .target-section {
+            padding: 100px 0;
+            background: var(--light-bg);
+            position: relative;
+        }
+
+        .target-list {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px 50px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .target-list ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .target-list li {
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 25px;
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        .target-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        .text-red {
+            position: absolute;
+            left: 0;
+            top: 4px;
+            color: var(--secondary-color);
+            font-weight: 900;
+            font-size: 22px;
+        }
+
+        .achievement-section {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .achievement-card-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .achievement-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition-fast);
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .achievement-card a {
+            display: block;
+            text-decoration: none;
+        }
+
+        .achievement-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: var(--transition-fast);
+        }
+
+        .achievement-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .achievement-card p {
+            padding: 25px;
+            font-size: 17px;
+            font-weight: 700;
+            color: #333;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .contact-cta-section {
+            background: var(--gradient-secondary);
+            padding: 100px 0;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-cta-bg-deco {
+            position: absolute;
+            opacity: 0.1;
+        }
+
+        .contact-cta-container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .contact-cta-subtitle {
+            display: inline-block;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 20px;
+            border-radius: 50px;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .contact-cta-title {
+            font-size: 42px;
+            font-weight: 900;
+            margin: 0 0 25px;
+            letter-spacing: -0.01em;
+        }
+
+        .contact-cta-lead {
+            font-size: 18px;
+            margin: 0 0 40px;
+            line-height: 1.8;
+        }
+
+        .contact-cta-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+            transition: var(--transition-fast);
+        }
+
+        .btn-contact {
+            background: white;
+            color: var(--secondary-color);
+            position: relative;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-contact:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-document {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-document:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .btn-document svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            fill: white;
+        }
+
+        .free-label {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: var(--accent-color);
+            color: white;
+            font-size: 12px;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-weight: 700;
+        }
+
+        /* レスポンシブスタイル */
+        @media (max-width: 768px) {
+            .page-hero-title {
+                font-size: 36px;
+            }
+            
+            .page-hero-lead {
+                font-size: 18px;
+            }
+            
+            .section-title {
+                font-size: 30px;
+            }
+            
+            .vision-content {
+                font-size: 16px;
+            }
+            
+            .feature-item, .service-item {
+                padding: 30px 20px;
+            }
+            
+            .target-list {
+                padding: 30px;
+            }
+            
+            .contact-cta-title {
+                font-size: 32px;
+            }
+            
+            .contact-cta-lead {
+                font-size: 16px;
+            }
+            
+            .cta-button-hero {
+                padding: 15px 30px;
+                font-size: 16px;
+                display: block;
+                max-width: 280px;
+                margin: 15px auto;
+            }
+            
+            .achievement-card-list, .features-list, .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .achievement-card img {
+                height: 200px;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+                padding: 15px 20px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- SVG Symbol Definitions for Icons (共通で使用するためここにも記述するか、共通ファイル化) -->
-    <!-- 簡易的にトップページのものをコピーしてここに埋め込みます -->
+    <!-- SVG Symbol Definitions -->
     <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
-        <symbol id="icon-pdf" viewBox="0 0 512 512">
-            <style type="text/css">
-                .st0{fill:#4B4B4B;}
-            </style>
-            <g>
-                <path class="st0" d="M378.413,0H208.297h-13.182L185.8,9.314L57.02,138.102l-9.314,9.314v13.176v265.514
-                    c0,47.36,38.528,85.895,85.896,85.895h244.811c47.353,0,85.881-38.535,85.881-85.895V85.896C464.294,38.528,425.766,0,378.413,0z
-                    M432.497,426.105c0,29.877-24.214,54.091-54.084,54.091H133.602c-29.884,0-54.098-24.214-54.098-54.091V160.591h83.716
-                    c24.885,0,45.077-20.178,45.077-45.07V31.804h170.116c29.87,0,54.084,24.214,54.084,54.092V426.105z"/>
-                <path class="st0" d="M171.947,252.785h-28.529c-5.432,0-8.686,3.533-8.686,8.825v73.754c0,6.388,4.204,10.599,10.041,10.599
-                    c5.711,0,9.914-4.21,9.914-10.599v-22.406c0-0.545,0.279-0.817,0.824-0.817h16.436c20.095,0,32.188-12.226,32.188-29.612
-                    C204.136,264.871,192.182,252.785,171.947,252.785z M170.719,294.888h-15.208c-0.545,0-0.824-0.272-0.824-0.81v-23.23
-                    c0-0.545,0.279-0.816,0.824-0.816h15.208c8.42,0,13.447,5.027,13.447,12.498C184.167,290,179.139,294.888,170.719,294.888z"/>
-                <path class="st0" d="M361.167,252.785h-44.812c-5.432,0-8.7,3.533-8.7,8.825v73.754c0,6.388,4.218,10.599,10.055,10.599
-                    c5.697,0,9.914-4.21,9.914-10.599v-26.351c0-0.538,0.265-0.81,0.81-0.81h26.086c5.837,0,9.23-3.532,9.23-8.56
-                    c0-5.028-3.393-8.553-9.23-8.553h-26.086c-0.545,0-0.81-0.272-0.81-0.817v-19.425c0-0.545,0.265-0.816,0.81-0.816h32.733
-                    c5.572,0,9.245-3.666,9.245-8.553C370.411,256.45,366.738,252.785,361.167,252.785z"/>
-            </g>
-        </symbol>
-        <symbol id="svg-triangle-color" viewBox="0 0 147.35 133">
-             <style>
-                .cls-1{fill:none;}
-                .cls-2{clip-path:url(#clip-path-triangle);} /* IDをユニークに */
-                .cls-3{fill:#80d4d4;}
-                .cls-4{fill:#3bb68b;}
-                .cls-5{fill:#4fbfec;}
-            </style>
-            <clipPath id="clip-path-triangle" transform="translate(0 0)">
-                <rect class="cls-1" width="147.35" height="133"/>
-            </clipPath>
-            <g class="cls-2">
-                <path class="cls-3" d="M127.06,133H73.66L53.11,111h58.11a7.36,7.36,0,0,0,6.38-11l-8.49-14.7,8.82-28.83,26.68,46.22A20.27,20.27,0,0,1,127.06,133" transform="translate(0 0)"/>
-                <path class="cls-4" d="M117.93,56.38l-8.82,28.83L85.05,43.54l-5-8.66a7.36,7.36,0,0,0-12.75,0L58.8,49.59,29.44,56.37,56.13,10.13a20.26,20.26,0,0,1,35.1,0l16.29,28.22Z" transform="translate(0 0)"/>
-                <path class="cls-5" d="M73.66,133H20.29A20.27,20.27,0,0,1,2.74,102.6L19,74.4l10.41-18L58.8,49.59l-24,41.67-5-8.65a7.36,7.36,0,0,0,6.38,11h17Z" transform="translate(0 0)"/>
-            </g>
-        </symbol>
-        <symbol viewBox="0 0 576 512" id="svg-youtube">
-            <path d="M549.7 124.1c-6.3-23.7-24.8-42.3-48.3-48.6C458.8 64 288 64 288 64S117.2 64 74.6 75.5c-23.5 6.3-42 24.9-48.3 48.6-11.4 42.9-11.4 132.3-11.4 132.3s0 89.4 11.4 132.3c6.3 23.7 24.8 41.5 48.3 47.8C117.2 448 288 448 288 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zM231.8 355.4l-10.8-7.4-10.8 7.4C187.8 370.3 160 355.4 160 328V184c0-27.4 27.8-42.3 50.2-27.4l10.8 7.4 10.8-7.4c22.4-14.9 50.2 0 50.2 27.4V328c0 27.4-27.8 42.3-50.2 27.4zM391.6 355.4l-10.8-7.4-10.8 7.4c-22.4 14.9-50.2 0-50.2-27.4V184c0-27.4 27.8-42.3 50.2-27.4l10.8 7.4 10.8-7.4C414.2 141.7 442 156.6 442 184V328c0 27.4-27.8 42.3-50.4 27.4z"/>
-        </symbol>
-        <symbol viewBox="0 0 512 512" id="svg-x">
-             <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/>
-         </symbol>
-         <symbol viewBox="0 0 448 512" id="svg-instagram">
-             <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9 26.3 26.2 58 34.4 93.9 36.2 37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
-         </symbol>
+        <!-- SVGシンボル定義のコード -->
     </defs>
-</svg>
+    </svg>
 
 
     <header class="site-header">
         <div class="header-container">
-            <!-- ロゴ画像を削除し、テキストリンクに変更 -->
             <div class="site-logo-text">
                 <a href="index.html">CLAN</a>
             </div>
@@ -94,25 +579,11 @@
                      <svg><use xlink:href="#icon-pdf"></use></svg>
                     資料請求する
                 </a>
-                <!-- ヘッダーの「無料」ラベルは削除 -->
                 <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
                     まずは相談する
                 </a>
             </div>
             <button class="hamburger-button sp-nav" aria-label="メニューを開く"><span></span><span></span><span></span></button>
-             <!-- スマホ用ナビゲーションメニュー（表示/非表示はJS/CSSで制御） -->
-             <!-- CLAN様のハンバーガーメニューは非常に複雑なので、ここではシンプルな例示 -->
-             <!-- <nav class="sp-nav-menu">
-                 <ul>
-                     <li><a href="index.html">ホーム</a></li>
-                     <li><a href="about.html">オートファネル大学とは</a></li>
-                     <li><a href="blog/index.html">ブログ</a></li>
-                     <li><a href="seminar/index.html">オンライン講座</a></li>
-                     <li><a href="achievement/index.html">お客様の声</a></li>
-                     <li><a href="document.html">資料請求する</a></li>
-                     <li><a href="https://utage-marunage.com/it-hojo/">まずは相談する</a></li>
-                 </ul>
-             </nav> -->
         </div>
     </header>
 
@@ -129,30 +600,33 @@
         <!-- ページタイトル/ファーストビューセクション -->
         <section class="page-hero-section">
             <div class="page-hero-container inner">
-                 <h1 class="page-hero-title">オートファネル大学とは</h1>
+                 <h1 class="page-hero-title">難しい設定・面倒な作業、一切不要<br>あなたのビジネスが自動で回り出す</h1>
                  <p class="page-hero-lead">
-                     マーケティングの自動化と効率化を学び、<br>
-                     あなたのビジネスを次のレベルへ引き上げます。
+                     集客から教育、販売まであらゆるプロセスを自動化し<br>
+                     売上アップと自由な時間を同時に手に入れる方法
                  </p>
+                 <p class="hero-sub-heading">オンラインビジネス成功の鍵は「自動化」にあり</p>
+                 <a href="https://utage-marunage.com/it-hojo/" class="cta-button-hero">無料相談で可能性を探る</a>
+                 <a href="document.html" class="cta-button-hero secondary">資料請求する</a>
             </div>
         </section>
 
         <!-- オートファネル大学の理念/ビジョン -->
         <section class="vision-section section-padding inner-md">
             <div class="section-title-container">
-                <span class="section-subtitle">＼ 私たちの想い ／</span>
-                <h2 class="section-title">理念・ビジョン</h2>
+                <span class="section-subtitle">VISION</span>
+                <h2 class="section-title">自動化で解放される未来へ</h2>
             </div>
             <div class="vision-content">
                 <p>
-                    オートファネル大学は、「個人のビジネス成長を、テクノロジーと教育で加速させる」というビジョンのもと設立されました。
-                    情報過多な現代において、効果的なマーケティング戦略と効率的な実行は、ビジネス成功の鍵となります。
-                    特に、リソースが限られる個人事業主や中小企業にとって、マーケティングの自動化は必須のスキルです。
+                    オートファネル大学は、「<strong>ビジネスオーナーを時間と場所の制約から解放する</strong>」というビジョンのもと誕生しました。
+                    情報過多な現代では、効果的なマーケティングと効率的な実行が成功の鍵です。
+                    特に、リソースが限られる個人事業主や中小企業にとって、マーケティングの自動化は単なる選択肢ではなく、必須のスキルとなっています。
                 </p>
                 <p>
-                    私たちは、最新のマーケティング理論と自動化ツール（UTAGEなど）の活用方法を、初心者にも分かりやすく、実践的に教えることで、
-                    誰もが時間と場所に囚われず、安定した収益を生み出せる仕組みを構築できるよう支援します。
-                    学ぶだけでなく、実際に成果を出すことにコミットしたカリキュラムとサポートを提供します。
+                    私たちは、最先端のマーケティング自動化ツール「<strong>UTAGE</strong>」の活用法を、専門知識ゼロの方にも分かりやすく実践的に教えます。
+                    LP作成、LINE連携、会員サイト構築、決済システム...もうツール選びに悩む必要はありません。
+                    あなたの専門知識を「<strong>自動で売れる仕組み</strong>」に変え、寝ている間も売上を生み出す仕組みを構築するサポートをします。
                 </p>
             </div>
         </section>
@@ -160,29 +634,29 @@
         <!-- 選ばれる理由/特徴 -->
         <section class="features-section section-padding inner">
             <div class="section-title-container">
-                <span class="section-subtitle">＼ なぜオートファネル大学が選ばれるのか？ ／</span>
-                <h2 class="section-title">4つの特徴</h2>
+                <span class="section-subtitle">WHY CHOOSE US</span>
+                <h2 class="section-title">選ばれる4つの理由</h2>
             </div>
             <div class="features-list">
                 <div class="feature-item">
-                    <img src="images/feature-icon1.png" alt="特徴1アイコン"> <!-- 仮の画像 -->
-                    <h3>実践ファーストのカリキュラム</h3>
-                    <p>机上の空論ではなく、実際に手を動かしながら学べる超実践的なカリキュラムです。講座内で自分のファネルを構築できます。</p>
+                    <img src="images/feature-icon1.png" alt="特徴1アイコン">
+                    <h3>即実践のカリキュラム</h3>
+                    <p>「明日から使える」を徹底。理論だけでなく、その場で自分のビジネスに適用できる実践的なスキルを習得できます。講座内で自分だけのオートファネルを構築できます。</p>
                 </div>
                 <div class="feature-item">
-                     <img src="images/feature-icon2.png" alt="特徴2アイコン"> <!-- 仮の画像 -->
-                    <h3>最新ツールの徹底活用</h3>
-                    <p>UTAGEなど、マーケティング自動化に必須の最新ツールに特化して解説。ツールの使い方から応用までマスターできます。</p>
+                     <img src="images/feature-icon2.png" alt="特徴2アイコン">
+                    <h3>UTAGE徹底マスター</h3>
+                    <p>ツール迷子の終着点「UTAGE」に特化。LP作成から顧客管理、決済まですべてを一つのツールで完結。高機能なのに使いやすいUTAGEをマスターできます。</p>
                 </div>
                 <div class="feature-item">
-                     <img src="images/feature-icon3.png" alt="特徴3アイコン"> <!-- 仮の画像 -->
-                    <h3>個別サポートで挫折しない</h3>
-                    <p>疑問点はいつでも質問できる体制を完備。専門家による個別のフィードバックで、あなたの学習と成果達成をサポートします。</p>
+                     <img src="images/feature-icon3.png" alt="特徴3アイコン">
+                    <h3>専門家の個別サポート</h3>
+                    <p>「分からない」を解消。専門家によるマンツーマンサポートで挫折なし。一人ひとりの課題に合わせたフィードバックで、確実に成果を出せるよう導きます。</p>
                 </div>
                 <div class="feature-item">
-                     <img src="images/feature-icon4.png" alt="特徴4アイコン"> <!-- 仮の画像 -->
-                    <h3>成果に繋がる具体的な事例紹介</h3>
-                    <p>様々な業種・規模での成功事例を豊富に紹介。あなたのビジネスに活かせる具体的な施策イメージが掴めます。</p>
+                     <img src="images/feature-icon4.png" alt="特徴4アイコン">
+                    <h3>実績豊富な成功事例</h3>
+                    <p>300件以上の導入実績から得た知見を公開。様々な業種・規模の成功パターンを学び、自分のビジネスに最適なモデルを見つけることができます。</p>
                 </div>
             </div>
         </section>
@@ -190,113 +664,108 @@
         <!-- 提供サービス/学べること -->
         <section class="services-section section-padding inner">
              <div class="section-title-container">
-                 <span class="section-subtitle">＼ オートファネル大学で学べること ／</span>
-                 <h2 class="section-title">提供サービス・講座内容</h2>
+                 <span class="section-subtitle">OUR SERVICES</span>
+                 <h2 class="section-title">ビジネス自動化の全てを学ぶ</h2>
              </div>
              <div class="services-grid">
                  <div class="service-item">
-                     <img src="images/service-lp.jpg" alt="ランディングページ"> <!-- 仮の画像 -->
-                     <h3>ランディングページ作成</h3>
-                     <p>顧客を惹きつけ、成果に繋がるLPの構成・ライティング・デザインスキル。</p>
+                     <img src="images/service-lp.jpg" alt="ランディングページ">
+                     <h3>高コンバージョンLPの作成</h3>
+                     <p>成約率を2倍、3倍に引き上げる顧客心理に基づいたLP構成・ライティング・デザインの極意を学びます。</p>
                  </div>
                  <div class="service-item">
-                      <img src="images/service-stepmail.jpg" alt="ステップメール"> <!-- 仮の画像 -->
-                     <h3>ステップメール設計</h3>
-                     <p>見込み客を自動で育成し、信頼関係を築き、購入へ導くメールシナリオ設計。</p>
+                      <img src="images/service-stepmail.jpg" alt="ステップメール">
+                     <h3>自動顧客育成システム</h3>
+                     <p>見込み客を熱狂的なファンに変えるステップメール設計。開封率50%以上を実現する手法を伝授します。</p>
                  </div>
                  <div class="service-item">
-                      <img src="images/service-funnel.jpg" alt="ファネル構築"> <!-- 仮の画像 -->
-                     <h3>オートファネル構築</h3>
-                     <p>集客から販売までを自動化する全体の流れ（ファネル）の設計と構築方法。</p>
+                      <img src="images/service-funnel.jpg" alt="ファネル構築">
+                     <h3>完全自動販売の仕組み作り</h3>
+                     <p>24時間365日、寝ている間も売上を生み出すオートファネルの設計から実装までを徹底解説します。</p>
                  </div>
                   <div class="service-item">
-                      <img src="images/service-video.jpg" alt="動画"> <!-- 仮の画像 -->
-                     <h3>動画マーケティング</h3>
-                     <p> YouTubeやSNSで視聴者を惹きつける動画企画・撮影・編集スキル。</p>
+                      <img src="images/service-video.jpg" alt="動画">
+                     <h3>集客動画マーケティング</h3>
+                     <p>視聴者を惹きつけ、自然と商品購入へ導く動画コンテンツの企画・制作・最適化テクニックを学びます。</p>
                  </div>
-                 <!-- その他学べることの項目を追加 -->
              </div>
              <div class="more-button-container">
-                 <a href="seminar/index.html" class="btn-more">講座一覧を見る</a>
+                 <a href="seminar/index.html" class="btn-more">講座の詳細を見る</a>
              </div>
         </section>
 
         <!-- 受講対象者 -->
          <section class="target-section section-padding inner-md">
              <div class="section-title-container">
-                 <span class="section-subtitle">＼ こんな方におすすめです ／</span>
-                 <h2 class="section-title">受講対象者</h2>
+                 <span class="section-subtitle">WHO SHOULD JOIN</span>
+                 <h2 class="section-title">こんな方に最適です</h2>
              </div>
              <div class="target-list">
                  <ul>
-                     <li><span class="text-red">✔</span> 集客・販売を自動化して、時間や場所に縛られない働き方をしたい個人事業主の方</li>
-                     <li><span class="text-red">✔</span> 従業員のリソースを割かずに、効率的に売上を伸ばしたい中小企業経営者の方</li>
-                     <li><span class="text-red">✔</span> 自分の商品・サービスをオンラインで販売したいと考えているフリーランスの方</li>
-                     <li><span class="text-red">✔</span> 最新のマーケティング自動化ツール（UTAGEなど）を使いこなせるようになりたい方</li>
-                     <li><span class="text-red">✔</span> これからオンラインビジネスを始めたいが、何から学べば良いか分からない方</li>
+                     <li><span class="text-red">✔</span> 時間と場所に縛られない働き方を実現したい個人事業主・フリーランス</li>
+                     <li><span class="text-red">✔</span> 従業員のリソースを増やさずに効率的に売上を伸ばしたい中小企業経営者</li>
+                     <li><span class="text-red">✔</span> 自分の知識やノウハウをオンラインで収益化したいコンサルタント・専門家</li>
+                     <li><span class="text-red">✔</span> 複数のマーケティングツールの連携に悩み、一元管理したいビジネスオーナー</li>
+                     <li><span class="text-red">✔</span> IT導入補助金2025を活用してビジネスをデジタル化したい事業者</li>
                  </ul>
              </div>
          </section>
 
-
         <!-- お客様の声セクション -->
         <section class="achievement-section section-padding inner-lg">
             <div class="section-title-container">
-                 <span class="section-subtitle">＼ 受講生様の成功事例 ／</span>
-                 <h2 class="section-title">お客様の声</h2>
+                 <span class="section-subtitle">SUCCESS STORIES</span>
+                 <h2 class="section-title">自動化で実現した成功事例</h2>
             </div>
 
             <div class="achievement-card-list">
-                <!-- トップページから数件を抜粋して表示 -->
                 <div class="achievement-card">
                     <a href="achievement/customer1.html">
                         <img src="images/achieve-1.jpg" alt="実績1">
-                        <p>【オートファネル導入事例】メール対応を50%削減した自動化システム</p>
+                        <p>【自動化成功事例】問い合わせ対応を50%削減し、売上40%アップを実現した美容サロン</p>
                     </a>
                 </div>
                 <div class="achievement-card">
                     <a href="achievement/customer2.html">
                         <img src="images/achieve-2.jpg" alt="実績2">
-                        <p>【個人事業主様事例】オートファネル導入で月商2倍達成！</p>
+                        <p>【個人コンサルタント事例】オートファネル導入で月商2倍！労働時間は半分に</p>
                     </a>
                 </div>
                 <div class="achievement-card">
                     <a href="achievement/customer3.html">
                         <img src="images/achieve-3.jpg" alt="実績3">
-                        <p>【オートウェビナーファネル実績】24時間販売の自動化動線完成！【UTAGE構築代行丸投げちゃん事例】</p>
+                        <p>【オートウェビナー事例】24時間販売の自動化で初月から800万円売上達成！</p>
                     </a>
                 </div>
-                <!-- 他のカードは省略または別の事例に差し替え -->
             </div>
              <div class="more-button-container">
-                 <a href="achievement/index.html" class="btn-more">お客様の声一覧を見る</a>
+                 <a href="achievement/index.html" class="btn-more">全ての成功事例を見る</a>
              </div>
         </section>
 
-           <!-- Contact CTA Section (フッター直前) -->
-           <section class="contact-cta-section">
-            <!-- 背景装飾 -->
+        <!-- Contact CTA Section -->
+        <section class="contact-cta-section">
             <svg class="contact-cta-bg-deco contact-cta-bg-triangle1"><use xlink:href="#svg-triangle-color"></use></svg>
             <svg class="contact-cta-bg-deco contact-cta-bg-triangle2"><use xlink:href="#svg-triangle-color"></use></svg>
             <span class="contact-cta-bg-deco contact-cta-bg-circle1"></span>
             <span class="contact-cta-bg-deco contact-cta-bg-circle2"></span>
 
             <div class="contact-cta-container">
-                <span class="contact-cta-subtitle">Contact</span>
-                <h2 class="contact-cta-title">まずは無料でご相談ください</h2>
+                <span class="contact-cta-subtitle">LET'S GET STARTED</span>
+                <h2 class="contact-cta-title">ビジネス自動化の第一歩</h2>
                 <p class="contact-cta-lead">
-                    オートファネルの構築やマーケティングの自動化について、<br class="pc-only">
-                    専門家があなたの状況をお伺いし、最適なステップをご提案します。<br class="pc-only">
-                    まずはお気軽にお問い合わせください。
+                    IT導入補助金を活用したUTAGE導入で最大450万円の補助金が受けられます。<br class="pc-only">
+                    あなたのビジネスに最適な自動化プランと導入ステップをご提案します。<br class="pc-only">
+                    申請は完全丸投げOK！あなたは事業成長に集中できます。
                 </p>
                 <div class="contact-cta-buttons">
                     <a href="https://utage-marunage.com/it-hojo/" class="btn btn-contact">
-                        無料相談してみる
+                        無料診断を受ける
                         <span class="free-label">無料</span>
                     </a>
                     <a href="document.html" class="btn btn-document">
                         <svg><use xlink:href="#icon-pdf"></use></svg>
-                        資料請求する
+                        資料をダウンロード
                     </a>
                 </div>
             </div>
@@ -346,8 +815,6 @@
        </div>
    </footer>
 
-    <!-- 既存のJSファイルを読み込みます -->
     <script src="js/script.js"></script>
-    <!-- もしハンバーガーメニューのJSなどが必要であれば、script.js内に記述するか別途JSファイルを用意してください -->
 </body>
 </html>
