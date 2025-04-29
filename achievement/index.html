@@ -158,7 +158,6 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
             gap: 30px;
-            margin-bottom: 60px;
         }
 
         .achievement-card {
@@ -185,6 +184,23 @@
             width: 100%;
             height: 5px;
             background: var(--gradient-primary);
+        }
+
+        .achievement-image {
+            width: 100%;
+            height: auto;
+            overflow: hidden;
+        }
+
+        .achievement-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .achievement-card:hover .achievement-image img {
+            transform: scale(1.05);
         }
 
         .achievement-header {
@@ -333,34 +349,6 @@
 
         .achievement-cta-link:hover svg {
             transform: translateX(5px);
-        }
-
-        .pagination {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 40px;
-        }
-
-        .page-number {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: white;
-            color: #666;
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition-fast);
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
-        }
-
-        .page-number:hover, .page-number.active {
-            background: var(--primary-color);
-            color: white;
-            box-shadow: 0 5px 15px rgba(0, 102, 255, 0.3);
         }
 
         .achievement-testimonial {
@@ -575,6 +563,9 @@
             <div class="achievement-grid">
                 <!-- 事例1 -->
                 <div class="achievement-card">
+                    <div class="achievement-image">
+                        <img src="../images/achieve-1.jpg" alt="メール対応を50%削減した自動化システム">
+                    </div>
                     <div class="achievement-header">
                         <span class="achievement-tag tag-service">サービス業</span>
                         <h3 class="achievement-title">メール対応を50%削減した自動化システム</h3>
@@ -620,6 +611,9 @@
 
                 <!-- 事例2 -->
                 <div class="achievement-card">
+                    <div class="achievement-image">
+                        <img src="../images/achieve-2.jpg" alt="オートファネル導入で月商2倍達成！">
+                    </div>
                     <div class="achievement-header">
                         <span class="achievement-tag">個人事業主</span>
                         <h3 class="achievement-title">オートファネル導入で月商2倍達成！</h3>
@@ -665,6 +659,9 @@
 
                 <!-- 事例3 -->
                 <div class="achievement-card">
+                    <div class="achievement-image">
+                        <img src="../images/achieve-3.jpg" alt="24時間販売の自動化動線完成！">
+                    </div>
                     <div class="achievement-header">
                         <span class="achievement-tag tag-consulting">コンサルタント</span>
                         <h3 class="achievement-title">24時間販売の自動化動線完成！</h3>
@@ -710,6 +707,9 @@
 
                 <!-- 事例4 -->
                 <div class="achievement-card">
+                    <div class="achievement-image">
+                        <img src="../images/achieve-4.jpg" alt="移行初月に月商8桁達成！">
+                    </div>
                     <div class="achievement-header">
                         <span class="achievement-tag tag-ecommerce">ECサイト</span>
                         <h3 class="achievement-title">移行初月に月商8桁達成！</h3>
@@ -755,6 +755,9 @@
 
                 <!-- 事例5 -->
                 <div class="achievement-card">
+                    <div class="achievement-image">
+                        <img src="../images/achieve-5.jpg" alt="手作業対応ゼロ、新規商談が24時間自動化！">
+                    </div>
                     <div class="achievement-header">
                         <span class="achievement-tag">中小企業</span>
                         <h3 class="achievement-title">手作業対応ゼロ、新規商談が24時間自動化！</h3>
@@ -797,60 +800,9 @@
                         </a>
                     </div>
                 </div>
-
-                <!-- 事例6 -->
-                <div class="achievement-card">
-                    <div class="achievement-header">
-                        <span class="achievement-tag tag-service">サービス業</span>
-                        <h3 class="achievement-title">会員継続率35%向上！顧客育成システム導入事例</h3>
-                        <div class="achievement-meta">
-                            <div class="achievement-company">
-                                <span class="achievement-company-icon">
-                                    <img src="../images/company-icon6.jpg" alt="企業アイコン">
-                                </span>
-                                <span>フィットネスジム</span>
-                            </div>
-                            <div class="achievement-date">2024年8月</div>
-                        </div>
-                    </div>
-                    <div class="achievement-content">
-                        <div class="achievement-stats-row">
-                            <div class="achievement-stat">
-                                <span class="achievement-stat-number">35%</span>
-                                <span class="achievement-stat-label">継続率向上</span>
-                            </div>
-                            <div class="achievement-stat">
-                                <span class="achievement-stat-number">28%</span>
-                                <span class="achievement-stat-label">売上増加</span>
-                            </div>
-                            <div class="achievement-stat">
-                                <span class="achievement-stat-number">4週間</span>
-                                <span class="achievement-stat-label">導入期間</span>
-                            </div>
-                        </div>
-                        <p class="achievement-description">
-                            会員継続率に悩むフィットネスジムが自動顧客育成システムを導入。定期的な情報提供と動機付けコンテンツの自動配信で継続率が大幅向上しました。
-                        </p>
-                        <blockquote class="achievement-quote">
-                            「会員一人ひとりに個別対応するのは不可能でしたが、自動化システムのおかげで全会員に価値提供できるようになりました」
-                        </blockquote>
-                    </div>
-                    <div class="achievement-cta">
-                        <a href="customer6.html" class="achievement-cta-link">
-                            詳細を見る
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                        </a>
-                    </div>
-                </div>
             </div>
-
-            <div class="pagination">
-                <a href="#" class="page-number active">1</a>
-                <a href="#" class="page-number">2</a>
-                <a href="#" class="page-number">3</a>
-                <a href="#" class="page-number">4</a>
-                <a href="#" class="page-number">5</a>
-            </div>
+            
+            <!-- ページネーションを削除しました -->
         </div>
 
         <!-- お客様の声セクション -->
