@@ -3,26 +3,303 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="オートファネル大学は、マーケティング自動化と効率化の理念、選ばれる理由、提供サービスを紹介します。">
-    <title>オートファネル大学とは | オートファネル大学</title>
+    <meta name="description" content="オートファネル大学のプライバシーポリシーです。当社のユーザー情報の取り扱いについて詳しく説明しています。">
+    <title>プライバシーポリシー | オートファネル大学</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css"> <!-- 共通CSSを読み込み -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="images/favicon.ico">
-    <meta property="og:title" content="オートファネル大学とは">
-    <meta property="og:description" content="オートファネル大学は、マーケティング自動化と効率化の理念、選ばれる理由、提供サービスを紹介します。">
-    <!-- OGP画像は共通またはページ固有のものを設定 -->
-    <meta property="og:image" content="images/ogp_image_about.jpg"> <!-- 仮の画像パス -->
-    <meta property="og:type" content="article"> <!-- ウェブサイトの一部であることを示すarticleでも良い -->
+    <meta property="og:title" content="プライバシーポリシー | オートファネル大学">
+    <meta property="og:description" content="オートファネル大学のプライバシーポリシーです。当社のユーザー情報の取り扱いについて詳しく説明しています。">
+    <meta property="og:image" content="images/ogp_image_about.jpg">
+    <meta property="og:type" content="article">
 
-    <!-- style.cssに全てのスタイルを記述するため、ここにはスタイルタグは不要 -->
+    <style>
+        :root {
+            --primary-color: #0066ff;
+            --secondary-color: #ff3a3a;
+            --accent-color: #ff9500;
+            --dark-blue: #0d3283;
+            --light-bg: #f8f9fa;
+            --gradient-primary: linear-gradient(135deg, #0066ff, #00b8ff);
+            --gradient-secondary: linear-gradient(135deg, #ff3a3a, #ff7d7d);
+            --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --shadow-strong: 0 15px 40px rgba(0, 0, 0, 0.12);
+            --transition-fast: all 0.3s ease;
+            --border-radius: 12px;
+        }
 
+        /* ページ全体のスタイル */
+        .page-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* ヘッダーセクション */
+        .privacy-hero {
+            background: var(--gradient-primary);
+            padding: 110px 0 70px;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 60px;
+        }
+
+        .privacy-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('images/dots-pattern.png');
+            opacity: 0.07;
+            z-index: 1;
+        }
+
+        .privacy-hero-container {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .privacy-hero h1 {
+            font-size: 38px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .privacy-hero p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* プライバシーポリシーの内容 */
+        .privacy-detail {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-soft);
+            padding: 40px;
+            margin-bottom: 60px;
+        }
+
+        .privacy-detail h1 {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 40px;
+            color: var(--dark-blue);
+            padding-bottom: 20px;
+            border-bottom: 3px solid var(--primary-color);
+            display: inline-block;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .privacy-section {
+            margin-bottom: 40px;
+        }
+
+        .privacy-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .privacy-section h2 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--dark-blue);
+            background: var(--light-bg);
+            padding: 15px 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .privacy-section p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .privacy-section ul, 
+        .privacy-section ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .privacy-section li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 5px;
+        }
+
+        .privacy-section ul li::before {
+            content: "・";
+            color: var(--primary-color);
+            font-weight: bold;
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        .privacy-section ol {
+            counter-reset: item;
+            list-style-type: none;
+        }
+
+        .privacy-section ol li {
+            counter-increment: item;
+            padding-left: 10px;
+        }
+
+        .privacy-section ol li::before {
+            content: counter(item) ". ";
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        /* 更新情報 */
+        .update-info {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            text-align: right;
+            font-size: 14px;
+            color: #777;
+        }
+
+        /* 問い合わせ情報 強調 */
+        .contact-highlight {
+            background-color: var(--light-bg);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .contact-highlight p {
+            margin-bottom: 10px;
+        }
+
+        .contact-highlight p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 目次 */
+        .privacy-toc {
+            background-color: var(--light-bg);
+            border-radius: var(--border-radius);
+            padding: 25px 30px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .privacy-toc-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--dark-blue);
+            display: flex;
+            align-items: center;
+        }
+
+        .privacy-toc-title::before {
+            content: "📋";
+            margin-right: 10px;
+        }
+
+        .privacy-toc ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .privacy-toc li {
+            margin-bottom: 10px;
+            padding-left: 0;
+        }
+
+        .privacy-toc a {
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: var(--transition-fast);
+        }
+
+        .privacy-toc a:hover {
+            color: var(--dark-blue);
+            transform: translateX(5px);
+        }
+
+        .privacy-toc a::before {
+            content: "";
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            margin-right: 10px;
+            transition: var(--transition-fast);
+        }
+
+        .privacy-toc a:hover::before {
+            background-color: var(--dark-blue);
+        }
+
+        @media (max-width: 768px) {
+            .privacy-hero {
+                padding: 90px 0 50px;
+            }
+            
+            .privacy-hero h1 {
+                font-size: 28px;
+            }
+            
+            .privacy-hero p {
+                font-size: 16px;
+            }
+            
+            .privacy-detail {
+                padding: 25px;
+                margin-bottom: 40px;
+            }
+            
+            .privacy-detail h1 {
+                font-size: 24px;
+                margin-bottom: 30px;
+            }
+            
+            .privacy-section h2 {
+                font-size: 18px;
+                padding: 12px 15px;
+            }
+            
+            .privacy-section p,
+            .privacy-section ul,
+            .privacy-section ol {
+                font-size: 15px;
+            }
+            
+            .privacy-toc {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-
-    <!-- SVG Symbol Definitions for Icons (共通で使用するためここにも記述するか、共通ファイル化) -->
-    <!-- 簡易的にトップページのものをコピーしてここに埋め込みます -->
+    <!-- SVG Symbol Definitions for Icons -->
     <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
         <symbol id="icon-pdf" viewBox="0 0 512 512">
@@ -71,19 +348,18 @@
              <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9 26.3 26.2 58 34.4 93.9 36.2 37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
          </symbol>
     </defs>
-</svg>
+    </svg>
 
-
+    <!-- ヘッダー -->
     <header class="site-header">
         <div class="header-container">
-            <!-- ロゴ画像を削除し、テキストリンクに変更 -->
             <div class="site-logo-text">
                 <a href="index.html">CLAN</a>
             </div>
             <nav class="global-nav pc-nav">
                 <ul>
                     <li><a href="index.html">ホーム</a></li>
-                    <li><a href="about.html" aria-current="page">オートファネル大学とは</a></li>
+                    <li><a href="about.html">オートファネル大学とは</a></li>
                     <li><a href="blog/index.html">ブログ</a></li>
                     <li><a href="seminar/index.html">オンライン講座</a></li>
                     <li><a href="achievement/index.html">お客様の声</a></li>
@@ -94,43 +370,59 @@
                      <svg><use xlink:href="#icon-pdf"></use></svg>
                     資料請求する
                 </a>
-                <!-- ヘッダーの「無料」ラベルは削除 -->
                 <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
                     まずは相談する
                 </a>
             </div>
             <button class="hamburger-button sp-nav" aria-label="メニューを開く"><span></span><span></span><span></span></button>
-             <!-- スマホ用ナビゲーションメニュー（表示/非表示はJS/CSSで制御） -->
-             <!-- CLAN様のハンバーガーメニューは非常に複雑なので、ここではシンプルな例示 -->
-             <!-- <nav class="sp-nav-menu">
-                 <ul>
-                     <li><a href="index.html">ホーム</a></li>
-                     <li><a href="about.html">オートファネル大学とは</a></li>
-                     <li><a href="blog/index.html">ブログ</a></li>
-                     <li><a href="seminar/index.html">オンライン講座</a></li>
-                     <li><a href="achievement/index.html">お客様の声</a></li>
-                     <li><a href="document.html">資料請求する</a></li>
-                     <li><a href="https://utage-marunage.com/it-hojo/">まずは相談する</a></li>
-                 </ul>
-             </nav> -->
         </div>
     </header>
 
+    <!-- スマホ用フッター固定CTA -->
+    <div class="sp-fix-cta">
+        <ul>
+            <li class="mail"><a href="https://utage-marunage.com/it-hojo/">まずは相談する <img src="images/icon-mail.svg" alt=""></a></li>
+            <li class="book"><a href="document.html">資料請求する <svg><use xlink:href="#icon-pdf"></use></svg></a></li>
+        </ul>
+    </div>
+
     <main class="site-main">
-        <div class="page-container section-padding">
-            <div class="privacy-detail">
+        <!-- ヒーローセクション -->
+        <section class="privacy-hero">
+            <div class="privacy-hero-container">
                 <h1>プライバシーポリシー</h1>
-                
-                <div class="privacy-section">
-                    <p>株式会社YUKIマーケティング（以下「当社」）は、当社が運営するウェブサイト「オートファネル大学」（以下「当サイト」）において、お客様の個人情報の取扱いについて以下のとおりプライバシーポリシーを定めます。</p>
+                <p>オートファネル大学では、お客様の個人情報を適切に取り扱い、プライバシーの保護に努めています</p>
+            </div>
+        </section>
+
+        <div class="page-container">
+            <div class="privacy-detail">
+                <!-- 目次 -->
+                <div class="privacy-toc">
+                    <div class="privacy-toc-title">目次</div>
+                    <ul>
+                        <li><a href="#definition">1. 個人情報の定義</a></li>
+                        <li><a href="#collection">2. 個人情報の収集方法</a></li>
+                        <li><a href="#purpose">3. 個人情報の利用目的</a></li>
+                        <li><a href="#disclosure">4. 個人情報の第三者提供</a></li>
+                        <li><a href="#rights">5. 個人情報の開示・訂正・削除</a></li>
+                        <li><a href="#cookie">6. Cookieの使用について</a></li>
+                        <li><a href="#security">7. セキュリティ対策</a></li>
+                        <li><a href="#change">8. プライバシーポリシーの変更</a></li>
+                        <li><a href="#contact">9. お問い合わせ窓口</a></li>
+                    </ul>
                 </div>
                 
                 <div class="privacy-section">
+                    <p>株式会社CLAN（以下「当社」）は、当社が運営するウェブサイト「オートファネル大学」（以下「当サイト」）において、お客様の個人情報の取扱いについて以下のとおりプライバシーポリシーを定めます。</p>
+                </div>
+                
+                <div class="privacy-section" id="definition">
                     <h2>1. 個人情報の定義</h2>
                     <p>本プライバシーポリシーにおいて「個人情報」とは、個人情報保護法に定める「個人情報」を指し、生存する個人に関する情報であって、当該情報に含まれる氏名、生年月日、住所、電話番号、メールアドレス等の記述等により特定の個人を識別できる情報を指します。</p>
                 </div>
                 
-                <div class="privacy-section">
+                <div class="privacy-section" id="collection">
                     <h2>2. 個人情報の収集方法</h2>
                     <p>当社は、以下の方法でお客様の個人情報を取得します。</p>
                     <ul>
@@ -142,7 +434,7 @@
                     </ul>
                 </div>
                 
-                <div class="privacy-section">
+                <div class="privacy-section" id="purpose">
                     <h2>3. 個人情報の利用目的</h2>
                     <p>当社は、お客様から取得した個人情報を、以下の目的で利用いたします。</p>
                     <ol>
@@ -157,7 +449,7 @@
                     </ol>
                 </div>
                 
-                <div class="privacy-section">
+                <div class="privacy-section" id="disclosure">
                     <h2>4. 個人情報の第三者提供</h2>
                     <p>当社は、以下のいずれかに該当する場合を除き、お客様の個人情報を第三者に提供することはありません。</p>
                     <ul>
@@ -169,12 +461,12 @@
                     </ul>
                 </div>
                 
-                <div class="privacy-section">
+                <div class="privacy-section" id="rights">
                     <h2>5. 個人情報の開示・訂正・削除</h2>
                     <p>お客様は、当社に対して個人情報の開示、訂正、削除、利用停止を請求することができます。開示等の請求を行いたい場合は、下記の「お問い合わせ窓口」までご連絡ください。</p>
                 </div>
                 
-                <div class="privacy-section">
+                <div class="privacy-section" id="cookie">
                     <h2>6. Cookieの使用について</h2>
                     <p>当サイトでは、お客様の利便性向上のためにCookieを使用しています。Cookieとは、ウェブサイトがお客様のコンピュータやモバイルデバイスに保存する小さなテキストファイルで、お客様のブラウザを識別するために使用されます。</p>
                     <p>当サイトでは、以下の目的でCookieを使用しています。</p>
@@ -186,22 +478,25 @@
                     <p>お客様はブラウザの設定によりCookieの受け入れを拒否することができますが、その場合、当サイトの一部の機能が正常に動作しない可能性があります。</p>
                 </div>
                 
-                <div class="privacy-section">
+                <div class="privacy-section" id="security">
                     <h2>7. セキュリティ対策</h2>
                     <p>当社は、個人情報の漏洩、滅失、き損等を防止するため、適切なセキュリティ対策を実施しています。また、個人情報を取り扱う従業員に対して、個人情報の適正な取扱いを徹底します。</p>
                 </div>
                 
-                <div class="privacy-section">
+                <div class="privacy-section" id="change">
                     <h2>8. プライバシーポリシーの変更</h2>
                     <p>当社は、必要に応じて本プライバシーポリシーを変更することがあります。変更した場合には、当サイト上でお知らせします。</p>
                 </div>
                 
-                <div class="privacy-section">
+                <div class="privacy-section" id="contact">
                     <h2>9. お問い合わせ窓口</h2>
                     <p>本プライバシーポリシーに関するお問い合わせは、下記までお願いいたします。</p>
-                    <p>株式会社CLAN<br>
-                    住所：〒892-0851 鹿児島県鹿児島市上竜尾町1番2号<br>
-                    メールアドレス：info@clanbiz.net</p>
+                    
+                    <div class="contact-highlight">
+                        <p><strong>株式会社CLAN</strong></p>
+                        <p>住所：〒892-0851 鹿児島県鹿児島市上竜尾町1番2号</p>
+                        <p>メールアドレス：<a href="mailto:info@clanbiz.net">info@clanbiz.net</a></p>
+                    </div>
                 </div>
                 
                 <div class="update-info">
@@ -210,11 +505,9 @@
                 </div>
             </div>
         </div>
-    </main>
 
-        <!-- Contact CTA Section (フッター直前) -->
+        <!-- Contact CTA Section -->
         <section class="contact-cta-section">
-            <!-- 背景装飾 -->
             <svg class="contact-cta-bg-deco contact-cta-bg-triangle1"><use xlink:href="#svg-triangle-color"></use></svg>
             <svg class="contact-cta-bg-deco contact-cta-bg-triangle2"><use xlink:href="#svg-triangle-color"></use></svg>
             <span class="contact-cta-bg-deco contact-cta-bg-circle1"></span>
@@ -240,50 +533,50 @@
                 </div>
             </div>
         </section>
+    </main>
 
-   </main>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-widgets">
+                <div class="widget-area footer-widget-1">
+                    <img src="images/logo-white.png" alt="オートファネル大学 ロゴ白" class="footer-logo">
+                </div>
+                <div class="widget-area footer-widget-2">
+                    <h4>オンライン講座一覧</h4>
+                    <ul>
+                        <li><a href="course/lp.html">ランディングページ作成初級講座</a></li>
+                        <li><a href="course/lp.html">動画編集初級講座</a></li>
+                        <li><a href="course/lp.html">ステップメール設計初級講座</a></li>
+                        <li><a href="course/lp.html">オートファネル構築初級講座</a></li>
+                        <li><a href="course/lp.html">Youtubeサムネ作成初級講座</a></li>
+                        <li><a href="course/lp.html">Canvaデザイン初級講座</a></li>
+                    </ul>
+                </div>
+                <div class="widget-area footer-widget-3">
+                    <h4>無料コンテンツ</h4>
+                    <ul>
+                        <li><a href="blog/index.html">ブログ</a></li>
+                        <li><a href="book/index.html">電子書籍</a></li>
+                        <li><a href="free-seminar.html">無料セミナー</a></li>
+                        <li><a href="free-consultation.html">無料相談</a></li>
+                        <li><a href="achievement/index.html">お客様の声</a></li>
+                    </ul>
+                </div>
+                <div class="widget-area footer-widget-4">
+                    <h4>運営情報</h4>
+                    <ul>
+                        <li><a href="owner.html">運営者情報</a></li>
+                        <li><a href="terms.html">利用規約</a></li>
+                        <li><a href="privacy.html">プライバシーポリシー</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="site-copyright">
+                <small>© 2025 オートファネル大学</small>
+            </div>
+        </div>
+    </footer>
 
-   <footer class="site-footer">
-       <div class="footer-container">
-           <div class="footer-widgets">
-               <div class="widget-area footer-widget-1">
-                   <img src="images/logo-white.png" alt="オートファネル大学 ロゴ白" class="footer-logo">
-               </div>
-               <div class="widget-area footer-widget-2">
-                   <h4>オンライン講座一覧</h4>
-                   <ul>
-                       <li><a href="course/lp.html">ランディングページ作成初級講座</a></li>
-                       <li><a href="course/lp.html">動画編集初級講座</a></li>
-                       <li><a href="course/lp.html">ステップメール設計初級講座</a></li>
-                       <li><a href="course/lp.html">オートファネル構築初級講座</a></li>
-                       <li><a href="course/lp.html">Youtubeサムネ作成初級講座</a></li>
-                       <li><a href="course/lp.html">Canvaデザイン初級講座</a></li>
-                   </ul>
-               </div>
-               <div class="widget-area footer-widget-3">
-                   <h4>無料コンテンツ</h4>
-                   <ul>
-                       <li><a href="blog/index.html">ブログ</a></li>
-                       <li><a href="book/index.html">電子書籍</a></li>
-                       <li><a href="free-seminar.html">無料セミナー</a></li>
-                       <li><a href="free-consultation.html">無料相談</a></li>
-                       <li><a href="achievement/index.html">お客様の声</a></li>
-                   </ul>
-               </div>
-               <div class="widget-area footer-widget-4">
-                   <h4>運営情報</h4>
-                   <ul>
-                       <li><a href="owner.html">運営者情報</a></li>
-                       <li><a href="terms.html">利用規約</a></li>
-                       <li><a href="privacy.html">プライバシーポリシー</a></li>
-                   </ul>
-               </div>
-           </div>
-           <div class="site-copyright">
-               <small>© 2025 オートファネル大学</small>
-           </div>
-       </div>
-   </footer>
     <script src="js/script.js"></script>
 </body>
 </html>

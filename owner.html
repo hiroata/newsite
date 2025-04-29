@@ -4,470 +4,587 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="オートファネル大学の運営者情報ページです。株式会社CLANの代表 前田由紀子のプロフィールと会社概要をご紹介します。">
-    <title>運営者情報 - オートファネル大学</title>
+    <title>運営者情報 | オートファネル大学</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
-    <!-- 既存のCSSファイルがあればそのまま -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="images/favicon.ico">
-    <meta property="og:title" content="運営者情報 - オートファネル大学">
-    <meta property="og:description" content="株式会社CLANの代表 前田由紀子のプロフィールと会社概要。">
-    <meta property="og:image" content="images/ogp_image.jpg">
+    <meta property="og:title" content="運営者情報 | オートファネル大学">
+    <meta property="og:description" content="株式会社CLANの代表 前田由紀子のプロフィールと会社概要をご紹介します。">
+    <meta property="og:image" content="images/ogp_image_about.jpg">
     <meta property="og:type" content="article">
 
     <style>
-        /* 運営者情報ページの新スタイル */
+        :root {
+            --primary-color: #0066ff;
+            --secondary-color: #ff3a3a;
+            --accent-color: #ff9500;
+            --dark-blue: #0d3283;
+            --light-bg: #f8f9fa;
+            --gradient-primary: linear-gradient(135deg, #0066ff, #00b8ff);
+            --gradient-secondary: linear-gradient(135deg, #ff3a3a, #ff7d7d);
+            --gradient-accent: linear-gradient(135deg, #ff9500, #ffbd4a);
+            --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --shadow-strong: 0 15px 40px rgba(0, 0, 0, 0.12);
+            --transition-fast: all 0.3s ease;
+            --border-radius: 12px;
+        }
+
+        /* ページ全体のスタイル */
         body {
             font-family: 'Noto Sans JP', sans-serif;
             color: #333;
-            line-height: 1.6; /* 行間を調整 */
+            line-height: 1.6;
             margin: 0;
             padding: 0;
-            background-color: #f8f8f8; /* 全体の背景色を少し明るく */
+            background-color: #f9fafc;
         }
 
         .owner-container {
-            max-width: 1000px; /* 最大幅を少し広げる */
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px 80px;
+        }
+
+        /* ヒーローセクション */
+        .owner-hero-section {
+            background: var(--gradient-accent);
+            padding: 110px 0 70px;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 80px;
+        }
+
+        .owner-hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('images/dots-pattern.png');
+            opacity: 0.1;
+            z-index: 1;
+        }
+
+        .owner-hero-container {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        /* セクション上下の余白 */
-        .section-padding {
-             padding-top: 80px;
-             padding-bottom: 80px;
-        }
-        
-        .page-header {
-            text-align: center;
-            margin-bottom: 60px;
-            position: relative;
-            padding-top: 40px; /* 上部余白を追加 */
-        }
-        
-        .page-title {
-            font-size: 36px; /* タイトル大きめに */
-            font-weight: 700; /* 太字 */
+        .owner-hero-title {
+            font-size: 42px;
+            font-weight: 900;
             margin-bottom: 15px;
-            color: #0d3283; /* ブランドカラーに */
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.05); /* 薄い影 */
-        }
-        
-        .page-header p {
-            font-size: 18px;
-            color: #555;
+            letter-spacing: -0.02em;
         }
 
-        /* タイトルの下線 */
-        .page-header:after {
+        .owner-hero-lead {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        /* カード共通スタイル */
+        .info-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            margin-bottom: 80px;
+            transition: var(--transition-fast);
+            position: relative;
+            z-index: 1;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-strong);
+        }
+
+        /* 会社概要セクション */
+        .company-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            margin-bottom: 80px;
+        }
+
+        .company-info {
+            padding: 50px;
+        }
+
+        .company-image {
+            background-image: url('images/company-office.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 100%;
+        }
+
+        .section-title {
+            position: relative;
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 40px;
+            color: var(--accent-color);
+            display: inline-block;
+        }
+
+        .section-title::after {
             content: '';
-            display: block;
-            width: 80px;
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
             height: 4px;
-            background: #f06; /* アクセントカラーに */
-            margin: 20px auto 0;
+            background: var(--accent-color);
             border-radius: 2px;
         }
 
-        /* 会社概要・プロフィールセクション共通 */
-        .company-section, .profile-section {
+        .company-details, .profile-details {
+            margin: 0;
+            padding: 0;
+        }
+
+        .company-details dt, .profile-details dt {
+            font-weight: 700;
+            color: var(--accent-color);
+            font-size: 16px;
+            margin-top: 20px;
+            margin-bottom: 8px;
             display: flex;
-            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .company-details dt::before, .profile-details dt::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-color);
+            margin-right: 10px;
+            border-radius: 50%;
+        }
+
+        .company-details dd, .profile-details dd {
+            margin: 0 0 15px 18px;
+            line-height: 1.7;
+            color: #555;
+        }
+
+        /* プロフィールセクション */
+        .profile-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             margin-bottom: 80px;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* 影を強調 */
-            background-color: #fff; /* 白背景 */
-        }
-        
-        .company-section {
-             background: #f9f9f9; /* 会社概要は少しグレー背景 */
-        }
-
-        .company-info, .profile-info {
-            flex: 1;
-            padding: 40px;
-            min-width: 300px; /* 狭い画面での折り返し調整 */
-        }
-        
-        .company-image {
-            flex-basis: 45%; /* 画像エリアを少し広げる */
-            background-image: url('images/company-office.jpg'); /* 仮画像 */
-            background-size: cover;
-            background-position: center;
-            min-height: 350px; /* 高さ調整 */
-            order: 2; /* モバイルで下に表示 */
-        }
-
-        .profile-photo {
-            flex-basis: 40%; /* 画像エリア調整 */
-            background-image: url('images/profile-photo.jpg'); /* 仮画像 */
-            background-size: cover;
-            background-position: center;
-            min-height: 400px; /* 高さ調整 */
-            order: 1; /* モバイルで上に表示 */
         }
 
         .profile-info {
-            order: 2; /* モバイルで下に表示 */
-        }
-        
-        .section-title {
-            font-size: 28px; /* 大きめに */
-            font-weight: 700;
-            margin-bottom: 30px; /* 余白調整 */
-            padding-bottom: 10px;
-            border-bottom: 3px solid #0d3283; /* 下線を太く */
-            color: #0d3283;
+            padding: 50px;
+            order: 1;
         }
 
-        /* DT/DD スタイル */
-        .company-details, .profile-details {
-            margin-bottom: 0;
-        }
-        
-        .company-details dt, .profile-details dt {
-            font-weight: 700;
-            margin-top: 20px; /* 上部余白 */
-            margin-bottom: 5px; /* 下部余白を少し減らす */
-            color: #0d3283; /* 項目名をブランドカラーに */
-            font-size: 16px;
-        }
-        
-        .company-details dd, .profile-details dd {
-            margin-bottom: 15px; /* 余白調整 */
-            margin-left: 0; /* デフォルトのインデントをリセット */
-            padding-left: 15px; /* 左パディングでインデント */
-            line-height: 1.7;
-            /* 赤いポチ関連のスタイルを削除 */
-            /* position: relative; */
-        }
-
-        /* 赤いポチのスタイルを削除 */
-        /*
-        .company-details dd:before, .profile-details dd:before {
-             content: '・'; 
-             position: absolute;
-             left: 0;
-             color: #f06; 
-             font-weight: 700;
-        }
-        */
-
-        .profile-details dt {
-             margin-top: 25px; /* プロフィールの方を少し開ける */
-        }
-
-        /* プロフィール特定のスタイル */
-        .profile-name {
-            font-size: 32px; /* 大きく */
-            font-weight: 700;
-            margin-bottom: 5px;
-            color: #333;
-        }
-        
-        .profile-position {
-            font-size: 18px;
-            color: #0d3283;
-            margin-bottom: 30px; /* 余白調整 */
-            font-weight: 500;
-        }
-        
-        .profile-bio {
-            line-height: 1.8;
-            margin-bottom: 30px;
-            color: #555;
-        }
-
-        /* チームセクション */
-        .team-section {
-            margin-bottom: 80px;
-            text-align: center; /* 中央揃え */
-        }
-        
-        .team-intro {
-            max-width: 800px;
-            margin: 0 auto 50px; /* 余白調整 */
-            line-height: 1.8;
-            color: #555;
-            font-size: 17px;
-        }
-        
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
-            text-align: left; /* カード内のテキストは左寄せ */
-        }
-        
-        .team-member {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .team-member:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.12); /* ホバー時の影 */
-        }
-        
-        .member-image {
-            width: 100%;
-            padding-top: 100%; /* 1:1 アスペクト比 */
+        .profile-photo {
+            background-image: url('images/profile-photo.jpg');
             background-size: cover;
             background-position: center;
+            min-height: 100%;
+            order: 2;
         }
-        
-        .member-info {
-            padding: 20px;
-        }
-        
-        .member-name {
-            font-size: 20px;
-            font-weight: 700;
+
+        .profile-name {
+            font-size: 32px;
+            font-weight: 800;
             margin-bottom: 5px;
+            color: #333;
+            line-height: 1.2;
         }
-        
-        .member-position {
-            font-size: 14px;
-            color: #0d3283;
-            margin-bottom: 15px;
+
+        .profile-position {
+            font-size: 18px;
+            color: var(--accent-color);
+            margin-bottom: 25px;
             font-weight: 500;
+            line-height: 1.4;
         }
-        
-        .member-bio {
-            font-size: 14px;
-            line-height: 1.6;
+
+        .profile-bio {
+            background: #fff9f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .profile-bio::before {
+            content: """;
+            position: absolute;
+            top: -5px;
+            left: 10px;
+            font-size: 60px;
+            color: var(--accent-color);
+            opacity: 0.2;
+            font-family: serif;
+            line-height: 1;
+        }
+
+        .profile-bio p {
+            position: relative;
+            margin: 0;
+            line-height: 1.8;
             color: #555;
+            font-size: 15px;
         }
 
         /* メッセージセクション */
         .message-section {
-            margin-bottom: 80px;
-            padding: 60px 40px;
-            background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%); /* より落ち着いたグラデーション */
-            border-radius: 12px;
+            background: #fff;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-soft);
+            padding: 60px;
+            margin: 80px 0;
             text-align: center;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
         }
-        
+
+        .message-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: var(--gradient-accent);
+        }
+
         .message-title {
-            font-size: 30px; /* 大きめに */
-            font-weight: 700;
+            font-size: 30px;
+            font-weight: 800;
             margin-bottom: 30px;
-            color: #0d3283;
+            color: var(--accent-color);
         }
-        
+
         .message-content {
             max-width: 800px;
             margin: 0 auto;
-            line-height: 1.8;
-            font-size: 16px;
-            color: #555;
-        }
-        
-        .message-content p {
-            margin-bottom: 20px;
-        }
-        
-        /* CTA部分のスタイル */
-        .cta-section {
-            margin: 80px auto;
-            padding: 60px 30px; /* 上下パディングを増やす */
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/cta-background.jpg'); /* オーバーレイと画像 */
-            background-size: cover;
-            background-position: center;
-            border-radius: 12px;
-            text-align: center;
-            color: white; /* テキストを白に */
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2); /* 影を強調 */
-            position: relative; /* 擬似要素のために必要 */
-            z-index: 0; /* コンテンツの下になるように */
+            text-align: left;
         }
 
-        /* CTAコンテンツはオーバーレイより手前に */
-        .cta-section > * {
-            position: relative;
-            z-index: 2;
-        }
-        
-        .cta-title {
-            font-size: 32px; /* 大きめに */
-            font-weight: 700;
+        .message-content p {
             margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* テキスト影 */
-        }
-        
-        .cta-description {
-            margin-bottom: 40px; /* 余白調整 */
-            font-size: 18px; /* 大きめに */
             line-height: 1.8;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.2); /* テキスト影 */
+            color: #555;
         }
-        
+
+        .message-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* CTA セクション */
+        .cta-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/cta-background.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            border-radius: var(--border-radius);
+            padding: 60px;
+            text-align: center;
+            box-shadow: var(--shadow-strong);
+            margin: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-title {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-description {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
         .cta-button {
             display: inline-block;
             background: white;
-            color: #f06 !important; /* アクセントカラー */
-            padding: 18px 45px; /* ボタンを大きく */
+            color: var(--accent-color);
+            font-weight: 700;
+            font-size: 18px;
+            padding: 16px 40px;
             border-radius: 50px;
-            font-weight: 700; /* 太字 */
-            font-size: 18px; /* 大きめに */
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-decoration: none;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            min-width: 200px; /* ボタンの最小幅 */
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-5px); /* ホバーでさらに持ち上がる */
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* ホバー時の影 */
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            transition: var(--transition-fast);
         }
 
-        /* フッターのSNSアイコンの色調整 (既存のCSSに追記または変更) */
-        .footer-sns a svg {
-             fill: #ccc; /* フッターのアイコン色を薄く */
-             transition: fill 0.3s ease;
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
-        .footer-sns a:hover svg {
-             fill: #fff; /* ホバーで白く */
+
+        /* 装飾エレメント */
+        .decoration {
+            position: absolute;
+            z-index: -1;
+            opacity: 0.06;
+        }
+
+        .decoration-circle1 {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            top: -150px;
+            right: -100px;
+        }
+
+        .decoration-circle2 {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            bottom: -100px;
+            left: -80px;
+        }
+
+        .decoration-dots {
+            width: 200px;
+            height: 100px;
+            background-image: radial-gradient(circle, var(--dark-blue) 2px, transparent 2px);
+            background-size: 15px 15px;
+            top: 50%;
+            right: -50px;
+        }
+
+        /* アニメーション */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-up {
+            animation: fadeInUp 0.8s ease forwards;
         }
 
         /* レスポンシブ対応 */
-        @media (max-width: 767px) {
-            .section-padding {
-                padding-top: 50px;
-                padding-bottom: 50px;
-            }
-
-            .page-header {
-                 margin-bottom: 40px;
-                 padding-top: 20px;
-            }
-
-            .page-title {
-                font-size: 28px;
+        @media (max-width: 1024px) {
+            .owner-hero-title {
+                font-size: 36px;
             }
             
             .company-section, .profile-section {
-                flex-direction: column; /* 縦並び */
-                margin-bottom: 50px;
+                grid-template-columns: 1fr;
             }
-
+            
             .company-image, .profile-photo {
-                flex-basis: auto; /* flex-basisをリセット */
-                width: 100%; /* 幅100% */
-                min-height: 250px; /* 高さ調整 */
-                order: 1; /* 画像を常に上に */
+                min-height: 350px;
             }
             
             .company-info, .profile-info {
-                flex-basis: auto; /* flex-basisをリセット */
-                width: 100%; /* 幅100% */
-                padding: 30px;
-                order: 2; /* 情報は常に下に */
+                padding: 40px;
             }
             
             .section-title {
                 font-size: 24px;
-                margin-bottom: 20px;
+                margin-bottom: 30px;
             }
             
-            .team-grid {
-                grid-template-columns: 1fr; /* 1列表示 */
-                gap: 20px; /* 余白調整 */
-            }
-
-            .member-image {
-                 padding-top: 75%; /* モバイルでは少し横長に (4:3) */
+            .message-section, .cta-section {
+                padding: 40px 30px;
             }
             
-            .message-section {
-                padding: 40px 20px;
-                margin-bottom: 50px;
+            .message-title, .cta-title {
+                font-size: 26px;
             }
             
-            .message-title {
-                font-size: 24px;
-                margin-bottom: 20px;
-            }
-
-            .message-content {
-                 font-size: 15px;
-            }
-            
-            .cta-section {
-                padding: 40px 20px;
-                margin-top: 50px;
-                margin-bottom: 50px;
-            }
-            
-            .cta-title {
-                font-size: 24px;
-            }
-
             .cta-description {
-                 font-size: 15px;
-                 margin-bottom: 30px;
+                font-size: 16px;
             }
+        }
 
+        @media (max-width: 768px) {
+            .owner-hero-section {
+                padding: 90px 0 50px;
+            }
+            
+            .owner-hero-title {
+                font-size: 30px;
+            }
+            
+            .owner-hero-lead {
+                font-size: 16px;
+            }
+            
+            .owner-container {
+                padding: 40px 20px 60px;
+            }
+            
+            .profile-info {
+                order: 2;
+            }
+            
+            .profile-photo {
+                order: 1;
+            }
+            
+            .profile-name {
+                font-size: 28px;
+            }
+            
+            .profile-position {
+                font-size: 16px;
+            }
+            
+            .company-image, .profile-photo {
+                min-height: 250px;
+            }
+            
             .cta-button {
-                 font-size: 16px;
-                 padding: 15px 30px;
-                 min-width: auto;
+                width: 100%;
+                box-sizing: border-box;
             }
         }
 
-        /* PCとSPでの画像/情報ブロックの順序調整 */
-        @media (min-width: 768px) {
-             .company-image { order: 2; }
-             .company-info { order: 1; }
-             .profile-photo { order: 1; }
-             .profile-info { order: 2; }
-             .member-image { padding-top: 100%; } /* PCは正方形に */
+        @media (max-width: 480px) {
+            .owner-hero-title {
+                font-size: 26px;
+            }
+            
+            .company-info, .profile-info {
+                padding: 30px 20px;
+            }
+            
+            .message-section, .cta-section {
+                padding: 30px 20px;
+            }
+            
+            .message-title, .cta-title {
+                font-size: 22px;
+            }
+            
+            .cta-description {
+                font-size: 15px;
+                margin-bottom: 30px;
+            }
+            
+            .cta-button {
+                font-size: 16px;
+                padding: 14px 30px;
+            }
         }
-
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- SVG Symbol Definitions for Icons -->
+    <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <symbol id="icon-pdf" viewBox="0 0 512 512">
+            <style type="text/css">
+                .st0{fill:#4B4B4B;}
+            </style>
+            <g>
+                <path class="st0" d="M378.413,0H208.297h-13.182L185.8,9.314L57.02,138.102l-9.314,9.314v13.176v265.514
+                    c0,47.36,38.528,85.895,85.896,85.895h244.811c47.353,0,85.881-38.535,85.881-85.895V85.896C464.294,38.528,425.766,0,378.413,0z
+                    M432.497,426.105c0,29.877-24.214,54.091-54.084,54.091H133.602c-29.884,0-54.098-24.214-54.098-54.091V160.591h83.716
+                    c24.885,0,45.077-20.178,45.077-45.07V31.804h170.116c29.87,0,54.084,24.214,54.084,54.092V426.105z"/>
+                <path class="st0" d="M171.947,252.785h-28.529c-5.432,0-8.686,3.533-8.686,8.825v73.754c0,6.388,4.204,10.599,10.041,10.599
+                    c5.711,0,9.914-4.21,9.914-10.599v-22.406c0-0.545,0.279-0.817,0.824-0.817h16.436c20.095,0,32.188-12.226,32.188-29.612
+                    C204.136,264.871,192.182,252.785,171.947,252.785z M170.719,294.888h-15.208c-0.545,0-0.824-0.272-0.824-0.81v-23.23
+                    c0-0.545,0.279-0.816,0.824-0.816h15.208c8.42,0,13.447,5.027,13.447,12.498C184.167,290,179.139,294.888,170.719,294.888z"/>
+                <path class="st0" d="M361.167,252.785h-44.812c-5.432,0-8.7,3.533-8.7,8.825v73.754c0,6.388,4.218,10.599,10.055,10.599
+                    c5.697,0,9.914-4.21,9.914-10.599v-26.351c0-0.538,0.265-0.81,0.81-0.81h26.086c5.837,0,9.23-3.532,9.23-8.56
+                    c0-5.028-3.393-8.553-9.23-8.553h-26.086c-0.545,0-0.81-0.272-0.81-0.817v-19.425c0-0.545,0.265-0.816,0.81-0.816h32.733
+                    c5.572,0,9.245-3.666,9.245-8.553C370.411,256.45,366.738,252.785,361.167,252.785z"/>
+            </g>
+        </symbol>
+        <symbol id="svg-triangle-color" viewBox="0 0 147.35 133">
+             <style>
+                .cls-1{fill:none;}
+                .cls-2{clip-path:url(#clip-path-triangle);} /* IDをユニークに */
+                .cls-3{fill:#80d4d4;}
+                .cls-4{fill:#3bb68b;}
+                .cls-5{fill:#4fbfec;}
+            </style>
+            <clipPath id="clip-path-triangle" transform="translate(0 0)">
+                <rect class="cls-1" width="147.35" height="133"/>
+            </clipPath>
+            <g class="cls-2">
+                <path class="cls-3" d="M127.06,133H73.66L53.11,111h58.11a7.36,7.36,0,0,0,6.38-11l-8.49-14.7,8.82-28.83,26.68,46.22A20.27,20.27,0,0,1,127.06,133" transform="translate(0 0)"/>
+                <path class="cls-4" d="M117.93,56.38l-8.82,28.83L85.05,43.54l-5-8.66a7.36,7.36,0,0,0-12.75,0L58.8,49.59,29.44,56.37,56.13,10.13a20.26,20.26,0,0,1,35.1,0l16.29,28.22Z" transform="translate(0 0)"/>
+                <path class="cls-5" d="M73.66,133H20.29A20.27,20.27,0,0,1,2.74,102.6L19,74.4l10.41-18L58.8,49.59l-24,41.67-5-8.65a7.36,7.36,0,0,0,6.38,11h17Z" transform="translate(0 0)"/>
+            </g>
+        </symbol>
+    </defs>
+    </svg>
+
+    <!-- ヘッダー -->
     <header class="site-header">
         <div class="header-container">
-            <div class="site-logo">
-                <a href="index.html"><img src="images/logo.png" alt="オートファネル大学 ロゴ"></a>
+            <div class="site-logo-text">
+                <a href="index.html">CLAN</a>
             </div>
             <nav class="global-nav pc-nav">
                 <ul>
                     <li><a href="index.html">ホーム</a></li>
-                    <li><a href="course/index.html">オートファネル大学とは</a></li>
+                    <li><a href="about.html">オートファネル大学とは</a></li>
                     <li><a href="blog/index.html">ブログ</a></li>
                     <li><a href="seminar/index.html">オンライン講座</a></li>
-                    <li><a href="achievement/index.html" class="btn-nav btn-red">お客様の声</a></li>
-                    <li><a href="free-seminar.html" class="btn-nav btn-blue">無料セミナー</a></li>
+                    <li><a href="achievement/index.html">お客様の声</a></li>
                 </ul>
             </nav>
+            <div class="header-cta">
+                <a href="document.html" class="btn-document">
+                     <svg><use xlink:href="#icon-pdf"></use></svg>
+                    資料請求する
+                </a>
+                <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
+                    まずは相談する
+                </a>
+            </div>
             <button class="hamburger-button sp-nav" aria-label="メニューを開く"><span></span><span></span><span></span></button>
         </div>
     </header>
-    <!-- End Header -->
 
-    <!-- Main Content -->
+    <!-- スマホ用フッター固定CTA -->
+    <div class="sp-fix-cta">
+        <ul>
+            <li class="mail"><a href="https://utage-marunage.com/it-hojo/">まずは相談する <img src="images/icon-mail.svg" alt=""></a></li>
+            <li class="book"><a href="document.html">資料請求する <svg><use xlink:href="#icon-pdf"></use></svg></a></li>
+        </ul>
+    </div>
+
     <main class="site-main">
-        <div class="owner-container section-padding">
-            <div class="page-header">
-                <h1 class="page-title">運営者情報</h1>
-                <p>株式会社CLANについてご紹介します</p>
+        <!-- ヒーローセクション -->
+        <section class="owner-hero-section">
+            <div class="owner-hero-container">
+                <h1 class="owner-hero-title">運営者情報</h1>
+                <p class="owner-hero-lead">株式会社CLANが運営するオートファネル大学についてご紹介します</p>
             </div>
-            
-            <!-- Company Section -->
-            <div class="company-section">
+        </section>
+
+        <div class="owner-container">
+            <!-- 会社概要セクション -->
+            <div class="company-section info-card animate-fade-up">
                 <div class="company-info">
                     <h2 class="section-title">会社概要</h2>
                     <dl class="company-details">
@@ -494,12 +611,11 @@
                     </dl>
                 </div>
                 <div class="company-image"></div>
+                <span class="decoration decoration-circle1"></span>
             </div>
-            <!-- End Company Section -->
             
-            <!-- Profile Section -->
-            <div class="profile-section">
-                <div class="profile-photo"></div>
+            <!-- プロフィールセクション -->
+            <div class="profile-section info-card animate-fade-up">
                 <div class="profile-info">
                     <h2 class="section-title">代表プロフィール</h2>
                     <h3 class="profile-name">前田 由紀子</h3>
@@ -520,50 +636,13 @@
                         <dd>UTAGE構築代行による売上改善事例300件以上</dd>
                     </dl>
                 </div>
+                <div class="profile-photo"></div>
+                <span class="decoration decoration-circle2"></span>
+                <span class="decoration decoration-dots"></span>
             </div>
-            <!-- End Profile Section -->
             
-            <!-- Team Section -->
-            <div class="team-section">
-                <h2 class="section-title">私たちのチーム</h2>
-                <p class="team-intro">株式会社CLANには、マーケティング戦略から実装まで、幅広いスキルを持ったプロフェッショナルが集まっています。一人ひとりが専門分野を持ち、お客様のビジネス成長を全力でサポートします。</p>
-                
-                <div class="team-grid">
-                    <!-- チームメンバー1 -->
-                    <div class="team-member">
-                        <div class="member-image" style="background-image: url('images/team-member1.jpg');"></div>
-                        <div class="member-info">
-                            <h3 class="member-name">山田 太郎</h3>
-                            <p class="member-position">マーケティングディレクター</p>
-                            <p class="member-bio">集客戦略立案と広告運用のプロフェッショナル。Google広告・Meta広告の認定資格を多数保有し、数百社の広告運用実績あり。ROI重視のマーケティング戦略が得意。</p>
-                        </div>
-                    </div>
-                    
-                    <!-- チームメンバー2 -->
-                    <div class="team-member">
-                        <div class="member-image" style="background-image: url('images/team-member2.jpg');"></div>
-                        <div class="member-info">
-                            <h3 class="member-name">佐藤 美咲</h3>
-                            <p class="member-position">ウェブデザイナー</p>
-                            <p class="member-bio">UIデザインと顧客体験設計が専門。ユーザビリティを重視した美しいウェブデザインを提供。ECサイトやLPの改善により平均コンバージョン率1.5倍の実績。</p>
-                        </div>
-                    </div>
-                    
-                    <!-- チームメンバー3 -->
-                    <div class="team-member">
-                        <div class="member-image" style="background-image: url('images/team-member3.jpg');"></div>
-                        <div class="member-info">
-                            <h3 class="member-name">鈴木 健太</h3>
-                            <p class="member-position">ファネル構築スペシャリスト</p>
-                            <p class="member-bio">自動化ツールと集客の連携が得意。UTAGEを活用した複雑な自動化システムの構築により、クライアントの業務効率化と売上向上を実現。</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End Team Section -->
-            
-            <!-- Message Section -->
-            <div class="message-section">
+            <!-- メッセージセクション -->
+            <div class="message-section animate-fade-up">
                 <h2 class="message-title">メッセージ</h2>
                 <div class="message-content">
                     <p>セールスファネルの力で、あなたのビジネスを「理想の未来」へ。</p>
@@ -573,95 +652,118 @@
                     <p>私たちは、単なる代行業者ではありません。お客様のビジネスの「理想の未来」を共に描き、共に成長するパートナーです。</p>
                 </div>
             </div>
-            <!-- End Message Section -->
             
             <!-- CTA Section -->
-            <div class="cta-section">
+            <div class="cta-section animate-fade-up">
                 <h2 class="cta-title">期間限定・UTAGE丸投げちゃんにIT導入補助金が使えます！</h2>
                 <p class="cta-description">UTAGE構築代行サービスがIT導入補助金の対象になりました。最大450万円の補助金を活用して、あなたのビジネスにオートファネルを導入するチャンスです。期間限定のこの機会をお見逃しなく！</p>
                 <a href="https://utage-marunage.com/it-hojo/" class="cta-button" target="_blank">詳細はこちら</a>
             </div>
-            <!-- End CTA Section -->
-
         </div>
+
+        <!-- Contact CTA Section -->
+        <section class="contact-cta-section">
+            <svg class="contact-cta-bg-deco contact-cta-bg-triangle1"><use xlink:href="#svg-triangle-color"></use></svg>
+            <svg class="contact-cta-bg-deco contact-cta-bg-triangle2"><use xlink:href="#svg-triangle-color"></use></svg>
+            <span class="contact-cta-bg-deco contact-cta-bg-circle1"></span>
+            <span class="contact-cta-bg-deco contact-cta-bg-circle2"></span>
+
+            <div class="contact-cta-container">
+                <span class="contact-cta-subtitle">Contact</span>
+                <h2 class="contact-cta-title">まずは無料でご相談ください</h2>
+                <p class="contact-cta-lead">
+                    オートファネルの構築やマーケティングの自動化について、<br class="pc-only">
+                    専門家があなたの状況をお伺いし、最適なステップをご提案します。<br class="pc-only">
+                    まずはお気軽にお問い合わせください。
+                </p>
+                <div class="contact-cta-buttons">
+                    <a href="https://utage-marunage.com/it-hojo/" class="btn btn-contact">
+                        無料相談してみる
+                        <span class="free-label">無料</span>
+                    </a>
+                    <a href="document.html" class="btn btn-document">
+                        <svg><use xlink:href="#icon-pdf"></use></svg>
+                        資料請求する
+                    </a>
+                </div>
+            </div>
+        </section>
     </main>
-    <!-- End Main Content -->
 
-       <!-- Contact CTA Section (フッター直前) -->
-       <section class="contact-cta-section">
-        <!-- 背景装飾 -->
-        <svg class="contact-cta-bg-deco contact-cta-bg-triangle1"><use xlink:href="#svg-triangle-color"></use></svg>
-        <svg class="contact-cta-bg-deco contact-cta-bg-triangle2"><use xlink:href="#svg-triangle-color"></use></svg>
-        <span class="contact-cta-bg-deco contact-cta-bg-circle1"></span>
-        <span class="contact-cta-bg-deco contact-cta-bg-circle2"></span>
-
-        <div class="contact-cta-container">
-            <span class="contact-cta-subtitle">Contact</span>
-            <h2 class="contact-cta-title">まずは無料でご相談ください</h2>
-            <p class="contact-cta-lead">
-                オートファネルの構築やマーケティングの自動化について、<br class="pc-only">
-                専門家があなたの状況をお伺いし、最適なステップをご提案します。<br class="pc-only">
-                まずはお気軽にお問い合わせください。
-            </p>
-            <div class="contact-cta-buttons">
-                <a href="https://utage-marunage.com/it-hojo/" class="btn btn-contact">
-                    無料相談してみる
-                    <span class="free-label">無料</span>
-                </a>
-                <a href="document.html" class="btn btn-document">
-                    <svg><use xlink:href="#icon-pdf"></use></svg>
-                    資料請求する
-                </a>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-widgets">
+                <div class="widget-area footer-widget-1">
+                    <img src="images/logo-white.png" alt="オートファネル大学 ロゴ白" class="footer-logo">
+                </div>
+                <div class="widget-area footer-widget-2">
+                    <h4>オンライン講座一覧</h4>
+                    <ul>
+                        <li><a href="course/lp.html">ランディングページ作成初級講座</a></li>
+                        <li><a href="course/lp.html">動画編集初級講座</a></li>
+                        <li><a href="course/lp.html">ステップメール設計初級講座</a></li>
+                        <li><a href="course/lp.html">オートファネル構築初級講座</a></li>
+                        <li><a href="course/lp.html">Youtubeサムネ作成初級講座</a></li>
+                        <li><a href="course/lp.html">Canvaデザイン初級講座</a></li>
+                    </ul>
+                </div>
+                <div class="widget-area footer-widget-3">
+                    <h4>無料コンテンツ</h4>
+                    <ul>
+                        <li><a href="blog/index.html">ブログ</a></li>
+                        <li><a href="book/index.html">電子書籍</a></li>
+                        <li><a href="free-seminar.html">無料セミナー</a></li>
+                        <li><a href="free-consultation.html">無料相談</a></li>
+                        <li><a href="achievement/index.html">お客様の声</a></li>
+                    </ul>
+                </div>
+                <div class="widget-area footer-widget-4">
+                    <h4>運営情報</h4>
+                    <ul>
+                        <li><a href="owner.html">運営者情報</a></li>
+                        <li><a href="terms.html">利用規約</a></li>
+                        <li><a href="privacy.html">プライバシーポリシー</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="site-copyright">
+                <small>© 2025 オートファネル大学</small>
             </div>
         </div>
-    </section>
+    </footer>
 
-</main>
-
-<footer class="site-footer">
-   <div class="footer-container">
-       <div class="footer-widgets">
-           <div class="widget-area footer-widget-1">
-               <img src="images/logo-white.png" alt="オートファネル大学 ロゴ白" class="footer-logo">
-           </div>
-           <div class="widget-area footer-widget-2">
-               <h4>オンライン講座一覧</h4>
-               <ul>
-                   <li><a href="course/lp.html">ランディングページ作成初級講座</a></li>
-                   <li><a href="course/lp.html">動画編集初級講座</a></li>
-                   <li><a href="course/lp.html">ステップメール設計初級講座</a></li>
-                   <li><a href="course/lp.html">オートファネル構築初級講座</a></li>
-                   <li><a href="course/lp.html">Youtubeサムネ作成初級講座</a></li>
-                   <li><a href="course/lp.html">Canvaデザイン初級講座</a></li>
-               </ul>
-           </div>
-           <div class="widget-area footer-widget-3">
-               <h4>無料コンテンツ</h4>
-               <ul>
-                   <li><a href="blog/index.html">ブログ</a></li>
-                   <li><a href="book/index.html">電子書籍</a></li>
-                   <li><a href="free-seminar.html">無料セミナー</a></li>
-                   <li><a href="free-consultation.html">無料相談</a></li>
-                   <li><a href="achievement/index.html">お客様の声</a></li>
-               </ul>
-           </div>
-           <div class="widget-area footer-widget-4">
-               <h4>運営情報</h4>
-               <ul>
-                   <li><a href="owner.html">運営者情報</a></li>
-                   <li><a href="terms.html">利用規約</a></li>
-                   <li><a href="privacy.html">プライバシーポリシー</a></li>
-               </ul>
-           </div>
-       </div>
-       <div class="site-copyright">
-           <small>© 2025 オートファネル大学</small>
-       </div>
-   </div>
-</footer>
-
-    <!-- Existing Script -->
     <script src="js/script.js"></script>
-    <!-- End Existing Script -->
+    
+    <script>
+        // フェードインアニメーションのための簡易スクリプト
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.animate-fade-up');
+            
+            function checkVisibility() {
+                animatedElements.forEach(element => {
+                    const rect = element.getBoundingClientRect();
+                    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+                    
+                    if (rect.top <= windowHeight * 0.9) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            }
+            
+            // 初期状態を設定
+            animatedElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(30px)';
+                element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            });
+            
+            // 初回チェック
+            checkVisibility();
+            
+            // スクロール時にチェック
+            window.addEventListener('scroll', checkVisibility);
+        });
+    </script>
 </body>
 </html>
