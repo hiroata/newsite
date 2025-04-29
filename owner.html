@@ -25,6 +25,7 @@
             --gradient-primary: linear-gradient(135deg, #0066ff, #00b8ff);
             --gradient-secondary: linear-gradient(135deg, #ff3a3a, #ff7d7d);
             --gradient-accent: linear-gradient(135deg, #ff9500, #ffbd4a);
+            --gradient-dark: linear-gradient(135deg, #1a1a2e, #16213e);
             --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08);
             --shadow-strong: 0 15px 40px rgba(0, 0, 0, 0.12);
             --transition-fast: all 0.3s ease;
@@ -49,13 +50,13 @@
 
         /* ヒーローセクション */
         .owner-hero-section {
-            background: var(--gradient-accent);
-            padding: 110px 0 70px;
+            background: var(--gradient-dark);
+            padding: 130px 0 80px;
             color: white;
             text-align: center;
             position: relative;
             overflow: hidden;
-            margin-bottom: 80px;
+            margin-bottom: 100px;
         }
 
         .owner-hero-section::before {
@@ -79,18 +80,24 @@
         }
 
         .owner-hero-title {
-            font-size: 42px;
+            font-size: 48px;
             font-weight: 900;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             letter-spacing: -0.02em;
+            background: linear-gradient(90deg, #ff3a3a, #ff9500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
         }
 
         .owner-hero-lead {
-            font-size: 18px;
+            font-size: 20px;
             max-width: 800px;
             margin: 0 auto;
             opacity: 0.9;
             font-weight: 500;
+            line-height: 1.8;
         }
 
         /* カード共通スタイル */
@@ -114,11 +121,11 @@
         .company-section {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            margin-bottom: 80px;
+            margin-bottom: 100px;
         }
 
         .company-info {
-            padding: 50px;
+            padding: 60px;
         }
 
         .company-image {
@@ -126,14 +133,25 @@
             background-size: cover;
             background-position: center;
             min-height: 100%;
+            position: relative;
+        }
+
+        .company-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.4));
         }
 
         .section-title {
             position: relative;
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 800;
             margin-bottom: 40px;
-            color: var(--accent-color);
+            color: var(--secondary-color);
             display: inline-block;
         }
 
@@ -144,7 +162,7 @@
             left: 0;
             width: 60px;
             height: 4px;
-            background: var(--accent-color);
+            background: var(--secondary-color);
             border-radius: 2px;
         }
 
@@ -155,10 +173,10 @@
 
         .company-details dt, .profile-details dt {
             font-weight: 700;
-            color: var(--accent-color);
-            font-size: 16px;
-            margin-top: 20px;
-            margin-bottom: 8px;
+            color: var(--secondary-color);
+            font-size: 18px;
+            margin-top: 25px;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
         }
@@ -168,7 +186,7 @@
             display: inline-block;
             width: 8px;
             height: 8px;
-            background-color: var(--accent-color);
+            background-color: var(--secondary-color);
             margin-right: 10px;
             border-radius: 50%;
         }
@@ -177,18 +195,23 @@
             margin: 0 0 15px 18px;
             line-height: 1.7;
             color: #555;
+            font-size: 16px;
         }
 
         /* プロフィールセクション */
         .profile-section {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            margin-bottom: 80px;
+            margin-bottom: 100px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+            border-radius: var(--border-radius);
+            overflow: hidden;
         }
 
         .profile-info {
-            padding: 50px;
+            padding: 60px;
             order: 1;
+            background-color: #fff;
         }
 
         .profile-photo {
@@ -197,95 +220,129 @@
             background-position: center;
             min-height: 100%;
             order: 2;
+            position: relative;
+        }
+
+        .profile-photo::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 58, 58, 0.3), rgba(255, 149, 0, 0.3));
+            mix-blend-mode: overlay;
         }
 
         .profile-name {
-            font-size: 32px;
-            font-weight: 800;
+            font-size: 36px;
+            font-weight: 900;
             margin-bottom: 5px;
-            color: #333;
+            color: #222;
             line-height: 1.2;
         }
 
         .profile-position {
-            font-size: 18px;
-            color: var(--accent-color);
-            margin-bottom: 25px;
+            font-size: 20px;
+            color: var(--secondary-color);
+            margin-bottom: 30px;
             font-weight: 500;
             line-height: 1.4;
         }
 
         .profile-bio {
-            background: #fff9f0;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 25px;
+            background: #fff;
+            border-left: 4px solid var(--secondary-color);
+            border-radius: 0 8px 8px 0;
+            padding: 25px;
+            margin-bottom: 30px;
             position: relative;
-        }
-
-        .profile-bio::before {
-            content: """;
-            position: absolute;
-            top: -5px;
-            left: 10px;
-            font-size: 60px;
-            color: var(--accent-color);
-            opacity: 0.2;
-            font-family: serif;
-            line-height: 1;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
         }
 
         .profile-bio p {
             position: relative;
             margin: 0;
             line-height: 1.8;
-            color: #555;
-            font-size: 15px;
+            color: #444;
+            font-size: 16px;
         }
 
-        /* メッセージセクション */
-        .message-section {
-            background: #fff;
+        /* ビジョンセクション */
+        .vision-section {
+            margin-bottom: 100px;
+            text-align: center;
+            padding: 80px 40px;
+            background-color: #fff;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow-soft);
-            padding: 60px;
-            margin: 80px 0;
-            text-align: center;
             position: relative;
             overflow: hidden;
         }
 
-        .message-section::before {
+        .vision-title {
+            font-size: 36px;
+            font-weight: 900;
+            margin-bottom: 40px;
+            color: var(--dark-blue);
+            position: relative;
+            display: inline-block;
+        }
+
+        .vision-title::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 6px;
-            background: var(--gradient-accent);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary-color);
+            border-radius: 2px;
         }
 
-        .message-title {
-            font-size: 30px;
-            font-weight: 800;
-            margin-bottom: 30px;
-            color: var(--accent-color);
-        }
-
-        .message-content {
-            max-width: 800px;
+        .vision-content {
+            max-width: 900px;
             margin: 0 auto;
-            text-align: left;
+            font-size: 18px;
+            line-height: 2;
+            color: #444;
         }
 
-        .message-content p {
-            margin-bottom: 20px;
+        .vision-highlight {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 60px;
+        }
+
+        .vision-item {
+            flex: 1;
+            min-width: 300px;
+            padding: 30px;
+            background: var(--light-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition-fast);
+        }
+
+        .vision-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .vision-item-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+
+        .vision-item-text {
+            font-size: 16px;
             line-height: 1.8;
             color: #555;
-        }
-
-        .message-content p:last-child {
-            margin-bottom: 0;
         }
 
         /* CTA セクション */
@@ -295,19 +352,49 @@
             background-position: center;
             color: white;
             border-radius: var(--border-radius);
-            padding: 60px;
+            padding: 80px 60px;
             text-align: center;
             box-shadow: var(--shadow-strong);
-            margin: 80px 0;
+            margin-bottom: 100px;
             position: relative;
             overflow: hidden;
         }
 
-        .cta-title {
-            font-size: 32px;
-            font-weight: 800;
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 58, 58, 0.3), rgba(255, 149, 0, 0.3));
+            z-index: 1;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-badge {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            font-size: 14px;
+            font-weight: 700;
+            padding: 8px 20px;
+            border-radius: 30px;
             margin-bottom: 20px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-title {
+            font-size: 36px;
+            font-weight: 900;
+            margin-bottom: 25px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            line-height: 1.4;
         }
 
         .cta-description {
@@ -321,19 +408,101 @@
         .cta-button {
             display: inline-block;
             background: white;
-            color: var(--accent-color);
+            color: var(--secondary-color);
             font-weight: 700;
             font-size: 18px;
-            padding: 16px 40px;
+            padding: 18px 50px;
             border-radius: 50px;
             text-decoration: none;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
             transition: var(--transition-fast);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.5);
+            transform: rotate(45deg);
+            top: -50px;
+            left: -100px;
+            transition: all 0.5s ease;
         }
 
         .cta-button:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .cta-button:hover::after {
+            left: 200%;
+        }
+
+        /* フィーチャーセクション */
+        .features-section {
+            margin-bottom: 100px;
+        }
+
+        .features-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 900;
+            margin-bottom: 50px;
+            color: var(--dark-blue);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-item {
+            background-color: #fff;
+            border-radius: var(--border-radius);
+            padding: 40px 30px;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition-fast);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-secondary);
+        }
+
+        .feature-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        .feature-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #222;
+        }
+
+        .feature-text {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #555;
         }
 
         /* 装飾エレメント */
@@ -347,7 +516,7 @@
             width: 300px;
             height: 300px;
             border-radius: 50%;
-            background: var(--accent-color);
+            background: var(--secondary-color);
             top: -150px;
             right: -100px;
         }
@@ -405,26 +574,30 @@
             }
             
             .section-title {
-                font-size: 24px;
+                font-size: 28px;
                 margin-bottom: 30px;
             }
             
-            .message-section, .cta-section {
-                padding: 40px 30px;
+            .vision-section, .cta-section {
+                padding: 50px 30px;
             }
             
-            .message-title, .cta-title {
-                font-size: 26px;
+            .vision-title, .cta-title, .features-title {
+                font-size: 28px;
             }
             
             .cta-description {
                 font-size: 16px;
             }
+
+            .vision-item {
+                min-width: 100%;
+            }
         }
 
         @media (max-width: 768px) {
             .owner-hero-section {
-                padding: 90px 0 50px;
+                padding: 100px 0 60px;
             }
             
             .owner-hero-title {
@@ -452,7 +625,7 @@
             }
             
             .profile-position {
-                font-size: 16px;
+                font-size: 18px;
             }
             
             .company-image, .profile-photo {
@@ -462,6 +635,10 @@
             .cta-button {
                 width: 100%;
                 box-sizing: border-box;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -474,12 +651,12 @@
                 padding: 30px 20px;
             }
             
-            .message-section, .cta-section {
-                padding: 30px 20px;
+            .vision-section, .cta-section {
+                padding: 40px 20px;
             }
             
-            .message-title, .cta-title {
-                font-size: 22px;
+            .vision-title, .cta-title, .features-title {
+                font-size: 24px;
             }
             
             .cta-description {
@@ -489,7 +666,7 @@
             
             .cta-button {
                 font-size: 16px;
-                padding: 14px 30px;
+                padding: 15px 30px;
             }
         }
     </style>
@@ -578,11 +755,30 @@
         <section class="owner-hero-section">
             <div class="owner-hero-container">
                 <h1 class="owner-hero-title">運営者情報</h1>
-                <p class="owner-hero-lead">株式会社CLANが運営するオートファネル大学についてご紹介します</p>
+                <p class="owner-hero-lead">難しい設定も面倒な作業も一切不要。ビジネスの「集客・教育・販売」を自動化し、<br>売上アップと自由な時間を同時に手に入れるUTAGEの活用法を学ぶオートファネル大学をご紹介します。</p>
             </div>
         </section>
 
         <div class="owner-container">
+            <!-- ビジョンセクション -->
+            <section class="vision-section animate-fade-up">
+                <h2 class="vision-title">ビジネス自動化の新時代へ</h2>
+                <div class="vision-content">
+                    <p>「集客はしているのに成約に繋がらない」「教育・販売のプロセスが属人化している」「ツール選びに悩み、時間とコストがかかる」</p>
+                    <p>オートファネル大学は、こうした悩みを解決し、あなたのビジネスを自動で回す仕組みづくりをサポートします。UTAGEという強力なツールを活用し、LP作成、LINE連携、会員サイト構築、決済システムなど、すべての機能を一つに集約。あなたの専門知識を「自動で売れる仕組み」に変え、寝ている間も売上を生み出すビジネスモデルを構築できます。</p>
+                </div>
+                <div class="vision-highlight">
+                    <div class="vision-item">
+                        <div class="vision-item-title">集客から販売まで丸ごと自動化</div>
+                        <div class="vision-item-text">UTAGEを活用し、見込み客の獲得から信頼構築、成約までの全プロセスを自動化。24時間365日、あなたに代わって働く仕組みを構築します。</div>
+                    </div>
+                    <div class="vision-item">
+                        <div class="vision-item-title">専門知識ゼロでも構築可能</div>
+                        <div class="vision-item-text">難しい設定や面倒な作業は一切不要。直感的に操作できるUTAGEを使って、マーケティングの専門知識がなくても効果的なファネルを構築できます。</div>
+                    </div>
+                </div>
+            </section>
+            
             <!-- 会社概要セクション -->
             <div class="company-section info-card animate-fade-up">
                 <div class="company-info">
@@ -615,7 +811,7 @@
             </div>
             
             <!-- プロフィールセクション -->
-            <div class="profile-section info-card animate-fade-up">
+            <div class="profile-section animate-fade-up">
                 <div class="profile-info">
                     <h2 class="section-title">代表プロフィール</h2>
                     <h3 class="profile-name">前田 由紀子</h3>
@@ -641,23 +837,41 @@
                 <span class="decoration decoration-dots"></span>
             </div>
             
-            <!-- メッセージセクション -->
-            <div class="message-section animate-fade-up">
-                <h2 class="message-title">メッセージ</h2>
-                <div class="message-content">
-                    <p>セールスファネルの力で、あなたのビジネスを「理想の未来」へ。</p>
-                    <p>私自身、かつてはWebマーケティングの知識が全くなく、集客に苦労した経験があります。試行錯誤を重ねる中でWeb集客、特にセールスファネルの構築がビジネスの成長に不可欠であることを痛感しました。</p>
-                    <p>そして「UTAGE」という強力なツールに出会い、その可能性に魅了されました。しかし、多くの中小企業や個人事業主の方々が「UTAGE」の導入・運用に苦戦している現状も目の当たりにしました。</p>
-                    <p>「専門知識がない」「時間がない」「何から手をつければ良いかわからない」そんな悩みを抱える皆様の力になりたい。その想いから、「UTAGE構築代行丸投げちゃん」のサービスは生まれました。</p>
-                    <p>私たちは、単なる代行業者ではありません。お客様のビジネスの「理想の未来」を共に描き、共に成長するパートナーです。</p>
+            <!-- フィーチャーセクション -->
+            <section class="features-section animate-fade-up">
+                <h2 class="features-title">UTAGEで実現する4つの強み</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">🔄</div>
+                        <h3 class="feature-title">ツール選びに終止符</h3>
+                        <p class="feature-text">LP作成、LINE連携、会員サイト構築、決済システム...もうツール選びに悩む必要はありません。すべての機能が一つに統合されたUTAGEで完結します。</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">⏱️</div>
+                        <h3 class="feature-title">24時間自動で売上生成</h3>
+                        <p class="feature-text">寝ている間も休日も、あなたに代わって見込み客を集め、育成し、商品を販売する自動ファネルを構築。時間と場所の制約から解放されます。</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">📊</div>
+                        <h3 class="feature-title">データ分析で継続的改善</h3>
+                        <p class="feature-text">顧客の行動データを自動で収集・分析し、常に最適化されたマーケティングを実現。感覚ではなくデータに基づいた意思決定が可能になります。</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">💰</div>
+                        <h3 class="feature-title">IT導入補助金で導入可能</h3>
+                        <p class="feature-text">IT導入補助金2025を活用して最大450万円の補助金が受けられます。申請は完全丸投げOK！あなたは事業成長に集中できます。</p>
+                    </div>
                 </div>
-            </div>
+            </section>
             
             <!-- CTA Section -->
             <div class="cta-section animate-fade-up">
-                <h2 class="cta-title">期間限定・UTAGE丸投げちゃんにIT導入補助金が使えます！</h2>
-                <p class="cta-description">UTAGE構築代行サービスがIT導入補助金の対象になりました。最大450万円の補助金を活用して、あなたのビジネスにオートファネルを導入するチャンスです。期間限定のこの機会をお見逃しなく！</p>
-                <a href="https://utage-marunage.com/it-hojo/" class="cta-button" target="_blank">詳細はこちら</a>
+                <div class="cta-content">
+                    <span class="cta-badge">期間限定</span>
+                    <h2 class="cta-title">UTAGE構築にIT導入補助金が使えます</h2>
+                    <p class="cta-description">UTAGE構築代行サービスがIT導入補助金の対象になりました。最大450万円の補助金を活用して、あなたのビジネスにオートファネルを導入するチャンスです。面倒な申請手続きも完全丸投げOK！</p>
+                    <a href="https://utage-marunage.com/it-hojo/" class="cta-button" target="_blank">詳細を確認する</a>
+                </div>
             </div>
         </div>
 
