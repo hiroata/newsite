@@ -3,24 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="オートファネル大学のランディングページ作成初級講座。成約率を高める「売れるLP」の構成、ライティング、UTAGEでの作成方法を基礎から学べます。">
-    <title>ランディングページ作成初級講座 | オンライン講座 | オートファネル大学</title>
+    <meta name="description" content="オートファネル大学の動画編集初級講座。売上UPに繋がる動画編集スキルを基礎から習得できます。初心者歓迎。UTAGEとの連携も解説。">
+    <title>動画編集初級講座 | オンライン講座 | オートファネル大学</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="icon" href="../images/favicon.ico">
-    <meta property="og:title" content="ランディングページ作成初級講座 | オンライン講座 | オートファネル大学">
-    <meta property="og:description" content="オートファネル大学のランディングページ作成初級講座。成約率を高める「売れるLP」の構成、ライティング、UTAGEでの作成方法を基礎から学べます。">
-    <meta property="og:image" content="../images/ogp_image_lp_course.jpg"> <!-- 仮のOGP画像 -->
+    <meta property="og:title" content="動画編集初級講座 | オンライン講座 | オートファネル大学">
+    <meta property="og:description" content="オートファネル大学の動画編集初級講座。売上UPに繋がる動画編集スキルを基礎から習得できます。初心者歓迎。UTAGEとの連携も解説。">
+    <meta property="og:image" content="../images/ogp_image_video_course.jpg"> <!-- 仮のOGP画像 -->
     <meta property="og:type" content="article">
 
     <style>
         /* Individual Course Page Specific Styles (Temporary) */
-        /* course/video.html と共通化できる部分はcss/style.cssに移動を推奨 */
         .course-detail-hero {
-            /* 動画編集と区別するため別のグラデーションに仮変更 */
-            background: linear-gradient(135deg, #0066ff, #00b8ff); /* primary-color系 */
+            background: linear-gradient(135deg, #3bb68b, #80d4d4); /* 動画編集っぽい色に仮変更 */
             padding: 120px 0 60px;
             color: white;
             position: relative;
@@ -45,7 +43,7 @@
             max-width: 900px;
             margin: 0 auto;
             padding: 0 20px;
-            text-align: center;
+            text-align: center; /* センター寄せに仮調整 */
         }
 
         .course-detail-title {
@@ -131,7 +129,7 @@
              display: block;
              width: 60px;
              height: 4px;
-             background-color: var(--secondary-color); /* 目立つ色に */
+             background-color: var(--secondary-color);
              margin: 15px auto 0;
              border-radius: 2px;
          }
@@ -152,7 +150,7 @@
         }
 
         .course-outline-item summary {
-            display: block;
+            display: block; /* 三角形を非表示にする */
             padding: 15px 20px;
             background-color: #f8f8f8;
             font-size: 17px;
@@ -210,7 +208,7 @@
 
          .testimonial-card {
              background-color: #f8f8f8;
-             border-left: 5px solid var(--primary-color); /*primary colorを適用*/
+             border-left: 5px solid var(--primary-color);
              padding: 25px;
              border-radius: 0 var(--border-radius) var(--border-radius) 0;
              box-shadow: var(--shadow-soft);
@@ -277,7 +275,7 @@
              content: '✓';
              position: absolute;
              left: 0;
-             color: var(--primary-color);
+             color: var(--primary-color); /* 例: 青色 */
              font-weight: bold;
           }
 
@@ -301,15 +299,15 @@
             cursor: pointer;
             outline: none;
             position: relative;
-            padding-right: 30px;
+            padding-right: 30px; /* 三角形のためのスペース */
         }
 
          .faq-item summary::marker {
-             display: none;
+             display: none; /* デフォルトの三角形を非表示 (非対応ブラウザ向け) */
          }
 
         .faq-item summary::after {
-            content: '▼';
+            content: '▼'; /* 三角形を矢印に変更 */
             position: absolute;
             top: 50%;
             right: 0;
@@ -352,11 +350,10 @@
                  flex-direction: column;
                  gap: 15px;
              }
-              .course-detail-cta-buttons .btn {
-                 width: 80%;
+             .course-detail-cta-buttons .btn {
+                 width: 80%; /* ボタンを少し狭く */
                  margin: 0 auto;
              }
-
 
              .course-content-wrapper {
                  margin: 40px auto 60px;
@@ -431,14 +428,12 @@
          <symbol id="svg-triangle-color" viewBox="0 0 147.35 133">
              <style>
                 .cls-1{fill:none;}
-                /* IDをページ固有に */
-                .cls-2{clip-path:url(#clip-path-triangle-course-lp);}
+                .cls-2{clip-path:url(#clip-path-triangle-course-video);} /* ページ固有IDに */
                 .cls-3{fill:#80d4d4;}
                 .cls-4{fill:#3bb68b;}
                 .cls-5{fill:#4fbfec;}
             </style>
-            <!-- IDをページ固有に -->
-            <clipPath id="clip-path-triangle-course-lp" transform="translate(0 0)">
+            <clipPath id="clip-path-triangle-course-video" transform="translate(0 0)">
                 <rect class="cls-1" width="147.35" height="133"/>
             </clipPath>
             <g class="cls-2">
@@ -502,18 +497,18 @@
         <!-- ヒーローセクション -->
         <section class="course-detail-hero">
             <div class="course-detail-hero-container">
-                <span class="section-subtitle">LANDING PAGE COURSE</span>
-                <h1 class="course-detail-title">「なぜ売れないの？」を解決！<br>成約率を爆上げするランディングページ作成初級講座</h1>
-                 <p class="course-detail-subtitle">UTAGEで簡単にできる！集客した見込み客を顧客に変える「売れるLP」の法則をマスター</p>
+                <span class="section-subtitle">VIDEO EDITING COURSE</span>
+                <h1 class="course-detail-title">「最後まで見てもらえない…」を解決！<br>売上UPに繋がる動画編集スキル初級講座</h1>
+                 <p class="course-detail-subtitle">ビジネスに必須！集客から販売まで自動化する動画活用法をマスター</p>
                 <p class="course-detail-lead">
-                   本講座では、Webデザイナーに依頼せずとも、あなた自身で成果の出るLPを作成できるようになるためのスキルを徹底解説します。<br>
-                   購入ボタンをクリックしたくなる心理トリガー、売れる構成とライティングの型、UTAGEを使った効率的な作成方法まで、初心者でも確実にステップアップできる内容です。
+                   この講座では、あなたのビジネスを加速させるための動画編集スキルを基礎から実践レベルまで習得します。<br>
+                   視聴者を惹きつける構成、テロップ、BGM、効果音の使い方など、売上に直結する動画作成のコツを徹底解説。UTAGEを使った自動化導線への組み込み方も学べます。
                 </p>
                 <div class="course-detail-meta">
-                     <span>対象：LP作成初心者、UTAGEユーザー</span>
+                     <span>対象：動画編集初心者</span>
                      <span>レベル：初級</span>
                      <span>形式：オンライン動画講座</span>
-                     <span>特典：LPテンプレート配布</span>
+                     <span>特典：講師への質問権</span>
                  </div>
                 <div class="course-detail-cta-buttons">
                     <a href="https://utage-marunage.com/it-hojo/" class="btn btn-contact">
@@ -534,17 +529,15 @@
             <section class="course-section">
                 <h2 class="course-section-title">この講座で学べること</h2>
                 <p>
-                    この講座では、以下のスキルを習得し、あなたのLPの成約率を劇的に向上させることができます。
+                    この講座では、以下のスキルを習得し、あなたのビジネスに動画を効果的に活用できるようになります。
                 </p>
                 <ul>
-                    <li>「売れるLP」と「売れないLP」の違い</li>
-                    <li>成約率を高めるLP構成の黄金パターン</li>
-                    <li>ターゲット顧客の心を掴むキャッチコピーの作成術</li>
-                    <li>信頼と共感を生むボディコピーのライティングテクニック</li>
-                    <li>デザインセンスがなくても魅せるLPを作る方法 (UTAGE/Canva活用)</li>
-                    <li>クリックされやすいCTAボタンの設計</li>
-                    <li>UTAGEを使ったLP作成から公開までの手順</li>
-                    <li>公開後のLP改善・テスト方法 (ABテスト入門)</li>
+                    <li>動画編集ツールの基本操作と効率的な使い方</li>
+                    <li>視聴者の離脱を防ぎ、最後まで見てもらう構成術</li>
+                    <li>商品やサービスの魅力を引き出すテロップ・アニメーション</li>
+                    <li>感情を動かすBGM・効果音の選び方と使い方</li>
+                    <li>YouTubeやSNSで再生数を伸ばすための最適化</li>
+                    <li>動画をUTAGEファネルに組み込み、集客・販売を自動化する方法</li>
                 </ul>
             </section>
 
@@ -553,12 +546,12 @@
                 <h2 class="course-section-title">こんな方におすすめ</h2>
                 <p>
                     <ul>
-                        <li>LPを自分で作りたいが、何から始めれば良いか分からない方</li>
-                        <li>LPを作ったものの、問い合わせや購入に繋がらない方</li>
-                        <li>Webデザイナーへの外注費用を抑えたい個人事業主</li>
-                        <li>UTAGEシステムを使ってLPを作成したい方</li>
-                        <li>専門知識やスキルを活かしてオンラインで販売したい方</li>
-                        <li>集客はできているが、その後の成果に悩んでいる方</li>
+                        <li>動画編集の経験が全くない方</li>
+                        <li>YouTubeやSNSで集客を始めたい個人事業主・コンサルタント</li>
+                        <li>自分でプロモーション動画を作成したい方</li>
+                        <li>高額な外注費用を削減したい方</li>
+                        <li>動画を活用して売上を自動化する仕組みを作りたい方</li>
+                        <li>UTAGEシステムで動画を効果的に活用したい方</li>
                     </ul>
                 </p>
             </section>
@@ -569,49 +562,50 @@
                 <h2 class="course-section-title">カリキュラム (一部抜粋)</h2>
                 <div class="course-outline-list">
                      <details class="course-outline-item" open>
-                         <summary>モジュール1: LPの基礎と戦略設計</summary>
+                         <summary>モジュール1: 動画編集の基礎知識と準備</summary>
                          <div class="course-outline-content">
                              <ul>
-                                 <li>ランディングページとは何か？その役割</li>
-                                 <li>「売れるLP」の基本構造</li>
-                                 <li>ターゲット顧客の明確化とペルソナ設定</li>
-                                 <li>顧客のベネフィットを見つける方法</li>
+                                 <li>なぜ今、動画マーケティングが重要なのか？</li>
+                                 <li>動画編集ツールの種類と選び方（初心者向け紹介）</li>
+                                 <li>編集に必要な機材と環境設定</li>
+                                 <li>プロジェクトの作成と基本設定</li>
+                                 <li>素材（動画、画像、音声）の取り込み方法</li>
                              </ul>
                          </div>
                      </details>
                      <details class="course-outline-item">
-                         <summary>モジュール2: 成果を出すLPライティング</summary>
+                         <summary>モジュール2: カット編集と構成術</summary>
                           <div class="course-outline-content">
                              <ul>
-                                 <li>心を掴むヘッドライン作成</li>
-                                 <li>共感を呼ぶ問題提起と解決策提示</li>
-                                 <li>商品・サービスの信頼性を高める方法</li>
-                                 <li>行動を促すCTAライティング</li>
-                                 <li>ストーリーテリングの活用</li>
+                                 <li>動画編集の基本：カット編集</li>
+                                 <li>視聴者を飽きさせないカットのタイミング</li>
+                                 <li>ビジネス動画のためのストーリー構成</li>
+                                 <li>冒頭10秒で惹きつけるオープニングの作り方</li>
+                                 <li>テンポの良い編集のコツ</li>
                              </ul>
                          </div>
                      </details>
                       <details class="course-outline-item">
-                         <summary>モジュール3: UTAGEを使ったLP作成実践</summary>
+                         <summary>モジュール3: テロップ・BGM・効果音</summary>
                            <div class="course-outline-content">
                              <ul>
-                                 <li>UTAGE LPビルダーの基本操作</li>
-                                 <li>テンプレートの活用とカスタマイズ</li>
-                                 <li>セクションの追加・編集方法</li>
-                                 <li>画像・動画・ボタンの配置</li>
-                                 <li>フォーム設置とサンキューページ設定</li>
+                                 <li>伝わりやすいテロップの入れ方</li>
+                                 <li>感情を動かすBGMの選び方と使い方</li>
+                                 <li>動画をリッチにする効果音の活用</li>
+                                 <li>著作権フリーの音楽・素材サイト</li>
+                                 <li>音声の音量調整とノイズ除去</li>
                              </ul>
                          </div>
                      </details>
                       <details class="course-outline-item">
-                         <summary>モジュール4: デザインと公開・改善</summary>
+                         <summary>モジュール4: UTAGEファネルとの連携と活用事例</summary>
                            <div class="course-outline-content">
                              <ul>
-                                 <li>デザインの基本原則 (初心者向け)</li>
-                                 <li>Canvaを使ったLP画像の作成</li>
-                                 <li>レスポンシブ対応の確認</li>
-                                 <li>LP公開前のチェックリスト</li>
-                                 <li>公開後のデータ分析と改善 (ABテスト入門)</li>
+                                 <li>UTAGEで動画をどう活用するか？</li>
+                                 <li>LP動画、ステップメール動画、セールス動画の役割</li>
+                                 <li>動画を使ったUTAGEファネル構築手順</li>
+                                 <li>成功事例から学ぶ動画×UTAGEの組み合わせ</li>
+                                 <li>動画編集の外注・効率化について</li>
                              </ul>
                          </div>
                      </details>
@@ -646,16 +640,16 @@
                 <h2 class="course-section-title">受講者の声</h2>
                 <div class="testimonials-grid">
                      <div class="testimonial-card">
-                         <p>LP作成はプロに頼むしかないと思っていましたが、この講座で自分でできるようになり、大幅なコスト削減になりました。構成の法則が具体的に示されていて、初心者でも迷わず作れました！</p>
-                         <p class="testimonial-author">E.S様 (コーチング業)</p>
+                         <p>動画編集は全く初めてでしたが、ツールの基本的な使い方から丁寧に教えてもらえて、短時間で一通りの編集ができるようになりました。特にテロップの入れ方やBGMの選び方のモジュールは、すぐに自分の動画に活かせました！</p>
+                         <p class="testimonial-author">T.K様 (サービス業・個人事業主)</p>
                      </div>
                       <div class="testimonial-card">
-                         <p>UTAGEのLP機能の使い方が知りたくて受講。ビルダーの操作方法から、どういう要素を入れるべきかまで網羅されていて、実践的でした。作ったLPから早速問い合わせが来ています。</p>
-                         <p class="testimonial-author">K.M様 (士業)</p>
+                         <p>UTAGEとの連携方法が知りたくて受講しました。動画をファネルのどの段階でどう使うのか、具体的な事例もあって非常に分かりやすかったです。自分のオンライン講座のプロモーション動画を自動化できるようになりました。</p>
+                         <p class="testimonial-author">M.S様 (コンサルタント)</p>
                      </div>
                       <div class="testimonial-card">
-                         <p>講座の内容通りに進めたら、以前作ったLPよりも圧倒的に反応率が上がりました。特にキャッチコピーと構成の重要性を痛感。これからのLP作成に自信が持てました。</p>
-                         <p class="testimonial-author">H.T様 (オンライン講師)</p>
+                         <p>編集ソフトの操作だけでなく、どういう動画が「見られる」のか、どういう動画が「売れる」のかというマーケティング視点が学べたのが大きかったです。これからは自分で動画を作ってどんどん活用していきたいと思います。</p>
+                         <p class="testimonial-author">Y.N様 (コーチング業)</p>
                      </div>
                  </div>
             </section>
@@ -664,12 +658,12 @@
             <section class="course-section">
                 <h2 class="course-section-title">価格</h2>
                 <div class="pricing-card">
-                     <h3>ランディングページ作成初級講座</h3>
-                     <div class="pricing-price">¥29,800<span>(税込)</span></div>
+                     <h3>動画編集初級講座</h3>
+                     <div class="pricing-price">¥24,800<span>(税込)</span></div>
                      <ul class="pricing-features-list">
                          <li>買い切り型オンライン動画講座</li>
                          <li>無期限視聴可能</li>
-                         <li>講座資料・LPテンプレートダウンロード</li>
+                         <li>講座資料ダウンロード</li>
                          <li>講師への個別質問権（期間限定）</li>
                          <li>最新情報への無料アップデート</li>
                      </ul>
@@ -682,24 +676,24 @@
                  <h2 class="course-section-title">よくある質問</h2>
                  <ul class="faq-list">
                       <details class="faq-item">
-                          <summary>LP作成は全くの初心者ですが大丈夫ですか？</summary>
+                          <summary>動画編集は全くの初心者ですが大丈夫ですか？</summary>
                           <div class="faq-answer">
-                              はい、ご安心ください。本講座はLP作成の経験がない方を対象としています。「売れるLP」の基本的な考え方から、具体的な作成手順まで、基礎から丁寧に解説します。</div>
+                              はい、ご安心ください。この講座は動画編集未経験の方を主な対象としています。ツールのインストールから基本的な操作方法、編集の考え方まで、基礎から丁寧に解説します。</div>
                       </details>
                       <details class="faq-item">
-                          <summary>UTAGE以外のツールでもLP作成スキルは活かせますか？</summary>
+                          <summary>特定の編集ソフトを使った講座ですか？</summary>
                           <div class="faq-answer">
-                             はい、活かせます。本講座で解説する「売れるLP」の構成やライティングの法則は、特定のツールに依存しない普遍的なものです。UTAGEを使った具体的な操作方法も解説しますが、他のLP作成ツールやWordPressなどでも応用可能な考え方です。</div>
+                              講座内では、初心者でも扱いやすい無料または安価な編集ソフトをいくつかご紹介し、基本的な操作はデモンストレーションを交えて解説します。特定のソフトに依存せず、汎用的な動画編集の考え方やスキルを身につけることを目的としています。</div>
                       </details>
-                       <details class="faq-item">
-                          <summary>デザインセンスがなくても大丈夫ですか？</summary>
-                          <div class="faq-answer">
-                             はい、問題ありません。本講座ではデザインセンスに頼らずとも、構成とライティングの力で成果を出すLPの作り方に焦点を当てます。また、UTAGEのテンプレート活用法や、Canvaなどを使った簡単な画像作成についても触れますのでご安心ください。</div>
-                      </details>
-                       <details class="faq-item">
+                      <details class="faq-item">
                           <summary>講座の視聴期限はありますか？</summary>
                           <div class="faq-answer">
                              この講座は買い切り型のため、一度ご購入いただければ視聴期限はありません。ご自身のペースで、何度でも繰り返し学習いただけます。</div>
+                      </details>
+                       <details class="faq-item">
+                          <summary>質問はできますか？</summary>
+                          <div class="faq-answer">
+                             はい、受講者様向けの質問フォーラムや、期間限定の個別質問サポートをご用意しています。講座内容で不明な点があれば、いつでもご質問ください。</div>
                       </details>
                  </ul>
              </section>
@@ -710,9 +704,8 @@
         <!-- Contact CTA Section (フッター直前) -->
         <section class="contact-cta-section">
             <!-- 背景装飾 -->
-            <!-- IDをページ固有に -->
-            <svg class="contact-cta-bg-deco contact-cta-bg-triangle1"><use xlink:href="#svg-triangle-color-lp"></use></svg>
-            <svg class="contact-cta-bg-deco contact-cta-bg-triangle2"><use xlink:href="#svg-triangle-color-lp"></use></svg>
+            <svg class="contact-cta-bg-deco contact-cta-bg-triangle1"><use xlink:href="#svg-triangle-color"></use></svg>
+            <svg class="contact-cta-bg-deco contact-cta-bg-triangle2"><use xlink:href="#svg-triangle-color"></use></svg>
             <span class="contact-cta-bg-deco contact-cta-bg-circle1"></span>
             <span class="contact-cta-bg-deco contact-cta-bg-circle2"></span>
 
