@@ -3,26 +3,555 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="オートファネル大学は、マーケティング自動化と効率化の理念、選ばれる理由、提供サービスを紹介します。">
-    <title>オートファネル大学とは | オートファネル大学</title>
+    <meta name="description" content="オートファネル大学が主催する無料セミナー情報ページです。マーケティング自動化、ファネル構築、集客・販売の効率化に関する最新セミナーをご紹介します。">
+    <title>無料セミナー | オートファネル大学</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css"> <!-- 共通CSSを読み込み -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="images/favicon.ico">
-    <meta property="og:title" content="オートファネル大学とは">
-    <meta property="og:description" content="オートファネル大学は、マーケティング自動化と効率化の理念、選ばれる理由、提供サービスを紹介します。">
-    <!-- OGP画像は共通またはページ固有のものを設定 -->
-    <meta property="og:image" content="images/ogp_image_about.jpg"> <!-- 仮の画像パス -->
-    <meta property="og:type" content="article"> <!-- ウェブサイトの一部であることを示すarticleでも良い -->
+    <meta property="og:title" content="無料セミナー | オートファネル大学">
+    <meta property="og:description" content="オートファネル大学が主催する無料セミナー情報ページです。マーケティング自動化、ファネル構築、集客・販売の効率化に関する最新セミナーをご紹介します。">
+    <meta property="og:image" content="images/ogp_image_seminar.jpg">
+    <meta property="og:type" content="article">
 
-    <!-- style.cssに全てのスタイルを記述するため、ここにはスタイルタグは不要 -->
+    <style>
+        :root {
+            --primary-color: #0066ff;
+            --secondary-color: #ff3a3a;
+            --accent-color: #ff9500;
+            --dark-blue: #0d3283;
+            --light-bg: #f8f9fa;
+            --gradient-primary: linear-gradient(135deg, #0066ff, #00b8ff);
+            --gradient-secondary: linear-gradient(135deg, #ff3a3a, #ff7d7d);
+            --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --shadow-strong: 0 15px 40px rgba(0, 0, 0, 0.12);
+            --transition-fast: all 0.3s ease;
+            --border-radius: 12px;
+        }
 
+        /* ページ全体のスタイル */
+        .page-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px 80px;
+        }
+
+        /* ヒーローセクション */
+        .seminar-hero-section {
+            background: var(--gradient-primary);
+            padding: 120px 0 80px;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 60px;
+        }
+
+        .seminar-hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('images/dots-pattern.png');
+            opacity: 0.07;
+            z-index: 1;
+        }
+
+        .seminar-hero-container {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .seminar-hero-title {
+            font-size: 42px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .seminar-hero-lead {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        /* フィルタータブ */
+        .seminar-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+
+        .filter-button {
+            background-color: #f5f5f5;
+            color: #555;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .filter-button:hover {
+            background-color: #e0e0e0;
+        }
+
+        .filter-button.active {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        /* セミナーリスト */
+        .seminars-section {
+            margin-bottom: 80px;
+        }
+
+        .section-title-container {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-subtitle {
+            display: inline-block;
+            font-size: 14px;
+            color: var(--secondary-color);
+            margin-bottom: 8px;
+            background: rgba(255, 58, 58, 0.08);
+            padding: 6px 15px;
+            border-radius: 30px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 800;
+            margin: 0;
+            color: var(--dark-blue);
+        }
+
+        .seminar-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .seminar-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition-fast);
+            height: 100%; /* カードの高さを揃える */
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #eee;
+        }
+
+        .seminar-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .seminar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 20px 20px 15px;
+            border-bottom: 1px solid #f0f0f0;
+            background-color: #f9f9f9;
+        }
+
+        .seminar-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin: 0;
+            color: #333;
+            flex: 1;
+            line-height: 1.4;
+            padding-right: 10px;
+        }
+
+        .seminar-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 1;
+            white-space: nowrap;
+        }
+
+        .badge-new {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .badge-limited {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        .badge-online {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .badge-offline {
+            background-color: var(--dark-blue);
+            color: white;
+        }
+
+        .seminar-type {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .seminar-type::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: var(--secondary-color);
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        .seminar-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .seminar-info {
+            margin-bottom: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 15px;
+            color: #333;
+        }
+
+        .info-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background-color: rgba(255, 58, 58, 0.1);
+            border-radius: 50%;
+            margin-right: 12px;
+            flex-shrink: 0;
+            color: var(--secondary-color);
+        }
+
+        .seminar-description {
+            flex-grow: 1;
+            margin-bottom: 20px;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .seminar-description p {
+            margin-bottom: 12px;
+        }
+
+        .seminar-description ul {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .seminar-description li {
+            margin-bottom: 8px;
+            position: relative;
+        }
+
+        .seminar-description li::before {
+            content: "•";
+            color: var(--secondary-color);
+            position: absolute;
+            left: -15px;
+            top: 0;
+        }
+
+        .seminar-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+            border-top: 1px solid #f0f0f0;
+            padding-top: 15px;
+        }
+
+        .seminar-price {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--dark-blue);
+        }
+
+        .price-free {
+            color: var(--secondary-color);
+        }
+
+        .register-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 700;
+            font-size: 14px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .register-button:hover {
+            background-color: #e03333;
+            transform: translateY(-2px);
+        }
+
+        /* 申し込み済みボタン */
+        .registered-button {
+            background-color: #999;
+            cursor: not-allowed;
+        }
+
+        .registered-button:hover {
+            background-color: #999;
+            transform: none;
+        }
+
+        /* 満席表示 */
+        .full-notice {
+            display: inline-block;
+            background-color: #999;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 700;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        /* その他のセミナーセクション */
+        .other-seminars-section {
+            background-color: var(--light-bg);
+            padding: 60px 0;
+            margin-bottom: 80px;
+        }
+
+        .other-seminars-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* カレンダーセクション */
+        .calendar-section {
+            margin-bottom: 80px;
+        }
+
+        .calendar-container {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-soft);
+            padding: 30px;
+        }
+
+        .calendar-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark-blue);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .calendar-description {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #555;
+        }
+
+        .calendar-frame {
+            width: 100%;
+            height: 600px;
+            border: none;
+        }
+
+        /* オプションフォーム */
+        .options-form {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-soft);
+            padding: 30px;
+            margin-bottom: 80px;
+        }
+
+        .options-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark-blue);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .options-description {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #555;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .option-item {
+            background-color: var(--light-bg);
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid #eee;
+        }
+
+        .option-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .option-description {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .option-checkbox {
+            display: flex;
+            align-items: center;
+        }
+
+        .option-checkbox input {
+            margin-right: 8px;
+        }
+
+        .option-checkbox label {
+            font-size: 14px;
+            color: #333;
+        }
+
+        .submit-container {
+            text-align: center;
+        }
+
+        .submit-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 5px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .submit-button:hover {
+            background-color: #e03333;
+            transform: translateY(-2px);
+        }
+
+        /* レスポンシブ対応 */
+        @media (max-width: 768px) {
+            .seminar-hero-section {
+                padding: 100px 0 60px;
+            }
+            
+            .seminar-hero-title {
+                font-size: 30px;
+            }
+            
+            .seminar-hero-lead {
+                font-size: 16px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .seminar-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .seminar-header {
+                padding: 15px 15px 10px;
+            }
+            
+            .seminar-title {
+                font-size: 16px;
+            }
+            
+            .seminar-content {
+                padding: 15px;
+            }
+            
+            .info-item {
+                font-size: 14px;
+                margin-bottom: 10px;
+            }
+            
+            .seminar-description {
+                font-size: 14px;
+            }
+            
+            .seminar-footer {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 15px;
+            }
+            
+            .register-button, .full-notice {
+                width: 100%;
+            }
+            
+            .calendar-frame {
+                height: 400px;
+            }
+            
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-
-    <!-- SVG Symbol Definitions for Icons (共通で使用するためここにも記述するか、共通ファイル化) -->
-    <!-- 簡易的にトップページのものをコピーしてここに埋め込みます -->
+    <!-- SVG Symbol Definitions for Icons -->
     <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
         <symbol id="icon-pdf" viewBox="0 0 512 512">
@@ -61,29 +590,19 @@
                 <path class="cls-5" d="M73.66,133H20.29A20.27,20.27,0,0,1,2.74,102.6L19,74.4l10.41-18L58.8,49.59l-24,41.67-5-8.65a7.36,7.36,0,0,0,6.38,11h17Z" transform="translate(0 0)"/>
             </g>
         </symbol>
-        <symbol viewBox="0 0 576 512" id="svg-youtube">
-            <path d="M549.7 124.1c-6.3-23.7-24.8-42.3-48.3-48.6C458.8 64 288 64 288 64S117.2 64 74.6 75.5c-23.5 6.3-42 24.9-48.3 48.6-11.4 42.9-11.4 132.3-11.4 132.3s0 89.4 11.4 132.3c6.3 23.7 24.8 41.5 48.3 47.8C117.2 448 288 448 288 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zM231.8 355.4l-10.8-7.4-10.8 7.4C187.8 370.3 160 355.4 160 328V184c0-27.4 27.8-42.3 50.2-27.4l10.8 7.4 10.8-7.4c22.4-14.9 50.2 0 50.2 27.4V328c0 27.4-27.8 42.3-50.2 27.4zM391.6 355.4l-10.8-7.4-10.8 7.4c-22.4 14.9-50.2 0-50.2-27.4V184c0-27.4 27.8-42.3 50.2-27.4l10.8 7.4 10.8-7.4C414.2 141.7 442 156.6 442 184V328c0 27.4-27.8 42.3-50.4 27.4z"/>
-        </symbol>
-        <symbol viewBox="0 0 512 512" id="svg-x">
-             <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/>
-         </symbol>
-         <symbol viewBox="0 0 448 512" id="svg-instagram">
-             <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9 26.3 26.2 58 34.4 93.9 36.2 37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
-         </symbol>
     </defs>
-</svg>
+    </svg>
 
-
+    <!-- ヘッダー -->
     <header class="site-header">
         <div class="header-container">
-            <!-- ロゴ画像を削除し、テキストリンクに変更 -->
             <div class="site-logo-text">
                 <a href="index.html">CLAN</a>
             </div>
             <nav class="global-nav pc-nav">
                 <ul>
                     <li><a href="index.html">ホーム</a></li>
-                    <li><a href="about.html" aria-current="page">オートファネル大学とは</a></li>
+                    <li><a href="about.html">オートファネル大学とは</a></li>
                     <li><a href="blog/index.html">ブログ</a></li>
                     <li><a href="seminar/index.html">オンライン講座</a></li>
                     <li><a href="achievement/index.html">お客様の声</a></li>
@@ -94,75 +613,389 @@
                      <svg><use xlink:href="#icon-pdf"></use></svg>
                     資料請求する
                 </a>
-                <!-- ヘッダーの「無料」ラベルは削除 -->
                 <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
                     まずは相談する
                 </a>
             </div>
             <button class="hamburger-button sp-nav" aria-label="メニューを開く"><span></span><span></span><span></span></button>
-             <!-- スマホ用ナビゲーションメニュー（表示/非表示はJS/CSSで制御） -->
-             <!-- CLAN様のハンバーガーメニューは非常に複雑なので、ここではシンプルな例示 -->
-             <!-- <nav class="sp-nav-menu">
-                 <ul>
-                     <li><a href="index.html">ホーム</a></li>
-                     <li><a href="about.html">オートファネル大学とは</a></li>
-                     <li><a href="blog/index.html">ブログ</a></li>
-                     <li><a href="seminar/index.html">オンライン講座</a></li>
-                     <li><a href="achievement/index.html">お客様の声</a></li>
-                     <li><a href="document.html">資料請求する</a></li>
-                     <li><a href="https://utage-marunage.com/it-hojo/">まずは相談する</a></li>
-                 </ul>
-             </nav> -->
         </div>
     </header>
-    <!-- / ヘッダー -->
+    
+    <!-- スマホ用フッター固定CTA -->
+    <div class="sp-fix-cta">
+        <ul>
+            <li class="mail"><a href="https://utage-marunage.com/it-hojo/">まずは相談する <img src="images/icon-mail.svg" alt=""></a></li>
+            <li class="book"><a href="document.html">資料請求する <svg><use xlink:href="#icon-pdf"></use></svg></a></li>
+        </ul>
+    </div>
 
     <main class="site-main">
-        <div class="page-container section-padding">
-             <h1>無料セミナー</h1>
-             <p>期間限定の無料セミナーのご案内です。参加をご希望の方はこちらからお申し込みください。</p>
-             <!-- ここにLPのコンテンツ（画像、説明、フォームなど）を追加 -->
-             <div class="seminar-card">
-                <div class="seminar-header">
-                    <h3 class="seminar-title">はじめてのWebマーケティング講座 <span class="seminar-badge badge-new">NEW</span></h3>
-                    <span class="seminar-type">オンライン</span>
-                </div>
-                <div class="seminar-content">
-                    <div class="seminar-info">
-                        <div class="info-item">
-                            <span class="info-icon">📅</span>
-                            <span>2025年6月22日（日）</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-icon">🕒</span>
-                            <span>13:30〜16:30</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-icon">👥</span>
-                            <span>定員30名</span>
-                        </div>
-                    </div>
-                    <div class="seminar-description">
-                        <p>Webマーケティングの基礎を学びたい初心者向けセミナーです。SEO、広告運用、SNS活用など、Webマーケティングの全体像を分かりやすく解説します。</p>
-                        <ul>
-                            <li>Webマーケティングの基礎知識</li>
-                            <li>集客チャネルの選び方</li>
-                            <li>効果測定の方法</li>
-                            <li>自社に合った戦略の立て方</li>
-                        </ul>
-                    </div>
-                    <div class="seminar-footer">
-                        <div class="seminar-price">無料</div>
-                        <a href="#" class="register-button">申し込む</a>
-                    </div>
-                </div>
+        <!-- ヒーローセクション -->
+        <section class="seminar-hero-section">
+            <div class="seminar-hero-container">
+                <h1 class="seminar-hero-title">無料セミナー</h1>
+                <p class="seminar-hero-lead">
+                    ビジネス自動化の基礎から実践まで、あなたの成長をサポートする無料セミナーをご用意しています。<br>
+                    オンライン・オフライン問わず、お気軽にご参加いただけます。
+                </p>
             </div>
-        </div>
-    </main>
+        </section>
 
-        <!-- Contact CTA Section (フッター直前) -->
+        <div class="page-container">
+            <!-- セミナーフィルター -->
+            <div class="seminar-filter">
+                <button class="filter-button active">すべて</button>
+                <button class="filter-button">オンライン</button>
+                <button class="filter-button">会場開催</button>
+                <button class="filter-button">初級者向け</button>
+                <button class="filter-button">中級者向け</button>
+            </div>
+
+            <!-- 最新セミナーセクション -->
+            <section class="seminars-section">
+                <div class="section-title-container">
+                    <span class="section-subtitle">UPCOMING SEMINARS</span>
+                    <h2 class="section-title">開催予定のセミナー</h2>
+                </div>
+
+                <div class="seminar-list">
+                    <!-- セミナー1 -->
+                    <div class="seminar-card">
+                        <div class="seminar-header">
+                            <h3 class="seminar-title">はじめてのWebマーケティング講座</h3>
+                            <span class="seminar-badge badge-new">NEW</span>
+                        </div>
+                        <div class="seminar-content">
+                            <div class="seminar-info">
+                                <div class="info-item">
+                                    <span class="info-icon">📅</span>
+                                    <span>2025年6月22日（日）</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-icon">🕒</span>
+                                    <span>13:30〜16:30</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-icon">👥</span>
+                                    <span>定員30名</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-icon">📍</span>
+                                    <span class="seminar-type">オンライン（Zoom）</span>
+                                </div>
+                            </div>
+                            <div class="seminar-description">
+                                <p>Webマーケティングの基礎を学びたい初心者向けセミナーです。SEO、広告運用、SNS活用など、Webマーケティングの全体像を分かりやすく解説します。</p>
+                                <ul>
+                                    <li>Webマーケティングの基礎知識</li>
+                                    <li>集客チャネルの選び方</li>
+                                    <li>効果測定の方法</li>
+                                    <li>自社に合った戦略の立て方</li>
+                                </ul>
+                            </div>
+                            <div class="seminar-footer">
+                                <div class="seminar-price price-free">無料</div>
+                                <a href="#" class="register-button">申し込む</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- セミナー2 -->
+                    <div class="seminar-card">
+                        <div class="seminar-header">
+                            <h3 class="seminar-title">UTAGE初級者向けハンズオンセミナー</h3>
+                            <span class="seminar-badge badge-limited">残席わずか</span>
+                        </div>
+                        <div class="seminar-content">
+                            <div class="seminar-info">
+                                <div class="info-item">
+                                    <span class="info-icon">📅</span>
+                                    <span>2025年7月5日（土）</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-icon">🕒</span>
+                                    <span>10:00〜12:00</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-icon">👥</span>
+                                    <span>定員20名</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-icon">📍</span>
+                                    <span class="seminar-type">オンライン（Zoom）</span>
+                                </div>
+                            </div>
+                            <div class="seminar-description">
+                                <p>UTAGEを使った自動マーケティングシステムの構築方法を実践形式で学べるハンズオンセミナーです。ランディングページの作成からメール配信設定まで、実際に操作しながら学びます。</p>
+                                <ul>
+                                    <li>UTAGEの基本的な機能と操作方法</li>
+                                    <li>簡単なランディングページの作成</li>
+                                    <li>リード獲得後のメール自動配信設定</li>
+                                    <li>顧客データの管理と活用方法</li>
+                                </ul>
+                            </div>
+                            <div class="seminar-footer">
+                                <div class="seminar-price price-free">無料</div>
+                                <a href="#" class="register-button">申し込む</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- セミナー3 -->
+                    <div class="seminar-card">
+                        <div class="seminar-header">
+                            <h3 class="seminar-title">IT導入補助金2025活用セミナー</h3>
+                            <span class="seminar-badge badge-online">オンライン</span>
+                        </div>
+                        <div class="seminar-content">
+                            <div class="seminar-info">
+                                <div class="info-item">
+                                    <span class="info-icon">📅</span>
+                                    <span>2025年7月15日（火）</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-icon">🕒</span>
+                                    <span>14:00〜15:30</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-icon">👥</span>
+                                    <span>定員50名</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-icon">📍</span>
+                                    <span class="seminar-type">オンライン（Zoom）</span>
+                                </div>
+                            </div>
+                            <div class="seminar-description">
+                                <p>IT導入補助金2025の概要と申請方法、UTAGEを活用したビジネス自動化についてご紹介するセミナーです。最大450万円の補助金を活用して、あなたのビジネスをデジタル化しましょう。</p>
+                                <ul>
+                                    <li>IT導入補助金2025の概要と対象</li>
+                                    <li>申請に必要な書類と手続き</li>
+                                    <li>UTAGEを活用したビジネス自動化</li>
+                                    <li>補助金申請の成功事例</li>
+                                </ul>
+                            </div>
+                            <div class="seminar-footer">
+                                <div class="seminar-price price-free">無料</div>
+                                <a href="#" class="register-button">申し込む</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- セミナー4 -->
+                    <div class="seminar-card">
+                        <div class="seminar-header">
+                            <h3 class="seminar-title">オートファネル構築実践セミナー</h3>
+                            <span class="seminar-badge badge-offline">会場開催</span>
+                        </div>
+                        <div class="seminar-content">
+                            <div class="seminar-info">
+                                <div class="info-item">
+                                    <span class="info-icon">📅</span>
+                                    <span>2025年7月20日（日）</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-icon">🕒</span>
+                                    <span>13:00〜17:00</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-icon">👥</span>
+                                    <span>定員15名</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-icon">📍</span>
+                                    <span class="seminar-type">鹿児島市中央町10-2（当社セミナールーム）</span>
+                                </div>
+                            </div>
+                            <div class="seminar-description">
+                                <p>売上を自動化するオートファネルの設計から構築までを学べる実践セミナーです。集客、育成、販売の各フェーズでの最適な施策と設定方法を解説します。</p>
+                                <ul>
+                                    <li>ターゲットに合わせたファネル設計</li>
+                                    <li>リード獲得からクロージングまでの自動化</li>
+                                    <li>効果的なコンテンツ制作のポイント</li>
+                                    <li>データに基づくファネル改善方法</li>
+                                </ul>
+                            </div>
+                            <div class="seminar-footer">
+                                <div class="seminar-price price-free">無料</div>
+                                <span class="full-notice">満席</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- セミナー5 -->
+                    <div class="seminar-card">
+                        <div class="seminar-header">
+                            <h3 class="seminar-title">売れるランディングページ作成講座</h3>
+                            <span class="seminar-badge badge-new">NEW</span>
+                        </div>
+                        <div class="seminar-content">
+                            <div class="seminar-info">
+                                <div class="info-item">
+                                    <span class="info-icon">📅</span>
+                                    <span>2025年7月25日（金）</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-icon">🕒</span>
+                                    <span>19:00〜21:00</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-icon">👥</span>
+                                    <span>定員30名</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-icon">📍</span>
+                                    <span class="seminar-type">オンライン（Zoom）</span>
+                                </div>
+                            </div>
+                            <div class="seminar-description">
+                                <p>成約率の高いランディングページを作るためのポイントを解説するセミナーです。購入意欲を高めるコピーライティングや効果的なデザイン、CTAの設置方法などを学びます。</p>
+                                <ul>
+                                    <li>顧客心理に基づいたLP構成</li>
+                                    <li>購入ボタンをクリックしたくなるコピーの書き方</li>
+                                    <li>信頼性を高める要素と配置</li>
+                                    <li>成約率を倍増させる改善ポイント</li>
+                                </ul>
+                            </div>
+                            <div class="seminar-footer">
+                                <div class="seminar-price price-free">無料</div>
+                                <a href="#" class="register-button">申し込む</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- セミナー6 -->
+                    <div class="seminar-card">
+                        <div class="seminar-header">
+                            <h3 class="seminar-title">ステップメール設計マスター講座</h3>
+                            <span class="seminar-badge badge-limited">残席わずか</span>
+                        </div>
+                        <div class="seminar-content">
+                            <div class="seminar-info">
+                                <div class="info-item">
+                                    <span class="info-icon">📅</span>
+                                    <span>2025年8月1日（金）</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-icon">🕒</span>
+                                    <span>14:00〜16:00</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-icon">👥</span>
+                                    <span>定員25名</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-icon">📍</span>
+                                    <span class="seminar-type">オンライン（Zoom）</span>
+                                </div>
+                            </div>
+                            <div class="seminar-description">
+                                <p>見込み客を熱狂的なファンに変えるステップメールの設計法を学ぶセミナーです。高い開封率とクリック率を実現する7ステップのメール設計術を解説します。</p>
+                                <ul>
+                                    <li>開封されるメールタイトルの作り方</li>
+                                    <li>信頼関係を構築するコンテンツ設計</li>
+                                    <li>購入意欲を高める心理トリガーの活用法</li>
+                                    <li>効果的なCTAの設置タイミングと方法</li>
+                                </ul>
+                            </div>
+                            <div class="seminar-footer">
+                                <div class="seminar-price price-free">無料</div>
+                                <a href="#" class="register-button">申し込む</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- セミナーカレンダー -->
+            <section class="calendar-section">
+                <div class="section-title-container">
+                    <span class="section-subtitle">SCHEDULE</span>
+                    <h2 class="section-title">セミナーカレンダー</h2>
+                </div>
+
+                <div class="calendar-container">
+                    <p class="calendar-description">オートファネル大学が開催する全てのセミナーをカレンダーでご確認いただけます。<br>日程や時間をクリックすると詳細が表示されます。</p>
+                    
+                    <iframe src="https://calendar.google.com/calendar/embed?src=example%40example.com&ctz=Asia%2FTokyo" class="calendar-frame"></iframe>
+                </div>
+            </section>
+
+            <!-- メール通知設定 -->
+            <section class="options-section">
+                <div class="section-title-container">
+                    <span class="section-subtitle">NOTIFICATIONS</span>
+                    <h2 class="section-title">セミナー通知設定</h2>
+                </div>
+
+                <div class="options-form">
+                    <p class="options-description">関心のあるテーマを選択して、新しいセミナーが追加された際にメールでお知らせします。</p>
+                    
+                    <div class="options-grid">
+                        <div class="option-item">
+                            <h3 class="option-title">Webマーケティング</h3>
+                            <p class="option-description">SEO、広告運用、SNS活用など</p>
+                            <div class="option-checkbox">
+                                <input type="checkbox" id="web-marketing" name="web-marketing">
+                                <label for="web-marketing">通知を受け取る</label>
+                            </div>
+                        </div>
+                        
+                        <div class="option-item">
+                            <h3 class="option-title">UTAGE活用</h3>
+                            <p class="option-description">基本操作、機能活用、自動化など</p>
+                            <div class="option-checkbox">
+                                <input type="checkbox" id="utage" name="utage">
+                                <label for="utage">通知を受け取る</label>
+                            </div>
+                        </div>
+                        
+                        <div class="option-item">
+                            <h3 class="option-title">ファネル構築</h3>
+                            <p class="option-description">設計、構築、最適化など</p>
+                            <div class="option-checkbox">
+                                <input type="checkbox" id="funnel" name="funnel">
+                                <label for="funnel">通知を受け取る</label>
+                            </div>
+                        </div>
+                        
+                        <div class="option-item">
+                            <h3 class="option-title">ランディングページ</h3>
+                            <p class="option-description">デザイン、コピーライティングなど</p>
+                            <div class="option-checkbox">
+                                <input type="checkbox" id="landing-page" name="landing-page">
+                                <label for="landing-page">通知を受け取る</label>
+                            </div>
+                        </div>
+                        
+                        <div class="option-item">
+                            <h3 class="option-title">IT導入補助金</h3>
+                            <p class="option-description">活用方法、申請手続きなど</p>
+                            <div class="option-checkbox">
+                                <input type="checkbox" id="subsidy" name="subsidy">
+                                <label for="subsidy">通知を受け取る</label>
+                            </div>
+                        </div>
+                        
+                        <div class="option-item">
+                            <h3 class="option-title">ステップメール</h3>
+                            <p class="option-description">設計、ライティング、自動化など</p>
+                            <div class="option-checkbox">
+                                <input type="checkbox" id="step-mail" name="step-mail">
+                                <label for="step-mail">通知を受け取る</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="submit-container">
+                        <button type="submit" class="submit-button">設定を保存する</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Contact CTA Section -->
         <section class="contact-cta-section">
-            <!-- 背景装飾 -->
             <svg class="contact-cta-bg-deco contact-cta-bg-triangle1"><use xlink:href="#svg-triangle-color"></use></svg>
             <svg class="contact-cta-bg-deco contact-cta-bg-triangle2"><use xlink:href="#svg-triangle-color"></use></svg>
             <span class="contact-cta-bg-deco contact-cta-bg-circle1"></span>
@@ -188,51 +1021,76 @@
                 </div>
             </div>
         </section>
+    </main>
 
-   </main>
-
-   <footer class="site-footer">
-       <div class="footer-container">
-           <div class="footer-widgets">
-               <div class="widget-area footer-widget-1">
-                   <img src="images/logo-white.png" alt="オートファネル大学 ロゴ白" class="footer-logo">
-               </div>
-               <div class="widget-area footer-widget-2">
-                   <h4>オンライン講座一覧</h4>
-                   <ul>
-                       <li><a href="course/lp.html">ランディングページ作成初級講座</a></li>
-                       <li><a href="course/lp.html">動画編集初級講座</a></li>
-                       <li><a href="course/lp.html">ステップメール設計初級講座</a></li>
-                       <li><a href="course/lp.html">オートファネル構築初級講座</a></li>
-                       <li><a href="course/lp.html">Youtubeサムネ作成初級講座</a></li>
-                       <li><a href="course/lp.html">Canvaデザイン初級講座</a></li>
-                   </ul>
-               </div>
-               <div class="widget-area footer-widget-3">
-                   <h4>無料コンテンツ</h4>
-                   <ul>
-                       <li><a href="blog/index.html">ブログ</a></li>
-                       <li><a href="book/index.html">電子書籍</a></li>
-                       <li><a href="free-seminar.html">無料セミナー</a></li>
-                       <li><a href="free-consultation.html">無料相談</a></li>
-                       <li><a href="achievement/index.html">お客様の声</a></li>
-                   </ul>
-               </div>
-               <div class="widget-area footer-widget-4">
-                   <h4>運営情報</h4>
-                   <ul>
-                       <li><a href="owner.html">運営者情報</a></li>
-                       <li><a href="terms.html">利用規約</a></li>
-                       <li><a href="privacy.html">プライバシーポリシー</a></li>
-                   </ul>
-               </div>
-           </div>
-           <div class="site-copyright">
-               <small>© 2025 オートファネル大学</small>
-           </div>
-       </div>
-   </footer>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-widgets">
+                <div class="widget-area footer-widget-1">
+                    <img src="images/logo-white.png" alt="オートファネル大学 ロゴ白" class="footer-logo">
+                </div>
+                <div class="widget-area footer-widget-2">
+                    <h4>オンライン講座一覧</h4>
+                    <ul>
+                        <li><a href="course/lp.html">ランディングページ作成初級講座</a></li>
+                        <li><a href="course/lp.html">動画編集初級講座</a></li>
+                        <li><a href="course/lp.html">ステップメール設計初級講座</a></li>
+                        <li><a href="course/lp.html">オートファネル構築初級講座</a></li>
+                        <li><a href="course/lp.html">Youtubeサムネ作成初級講座</a></li>
+                        <li><a href="course/lp.html">Canvaデザイン初級講座</a></li>
+                    </ul>
+                </div>
+                <div class="widget-area footer-widget-3">
+                    <h4>無料コンテンツ</h4>
+                    <ul>
+                        <li><a href="blog/index.html">ブログ</a></li>
+                        <li><a href="book/index.html">電子書籍</a></li>
+                        <li><a href="free-seminar.html">無料セミナー</a></li>
+                        <li><a href="free-consultation.html">無料相談</a></li>
+                        <li><a href="achievement/index.html">お客様の声</a></li>
+                    </ul>
+                </div>
+                <div class="widget-area footer-widget-4">
+                    <h4>運営情報</h4>
+                    <ul>
+                        <li><a href="owner.html">運営者情報</a></li>
+                        <li><a href="terms.html">利用規約</a></li>
+                        <li><a href="privacy.html">プライバシーポリシー</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="site-copyright">
+                <small>© 2025 オートファネル大学</small>
+            </div>
+        </div>
+    </footer>
 
     <script src="js/script.js"></script>
+    
+    <script>
+        // セミナーフィルター機能
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-button');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // アクティブボタンの切り替え
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // 実際のフィルタリングロジックは実装時に追加
+                    // ここではデモ用に簡易的なアニメーションのみ
+                    const seminarCards = document.querySelectorAll('.seminar-card');
+                    
+                    seminarCards.forEach(card => {
+                        card.style.opacity = '0.5';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                        }, 300);
+                    });
+                });
+            });
+        });
+    </script>
 </body>
 </html>

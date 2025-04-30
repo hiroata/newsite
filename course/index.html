@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="オートファネル大学のオンライン講座一覧です。マーケティング自動化や効率的な集客・販売に関する実践的なスキルを習得できます。">
+    <title>オンライン講座一覧 | オートファネル大学</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" href="../images/favicon.ico">
+    <meta property="og:title" content="オンライン講座一覧 | オートファネル大学">
+    <meta property="og:description" content="オートファネル大学のオンライン講座一覧です。マーケティング自動化や効率的な集客・販売に関する実践的なスキルを習得できます。">
+    <meta property="og:image" content="../images/ogp_image_course.jpg">
+    <meta property="og:type" content="article">
+
+    <style>
+        :root {
+            --primary-color: #0066ff;
+            --secondary-color: #ff3a3a;
+            --accent-color: #ff9500;
+            --dark-blue: #0d3283;
+            --light-bg: #f8f9fa;
+            --gradient-primary: linear-gradient(135deg, #0066ff, #00b8ff);
+            --gradient-secondary: linear-gradient(135deg, #ff3a3a, #ff7d7d);
+            --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --shadow-strong: 0 15px 40px rgba(0, 0, 0, 0.12);
+            --transition-fast: all 0.3s ease;
+            --border-radius: 12px;
+        }
+
+        /* ページ全体のスタイル */
+        .page-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px 80px;
+        }
+
+        /* ヒーローセクション */
+        .course-hero-section {
+            background: var(--gradient-primary);
+            padding: 120px 0 80px;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 60px;
+        }
+
+        .course-hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('../images/dots-pattern.png');
+            opacity: 0.07;
+            z-index: 1;
+        }
+
+        .course-hero-container {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .course-hero-title {
+            font-size: 42px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .course-hero-lead {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        /* フィルタータブ */
+        .course-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+
+        .filter-button {
+            background-color: #f5f5f5;
+            color: #555;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .filter-button:hover {
+            background-color: #e0e0e0;
+        }
+
+        .filter-button.active {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        /* コース一覧 */
+        .course-section {
+            margin-bottom: 80px;
+        }
+
+        .section-title-container {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-subtitle {
+            display: inline-block;
+            font-size: 14px;
+            color: var(--secondary-color);
+            margin-bottom: 8px;
+            background: rgba(255, 58, 58, 0.08);
+            padding: 6px 15px;
+            border-radius: 30px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 800;
+            margin: 0;
+            color: var(--dark-blue);
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .course-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition-fast);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #eee;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .course-image {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .course-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .course-card:hover .course-image img {
+            transform: scale(1.05);
+        }
+
+        .course-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 1;
+            z-index: 1;
+        }
+
+        .badge-beginner {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .badge-intermediate {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        .badge-advanced {
+            background-color: var(--dark-blue);
+            color: white;
+        }
+
+        .badge-popular {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .course-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .course-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin: 0 0 10px;
+            color: #333;
+            line-height: 1.4;
+        }
+
+        .course-instructor {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .instructor-avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            margin-right: 8px;
+            object-fit: cover;
+        }
+
+        .course-description {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+            border-top: 1px solid #f0f0f0;
+            padding-top: 15px;
+        }
+
+        .course-price {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+
+        .course-detail-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: 700;
+            font-size: 14px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            text-decoration: none;
+        }
+
+        .course-detail-button:hover {
+            background-color: #e03333;
+            transform: translateY(-2px);
+        }
+
+        /* 特徴セクション */
+        .features-section {
+            background-color: var(--light-bg);
+            padding: 80px 0;
+            margin-bottom: 80px;
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .feature-item {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition-fast);
+            text-align: center;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0, 102, 255, 0.1);
+            border-radius: 50%;
+            font-size: 24px;
+            color: var(--primary-color);
+        }
+
+        .feature-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .feature-description {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* 教えてくれる人 */
+        .instructors-section {
+            margin-bottom: 80px;
+        }
+
+        .instructors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .instructor-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition-fast);
+        }
+
+        .instructor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .instructor-image {
+            height: 280px;
+            overflow: hidden;
+        }
+
+        .instructor-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .instructor-card:hover .instructor-image img {
+            transform: scale(1.05);
+        }
+
+        .instructor-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .instructor-name {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .instructor-title {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .instructor-bio {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background-color: #f5f5f5;
+            border-radius: 50%;
+            color: #333;
+            transition: var(--transition-fast);
+        }
+
+        .social-link:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* レスポンシブ対応 */
+        @media (max-width: 768px) {
+            .course-hero-section {
+                padding: 100px 0 60px;
+            }
+            
+            .course-hero-title {
+                font-size: 30px;
+            }
+            
+            .course-hero-lead {
+                font-size: 16px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .course-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .course-content {
+                padding: 15px;
+            }
+            
+            .course-title {
+                font-size: 16px;
+            }
+            
+            .course-description {
+                font-size: 14px;
+            }
+            
+            .features-grid,
+            .instructors-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .instructor-image {
+                height: 220px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- SVG Symbol Definitions for Icons -->
+    <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <symbol id="icon-pdf" viewBox="0 0 512 512">
+            <style type="text/css">
+                .st0{fill:#4B4B4B;}
+            </style>
+            <g>
+                <path class="st0" d="M378.413,0H208.297h-13.182L185.8,9.314L57.02,138.102l-9.314,9.314v13.176v265.514
+                    c0,47.36,38.528,85.895,85.896,85.895h244.811c47.353,0,85.881-38.535,85.881-85.895V85.896C464.294,38.528,425.766,0,378.413,0z
+                    M432.497,426.105c0,29.877-24.214,54.091-54.084,54.091H133.602c-29.884,0-54.098-24.214-54.098-54.091V160.591h83.716
+                    c24.885,0,45.077-20.178,45.077-45.07V31.804h170.116c29.87,0,54.084,24.214,54.084,54.092V426.105z"/>
+                <path class="st0" d="M171.947,252.785h-28.529c-5.432,0-8.686,3.533-8.686,8.825v73.754c0,6.388,4.204,10.599,10.041,10.599
+                    c5.711,0,9.914-4.21,9.914-10.599v-22.406c0-0.545,0.279-0.817,0.824-0.817h16.436c20.095,0,32.188-12.226,32.188-29.612
+                    C204.136,264.871,192.182,252.785,171.947,252.785z M170.719,294.888h-15.208c-0.545,0-0.824-0.272-0.824-0.81v-23.23
+                    c0-0.545,0.279-0.816,0.824-0.816h15.208c8.42,0,13.447,5.027,13.447,12.498C184.167,290,179.139,294.888,170.719,294.888z"/>
+                <path class="st0" d="M361.167,252.785h-44.812c-5.432,0-8.7,3.533-8.7,8.825v73.754c0,6.388,4.218,10.599,10.055,10.599
+                    c5.697,0,9.914-4.21,9.914-10.599v-26.351c0-0.538,0.265-0.81,0.81-0.81h26.086c5.837,0,9.23-3.532,9.23-8.56
+                    c0-5.028-3.393-8.553-9.23-8.553h-26.086c-0.545,0-0.81-0.272-0.81-0.817v-19.425c0-0.545,0.265-0.816,0.81-0.816h32.733
+                    c5.572,0,9.245-3.666,9.245-8.553C370.411,256.45,366.738,252.785,361.167,252.785z"/>
+            </g>
+        </symbol>
+        <symbol id="svg-triangle-color" viewBox="0 0 147.35 133">
+             <style>
+                .cls-1{fill:none;}
+                .cls-2{clip-path:url(#clip-path-triangle);} /* IDをユニークに */
+                .cls-3{fill:#80d4d4;}
+                .cls-4{fill:#3bb68b;}
+                .cls-5{fill:#4fbfec;}
+            </style>
+            <clipPath id="clip-path-triangle" transform="translate(0 0)">
+                <rect class="cls-1" width="147.35" height="133"/>
+            </clipPath>
+            <g class="cls-2">
+                <path class="cls-3" d="M127.06,133H73.66L53.11,111h58.11a7.36,7.36,0,0,0,6.38-11l-8.49-14.7,8.82-28.83,26.68,46.22A20.27,20.27,0,0,1,127.06,133" transform="translate(0 0)"/>
+                <path class="cls-4" d="M117.93,56.38l-8.82,28.83L85.05,43.54l-5-8.66a7.36,7.36,0,0,0-12.75,0L58.8,49.59,29.44,56.37,56.13,10.13a20.26,20.26,0,0,1,35.1,0l16.29,28.22Z" transform="translate(0 0)"/>
+                <path class="cls-5" d="M73.66,133H20.29A20.27,20.27,0,0,1,2.74,102.6L19,74.4l10.41-18L58.8,49.59l-24,41.67-5-8.65a7.36,7.36,0,0,0,6.38,11h17Z" transform="translate(0 0)"/>
+            </g>
+        </symbol>
+    </defs>
+    </svg>
+
+    <!-- ヘッダー -->
+    <header class="site-header">
+        <div class="header-container">
+            <div class="site-logo-text">
+                <a href="../index.html">CLAN</a>
+            </div>
+            <nav class="global-nav pc-nav">
+                <ul>
+                    <li><a href="../index.html">ホーム</a></li>
+                    <li><a href="../about.html">オートファネル大学とは</a></li>
+                    <li><a href="../blog/index.html">ブログ</a></li>
+                    <li><a href="index.html" aria-current="page">オンライン講座</a></li>
+                    <li><a href="../achievement/index.html">お客様の声</a></li>
+                </ul>
+            </nav>
+            <div class="header-cta">
+                <a href="../document.html" class="btn-document">
+                     <svg><use xlink:href="#icon-pdf"></use></svg>
+                    資料請求する
+                </a>
+                <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
+                    まずは相談する
+                </a>
+            </div>
+            <button class="hamburger-button sp-nav" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+    
+    <!-- スマホ用フッター固定CTA -->
+    <div class="sp-fix-cta">
+        <ul>
+            <li class="mail"><a href="https://utage-marunage.com/it-hojo/">まずは相談する <img src="../images/icon-mail.svg" alt=""></a></li>
+            <li class="book"><a href="../document.html">資料請求する <svg><use xlink:href="#icon-pdf"></use></svg></a></li>
+        </ul>
+    </div>
+
+    <main class="site-main">
+        <!-- ヒーローセクション -->
+        <section class="course-hero-section">
+            <div class="course-hero-container">
+                <h1 class="course-hero-title">オンライン講座一覧</h1>
+                <p class="course-hero-lead">
+                    マーケティング自動化や効率的な集客・販売のスキルを習得できる実践的な講座をご用意しています。<br>
+                    あなたのビジネスを次のレベルに引き上げるために、今すぐスキルアップしましょう。
+                </p>
+            </div>
+        </section>
+
+        <div class="page-container">
+            <!-- コースフィルター -->
+            <div class="course-filter">
+                <button class="filter-button active">すべて</button>
+                <button class="filter-button">初級</button>
+                <button class="filter-button">中級</button>
+                <button class="filter-button">上級</button>
+                <button class="filter-button">人気</button>
+                <button class="filter-button">新着</button>
+            </div>
+
+            <!-- 人気コースセクション -->
+            <section class="course-section">
+                <div class="section-title-container">
+                    <span class="section-subtitle">POPULAR COURSES</span>
+                    <h2 class="section-title">人気のオンライン講座</h2>
+                </div>
+
+                <div class="course-grid">
+                    <!-- コース1 -->
+                    <div class="course-card">
+                        <div class="course-image">
+                            <img src="../images/course-lp.jpg" alt="ランディングページ作成初級講座">
+                            <span class="course-badge badge-popular">人気</span>
+                        </div>
+                        <div class="course-content">
+                            <h3 class="course-title">ランディングページ作成初級講座</h3>
+                            <div class="course-instructor">
+                                <img src="../images/instructor-avatar.jpg" alt="前田由紀子" class="instructor-avatar">
+                                <span>前田由紀子</span>
+                            </div>
+                            <p class="course-description">「なぜ売れないの？」その悩み、LPが原因かもしれません。本講座では、購入ボタンをクリックしたくなる「売れるLP」の法則を徹底解説。もうWebデザイナーに依頼する必要はありません。</p>
+                            <div class="course-meta">
+                                <div class="course-price">¥29,800</div>
+                                <a href="lp.html" class="course-detail-button">詳細を見る</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- コース2 -->
+                    <div class="course-card">
+                        <div class="course-image">
+                            <img src="../images/course-auto-funnel.jpg" alt="オートファネル構築初級講座">
+                            <span class="course-badge badge-popular">人気</span>
+                        </div>
+                        <div class="course-content">
+                            <h3 class="course-title">オートファネル構築初級講座</h3>
+                            <div class="course-instructor">
+                                <img src="../images/instructor-avatar.jpg" alt="前田由紀子" class="instructor-avatar">
+                                <span>前田由紀子</span>
+                            </div>
+                            <p class="course-description">「集客はしているのに売上に繋がらない…」その悩み、セールスファネルで解決します。理想的な見込み客を集め、信頼関係を構築し、自動的に商品購入へと導くオートファネルの設計方法を学びます。</p>
+                            <div class="course-meta">
+                                <div class="course-price">¥39,800</div>
+                                <a href="auto-funnel.html" class="course-detail-button">詳細を見る</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- コース3 -->
+                    <div class="course-card">
+                        <div class="course-image">
+                            <img src="../images/course-step-mail.jpg" alt="ステップメール設計初級講座">
+                            <span class="course-badge badge-popular">人気</span>
+                        </div>
+                        <div class="course-content">
+                            <h3 class="course-title">ステップメール設計初級講座</h3>
+                            <div class="course-instructor">
+                                <img src="../images/instructor-avatar.jpg" alt="前田由紀子" class="instructor-avatar">
+                                <span>前田由紀子</span>
+                            </div>
+                            <p class="course-description">「メールを送っても反応がない…」そんな悩みを解消するステップメールの極意を学べます。見込み客を熱狂的なファンに変える7ステップのメール設計術、開封率を50%以上に高めるタイトルの作り方、購入意欲を高める心理トリガーの活用法まで網羅。</p>
+                            <div class="course-meta">
+                                <div class="course-price">¥24,800</div>
+                                <a href="step-mail.html" class="course-detail-button">詳細を見る</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 全てのコースセクション -->
+            <section class="course-section">
+                <div class="section-title-container">
+                    <span class="section-subtitle">ALL COURSES</span>
+                    <h2 class="section-title">全てのオンライン講座</h2>
+                </div>
+
+                <div class="course-grid">
+                    <!-- コース1 -->
+                    <div class="course-card">
+                        <div class="course-image">
+                            <img src="../images/course-lp.jpg" alt="ランディングページ作成初級講座">
+                            <span class="course-badge badge-beginner">初級</span>
+                        </div>
+                        <div class="course-content">
+                            <h3 class="course-title">ランディングページ作成初級講座</h3>
+                            <div class="course-instructor">
+                                <img src="../images/instructor-avatar.jpg" alt="前田由紀子" class="instructor-avatar">
+                                <span>前田由紀子</span>
+                            </div>
+                            <p class="course-description">「なぜ売れないの？」その悩み、LPが原因かもしれません。本講座では、購入ボタンをクリックしたくなる「売れるLP」の法則を徹底解説。もうWebデザイナーに依頼する必要はありません。</p>
+                            <div class="course-meta">
+                                <div class="course-price">¥29,800</div>
+                                <a href="lp.html" class="course-detail-button">詳細を見る</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- コース2 -->
+                    <div class="course-card">
+                        <div class="course-image">
+                            <img src="../images/course-video.jpg" alt="動画編集初級講座">
+                            <span class="course-badge badge-beginner">初級</span>
+                        </div>
+                        <div class="course-content">
+                            <h3 class="course-title">動画編集初級講座</h3>
+                            <div class="course-instructor">
+                                <img src="../images/instructor-avatar.jpg" alt="前田由紀子" class="instructor-avatar">
+                                <span>前田由紀子</span>
+                            </div>
+                            <p class="course-description">「最後まで見てもらえない…」そんな悩みを解決する動画編集スキルが身につきます。冒頭10秒で視聴者を惹きつけるオープニング作成術、視聴者を飽きさせないカット編集テクニック、感情を動かす音楽・効果音の選び方まで。</p>
+                            <div class="course-meta">
+                                <div class="course-price">¥24,800</div>
+                                <a href="video.html" class="course-detail-button">詳細を見る</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- コース3 -->
+                    <div class="course-card">
+                        <div class="course-image">
+                            <img src="../images/course-step-mail.jpg" alt="ステップメール設計初級講座">
+                            <span class="course-badge badge-beginner">初級</span>
+                        </div>
+                        <div class="course-content">
+                            <h3 class="course-title">ステップメール設計初級講座</h3>
+                            <div class="course-instructor">
+                                <img src="../images/instructor-avatar.jpg" alt="前田由紀子" class="instructor-avatar">
+                                <span>前田由紀子</span>
+                            </div>
+                            <p class="course-description">「メールを送っても反応がない…」そんな悩みを解消するステップメールの極意を学べます。見込み客を熱狂的なファンに変える7ステップのメール設計術、開封率を50%以上に高めるタイトルの作り方、購入意欲を高める心理トリガーの活用法まで網羅。</p>
+                            <div class="course-meta">
+                                <div class="course-price">¥24,800</div>
+                                <a href="step-mail.html" class="course-detail-button">詳細を見る</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- コース4 -->
+                    <div class="course-card">
+                        <div class="course-image">
+                            <img src="../images/course-auto-funnel.jpg" alt="オートファネル構築初級講座">
+                            <span class="course-badge badge-beginner">初級</span>
+                        </div>
+                        <div class="course-content">
+                            <h3 class="course-title">オートファネル構築初級講座</h3>
+                            <div class="course-instructor">
+                                <img src="../images/instructor-avatar.jpg" alt="前田由紀子" class="instructor-avatar">
+                                <span>前田由紀子</span>
+                            </div>
+                            <p class="course-description">「集客はしているのに売上に繋がらない…」その悩み、セールスファネルで解決します。理想的な見込み客を集め、信頼関係を構築し、自動的に商品購入へと導くオートファネルの設計方法を学びます。</p>
+                            <div class="course-meta">
+                                <div class="course-price">¥39,800</div>
+                                <a href="auto-funnel.html" class="course-detail-button">詳細を見る</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- コース5 -->
+                    <div class="course-card">
+                        <div class="course-image">
+                            <img src="../images/course-youtube-thumbnail.jpg" alt="Youtubeサムネ作成初級講座">
+                            <span class="course-badge badge-beginner">初級</span>
+                        </div>
+                        <div class="course-content">
+                            <h3 class="course-title">Youtubeサムネ作成初級講座</h3>
+                            <div class="course-instructor">
+                                <img src="../images/instructor-avatar.jpg" alt="前田由紀子" class="instructor-avatar">
+                                <span>前田由紀子</span>
+                            </div>
+                            <p class="course-description">「再生数が伸びない…」その原因はサムネイルかもしれません。視聴者の目を引き、クリックしたくなるサムネイル作成の極意を学びましょう。インパクトを与える色彩選択のルール、瞬時に内容を伝える構図設計、文字サイズ・フォントの最適な使い方まで。</p>
+                            <div class="course-meta">
+                                <div class="course-price">¥19,800</div>
+                                <a href="youtube-thumbnail.html" class="course-detail-button">詳細を見る</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- コース6 -->
+                    <div class="course-card">
+                        <div class="course-image">
+                            <img src="../images/course-canva.jpg" alt="Canvaデザイン初級講座">
+                            <span class="course-badge badge-beginner">初級</span>
+                        </div>
+                        <div class="course-content">
+                            <h3 class="course-title">Canvaデザイン初級講座</h3>
+                            <div class="course-instructor">
+                                <img src="../images/instructor-avatar.jpg" alt="前田由紀子" class="instructor-avatar">
+                                <span>前田由紀子</span>
+                            </div>
+                            <p class="course-description">「デザインセンスがない…」そんな悩みを持つ方でも、Canvaを使いこなせるようになります。SNS投稿からセールスページまで、あらゆるマーケティング素材を自分で簡単に作成。プロ顔負けのデザインを使った自動販売システムを構築できます。</p>
+                            <div class="course-meta">
+                                <div class="course-price">¥19,800</div>
+                                <a href="canva.html" class="course-detail-button">詳細を見る</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- 特徴セクション -->
+        <section class="features-section">
+            <div class="features-container">
+                <div class="section-title-container">
+                    <span class="section-subtitle">WHY CHOOSE US</span>
+                    <h2 class="section-title">オートファネル大学の講座が選ばれる理由</h2>
+                </div>
+
+                <div class="features-grid">
+                    <!-- 特徴1 -->
+                    <div class="feature-item">
+                        <div class="feature-icon">📊</div>
+                        <h3 class="feature-title">即実践のカリキュラム</h3>
+                        <p class="feature-description">「明日から使える」を徹底。理論だけでなく、その場で自分のビジネスに適用できる実践的なスキルを習得できます。講座内で自分だけのオートファネルを構築できます。</p>
+                    </div>
+
+                    <!-- 特徴2 -->
+                    <div class="feature-item">
+                        <div class="feature-icon">🛠️</div>
+                        <h3 class="feature-title">UTAGE徹底マスター</h3>
+                        <p class="feature-description">ツール迷子の終着点「UTAGE」に特化。LP作成から顧客管理、決済まですべてを一つのツールで完結。高機能なのに使いやすいUTAGEをマスターできます。</p>
+                    </div>
+
+                    <!-- 特徴3 -->
+                    <div class="feature-item">
+                        <div class="feature-icon">👨‍👩‍👧‍👦</div>
+                        <h3 class="feature-title">専門家の個別サポート</h3>
+                        <p class="feature-description">「分からない」を解消。専門家によるマンツーマンサポートで挫折なし。一人ひとりの課題に合わせたフィードバックで、確実に成果を出せるよう導きます。</p>
+                    </div>
+
+                    <!-- 特徴4 -->
+                    <div class="feature-item">
+                        <div class="feature-icon">📈</div>
+                        <h3 class="feature-title">実績豊富な成功事例</h3>
+                        <p class="feature-description">300件以上の導入実績から得た知見を公開。様々な業種・規模の成功パターンを学び、自分のビジネスに最適なモデルを見つけることができます。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 教えてくれる人 -->
+        <div class="page-container">
+            <section class="instructors-section">
+                <div class="section-title-container">
+                    <span class="section-subtitle">OUR INSTRUCTORS</span>
+                    <h2 class="section-title">教えてくれる人</h2>
+                </div>
+
+                <div class="instructors-grid">
+                    <!-- 講師1 -->
+                    <div class="instructor-card">
+                        <div class="instructor-image">
+                            <img src="../images/instructor-avatar.jpg" alt="前田由紀子">
+                        </div>
+                        <div class="instructor-info">
+                            <h3 class="instructor-name">前田由紀子</h3>
+                            <p class="instructor-title">Web集客コンサルタント / UTAGE構築・運用スペシャリスト</p>
+                            <p class="instructor-bio">1980年鹿児島県生まれ。高校卒業後、ブルガリなどのハイブランドで13年間勤務。2011年、ローフードとファスティングの事業で福岡で起業。協会設立を経て、東京・青山に料理教室を開講。現在、株式会社CLANの代表取締役として活動中。</p>
+                            <div class="social-links">
+                                <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                                <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Contact CTA Section -->
+        <section class="contact-cta-section">
+            <svg class="contact-cta-bg-deco contact-cta-bg-triangle1"><use xlink:href="#svg-triangle-color"></use></svg>
+            <svg class="contact-cta-bg-deco contact-cta-bg-triangle2"><use xlink:href="#svg-triangle-color"></use></svg>
+            <span class="contact-cta-bg-deco contact-cta-bg-circle1"></span>
+            <span class="contact-cta-bg-deco contact-cta-bg-circle2"></span>
+
+            <div class="contact-cta-container">
+                <span class="contact-cta-subtitle">Contact</span>
+                <h2 class="contact-cta-title">まずは無料でご相談ください</h2>
+                <p class="contact-cta-lead">
+                    オートファネルの構築やマーケティングの自動化について、<br class="pc-only">
+                    専門家があなたの状況をお伺いし、最適なステップをご提案します。<br class="pc-only">
+                    まずはお気軽にお問い合わせください。
+                </p>
+                <div class="contact-cta-buttons">
+                    <a href="https://utage-marunage.com/it-hojo/" class="btn btn-contact">
+                        無料相談してみる
+                        <span class="free-label">無料</span>
+                    </a>
+                    <a href="../document.html" class="btn btn-document">
+                        <svg><use xlink:href="#icon-pdf"></use></svg>
+                        資料請求する
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-widgets">
+                <div class="widget-area footer-widget-1">
+                    <img src="../images/logo-white.png" alt="オートファネル大学 ロゴ白" class="footer-logo">
+                </div>
+                <div class="widget-area footer-widget-2">
+                    <h4>オンライン講座一覧</h4>
+                    <ul>
+                        <li><a href="lp.html">ランディングページ作成初級講座</a></li>
+                        <li><a href="video.html">動画編集初級講座</a></li>
+                        <li><a href="step-mail.html">ステップメール設計初級講座</a></li>
+                        <li><a href="auto-funnel.html">オートファネル構築初級講座</a></li>
+                        <li><a href="youtube-thumbnail.html">Youtubeサムネ作成初級講座</a></li>
+                        <li><a href="canva.html">Canvaデザイン初級講座</a></li>
+                    </ul>
+                </div>
+                <div class="widget-area footer-widget-3">
+                    <h4>無料コンテンツ</h4>
+                    <ul>
+                        <li><a href="../blog/index.html">ブログ</a></li>
+                        <li><a href="../book/index.html">電子書籍</a></li>
+                        <li><a href="../free-seminar.html">無料セミナー</a></li>
+                        <li><a href="../free-consultation.html">無料相談</a></li>
+                        <li><a href="../achievement/index.html">お客様の声</a></li>
+                    </ul>
+                </div>
+                <div class="widget-area footer-widget-4">
+                    <h4>運営情報</h4>
+                    <ul>
+                        <li><a href="../owner.html">運営者情報</a></li>
+                        <li><a href="../terms.html">利用規約</a></li>
+                        <li><a href="../privacy.html">プライバシーポリシー</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="site-copyright">
+                <small>© 2025 オートファネル大学</small>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    
+    <script>
+        // コースフィルター機能
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-button');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // アクティブボタンの切り替え
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // 実際のフィルタリングロジックは実装時に追加
+                    // ここではデモ用に簡易的なアニメーションのみ
+                    const courseCards = document.querySelectorAll('.course-card');
+                    
+                    courseCards.forEach(card => {
+                        card.style.opacity = '0.5';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                        }, 300);
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
