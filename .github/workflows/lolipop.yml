@@ -6,13 +6,39 @@ on:
       - master   
 
 jobs:
-  ftp-deploy:
-    name: FTP Deploy
+  optimize-and-deploy:
+    name: Optimize and FTP Deploy
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          
+      - name: Install dependencies
+        run: npm install -g html-minifier terser clean-css-cli
+        
+      - name: Optimize CSS
+        run: |
+          find . -name "*.css" -type f -not -path "./node_modules/*" | while read file; do
+            npx clean-css-cli -o "$file" "$file"
+          done
+          
+      - name: Optimize JavaScript
+        run: |
+          find . -name "*.js" -type f -not -path "./node_modules/*" | while read file; do
+            npx terser "$file" -o "$file" -c -m
+          done
+          
+      - name: Minify HTML
+        run: |
+          find . -name "*.html" -type f | while read file; do
+            npx html-minifier --collapse-whitespace --remove-comments --remove-optional-tags --remove-redundant-attributes --remove-script-type-attributes --remove-tag-whitespace --use-short-doctype "$file" -o "$file"
+          done
 
       - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@v4.3.0  
