@@ -163,12 +163,23 @@ footer{flex-shrink:0}
   .hamburger-button {
     margin-left: auto;
     margin-right: 0;
+    display: block; /* 重要：スマホでは必ず表示 */
   }
   
   /* モバイルメニューの位置調整 */
   .mobile-menu {
     top: 50px;
     height: calc(100vh - 50px);
+  }
+  
+  /* PCナビゲーションを完全に非表示に */
+  .pc-nav {
+    display: none !important; /* 重要：スマホでは完全に非表示 */
+  }
+  
+  /* スマホ用固定CTAを表示 */
+  .sp-fix-cta {
+    display: block;
   }
 }
 
