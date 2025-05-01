@@ -1,526 +1,445 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="オートファネル大学は、マーケティング自動化と効率化を学ぶオンライン教育プラットフォームです。自動で売上を生む仕組みを構築するスキルを習得できます。">
-    <title>オートファネル大学 | マーケティング自動化と効率化を学ぶ</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="images/favicon.ico">
-    <meta property="og:title" content="オートファネル大学 | マーケティング自動化と効率化を学ぶ">
-    <meta property="og:description" content="オートファネル大学は、マーケティング自動化と効率化を学ぶオンライン教育プラットフォームです。自動で売上を生む仕組みを構築するスキルを習得できます。">
-    <meta property="og:image" content="images/ogp_image_index.webp">
-    <meta property="og:type" content="website">
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="description" content="オートファネル大学は、マーケティング自動化と効率化を学ぶオンライン教育プラットフォームです。自動で売上を生む仕組みを構築するスキルを習得できます。">
+   <title>オートファネル大学 | マーケティング自動化と効率化を学ぶ</title>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+   <!-- クリティカルCSS -->
+   <style>
+       :root{--primary-color:#0066ff;--secondary-color:#ff3a3a;--accent-color:#ff9500;--dark-blue:#0d3283;--light-bg:#f8f9fa}
+       body{font-family:'Noto Sans JP',sans-serif;margin:0;line-height:1.6;overflow-x:hidden}
+       .site-header{position:fixed;top:0;left:0;width:100%;z-index:1000;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.1);height:60px;display:flex;align-items:center}
+       .header-container{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center;width:100%}
+       .site-logo-text{font-weight:700;font-size:20px}
+       .site-logo-text a{color:var(--dark-blue);text-decoration:none}
+       .global-nav ul{display:flex;list-style:none;margin:0;padding:0}
+       .global-nav li{margin:0 15px}
+       .global-nav a{color:#333;font-size:15px;font-weight:500;position:relative;padding:5px 0;text-decoration:none}
+       .header-cta{display:flex;align-items:center;gap:10px}
+       .btn-document,.btn-contact{display:flex;align-items:center;padding:8px 15px;border-radius:4px;font-size:13px;font-weight:700;transition:all .3s ease;text-decoration:none}
+       .btn-document{color:#333;background-color:#fff;border:1px solid #ddd;box-shadow:0 1px 2px rgba(0,0,0,.08)}
+       .btn-contact{background-color:var(--secondary-color);color:#fff;position:relative}
+       .hamburger-button{display:none;width:30px;height:30px;position:relative;z-index:1001;background:none;border:none;cursor:pointer}
+       .hamburger-button span{display:block;position:absolute;width:100%;height:2px;background-color:#333;transition:all .3s ease;left:0}
+       .hamburger-button span:nth-child(1){top:8px}
+       .hamburger-button span:nth-child(2){top:14px}
+       .hamburger-button span:nth-child(3){bottom:8px}
+       .sp-fix-cta{display:none;position:fixed;bottom:0;left:0;width:100%;background-color:#fff;z-index:999;box-shadow:0 -2px 8px rgba(0,0,0,.1)}
+       .sp-fix-cta ul{display:flex;list-style:none;margin:0;padding:0}
+       .sp-fix-cta li{flex:1}
+       .hero-section{position:relative;width:100%;background-color:#e0f7ff;padding:100px 0 80px;overflow:hidden}
+       .hero-container{position:relative;z-index:10;display:flex;justify-content:space-between;align-items:flex-start;max-width:1200px;margin:0 auto;padding:0 20px}
+       .hero-text{flex-basis:60%;max-width:700px;padding-right:40px}
+       .hero-catch{font-size:48px;font-weight:700;margin:0 0 20px;line-height:1.3;color:#333}
+       .hero-lead{font-size:18px;margin:0 0 40px;color:#555}
+       .hero-cta-buttons{display:flex;gap:15px;margin-bottom:40px}
+       @media (max-width:768px){
+           .pc-nav,.header-cta{display:none}
+           .hamburger-button,.sp-fix-cta{display:block}
+           .hero-section{padding:80px 0 40px}
+           .hero-container{flex-direction:column;align-items:center}
+           .hero-text{flex-basis:100%;padding-right:0;text-align:center;margin-bottom:40px}
+           .hero-catch{font-size:32px}
+           .hero-lead{font-size:15px}
+       }
+   </style>
+   <link rel="stylesheet" href="css/style.css" media="print" onload="this.media='all'">
+   <link rel="icon" href="images/favicon.ico">
+   <meta property="og:title" content="オートファネル大学 | マーケティング自動化と効率化を学ぶ">
+   <meta property="og:description" content="オートファネル大学は、マーケティング自動化と効率化を学ぶオンライン教育プラットフォームです。自動で売上を生む仕組みを構築するスキルを習得できます。">
+   <meta property="og:image" content="images/ogp_image_index.webp">
+   <meta property="og:type" content="website">
+   <link rel="preload" href="images/hero-bg.webp" as="image">
 </head>
 <body>
-    <!-- SVG Symbol Definitions for Icons -->
-    <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <defs>
-        <symbol id="icon-pdf" viewBox="0 0 512 512">
-            <style type="text/css">
-                .st0{fill:#4B4B4B;}
-            </style>
-            <g>
-                <path class="st0" d="M378.413,0H208.297h-13.182L185.8,9.314L57.02,138.102l-9.314,9.314v13.176v265.514
-                    c0,47.36,38.528,85.895,85.896,85.895h244.811c47.353,0,85.881-38.535,85.881-85.895V85.896C464.294,38.528,425.766,0,378.413,0z
-                    M432.497,426.105c0,29.877-24.214,54.091-54.084,54.091H133.602c-29.884,0-54.098-24.214-54.098-54.091V160.591h83.716
-                    c24.885,0,45.077-20.178,45.077-45.07V31.804h170.116c29.87,0,54.084,24.214,54.084,54.092V426.105z"/>
-                <path class="st0" d="M171.947,252.785h-28.529c-5.432,0-8.686,3.533-8.686,8.825v73.754c0,6.388,4.204,10.599,10.041,10.599
-                    c5.711,0,9.914-4.21,9.914-10.599v-22.406c0-0.545,0.279-0.817,0.824-0.817h16.436c20.095,0,32.188-12.226,32.188-29.612
-                    C204.136,264.871,192.182,252.785,171.947,252.785z M170.719,294.888h-15.208c-0.545,0-0.824-0.272-0.824-0.81v-23.23
-                    c0-0.545,0.279-0.816,0.824-0.816h15.208c8.42,0,13.447,5.027,13.447,12.498C184.167,290,179.139,294.888,170.719,294.888z"/>
-                <path class="st0" d="M361.167,252.785h-44.812c-5.432,0-8.7,3.533-8.7,8.825v73.754c0,6.388,4.218,10.599,10.055,10.599
-                    c5.697,0,9.914-4.21,9.914-10.599v-26.351c0-0.538,0.265-0.81,0.81-0.81h26.086c5.837,0,9.23-3.532,9.23-8.56
-                    c0-5.028-3.393-8.553-9.23-8.553h-26.086c-0.545,0-0.81-0.272-0.81-0.817v-19.425c0-0.545,0.265-0.816,0.81-0.816h32.733
-                    c5.572,0,9.245-3.666,9.245-8.553C370.411,256.45,366.738,252.785,361.167,252.785z"/>
-            </g>
-        </symbol>
-        <symbol id="svg-triangle-color" viewBox="0 0 147.35 133">
-             <style>
-                .cls-1{fill:none;}
-                .cls-2{clip-path:url(#clip-path-triangle);} /* IDをユニークに */
-                .cls-3{fill:#80d4d4;}
-                .cls-4{fill:#3bb68b;}
-                .cls-5{fill:#4fbfec;}
-            </style>
-            <clipPath id="clip-path-triangle" transform="translate(0 0)">
-                <rect class="cls-1" width="147.35" height="133"/>
-            </clipPath>
-            <g class="cls-2">
-                <path class="cls-3" d="M127.06,133H73.66L53.11,111h58.11a7.36,7.36,0,0,0,6.38-11l-8.49-14.7,8.82-28.83,26.68,46.22A20.27,20.27,0,0,1,127.06,133" transform="translate(0 0)"/>
-                <path class="cls-4" d="M117.93,56.38l-8.82,28.83L85.05,43.54l-5-8.66a7.36,7.36,0,0,0-12.75,0L58.8,49.59,29.44,56.37,56.13,10.13a20.26,20.26,0,0,1,35.1,0l16.29,28.22Z" transform="translate(0 0)"/>
-                <path class="cls-5" d="M73.66,133H20.29A20.27,20.27,0,0,1,2.74,102.6L19,74.4l10.41-18L58.8,49.59l-24,41.67-5-8.65a7.36,7.36,0,0,0,6.38,11h17Z" transform="translate(0 0)"/>
-            </g>
-        </symbol>
-        <symbol viewBox="0 0 576 512" id="svg-youtube">
-            <path d="M549.7 124.1c-6.3-23.7-24.8-42.3-48.3-48.6C458.8 64 288 64 288 64S117.2 64 74.6 75.5c-23.5 6.3-42 24.9-48.3 48.6-11.4 42.9-11.4 132.3-11.4 132.3s0 89.4 11.4 132.3c6.3 23.7 24.8 41.5 48.3 47.8C117.2 448 288 448 288 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zM231.8 355.4l-10.8-7.4-10.8 7.4C187.8 370.3 160 355.4 160 328V184c0-27.4 27.8-42.3 50.2-27.4l10.8 7.4 10.8-7.4c22.4-14.9 50.2 0 50.2 27.4V328c0 27.4-27.8 42.3-50.2 27.4zM391.6 355.4l-10.8-7.4-10.8 7.4c-22.4 14.9-50.2 0-50.2-27.4V184c0-27.4 27.8-42.3 50.2-27.4l10.8 7.4 10.8-7.4C414.2 141.7 442 156.6 442 184V328c0 27.4-27.8 42.3-50.4 27.4z"/>
-        </symbol>
-        <symbol viewBox="0 0 512 512" id="svg-x">
-             <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/>
-         </symbol>
-         <symbol viewBox="0 0 448 512" id="svg-instagram">
-             <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9 26.3 26.2 58 34.4 93.9 36.2 37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
-         </symbol>
-    </defs>
-    </svg>
+   <!-- 重要なSVGアイコンだけ残す(使用しているものだけに絞る) -->
+   <svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+       <symbol id="icon-pdf" viewBox="0 0 512 512">
+           <path d="M378.4 0H195.1l-9.3 9.3L57 138.1l-9.3 9.3v13.2v265.5c0 47.4 38.5 85.9 85.9 85.9h244.8c47.4 0 85.9-38.5 85.9-85.9V85.9C464.3 38.5 425.8 0 378.4 0zM432.5 426.1c0 29.9-24.2 54.1-54.1 54.1H133.6c-29.9 0-54.1-24.2-54.1-54.1V160.6h83.7c24.9 0 45.1-20.2 45.1-45.1V31.8h170.1c29.9 0 54.1 24.2 54.1 54.1V426.1z"/>
+           <path d="M172 252.8h-28.5c-5.4 0-8.7 3.5-8.7 8.8v73.8c0 6.4 4.2 10.6 10 10.6c5.7 0 9.9-4.2 9.9-10.6v-22.4c0-0.5 0.3-0.8 0.8-0.8h16.4c20.1 0 32.2-12.2 32.2-29.6C204.1 264.9 192.2 252.8 172 252.8zM170.7 294.9h-15.2c-0.5 0-0.8-0.3-0.8-0.8v-23.2c0-0.5 0.3-0.8 0.8-0.8h15.2c8.4 0 13.4 5 13.4 12.5C184.2 290 179.1 294.9 170.7 294.9z"/>
+           <path d="M361.2 252.8h-44.8c-5.4 0-8.7 3.5-8.7 8.8v73.8c0 6.4 4.2 10.6 10.1 10.6c5.7 0 9.9-4.2 9.9-10.6v-26.4c0-0.5 0.3-0.8 0.8-0.8h26.1c5.8 0 9.2-3.5 9.2-8.6c0-5-3.4-8.6-9.2-8.6h-26.1c-0.5 0-0.8-0.3-0.8-0.8v-19.4c0-0.5 0.3-0.8 0.8-0.8h32.7c5.6 0 9.2-3.7 9.2-8.6C370.4 256.5 366.7 252.8 361.2 252.8z"/>
+       </symbol>
+   </svg>
 
-    <!-- ヘッダー -->
-    <header class="site-header">
-        <div class="header-container">
-            <!-- テキストロゴに変更 -->
-            <div class="site-logo-text">
-                <a href="index.html">CLAN</a>
-            </div>
-            <nav class="global-nav pc-nav">
-                <ul>
-                    <li><a href="index.html" aria-current="page">ホーム</a></li>
-                    <li><a href="about.html">オートファネル大学とは</a></li>
-                    <li><a href="blog/index.html">ブログ</a></li>
-                    <li><a href="seminar/index.html">オンライン講座</a></li>
-                    <li><a href="achievement/index.html">お客様の声</a></li>
-                </ul>
-            </nav>
-            <div class="header-cta">
-                <a href="document.html" class="btn-document">
-                     <svg><use xlink:href="#icon-pdf"></use></svg>
-                    資料請求する
-                </a>
-                <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
-                    まずは相談する
-                </a>
-            </div>
-            <button class="hamburger-button sp-nav" aria-label="メニューを開く"><span></span><span></span><span></span></button>
-        </div>
-    </header>
-    
-    <!-- スマホ用フッター固定CTA -->
-    <div class="sp-fix-cta">
-        <ul>
-            <li class="mail"><a href="https://utage-marunage.com/it-hojo/">まずは相談する <img src="images/icon-mail.svg" alt=""></a></li>
-            <li class="book"><a href="document.html">資料請求する <svg><use xlink:href="#icon-pdf"></use></svg></a></li>
-        </ul>
-    </div>
+   <!-- ヘッダー -->
+   <header class="site-header">
+       <div class="header-container">
+           <div class="site-logo-text">
+               <a href="index.html">CLAN</a>
+           </div>
+           <nav class="global-nav pc-nav">
+               <ul>
+                   <li><a href="index.html" aria-current="page">ホーム</a></li>
+                   <li><a href="about.html">オートファネル大学とは</a></li>
+                   <li><a href="blog/index.html">ブログ</a></li>
+                   <li><a href="seminar/index.html">オンライン講座</a></li>
+                   <li><a href="achievement/index.html">お客様の声</a></li>
+               </ul>
+           </nav>
+           <div class="header-cta">
+               <a href="document.html" class="btn-document">
+                   <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
+                   資料請求する
+               </a>
+               <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
+                   まずは相談する
+               </a>
+           </div>
+           <button class="hamburger-button sp-nav" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+       </div>
+   </header>
+   
+   <!-- スマホ用フッター固定CTA -->
+   <div class="sp-fix-cta">
+       <ul>
+           <li class="mail"><a href="https://utage-marunage.com/it-hojo/">まずは相談する <img src="images/icon-mail.svg" alt="" width="24" height="24"></a></li>
+           <li class="book"><a href="document.html">資料請求する <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg></a></li>
+       </ul>
+   </div>
 
-    <main class="site-main">
+   <main class="site-main">
+       <!-- Hero Section -->
+       <section class="hero-section">
+           <div class="hero-container">
+               <div class="hero-text">
+                   <h1 class="hero-catch">
+                      あなたの専門知識を<br>「自動で売れる」仕組みに
+                   </h1>
+                   <p class="hero-lead">
+                       もうツール選びに悩まない<br>
+                       集客から販売まで全プロセスを自動化するUTAGEの構築代行<br>
+                       売上アップと自由な時間を同時に手に入れるセールス自動化を実現します
+                   </p>
+                   <div class="hero-cta-buttons">
+                       <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
+                           まずは相談する
+                       </a>
+                       <a href="document.html" class="btn-document">
+                           <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
+                           資料請求する
+                       </a>
+                   </div>
+               </div>
+          </div>
+       </section>
 
-        <!-- Hero Section -->
-        <section class="hero-section">
-            <!-- 背景装飾 -->
-             <svg class="hero-bg-deco hero-bg-triangle1"><use xlink:href="#svg-triangle-color"></use></svg>
-             <svg class="hero-bg-deco hero-bg-triangle2"><use xlink:href="#svg-triangle-color"></use></svg>
-             <span class="hero-bg-deco hero-bg-circle1"></span>
-             <span class="hero-bg-deco hero-bg-circle2"></span>
+  <!-- 補助金バナー -->
+  <a href="https://utage-marunage.com/it-hojo/" class="subsidy-banner" target="_blank">
+    <picture>
+       <source srcset="images/it-subsidy-banner.webp" type="image/webp">
+       <img src="images/it-subsidy-banner.jpg" alt="IT導入補助金でデジタル化を加速！成功のコツ" width="1000" height="400" loading="lazy">
+    </picture>
+</a>
+       <section class="achievement-section section-padding inner-lg">
+           <div class="section-title-container">
+                <span class="section-subtitle">＼ 受講生様の成功事例 ／</span>
+                <h2 class="section-title">お客様の声</h2>
+           </div>
 
-             <div class="hero-container">
-                 <div class="hero-text">
-                     <h2 class="hero-catch">
-                        あなたの専門知識を<br>「自動で売れる」仕組みに
-                     </h2>
-                     <p class="hero-lead">
-                         もうツール選びに悩まない<br>
-                         集客から販売まで全プロセスを自動化するUTAGEの構築代行<br>
-                         売上アップと自由な時間を同時に手に入れるセールス自動化を実現します
-                     </p>
-                     <div class="hero-cta-buttons">
-                         <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
-                             まずは相談する
-                             <span class="free-label">無料</span>
-                         </a>
-                         <a href="document.html" class="btn-document">
-                             <svg><use xlink:href="#icon-pdf"></use></svg>
-                             資料請求する
-                         </a>
-                     </div>
-                 </div>
-            </div>
-        </section>
+           <div class="achievement-card-list">
+               <div class="achievement-card">
+                   <a href="achievement/customer1.html">
+                       <picture>
+                           <source srcset="images/achieve-1.webp" type="image/webp">
+                           <img src="images/achieve-1.jpg" alt="実績1" width="300" height="200" loading="lazy">
+                       </picture>
+                       <p>【オートファネル導入事例】メール対応を50%削減した自動化システム</p>
+                   </a>
+               </div>
+               <div class="achievement-card">
+                   <a href="achievement/customer2.html">
+                       <picture>
+                           <source srcset="images/achieve-2.webp" type="image/webp">
+                           <img src="images/achieve-2.jpg" alt="実績2" width="300" height="200" loading="lazy">
+                       </picture>
+                       <p>【個人事業主様事例】オートファネル導入で月商2倍達成！</p>
+                   </a>
+               </div>
+               <div class="achievement-card">
+                   <a href="achievement/customer3.html">
+                       <picture>
+                           <source srcset="images/achieve-3.webp" type="image/webp">
+                           <img src="images/achieve-3.jpg" alt="実績3" width="300" height="200" loading="lazy">
+                       </picture>
+                       <p>【オートウェビナーファネル実績】24時間販売の自動化動線完成！【UTAGE構築代行丸投げちゃん事例】</p>
+                   </a>
+               </div>
+               <div class="achievement-card">
+                   <a href="achievement/customer4.html">
+                       <picture>
+                           <source srcset="images/achieve-4.webp" type="image/webp">
+                           <img src="images/achieve-4.jpg" alt="実績4" width="300" height="200" loading="lazy">
+                       </picture>
+                       <p>【オートウェビナーファネル実績】移行初月に月商8桁達成！【UTAGE構築代行丸投げちゃん事例】</p>
+                   </a>
+               </div>
+               <div class="achievement-card">
+                   <a href="achievement/customer5.html">
+                       <picture>
+                           <source srcset="images/achieve-5.webp" type="image/webp">
+                           <img src="images/achieve-5.jpg" alt="実績5" width="300" height="200" loading="lazy">
+                       </picture>
+                       <p>【個別相談＆サブスクファネル実績】手作業対応ゼロ、新規商談が24時間自動化！【UTAGE構築代行丸投げちゃん事例】</p>
+                   </a>
+               </div>
+               <div class="achievement-card">
+                   <a href="https://utage-system.com/p/EcESO02xLLoK">
+                       <picture>
+                           <source srcset="images/achieve-6.webp" type="image/webp">
+                           <img src="images/achieve-6.jpg" alt="実績6" width="300" height="200" loading="lazy">
+                       </picture>
+                       <p>その他の実績事例</p>
+                   </a>
+               </div>
+           </div>
+       </section>
 
-        <!-- 重大告知セクション（中央寄せを修正） -->
-        <div class="important-notice">
-            <div class="notice-content" style="text-align: center;">
-                <span>重大告知</span>
-                <h2 style="text-align: center;">期間限定・UTAGE丸投げちゃんに<br>IT導入補助金が使えます！</h2>
-            </div>
-        </div>
+      
 
-        <section class="achievement-section section-padding inner-lg">
-            <div class="section-title-container">
-                 <span class="section-subtitle">＼ 受講生様の成功事例 ／</span>
-                 <h2 class="section-title">お客様の声</h2>
-            </div>
+       <!-- オンライン講座一覧セクション -->
+       <section class="online-courses-section section-padding inner">
+           <div class="section-title-container">
+               <span class="section-subtitle">＼ ツール選びに悩まない ／</span>
+               <h2 class="section-title">1つのツールですべてが完結</h2>
+           </div>
+           <div class="online-courses-grid">
+               <!-- 講座1: ランディングページ作成初級講座 -->
+               <div class="course-card">
+                   <div class="course-image">
+                       <picture>
+                           <source srcset="images/course-lp.webp" type="image/webp">
+                           <img src="images/course-lp.jpg" alt="ランディングページ作成初級講座" width="480" height="240" loading="lazy">
+                       </picture>
+                       <div class="course-level">初級</div>
+                   </div>
+                   <div class="course-content">
+                       <h3 class="course-title">ランディングページ作成初級講座</h3>
+                       <p class="course-description">「なぜ売れないの？」その悩み、LPが原因かもしれません。本講座では、購入ボタンをクリックしたくなる「売れるLP」の法則を徹底解説。もうWebデザイナーに依頼する必要はありません。UTAGEを使えば、デザインセンスがなくても成約率の高いLPが簡単に作れるようになります。</p>
+                       <a href="course/lp.html" class="course-button">Coming Soon</a>
+                   </div>
+               </div>
 
-            <div class="achievement-card-list">
-                <div class="achievement-card">
-                    <a href="achievement/customer1.html">
-                        <picture>
-                            <source srcset="images/achieve-1.webp" type="image/webp">
-                            <img src="images/achieve-1.jpg" alt="実績1" width="300" height="200" loading="lazy">
-                        </picture>
-                        <p>【オートファネル導入事例】メール対応を50%削減した自動化システム</p>
-                    </a>
-                </div>
-                <div class="achievement-card">
-                    <a href="achievement/customer2.html">
-                        <picture>
-                            <source srcset="images/achieve-2.webp" type="image/webp">
-                            <img src="images/achieve-2.jpg" alt="実績2" width="300" height="200" loading="lazy">
-                        </picture>
-                        <p>【個人事業主様事例】オートファネル導入で月商2倍達成！</p>
-                    </a>
-                </div>
-                <div class="achievement-card">
-                    <a href="achievement/customer3.html">
-                        <picture>
-                            <source srcset="images/achieve-3.webp" type="image/webp">
-                            <img src="images/achieve-3.jpg" alt="実績3" width="300" height="200" loading="lazy">
-                        </picture>
-                        <p>【オートウェビナーファネル実績】24時間販売の自動化動線完成！【UTAGE構築代行丸投げちゃん事例】</p>
-                    </a>
-                </div>
-                <div class="achievement-card">
-                    <a href="achievement/customer4.html">
-                        <picture>
-                            <source srcset="images/achieve-4.webp" type="image/webp">
-                            <img src="images/achieve-4.jpg" alt="実績4" width="300" height="200" loading="lazy">
-                        </picture>
-                        <p>【オートウェビナーファネル実績】移行初月に月商8桁達成！【UTAGE構築代行丸投げちゃん事例】</p>
-                    </a>
-                </div>
-                <div class="achievement-card">
-                    <a href="achievement/customer5.html">
-                        <picture>
-                            <source srcset="images/achieve-5.webp" type="image/webp">
-                            <img src="images/achieve-5.jpg" alt="実績5" width="300" height="200" loading="lazy">
-                        </picture>
-                        <p>【個別相談＆サブスクファネル実績】手作業対応ゼロ、新規商談が24時間自動化！【UTAGE構築代行丸投げちゃん事例】</p>
-                    </a>
-                </div>
-                <div class="achievement-card">
-                    <a href="https://utage-system.com/p/EcESO02xLLoK">
-                        <picture>
-                            <source srcset="images/achieve-6.webp" type="image/webp">
-                            <img src="images/achieve-6.jpg" alt="実績6" width="300" height="200" loading="lazy">
-                        </picture>
-                        <p>その他の実績事例</p>
-                    </a>
-                </div>
-            </div>
-        </section>
+               <!-- 講座2: 動画編集初級講座 -->
+               <div class="course-card">
+                   <div class="course-image">
+                       <picture>
+                           <source srcset="images/course-video.webp" type="image/webp">
+                           <img src="images/course-video.jpg" alt="動画編集初級講座" width="480" height="240" loading="lazy">
+                       </picture>
+                       <div class="course-level">初級</div>
+                   </div>
+                   <div class="course-content">
+                       <h3 class="course-title">動画編集初級講座</h3>
+                       <p class="course-description">「最後まで見てもらえない…」そんな悩みを解決する動画マーケティングスキルを習得。冒頭10秒で視聴者を惹きつける方法から、商品購入へと導くストーリー設計まで。UTAGEと組み合わせることで、視聴から購入までの流れを自動化し、寝ている間も収益を生み出す仕組みを構築できます。</p>
+                       <a href="course/video.html" class="course-button">Coming Soon</a>
+                   </div>
+               </div>
 
-         <!-- 補助金バナー -->
-         <a href="https://utage-marunage.com/it-hojo/" class="subsidy-banner" target="_blank">
-             <picture>
-                <source srcset="images/it-subsidy-banner.webp" type="image/webp">
-                <img src="images/it-subsidy-banner.jpg" alt="IT導入補助金でデジタル化を加速！成功のコツ" width="1000" height="400" loading="lazy">
-             </picture>
-         </a>
+               <!-- 講座3: ステップメール設計初級講座 -->
+               <div class="course-card">
+                   <div class="course-image">
+                       <picture>
+                           <source srcset="images/course-step-mail.webp" type="image/webp">
+                           <img src="images/course-step-mail.jpg" alt="ステップメール設計初級講座" width="480" height="240" loading="lazy">
+                       </picture>
+                       <div class="course-level">初級</div>
+                   </div>
+                   <div class="course-content">
+                       <h3 class="course-title">ステップメール設計初級講座</h3>
+                       <p class="course-description">「メールを送っても反応がない…」そんな悩みを解消するステップメールの極意を学べます。見込み客を熱狂的なファンに変える7ステップのメール設計術。UTAGEの自動配信機能を活用し、一度設定すれば延々と働き続ける教育・販売システムの構築法を習得。個人起業家・コンサルタントのための必須スキルです。</p>
+                       <a href="course/step-mail.html" class="course-button">Coming Soon</a>
+                   </div>
+               </div>
 
-        <!-- オンライン講座一覧セクション -->
-        <section class="online-courses-section section-padding inner">
-            <div class="section-title-container">
-                <span class="section-subtitle">＼ ツール選びに悩まない ／</span>
-                <h2 class="section-title">1つのツールですべてが完結</h2>
-            </div>
-            <div class="online-courses-grid">
-                <!-- 講座1: ランディングページ作成初級講座 -->
-                <div class="course-card">
-                    <div class="course-image">
-                        <picture>
-                            <source srcset="images/course-lp.webp" type="image/webp">
-                            <img src="images/course-lp.jpg" alt="ランディングページ作成初級講座" width="480" height="240" loading="lazy">
-                        </picture>
-                        <div class="course-level">初級</div>
-                    </div>
-                    <div class="course-content">
-                        <h3 class="course-title">ランディングページ作成初級講座</h3>
-                        <p class="course-description">「なぜ売れないの？」その悩み、LPが原因かもしれません。本講座では、購入ボタンをクリックしたくなる「売れるLP」の法則を徹底解説。もうWebデザイナーに依頼する必要はありません。UTAGEを使えば、デザインセンスがなくても成約率の高いLPが簡単に作れるようになります。</p>
-                        <a href="course/lp.html" class="course-button">Coming Soon</a>
-                    </div>
-                </div>
+               <!-- 講座4: オートファネル構築初級講座 -->
+               <div class="course-card">
+                   <div class="course-image">
+                       <picture>
+                           <source srcset="images/course-auto-funnel.webp" type="image/webp">
+                           <img src="images/course-auto-funnel.jpg" alt="オートファネル構築初級講座" width="480" height="240" loading="lazy">
+                       </picture>
+                       <div class="course-level">初級</div>
+                   </div>
+                   <div class="course-content">
+                       <h3 class="course-title">オートファネル構築初級講座</h3>
+                       <p class="course-description">「集客はしているのに売上に繋がらない…」その悩み、セールスファネルで解決します。理想的な見込み客を集め、信頼関係を構築し、自動的に商品購入へと導くオートファネルの設計方法を学びます。UTAGEを使えば難しい設定や面倒な作業は一切不要。成果を出し続ける仕組みを簡単に構築できます。</p>
+                       <a href="course/auto-funnel.html" class="course-button">Coming Soon</a>
+                   </div>
+               </div>
 
-                <!-- 講座2: 動画編集初級講座 -->
-                <div class="course-card">
-                    <div class="course-image">
-                        <picture>
-                            <source srcset="images/course-video.webp" type="image/webp">
-                            <img src="images/course-video.jpg" alt="動画編集初級講座" width="480" height="240" loading="lazy">
-                        </picture>
-                        <div class="course-level">初級</div>
-                    </div>
-                    <div class="course-content">
-                        <h3 class="course-title">動画編集初級講座</h3>
-                        <p class="course-description">「最後まで見てもらえない…」そんな悩みを解決する動画マーケティングスキルを習得。冒頭10秒で視聴者を惹きつける方法から、商品購入へと導くストーリー設計まで。UTAGEと組み合わせることで、視聴から購入までの流れを自動化し、寝ている間も収益を生み出す仕組みを構築できます。</p>
-                        <a href="course/video.html" class="course-button">Coming Soon</a>
-                    </div>
-                </div>
+               <!-- 講座5: Youtubeサムネ作成初級講座 -->
+               <div class="course-card">
+                   <div class="course-image">
+                       <picture>
+                           <source srcset="images/course-youtube-thumbnail.webp" type="image/webp">
+                           <img src="images/course-youtube-thumbnail.jpg" alt="Youtubeサムネ作成初級講座" width="480" height="240" loading="lazy">
+                       </picture>
+                       <div class="course-level">初級</div>
+                   </div>
+                   <div class="course-content">
+                       <h3 class="course-title">Youtubeサムネ作成初級講座</h3>
+                       <p class="course-description">「再生数が伸びない…」その原因はサムネイルかもしれません。視聴者の目を引き、クリックしたくなるサムネイル作成の極意を学びましょう。YouTube集客とUTAGEを連携させることで、動画視聴者を自動的に顧客へと変換するシステムを構築。高機能なのに使いやすいツールで、ビジネスをシンプルに、パワフルに。</p>
+                       <a href="course/youtube-thumbnail.html" class="course-button">Coming Soon</a>
+                   </div>
+               </div>
 
-                <!-- 講座3: ステップメール設計初級講座 -->
-                <div class="course-card">
-                    <div class="course-image">
-                        <picture>
-                            <source srcset="images/course-step-mail.webp" type="image/webp">
-                            <img src="images/course-step-mail.jpg" alt="ステップメール設計初級講座" width="480" height="240" loading="lazy">
-                        </picture>
-                        <div class="course-level">初級</div>
-                    </div>
-                    <div class="course-content">
-                        <h3 class="course-title">ステップメール設計初級講座</h3>
-                        <p class="course-description">「メールを送っても反応がない…」そんな悩みを解消するステップメールの極意を学べます。見込み客を熱狂的なファンに変える7ステップのメール設計術。UTAGEの自動配信機能を活用し、一度設定すれば延々と働き続ける教育・販売システムの構築法を習得。個人起業家・コンサルタントのための必須スキルです。</p>
-                        <a href="course/step-mail.html" class="course-button">Coming Soon</a>
-                    </div>
-                </div>
+               <!-- 講座6: Canvaデザイン初級講座 -->
+               <div class="course-card">
+                   <div class="course-image">
+                       <picture>
+                           <source srcset="images/course-canva.webp" type="image/webp">
+                           <img src="images/course-canva.jpg" alt="Canvaデザイン初級講座" width="480" height="240" loading="lazy">
+                       </picture>
+                       <div class="course-level">初級</div>
+                   </div>
+                   <div class="course-content">
+                       <h3 class="course-title">Canvaデザイン初級講座</h3>
+                       <p class="course-description">「デザインセンスがない…」そんな悩みを持つ方でも、Canvaを使いこなせるようになります。SNS投稿からセールスページまで、あらゆるビジュアルコンテンツを自分で簡単に作成。UTAGEとCanvaの組み合わせで、プロ顔負けのデザインを使った自動販売システムを構築し、集客から顧客管理まで丸ごと自動化できます。</p>
+                       <a href="course/canva.html" class="course-button">Coming Soon</a>
+                   </div>
+               </div>
+           </div>
+       </section>
 
-                <!-- 講座4: オートファネル構築初級講座 -->
-                <div class="course-card">
-                    <div class="course-image">
-                        <picture>
-                            <source srcset="images/course-auto-funnel.webp" type="image/webp">
-                            <img src="images/course-auto-funnel.jpg" alt="オートファネル構築初級講座" width="480" height="240" loading="lazy">
-                        </picture>
-                        <div class="course-level">初級</div>
-                    </div>
-                    <div class="course-content">
-                        <h3 class="course-title">オートファネル構築初級講座</h3>
-                        <p class="course-description">「集客はしているのに売上に繋がらない…」その悩み、セールスファネルで解決します。理想的な見込み客を集め、信頼関係を構築し、自動的に商品購入へと導くオートファネルの設計方法を学びます。UTAGEを使えば難しい設定や面倒な作業は一切不要。成果を出し続ける仕組みを簡単に構築できます。</p>
-                        <a href="course/auto-funnel.html" class="course-button">Coming Soon</a>
-                    </div>
-                </div>
+       <!-- ブログ記事セクション -->
+       <section class="blog-section section-padding inner">
+           <div class="section-title-container">
+               <span class="section-subtitle">＼ ツール迷子の終着点 ／</span>
+               <h2 class="section-title">あなたのビジネスをUTAGEで加速</h2>
+           </div>
 
-                <!-- 講座5: Youtubeサムネ作成初級講座 -->
-                <div class="course-card">
-                    <div class="course-image">
-                        <picture>
-                            <source srcset="images/course-youtube-thumbnail.webp" type="image/webp">
-                            <img src="images/course-youtube-thumbnail.jpg" alt="Youtubeサムネ作成初級講座" width="480" height="240" loading="lazy">
-                        </picture>
-                        <div class="course-level">初級</div>
-                    </div>
-                    <div class="course-content">
-                        <h3 class="course-title">Youtubeサムネ作成初級講座</h3>
-                        <p class="course-description">「再生数が伸びない…」その原因はサムネイルかもしれません。視聴者の目を引き、クリックしたくなるサムネイル作成の極意を学びましょう。YouTube集客とUTAGEを連携させることで、動画視聴者を自動的に顧客へと変換するシステムを構築。高機能なのに使いやすいツールで、ビジネスをシンプルに、パワフルに。</p>
-                        <a href="course/youtube-thumbnail.html" class="course-button">Coming Soon</a>
-                    </div>
-                </div>
+           <div class="blog-list">
+               <!-- 記事1 -->
+               <div class="blog-item">
+                   <div class="blog-meta">
+                       <span class="blog-date">2025年4月20日</span>
+                       <span class="blog-category">補助金・助成金</span>
+                   </div>
+                   <a href="blog/article-1.html">
+                       <div class="blog-image">
+                           <picture>
+                               <source srcset="images/blog-3.webp" type="image/webp">
+                               <img src="images/blog-3.jpg" alt="IT導入補助金でデジタル化を加速！成功のコツ" width="300" height="200" loading="lazy">
+                           </picture>
+                       </div>
+                       <h3 class="blog-title">IT導入補助金申請、完全丸投げで最大450万円！</h3>
+                   </a>
+                   <p class="blog-excerpt">中小企業や個人事業主の皆さん、<span class="highlight">IT導入補助金2025</span>を活用してUTAGEを導入するチャンスです。面倒な申請手続きは私たちにお任せください。あなたは事業成長に集中するだけでOKです。</p>
+                   <a href="blog/article-1.html" class="blog-readmore">続きを読む ></a>
+               </div>
 
-                <!-- 講座6: Canvaデザイン初級講座 -->
-                <div class="course-card">
-                    <div class="course-image">
-                        <picture>
-                            <source srcset="images/course-canva.webp" type="image/webp">
-                            <img src="images/course-canva.jpg" alt="Canvaデザイン初級講座" width="480" height="240" loading="lazy">
-                        </picture>
-                        <div class="course-level">初級</div>
-                    </div>
-                    <div class="course-content">
-                        <h3 class="course-title">Canvaデザイン初級講座</h3>
-                        <p class="course-description">「デザインセンスがない…」そんな悩みを持つ方でも、Canvaを使いこなせるようになります。SNS投稿からセールスページまで、あらゆるビジュアルコンテンツを自分で簡単に作成。UTAGEとCanvaの組み合わせで、プロ顔負けのデザインを使った自動販売システムを構築し、集客から顧客管理まで丸ごと自動化できます。</p>
-                        <a href="course/canva.html" class="course-button">Coming Soon</a>
-                    </div>
-                </div>
-            </div>
-        </section>
+               <!-- 記事2 -->
+               <div class="blog-item">
+                   <div class="blog-meta">
+                       <span class="blog-date">2025年4月25日</span>
+                       <span class="blog-category">マーケティング自動化</span>
+                   </div>
+                   <a href="blog/article-2.html">
+                       <div class="blog-image">
+                           <picture>
+                               <source srcset="images/blog-marketing-automation.webp" type="image/webp">
+                               <img src="images/blog-marketing-automation.jpg" alt="マーケティング自動化ツール比較15選" width="300" height="200" loading="lazy">
+                           </picture>
+                       </div>
+                       <h3 class="blog-title">もうツール選びに悩まない - すべてが一つに揃うUTAGEの魅力</h3>
+                   </a>
+                   <p class="blog-excerpt">LP作成、LINE連携、会員サイト構築、決済システム...いくつものツールを連携させるのは大変です。UTAGEならすべての機能が一つのプラットフォームに統合されており、シンプルでパワフルな自動化が実現できます。</p>
+                   <a href="blog/article-2.html" class="blog-readmore">続きを読む ></a>
+               </div>
 
-        <!-- ブログ記事セクション -->
-        <section class="blog-section section-padding inner">
-            <div class="section-title-container">
-                <span class="section-subtitle">＼ ツール迷子の終着点 ／</span>
-                <h2 class="section-title">あなたのビジネスをUTAGEで加速</h2>
-            </div>
+               <!-- 記事3 -->
+               <div class="blog-item">
+                   <div class="blog-meta">
+                       <span class="blog-date">2025年5月1日</span>
+                       <span class="blog-category">ファネル構築</span>
+                   </div>
+                   <a href="blog/article-3.html">
+                       <div class="blog-image">
+                           <picture>
+                               <source srcset="images/blog-funnel.webp" type="image/webp">
+                               <img src="images/blog-funnel.jpg" alt="売れる仕組みを自動化する3つのステップと必須ツール" width="300" height="200" loading="lazy">
+                           </picture>
+                       </div>
+                       <h3 class="blog-title">専門知識ゼロから始める自動販売システム構築法</h3>
+                   </a>
+                   <p class="blog-excerpt">あなたの専門知識を「自動で売れる仕組み」に変換しませんか？難しい設定や面倒な作業は一切不要。UTAGEを活用すれば、寝ている間も収益を生み出す自動販売システムを簡単に構築できます。</p>
+                   <a href="blog/article-3.html" class="blog-readmore">続きを読む ></a>
+               </div>
+           </div>
+       </section>
 
-            <div class="blog-list">
-                <!-- 記事1 -->
-                <div class="blog-item">
-                    <div class="blog-meta">
-                        <span class="blog-date">2025年4月20日</span>
-                        <span class="blog-category">補助金・助成金</span>
-                    </div>
-                    <a href="blog/article-1.html">
-                        <div class="blog-image">
-                            <picture>
-                                <source srcset="images/blog-3.webp" type="image/webp">
-                                <img src="images/blog-3.jpg" alt="IT導入補助金でデジタル化を加速！成功のコツ" width="300" height="200" loading="lazy">
-                            </picture>
-                        </div>
-                        <h3 class="blog-title">IT導入補助金申請、完全丸投げで最大450万円！</h3>
-                    </a>
-                    <p class="blog-excerpt">中小企業や個人事業主の皆さん、<span class="highlight">IT導入補助金2025</span>を活用してUTAGEを導入するチャンスです。面倒な申請手続きは私たちにお任せください。あなたは事業成長に集中するだけでOKです。</p>
-                    <a href="blog/article-1.html" class="blog-readmore">続きを読む ></a>
-                </div>
+       <!-- Contact CTA Section (フッター直前) -->
+       <section class="contact-cta-section">
+           <div class="contact-cta-container">
+               <span class="contact-cta-subtitle">IT導入補助金2025活用可能</span>
+               <h2 class="contact-cta-title">申請は完全丸投げOK！</h2>
+               <p class="contact-cta-lead">
+                   UTAGEの導入で最大450万円の補助金が受けられます。<br class="pc-only">
+                   面倒な申請手続きはすべてお任せください。<br class="pc-only">
+                   あなたは事業成長に集中するだけでOKです。
+               </p>
+               <div class="contact-cta-buttons">
+                   <a href="https://utage-marunage.com/it-hojo/" class="btn btn-contact">
+                       無料相談してみる
+                       <span class="free-label">無料</span>
+                   </a>
+                   <a href="document.html" class="btn btn-document">
+                       <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
+                       資料請求する
+                   </a>
+               </div>
+           </div>
+       </section>
+   </main>
 
-                <!-- 記事2 -->
-                <div class="blog-item">
-                    <div class="blog-meta">
-                        <span class="blog-date">2025年4月25日</span>
-                        <span class="blog-category">マーケティング自動化</span>
-                    </div>
-                    <a href="blog/article-2.html">
-                        <div class="blog-image">
-                            <picture>
-                                <source srcset="images/blog-marketing-automation.webp" type="image/webp">
-                                <img src="images/blog-marketing-automation.jpg" alt="マーケティング自動化ツール比較15選" width="300" height="200" loading="lazy">
-                            </picture>
-                        </div>
-                        <h3 class="blog-title">もうツール選びに悩まない - すべてが一つに揃うUTAGEの魅力</h3>
-                    </a>
-                    <p class="blog-excerpt">LP作成、LINE連携、会員サイト構築、決済システム...いくつものツールを連携させるのは大変です。UTAGEならすべての機能が一つのプラットフォームに統合されており、シンプルでパワフルな自動化が実現できます。</p>
-                    <a href="blog/article-2.html" class="blog-readmore">続きを読む ></a>
-                </div>
+   <footer class="site-footer">
+       <div class="footer-container">
+           <div class="footer-widgets">
+               <div class="widget-area footer-widget-1">
+                   <div class="site-logo-text" style="color: white; font-size: 24px; font-weight: bold; margin-bottom: 20px;">
+                       CLAN
+                   </div>
+               </div>
+               <div class="widget-area footer-widget-2">
+                   <h4>オンライン講座一覧</h4>
+                   <ul>
+                       <li><a href="course/lp.html">ランディングページ作成初級講座</a></li>
+                       <li><a href="course/video.html">動画編集初級講座</a></li>
+                       <li><a href="course/step-mail.html">ステップメール設計初級講座</a></li>
+                       <li><a href="course/auto-funnel.html">オートファネル構築初級講座</a></li>
+                       <li><a href="course/youtube-thumbnail.html">Youtubeサムネ作成初級講座</a></li>
+                       <li><a href="course/canva.html">Canvaデザイン初級講座</a></li>
+                   </ul>
+               </div>
+               <div class="widget-area footer-widget-3">
+                   <h4>無料コンテンツ</h4>
+                   <ul>
+                       <li><a href="blog/index.html">ブログ</a></li>
+                       <li><a href="book/index.html">電子書籍</a></li>
+                       <li><a href="free-seminar.html">無料セミナー</a></li>
+                       <li><a href="free-consultation.html">無料相談</a></li>
+                       <li><a href="achievement/index.html">お客様の声</a></li>
+                   </ul>
+               </div>
+               <div class="widget-area footer-widget-4">
+                   <h4>運営情報</h4>
+                   <ul>
+                       <li><a href="owner.html">運営者情報</a></li>
+                       <li><a href="terms.html">利用規約</a></li>
+                       <li><a href="privacy.html">プライバシーポリシー</a></li>
+                   </ul>
+               </div>
+           </div>
+           <div class="site-copyright">
+               <small>© 2025 オートファネル大学</small>
+           </div>
+       </div>
+   </footer>
 
-                <!-- 記事3 -->
-                <div class="blog-item">
-                    <div class="blog-meta">
-                        <span class="blog-date">2025年5月1日</span>
-                        <span class="blog-category">ファネル構築</span>
-                    </div>
-                    <a href="blog/article-3.html">
-                        <div class="blog-image">
-                            <picture>
-                                <source srcset="images/blog-funnel.webp" type="image/webp">
-                                <img src="images/blog-funnel.jpg" alt="売れる仕組みを自動化する3つのステップと必須ツール" width="300" height="200" loading="lazy">
-                            </picture>
-                        </div>
-                        <h3 class="blog-title">専門知識ゼロから始める自動販売システム構築法</h3>
-                    </a>
-                    <p class="blog-excerpt">あなたの専門知識を「自動で売れる仕組み」に変換しませんか？難しい設定や面倒な作業は一切不要。UTAGEを活用すれば、寝ている間も収益を生み出す自動販売システムを簡単に構築できます。</p>
-                    <a href="blog/article-3.html" class="blog-readmore">続きを読む ></a>
-                </div>
-
-                <!-- PC表示時のみ表示する記事 -->
-                <div class="blog-item pc-only">
-                    <div class="blog-meta">
-                        <span class="blog-date">2025年5月3日</span>
-                        <span class="blog-category">顧客管理・育成</span>
-                    </div>
-                    <a href="blog/article-4.html">
-                        <div class="blog-image">
-                            <picture>
-                                <source srcset="images/blog-crm.webp" type="image/webp">
-                                <img src="images/blog-crm.png" alt="顧客管理・育成を効率化! おすすめCRMツール比較" width="300" height="200" loading="lazy">
-                            </picture>
-                        </div>
-                        <h3 class="blog-title">集客から顧客管理まで丸ごと自動化する秘訣</h3>
-                    </a>
-                    <p class="blog-excerpt">「お客様の情報があちこちに散らばっていて、誰にどんなアプローチをしたか分からない…」そんな悩みを解決。UTAGEの顧客管理機能を使えば、リード獲得から売上管理まですべてを一元化できます。</p>
-                    <a href="blog/article-4.html" class="blog-readmore">続きを読む ></a>
-                </div>
-
-                <div class="blog-item pc-only">
-                    <div class="blog-meta">
-                        <span class="blog-date">2025年5月6日</span>
-                        <span class="blog-category">数字コンテンツ販売</span>
-                    </div>
-                    <a href="blog/article-6.html">
-                        <div class="blog-image">
-                            <picture>
-                                <source srcset="images/blog-digital-content.webp" type="image/webp">
-                                <img src="images/blog-digital-content.jpg" alt="デジタルコンテンツ販売で月100万円を稼ぐ!おすすめプラットフォームと成功戦略" width="300" height="200" loading="lazy">
-                            </picture>
-                        </div>
-                        <h3 class="blog-title">個人起業家・コンサルタントのための自動収益化戦略</h3>
-                    </a>
-                    <p class="blog-excerpt">あなたの持つ知識やスキルを活かして、自動で売れる仕組みを作りませんか？UTAGEを使えば、コンテンツ制作から販売、アフターフォローまでをすべて自動化。24時間365日、あなたに代わって働く仕組みを構築できます。</p>
-                    <a href="blog/article-6.html" class="blog-readmore">続きを読む ></a>
-                </div>
-
-                <div class="blog-item pc-only">
-                    <div class="blog-meta">
-                        <span class="blog-date">2025年5月12日</span>
-                        <span class="blog-category">UTAGE</span>
-                    </div>
-                    <a href="blog/article-9.html">
-                        <div class="blog-image">
-                            <picture>
-                                <source srcset="images/blog-utage-intro.webp" type="image/webp">
-                                <img src="images/blog-utage-intro.jpg" alt="UTAGEシステムとは?導入企業の売上が平均30%アップした理由を徹底解説" width="300" height="200" loading="lazy">
-                            </picture>
-                        </div>
-                        <h3 class="blog-title">成果を出し続ける仕組みをUTAGEで簡単構築</h3>
-                    </a>
-                    <p class="blog-excerpt">「せっかく集客できても成約に繋がらない」「顧客フォローが追いつかない」そんな悩みを解決するUTAGE。高機能なのに使いやすいインターフェースで、マーケティングの素人でも簡単に自動化システムを構築できます。</p>
-                    <a href="blog/article-9.html" class="blog-readmore">続きを読む ></a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact CTA Section (フッター直前) -->
-        <section class="contact-cta-section">
-            <!-- 背景装飾 -->
-            <svg class="contact-cta-bg-deco contact-cta-bg-triangle1"><use xlink:href="#svg-triangle-color"></use></svg>
-            <svg class="contact-cta-bg-deco contact-cta-bg-triangle2"><use xlink:href="#svg-triangle-color"></use></svg>
-            <span class="contact-cta-bg-deco contact-cta-bg-circle1"></span>
-            <span class="contact-cta-bg-deco contact-cta-bg-circle2"></span>
-
-            <div class="contact-cta-container">
-                <span class="contact-cta-subtitle">IT導入補助金2025活用可能</span>
-                <h2 class="contact-cta-title">申請は完全丸投げOK！</h2>
-                <p class="contact-cta-lead">
-                    UTAGEの導入で最大450万円の補助金が受けられます。<br class="pc-only">
-                    面倒な申請手続きはすべてお任せください。<br class="pc-only">
-                    あなたは事業成長に集中するだけでOKです。
-                </p>
-                <div class="contact-cta-buttons">
-                    <a href="https://utage-marunage.com/it-hojo/" class="btn btn-contact">
-                        無料相談してみる
-                        <span class="free-label">無料</span>
-                    </a>
-                    <a href="document.html" class="btn btn-document">
-                        <svg><use xlink:href="#icon-pdf"></use></svg>
-                        資料請求する
-                    </a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-widgets">
-                <div class="widget-area footer-widget-1">
-                    <!-- ロゴ画像を削除し、テキストロゴに変更 -->
-                    <div class="site-logo-text" style="color: white; font-size: 24px; font-weight: bold; margin-bottom: 20px;">
-                        CLAN
-                    </div>
-                </div>
-                <div class="widget-area footer-widget-2">
-                    <h4>オンライン講座一覧</h4>
-                    <ul>
-                        <li><a href="course/lp.html">ランディングページ作成初級講座</a></li>
-                        <li><a href="course/video.html">動画編集初級講座</a></li>
-                        <li><a href="course/step-mail.html">ステップメール設計初級講座</a></li>
-                        <li><a href="course/auto-funnel.html">オートファネル構築初級講座</a></li>
-                        <li><a href="course/youtube-thumbnail.html">Youtubeサムネ作成初級講座</a></li>
-                        <li><a href="course/canva.html">Canvaデザイン初級講座</a></li>
-                    </ul>
-                </div>
-                <div class="widget-area footer-widget-3">
-                    <h4>無料コンテンツ</h4>
-                    <ul>
-                        <li><a href="blog/index.html">ブログ</a></li>
-                        <li><a href="book/index.html">電子書籍</a></li>
-                        <li><a href="free-seminar.html">無料セミナー</a></li>
-                        <li><a href="free-consultation.html">無料相談</a></li>
-                        <li><a href="achievement/index.html">お客様の声</a></li>
-                    </ul>
-                </div>
-                <div class="widget-area footer-widget-4">
-                    <h4>運営情報</h4>
-                    <ul>
-                        <li><a href="owner.html">運営者情報</a></li>
-                        <li><a href="terms.html">利用規約</a></li>
-                        <li><a href="privacy.html">プライバシーポリシー</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="site-copyright">
-                <small>© 2025 オートファネル大学</small>
-            </div>
-        </div>
-    </footer>
-
-    <!-- 最適化したJavaScriptの読み込み - defer属性追加 -->
-    <script src="js/script.js" defer></script>
+   <script src="js/script.js" defer></script>
 </body>
 </html>
