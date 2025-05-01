@@ -1,4 +1,4 @@
-/*! オートファネル大学 スタイルシート (最適化済) */
+/*! オートファネル大学 スタイルシート */
 :root{--primary:#0066ff;--secondary:#ff3a3a;--accent:#ff9500;--dark-blue:#0d3283;--light-bg:#f8f9fa;--text-dark:#333;--text-mid:#555;--text-light:#777;--grad-primary:linear-gradient(135deg,#0066ff,#00b8ff);--grad-secondary:linear-gradient(135deg,#ff3a3a,#ff7d7d);--shadow-soft:0 5px 15px rgba(0,0,0,.08);--shadow-strong:0 10px 25px rgba(0,0,0,.12);--trans:all .3s ease;--radius:12px;--radius-sm:8px;--header-h:60px}
 *,::after,::before{box-sizing:border-box;margin:0;padding:0}
 html,body{overflow-x:hidden}
@@ -136,6 +136,73 @@ footer{flex-shrink:0}
 .fade-left.visible{opacity:1;transform:translateX(0)}
 .pc-only{display:none}
 .sp-nav{display:block}
+
+/* モバイル表示の修正部分 */
+@media (max-width: 768px) {
+  /* ヘッダーの高さを調整 */
+  .site-header {
+    height: 50px;
+  }
+  
+  /* ヘッダーコンテナのパディングを縮小 */
+  .header-container {
+    padding: 0 10px;
+  }
+  
+  /* ヘッダーCTAボタンを非表示に（スマホでは下部固定CTAを使用） */
+  .header-cta {
+    display: none !important;
+  }
+  
+  /* ロゴテキストを少し小さく */
+  .site-logo-text {
+    font-size: 18px;
+  }
+  
+  /* ハンバーガーボタンの位置を右端に */
+  .hamburger-button {
+    margin-left: auto;
+    margin-right: 0;
+  }
+  
+  /* モバイルメニューの位置調整 */
+  .mobile-menu {
+    top: 50px;
+    height: calc(100vh - 50px);
+  }
+}
+
+/* スマホでメニュー表示時にスクロール防止 */
+body.menu-open {
+  overflow: hidden;
+}
+
+/* より小さなスマホ画面での調整 */
+@media (max-width: 480px) {
+  /* ロゴをさらに小さく */
+  .site-logo-text {
+    font-size: 16px;
+  }
+  
+  /* ヘッダーコンテナのパディングをさらに縮小 */
+  .header-container {
+    padding: 0 8px;
+  }
+}
+
+/* レイアウトシフト防止のための画像サイズ指定 */
+.achievement-card img {
+  aspect-ratio: 3/2;
+}
+
+.course-image {
+  aspect-ratio: 2/1;
+}
+
+.blog-image {
+  aspect-ratio: 2/1;
+}
+
 @media (min-width:769px){.section-padding{padding:80px 0}.pc-nav{display:block}.header-cta{display:flex}.hamburger-button{display:none}.sp-fix-cta{display:none}.hero-section{padding:100px 0 80px}.hero-container{flex-direction:row;align-items:flex-start;text-align:left}.hero-text{flex-basis:60%;padding-right:40px;margin-bottom:0}.hero-catch{font-size:48px;margin-bottom:20px}.hero-lead{font-size:18px;margin-bottom:40px}.hero-cta-buttons{flex-direction:row;max-width:none;justify-content:flex-start}.hero-cta-buttons .btn-contact,.hero-cta-buttons .btn-document{width:auto}.section-title-container{margin-bottom:40px}.section-subtitle{font-size:14px}.section-title{font-size:32px}.important-notice h2{font-size:24px}.achievement-card-list{grid-template-columns:repeat(3,1fr);gap:30px}.online-courses-grid{grid-template-columns:repeat(3,1fr);gap:30px}.blog-list{grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:30px}.course-image{height:200px}.course-title{font-size:18px;margin-bottom:12px}.course-content{padding:20px}.course-description{font-size:14px;line-height:1.6;margin-bottom:20px}.contact-cta-section{padding:80px 0}.contact-cta-title{font-size:32px;margin-bottom:20px}.contact-cta-lead{font-size:16px;margin-bottom:40px}.contact-cta-buttons{flex-direction:row;justify-content:center;gap:20px;margin-top:30px}.footer-widgets{flex-direction:row;flex-wrap:wrap;gap:30px;margin-bottom:60px}.widget-area{flex-grow:1;flex-shrink:1;flex-basis:20%;min-width:150px}.footer-widget-1{flex-basis:20%;min-width:200px;text-align:left}.footer-logo{margin:0 0 25px;max-width:200px}.sp-nav{display:none!important}.pc-only{display:block}}
 @media (min-width:769px) and (max-width:1024px){.achievement-card-list,.online-courses-grid{grid-template-columns:repeat(2,1fr)}.section-title,.contact-cta-title{font-size:28px}}
 @media (max-width:480px){.hero-catch{font-size:28px}.contact-cta-title{font-size:20px}}

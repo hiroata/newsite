@@ -19,6 +19,9 @@
       
       // アニメーション初期化 (IntersectionObserverがサポートされている場合のみ)
       initAnimations();
+      
+      // モバイルメニューの改善（新規追加）
+      enhanceMobileMenu();
     }
     
     // ハンバーガーメニューの初期化
@@ -27,15 +30,76 @@
       if (!hamburgerBtn) return;
       
       const body = document.body;
-      const mobileMenu = document.querySelector('.mobile-menu');
+      const mobileMenu = document.querySelector('.mobile-menu') || createMobileMenu();
       
       hamburgerBtn.addEventListener('click', function() {
         this.classList.toggle('active');
         
         if (mobileMenu) {
           mobileMenu.classList.toggle('active');
-          body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+          body.classList.toggle('menu-open');
         }
+      });
+      
+      // 画面リサイズ時にモバイルメニューを閉じる
+      window.addEventListener('resize', function() {
+        if (window.innerWidth > 768 && mobileMenu && mobileMenu.classList.contains('active')) {
+          mobileMenu.classList.remove('active');
+          hamburgerBtn.classList.remove('active');
+          body.classList.remove('menu-open');
+        }
+      });
+    }
+    
+    // モバイルメニューが存在しない場合に作成
+    function createMobileMenu() {
+      const header = document.querySelector('.site-header');
+      if (!header) return null;
+      
+      const mobileMenu = document.createElement('div');
+      mobileMenu.className = 'mobile-menu';
+      
+      // グローバルナビゲーションの内容をコピー
+      const globalNav = document.querySelector('.global-nav');
+      if (globalNav) {
+        const navClone = globalNav.cloneNode(true);
+        navClone.classList.remove('pc-nav');
+        mobileMenu.appendChild(navClone);
+      }
+      
+      // CTAボタンもコピー（モバイルで使いやすいように調整）
+      const headerCta = document.querySelector('.header-cta');
+      if (headerCta) {
+        const ctaClone = headerCta.cloneNode(true);
+        ctaClone.style.display = 'flex';
+        ctaClone.style.flexDirection = 'column';
+        ctaClone.style.margin = '20px 0';
+        ctaClone.style.gap = '10px';
+        mobileMenu.appendChild(ctaClone);
+      }
+      
+      // ヘッダーの後に挿入
+      document.body.insertBefore(mobileMenu, header.nextSibling);
+      
+      return mobileMenu;
+    }
+    
+    // モバイルメニューの改善（リンククリック時にメニューを閉じるなど）
+    function enhanceMobileMenu() {
+      const mobileMenu = document.querySelector('.mobile-menu');
+      if (!mobileMenu) return;
+      
+      const hamburgerBtn = document.querySelector('.hamburger-button');
+      const body = document.body;
+      
+      // モバイルメニュー内のリンクをクリックしたときにメニューを閉じる
+      const menuLinks = mobileMenu.querySelectorAll('a');
+      menuLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+          mobileMenu.classList.remove('active');
+          if (hamburgerBtn) hamburgerBtn.classList.remove('active');
+          body.classList.remove('menu-open');
+        });
       });
     }
     
@@ -69,7 +133,8 @@
       e.preventDefault();
       
       // ヘッダーの高さを考慮してスクロール
-      const headerHeight = document.querySelector('.site-header')?.offsetHeight || 0;
+      // モバイルとPC表示でヘッダーの高さが違うため、現在のウィンドウサイズに応じて調整
+      const headerHeight = window.innerWidth <= 768 ? 50 : 60;
       const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
       
       window.scrollTo({
