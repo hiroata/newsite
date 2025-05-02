@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="description" content="まえゆきツールのカウントダウンタイマー - 日付や時間を指定して、イベントまでの残り時間をカウントダウン表示できる無料ツールです。">
+   <title>カウントダウンタイマー | まえゆきツール</title>
+   
+   <!-- リソースの先読み -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   
+   <!-- クリティカルCSS インライン化 -->
+   <style>
+     :root{--primary:#0066ff;--secondary:#ff3a3a;--accent:#ff9500;--dark-blue:#0d3283;--light-bg:#f8f9fa;--text-dark:#333;--text-mid:#555;--header-h:60px}*,::after,::before{box-sizing:border-box;margin:0;padding:0}body{font:16px/1.6 'Noto Sans JP',sans-serif;color:var(--text-dark);background:#fff;overflow-x:hidden;display:flex;flex-direction:column;min-height:100vh;-webkit-text-size-adjust:100%}img{max-width:100%;height:auto;vertical-align:middle;border:0}a{text-decoration:none;color:inherit}ul{list-style:none}main{flex:1 0 auto}.site-header{position:fixed;top:0;left:0;width:100%;z-index:1000;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.1);height:var(--header-h);display:flex;align-items:center}.header-container{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center;width:100%}.site-logo-text{font-weight:700;font-size:20px}.site-logo-text a{color:var(--dark-blue)}.hamburger-button{display:block;width:30px;height:30px;position:relative;z-index:1001;border:0;background:0;cursor:pointer}.hamburger-button span{display:block;position:absolute;width:100%;height:2px;background:var(--text-dark);left:0}.hamburger-button span:nth-child(1){top:8px}.hamburger-button span:nth-child(2){top:14px}.hamburger-button span:nth-child(3){bottom:8px}
+
+     /* カウントダウンツールスタイル */
+     .tool-section {
+         padding: 80px 0 40px;
+         margin-top: var(--header-h);
+         background: #f9f3e9;
+     }
+     .tool-container {
+         max-width: 840px;
+         margin: 0 auto;
+         padding: 0 20px;
+     }
+     .tool-title {
+         font-size: 28px;
+         text-align: center;
+         margin-bottom: 1rem;
+         color: var(--text-dark);
+     }
+     .tool-description {
+         text-align: center;
+         margin-bottom: 2rem;
+     }
+     
+     /* カウントダウン表示エリア */
+     .countdown-display {
+         background: #fff;
+         border-radius: 12px;
+         padding: 30px;
+         box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+         text-align: center;
+         margin-bottom: 30px;
+     }
+     .countdown-title {
+         font-size: 24px;
+         font-weight: 700;
+         margin-bottom: 10px;
+     }
+     .countdown-subtitle {
+         font-size: 16px;
+         color: var(--text-mid);
+         margin-bottom: 20px;
+     }
+     .countdown-timer {
+         display: flex;
+         justify-content: center;
+         gap: 15px;
+         margin-bottom: 20px;
+     }
+     .countdown-unit {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         min-width: 80px;
+     }
+     .countdown-value {
+         font-size: 36px;
+         font-weight: 700;
+         background: var(--light-bg);
+         border-radius: 8px;
+         width: 100%;
+         padding: 10px 0;
+         margin-bottom: 5px;
+     }
+     .countdown-label {
+         font-size: 14px;
+         color: var(--text-mid);
+     }
+     .countdown-finished {
+         font-size: 28px;
+         font-weight: 700;
+         color: var(--secondary);
+         margin: 30px 0;
+         display: none;
+     }
+     .countdown-actions {
+         margin-top: 20px;
+         display: flex;
+         justify-content: center;
+         gap: 10px;
+     }
+     .countdown-btn {
+         padding: 10px 20px;
+         border-radius: 30px;
+         font-weight: 700;
+         cursor: pointer;
+         transition: all 0.3s;
+         border: none;
+         font-size: 16px;
+     }
+     .btn-primary {
+         background: var(--primary);
+         color: white;
+     }
+     .btn-primary:hover {
+         background: #0055d4;
+     }
+     .btn-outline {
+         background: white;
+         color: var(--text-dark);
+         border: 2px solid #e0e0e0;
+     }
+     .btn-outline:hover {
+         border-color: #ccc;
+         background: #f5f5f5;
+     }
+     
+     /* 設定フォーム */
+     .countdown-settings {
+         background: #fff;
+         border-radius: 12px;
+         padding: 30px;
+         box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+         margin-bottom: 30px;
+     }
+     .settings-title {
+         font-size: 18px;
+         font-weight: 700;
+         margin-bottom: 20px;
+         padding-bottom: 10px;
+         border-bottom: 1px solid #eee;
+     }
+     .settings-form {
+         display: grid;
+         gap: 20px;
+     }
+     .form-group {
+         display: flex;
+         flex-direction: column;
+         gap: 8px;
+     }
+     .form-label {
+         font-weight: 700;
+     }
+     .form-input, .form-select {
+         padding: 10px;
+         border: 2px solid #e0e0e0;
+         border-radius: 6px;
+         font-size: 16px;
+         width: 100%;
+     }
+     .form-input:focus, .form-select:focus {
+         border-color: var(--primary);
+         outline: none;
+     }
+     .settings-row {
+         display: grid;
+         grid-template-columns: 1fr 1fr;
+         gap: 15px;
+     }
+     .form-actions {
+         display: flex;
+         justify-content: flex-end;
+         gap: 10px;
+         margin-top: 10px;
+     }
+     
+     /* シェアセクション */
+     .share-section {
+         background: #fff;
+         border-radius: 12px;
+         padding: 30px;
+         box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+         margin-bottom: 30px;
+     }
+     .share-title {
+         font-size: 18px;
+         font-weight: 700;
+         margin-bottom: 20px;
+         padding-bottom: 10px;
+         border-bottom: 1px solid #eee;
+     }
+     .share-url {
+         display: flex;
+         gap: 10px;
+         margin-bottom: 15px;
+     }
+     .share-input {
+         flex: 1;
+         padding: 10px;
+         border: 2px solid #e0e0e0;
+         border-radius: 6px;
+         font-size: 14px;
+     }
+     .share-buttons {
+         display: flex;
+         gap: 10px;
+         margin-top: 15px;
+     }
+     .share-button {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         width: 40px;
+         height: 40px;
+         border-radius: 50%;
+         transition: transform 0.2s;
+     }
+     .share-button:hover {
+         transform: scale(1.1);
+     }
+     .share-twitter { background: #1DA1F2; }
+     .share-facebook { background: #1877F2; }
+     .share-line { background: #06C755; }
+     
+     /* プリセットカウントダウン */
+     .preset-countdown {
+         background: #fff;
+         border-radius: 12px;
+         padding: 30px;
+         box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+         margin-bottom: 30px;
+     }
+     .preset-title {
+         font-size: 18px;
+         font-weight: 700;
+         margin-bottom: 15px;
+         padding-bottom: 10px;
+         border-bottom: 1px solid #eee;
+     }
+     .preset-list {
+         display: flex;
+         flex-wrap: wrap;
+         gap: 10px;
+     }
+     .preset-item {
+         display: inline-block;
+         padding: 8px 16px;
+         background: var(--light-bg);
+         border-radius: 20px;
+         font-size: 14px;
+         transition: all 0.2s;
+     }
+     .preset-item:hover {
+         background: var(--primary);
+         color: white;
+         transform: translateY(-2px);
+     }
+     
+     /* ツール使い方 */
+     .usage-section {
+         background: #fff;
+         border-radius: 12px;
+         padding: 30px;
+         box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+         margin-bottom: 30px;
+     }
+     .usage-title {
+         font-size: 18px;
+         font-weight: 700;
+         margin-bottom: 15px;
+         padding-bottom: 10px;
+         border-bottom: 1px solid #eee;
+     }
+     .usage-list {
+         padding-left: 20px;
+     }
+     .usage-item {
+         margin-bottom: 8px;
+         position: relative;
+         padding-left: 5px;
+     }
+     .usage-item::before {
+         content: "•";
+         position: absolute;
+         left: -15px;
+         color: var(--primary);
+     }
+     
+     /* 他のツールリンク */
+     .other-tools {
+         margin-top: 40px;
+     }
+     .other-tools-title {
+         font-size: 18px;
+         margin-bottom: 15px;
+         text-align: center;
+     }
+     .tools-list {
+         display: flex;
+         flex-wrap: wrap;
+         gap: 10px;
+         justify-content: center;
+     }
+     .tool-link {
+         display: inline-block;
+         padding: 8px 16px;
+         background: white;
+         border-radius: 20px;
+         border: 1px solid #e0e0e0;
+         font-size: 14px;
+         transition: all 0.2s;
+     }
+     .tool-link:hover {
+         background: var(--primary);
+         color: white;
+         transform: translateY(-2px);
+         border-color: var(--primary);
+     }
+     
+     /* レスポンシブ対応 */
+     @media (max-width: 768px) {
+         .tool-section {
+             padding: 70px 0 30px;
+         }
+         .countdown-timer {
+             flex-wrap: wrap;
+         }
+         .countdown-unit {
+             min-width: 60px;
+         }
+         .countdown-value {
+             font-size: 28px;
+         }
+         .settings-row {
+             grid-template-columns: 1fr;
+         }
+     }
+     @media (max-width: 480px) {
+         .countdown-timer {
+             gap: 10px;
+         }
+         .countdown-unit {
+             min-width: 50px;
+         }
+         .countdown-value {
+             font-size: 22px;
+         }
+         .countdown-actions {
+             flex-direction: column;
+             align-items: center;
+         }
+         .countdown-btn {
+             width: 100%;
+         }
+     }
+   </style>
+   
+   <!-- 非クリティカルCSSは非同期ロード -->
+   <link rel="stylesheet" href="../css/style.css" media="print" onload="this.media='all'">
+   
+   <!-- JavaScriptの遅延ロード -->
+   <script src="../js/script.js" defer></script>
+   
+   <!-- フォールバック -->
+   <noscript>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="../css/style.css">
+   </noscript>
+   
+   <link rel="icon" href="../images/favicon.ico">
+   <meta property="og:title" content="カウントダウンタイマー | まえゆきツール">
+   <meta property="og:description" content="日付や時間を指定して、イベントまでの残り時間をカウントダウン表示できる無料ツールです。">
+   <meta property="og:image" content="../images/ogp_image_tools.webp">
+   <meta property="og:type" content="website">
+</head>
+<body>
+   <!-- ヘッダー -->
+   <header class="site-header">
+      <div class="header-container">
+          <div class="site-logo-text">
+              <a href="../index.html">CLAN</a>
+          </div>
+          <nav class="global-nav pc-nav">
+              <ul>
+                  <li><a href="../index.html">ホーム</a></li>
+                  <li><a href="../about.html">オートファネル大学とは</a></li>
+                  <li><a href="../blog/index.html">ブログ</a></li>
+                  <li><a href="../seminar/index.html">オンライン講座</a></li>
+                  <li><a href="../tools/index.html">まえゆきツール</a></li>
+                  <li><a href="../achievement/index.html">お客様の声</a></li>
+              </ul>
+          </nav>
+          <div class="header-cta">
+              <a href="../document.html" class="btn-document">
+                  <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
+                  資料請求する
+              </a>
+              <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
+                  まずは相談する
+              </a>
+          </div>
+          <button class="hamburger-button sp-nav" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+      </div>
+  </header>
+
+  <!-- モバイルメニュー -->
+  <div class="mobile-menu">
+      <nav>
+          <ul>
+              <li><a href="../index.html">ホーム</a></li>
+              <li><a href="../about.html">オートファネル大学とは</a></li>
+              <li><a href="../blog/index.html">ブログ</a></li>
+              <li><a href="../seminar/index.html">オンライン講座</a></li>
+              <li><a href="../tools/index.html">まえゆきツール</a></li>
+              <li><a href="../achievement/index.html">お客様の声</a></li>
+          </ul>
+      </nav>
+      <div class="mobile-cta">
+          <a href="../document.html" class="btn-document">
+              <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
+              資料請求する
+          </a>
+          <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
+              まずは相談する
+          </a>
+      </div>
+  </div>
+
+   <main class="site-main">
+      <!-- ツールセクション -->
+      <section class="tool-section">
+         <div class="tool-container">
+            <h1 class="tool-title">カウントダウンタイマー</h1>
+            <p class="tool-description">イベントや締め切りまでの残り時間をカウントダウン表示できる無料ツールです</p>
+
+            <!-- カウントダウン表示部分 -->
+            <div class="countdown-display">
+               <h2 class="countdown-title" id="countdownTitle">イベントまで</h2>
+               <p class="countdown-subtitle" id="countdownSubtitle">残り時間をカウントダウン</p>
+               
+               <div class="countdown-timer">
+                  <div class="countdown-unit">
+                     <div class="countdown-value" id="days">00</div>
+                     <div class="countdown-label">日</div>
+                  </div>
+                  <div class="countdown-unit">
+                     <div class="countdown-value" id="hours">00</div>
+                     <div class="countdown-label">時間</div>
+                  </div>
+                  <div class="countdown-unit">
+                     <div class="countdown-value" id="minutes">00</div>
+                     <div class="countdown-label">分</div>
+                  </div>
+                  <div class="countdown-unit">
+                     <div class="countdown-value" id="seconds">00</div>
+                     <div class="countdown-label">秒</div>
+                  </div>
+               </div>
+               
+               <div class="countdown-finished" id="countdownFinished">
+                  カウントダウン終了！
+               </div>
+               
+               <div class="countdown-actions">
+                  <button class="countdown-btn btn-outline" id="shareButton">
+                     シェアする
+                  </button>
+                  <button class="countdown-btn btn-primary" id="settingsButton">
+                     設定を変更
+                  </button>
+               </div>
+            </div>
+            
+            <!-- カウントダウン設定フォーム -->
+            <div class="countdown-settings" id="settingsSection">
+               <h3 class="settings-title">カウントダウンの設定</h3>
+               
+               <form class="settings-form" id="countdownForm">
+                  <div class="form-group">
+                     <label for="eventTitle" class="form-label">タイトル</label>
+                     <input type="text" id="eventTitle" name="eventTitle" class="form-input" placeholder="イベントタイトルを入力" value="イベントまで">
+                  </div>
+                  
+                  <div class="form-group">
+                     <label for="eventDescription" class="form-label">説明文（オプション）</label>
+                     <input type="text" id="eventDescription" name="eventDescription" class="form-input" placeholder="補足説明など" value="残り時間をカウントダウン">
+                  </div>
+                  
+                  <div class="settings-row">
+                     <div class="form-group">
+                        <label for="eventDate" class="form-label">日付</label>
+                        <input type="date" id="eventDate" name="eventDate" class="form-input">
+                     </div>
+                     
+                     <div class="form-group">
+                        <label for="eventTime" class="form-label">時間</label>
+                        <input type="time" id="eventTime" name="eventTime" class="form-input">
+                     </div>
+                  </div>
+                  
+                  <div class="form-group">
+                     <label for="themeColor" class="form-label">テーマカラー</label>
+                     <select id="themeColor" name="themeColor" class="form-select">
+                        <option value="blue">ブルー（デフォルト）</option>
+                        <option value="red">レッド</option>
+                        <option value="green">グリーン</option>
+                        <option value="purple">パープル</option>
+                        <option value="orange">オレンジ</option>
+                     </select>
+                  </div>
+                  
+                  <div class="form-actions">
+                     <button type="button" class="countdown-btn btn-outline" id="resetButton">
+                        リセット
+                     </button>
+                     <button type="submit" class="countdown-btn btn-primary" id="applyButton">
+                        適用する
+                     </button>
+                  </div>
+               </form>
+            </div>
+            
+            <!-- シェアセクション -->
+            <div class="share-section" id="shareSection">
+               <h3 class="share-title">このカウントダウンをシェア</h3>
+               
+               <div class="share-url">
+                  <input type="text" id="shareUrl" class="share-input" readonly>
+                  <button class="countdown-btn btn-primary" id="copyButton">コピー</button>
+               </div>
+               
+               <p>このURLを開くと同じカウントダウンが表示されます。ブックマークしておくと便利です。</p>
+               
+               <div class="share-buttons">
+                  <a href="#" id="twitterShare" class="share-button share-twitter" target="_blank">
+                     <svg width="20" height="20" fill="#fff" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+                  </a>
+                  <a href="#" id="facebookShare" class="share-button share-facebook" target="_blank">
+                     <svg width="20" height="20" fill="#fff" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                  </a>
+                  <a href="#" id="lineShare" class="share-button share-line" target="_blank">
+                     <svg width="20" height="20" fill="#fff" viewBox="0 0 24 24"><path d="M24 10.304c0-5.369-5.383-9.738-12-9.738-6.616 0-12 4.369-12 9.738 0 4.814 4.269 8.846 10.036 9.608.391.084.922.258 1.057.592.121.303.079.778.039 1.085l-.171 1.027c-.053.303-.242 1.186 1.039.647 1.281-.54 6.911-4.069 9.428-6.967 1.739-1.907 2.572-3.843 2.572-5.992zm-18.988-2.595c.129 0 .234.105.234.234v4.153c0 .129-.105.234-.234.234h-.662c-.129 0-.234-.105-.234-.234v-4.153c0-.129.105-.234.234-.234zm5.323 0c.129 0 .234.105.234.234v4.153c0 .129-.105.234-.234.234h-.661c-.129 0-.234-.105-.234-.234v-2.566l-1.838 2.481c-.051.067-.131.107-.215.107h-.033c-.084 0-.164-.04-.215-.107l-1.838-2.481v2.566c0 .129-.105.234-.234.234h-.662c-.129 0-.234-.105-.234-.234v-4.153c0-.129.105-.234.234-.234h.66c.085 0 .165.04.216.109l2.081 2.811 2.081-2.811c.051-.069.131-.109.216-.109zm5.323 0c.129 0 .234.105.234.234v4.153c0 .129-.105.234-.234.234h-.662c-.129 0-.234-.105-.234-.234v-4.153c0-.129.105-.234.234-.234zm2.662 0c.129 0 .234.105.234.234v4.153c0 .129-.105.234-.234.234h-.662c-.129 0-.234-.105-.234-.234v-4.153c0-.129.105-.234.234-.234z"/></svg>
+                  </a>
+               </div>
+            </div>
+            
+            <!-- プリセットカウントダウン -->
+            <div class="preset-countdown">
+               <h3 class="preset-title">定番のカウントダウン</h3>
+               
+               <div class="preset-list">
+                  <a href="#" class="preset-item" data-preset="tomorrow">明日の0時まで</a>
+                  <a href="#" class="preset-item" data-preset="new-year">新年まで</a>
+                  <a href="#" class="preset-item" data-preset="xmas">クリスマスまで</a>
+                  <a href="#" class="preset-item" data-preset="halloween">ハロウィンまで</a>
+                  <a href="#" class="preset-item" data-preset="valentines">バレンタインデーまで</a>
+                  <a href="#" class="preset-item" data-preset="childrens-day">こどもの日まで</a>
+               </div>
+            </div>
+            
+            <!-- 時間指定カウントダウン -->
+            <div class="preset-countdown">
+               <h3 class="preset-title">カウントダウン・タイマー</h3>
+               
+               <div class="preset-list">
+                  <a href="#" class="preset-item" data-timer="10">10秒</a>
+                  <a href="#" class="preset-item" data-timer="30">30秒</a>
+                  <a href="#" class="preset-item" data-timer="60">1分</a>
+                  <a href="#" class="preset-item" data-timer="300">5分</a>
+                  <a href="#" class="preset-item" data-timer="600">10分</a>
+                  <a href="#" class="preset-item" data-timer="1800">30分</a>
+                  <a href="#" class="preset-item" data-timer="3600">1時間</a>
+               </div>
+            </div>
+            
+            <!-- ツールの使い方 -->
+            <div class="usage-section">
+               <h3 class="usage-title">このツールの使い方</h3>
+               
+               <ul class="usage-list">
+                  <li class="usage-item">登録不要、<strong>無料で今すぐ使える</strong>Webのカウントダウン・タイマーです。</li>
+                  <li class="usage-item"><strong>残り何日・何分・何秒か</strong>をカウントダウンでチェックできます。</li>
+                  <li class="usage-item">イベントや<strong>YouTubeの動画配信</strong>、<strong>誕生日</strong>や<strong>記念日</strong>のカウントダウンなどでご自由にご利用ください。</li>
+                  <li class="usage-item">カウントダウンのタイトルや説明文、色などは自由にカスタマイズできます。</li>
+                  <li class="usage-item">カウントダウンの設定日時は日本時間です。</li>
+                  <li class="usage-item">作成したカウントダウンのURLをシェアすると、他の人も同じカウントダウンを見ることができます。</li>
+               </ul>
+            </div>
+            
+            <!-- 他のツールリンク -->
+            <div class="other-tools">
+               <h2 class="other-tools-title">その他のまえゆきツール</h2>
+               <div class="tools-list">
+                  <a href="../tools/calc/" class="tool-link">単位換算と計算</a>
+                  <a href="../tools/roulette/" class="tool-link">Webでルーレット</a>
+                  <a href="../tools/bingo/" class="tool-link">ビンゴ・マシーン</a>
+                  <a href="../tools/image-resize/" class="tool-link">画像サイズ変更</a>
+                  <a href="../tools/letters-counter/" class="tool-link">文字数カウント</a>
+                  <a href="../tools/wareki-seireki/" class="tool-link">年齢早見表</a>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <!-- Contact CTA Section -->
+      <section class="contact-cta-section">
+         <div class="contact-cta-container">
+            <span class="contact-cta-subtitle">IT導入補助金2025活用可能</span>
+            <h2 class="contact-cta-title">申請は完全丸投げOK！</h2>
+            <p class="contact-cta-lead">
+               UTAGEの導入で最大450万円の補助金が受けられます。<br class="pc-only">
+               面倒な申請手続きはすべてお任せください。<br class="pc-only">
+               あなたは事業成長に集中するだけでOKです。
+            </p>
+            <div class="contact-cta-buttons">
+               <a href="https://utage-marunage.com/it-hojo/" class="btn btn-contact">
+                  無料相談してみる
+               </a>
+               <a href="../document.html" class="btn btn-document">
+                  <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
+                  資料請求する
+               </a>
+            </div>
+         </div>
+      </section>
+   </main>
+
+   <footer class="site-footer">
+       <div class="footer-container">
+           <div class="footer-widgets">
+               <div class="widget-area footer-widget-1">
+                   <div class="site-logo-text" style="color: white; font-size: 24px; font-weight: bold; margin-bottom: 20px;">
+                       CLAN
+                   </div>
+               </div>
+               <div class="widget-area footer-widget-2">
+                   <h4>オンライン講座一覧</h4>
+                   <ul>
+                       <li><a href="../course/lp.html">ランディングページ作成初級講座</a></li>
+                       <li><a href="../course/video.html">動画編集初級講座</a></li>
+                       <li><a href="../course/step-mail.html">ステップメール設計初級講座</a></li>
+                       <li><a href="../course/auto-funnel.html">オートファネル構築初級講座</a></li>
+                       <li><a href="../course/youtube-thumbnail.html">Youtubeサムネ作成初級講座</a></li>
+                       <li><a href="../course/canva.html">Canvaデザイン初級講座</a></li>
+                   </ul>
+               </div>
+               <div class="widget-area footer-widget-3">
+                   <h4>便利コンテンツ</h4>
+                   <ul>
+                       <li><a href="../blog/index.html">ブログ</a></li>
+                       <li><a href="../tools/index.html">まえゆきツール</a></li>
+                       <li><a href="../book/index.html">電子書籍</a></li>
+                       <li><a href="../free-seminar.html">無料セミナー</a></li>
+                       <li><a href="../free-consultation.html">無料相談</a></li>
+                       <li><a href="../achievement/index.html">お客様の声</a></li>
+                   </ul>
+               </div>
+               <div class="widget-area footer-widget-4">
+                   <h4>運営情報</h4>
+                   <ul>
+                       <li><a href="../owner.html">運営者情報</a></li>
+                       <li><a href="../terms.html">利用規約</a></li>
+                       <li><a href="../privacy.html">プライバシーポリシー</a></li>
+                   </ul>
+               </div>
+           </div>
+           <div class="site-copyright">
+               <small>© 2025 オートファネル大学</small>
+           </div>
+       </div>
+   </footer>
+
+   <!-- カウントダウン用JavaScript -->
+   <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          // 要素の参照
+          const countdownTitle = document.getElementById('countdownTitle');
+          const countdownSubtitle = document.getElementById('countdownSubtitle');
+          const daysElement = document.getElementById('days');
+          const hoursElement = document.getElementById('hours');
+          const minutesElement = document.getElementById('minutes');
+          const secondsElement = document.getElementById('seconds');
+          const finishedElement = document.getElementById('countdownFinished');
+          const settingsButton = document.getElementById('settingsButton');
+          const shareButton = document.getElementById('shareButton');
+          const settingsSection = document.getElementById('settingsSection');
+          const shareSection = document.getElementById('shareSection');
+          const countdownForm = document.getElementById('countdownForm');
+          const eventTitleInput = document.getElementById('eventTitle');
+          const eventDescriptionInput = document.getElementById('eventDescription');
+          const eventDateInput = document.getElementById('eventDate');
+          const eventTimeInput = document.getElementById('eventTime');
+          const themeColorSelect = document.getElementById('themeColor');
+          const resetButton = document.getElementById('resetButton');
+          const applyButton = document.getElementById('applyButton');
+          const shareUrlInput = document.getElementById('shareUrl');
+          const copyButton = document.getElementById('copyButton');
+          const twitterShare = document.getElementById('twitterShare');
+          const facebookShare = document.getElementById('facebookShare');
+          const lineShare = document.getElementById('lineShare');
+          const presetItems = document.querySelectorAll('.preset-item[data-preset]');
+          const timerItems = document.querySelectorAll('.preset-item[data-timer]');
+          
+          // 現在のカウントダウン設定
+          let countdownSettings = {
+              title: 'イベントまで',
+              subtitle: '残り時間をカウントダウン',
+              targetDate: new Date(new Date().getTime() + 24 * 60 * 60 * 1000), // 明日
+              themeColor: 'blue'
+          };
+          
+          // カウントダウンタイマーのID
+          let countdownTimer;
+          
+          // URLからパラメータを取得
+          function getParametersFromUrl() {
+              const searchParams = new URLSearchParams(window.location.search);
+              
+              if (searchParams.has('title')) {
+                  countdownSettings.title = decodeURIComponent(searchParams.get('title'));
+              }
+              
+              if (searchParams.has('subtitle')) {
+                  countdownSettings.subtitle = decodeURIComponent(searchParams.get('subtitle'));
+              }
+              
+              if (searchParams.has('date') && searchParams.has('time')) {
+                  const dateStr = searchParams.get('date');
+                  const timeStr = searchParams.get('time');
+                  const targetDateTime = new Date(`${dateStr}T${timeStr}`);
+                  
+                  if (!isNaN(targetDateTime.getTime())) {
+                      countdownSettings.targetDate = targetDateTime;
+                  }
+              } else if (searchParams.has('seconds')) {
+                  const seconds = parseInt(searchParams.get('seconds'));
+                  if (!isNaN(seconds)) {
+                      countdownSettings.targetDate = new Date(new Date().getTime() + seconds * 1000);
+                  }
+              }
+              
+              if (searchParams.has('color')) {
+                  countdownSettings.themeColor = searchParams.get('color');
+              }
+          }
+          
+          // URLパラメータを更新
+          function updateUrlParameters() {
+              const params = new URLSearchParams();
+              
+              params.set('title', encodeURIComponent(countdownSettings.title));
+              params.set('subtitle', encodeURIComponent(countdownSettings.subtitle));
+              
+              if (countdownSettings.isTimer) {
+                  const remainingSeconds = Math.floor((countdownSettings.targetDate - new Date()) / 1000);
+                  params.set('seconds', remainingSeconds);
+              } else {
+                  const dateStr = countdownSettings.targetDate.toISOString().split('T')[0];
+                  const timeStr = countdownSettings.targetDate.toTimeString().slice(0, 5);
+                  params.set('date', dateStr);
+                  params.set('time', timeStr);
+              }
+              
+              params.set('color', countdownSettings.themeColor);
+              
+              const newUrl = `${window.location.pathname}?${params.toString()}`;
+              window.history.replaceState({}, '', newUrl);
+              
+              // シェア用URL更新
+              shareUrlInput.value = window.location.href;
+              
+              // ソーシャルシェアリンク更新
+              const shareText = encodeURIComponent(`${countdownSettings.title} | まえゆきツール カウントダウン`);
+              const shareUrl = encodeURIComponent(window.location.href);
+              
+              twitterShare.href = `https://twitter.com/intent/tweet?text=${shareText}&url=${shareUrl}`;
+              facebookShare.href = `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`;
+              lineShare.href = `https://social-plugins.line.me/lineit/share?url=${shareUrl}`;
+          }
+          
+          // フォームに現在の設定を反映
+          function updateFormValues() {
+              eventTitleInput.value = countdownSettings.title;
+              eventDescriptionInput.value = countdownSettings.subtitle;
+              
+              const dateStr = countdownSettings.targetDate.toISOString().split('T')[0];
+              const timeStr = countdownSettings.targetDate.toTimeString().slice(0, 5);
+              
+              eventDateInput.value = dateStr;
+              eventTimeInput.value = timeStr;
+              themeColorSelect.value = countdownSettings.themeColor;
+          }
+          
+          // カウントダウン更新関数
+          function updateCountdown() {
+              const now = new Date();
+              const targetDate = countdownSettings.targetDate;
+              const difference = targetDate - now;
+              
+              // カウントダウン終了処理
+              if (difference <= 0) {
+                  clearInterval(countdownTimer);
+                  daysElement.textContent = '00';
+                  hoursElement.textContent = '00';
+                  minutesElement.textContent = '00';
+                  secondsElement.textContent = '00';
+                  
+                  document.querySelector('.countdown-timer').style.display = 'none';
+                  finishedElement.style.display = 'block';
+                  return;
+              }
+              
+              // 残り時間計算
+              const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+              const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+              const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+              const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+              
+              // 表示更新
+              daysElement.textContent = days.toString().padStart(2, '0');
+              hoursElement.textContent = hours.toString().padStart(2, '0');
+              minutesElement.textContent = minutes.toString().padStart(2, '0');
+              secondsElement.textContent = seconds.toString().padStart(2, '0');
+          }
+          
+          // カウントダウン開始
+          function startCountdown() {
+              // 既存のタイマーをクリア
+              if (countdownTimer) {
+                  clearInterval(countdownTimer);
+              }
+              
+              // タイトルと説明を更新
+              countdownTitle.textContent = countdownSettings.title;
+              countdownSubtitle.textContent = countdownSettings.subtitle;
+              
+              // テーマカラー適用
+              applyThemeColor();
+              
+              // カウントダウン表示を初期化
+              document.querySelector('.countdown-timer').style.display = 'flex';
+              finishedElement.style.display = 'none';
+              
+              // 初回実行
+              updateCountdown();
+              
+              // タイマー開始
+              countdownTimer = setInterval(updateCountdown, 1000);
+          }
+          
+          // テーマカラー適用
+          function applyThemeColor() {
+              const colorMap = {
+                  blue: '#0066ff',
+                  red: '#ff3a3a',
+                  green: '#00b74a',
+                  purple: '#7b68ee',
+                  orange: '#ff9500'
+              };
+              
+              const color = colorMap[countdownSettings.themeColor] || colorMap.blue;
+              
+              document.documentElement.style.setProperty('--primary', color);
+              document.querySelectorAll('.countdown-value').forEach(el => {
+                  el.style.color = color;
+              });
+          }
+          
+          // 定番カウントダウンの設定
+          function setupPresetCountdown(preset) {
+              const now = new Date();
+              const currentYear = now.getFullYear();
+              let targetDate;
+              
+              switch(preset) {
+                  case 'tomorrow':
+                      targetDate = new Date();
+                      targetDate.setDate(targetDate.getDate() + 1);
+                      targetDate.setHours(0, 0, 0, 0);
+                      countdownSettings.title = '明日まで';
+                      countdownSettings.subtitle = '残り時間';
+                      break;
+                      
+                  case 'new-year':
+                      targetDate = new Date(currentYear + 1, 0, 1, 0, 0, 0, 0); // 翌年の1月1日
+                      countdownSettings.title = `${currentYear + 1}年まで`;
+                      countdownSettings.subtitle = '新年カウントダウン';
+                      break;
+                      
+                  case 'xmas':
+                      targetDate = new Date(currentYear, 11, 25, 0, 0, 0, 0); // 12月25日
+                      if (now > targetDate) {
+                          targetDate.setFullYear(currentYear + 1);
+                      }
+                      countdownSettings.title = 'クリスマスまで';
+                      countdownSettings.subtitle = '🎄 メリークリスマス 🎄';
+                      break;
+                      
+                  case 'halloween':
+                      targetDate = new Date(currentYear, 9, 31, 0, 0, 0, 0); // 10月31日
+                      if (now > targetDate) {
+                          targetDate.setFullYear(currentYear + 1);
+                      }
+                      countdownSettings.title = 'ハロウィンまで';
+                      countdownSettings.subtitle = '🎃 Trick or Treat 🎃';
+                      break;
+                      
+                  case 'valentines':
+                      targetDate = new Date(currentYear, 1, 14, 0, 0, 0, 0); // 2月14日
+                      if (now > targetDate) {
+                          targetDate.setFullYear(currentYear + 1);
+                      }
+                      countdownSettings.title = 'バレンタインデーまで';
+                      countdownSettings.subtitle = '💝 Happy Valentine\'s Day 💝';
+                      break;
+                      
+                  case 'childrens-day':
+                      targetDate = new Date(currentYear, 4, 5, 0, 0, 0, 0); // 5月5日
+                      if (now > targetDate) {
+                          targetDate.setFullYear(currentYear + 1);
+                      }
+                      countdownSettings.title = 'こどもの日まで';
+                      countdownSettings.subtitle = '🎏 5月5日 🎏';
+                      break;
+              }
+              
+              countdownSettings.targetDate = targetDate;
+              countdownSettings.isTimer = false;
+              
+              updateFormValues();
+              updateUrlParameters();
+              startCountdown();
+          }
+          
+          // 時間指定タイマーの設定
+          function setupTimerCountdown(seconds) {
+              const targetDate = new Date(new Date().getTime() + seconds * 1000);
+              
+              countdownSettings.title = `${formatTime(seconds)}のカウントダウン`;
+              countdownSettings.subtitle = '残り時間';
+              countdownSettings.targetDate = targetDate;
+              countdownSettings.isTimer = true;
+              
+              updateFormValues();
+              updateUrlParameters();
+              startCountdown();
+          }
+          
+          // 秒数を分かりやすい時間形式に変換
+          function formatTime(seconds) {
+              if (seconds < 60) {
+                  return `${seconds}秒`;
+              } else if (seconds < 3600) {
+                  return `${Math.floor(seconds / 60)}分`;
+              } else {
+                  const hours = Math.floor(seconds / 3600);
+                  const minutes = Math.floor((seconds % 3600) / 60);
+                  if (minutes === 0) {
+                      return `${hours}時間`;
+                  } else {
+                      return `${hours}時間${minutes}分`;
+                  }
+              }
+          }
+          
+          // イベントリスナー設定
+          function setupEventListeners() {
+              // 設定ボタン
+              settingsButton.addEventListener('click', function() {
+                  settingsSection.style.display = 'block';
+                  shareSection.style.display = 'none';
+                  window.scrollTo({
+                      top: settingsSection.offsetTop - 80,
+                      behavior: 'smooth'
+                  });
+              });
+              
+              // シェアボタン
+              shareButton.addEventListener('click', function() {
+                  shareSection.style.display = 'block';
+                  window.scrollTo({
+                      top: shareSection.offsetTop - 80,
+                      behavior: 'smooth'
+                  });
+              });
+              
+              // コピーボタン
+              copyButton.addEventListener('click', function() {
+                  shareUrlInput.select();
+                  document.execCommand('copy');
+                  
+                  const originalText = copyButton.textContent;
+                  copyButton.textContent = 'コピーしました！';
+                  setTimeout(() => {
+                      copyButton.textContent = originalText;
+                  }, 2000);
+              });
+              
+              // フォーム送信
+              countdownForm.addEventListener('submit', function(e) {
+                  e.preventDefault();
+                  
+                  countdownSettings.title = eventTitleInput.value || 'イベントまで';
+                  countdownSettings.subtitle = eventDescriptionInput.value || '残り時間をカウントダウン';
+                  
+                  const dateStr = eventDateInput.value;
+                  const timeStr = eventTimeInput.value || '00:00';
+                  const targetDateTime = new Date(`${dateStr}T${timeStr}`);
+                  
+                  if (!isNaN(targetDateTime.getTime())) {
+                      countdownSettings.targetDate = targetDateTime;
+                  }
+                  
+                  countdownSettings.themeColor = themeColorSelect.value;
+                  countdownSettings.isTimer = false;
+                  
+                  updateUrlParameters();
+                  startCountdown();
+                  
+                  window.scrollTo({
+                      top: 0,
+                      behavior: 'smooth'
+                  });
+              });
+              
+              // リセットボタン
+              resetButton.addEventListener('click', function() {
+                  eventTitleInput.value = 'イベントまで';
+                  eventDescriptionInput.value = '残り時間をカウントダウン';
+                  
+                  const tomorrow = new Date();
+                  tomorrow.setDate(tomorrow.getDate() + 1);
+                  
+                  eventDateInput.value = tomorrow.toISOString().split('T')[0];
+                  eventTimeInput.value = '00:00';
+                  themeColorSelect.value = 'blue';
+              });
+              
+              // 定番プリセット
+              presetItems.forEach(item => {
+                  item.addEventListener('click', function(e) {
+                      e.preventDefault();
+                      const preset = this.getAttribute('data-preset');
+                      setupPresetCountdown(preset);
+                  });
+              });
+              
+              // タイマープリセット
+              timerItems.forEach(item => {
+                  item.addEventListener('click', function(e) {
+                      e.preventDefault();
+                      const seconds = parseInt(this.getAttribute('data-timer'));
+                      setupTimerCountdown(seconds);
+                  });
+              });
+          }
+          
+          // 初期化
+          function init() {
+              // 現在日時をフォームに設定（デフォルト：明日）
+              const tomorrow = new Date();
+              tomorrow.setDate(tomorrow.getDate() + 1);
+              eventDateInput.value = tomorrow.toISOString().split('T')[0];
+              eventTimeInput.value = '00:00';
+              
+              // URLパラメータがあれば読み込む
+              getParametersFromUrl();
+              
+              // フォーム値を更新
+              updateFormValues();
+              
+              // URLパラメータを更新
+              updateUrlParameters();
+              
+              // カウントダウン開始
+              startCountdown();
+              
+              // イベントリスナー設定
+              setupEventListeners();
+          }
+          
+          // アプリケーション開始
+          init();
+      });
+   </script>
+</body>
+</html>

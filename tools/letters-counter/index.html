@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="description" content="まえゆきツールの文字数カウント - 日本語の文字数を簡単にカウントできる無料ツールです。空白や改行を除外した文字数も確認できます。">
+   <title>文字数カウント | まえゆきツール</title>
+   
+   <!-- リソースの先読み -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   
+   <!-- クリティカルCSS インライン化 -->
+   <style>
+     :root{--primary:#0066ff;--secondary:#ff3a3a;--accent:#ff9500;--dark-blue:#0d3283;--light-bg:#f8f9fa;--text-dark:#333;--text-mid:#555;--header-h:60px}*,::after,::before{box-sizing:border-box;margin:0;padding:0}body{font:16px/1.6 'Noto Sans JP',sans-serif;color:var(--text-dark);background:#fff;overflow-x:hidden;display:flex;flex-direction:column;min-height:100vh;-webkit-text-size-adjust:100%}img{max-width:100%;height:auto;vertical-align:middle;border:0}a{text-decoration:none;color:inherit}ul{list-style:none}main{flex:1 0 auto}.site-header{position:fixed;top:0;left:0;width:100%;z-index:1000;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.1);height:var(--header-h);display:flex;align-items:center}.header-container{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center;width:100%}.site-logo-text{font-weight:700;font-size:20px}.site-logo-text a{color:var(--dark-blue)}.hamburger-button{display:block;width:30px;height:30px;position:relative;z-index:1001;border:0;background:0;cursor:pointer}.hamburger-button span{display:block;position:absolute;width:100%;height:2px;background:var(--text-dark);left:0}.hamburger-button span:nth-child(1){top:8px}.hamburger-button span:nth-child(2){top:14px}.hamburger-button span:nth-child(3){bottom:8px}
+
+     /* 文字数カウントツールスタイル */
+     .tool-section {
+         padding: 80px 0 40px;
+         margin-top: var(--header-h);
+         background: #f9f3e9;
+     }
+     .tool-container {
+         max-width: 840px;
+         margin: 0 auto;
+         padding: 0 20px;
+     }
+     .tool-title {
+         font-size: 28px;
+         text-align: center;
+         margin-bottom: 2rem;
+         color: var(--text-dark);
+     }
+     
+     /* 文字入力エリア */
+     .input-area {
+         margin-top: 20px;
+     }
+     .counter-bar {
+         text-align: center;
+         background: var(--primary);
+         padding: 10px;
+         color: #fff;
+         border-radius: 8px 8px 0 0;
+         font-size: 18px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+     }
+     .counter-bar strong {
+         color: #ffff00;
+         padding: 0 5px;
+         font-size: 24px;
+     }
+     .counter-textarea {
+         width: 100%;
+         min-height: 250px;
+         padding: 15px;
+         border: 2px solid var(--primary);
+         border-top: none;
+         border-radius: 0 0 8px 8px;
+         font-size: 16px;
+         line-height: 1.6;
+         resize: vertical;
+         font-family: inherit;
+     }
+     .counter-textarea:focus {
+         outline: none;
+     }
+     
+     /* 結果エリア */
+     .result-area {
+         margin-top: 30px;
+     }
+     .result-title {
+         font-size: 20px;
+         font-weight: 700;
+         margin-bottom: 15px;
+         padding-bottom: 5px;
+         border-bottom: 2px solid #eee;
+     }
+     .result-list {
+         list-style: none;
+         padding: 0;
+     }
+     .result-item {
+         display: flex;
+         align-items: center;
+         margin-bottom: 15px;
+         font-size: 16px;
+     }
+     .result-item:before {
+         content: "•";
+         color: var(--primary);
+         margin-right: 10px;
+         font-size: 20px;
+     }
+     .result-value {
+         color: var(--primary);
+         font-weight: 700;
+         margin-left: 5px;
+     }
+     
+     /* 設定エリア */
+     .settings-area {
+         margin-top: 40px;
+     }
+     .settings-title {
+         font-size: 20px;
+         font-weight: 700;
+         margin-bottom: 15px;
+         padding-bottom: 5px;
+         border-bottom: 2px solid #eee;
+     }
+     .setting-option {
+         display: flex;
+         align-items: center;
+         margin-bottom: 10px;
+     }
+     .setting-option label {
+         margin-left: 10px;
+         cursor: pointer;
+     }
+     
+     /* トグルスイッチ */
+     .toggle-switch {
+         position: relative;
+         display: inline-block;
+         width: 50px;
+         height: 24px;
+     }
+     .toggle-switch input {
+         opacity: 0;
+         width: 0;
+         height: 0;
+     }
+     .toggle-slider {
+         position: absolute;
+         cursor: pointer;
+         top: 0;
+         left: 0;
+         right: 0;
+         bottom: 0;
+         background-color: #ccc;
+         transition: .4s;
+         border-radius: 24px;
+     }
+     .toggle-slider:before {
+         position: absolute;
+         content: "";
+         height: 18px;
+         width: 18px;
+         left: 3px;
+         bottom: 3px;
+         background-color: white;
+         transition: .4s;
+         border-radius: 50%;
+     }
+     input:checked + .toggle-slider {
+         background-color: var(--primary);
+     }
+     input:checked + .toggle-slider:before {
+         transform: translateX(26px);
+     }
+     
+     /* 使い方ボックス */
+     .usage-box {
+         background: #fff;
+         border-radius: 10px;
+         padding: 25px;
+         margin-top: 40px;
+         box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+     }
+     .usage-title {
+         font-size: 18px;
+         display: flex;
+         align-items: center;
+         margin-bottom: 15px;
+         color: var(--text-dark);
+     }
+     .usage-title-icon {
+         margin-right: 8px;
+         color: var(--primary);
+     }
+     .usage-list {
+         padding-left: 20px;
+     }
+     .usage-item {
+         margin-bottom: 8px;
+         position: relative;
+         line-height: 1.5;
+     }
+     .usage-item::before {
+         content: "•";
+         position: absolute;
+         left: -15px;
+         color: var(--primary);
+     }
+     .usage-link {
+         color: var(--primary);
+     }
+     .usage-link:hover {
+         text-decoration: underline;
+     }
+     
+     /* シェアセクション */
+     .share-section {
+         margin: 40px 0;
+         text-align: center;
+     }
+     .share-title {
+         display: inline-block;
+         position: relative;
+         padding: 0 30px;
+         margin-bottom: 15px;
+         font-size: 16px;
+         font-weight: 700;
+     }
+     .share-title:before, .share-title:after {
+         content: "";
+         position: absolute;
+         top: 50%;
+         width: 20px;
+         height: 2px;
+         background: var(--text-dark);
+     }
+     .share-title:before {
+         left: 0;
+         transform: rotate(50deg);
+     }
+     .share-title:after {
+         right: 0;
+         transform: rotate(-50deg);
+     }
+     .share-buttons {
+         display: flex;
+         justify-content: center;
+         gap: 15px;
+     }
+     .share-button {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         width: 40px;
+         height: 40px;
+         border-radius: 50%;
+         transition: transform 0.2s;
+     }
+     .share-button:hover {
+         transform: scale(1.1);
+     }
+     .share-twitter { background: #1DA1F2; }
+     .share-facebook { background: #1877F2; }
+     .share-line { background: #06C755; }
+     
+     /* 他のツールリンク */
+     .other-tools {
+         margin-top: 40px;
+     }
+     .other-tools-title {
+         font-size: 18px;
+         margin-bottom: 15px;
+         text-align: center;
+     }
+     .tools-list {
+         display: flex;
+         flex-wrap: wrap;
+         gap: 10px;
+         justify-content: center;
+     }
+     .tool-link {
+         display: inline-block;
+         padding: 8px 16px;
+         background: white;
+         border-radius: 20px;
+         border: 1px solid #e0e0e0;
+         font-size: 14px;
+         transition: all 0.2s;
+     }
+     .tool-link:hover {
+         background: var(--primary);
+         color: white;
+         transform: translateY(-2px);
+         border-color: var(--primary);
+     }
+     
+     /* レスポンシブ対応 */
+     @media (max-width: 768px) {
+         .tool-section {
+             padding: 70px 0 30px;
+         }
+         .counter-bar {
+             font-size: 16px;
+         }
+         .counter-bar strong {
+             font-size: 20px;
+         }
+     }
+     @media (max-width: 480px) {
+         .input-area {
+             margin-left: -10px;
+             margin-right: -10px;
+         }
+     }
+   </style>
+   
+   <!-- 非クリティカルCSSは非同期ロード -->
+   <link rel="stylesheet" href="../css/style.css" media="print" onload="this.media='all'">
+   
+   <!-- JavaScriptの遅延ロード -->
+   <script src="../js/script.js" defer></script>
+   
+   <!-- フォールバック -->
+   <noscript>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="../css/style.css">
+   </noscript>
+   
+   <link rel="icon" href="../images/favicon.ico">
+   <meta property="og:title" content="文字数カウント | まえゆきツール">
+   <meta property="og:description" content="日本語の文字数を簡単にカウントできる無料ツールです。空白や改行を除外した文字数も確認できます。">
+   <meta property="og:image" content="../images/ogp_image_tools.webp">
+   <meta property="og:type" content="website">
+</head>
+<body>
+   <!-- ヘッダー -->
+   <header class="site-header">
+      <div class="header-container">
+          <div class="site-logo-text">
+              <a href="../index.html">CLAN</a>
+          </div>
+          <nav class="global-nav pc-nav">
+              <ul>
+                  <li><a href="../index.html">ホーム</a></li>
+                  <li><a href="../about.html">オートファネル大学とは</a></li>
+                  <li><a href="../blog/index.html">ブログ</a></li>
+                  <li><a href="../seminar/index.html">オンライン講座</a></li>
+                  <li><a href="../tools/index.html">まえゆきツール</a></li>
+                  <li><a href="../achievement/index.html">お客様の声</a></li>
+              </ul>
+          </nav>
+          <div class="header-cta">
+              <a href="../document.html" class="btn-document">
+                  <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
+                  資料請求する
+              </a>
+              <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
+                  まずは相談する
+              </a>
+          </div>
+          <button class="hamburger-button sp-nav" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+      </div>
+  </header>
+
+  <!-- モバイルメニュー -->
+  <div class="mobile-menu">
+      <nav>
+          <ul>
+              <li><a href="../index.html">ホーム</a></li>
+              <li><a href="../about.html">オートファネル大学とは</a></li>
+              <li><a href="../blog/index.html">ブログ</a></li>
+              <li><a href="../seminar/index.html">オンライン講座</a></li>
+              <li><a href="../tools/index.html">まえゆきツール</a></li>
+              <li><a href="../achievement/index.html">お客様の声</a></li>
+          </ul>
+      </nav>
+      <div class="mobile-cta">
+          <a href="../document.html" class="btn-document">
+              <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
+              資料請求する
+          </a>
+          <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
+              まずは相談する
+          </a>
+      </div>
+  </div>
+
+   <main class="site-main">
+      <!-- ツールセクション -->
+      <section class="tool-section">
+         <div class="tool-container">
+            <h1 class="tool-title">文字数カウント</h1>
+            
+            <!-- テキスト入力エリア -->
+            <div class="input-area">
+               <div class="counter-bar">
+                  ただ今の文字数は <strong id="currentCount">0</strong> 字
+               </div>
+               <textarea id="textInput" class="counter-textarea" placeholder="カウントする文章を入力" autofocus></textarea>
+            </div>
+            
+            <!-- 結果表示エリア -->
+            <div class="result-area">
+               <h2 class="result-title">現在の文字数</h2>
+               <ul class="result-list">
+                  <li class="result-item">
+                     空白と改行をふくむ文字数... <span class="result-value" id="totalCount">0</span>
+                  </li>
+                  <li class="result-item">
+                     空白と改行をのぞいた文字数... <span class="result-value" id="noSpaceCount">0</span>
+                  </li>
+                  <li class="result-item">
+                     行数... <span class="result-value" id="lineCount">1</span>
+                  </li>
+                  <li class="result-item">
+                     バイト数 (UTF-8)... <span class="result-value" id="byteCount">0</span>
+                  </li>
+               </ul>
+            </div>
+            
+            <!-- 設定エリア -->
+            <div class="settings-area">
+               <h2 class="settings-title">カウントの仕方の設定</h2>
+               <div class="setting-option">
+                  <label class="toggle-switch">
+                     <input type="checkbox" id="htmlToggle">
+                     <span class="toggle-slider"></span>
+                  </label>
+                  <label for="htmlToggle">HTMLタグをカウントしない</label>
+               </div>
+               <div class="setting-option">
+                  <label class="toggle-switch">
+                     <input type="checkbox" id="emojiToggle">
+                     <span class="toggle-slider"></span>
+                  </label>
+                  <label for="emojiToggle">絵文字を1文字としてカウント</label>
+               </div>
+            </div>
+            
+            <!-- 使い方ボックス -->
+            <div class="usage-box">
+               <h3 class="usage-title">
+                  <span class="usage-title-icon">
+                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                     </svg>
+                  </span>
+                  文字数カウンターの使い方
+               </h3>
+               
+               <ul class="usage-list">
+                  <li class="usage-item">シンプルな文字数カウンターです。文字数制限があるときや、書いた文章の文字数を知りたいときにご利用ください。</li>
+                  <li class="usage-item">絵文字や異体字にも対応しています。</li>
+                  <li class="usage-item">文章を入力すると、自動で文字数がカウントされます。</li>
+                  <li class="usage-item">行数は改行ごとにカウントされます。</li>
+                  <li class="usage-item">
+                     HTMLの文字数のカウントもできます。
+                     タグをカウントしたくないときは「HTMLタグをカウントしない」をONにしてください。
+                  </li>
+               </ul>
+            </div>
+            
+            <!-- シェアセクション -->
+            <div class="share-section">
+               <div class="share-title">シェア</div>
+               <div class="share-buttons">
+                  <a href="https://twitter.com/share?url=https://yourdomain.com/tools/letters-counter/&text=%E3%81%9F%E3%81%A0%E3%81%AE%E6%96%87%E5%AD%97%E6%95%B0%E3%82%AB%E3%82%A6%E3%83%B3%E3%82%BF%E3%83%BC" target="_blank" rel="nofollow noopener noreferrer" class="share-button share-twitter">
+                     <svg width="20" height="20" fill="#fff" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+                  </a>
+                  <a href="https://www.facebook.com/share.php?u=https://yourdomain.com/tools/letters-counter/" target="_blank" rel="nofollow noopener noreferrer" class="share-button share-facebook">
+                     <svg width="20" height="20" fill="#fff" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                  </a>
+                  <a href="https://social-plugins.line.me/lineit/share?url=https://yourdomain.com/tools/letters-counter/" target="_blank" rel="nofollow noopener noreferrer" class="share-button share-line">
+                     <svg width="20" height="20" fill="#fff" viewBox="0 0 24 24"><path d="M24 10.304c0-5.369-5.383-9.738-12-9.738-6.616 0-12 4.369-12 9.738 0 4.814 4.269 8.846 10.036 9.608.391.084.922.258 1.057.592.121.303.079.778.039 1.085l-.171 1.027c-.053.303-.242 1.186 1.039.647 1.281-.54 6.911-4.069 9.428-6.967 1.739-1.907 2.572-3.843 2.572-5.992zm-18.988-2.595c.129 0 .234.105.234.234v4.153c0 .129-.105.234-.234.234h-.662c-.129 0-.234-.105-.234-.234v-4.153c0-.129.105-.234.234-.234zm5.323 0c.129 0 .234.105.234.234v4.153c0 .129-.105.234-.234.234h-.661c-.129 0-.234-.105-.234-.234v-2.566l-1.838 2.481c-.051.067-.131.107-.215.107h-.033c-.084 0-.164-.04-.215-.107l-1.838-2.481v2.566c0 .129-.105.234-.234.234h-.662c-.129 0-.234-.105-.234-.234v-4.153c0-.129.105-.234.234-.234h.66c.085 0 .165.04.216.109l2.081 2.811 2.081-2.811c.051-.069.131-.109.216-.109zm5.323 0c.129 0 .234.105.234.234v4.153c0 .129-.105.234-.234.234h-.662c-.129 0-.234-.105-.234-.234v-4.153c0-.129.105-.234.234-.234zm2.662 0c.129 0 .234.105.234.234v4.153c0 .129-.105.234-.234.234h-.662c-.129 0-.234-.105-.234-.234v-4.153c0-.129.105-.234.234-.234z"/></svg>
+                  </a>
+               </div>
+            </div>
+            
+            <!-- 他のツールリンク -->
+            <div class="other-tools">
+               <h2 class="other-tools-title">その他のまえゆきツール</h2>
+               <div class="tools-list">
+                  <a href="../tools/image-resize/" class="tool-link">画像サイズ変更</a>
+                  <a href="../tools/png-to-jpeg/" class="tool-link">PNG→JPEG変換</a>
+                  <a href="../tools/png-jpeg-to-webp/" class="tool-link">WebP変換ツール</a>
+                  <a href="../tools/countdown/" class="tool-link">Webでカウントダウン</a>
+                  <a href="../tools/roulette/" class="tool-link">Webでルーレット</a>
+                  <a href="../tools/bingo/" class="tool-link">ビンゴ・マシーン</a>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <!-- Contact CTA Section -->
+      <section class="contact-cta-section">
+         <div class="contact-cta-container">
+            <span class="contact-cta-subtitle">IT導入補助金2025活用可能</span>
+            <h2 class="contact-cta-title">申請は完全丸投げOK！</h2>
+            <p class="contact-cta-lead">
+               UTAGEの導入で最大450万円の補助金が受けられます。<br class="pc-only">
+               面倒な申請手続きはすべてお任せください。<br class="pc-only">
+               あなたは事業成長に集中するだけでOKです。
+            </p>
+            <div class="contact-cta-buttons">
+               <a href="https://utage-marunage.com/it-hojo/" class="btn btn-contact">
+                  無料相談してみる
+               </a>
+               <a href="../document.html" class="btn btn-document">
+                  <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
+                  資料請求する
+               </a>
+            </div>
+         </div>
+      </section>
+   </main>
+
+   <footer class="site-footer">
+       <div class="footer-container">
+           <div class="footer-widgets">
+               <div class="widget-area footer-widget-1">
+                   <div class="site-logo-text" style="color: white; font-size: 24px; font-weight: bold; margin-bottom: 20px;">
+                       CLAN
+                   </div>
+               </div>
+               <div class="widget-area footer-widget-2">
+                   <h4>オンライン講座一覧</h4>
+                   <ul>
+                       <li><a href="../course/lp.html">ランディングページ作成初級講座</a></li>
+                       <li><a href="../course/video.html">動画編集初級講座</a></li>
+                       <li><a href="../course/step-mail.html">ステップメール設計初級講座</a></li>
+                       <li><a href="../course/auto-funnel.html">オートファネル構築初級講座</a></li>
+                       <li><a href="../course/youtube-thumbnail.html">Youtubeサムネ作成初級講座</a></li>
+                       <li><a href="../course/canva.html">Canvaデザイン初級講座</a></li>
+                   </ul>
+               </div>
+               <div class="widget-area footer-widget-3">
+                   <h4>便利コンテンツ</h4>
+                   <ul>
+                       <li><a href="../blog/index.html">ブログ</a></li>
+                       <li><a href="../tools/index.html">まえゆきツール</a></li>
+                       <li><a href="../book/index.html">電子書籍</a></li>
+                       <li><a href="../free-seminar.html">無料セミナー</a></li>
+                       <li><a href="../free-consultation.html">無料相談</a></li>
+                       <li><a href="../achievement/index.html">お客様の声</a></li>
+                   </ul>
+               </div>
+               <div class="widget-area footer-widget-4">
+                   <h4>運営情報</h4>
+                   <ul>
+                       <li><a href="../owner.html">運営者情報</a></li>
+                       <li><a href="../terms.html">利用規約</a></li>
+                       <li><a href="../privacy.html">プライバシーポリシー</a></li>
+                   </ul>
+               </div>
+           </div>
+           <div class="site-copyright">
+               <small>© 2025 オートファネル大学</small>
+           </div>
+       </div>
+   </footer>
+
+   <!-- 文字数カウント用JavaScript -->
+   <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          // 要素の参照
+          const textInput = document.getElementById('textInput');
+          const currentCount = document.getElementById('currentCount');
+          const totalCount = document.getElementById('totalCount');
+          const noSpaceCount = document.getElementById('noSpaceCount');
+          const lineCount = document.getElementById('lineCount');
+          const byteCount = document.getElementById('byteCount');
+          const htmlToggle = document.getElementById('htmlToggle');
+          const emojiToggle = document.getElementById('emojiToggle');
+          
+          // テキスト入力イベント
+          textInput.addEventListener('input', countText);
+          
+          // HTMLタグトグル
+          htmlToggle.addEventListener('change', countText);
+          
+          // 絵文字トグル
+          emojiToggle.addEventListener('change', countText);
+          
+          // 文字数カウント関数
+          function countText() {
+              // テキストを取得
+              let text = textInput.value;
+              
+              // HTMLタグを除外する場合
+              if (htmlToggle.checked) {
+                  text = text.replace(/<[^>]*>/g, '');
+              }
+              
+              // 絵文字を1文字としてカウント
+              let totalChars = text.length;
+              
+              // 絵文字を特殊処理する場合
+              if (emojiToggle.checked) {
+                  // サロゲートペア（絵文字など）を1文字としてカウント
+                  totalChars = [...text].length;
+              }
+              
+              // 空白や改行を除外した文字数
+              const noSpaceChars = text.replace(/\s+/g, '').length;
+              
+              // 行数（改行ごとにカウント）
+              const lines = text === '' ? 1 : text.split('\n').length;
+              
+              // UTF-8バイト数
+              const bytes = new TextEncoder().encode(text).length;
+              
+              // 結果を更新
+              currentCount.textContent = totalChars;
+              totalCount.textContent = totalChars;
+              noSpaceCount.textContent = noSpaceChars;
+              lineCount.textContent = lines;
+              byteCount.textContent = bytes;
+          }
+          
+          // 初期カウント
+          countText();
+      });
+   </script>
+</body>
+</html>

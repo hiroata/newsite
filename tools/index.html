@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="description" content="まえゆきツールは、Webブラウザで使える便利なツール集です。登録不要で無料でご利用いただけます。">
+   <title>まえゆきツール | Webブラウザで使える便利なツール集</title>
+   
+   <!-- リソースの先読み -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link rel="preload" href="../images/hero-bg.webp" as="image" fetchpriority="high">
+   
+   <!-- クリティカルCSS インライン化 -->
+   <style>
+     :root{--primary:#0066ff;--secondary:#ff3a3a;--accent:#ff9500;--dark-blue:#0d3283;--light-bg:#f8f9fa;--text-dark:#333;--text-mid:#555;--header-h:60px}*,::after,::before{box-sizing:border-box;margin:0;padding:0}body{font:16px/1.6 'Noto Sans JP',sans-serif;color:var(--text-dark);background:#fff;overflow-x:hidden;display:flex;flex-direction:column;min-height:100vh;-webkit-text-size-adjust:100%}img{max-width:100%;height:auto;vertical-align:middle;border:0}a{text-decoration:none;color:inherit}ul{list-style:none}main{flex:1 0 auto}.site-header{position:fixed;top:0;left:0;width:100%;z-index:1000;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.1);height:var(--header-h);display:flex;align-items:center}.header-container{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center;width:100%}.site-logo-text{font-weight:700;font-size:20px}.site-logo-text a{color:var(--dark-blue)}.hamburger-button{display:block;width:30px;height:30px;position:relative;z-index:1001;border:0;background:0;cursor:pointer}.hamburger-button span{display:block;position:absolute;width:100%;height:2px;background:var(--text-dark);left:0}.hamburger-button span:nth-child(1){top:8px}.hamburger-button span:nth-child(2){top:14px}.hamburger-button span:nth-child(3){bottom:8px}
+
+     /* ツールカード関連スタイル */
+     .tools-section {
+         padding: 80px 0 40px;
+         margin-top: var(--header-h);
+         background: #f9f3e9;
+     }
+     .tools-container {
+         max-width: 1200px;
+         margin: 0 auto;
+         padding: 0 20px;
+     }
+     .tools-title {
+         font-size: 28px;
+         text-align: center;
+         margin-bottom: 1.5rem;
+         color: var(--text-dark);
+     }
+     .tools-subtitle {
+         text-align: center;
+         font-size: 16px;
+         margin-bottom: 2rem;
+         color: var(--text-mid);
+     }
+     .tools-grid {
+         display: flex;
+         flex-wrap: wrap;
+         justify-content: space-between;
+         gap: 20px;
+     }
+     .tool-card {
+         width: calc(33.333% - 14px);
+         margin-bottom: 20px;
+         background: #fff;
+         border-radius: 8px;
+         overflow: hidden;
+         box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+         transition: transform 0.3s ease, box-shadow 0.3s ease;
+     }
+     .tool-card:hover {
+         transform: translateY(-5px);
+         box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+     }
+     .tool-card-main {
+         position: relative;
+         height: 140px;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         padding: 20px;
+         text-align: center;
+     }
+     .tool-card-title {
+         font-size: 18px;
+         font-weight: 700;
+         margin-bottom: 8px;
+     }
+     .tool-card-desc {
+         font-size: 14px;
+         color: var(--text-mid);
+     }
+     
+     /* カラーバリエーション */
+     .tool-card:nth-child(6n+1) .tool-card-main { background: #d2eaf9; }
+     .tool-card:nth-child(6n+2) .tool-card-main { background: #f8cca9; }
+     .tool-card:nth-child(6n+3) .tool-card-main { background: #bae2db; }
+     .tool-card:nth-child(6n+4) .tool-card-main { background: #f3eaa3; }
+     .tool-card:nth-child(6n+5) .tool-card-main { background: #e2d3f4; }
+     .tool-card:nth-child(6n+6) .tool-card-main { background: #ffcccc; }
+     
+     /* シェアボタン */
+     .share-section {
+         margin: 40px 0;
+         text-align: center;
+     }
+     .share-title {
+         display: inline-block;
+         position: relative;
+         padding: 0 30px;
+         margin-bottom: 15px;
+         font-size: 16px;
+         font-weight: 700;
+     }
+     .share-title:before, .share-title:after {
+         content: "";
+         position: absolute;
+         top: 50%;
+         width: 20px;
+         height: 2px;
+         background: var(--text-dark);
+     }
+     .share-title:before {
+         left: 0;
+         transform: rotate(50deg);
+     }
+     .share-title:after {
+         right: 0;
+         transform: rotate(-50deg);
+     }
+     .share-buttons {
+         display: flex;
+         justify-content: center;
+         gap: 15px;
+     }
+     .share-button {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         width: 40px;
+         height: 40px;
+         border-radius: 50%;
+         transition: transform 0.2s;
+     }
+     .share-button:hover {
+         transform: scale(1.1);
+     }
+     .share-twitter { background: #1DA1F2; }
+     .share-facebook { background: #1877F2; }
+     .share-line { background: #06C755; }
+     
+     /* レスポンシブ対応 */
+     @media (max-width: 992px) {
+         .tool-card {
+             width: calc(50% - 10px);
+         }
+     }
+     @media (max-width: 576px) {
+         .tools-section {
+             padding: 70px 0 30px;
+         }
+         .tool-card {
+             width: 100%;
+         }
+         .tools-title {
+             font-size: 24px;
+         }
+     }
+   </style>
+   
+   <!-- 非クリティカルCSSは非同期ロード -->
+   <link rel="stylesheet" href="../css/style.css" media="print" onload="this.media='all'">
+   
+   <!-- JavaScriptの遅延ロード -->
+   <script src="../js/script.js" defer></script>
+   
+   <!-- フォールバック -->
+   <noscript>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="../css/style.css">
+   </noscript>
+   
+   <link rel="icon" href="../images/favicon.ico">
+   <meta property="og:title" content="まえゆきツール | Webブラウザで使える便利なツール集">
+   <meta property="og:description" content="まえゆきツールは、Webブラウザで使える便利なツール集です。登録不要で無料でご利用いただけます。">
+   <meta property="og:image" content="../images/ogp_image_tools.webp">
+   <meta property="og:type" content="website">
+</head>
+<body>
+   <!-- ヘッダー -->
+   <header class="site-header">
+      <div class="header-container">
+          <div class="site-logo-text">
+              <a href="../index.html">CLAN</a>
+          </div>
+          <nav class="global-nav pc-nav">
+              <ul>
+                  <li><a href="../index.html">ホーム</a></li>
+                  <li><a href="../about.html">オートファネル大学とは</a></li>
+                  <li><a href="../blog/index.html">ブログ</a></li>
+                  <li><a href="../seminar/index.html">オンライン講座</a></li>
+                  <li><a href="index.html" aria-current="page">まえゆきツール</a></li>
+                  <li><a href="../achievement/index.html">お客様の声</a></li>
+              </ul>
+          </nav>
+          <div class="header-cta">
+              <a href="../document.html" class="btn-document">
+                  <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
+                  資料請求する
+              </a>
+              <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
+                  まずは相談する
+              </a>
+          </div>
+          <button class="hamburger-button sp-nav" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+      </div>
+  </header>
+
+  <!-- モバイルメニュー -->
+  <div class="mobile-menu">
+      <nav>
+          <ul>
+              <li><a href="../index.html">ホーム</a></li>
+              <li><a href="../about.html">オートファネル大学とは</a></li>
+              <li><a href="../blog/index.html">ブログ</a></li>
+              <li><a href="../seminar/index.html">オンライン講座</a></li>
+              <li><a href="index.html">まえゆきツール</a></li>
+              <li><a href="../achievement/index.html">お客様の声</a></li>
+          </ul>
+      </nav>
+      <div class="mobile-cta">
+          <a href="../document.html" class="btn-document">
+              <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
+              資料請求する
+          </a>
+          <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
+              まずは相談する
+          </a>
+      </div>
+  </div>
+
+   <main class="site-main">
+      <!-- ツールセクション -->
+      <section class="tools-section">
+         <div class="tools-container">
+            <h1 class="tools-title">まえゆきツール集</h1>
+            <p class="tools-subtitle">登録不要・無料で今すぐ使えるWebツール集です</p>
+
+            <div class="tools-grid">
+               <!-- カウントダウンタイマー -->
+               <a href="countdown/" class="tool-card">
+                  <div class="tool-card-main">
+                     <div class="tool-card-content">
+                        <h2 class="tool-card-title">Webでカウントダウン</h2>
+                        <p class="tool-card-desc">無料で使えるカウントダウン・タイマー</p>
+                     </div>
+                  </div>
+               </a>
+
+               <!-- 画像サイズ変更 -->
+               <a href="image-resize/" class="tool-card">
+                  <div class="tool-card-main">
+                     <div class="tool-card-content">
+                        <h2 class="tool-card-title">画像サイズ変更</h2>
+                        <p class="tool-card-desc">Web上で画像をリサイズ</p>
+                     </div>
+                  </div>
+               </a>
+
+               <!-- PNG→JPEG変換 -->
+               <a href="png-to-jpeg/" class="tool-card">
+                  <div class="tool-card-main">
+                     <div class="tool-card-content">
+                        <h2 class="tool-card-title">PNG→JPEG変換</h2>
+                        <p class="tool-card-desc">PNG画像をJPEGに一括変換</p>
+                     </div>
+                  </div>
+               </a>
+
+               <!-- WebP画像へ変換 -->
+               <a href="png-jpeg-to-webp/" class="tool-card">
+                  <div class="tool-card-main">
+                     <div class="tool-card-content">
+                        <h2 class="tool-card-title">WebP画像へ変換</h2>
+                        <p class="tool-card-desc">JPEGやPNGをWebPに変換</p>
+                     </div>
+                  </div>
+               </a>
+
+               <!-- 文字数カウント -->
+               <a href="letters-counter/" class="tool-card">
+                  <div class="tool-card-main">
+                     <div class="tool-card-content">
+                        <h2 class="tool-card-title">文字数カウント</h2>
+                        <p class="tool-card-desc">ただ文字をカウントするだけのツール</p>
+                     </div>
+                  </div>
+               </a>
+
+               <!-- 新規ツール追加スペース -->
+               <!-- 下記は新しいツールを作成した際の枠として残しています -->
+               <!--
+               <a href="new-tool/" class="tool-card">
+                  <div class="tool-card-main">
+                     <div class="tool-card-content">
+                        <h2 class="tool-card-title">新規ツール名</h2>
+                        <p class="tool-card-desc">ツールの説明文</p>
+                     </div>
+                  </div>
+               </a>
+               -->
+            </div>
+
+            <!-- ツール説明エリア -->
+            <div style="margin-top: 50px; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+               <h2 style="margin-bottom: 15px; font-size: 20px;">まえゆきツールについて</h2>
+               <p style="margin-bottom: 15px; line-height: 1.6;">
+                  まえゆきツールは、Web上で手軽に使える便利なオンラインツール集です。
+                  アカウント登録や複雑な操作は一切不要で、どなたでも簡単にお使いいただけます。
+               </p>
+               <p style="margin-bottom: 15px; line-height: 1.6;">
+                  画像変換や文字数カウント、カウントダウンタイマーなど、
+                  日常的に使える実用的なツールを無料で提供しています。
+               </p>
+               <p style="line-height: 1.6;">
+                  定期的に新しいツールを追加していく予定ですので、
+                  お気に入りに登録して定期的にチェックしてみてください。
+               </p>
+            </div>
+
+            <!-- シェアボタンセクション -->
+            <div class="share-section">
+               <div class="share-title">シェア</div>
+               <div class="share-buttons">
+                  <a href="https://twitter.com/share?url=https://yourdomain.com/tools/&text=%E3%81%BE%E3%81%88%E3%82%86%E3%81%8D%E3%83%84%E3%83%BC%E3%83%AB%EF%BD%9CWeb%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%81%A7%E4%BB%8A%E3%81%99%E3%81%90%E4%BD%BF%E3%81%88%E3%82%8B%E3%83%84%E3%83%BC%E3%83%AB%E9%9B%86" target="_blank" rel="nofollow noopener noreferrer" class="share-button share-twitter">
+                     <svg width="20" height="20" fill="#fff" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+                  </a>
+                  <a href="https://www.facebook.com/share.php?u=https://yourdomain.com/tools/" target="_blank" rel="nofollow noopener noreferrer" class="share-button share-facebook">
+                     <svg width="20" height="20" fill="#fff" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                  </a>
+                  <a href="https://social-plugins.line.me/lineit/share?url=https://yourdomain.com/tools/" target="_blank" rel="nofollow noopener noreferrer" class="share-button share-line">
+                     <svg width="20" height="20" fill="#fff" viewBox="0 0 24 24"><path d="M24 10.304c0-5.369-5.383-9.738-12-9.738-6.616 0-12 4.369-12 9.738 0 4.814 4.269 8.846 10.036 9.608.391.084.922.258 1.057.592.121.303.079.778.039 1.085l-.171 1.027c-.053.303-.242 1.186 1.039.647 1.281-.54 6.911-4.069 9.428-6.967 1.739-1.907 2.572-3.843 2.572-5.992zm-18.988-2.595c.129 0 .234.105.234.234v4.153c0 .129-.105.234-.234.234h-.662c-.129 0-.234-.105-.234-.234v-4.153c0-.129.105-.234.234-.234zm5.323 0c.129 0 .234.105.234.234v4.153c0 .129-.105.234-.234.234h-.661c-.129 0-.234-.105-.234-.234v-2.566l-1.838 2.481c-.051.067-.131.107-.215.107h-.033c-.084 0-.164-.04-.215-.107l-1.838-2.481v2.566c0 .129-.105.234-.234.234h-.662c-.129 0-.234-.105-.234-.234v-4.153c0-.129.105-.234.234-.234h.66c.085 0 .165.04.216.109l2.081 2.811 2.081-2.811c.051-.069.131-.109.216-.109zm5.323 0c.129 0 .234.105.234.234v4.153c0 .129-.105.234-.234.234h-.662c-.129 0-.234-.105-.234-.234v-4.153c0-.129.105-.234.234-.234zm2.662 0c.129 0 .234.105.234.234v4.153c0 .129-.105.234-.234.234h-.662c-.129 0-.234-.105-.234-.234v-4.153c0-.129.105-.234.234-.234z"/></svg>
+                  </a>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <!-- Contact CTA Section -->
+      <section class="contact-cta-section">
+         <div class="contact-cta-container">
+            <span class="contact-cta-subtitle">IT導入補助金2025活用可能</span>
+            <h2 class="contact-cta-title">申請は完全丸投げOK！</h2>
+            <p class="contact-cta-lead">
+               UTAGEの導入で最大450万円の補助金が受けられます。<br class="pc-only">
+               面倒な申請手続きはすべてお任せください。<br class="pc-only">
+               あなたは事業成長に集中するだけでOKです。
+            </p>
+            <div class="contact-cta-buttons">
+               <a href="https://utage-marunage.com/it-hojo/" class="btn btn-contact">
+                  無料相談してみる
+               </a>
+               <a href="../document.html" class="btn btn-document">
+                  <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
+                  資料請求する
+               </a>
+            </div>
+         </div>
+      </section>
+   </main>
+
+   <footer class="site-footer">
+       <div class="footer-container">
+           <div class="footer-widgets">
+               <div class="widget-area footer-widget-1">
+                   <div class="site-logo-text" style="color: white; font-size: 24px; font-weight: bold; margin-bottom: 20px;">
+                       CLAN
+                   </div>
+               </div>
+               <div class="widget-area footer-widget-2">
+                   <h4>オンライン講座一覧</h4>
+                   <ul>
+                       <li><a href="../course/lp.html">ランディングページ作成初級講座</a></li>
+                       <li><a href="../course/video.html">動画編集初級講座</a></li>
+                       <li><a href="../course/step-mail.html">ステップメール設計初級講座</a></li>
+                       <li><a href="../course/auto-funnel.html">オートファネル構築初級講座</a></li>
+                       <li><a href="../course/youtube-thumbnail.html">Youtubeサムネ作成初級講座</a></li>
+                       <li><a href="../course/canva.html">Canvaデザイン初級講座</a></li>
+                   </ul>
+               </div>
+               <div class="widget-area footer-widget-3">
+                   <h4>便利コンテンツ</h4>
+                   <ul>
+                       <li><a href="../blog/index.html">ブログ</a></li>
+                       <li><a href="index.html">まえゆきツール</a></li>
+                       <li><a href="../book/index.html">電子書籍</a></li>
+                       <li><a href="../free-seminar.html">無料セミナー</a></li>
+                       <li><a href="../free-consultation.html">無料相談</a></li>
+                       <li><a href="../achievement/index.html">お客様の声</a></li>
+                   </ul>
+               </div>
+               <div class="widget-area footer-widget-4">
+                   <h4>運営情報</h4>
+                   <ul>
+                       <li><a href="../owner.html">運営者情報</a></li>
+                       <li><a href="../terms.html">利用規約</a></li>
+                       <li><a href="../privacy.html">プライバシーポリシー</a></li>
+                   </ul>
+               </div>
+           </div>
+           <div class="site-copyright">
+               <small>© 2025 オートファネル大学</small>
+           </div>
+       </div>
+   </footer>
+</body>
+</html>
