@@ -13,142 +13,343 @@
    
    <!-- クリティカルCSS インライン化 -->
    <style>
-     :root{--primary:#0066ff;--secondary:#ff3a3a;--accent:#ff9500;--dark-blue:#0d3283;--light-bg:#f8f9fa;--text-dark:#333;--text-mid:#555;--header-h:60px}*,::after,::before{box-sizing:border-box;margin:0;padding:0}body{font:16px/1.6 'Noto Sans JP',sans-serif;color:var(--text-dark);background:#fff;overflow-x:hidden;display:flex;flex-direction:column;min-height:100vh;-webkit-text-size-adjust:100%}img{max-width:100%;height:auto;vertical-align:middle;border:0}a{text-decoration:none;color:inherit}ul{list-style:none}main{flex:1 0 auto}.site-header{position:fixed;top:0;left:0;width:100%;z-index:1000;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.1);height:var(--header-h);display:flex;align-items:center}.header-container{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center;width:100%}.site-logo-text{font-weight:700;font-size:20px}.site-logo-text a{color:var(--dark-blue)}.hamburger-button{display:block;width:30px;height:30px;position:relative;z-index:1001;border:0;background:0;cursor:pointer}.hamburger-button span{display:block;position:absolute;width:100%;height:2px;background:var(--text-dark);left:0}.hamburger-button span:nth-child(1){top:8px}.hamburger-button span:nth-child(2){top:14px}.hamburger-button span:nth-child(3){bottom:8px}
+     :root{--primary:#4a6bdf;--secondary:#ff6b6b;--accent:#ffb347;--dark-blue:#28365f;--light-bg:#f4f7fa;--text-dark:#333;--text-mid:#555;--header-h:60px}*,::after,::before{box-sizing:border-box;margin:0;padding:0}body{font:16px/1.6 'Noto Sans JP',sans-serif;color:var(--text-dark);background:#fff;overflow-x:hidden;display:flex;flex-direction:column;min-height:100vh;-webkit-text-size-adjust:100%}img{max-width:100%;height:auto;vertical-align:middle;border:0}a{text-decoration:none;color:inherit}ul{list-style:none}main{flex:1 0 auto}.site-header{position:fixed;top:0;left:0;width:100%;z-index:1000;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.1);height:var(--header-h);display:flex;align-items:center}.header-container{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center;width:100%}.site-logo-text{font-weight:700;font-size:20px}.site-logo-text a{color:var(--dark-blue)}.hamburger-button{display:block;width:30px;height:30px;position:relative;z-index:1001;border:0;background:0;cursor:pointer}.hamburger-button span{display:block;position:absolute;width:100%;height:2px;background:var(--text-dark);left:0}.hamburger-button span:nth-child(1){top:8px}.hamburger-button span:nth-child(2){top:14px}.hamburger-button span:nth-child(3){bottom:8px}
 
-     /* ツールカード関連スタイル */
+     /* ツールセクション */
      .tools-section {
          padding: 80px 0 40px;
          margin-top: var(--header-h);
-         background: #f9f3e9;
+         background: var(--light-bg);
+         position: relative;
      }
+     
+     /* 背景デザイン要素 */
+     .tools-section::before {
+         content: "";
+         position: absolute;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background-image: radial-gradient(circle at 20% 20%, rgba(74, 107, 223, 0.05) 0%, transparent 50%),
+                          radial-gradient(circle at 80% 80%, rgba(255, 107, 107, 0.07) 0%, transparent 50%);
+         z-index: 0;
+     }
+     
      .tools-container {
          max-width: 1200px;
          margin: 0 auto;
          padding: 0 20px;
-     }
-     .tools-title {
-         font-size: 28px;
-         text-align: center;
-         margin-bottom: 1.5rem;
-         color: var(--text-dark);
-     }
-     .tools-subtitle {
-         text-align: center;
-         font-size: 16px;
-         margin-bottom: 2rem;
-         color: var(--text-mid);
-     }
-     .tools-grid {
-         display: flex;
-         flex-wrap: wrap;
-         justify-content: space-between;
-         gap: 20px;
-     }
-     .tool-card {
-         width: calc(33.333% - 14px);
-         margin-bottom: 20px;
-         background: #fff;
-         border-radius: 8px;
-         overflow: hidden;
-         box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-         transition: transform 0.3s ease, box-shadow 0.3s ease;
-     }
-     .tool-card:hover {
-         transform: translateY(-5px);
-         box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-     }
-     .tool-card-main {
          position: relative;
-         height: 140px;
+         z-index: 1;
+     }
+     
+     /* ヘッダー部分 */
+     .tools-header {
+         text-align: center;
+         margin-bottom: 50px;
+     }
+     
+     .tools-title {
+         font-size: 32px;
+         font-weight: 800;
+         margin-bottom: 1rem;
+         color: var(--dark-blue);
+         position: relative;
+         display: inline-block;
+     }
+     
+     .tools-title::after {
+         content: "";
+         display: block;
+         width: 70px;
+         height: 3px;
+         background: var(--secondary);
+         margin: 10px auto 0;
+         border-radius: 2px;
+     }
+     
+     .tools-subtitle {
+         font-size: 18px;
+         color: var(--text-mid);
+         max-width: 600px;
+         margin: 0 auto;
+     }
+     
+     /* ツールカードグリッド */
+     .tools-grid {
+         display: grid;
+         grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+         gap: 30px;
+     }
+     
+     /* ツールカードデザイン */
+     .tool-card {
+         background: #fff;
+         border-radius: 12px;
+         overflow: hidden;
+         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+         transition: all 0.3s ease;
          display: flex;
-         justify-content: center;
+         flex-direction: column;
+         height: 100%;
+         position: relative;
+     }
+     
+     .tool-card:hover {
+         transform: translateY(-8px);
+         box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+     }
+     
+     .tool-card::before {
+         content: "";
+         position: absolute;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 5px;
+         background: var(--primary);
+         z-index: 1;
+         transition: height 0.3s ease;
+     }
+     
+     .tool-card:hover::before {
+         height: 8px;
+     }
+     
+     .tool-card-inner {
+         padding: 25px;
+         display: flex;
+         flex-direction: column;
+         height: 100%;
+     }
+     
+     .tool-icon {
+         width: 60px;
+         height: 60px;
+         background: var(--light-bg);
+         border-radius: 50%;
+         display: flex;
          align-items: center;
-         padding: 20px;
+         justify-content: center;
+         margin-bottom: 20px;
+     }
+     
+     .tool-icon svg {
+         width: 30px;
+         height: 30px;
+         fill: var(--primary);
+     }
+     
+     /* アイコンカラーバリエーション */
+     .tool-card:nth-child(2n) .tool-icon svg {
+         fill: var(--secondary);
+     }
+     
+     .tool-card:nth-child(3n) .tool-icon svg {
+         fill: var(--accent);
+     }
+     
+     .tool-card:nth-child(2n)::before {
+         background: var(--secondary);
+     }
+     
+     .tool-card:nth-child(3n)::before {
+         background: var(--accent);
+     }
+     
+     .tool-card-title {
+         font-size: 22px;
+         font-weight: 700;
+         margin-bottom: 10px;
+         color: var(--dark-blue);
+     }
+     
+     .tool-card-desc {
+         font-size: 15px;
+         color: var(--text-mid);
+         line-height: 1.6;
+         margin-bottom: 15px;
+         flex-grow: 1;
+     }
+     
+     .tool-link-button {
+         display: inline-flex;
+         align-items: center;
+         padding: 8px 0;
+         font-weight: 600;
+         font-size: 14px;
+         color: var(--primary);
+         transition: all 0.3s ease;
+         position: relative;
+     }
+     
+     .tool-link-button::after {
+         content: "";
+         position: absolute;
+         bottom: 6px;
+         left: 0;
+         width: 0;
+         height: 2px;
+         background: currentColor;
+         transition: width 0.3s ease;
+     }
+     
+     .tool-link-button:hover::after {
+         width: 100%;
+     }
+     
+     .tool-link-button svg {
+         width: 14px;
+         height: 14px;
+         margin-left: 5px;
+         transition: transform 0.3s ease;
+     }
+     
+     .tool-link-button:hover svg {
+         transform: translateX(3px);
+     }
+     
+     /* ツール説明エリア */
+     .tools-description {
+         background: #fff;
+         border-radius: 12px;
+         padding: 40px;
+         margin-top: 60px;
+         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+         position: relative;
+     }
+     
+     .tools-description::before {
+         content: "";
+         position: absolute;
+         top: 0;
+         left: 25px;
+         width: 40px;
+         height: 5px;
+         background: var(--primary);
+         border-radius: 0 0 3px 3px;
+     }
+     
+     .description-title {
+         font-size: 24px;
+         color: var(--dark-blue);
+         margin-bottom: 20px;
+         font-weight: 700;
+     }
+     
+     .description-text {
+         font-size: 16px;
+         line-height: 1.8;
+         color: var(--text-mid);
+         margin-bottom: 15px;
+     }
+     
+     /* シェアセクション */
+     .share-section {
+         margin: 60px 0 20px;
          text-align: center;
      }
-     .tool-card-title {
+     
+     .share-title {
+         position: relative;
+         display: inline-block;
          font-size: 18px;
          font-weight: 700;
-         margin-bottom: 8px;
-     }
-     .tool-card-desc {
-         font-size: 14px;
-         color: var(--text-mid);
+         color: var(--dark-blue);
+         margin-bottom: 20px;
      }
      
-     /* カラーバリエーション */
-     .tool-card:nth-child(6n+1) .tool-card-main { background: #d2eaf9; }
-     .tool-card:nth-child(6n+2) .tool-card-main { background: #f8cca9; }
-     .tool-card:nth-child(6n+3) .tool-card-main { background: #bae2db; }
-     .tool-card:nth-child(6n+4) .tool-card-main { background: #f3eaa3; }
-     .tool-card:nth-child(6n+5) .tool-card-main { background: #e2d3f4; }
-     .tool-card:nth-child(6n+6) .tool-card-main { background: #ffcccc; }
-     
-     /* シェアボタン */
-     .share-section {
-         margin: 40px 0;
-         text-align: center;
-     }
-     .share-title {
-         display: inline-block;
-         position: relative;
-         padding: 0 30px;
-         margin-bottom: 15px;
-         font-size: 16px;
-         font-weight: 700;
-     }
-     .share-title:before, .share-title:after {
+     .share-title::before,
+     .share-title::after {
          content: "";
          position: absolute;
          top: 50%;
-         width: 20px;
-         height: 2px;
-         background: var(--text-dark);
+         width: 30px;
+         height: 1px;
+         background: var(--text-mid);
      }
-     .share-title:before {
-         left: 0;
-         transform: rotate(50deg);
+     
+     .share-title::before {
+         left: -40px;
      }
-     .share-title:after {
-         right: 0;
-         transform: rotate(-50deg);
+     
+     .share-title::after {
+         right: -40px;
      }
+     
      .share-buttons {
          display: flex;
          justify-content: center;
          gap: 15px;
      }
+     
      .share-button {
          display: flex;
          align-items: center;
          justify-content: center;
-         width: 40px;
-         height: 40px;
+         width: 45px;
+         height: 45px;
          border-radius: 50%;
-         transition: transform 0.2s;
+         transition: all 0.3s ease;
+         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
      }
+     
      .share-button:hover {
-         transform: scale(1.1);
+         transform: translateY(-3px) scale(1.05);
+         box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
      }
+     
      .share-twitter { background: #1DA1F2; }
      .share-facebook { background: #1877F2; }
      .share-line { background: #06C755; }
      
      /* レスポンシブ対応 */
      @media (max-width: 992px) {
-         .tool-card {
-             width: calc(50% - 10px);
+         .tools-grid {
+             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+             gap: 25px;
+         }
+         
+         .tools-description {
+             padding: 30px;
          }
      }
-     @media (max-width: 576px) {
+     
+     @media (max-width: 768px) {
          .tools-section {
-             padding: 70px 0 30px;
+             padding: 60px 0 30px;
          }
-         .tool-card {
-             width: 100%;
-         }
+         
          .tools-title {
-             font-size: 24px;
+             font-size: 28px;
+         }
+         
+         .tools-subtitle {
+             font-size: 16px;
+         }
+         
+         .tools-description {
+             padding: 25px;
+         }
+     }
+     
+     @media (max-width: 480px) {
+         .tools-grid {
+             grid-template-columns: 1fr;
+         }
+         
+         .tool-card-inner {
+             padding: 20px;
+         }
+         
+         .tools-description {
+             padding: 20px;
+             margin-top: 40px;
+         }
+         
+         .description-title {
+             font-size: 20px;
          }
      }
    </style>
@@ -228,91 +429,148 @@
       <!-- ツールセクション -->
       <section class="tools-section">
          <div class="tools-container">
-            <h1 class="tools-title">まえゆきツール集</h1>
-            <p class="tools-subtitle">登録不要・無料で今すぐ使えるWebツール集です</p>
+            <div class="tools-header">
+               <h1 class="tools-title">まえゆきツール集</h1>
+               <p class="tools-subtitle">登録不要・無料で今すぐ使える、あなたの作業を効率化するWebツール</p>
+            </div>
 
             <div class="tools-grid">
                <!-- カウントダウンタイマー -->
                <a href="./countdown/index.html" class="tool-card">
-                  <div class="tool-card-main">
-                     <div class="tool-card-content">
-                        <h2 class="tool-card-title">Webでカウントダウン</h2>
-                        <p class="tool-card-desc">無料で使えるカウントダウン・タイマー</p>
+                  <div class="tool-card-inner">
+                     <div class="tool-icon">
+                        <svg viewBox="0 0 24 24">
+                           <path d="M12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22C6.47,22 2,17.5 2,12A10,10 0 0,1 12,2M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z"/>
+                        </svg>
+                     </div>
+                     <h2 class="tool-card-title">カウントダウンタイマー</h2>
+                     <p class="tool-card-desc">イベントやプロジェクトまでの残り時間をカウントダウン表示する無料ツールです。日付や時間を設定して、URLでシェアできます。</p>
+                     <div class="tool-link-button">
+                        今すぐ使ってみる
+                        <svg viewBox="0 0 24 24">
+                           <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"/>
+                        </svg>
                      </div>
                   </div>
                </a>
 
                <!-- 画像サイズ変更 -->
                <a href="./image-resize/index.html" class="tool-card">
-                  <div class="tool-card-main">
-                     <div class="tool-card-content">
-                        <h2 class="tool-card-title">画像サイズ変更</h2>
-                        <p class="tool-card-desc">Web上で画像をリサイズ</p>
+                  <div class="tool-card-inner">
+                     <div class="tool-icon">
+                        <svg viewBox="0 0 24 24">
+                           <path d="M15,3H3V21H15V3M9,13H7V11H9V13M13,13H11V11H13V13M9,9H7V7H9V9M13,9H11V7H13V9M21,11V5H17V11H21M21,19V13H17V19H21Z"/>
+                        </svg>
+                     </div>
+                     <h2 class="tool-card-title">画像サイズ変更</h2>
+                     <p class="tool-card-desc">Web上で簡単に画像のサイズを変更できるツールです。一括リサイズや高さ/幅の指定も可能で、画質も調整できます。</p>
+                     <div class="tool-link-button">
+                        今すぐ使ってみる
+                        <svg viewBox="0 0 24 24">
+                           <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"/>
+                        </svg>
                      </div>
                   </div>
                </a>
 
                <!-- PNG→JPEG変換 -->
                <a href="./png-to-jpeg/index.html" class="tool-card">
-                  <div class="tool-card-main">
-                     <div class="tool-card-content">
-                        <h2 class="tool-card-title">PNG→JPEG変換</h2>
-                        <p class="tool-card-desc">PNG画像をJPEGに一括変換</p>
+                  <div class="tool-card-inner">
+                     <div class="tool-icon">
+                        <svg viewBox="0 0 24 24">
+                           <path d="M19,19H5V5H19M19,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M13.96,12.29L11.21,15.83L9.25,13.47L6.5,17H17.5L13.96,12.29Z"/>
+                        </svg>
+                     </div>
+                     <h2 class="tool-card-title">PNG→JPEG変換</h2>
+                     <p class="tool-card-desc">透明なPNG画像をJPEG形式に一括変換できるツールです。背景色の指定やJPEG品質の調整も簡単に行えます。</p>
+                     <div class="tool-link-button">
+                        今すぐ使ってみる
+                        <svg viewBox="0 0 24 24">
+                           <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"/>
+                        </svg>
                      </div>
                   </div>
                </a>
 
                <!-- ミームジェネレーター -->
                <a href="./meme-generator/index.html" class="tool-card">
-                  <div class="tool-card-main">
-                     <div class="tool-card-content">
-                        <h2 class="tool-card-title">ミームジェネレーター</h2>
-                        <p class="tool-card-desc">画像にテキストを追加してミーム作成</p>
+                  <div class="tool-card-inner">
+                     <div class="tool-icon">
+                        <svg viewBox="0 0 24 24">
+                           <path d="M12,23A1,1 0 0,1 11,22V19H7A2,2 0 0,1 5,17V7A2,2 0 0,1 7,5H21A2,2 0 0,1 23,7V17A2,2 0 0,1 21,19H16.9L13.2,22.71C13,22.89 12.76,23 12.5,23H12M3,15H1V3A2,2 0 0,1 3,1H19V3H3V15Z"/>
+                        </svg>
+                     </div>
+                     <h2 class="tool-card-title">ミームジェネレーター</h2>
+                     <p class="tool-card-desc">画像に上下テキストを追加してオリジナルのミーム画像を作成できます。フォントサイズや色も自由に変更可能です。</p>
+                     <div class="tool-link-button">
+                        今すぐ使ってみる
+                        <svg viewBox="0 0 24 24">
+                           <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"/>
+                        </svg>
                      </div>
                   </div>
                </a>
 
                <!-- WebP画像へ変換 -->
                <a href="./png-jpeg-to-webp/index.html" class="tool-card">
-                  <div class="tool-card-main">
-                     <div class="tool-card-content">
-                        <h2 class="tool-card-title">WebP画像へ変換</h2>
-                        <p class="tool-card-desc">JPEGやPNGをWebPに変換</p>
+                  <div class="tool-card-inner">
+                     <div class="tool-icon">
+                        <svg viewBox="0 0 24 24">
+                           <path d="M13,9H18.5L13,3.5V9M6,2H14L20,8V20A2,2 0 0,1 18,22H6A2,2 0 0,1 4,20V4A2,2 0 0,1 6,2M6,20H15V18H6V20M6,17H18V15H6V17M6,14H18V12H6V14Z"/>
+                        </svg>
+                     </div>
+                     <h2 class="tool-card-title">WebP変換ツール</h2>
+                     <p class="tool-card-desc">JPEGやPNG画像を次世代フォーマットのWebPに変換するツールです。ファイルサイズを大幅に削減しながら画質を維持します。</p>
+                     <div class="tool-link-button">
+                        今すぐ使ってみる
+                        <svg viewBox="0 0 24 24">
+                           <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"/>
+                        </svg>
                      </div>
                   </div>
                </a>
 
                <!-- 文字数カウント -->
                <a href="./letters-counter/index.html" class="tool-card">
-                  <div class="tool-card-main">
-                     <div class="tool-card-content">
-                        <h2 class="tool-card-title">文字数カウント</h2>
-                        <p class="tool-card-desc">ただ文字をカウントするだけのツール</p>
+                  <div class="tool-card-inner">
+                     <div class="tool-icon">
+                        <svg viewBox="0 0 24 24">
+                           <path d="M3,5H9V11H3V5M5,7V9H7V7H5M11,7H21V9H11V7M11,15H21V17H11V15M5,13V15H7V13H5M3,13H9V19H3V13M14,11H11V9H14V11M14,19V17H11V19H14M16,11H19V19H16V11Z"/>
+                        </svg>
+                     </div>
+                     <h2 class="tool-card-title">文字数カウント</h2>
+                     <p class="tool-card-desc">テキストの文字数や行数を即座にカウントする便利ツールです。空白や改行を除外した文字数も同時に表示します。</p>
+                     <div class="tool-link-button">
+                        今すぐ使ってみる
+                        <svg viewBox="0 0 24 24">
+                           <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"/>
+                        </svg>
                      </div>
                   </div>
                </a>
             </div>
 
             <!-- ツール説明エリア -->
-            <div style="margin-top: 50px; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
-               <h2 style="margin-bottom: 15px; font-size: 20px;">まえゆきツールについて</h2>
-               <p style="margin-bottom: 15px; line-height: 1.6;">
-                  まえゆきツールは、Web上で手軽に使える便利なオンラインツール集です。
-                  アカウント登録や複雑な操作は一切不要で、どなたでも簡単にお使いいただけます。
+            <div class="tools-description">
+               <h2 class="description-title">まえゆきツールについて</h2>
+               <p class="description-text">
+                  まえゆきツールは、日常のWeb作業をもっと効率的に、より便利にするためのオンラインツール集です。
+                  アカウント登録や複雑な設定は一切不要で、どなたでも簡単にブラウザ上ですぐに利用できます。
                </p>
-               <p style="margin-bottom: 15px; line-height: 1.6;">
-                  画像変換や文字数カウント、カウントダウンタイマーなど、
-                  日常的に使える実用的なツールを無料で提供しています。
+               <p class="description-text">
+                  すべてのツールはブラウザ上で直接処理を行うため、サーバーにデータが送信されることはなく、
+                  プライバシーも安全に保たれます。画像変換や文字数カウント、カウントダウンタイマーなど、
+                  さまざまな用途に対応したツールを無料でご提供しています。
                </p>
-               <p style="line-height: 1.6;">
-                  定期的に新しいツールを追加していく予定ですので、
-                  お気に入りに登録して定期的にチェックしてみてください。
+               <p class="description-text">
+                  今後も定期的に新しいツールを追加予定ですので、ブックマークに登録してぜひ活用してください。
+                  また、ご要望やフィードバックがございましたら、お気軽にお知らせください。
                </p>
             </div>
 
             <!-- シェアボタンセクション -->
             <div class="share-section">
-               <div class="share-title">シェア</div>
+               <div class="share-title">シェアする</div>
                <div class="share-buttons">
                   <a href="https://twitter.com/share?url=https://yourdomain.com/tools/&text=%E3%81%BE%E3%81%88%E3%82%86%E3%81%8D%E3%83%84%E3%83%BC%E3%83%AB%EF%BD%9CWeb%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%81%A7%E4%BB%8A%E3%81%99%E3%81%90%E4%BD%BF%E3%81%88%E3%82%8B%E3%83%84%E3%83%BC%E3%83%AB%E9%9B%86" target="_blank" rel="nofollow noopener noreferrer" class="share-button share-twitter">
                      <svg width="20" height="20" fill="#fff" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>

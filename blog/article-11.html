@@ -1034,37 +1034,70 @@
     </style>
 </head>
 <body>
-    <!-- Header（トップページからコピー） -->
-    <header class="site-header">
-        <div class="header-container">
-            <div class="site-logo">
-                <a href="../index.html"><img src="../images/logo.webp" alt="オートファネル大学 ロゴ"></a>
-            </div>
-            <nav class="global-nav pc-nav">
-                <ul>
-                    <li><a href="../index.html">ホーム</a></li>
-                    <li><a href="../course/index.html">オートファネル大学とは</a></li>
-                    <li><a href="index.html">ブログ</a></li> <!-- ブログトップへのリンク -->
-                    <li><a href="../seminar/index.html">オンライン講座</a></li>
-                    <li><a href="../achievement/index.html" class="btn-nav btn-red">受講生実績</a></li>
-                    <li><a href="../free-seminar.html" class="btn-nav btn-blue">無料セミナー</a></li>
-                </ul>
-            </nav>
-            <button class="hamburger-button sp-nav" aria-label="メニューを開く"><span></span><span></span><span></span></button>
-             <!-- モバイル用ナビゲーション（非表示にしておき、JSで出し分け） -->
-             <nav class="global-nav sp-nav">
-                 <ul>
-                     <li><a href="../index.html">ホーム</a></li>
-                     <li><a href="../course/index.html">オートファネル大学とは</a></li>
-                     <li><a href="index.html">ブログ</a></li> <!-- ブログトップへのリンク -->
-                     <li><a href="../seminar/index.html">オンライン講座</a></li>
-                     <li><a href="../achievement/index.html" class="btn-nav btn-red">受講生実績</a></li>
-                     <li><a href="../free-seminar.html" class="btn-nav btn-blue">無料セミナー</a></li>
-                 </ul>
-             </nav>
+   <!-- ヘッダー -->
+<header class="site-header">
+    <div class="header-container">
+        <div class="site-logo-text">
+            <a href="index.html">CLAN</a>
         </div>
-    </header>
-    <!-- /Headerここまで -->
+        <nav class="global-nav pc-nav">
+            <ul>
+                <li><a href="index.html" aria-current="page">ホーム</a></li>
+                <li><a href="about.html">オートファネル大学とは</a></li>
+                <li><a href="blog/index.html">ブログ</a></li>
+                <li><a href="seminar/index.html">オンライン講座</a></li>
+                <li><a href="tools/index.html">まえゆきツール</a></li>
+                <li><a href="achievement/index.html">お客様の声</a></li>
+            </ul>
+        </nav>
+        <div class="header-cta">
+            <a href="document.html" class="btn-document">
+                <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
+                資料請求する
+            </a>
+            <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
+                まずは相談する
+            </a>
+        </div>
+        <button class="hamburger-button sp-nav" aria-label="メニューを開く">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</header>
+
+<!-- モバイルメニュー（JavaScript で動的に生成される場合はこのコードは不要） -->
+<div class="mobile-menu">
+    <nav>
+        <ul>
+            <li><a href="index.html">ホーム</a></li>
+            <li><a href="about.html">オートファネル大学とは</a></li>
+            <li><a href="blog/index.html">ブログ</a></li>
+            <li><a href="seminar/index.html">オンライン講座</a></li>
+            <li><a href="tools/index.html">まえゆきツール</a></li>
+            <li><a href="achievement/index.html">お客様の声</a></li>
+        </ul>
+    </nav>
+    <div class="mobile-cta">
+        <a href="document.html" class="btn-document">
+            <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
+            資料請求する
+        </a>
+        <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
+            まずは相談する
+        </a>
+    </div>
+</div>
+
+<!-- スマホ用フッター固定CTA - 画像を削除 -->
+<div class="sp-fix-cta">
+    <ul>
+        <li class="mail"><a href="https://utage-marunage.com/it-hojo/">まずは相談する</a></li>
+        <li class="book"><a href="document.html">資料請求する</a></li>
+    </ul>
+</div>
+
 
     <main class="site-main">
         <div class="page-container">

@@ -59,45 +59,70 @@
 </svg>
 
 
-    <header class="site-header">
-        <div class="header-container">
-            <!-- ロゴ画像を削除し、テキストリンクに変更 -->
-            <div class="site-logo-text">
-                <a href="../index.html">CLAN</a> <!-- index.htmlへのパスを親ディレクトリに修正 -->
-            </div>
-            <nav class="global-nav pc-nav">
-                <ul>
-                    <li><a href="../index.html">ホーム</a></li> <!-- パスを親ディレクトリに修正 -->
-                    <li><a href="../about.html">オートファネル大学とは</a></li> <!-- パスを親ディレクトリに修正 -->
-                    <li><a href="index.html" aria-current="page">ブログ</a></li> <!-- 現在ページ -->
-                    <li><a href="../seminar/index.html">オンライン講座</a></li> <!-- パスを親ディレクトリに修正 -->
-                    <li><a href="../achievement/index.html">お客様の声</a></li> <!-- パスを親ディレクトリに修正 -->
-                </ul>
-            </nav>
-            <div class="header-cta">
-                <a href="../document.html" class="btn-document"> <!-- パスを親ディレクトリに修正 -->
-                     <svg><use xlink:href="#icon-pdf"></use></svg>
-                    資料請求する
-                </a>
-                <!-- ヘッダーの「無料」ラベルは削除 -->
-                <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
-                    まずは相談する
-                </a>
-            </div>
-            <button class="hamburger-button sp-nav" aria-label="メニューを開く"><span></span><span></span><span></span></button>
-             <!-- スマホ用ナビゲーションメニュー（表示/非表示はJS/CSSで制御） -->
-             <!-- 必要に応じてここにメニューコンテンツを記述 -->
+    <!-- ヘッダー -->
+<header class="site-header">
+    <div class="header-container">
+        <div class="site-logo-text">
+            <a href="index.html">CLAN</a>
         </div>
-    </header>
-    <!-- / ヘッダー -->
-
-    <!-- スマホ用フッター固定CTA -->
-    <div class="sp-fix-cta">
-        <ul>
-            <li class="mail"><a href="https://utage-marunage.com/it-hojo/">まずは相談する <img src="../images/icon-mail.svg" alt=""></a></li> <!-- パスを親ディレクトリに修正 -->
-            <li class="book"><a href="../document.html">資料請求する <svg><use xlink:href="#icon-pdf"></use></svg></a></li> <!-- パスを親ディレクトリに修正 -->
-        </ul>
+        <nav class="global-nav pc-nav">
+            <ul>
+                <li><a href="index.html" aria-current="page">ホーム</a></li>
+                <li><a href="about.html">オートファネル大学とは</a></li>
+                <li><a href="blog/index.html">ブログ</a></li>
+                <li><a href="seminar/index.html">オンライン講座</a></li>
+                <li><a href="tools/index.html">まえゆきツール</a></li>
+                <li><a href="achievement/index.html">お客様の声</a></li>
+            </ul>
+        </nav>
+        <div class="header-cta">
+            <a href="document.html" class="btn-document">
+                <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
+                資料請求する
+            </a>
+            <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
+                まずは相談する
+            </a>
+        </div>
+        <button class="hamburger-button sp-nav" aria-label="メニューを開く">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </div>
+</header>
+
+<!-- モバイルメニュー（JavaScript で動的に生成される場合はこのコードは不要） -->
+<div class="mobile-menu">
+    <nav>
+        <ul>
+            <li><a href="index.html">ホーム</a></li>
+            <li><a href="about.html">オートファネル大学とは</a></li>
+            <li><a href="blog/index.html">ブログ</a></li>
+            <li><a href="seminar/index.html">オンライン講座</a></li>
+            <li><a href="tools/index.html">まえゆきツール</a></li>
+            <li><a href="achievement/index.html">お客様の声</a></li>
+        </ul>
+    </nav>
+    <div class="mobile-cta">
+        <a href="document.html" class="btn-document">
+            <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
+            資料請求する
+        </a>
+        <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
+            まずは相談する
+        </a>
+    </div>
+</div>
+
+<!-- スマホ用フッター固定CTA - 画像を削除 -->
+<div class="sp-fix-cta">
+    <ul>
+        <li class="mail"><a href="https://utage-marunage.com/it-hojo/">まずは相談する</a></li>
+        <li class="book"><a href="document.html">資料請求する</a></li>
+    </ul>
+</div>
+
 
 
     <!-- メインコンテンツ -->
