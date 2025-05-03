@@ -9,7 +9,7 @@
    <!-- リソースの先読み -->
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link rel="preload" href="images/hero-bg.webp" as="image" fetchpriority="high">
+   <link rel="preload" href="/images/hero-bg.webp" as="image" fetchpriority="high">
    
    <!-- クリティカルCSS インライン化 -->
    <style>
@@ -17,96 +17,37 @@
    </style>
    
    <!-- 非クリティカルCSSは非同期ロード -->
-   <link rel="stylesheet" href="css/style.css" media="print" onload="this.media='all'">
+   <link rel="stylesheet" href="/css/style.css" media="print" onload="this.media='all'">
+   
+   <!-- ベースURL設定 -->
+   <base href="/">
    
    <!-- JavaScriptの遅延ロード -->
-   <script src="js/script.js" defer></script>
+   <script src="/js/script.js" defer></script>
+   
+   <!-- 共通部分読み込み用のスクリプト -->
+   <script src="/js/include.js" defer></script>
    
    <!-- フォールバック -->
    <noscript>
      <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
-     <link rel="stylesheet" href="css/style.css">
+     <link rel="stylesheet" href="/css/style.css">
+     <div style="background-color: #f8d7da; color: #721c24; padding: 10px; margin: 10px 0; border-radius: 5px;">
+       このサイトの機能を全て利用するには、JavaScriptを有効にしてください。
+     </div>
    </noscript>
    
-   <link rel="icon" href="images/favicon.ico">
+   <link rel="icon" href="/images/favicon.ico">
    <meta property="og:title" content="オートファネル大学 | マーケティング自動化と効率化を学ぶ">
    <meta property="og:description" content="オートファネル大学は、マーケティング自動化と効率化を学ぶオンライン教育プラットフォームです。自動で売上を生む仕組みを構築するスキルを習得できます。">
-   <meta property="og:image" content="images/ogp_image_index.webp">
+   <meta property="og:image" content="/images/ogp_image_index.webp">
    <meta property="og:type" content="website">
 </head>
 <body>
-   <!-- SVG Symbol Definition (必要最小限) -->
-   <svg aria-hidden="true" style="position:absolute;width:0;height:0">
-       <symbol id="icon-pdf" viewBox="0 0 512 512">
-           <path d="M378.4 0H195.1l-9.3 9.3L57 138.1l-9.3 9.3v13.2v265.5c0 47.4 38.5 85.9 85.9 85.9h244.8c47.4 0 85.9-38.5 85.9-85.9V85.9C464.3 38.5 425.8 0 378.4 0zM432.5 426.1c0 29.9-24.2 54.1-54.1 54.1H133.6c-29.9 0-54.1-24.2-54.1-54.1V160.6h83.7c24.9 0 45.1-20.2 45.1-45.1V31.8h170.1c29.9 0 54.1 24.2 54.1 54.1V426.1z"/>
-           <path d="M172 252.8h-28.5c-5.4 0-8.7 3.5-8.7 8.8v73.8c0 6.4 4.2 10.6 10 10.6c5.7 0 9.9-4.2 9.9-10.6v-22.4c0-0.5 0.3-0.8 0.8-0.8h16.4c20.1 0 32.2-12.2 32.2-29.6C204.1 264.9 192.2 252.8 172 252.8zM170.7 294.9h-15.2c-0.5 0-0.8-0.3-0.8-0.8v-23.2c0-0.5 0.3-0.8 0.8-0.8h15.2c8.4 0 13.4 5 13.4 12.5C184.2 290 179.1 294.9 170.7 294.9z"/>
-           <path d="M361.2 252.8h-44.8c-5.4 0-8.7 3.5-8.7 8.8v73.8c0 6.4 4.2 10.6 10.1 10.6c5.7 0 9.9-4.2 9.9-10.6v-26.4c0-0.5 0.3-0.8 0.8-0.8h26.1c5.8 0 9.2-3.5 9.2-8.6c0-5-3.4-8.6-9.2-8.6h-26.1c-0.5 0-0.8-0.3-0.8-0.8v-19.4c0-0.5 0.3-0.8 0.8-0.8h32.7c5.6 0 9.2-3.7 9.2-8.6C370.4 256.5 366.7 252.8 361.2 252.8z"/>
-       </symbol>
-   </svg>
-
-  <!-- ヘッダー -->
-<header class="site-header">
-    <div class="header-container">
-        <div class="site-logo-text">
-            <a href="index.html">CLAN</a>
-        </div>
-        <nav class="global-nav pc-nav">
-            <ul>
-                <li><a href="index.html" aria-current="page">ホーム</a></li>
-                <li><a href="about.html">オートファネル大学とは</a></li>
-                <li><a href="blog/index.html">ブログ</a></li>
-                <li><a href="seminar/index.html">オンライン講座</a></li>
-                <li><a href="tools/index.html">まえゆきツール</a></li>
-                <li><a href="achievement/index.html">お客様の声</a></li>
-            </ul>
-        </nav>
-        <div class="header-cta">
-            <a href="document.html" class="btn-document">
-                <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
-                資料請求する
-            </a>
-            <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
-                まずは相談する
-            </a>
-        </div>
-        <button class="hamburger-button sp-nav" aria-label="メニューを開く">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    </div>
-</header>
-
-<!-- モバイルメニュー（JavaScript で動的に生成される場合はこのコードは不要） -->
-<div class="mobile-menu">
-    <nav>
-        <ul>
-            <li><a href="index.html">ホーム</a></li>
-            <li><a href="about.html">オートファネル大学とは</a></li>
-            <li><a href="blog/index.html">ブログ</a></li>
-            <li><a href="seminar/index.html">オンライン講座</a></li>
-            <li><a href="tools/index.html">まえゆきツール</a></li>
-            <li><a href="achievement/index.html">お客様の声</a></li>
-        </ul>
-    </nav>
-    <div class="mobile-cta">
-        <a href="document.html" class="btn-document">
-            <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
-            資料請求する
-        </a>
-        <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
-            まずは相談する
-        </a>
-    </div>
-</div>
-
-<!-- スマホ用フッター固定CTA - 画像を削除 -->
-<div class="sp-fix-cta">
-    <ul>
-        <li class="mail"><a href="https://utage-marunage.com/it-hojo/">まずは相談する</a></li>
-        <li class="book"><a href="document.html">資料請求する</a></li>
-    </ul>
-</div>
+   <!-- SVG Definitionsはcommon/svg-defs.htmlへ移動 -->
+   
+   <!-- ヘッダープレースホルダー -->
+   <div id="header-placeholder"></div>
 
    <main class="site-main">
        <!-- Hero Section -->
@@ -125,7 +66,7 @@
                        <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
                            まずは相談する
                        </a>
-                       <a href="document.html" class="btn-document">
+                       <a href="/document.html" class="btn-document">
                            <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
                            資料請求する
                        </a>
@@ -143,10 +84,10 @@
 
            <div class="achievement-card-list">
                <div class="achievement-card">
-                   <a href="achievement/customer1.html">
+                   <a href="/achievement/customer1.html">
                        <img 
-                         src="images/achieve-1.webp" 
-                         srcset="images/achieve-1-small.webp 300w, images/achieve-1.webp 600w" 
+                         src="/images/achieve-1.webp" 
+                         srcset="/images/achieve-1-small.webp 300w, /images/achieve-1.webp 600w" 
                          sizes="(max-width: 600px) 300px, 600px" 
                          alt="実績1" 
                          width="300" 
@@ -158,10 +99,10 @@
                    </a>
                </div>
                <div class="achievement-card">
-                   <a href="achievement/customer2.html">
+                   <a href="/achievement/customer2.html">
                        <img 
-                         src="images/achieve-2.webp" 
-                         srcset="images/achieve-2-small.webp 300w, images/achieve-2.webp 600w" 
+                         src="/images/achieve-2.webp" 
+                         srcset="/images/achieve-2-small.webp 300w, /images/achieve-2.webp 600w" 
                          sizes="(max-width: 600px) 300px, 600px" 
                          alt="実績2" 
                          width="300" 
@@ -173,10 +114,10 @@
                    </a>
                </div>
                <div class="achievement-card">
-                   <a href="achievement/customer3.html">
+                   <a href="/achievement/customer3.html">
                        <img 
-                         src="images/achieve-3.webp" 
-                         srcset="images/achieve-3-small.webp 300w, images/achieve-3.webp 600w" 
+                         src="/images/achieve-3.webp" 
+                         srcset="/images/achieve-3-small.webp 300w, /images/achieve-3.webp 600w" 
                          sizes="(max-width: 600px) 300px, 600px" 
                          alt="実績3" 
                          width="300" 
@@ -188,10 +129,10 @@
                    </a>
                </div>
                <div class="achievement-card">
-                   <a href="achievement/customer4.html">
+                   <a href="/achievement/customer4.html">
                        <img 
-                         src="images/achieve-4.webp" 
-                         srcset="images/achieve-4-small.webp 300w, images/achieve-4.webp 600w" 
+                         src="/images/achieve-4.webp" 
+                         srcset="/images/achieve-4-small.webp 300w, /images/achieve-4.webp 600w" 
                          sizes="(max-width: 600px) 300px, 600px" 
                          alt="実績4" 
                          width="300" 
@@ -203,10 +144,10 @@
                    </a>
                </div>
                <div class="achievement-card">
-                   <a href="achievement/customer5.html">
+                   <a href="/achievement/customer5.html">
                        <img 
-                         src="images/achieve-5.webp" 
-                         srcset="images/achieve-5-small.webp 300w, images/achieve-5.webp 600w" 
+                         src="/images/achieve-5.webp" 
+                         srcset="/images/achieve-5-small.webp 300w, /images/achieve-5.webp 600w" 
                          sizes="(max-width: 600px) 300px, 600px" 
                          alt="実績5" 
                          width="300" 
@@ -220,8 +161,8 @@
                <div class="achievement-card">
                    <a href="https://utage-system.com/p/EcESO02xLLoK">
                        <img 
-                         src="images/achieve-6.webp" 
-                         srcset="images/achieve-6-small.webp 300w, images/achieve-6.webp 600w" 
+                         src="/images/achieve-6.webp" 
+                         srcset="/images/achieve-6-small.webp 300w, /images/achieve-6.webp 600w" 
                          sizes="(max-width: 600px) 300px, 600px" 
                          alt="実績6" 
                          width="300" 
@@ -252,8 +193,8 @@
                <div class="course-card">
                    <div class="course-image">
                        <img 
-                         src="images/course-lp.webp" 
-                         srcset="images/course-lp-small.webp 300w, images/course-lp.webp 600w" 
+                         src="/images/course-lp.webp" 
+                         srcset="/images/course-lp-small.webp 300w, /images/course-lp.webp 600w" 
                          sizes="(max-width: 600px) 300px, 600px" 
                          alt="ランディングページ作成初級講座" 
                          width="300" 
@@ -266,7 +207,7 @@
                    <div class="course-content">
                        <h3 class="course-title">ランディングページ作成初級講座</h3>
                        <p class="course-description">「なぜ売れないの？」その悩み、LPが原因かもしれません。本講座では、購入ボタンをクリックしたくなる「売れるLP」の法則を徹底解説。もうWebデザイナーに依頼する必要はありません。</p>
-                       <a href="course/lp.html" class="course-button">Coming Soon</a>
+                       <a href="/course/lp.html" class="course-button">Coming Soon</a>
                    </div>
                </div>
 
@@ -274,8 +215,8 @@
                <div class="course-card">
                    <div class="course-image">
                        <img 
-                         src="images/course-video.webp" 
-                         srcset="images/course-video-small.webp 300w, images/course-video.webp 600w" 
+                         src="/images/course-video.webp" 
+                         srcset="/images/course-video-small.webp 300w, /images/course-video.webp 600w" 
                          sizes="(max-width: 600px) 300px, 600px" 
                          alt="動画編集初級講座" 
                          width="300" 
@@ -288,7 +229,7 @@
                    <div class="course-content">
                        <h3 class="course-title">動画編集初級講座</h3>
                        <p class="course-description">「最後まで見てもらえない…」そんな悩みを解決する動画マーケティングスキルを習得。冒頭10秒で視聴者を惹きつける方法から、商品購入へと導くストーリー設計まで。</p>
-                       <a href="course/video.html" class="course-button">Coming Soon</a>
+                       <a href="/course/video.html" class="course-button">Coming Soon</a>
                    </div>
                </div>
 
@@ -296,8 +237,8 @@
                <div class="course-card">
                    <div class="course-image">
                        <img 
-                         src="images/course-step-mail.webp" 
-                         srcset="images/course-step-mail-small.webp 300w, images/course-step-mail.webp 600w" 
+                         src="/images/course-step-mail.webp" 
+                         srcset="/images/course-step-mail-small.webp 300w, /images/course-step-mail.webp 600w" 
                          sizes="(max-width: 600px) 300px, 600px" 
                          alt="ステップメール設計初級講座" 
                          width="300" 
@@ -310,7 +251,7 @@
                    <div class="course-content">
                        <h3 class="course-title">ステップメール設計初級講座</h3>
                        <p class="course-description">「メールを送っても反応がない…」そんな悩みを解消するステップメールの極意を学べます。見込み客を熱狂的なファンに変える7ステップのメール設計術。</p>
-                       <a href="course/step-mail.html" class="course-button">Coming Soon</a>
+                       <a href="/course/step-mail.html" class="course-button">Coming Soon</a>
                    </div>
                </div>
 
@@ -332,11 +273,11 @@
                        <span class="blog-date">2025年4月20日</span>
                        <span class="blog-category">補助金・助成金</span>
                    </div>
-                   <a href="blog/article-1.html">
+                   <a href="/blog/article-1.html">
                        <div class="blog-image">
                            <img 
-                             src="images/blog-3.webp" 
-                             srcset="images/blog-3-small.webp 300w, images/blog-3.webp 600w" 
+                             src="/images/blog-3.webp" 
+                             srcset="/images/blog-3-small.webp 300w, /images/blog-3.webp 600w" 
                              sizes="(max-width: 600px) 300px, 600px" 
                              alt="IT導入補助金でデジタル化を加速！成功のコツ" 
                              width="300" 
@@ -348,7 +289,7 @@
                        <h3 class="blog-title">IT導入補助金申請、完全丸投げで最大450万円！</h3>
                    </a>
                    <p class="blog-excerpt">中小企業や個人事業主の皆さん、<span class="highlight">IT導入補助金2025</span>を活用してUTAGEを導入するチャンスです。面倒な申請手続きは私たちにお任せください。</p>
-                   <a href="blog/article-1.html" class="blog-readmore">続きを読む ></a>
+                   <a href="/blog/article-1.html" class="blog-readmore">続きを読む ></a>
                </div>
 
                <!-- 記事2 -->
@@ -357,11 +298,11 @@
                        <span class="blog-date">2025年4月25日</span>
                        <span class="blog-category">マーケティング自動化</span>
                    </div>
-                   <a href="blog/article-2.html">
+                   <a href="/blog/article-2.html">
                        <div class="blog-image">
                            <img 
-                             src="images/blog-marketing-automation.webp" 
-                             srcset="images/blog-marketing-automation-small.webp 300w, images/blog-marketing-automation.webp 600w" 
+                             src="/images/blog-marketing-automation.webp" 
+                             srcset="/images/blog-marketing-automation-small.webp 300w, /images/blog-marketing-automation.webp 600w" 
                              sizes="(max-width: 600px) 300px, 600px" 
                              alt="マーケティング自動化ツール比較15選" 
                              width="300" 
@@ -373,7 +314,7 @@
                        <h3 class="blog-title">もうツール選びに悩まない - すべてが一つに揃うUTAGEの魅力</h3>
                    </a>
                    <p class="blog-excerpt">LP作成、LINE連携、会員サイト構築、決済システム...いくつものツールを連携させるのは大変です。UTAGEならすべての機能が一つのプラットフォームに統合されています。</p>
-                   <a href="blog/article-2.html" class="blog-readmore">続きを読む ></a>
+                   <a href="/blog/article-2.html" class="blog-readmore">続きを読む ></a>
                </div>
 
                <!-- 記事3 -->
@@ -382,11 +323,11 @@
                        <span class="blog-date">2025年5月1日</span>
                        <span class="blog-category">ファネル構築</span>
                    </div>
-                   <a href="blog/article-3.html">
+                   <a href="/blog/article-3.html">
                        <div class="blog-image">
                            <img 
-                             src="images/blog-funnel.webp" 
-                             srcset="images/blog-funnel-small.webp 300w, images/blog-funnel.webp 600w" 
+                             src="/images/blog-funnel.webp" 
+                             srcset="/images/blog-funnel-small.webp 300w, /images/blog-funnel.webp 600w" 
                              sizes="(max-width: 600px) 300px, 600px" 
                              alt="売れる仕組みを自動化する3つのステップと必須ツール" 
                              width="300" 
@@ -398,7 +339,7 @@
                        <h3 class="blog-title">専門知識ゼロから始める自動販売システム構築法</h3>
                    </a>
                    <p class="blog-excerpt">あなたの専門知識を「自動で売れる仕組み」に変換しませんか？難しい設定や面倒な作業は一切不要。UTAGEを活用すれば、寝ている間も収益を生み出す自動販売システムを簡単に構築できます。</p>
-                   <a href="blog/article-3.html" class="blog-readmore">続きを読む ></a>
+                   <a href="/blog/article-3.html" class="blog-readmore">続きを読む ></a>
                </div>
            </div>
        </section>
@@ -417,7 +358,7 @@
                    <a href="https://utage-marunage.com/it-hojo/" class="btn btn-contact">
                        無料相談してみる
                    </a>
-                   <a href="document.html" class="btn btn-document">
+                   <a href="/document.html" class="btn btn-document">
                        <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
                        資料請求する
                    </a>
@@ -426,51 +367,7 @@
        </section>
    </main>
 
-   <footer class="site-footer">
-       <div class="footer-container">
-           <div class="footer-widgets">
-               <div class="widget-area footer-widget-1">
-                   <div class="site-logo-text" style="color: white; font-size: 24px; font-weight: bold; margin-bottom: 20px;">
-                       CLAN
-                   </div>
-               </div>
-               <div class="widget-area footer-widget-2">
-                   <h4>オンライン講座一覧</h4>
-                   <ul>
-                       <li><a href="course/lp.html">ランディングページ作成初級講座</a></li>
-                       <li><a href="course/video.html">動画編集初級講座</a></li>
-                       <li><a href="course/step-mail.html">ステップメール設計初級講座</a></li>
-                       <li><a href="course/auto-funnel.html">オートファネル構築初級講座</a></li>
-                       <li><a href="course/youtube-thumbnail.html">Youtubeサムネ作成初級講座</a></li>
-                       <li><a href="course/canva.html">Canvaデザイン初級講座</a></li>
-                   </ul>
-               </div>
-               <div class="widget-area footer-widget-3">
-                   <h4>便利コンテンツ</h4>
-                   <ul>
-                       <li><a href="blog/index.html">ブログ</a></li>
-                       <li><a href="tools/index.html">まえゆきツール</a></li>
-                       <li><a href="book/index.html">電子書籍</a></li>
-                       <li><a href="free-seminar.html">無料セミナー</a></li>
-                       <li><a href="free-consultation.html">無料相談</a></li>
-                       <li><a href="achievement/index.html">お客様の声</a></li>
-                   </ul>
-               </div>
-               <div class="widget-area footer-widget-4">
-                   <h4>運営情報</h4>
-                   <ul>
-                       <li><a href="owner.html">運営者情報</a></li>
-                       <li><a href="terms.html">利用規約</a></li>
-                       <li><a href="privacy.html">プライバシーポリシー</a></li>
-                   </ul>
-               </div>
-           </div>
-           <div class="site-copyright">
-               <small>© 2025 オートファネル大学</small>
-           </div>
-       </div>
-   </footer>
-
-   <!-- JavaScriptはすでに遅延ロード (defer) -->
+   <!-- フッタープレースホルダー -->
+   <div id="footer-placeholder"></div>
 </body>
 </html>
