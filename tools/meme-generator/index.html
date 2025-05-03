@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="description" content="まえゆきツールのミームジェネレーター - 自分だけのオリジナルミームを簡単に作成できる無料ツールです。テキストを追加して画像をシェアしましょう。">
+   <title>ミームジェネレーター | まえゆきツール</title>
+   
+   <!-- リソースの先読み -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   
+   <!-- クリティカルCSS インライン化 -->
+   <style>
+     :root{--primary:#0066ff;--secondary:#ff3a3a;--accent:#ff9500;--dark-blue:#0d3283;--light-bg:#f8f9fa;--text-dark:#333;--text-mid:#555;--header-h:60px}*,::after,::before{box-sizing:border-box;margin:0;padding:0}body{font:16px/1.6 'Noto Sans JP',sans-serif;color:var(--text-dark);background:#fff;overflow-x:hidden;display:flex;flex-direction:column;min-height:100vh;-webkit-text-size-adjust:100%}img{max-width:100%;height:auto;vertical-align:middle;border:0}a{text-decoration:none;color:inherit}ul{list-style:none}main{flex:1 0 auto}.site-header{position:fixed;top:0;left:0;width:100%;z-index:1000;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.1);height:var(--header-h);display:flex;align-items:center}.header-container{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center;width:100%}.site-logo-text{font-weight:700;font-size:20px}.site-logo-text a{color:var(--dark-blue)}.hamburger-button{display:block;width:30px;height:30px;position:relative;z-index:1001;border:0;background:0;cursor:pointer}.hamburger-button span{display:block;position:absolute;width:100%;height:2px;background:var(--text-dark);left:0}.hamburger-button span:nth-child(1){top:8px}.hamburger-button span:nth-child(2){top:14px}.hamburger-button span:nth-child(3){bottom:8px}
+
+     /* ミームジェネレータースタイル */
+     .tool-section {
+         padding: 80px 0 40px;
+         margin-top: var(--header-h);
+         background: #f9f3e9;
+     }
+     .tool-container {
+         max-width: 840px;
+         margin: 0 auto;
+         padding: 0 20px;
+     }
+     .tool-title {
+         font-size: 28px;
+         text-align: center;
+         margin-bottom: 1rem;
+         color: var(--text-dark);
+     }
+     .tool-subtitle {
+         font-size: 16px;
+         color: var(--text-mid);
+         text-align: center;
+         margin-bottom: 8px;
+     }
+     .tool-label {
+         font-size: 12px;
+         display: table;
+         margin: 0 auto;
+         padding: 4px 10px;
+         border-radius: 15px;
+         background: var(--text-mid);
+         color: #fff;
+         letter-spacing: .05em;
+     }
+
+     /* ステップスタイル */
+     .step-section {
+         background: #fff;
+         border-radius: 10px;
+         padding: 25px;
+         position: relative;
+         margin-top: 30px;
+         box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+     }
+     .step-number {
+         position: absolute;
+         left: -10px;
+         top: -10px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         width: 30px;
+         height: 30px;
+         font-weight: 700;
+         text-align: center;
+         background: var(--primary);
+         color: #fff;
+         border-radius: 50%;
+         font-size: 16px;
+     }
+     .step-title {
+         font-size: 18px;
+         margin-bottom: 10px;
+         line-height: 1.3;
+     }
+     .step-description {
+         font-size: 14px;
+         color: var(--text-mid);
+         margin-bottom: 15px;
+     }
+     
+     /* ドロップエリア */
+     .drop-area {
+         border: 2px dashed #ccc;
+         background: #f8f8f8;
+         padding: 30px 20px;
+         text-align: center;
+         border-radius: 8px;
+         margin-top: 15px;
+         transition: all 0.3s;
+     }
+     .drop-area.dragover {
+         border-color: var(--primary);
+         background: rgba(0, 102, 255, 0.05);
+     }
+     .drop-area-icon {
+         font-size: 32px;
+         color: #ccc;
+         margin-bottom: 10px;
+     }
+     .drop-area-text {
+         margin-bottom: 5px;
+         color: var(--text-mid);
+     }
+     .drop-area-or {
+         font-size: 12px;
+         color: var(--text-mid);
+         margin-bottom: 10px;
+     }
+     .file-button {
+         display: inline-block;
+         padding: 10px 20px;
+         background: var(--primary);
+         color: #fff;
+         border-radius: 8px;
+         font-weight: 700;
+         cursor: pointer;
+         transition: all 0.3s;
+     }
+     .file-button:hover {
+         background: #0055d4;
+     }
+     .file-input {
+         display: none;
+     }
+     
+     /* テンプレート選択エリア */
+     .template-grid {
+         display: flex;
+         flex-wrap: wrap;
+         gap: 10px;
+         margin-top: 15px;
+         justify-content: center;
+     }
+     .template-item {
+         width: 100px;
+         height: 100px;
+         border-radius: 5px;
+         object-fit: cover;
+         border: 2px solid #eee;
+         cursor: pointer;
+         transition: all 0.2s;
+     }
+     .template-item:hover {
+         border-color: var(--primary);
+         transform: scale(1.05);
+     }
+     .template-item.active {
+         border-color: var(--primary);
+         box-shadow: 0 0 0 2px var(--primary);
+     }
+     
+     /* ミームエディタ */
+     .meme-editor {
+         display: none;
+         margin-top: 20px;
+         position: relative;
+     }
+     .meme-canvas-container {
+         position: relative;
+         margin: 0 auto;
+         max-width: 100%;
+         overflow: hidden;
+         background: #f0f0f0;
+         border-radius: 8px;
+     }
+     #memeCanvas {
+         display: block;
+         max-width: 100%;
+         margin: 0 auto;
+         background: #fff;
+     }
+     
+     /* テキスト設定パネル */
+     .text-panel {
+         margin-top: 20px;
+         display: flex;
+         flex-wrap: wrap;
+         gap: 15px;
+     }
+     .text-input-group {
+         flex: 1;
+         min-width: 250px;
+     }
+     .text-input-label {
+         display: block;
+         margin-bottom: 5px;
+         font-weight: 700;
+     }
+     .text-input {
+         width: 100%;
+         padding: 10px;
+         border: 2px solid #ccc;
+         border-radius: 5px;
+         font-size: 16px;
+     }
+     .text-input:focus {
+         border-color: var(--primary);
+         outline: none;
+     }
+     
+     /* テキスト設定オプション */
+     .text-options {
+         display: flex;
+         flex-wrap: wrap;
+         gap: 15px;
+         margin-top: 15px;
+         padding: 15px;
+         background: #f5f5f5;
+         border-radius: 8px;
+     }
+     .option-group {
+         flex: 1;
+         min-width: 120px;
+     }
+     .option-label {
+         display: block;
+         margin-bottom: 5px;
+         font-size: 14px;
+         font-weight: 700;
+     }
+     .option-select, .option-color {
+         width: 100%;
+         padding: 8px;
+         border: 1px solid #ccc;
+         border-radius: 4px;
+     }
+     .option-select:focus, .option-color:focus {
+         border-color: var(--primary);
+         outline: none;
+     }
+     
+     /* ダウンロードボタン */
+     .action-buttons {
+         display: flex;
+         justify-content: center;
+         gap: 15px;
+         margin-top: 20px;
+     }
+     .download-button, .share-button {
+         padding: 12px 25px;
+         font-weight: 700;
+         font-size: 16px;
+         border-radius: 8px;
+         cursor: pointer;
+         transition: all 0.3s;
+         border: none;
+         display: inline-flex;
+         align-items: center;
+         justify-content: center;
+     }
+     .download-button {
+         background: var(--primary);
+         color: #fff;
+     }
+     .download-button:hover {
+         background: #0055d4;
+     }
+     .share-button {
+         background: var(--text-dark);
+         color: #fff;
+     }
+     .share-button:hover {
+         background: #444;
+     }
+     .button-icon {
+         margin-right: 8px;
+     }
+     
+     /* テンプレートなし時のメッセージ */
+     .no-template-message {
+         text-align: center;
+         padding: 30px;
+         background: #f5f5f5;
+         border-radius: 8px;
+         margin-top: 20px;
+     }
+     
+     /* 使い方ボックス */
+     .usage-box {
+         background: #fff;
+         border-radius: 10px;
+         padding: 25px;
+         margin-top: 40px;
+         box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+     }
+     .usage-title {
+         font-size: 18px;
+         display: flex;
+         align-items: center;
+         margin-bottom: 15px;
+         color: var(--text-dark);
+     }
+     .usage-title-icon {
+         margin-right: 8px;
+         color: var(--primary);
+     }
+     .usage-list {
+         padding-left: 20px;
+     }
+     .usage-item {
+         margin-bottom: 8px;
+         position: relative;
+         line-height: 1.5;
+     }
+     .usage-item::before {
+         content: "•";
+         position: absolute;
+         left: -15px;
+         color: var(--primary);
+     }
+     .usage-link {
+         color: var(--primary);
+     }
+     .usage-link:hover {
+         text-decoration: underline;
+     }
+     
+     /* シェアダイアログ */
+     .share-modal {
+         display: none;
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background: rgba(0, 0, 0, 0.5);
+         z-index: 1100;
+         justify-content: center;
+         align-items: center;
+     }
+     .share-dialog {
+         background: #fff;
+         border-radius: 10px;
+         padding: 25px;
+         max-width: 90%;
+         width: 500px;
+     }
+     .share-dialog-title {
+         font-size: 20px;
+         margin-bottom: 15px;
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+     }
+     .share-close {
+         font-size: 24px;
+         cursor: pointer;
+         color: #666;
+     }
+     .share-close:hover {
+         color: #000;
+     }
+     .share-preview {
+         text-align: center;
+         margin-bottom: 20px;
+     }
+     .share-preview img {
+         max-width: 100%;
+         max-height: 300px;
+         margin: 0 auto;
+         border-radius: 5px;
+         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+     }
+     .share-options {
+         display: flex;
+         justify-content: center;
+         gap: 15px;
+     }
+     .share-option {
+         width: 50px;
+         height: 50px;
+         border-radius: 50%;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         color: #fff;
+         cursor: pointer;
+         transition: transform 0.2s;
+     }
+     .share-option:hover {
+         transform: scale(1.1);
+     }
+     .share-twitter { background: #1DA1F2; }
+     .share-facebook { background: #1877F2; }
+     .share-line { background: #06C755; }
+     .share-copy { background: #555; }
+     
+     /* シェアセクション */
+     .share-section {
+         margin: 40px 0;
+         text-align: center;
+     }
+     .share-section-title {
+         display: inline-block;
+         position: relative;
+         padding: 0 30px;
+         margin-bottom: 15px;
+         font-size: 16px;
+         font-weight: 700;
+     }
+     .share-section-title:before, .share-section-title:after {
+         content: "";
+         position: absolute;
+         top: 50%;
+         width: 20px;
+         height: 2px;
+         background: var(--text-dark);
+     }
+     .share-section-title:before {
+         left: 0;
+         transform: rotate(50deg);
+     }
+     .share-section-title:after {
+         right: 0;
+         transform: rotate(-50deg);
+     }
+     .share-section-buttons {
+         display: flex;
+         justify-content: center;
+         gap: 15px;
+     }
+     .share-section-button {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         width: 40px;
+         height: 40px;
+         border-radius: 50%;
+         transition: transform 0.2s;
+     }
+     .share-section-button:hover {
+         transform: scale(1.1);
+     }
+     
+     /* 他のツールリンク */
+     .other-tools {
+         margin-top: 40px;
+     }
+     .other-tools-title {
+         font-size: 18px;
+         margin-bottom: 15px;
+         text-align: center;
+     }
+     .tools-list {
+         display: flex;
+         flex-wrap: wrap;
+         gap: 10px;
+         justify-content: center;
+     }
+     .tool-link {
+         display: inline-block;
+         padding: 8px 16px;
+         background: white;
+         border-radius: 20px;
+         border: 1px solid #e0e0e0;
+         font-size: 14px;
+         transition: all 0.2s;
+     }
+     .tool-link:hover {
+         background: var(--primary);
+         color: white;
+         transform: translateY(-2px);
+         border-color: var(--primary);
+     }
+     
+     /* 読み込み中アニメーション */
+     .loading {
+         display: none;
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background: rgba(255, 255, 255, 0.8);
+         z-index: 1100;
+         justify-content: center;
+         align-items: center;
+     }
+     .loading-spinner {
+         width: 50px;
+         height: 50px;
+         border: 5px solid #f3f3f3;
+         border-top: 5px solid var(--primary);
+         border-radius: 50%;
+         animation: spin 1s linear infinite;
+     }
+     @keyframes spin {
+         0% { transform: rotate(0deg); }
+         100% { transform: rotate(360deg); }
+     }
+     
+     /* ドロップアニメーション */
+     @keyframes drop-pulse {
+         0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 102, 255, 0.4); }
+         70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(0, 102, 255, 0); }
+         100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 102, 255, 0); }
+     }
+     .drop-pulse {
+         animation: drop-pulse 1.5s infinite;
+     }
+     
+     /* レスポンシブ対応 */
+     @media (max-width: 768px) {
+         .tool-section {
+             padding: 70px 0 30px;
+         }
+         .step-section {
+             padding: 20px 15px;
+         }
+         .text-panel {
+             flex-direction: column;
+         }
+         .text-options {
+             flex-direction: column;
+         }
+         .meme-canvas-container {
+             width: 100% !important;
+             height: auto !important;
+         }
+     }
+     @media (max-width: 480px) {
+         .template-grid {
+             justify-content: center;
+         }
+         .template-item {
+             width: 80px;
+             height: 80px;
+         }
+         .action-buttons {
+             flex-direction: column;
+         }
+     }
+   </style>
+   
+   <!-- 非クリティカルCSSは非同期ロード -->
+   <link rel="stylesheet" href="../css/style.css" media="print" onload="this.media='all'">
+   
+   <!-- JavaScriptの遅延ロード -->
+   <script src="../js/script.js" defer></script>
+   
+   <!-- フォールバック -->
+   <noscript>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="../css/style.css">
+   </noscript>
+   
+   <link rel="icon" href="../images/favicon.ico">
+   <meta property="og:title" content="ミームジェネレーター | まえゆきツール">
+   <meta property="og:description" content="自分だけのオリジナルミームを簡単に作成できる無料ツールです。テキストを追加して画像をシェアしましょう。">
+   <meta property="og:image" content="../images/ogp_image_tools.webp">
+   <meta property="og:type" content="website">
+</head>
+<body>
+   <!-- ヘッダー -->
+   <header class="site-header">
+      <div class="header-container">
+          <div class="site-logo-text">
+              <a href="../index.html">CLAN</a>
+          </div>
+          <nav class="global-nav pc-nav">
+              <ul>
+                  <li><a href="../index.html">ホーム</a></li>
+                  <li><a href="../about.html">オートファネル大学とは</a></li>
+                  <li><a href="../blog/index.html">ブログ</a></li>
+                  <li><a href="../seminar/index.html">オンライン講座</a></li>
+                  <li><a href="../tools/index.html">まえゆきツール</a></li>
+                  <li><a href="../achievement/index.html">お客様の声</a></li>
+              </ul>
+          </nav>
+          <div class="header-cta">
+              <a href="../document.html" class="btn-document">
+                  <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
+                  資料請求する
+              </a>
+              <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
+                  まずは相談する
+              </a>
+          </div>
+          <button class="hamburger-button sp-nav" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+      </div>
+  </header>
+
+  <!-- モバイルメニュー -->
+  <div class="mobile-menu">
+      <nav>
+          <ul>
+              <li><a href="../index.html">ホーム</a></li>
+              <li><a href="../about.html">オートファネル大学とは</a></li>
+              <li><a href="../blog/index.html">ブログ</a></li>
+              <li><a href="../seminar/index.html">オンライン講座</a></li>
+              <li><a href="../tools/index.html">まえゆきツール</a></li>
+              <li><a href="../achievement/index.html">お客様の声</a></li>
+          </ul>
+      </nav>
+      <div class="mobile-cta">
+          <a href="../document.html" class="btn-document">
+              <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
+              資料請求する
+          </a>
+          <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
+              まずは相談する
+          </a>
+      </div>
+  </div>
+
+   <main class="site-main">
+      <!-- ツールセクション -->
+      <section class="tool-section">
+         <div class="tool-container">
+            <h1 class="tool-title">ミームジェネレーター</h1>
+            <p class="tool-subtitle">画像にテキストを追加してミームを作ろう！</p>
+            <span class="tool-label">JPEG/PNG対応</span>
+
+            <!-- ステップ1: 画像選択 -->
+            <div class="step-section">
+               <span class="step-number">1</span>
+               <h2 class="step-title">ミーム画像を選択</h2>
+               <p class="step-description">テンプレートから選ぶか、自分の画像をアップロードしましょう</p>
+               
+               <div class="drop-area" id="dropArea">
+                  <div class="drop-area-icon">
+                     <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                     </svg>
+                  </div>
+                  <p class="drop-area-text">ここに画像ファイルをドラッグ＆ドロップ</p>
+                  <p class="drop-area-or">もしくは</p>
+                  <label class="file-button">
+                     + 画像をアップロード
+                     <input type="file" class="file-input" id="fileInput" accept="image/jpeg, image/png, image/gif">
+                  </label>
+               </div>
+               
+               <p style="text-align: center; margin-top: 20px; margin-bottom: 10px; font-weight: bold;">または人気のテンプレートから選ぶ</p>
+               
+               <div class="template-grid" id="templateGrid">
+                  <!-- テンプレート画像は動的に追加されます -->
+               </div>
+            </div>
+
+            <!-- ステップ2: テキスト追加 -->
+            <div class="step-section">
+               <span class="step-number">2</span>
+               <h2 class="step-title">テキストを追加</h2>
+               <p class="step-description">ミームに上下のテキストを追加できます</p>
+               
+               <div id="memeEditor" class="meme-editor">
+                  <div class="meme-canvas-container" id="canvasContainer">
+                     <canvas id="memeCanvas"></canvas>
+                  </div>
+                  
+                  <div class="text-panel">
+                     <div class="text-input-group">
+                        <label class="text-input-label" for="topText">上のテキスト</label>
+                        <input type="text" id="topText" class="text-input" placeholder="ここに上のテキストを入力">
+                     </div>
+                     
+                     <div class="text-input-group">
+                        <label class="text-input-label" for="bottomText">下のテキスト</label>
+                        <input type="text" id="bottomText" class="text-input" placeholder="ここに下のテキストを入力">
+                     </div>
+                  </div>
+                  
+                  <div class="text-options">
+                     <div class="option-group">
+                        <label class="option-label" for="fontSize">フォントサイズ</label>
+                        <select id="fontSize" class="option-select">
+                           <option value="20">小さい</option>
+                           <option value="30" selected>普通</option>
+                           <option value="40">大きい</option>
+                           <option value="50">特大</option>
+                        </select>
+                     </div>
+                     
+                     <div class="option-group">
+                        <label class="option-label" for="fontFamily">フォント</label>
+                        <select id="fontFamily" class="option-select">
+                           <option value="Arial, sans-serif">Arial</option>
+                           <option value="'Impact', sans-serif" selected>Impact (ミーム定番)</option>
+                           <option value="'Comic Sans MS', cursive">Comic Sans</option>
+                           <option value="'Helvetica', sans-serif">Helvetica</option>
+                           <option value="'Courier New', monospace">Courier</option>
+                           <option value="'HGS創英角ｺﾞｼｯｸ UB', sans-serif">創英角ゴシック</option>
+                        </select>
+                     </div>
+                     
+                     <div class="option-group">
+                        <label class="option-label" for="textColor">テキスト色</label>
+                        <input type="color" id="textColor" class="option-color" value="#ffffff">
+                     </div>
+                     
+                     <div class="option-group">
+                        <label class="option-label" for="strokeColor">枠線色</label>
+                        <input type="color" id="strokeColor" class="option-color" value="#000000">
+                     </div>
+                  </div>
+               </div>
+               
+               <div id="noTemplateMessage" class="no-template-message">
+                  <p>画像を選択するとここにエディタが表示されます</p>
+               </div>
+            </div>
+
+            <!-- ステップ3: ダウンロード/シェア -->
+            <div class="step-section">
+               <span class="step-number">3</span>
+               <h2 class="step-title">完成したミームをダウンロード・シェア</h2>
+               <p class="step-description">作成したミームを保存して皆とシェアしましょう</p>
+               
+               <div class="action-buttons">
+                  <button class="download-button" id="downloadBtn" disabled>
+                     <span class="button-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                           <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                           <polyline points="7 10 12 15 17 10"></polyline>
+                           <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                     </span>
+                     ダウンロード
+                  </button>
+                  
+                  <button class="share-button" id="shareBtn" disabled>
+                     <span class="button-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                           <circle cx="18" cy="5" r="3"></circle>
+                           <circle cx="6" cy="12" r="3"></circle>
+                           <circle cx="18" cy="19" r="3"></circle>
+                           <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                           <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                        </svg>
+                     </span>
+                     SNSでシェア
+                  </button>
+               </div>
+            </div>
+
+            <!-- 使い方ボックス -->
+            <div class="usage-box">
+               <h3 class="usage-title">
+                  <span class="usage-title-icon">
+                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                     </svg>
+                  </span>
+                  ミームジェネレーターの使い方
+               </h3>
+               
+               <ul class="usage-list">
+                  <li class="usage-item">Web（ブラウザ）上ですぐに使えるミーム作成ツールです。</li>
+                  <li class="usage-item">用意されたテンプレートから選ぶか、自分の画像をアップロードできます。</li>
+                  <li class="usage-item">画像の上部と下部にテキストを追加できます。</li>
+                  <li class="usage-item">フォントの種類、サイズ、色、枠線の色を変更できます。</li>
+                  <li class="usage-item">完成したミームはダウンロードしたり、SNSでシェアしたりできます。</li>
+                  <li class="usage-item">画像はパソコンやスマホのブラウザ上で処理されます。</li>
+                  <li class="usage-item">サーバーなどに画像は送信されないため、画像を誰かに見られる心配はありません。</li>
+                  <li class="usage-item">
+                     <a href="../tools/image-resize/" class="usage-link">画像サイズ変更ツール</a>や
+                     <a href="../tools/png-to-jpeg/" class="usage-link">PNG→JPEG変換ツール</a>もぜひご利用ください。
+                  </li>
+               </ul>
+            </div>
+            
+            <!-- シェアセクション -->
+            <div class="share-section">
+               <div class="share-section-title">このツールをシェア</div>
+               <div class="share-section-buttons">
+                  <a href="https://twitter.com/share?url=https://yourdomain.com/tools/meme-generator/&text=%E7%B0%A1%E5%8D%98%E3%83%9F%E3%83%BC%E3%83%A0%E3%82%B8%E3%82%A7%E3%83%8D%E3%83%AC%E3%83%BC%E3%82%BF%E3%83%BC%EF%BD%9C%E3%81%BE%E3%81%88%E3%82%86%E3%81%8D%E3%83%84%E3%83%BC%E3%83%AB" target="_blank" rel="nofollow noopener noreferrer" class="share-section-button share-twitter">
+                     <svg width="20" height="20" fill="#fff" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+                  </a>
+                  <a href="https://www.facebook.com/share.php?u=https://yourdomain.com/tools/meme-generator/" target="_blank" rel="nofollow noopener noreferrer" class="share-section-button share-facebook">
+                     <svg width="20" height="20" fill="#fff" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                  </a>
+                  <a href="https://social-plugins.line.me/lineit/share?url=https://yourdomain.com/tools/meme-generator/" target="_blank" rel="nofollow noopener noreferrer" class="share-section-button share-line">
+                     <svg width="20" height="20" fill="#fff" viewBox="0 0 24 24"><path d="M24 10.304c0-5.369-5.383-9.738-12-9.738-6.616 0-12 4.369-12 9.738 0 4.814 4.269 8.846 10.036 9.608.391.084.922.258 1.057.592.121.303.079.778.039 1.085l-.171 1.027c-.053.303-.242 1.186 1.039.647 1.281-.54 6.911-4.069 9.428-6.967 1.739-1.907 2.572-3.843 2.572-5.992zm-18.988-2.595c.129 0 .234.105.234.234v4.153c0 .129-.105.234-.234.234h-.662c-.129 0-.234-.105-.234-.234v-4.153c0-.129.105-.234.234-.234zm5.323 0c.129 0 .234.105.234.234v4.153c0 .129-.105.234-.234.234h-.661c-.129 0-.234-.105-.234-.234v-2.566l-1.838 2.481c-.051.067-.131.107-.215.107h-.033c-.084 0-.164-.04-.215-.107l-1.838-2.481v2.566c0 .129-.105.234-.234.234h-.662c-.129 0-.234-.105-.234-.234v-4.153c0-.129.105-.234.234-.234h.66c.085 0 .165.04.216.109l2.081 2.811 2.081-2.811c.051-.069.131-.109.216-.109zm5.323 0c.129 0 .234.105.234.234v4.153c0 .129-.105.234-.234.234h-.662c-.129 0-.234-.105-.234-.234v-4.153c0-.129.105-.234.234-.234zm2.662 0c.129 0 .234.105.234.234v4.153c0 .129-.105.234-.234.234h-.662c-.129 0-.234-.105-.234-.234v-4.153c0-.129.105-.234.234-.234z"/></svg>
+                  </a>
+               </div>
+            </div>
+            
+            <!-- 他のツールリンク -->
+            <div class="other-tools">
+               <h2 class="other-tools-title">その他のまえゆきツール</h2>
+               <div class="tools-list">
+                  <a href="../tools/image-resize/" class="tool-link">画像サイズ変更</a>
+                  <a href="../tools/png-to-jpeg/" class="tool-link">PNG→JPEG変換</a>
+                  <a href="../tools/png-jpeg-to-webp/" class="tool-link">WebP変換ツール</a>
+                  <a href="../tools/countdown/" class="tool-link">Webでカウントダウン</a>
+                  <a href="../tools/letters-counter/" class="tool-link">文字数カウント</a>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <!-- シェアモーダル -->
+      <div class="share-modal" id="shareModal">
+         <div class="share-dialog">
+            <div class="share-dialog-title">
+               <span>ミームをシェア</span>
+               <span class="share-close" id="shareClose">&times;</span>
+            </div>
+            <div class="share-preview">
+               <img id="sharePreviewImg" src="" alt="ミームのプレビュー">
+            </div>
+            <div class="share-options">
+               <a href="#" class="share-option share-twitter" id="shareTwitter">
+                  <svg width="20" height="20" fill="#fff" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+               </a>
+               <a href="#" class="share-option share-facebook" id="shareFacebook">
+                  <svg width="20" height="20" fill="#fff" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+               </a>
+               <a href="#" class="share-option share-line" id="shareLine">
+                  <svg width="20" height="20" fill="#fff" viewBox="0 0 24 24"><path d="M24 10.304c0-5.369-5.383-9.738-12-9.738-6.616 0-12 4.369-12 9.738 0 4.814 4.269 8.846 10.036 9.608.391.084.922.258 1.057.592.121.303.079.778.039 1.085l-.171 1.027c-.053.303-.242 1.186 1.039.647 1.281-.54 6.911-4.069 9.428-6.967 1.739-1.907 2.572-3.843 2.572-5.992zm-18.988-2.595c.129 0 .234.105.234.234v4.153c0 .129-.105.234-.234.234h-.662c-.129 0-.234-.105-.234-.234v-4.153c0-.129.105-.234.234-.234zm5.323 0c.129 0 .234.105.234.234v4.153c0 .129-.105.234-.234.234h-.661c-.129 0-.234-.105-.234-.234v-2.566l-1.838 2.481c-.051.067-.131.107-.215.107h-.033c-.084 0-.164-.04-.215-.107l-1.838-2.481v2.566c0 .129-.105.234-.234.234h-.662c-.129 0-.234-.105-.234-.234v-4.153c0-.129.105-.234.234-.234h.66c.085 0 .165.04.216.109l2.081 2.811 2.081-2.811c.051-.069.131-.109.216-.109zm5.323 0c.129 0 .234.105.234.234v4.153c0 .129-.105.234-.234.234h-.662c-.129 0-.234-.105-.234-.234v-4.153c0-.129.105-.234.234-.234zm2.662 0c.129 0 .234.105.234.234v4.153c0 .129-.105.234-.234.234h-.662c-.129 0-.234-.105-.234-.234v-4.153c0-.129.105-.234.234-.234z"/></svg>
+               </a>
+               <div class="share-option share-copy" id="shareCopy">
+                  <svg width="20" height="20" fill="#fff" viewBox="0 0 24 24"><path d="M20 2H10c-1.103 0-2 .897-2 2v4H4c-1.103 0-2 .897-2 2v10c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2v-4h4c1.103 0 2-.897 2-2V4c0-1.103-.897-2-2-2zM4 20V10h10l.002 10H4zm16-6h-4v-4c0-1.103-.897-2-2-2h-4V4h10v10z"/></svg>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <!-- 読み込みインジケータ -->
+      <div class="loading" id="loading">
+         <div class="loading-spinner"></div>
+      </div>
+
+      <!-- Contact CTA Section -->
+      <section class="contact-cta-section">
+         <div class="contact-cta-container">
+            <span class="contact-cta-subtitle">IT導入補助金2025活用可能</span>
+            <h2 class="contact-cta-title">申請は完全丸投げOK！</h2>
+            <p class="contact-cta-lead">
+               UTAGEの導入で最大450万円の補助金が受けられます。<br class="pc-only">
+               面倒な申請手続きはすべてお任せください。<br class="pc-only">
+               あなたは事業成長に集中するだけでOKです。
+            </p>
+            <div class="contact-cta-buttons">
+               <a href="https://utage-marunage.com/it-hojo/" class="btn btn-contact">
+                  無料相談してみる
+               </a>
+               <a href="../document.html" class="btn btn-document">
+                  <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
+                  資料請求する
+               </a>
+            </div>
+         </div>
+      </section>
+   </main>
+
+   <footer class="site-footer">
+       <div class="footer-container">
+           <div class="footer-widgets">
+               <div class="widget-area footer-widget-1">
+                   <div class="site-logo-text" style="color: white; font-size: 24px; font-weight: bold; margin-bottom: 20px;">
+                       CLAN
+                   </div>
+               </div>
+               <div class="widget-area footer-widget-2">
+                   <h4>オンライン講座一覧</h4>
+                   <ul>
+                       <li><a href="../course/lp.html">ランディングページ作成初級講座</a></li>
+                       <li><a href="../course/video.html">動画編集初級講座</a></li>
+                       <li><a href="../course/step-mail.html">ステップメール設計初級講座</a></li>
+                       <li><a href="../course/auto-funnel.html">オートファネル構築初級講座</a></li>
+                       <li><a href="../course/youtube-thumbnail.html">Youtubeサムネ作成初級講座</a></li>
+                       <li><a href="../course/canva.html">Canvaデザイン初級講座</a></li>
+                   </ul>
+               </div>
+               <div class="widget-area footer-widget-3">
+                   <h4>便利コンテンツ</h4>
+                   <ul>
+                       <li><a href="../blog/index.html">ブログ</a></li>
+                       <li><a href="../tools/index.html">まえゆきツール</a></li>
+                       <li><a href="../book/index.html">電子書籍</a></li>
+                       <li><a href="../free-seminar.html">無料セミナー</a></li>
+                       <li><a href="../free-consultation.html">無料相談</a></li>
+                       <li><a href="../achievement/index.html">お客様の声</a></li>
+                   </ul>
+               </div>
+               <div class="widget-area footer-widget-4">
+                   <h4>運営情報</h4>
+                   <ul>
+                       <li><a href="../owner.html">運営者情報</a></li>
+                       <li><a href="../terms.html">利用規約</a></li>
+                       <li><a href="../privacy.html">プライバシーポリシー</a></li>
+                   </ul>
+               </div>
+           </div>
+           <div class="site-copyright">
+               <small>© 2025 オートファネル大学</small>
+           </div>
+       </div>
+   </footer>
+
+   <!-- ミームジェネレーター用JavaScript -->
+   <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          // 要素の参照
+          const dropArea = document.getElementById('dropArea');
+          const fileInput = document.getElementById('fileInput');
+          const templateGrid = document.getElementById('templateGrid');
+          const memeEditor = document.getElementById('memeEditor');
+          const noTemplateMessage = document.getElementById('noTemplateMessage');
+          const canvasContainer = document.getElementById('canvasContainer');
+          const memeCanvas = document.getElementById('memeCanvas');
+          const topTextInput = document.getElementById('topText');
+          const bottomTextInput = document.getElementById('bottomText');
+          const fontSizeSelect = document.getElementById('fontSize');
+          const fontFamilySelect = document.getElementById('fontFamily');
+          const textColorInput = document.getElementById('textColor');
+          const strokeColorInput = document.getElementById('strokeColor');
+          const downloadBtn = document.getElementById('downloadBtn');
+          const shareBtn = document.getElementById('shareBtn');
+          const shareModal = document.getElementById('shareModal');
+          const shareClose = document.getElementById('shareClose');
+          const sharePreviewImg = document.getElementById('sharePreviewImg');
+          const shareTwitter = document.getElementById('shareTwitter');
+          const shareFacebook = document.getElementById('shareFacebook');
+          const shareLine = document.getElementById('shareLine');
+          const shareCopy = document.getElementById('shareCopy');
+          const loading = document.getElementById('loading');
+          
+          // キャンバスコンテキスト
+          const ctx = memeCanvas.getContext('2d');
+          
+          // 状態管理
+          let currentImage = null;
+          let currentImageAspect = 1;
+          
+          // 人気テンプレート（URLは自分のサーバーの画像に置き換える）
+          const popularTemplates = [
+              { name: 'Drake Hotline Bling', url: 'https://i.imgflip.com/30b1gx.jpg' },
+              { name: 'Two Buttons', url: 'https://i.imgflip.com/1g8my4.jpg' },
+              { name: 'Distracted Boyfriend', url: 'https://i.imgflip.com/1ur9b0.jpg' },
+              { name: 'Running Away Balloon', url: 'https://i.imgflip.com/261o3j.jpg' },
+              { name: 'Buff Doge vs. Cheems', url: 'https://i.imgflip.com/43a45p.png' },
+              { name: 'Change My Mind', url: 'https://i.imgflip.com/24y43o.jpg' },
+              { name: 'Left Exit 12 Off Ramp', url: 'https://i.imgflip.com/22bdq6.jpg' },
+              { name: 'UNO Draw 25 Cards', url: 'https://i.imgflip.com/3lmzyx.jpg' }
+          ];
+          
+          // テンプレートをグリッドに追加
+          function loadTemplates() {
+              popularTemplates.forEach((template, index) => {
+                  const templateImg = document.createElement('img');
+                  templateImg.src = template.url;
+                  templateImg.alt = template.name;
+                  templateImg.className = 'template-item';
+                  templateImg.dataset.index = index;
+                  
+                  templateImg.addEventListener('click', () => {
+                      selectTemplateImage(template.url);
+                  });
+                  
+                  templateGrid.appendChild(templateImg);
+              });
+          }
+          
+          // テンプレート画像を選択
+          function selectTemplateImage(url) {
+              loading.style.display = 'flex';
+              
+              const img = new Image();
+              img.crossOrigin = 'Anonymous';
+              img.onload = function() {
+                  currentImage = img;
+                  currentImageAspect = img.width / img.height;
+                  initializeCanvas();
+                  drawMeme();
+                  
+                  memeEditor.style.display = 'block';
+                  noTemplateMessage.style.display = 'none';
+                  
+                  downloadBtn.disabled = false;
+                  shareBtn.disabled = false;
+                  
+                  loading.style.display = 'none';
+              };
+              
+              img.onerror = function() {
+                  alert('画像の読み込みに失敗しました。別の画像を試してください。');
+                  loading.style.display = 'none';
+              };
+              
+              img.src = url;
+          }
+          
+          // キャンバスの初期化
+          function initializeCanvas() {
+              // キャンバスのサイズを設定
+              const maxWidth = 600;
+              const maxHeight = 600;
+              
+              let canvasWidth, canvasHeight;
+              
+              if (currentImageAspect > 1) {
+                  // 横長画像
+                  canvasWidth = Math.min(currentImage.width, maxWidth);
+                  canvasHeight = canvasWidth / currentImageAspect;
+              } else {
+                  // 縦長画像
+                  canvasHeight = Math.min(currentImage.height, maxHeight);
+                  canvasWidth = canvasHeight * currentImageAspect;
+              }
+              
+              memeCanvas.width = canvasWidth;
+              memeCanvas.height = canvasHeight;
+              
+              // コンテナのサイズを設定
+              canvasContainer.style.width = canvasWidth + 'px';
+              canvasContainer.style.height = canvasHeight + 'px';
+          }
+          
+          // ミームを描画
+          function drawMeme() {
+              // キャンバスをクリア
+              ctx.clearRect(0, 0, memeCanvas.width, memeCanvas.height);
+              
+              // 画像を描画
+              ctx.drawImage(currentImage, 0, 0, memeCanvas.width, memeCanvas.height);
+              
+              // テキスト設定
+              const fontSize = parseInt(fontSizeSelect.value);
+              const fontFamily = fontFamilySelect.value;
+              const textColor = textColorInput.value;
+              const strokeColor = strokeColorInput.value;
+              
+              ctx.font = `bold ${fontSize}px ${fontFamily}`;
+              ctx.textAlign = 'center';
+              ctx.fillStyle = textColor;
+              ctx.strokeStyle = strokeColor;
+              ctx.lineWidth = fontSize / 15;
+              
+              // 上部テキスト
+              const topText = topTextInput.value.toUpperCase();
+              if (topText) {
+                  drawTextWithWrapping(ctx, topText, memeCanvas.width / 2, fontSize * 1.2, fontSize, memeCanvas.width * 0.9);
+              }
+              
+              // 下部テキスト
+              const bottomText = bottomTextInput.value.toUpperCase();
+              if (bottomText) {
+                  drawTextWithWrapping(ctx, bottomText, memeCanvas.width / 2, memeCanvas.height - fontSize, fontSize, memeCanvas.width * 0.9);
+              }
+          }
+          
+          // テキストを折り返して描画
+          function drawTextWithWrapping(ctx, text, x, y, fontSize, maxWidth) {
+              const words = text.split(' ');
+              const lines = [];
+              let currentLine = words[0];
+              
+              for (let i = 1; i < words.length; i++) {
+                  const word = words[i];
+                  const width = ctx.measureText(currentLine + ' ' + word).width;
+                  
+                  if (width < maxWidth) {
+                      currentLine += ' ' + word;
+                  } else {
+                      lines.push(currentLine);
+                      currentLine = word;
+                  }
+              }
+              
+              lines.push(currentLine);
+              
+              // テキストの描画
+              if (y < memeCanvas.height / 2) {
+                  // 上部テキスト
+                  for (let i = 0; i < lines.length; i++) {
+                      const line = lines[i];
+                      const lineY = y + i * fontSize * 1.2;
+                      
+                      ctx.strokeText(line, x, lineY);
+                      ctx.fillText(line, x, lineY);
+                  }
+              } else {
+                  // 下部テキスト
+                  for (let i = 0; i < lines.length; i++) {
+                      const lineIndex = lines.length - 1 - i;
+                      const line = lines[lineIndex];
+                      const lineY = y - (i * fontSize * 1.2);
+                      
+                      ctx.strokeText(line, x, lineY);
+                      ctx.fillText(line, x, lineY);
+                  }
+              }
+          }
+          
+          // ドラッグ&ドロップイベント
+          ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+              dropArea.addEventListener(eventName, preventDefaults, false);
+          });
+          
+          function preventDefaults(e) {
+              e.preventDefault();
+              e.stopPropagation();
+          }
+          
+          ['dragenter', 'dragover'].forEach(eventName => {
+              dropArea.addEventListener(eventName, highlight, false);
+          });
+          
+          ['dragleave', 'drop'].forEach(eventName => {
+              dropArea.addEventListener(eventName, unhighlight, false);
+          });
+          
+          function highlight() {
+              dropArea.classList.add('dragover');
+          }
+          
+          function unhighlight() {
+              dropArea.classList.remove('dragover');
+          }
+          
+          // ファイルのドロップ
+          dropArea.addEventListener('drop', handleDrop, false);
+          
+          function handleDrop(e) {
+              const dt = e.dataTransfer;
+              const files = dt.files;
+              handleFile(files[0]);
+          }
+          
+          // ファイル選択
+          fileInput.addEventListener('change', function() {
+              handleFile(this.files[0]);
+          });
+          
+          // ファイル処理
+          function handleFile(file) {
+              if (!file) return;
+              
+              const validTypes = ['image/jpeg', 'image/png', 'image/gif'];
+              if (!validTypes.includes(file.type)) {
+                  alert('JPEG, PNG, または GIF 画像を選択してください。');
+                  return;
+              }
+              
+              loading.style.display = 'flex';
+              
+              const reader = new FileReader();
+              reader.onload = function(e) {
+                  const img = new Image();
+                  img.onload = function() {
+                      currentImage = img;
+                      currentImageAspect = img.width / img.height;
+                      initializeCanvas();
+                      drawMeme();
+                      
+                      memeEditor.style.display = 'block';
+                      noTemplateMessage.style.display = 'none';
+                      
+                      downloadBtn.disabled = false;
+                      shareBtn.disabled = false;
+                      
+                      loading.style.display = 'none';
+                  };
+                  
+                  img.src = e.target.result;
+              };
+              
+              reader.readAsDataURL(file);
+          }
+          
+          // テキスト入力イベント
+          topTextInput.addEventListener('input', drawMeme);
+          bottomTextInput.addEventListener('input', drawMeme);
+          
+          // スタイル変更イベント
+          fontSizeSelect.addEventListener('change', drawMeme);
+          fontFamilySelect.addEventListener('change', drawMeme);
+          textColorInput.addEventListener('input', drawMeme);
+          strokeColorInput.addEventListener('input', drawMeme);
+          
+          // ダウンロードボタン
+          downloadBtn.addEventListener('click', function() {
+              if (!currentImage) return;
+              
+              // 一時的なリンク要素を作成
+              const link = document.createElement('a');
+              link.download = 'my-meme.jpg';
+              link.href = memeCanvas.toDataURL('image/jpeg', 0.9);
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+          });
+          
+          // シェアボタン
+          shareBtn.addEventListener('click', function() {
+              if (!currentImage) return;
+              
+              // プレビュー画像を設定
+              sharePreviewImg.src = memeCanvas.toDataURL('image/jpeg', 0.9);
+              
+              // モーダルを表示
+              shareModal.style.display = 'flex';
+              
+              // シェアリンクを更新
+              const shareUrl = memeCanvas.toDataURL('image/jpeg', 0.9);
+              
+              // Twitter
+              shareTwitter.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent('まえゆきツールで作成したミーム')}&url=${encodeURIComponent(window.location.href)}`;
+              
+              // Facebook
+              shareFacebook.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`;
+              
+              // LINE
+              shareLine.href = `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(window.location.href)}`;
+              
+              // クリップボードにコピー
+              shareCopy.onclick = function(e) {
+                  e.preventDefault();
+                  
+                  // キャンバスを画像データとしてクリップボードにコピー
+                  memeCanvas.toBlob(function(blob) {
+                      try {
+                          const item = new ClipboardItem({ 'image/png': blob });
+                          navigator.clipboard.write([item]).then(function() {
+                              alert('画像をクリップボードにコピーしました！');
+                          }, function(error) {
+                              console.error('クリップボードへのコピーに失敗しました: ', error);
+                              fallbackCopyText();
+                          });
+                      } catch (e) {
+                          console.error('クリップボード機能が利用できません: ', e);
+                          fallbackCopyText();
+                      }
+                  });
+              };
+              
+              // テキストとしてURLをコピーするフォールバック
+              function fallbackCopyText() {
+                  const textArea = document.createElement('textarea');
+                  textArea.value = window.location.href;
+                  document.body.appendChild(textArea);
+                  textArea.select();
+                  document.execCommand('copy');
+                  document.body.removeChild(textArea);
+                  alert('ツールのURLをコピーしました！');
+              }
+          });
+          
+          // モーダルを閉じる
+          shareClose.addEventListener('click', function() {
+              shareModal.style.display = 'none';
+          });
+          
+          // モーダル外クリックで閉じる
+          shareModal.addEventListener('click', function(e) {
+              if (e.target === shareModal) {
+                  shareModal.style.display = 'none';
+              }
+          });
+          
+          // ページ読み込み時
+          window.addEventListener('load', function() {
+              // テンプレートを読み込む
+              loadTemplates();
+              
+              // キャンバスのサイズを初期化
+              memeCanvas.width = 600;
+              memeCanvas.height = 600;
+              
+              // ウィンドウサイズ変更時にキャンバスを再描画
+              window.addEventListener('resize', function() {
+                  if (currentImage) {
+                      initializeCanvas();
+                      drawMeme();
+                  }
+              });
+          });
+      });
