@@ -13,7 +13,7 @@
    
    <!-- クリティカルCSS インライン化 -->
    <style>
-     :root{--primary:#0066ff;--secondary:#ff3a3a;--accent:#ff9500;--dark-blue:#0d3283;--light-bg:#f8f9fa;--text-dark:#333;--text-mid:#555;--header-h:60px}*,::after,::before{box-sizing:border-box;margin:0;padding:0}body{font:16px/1.6 'Noto Sans JP',sans-serif;color:var(--text-dark);background:#fff;overflow-x:hidden;display:flex;flex-direction:column;min-height:100vh;-webkit-text-size-adjust:100%}img{max-width:100%;height:auto;vertical-align:middle;border:0}a{text-decoration:none;color:inherit}ul{list-style:none}main{flex:1 0 auto}.site-header{position:fixed;top:0;left:0;width:100%;z-index:1000;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.1);height:var(--header-h);display:flex;align-items:center}.header-container{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center;width:100%}.site-logo-text{font-weight:700;font-size:20px}.site-logo-text a{color:var(--dark-blue)}.hamburger-button{display:block;width:30px;height:30px;position:relative;z-index:1001;border:0;background:0;cursor:pointer}.hamburger-button span{display:block;position:absolute;width:100%;height:2px;background:var(--text-dark);left:0}.hamburger-button span:nth-child(1){top:8px}.hamburger-button span:nth-child(2){top:14px}.hamburger-button span:nth-child(3){bottom:8px}.hero-section{position:relative;width:100%;background:#e0f7ff;padding:80px 0 40px;overflow:hidden;margin-top:var(--header-h)}.hero-container{position:relative;z-index:10;display:flex;flex-direction:column;align-items:center;max-width:1200px;margin:0 auto;padding:0 20px;text-align:center}.hero-text{width:100%;max-width:700px;margin-bottom:40px}.hero-catch{font-size:32px;font-weight:700;margin:0 0 15px;line-height:1.3}.hero-lead{font-size:16px;margin:0 0 30px;color:var(--text-mid)}.hero-cta-buttons{display:flex;flex-direction:column;gap:10px;margin-bottom:40px;width:100%;max-width:300px}.hero-cta-buttons a{display:flex;align-items:center;justify-content:center;padding:12px 20px;border-radius:4px;font-size:16px;font-weight:700;width:100%;text-align:center}.btn-contact{background:var(--secondary);color:#fff}.btn-document{color:var(--text-dark);background:#fff;border:1px solid #ddd}@media(max-width:768px){.site-header{height:50px}.header-container{padding:0 10px}.header-cta{display:none!important}.site-logo-text{font-size:18px}.hamburger-button{margin-left:auto;margin-right:0}.mobile-menu{top:50px;height:calc(100vh - 50px)}}@media(max-width:480px){.site-logo-text{font-size:16px}.header-container{padding:0 8px}}
+     :root{--primary:#0066ff;--secondary:#ff3a3a;--accent:#ff9500;--dark-blue:#0d3283;--light-bg:#f8f9fa;--text-dark:#333;--text-mid:#555;--header-h:60px}*,::after,::before{box-sizing:border-box;margin:0;padding:0}body{font:16px/1.6 'Noto Sans JP',sans-serif;color:var(--text-dark);background:#fff;overflow-x:hidden;display:flex;flex-direction:column;min-height:100vh;-webkit-text-size-adjust:100%}img{max-width:100%;height:auto;vertical-align:middle;border:0}a{text-decoration:none;color:inherit}ul{list-style:none}main{flex:1 0 auto}.site-header{position:fixed;top:0;left:0;width:100%;z-index:1000;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.1);height:var(--header-h);display:flex;align-items:center}.header-container{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center;width:100%}.site-logo-text{font-weight:700;font-size:20px}.site-logo-text a{color:var(--dark-blue)}.hamburger-button{display:flex;flex-direction:column;justify-content:space-between;width:30px;height:20px;background:transparent;border:none;cursor:pointer;padding:0;box-sizing:border-box}.hamburger-button span{display:block;width:100%;height:2px;background-color:var(--text-dark);transition:all 0.3s ease}.hamburger-button.active span:nth-child(1){transform:translateY(9px) rotate(45deg)}.hamburger-button.active span:nth-child(2){opacity:0}.hamburger-button.active span:nth-child(3){transform:translateY(-9px) rotate(-45deg)}.hero-section{position:relative;width:100%;background:#e0f7ff;padding:80px 0 40px;overflow:hidden;margin-top:var(--header-h)}.hero-container{position:relative;z-index:10;display:flex;flex-direction:column;align-items:center;max-width:1200px;margin:0 auto;padding:0 20px;text-align:center}.hero-text{width:100%;max-width:700px;margin-bottom:40px}.hero-catch{font-size:32px;font-weight:700;margin:0 0 15px;line-height:1.3}.hero-lead{font-size:16px;margin:0 0 30px;color:var(--text-mid)}.hero-cta-buttons{display:flex;flex-direction:column;gap:10px;margin-bottom:40px;width:100%;max-width:300px}.hero-cta-buttons a{display:flex;align-items:center;justify-content:center;padding:12px 20px;border-radius:4px;font-size:16px;font-weight:700;width:100%;text-align:center}.btn-contact{background:var(--secondary);color:#fff}.btn-document{color:var(--text-dark);background:#fff;border:1px solid #ddd}@media(max-width:768px){.site-header{height:50px}.header-container{padding:0 10px}.header-cta{display:none!important}.site-logo-text{font-size:18px}.hamburger-button{margin-left:auto;margin-right:0}.mobile-menu{top:50px;height:calc(100vh - 50px)}}@media(max-width:480px){.site-logo-text{font-size:16px}.header-container{padding:0 8px}}
    </style>
    
    <!-- 非クリティカルCSSは非同期ロード -->
@@ -56,6 +56,7 @@
                 <li><a href="about.html">オートファネル大学とは</a></li>
                 <li><a href="blog/index.html">ブログ</a></li>
                 <li><a href="seminar/index.html">オンライン講座</a></li>
+                <li><a href="tools/index.html">まえゆきツール</a></li>
                 <li><a href="achievement/index.html">お客様の声</a></li>
             </ul>
         </nav>
@@ -68,7 +69,11 @@
                 まずは相談する
             </a>
         </div>
-        <button class="hamburger-button sp-nav" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+        <button class="hamburger-button sp-nav" aria-label="メニューを開く">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </div>
 </header>
 
@@ -80,6 +85,7 @@
             <li><a href="about.html">オートファネル大学とは</a></li>
             <li><a href="blog/index.html">ブログ</a></li>
             <li><a href="seminar/index.html">オンライン講座</a></li>
+            <li><a href="tools/index.html">まえゆきツール</a></li>
             <li><a href="achievement/index.html">お客様の声</a></li>
         </ul>
     </nav>
@@ -440,9 +446,10 @@
                    </ul>
                </div>
                <div class="widget-area footer-widget-3">
-                   <h4>無料コンテンツ</h4>
+                   <h4>便利コンテンツ</h4>
                    <ul>
                        <li><a href="blog/index.html">ブログ</a></li>
+                       <li><a href="tools/index.html">まえゆきツール</a></li>
                        <li><a href="book/index.html">電子書籍</a></li>
                        <li><a href="free-seminar.html">無料セミナー</a></li>
                        <li><a href="free-consultation.html">無料相談</a></li>

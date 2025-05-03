@@ -31,14 +31,45 @@ footer{flex-shrink:0}
 .btn-contact{background:var(--secondary);color:#fff;position:relative;box-shadow:0 1px 2px rgba(0,0,0,.08)}
 .btn-contact:hover{background:#e03333;transform:translateY(-2px);box-shadow:0 4px 10px rgba(255,58,58,.3);will-change:transform}
 .free-label{position:absolute;top:-1px;right:-1px;background:#fff;color:var(--secondary);font-size:9px;padding:1px 4px;border-bottom-left-radius:4px;font-weight:700;width:25px;height:16px;display:flex;align-items:center;justify-content:center;line-height:1}
-.hamburger-button{display:none;width:30px;height:30px;position:relative;z-index:1001}
-.hamburger-button span{display:block;position:absolute;width:100%;height:2px;background:var(--text-dark);transition:var(--trans);left:0}
-.hamburger-button span:nth-child(1){top:8px}
-.hamburger-button span:nth-child(2){top:14px}
-.hamburger-button span:nth-child(3){bottom:8px}
-.hamburger-button.active span:nth-child(1){transform:translateY(6px) rotate(45deg)}
-.hamburger-button.active span:nth-child(2){opacity:0}
-.hamburger-button.active span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+
+/* ハンバーガーメニューのシンプル化 */
+.hamburger-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1001;
+}
+
+.hamburger-button span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--text-dark);
+  transition: all 0.3s ease;
+  position: static; /* position: absolute を上書き */
+  left: auto; /* left: 0 を上書き */
+}
+
+.hamburger-button.active span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.hamburger-button.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-button.active span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
 .mobile-menu{display:none;position:fixed;top:var(--header-h);left:0;width:100%;height:calc(100vh - var(--header-h));background:#fff;z-index:999;padding:20px;overflow-y:auto}
 .mobile-menu.active{display:block}
 .mobile-menu ul{margin-bottom:20px}
@@ -163,7 +194,7 @@ footer{flex-shrink:0}
   .hamburger-button {
     margin-left: auto;
     margin-right: 0;
-    display: block; /* 重要：スマホでは必ず表示 */
+    display: flex !important; /* 重要：スマホでは必ず表示 */
   }
   
   /* モバイルメニューの位置調整 */
