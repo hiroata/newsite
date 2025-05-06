@@ -8,36 +8,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="/images/favicon.ico">
     <meta property="og:title" content="無料相談 | オートファネル大学">
     <meta property="og:description" content="オートファネル大学の無料相談ページ。ビジネス自動化の専門家が、あなたの状況に合ったUTAGE活用法を無料でアドバイスします。IT導入補助金の申請サポートも実施中。">
-    <meta property="og:image" content="images/ogp_image_consultation.webp">
+    <meta property="og:image" content="/images/ogp_image_consultation.webp">
     <meta property="og:type" content="article">
 
+    <script src="/js/script.js" defer></script>
+    <script src="/assets/js/components.js" defer></script>
+
     <style>
-        :root {
-            --primary-color: #0066ff;
-            --secondary-color: #ff3a3a;
-            --accent-color: #ff9500;
-            --dark-blue: #0d3283;
-            --light-bg: #f8f9fa;
-            --gradient-primary: linear-gradient(135deg, #0066ff, #00b8ff);
-            --gradient-secondary: linear-gradient(135deg, #ff3a3a, #ff7d7d);
-            --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08);
-            --shadow-strong: 0 15px 40px rgba(0, 0, 0, 0.12);
-            --transition-fast: all 0.3s ease;
-            --border-radius: 12px;
-        }
-
-        /* ページ全体のスタイル */
-        .consultation-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px 80px;
-        }
-
-        /* ヒーローセクション */
+        /* free-consultationページ固有の追加スタイルのみ残す */
         .consultation-hero-section {
             background: var(--gradient-secondary);
             padding: 120px 0 80px;
@@ -47,7 +29,6 @@
             overflow: hidden;
             margin-bottom: 80px;
         }
-
         .consultation-hero-section::before {
             content: '';
             position: absolute;
@@ -55,11 +36,10 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('images/dots-pattern.webp');
+            background-image: url('/images/dots-pattern.webp');
             opacity: 0.07;
             z-index: 1;
         }
-
         .consultation-hero-container {
             position: relative;
             z-index: 2;
@@ -67,14 +47,12 @@
             margin: 0 auto;
             padding: 0 20px;
         }
-
         .consultation-hero-title {
             font-size: 42px;
             font-weight: 900;
             margin-bottom: 20px;
             letter-spacing: -0.02em;
         }
-
         .consultation-hero-lead {
             font-size: 18px;
             max-width: 800px;
@@ -82,7 +60,6 @@
             opacity: 0.9;
             line-height: 1.8;
         }
-
         .hero-free-badge {
             display: inline-block;
             background-color: #fff;
@@ -94,697 +71,18 @@
             margin-bottom: 20px;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
         }
-
-        /* サービス紹介セクション */
-        .service-intro-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            margin-bottom: 80px;
-            align-items: center;
-        }
-
-        .service-intro-content {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .service-intro-image {
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow-soft);
-            transition: var(--transition-fast);
-        }
-
-        .service-intro-image:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-strong);
-        }
-
-        .service-intro-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .service-intro-title {
-            font-size: 32px;
-            font-weight: 800;
-            margin-bottom: 20px;
-            color: var(--dark-blue);
-        }
-
-        .service-intro-description {
-            font-size: 16px;
-            line-height: 1.8;
-            color: #555;
-            margin-bottom: 30px;
-        }
-
-        .service-intro-list {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 30px;
-        }
-
-        .service-intro-item {
-            position: relative;
-            padding-left: 30px;
-            margin-bottom: 15px;
-            font-size: 16px;
-            color: #333;
-        }
-
-        .service-intro-item::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            top: 2px;
-            color: var(--secondary-color);
-            font-weight: bold;
-            font-size: 18px;
-        }
-
-        /* プロセスセクション */
-        .process-section {
-            margin-bottom: 80px;
-            text-align: center;
-        }
-
-        .section-title {
-            font-size: 32px;
-            font-weight: 800;
-            margin-bottom: 50px;
-            color: var(--dark-blue);
-            text-align: center;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 4px;
-            background: var(--secondary-color);
-            margin: 15px auto 0;
-            border-radius: 2px;
-        }
-
-        .process-steps {
-            display: flex;
-            justify-content: space-between;
-            max-width: 1000px;
-            margin: 0 auto;
-            position: relative;
-            flex-wrap: wrap;
-        }
-
-        .process-steps::before {
-            content: '';
-            position: absolute;
-            top: 80px;
-            left: 60px;
-            right: 60px;
-            height: 2px;
-            background-color: #e0e0e0;
-            z-index: 1;
-        }
-
-        .process-step {
-            flex: 1;
-            min-width: 200px;
-            padding: 0 15px;
-            position: relative;
-            z-index: 2;
-            margin-bottom: 40px;
-        }
-
-        .step-number {
-            width: 60px;
-            height: 60px;
-            background: var(--secondary-color);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            font-weight: 700;
-            margin: 0 auto 20px;
-            border: 5px solid white;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .step-title {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: var(--dark-blue);
-        }
-
-        .step-description {
-            font-size: 14px;
-            line-height: 1.7;
-            color: #555;
-        }
-
-        /* 相談フォームセクション */
-        .form-section {
-            background-color: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-soft);
-            padding: 50px;
-            margin-bottom: 80px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .form-section-title {
-            font-size: 28px;
-            font-weight: 800;
-            margin-bottom: 15px;
-            color: var(--dark-blue);
-            text-align: center;
-        }
-
-        .form-section-lead {
-            font-size: 16px;
-            line-height: 1.8;
-            color: #555;
-            margin-bottom: 40px;
-            text-align: center;
-        }
-
-        .consultation-form {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        .form-label {
-            display: block;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: #333;
-        }
-
-        .required-label {
-            display: inline-block;
-            background-color: var(--secondary-color);
-            color: white;
-            font-size: 12px;
-            font-weight: 500;
-            padding: 2px 8px;
-            border-radius: 3px;
-            margin-left: 8px;
-        }
-
-        .form-input,
-        .form-select,
-        .form-textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background-color: #fff;
-            font-size: 16px;
-            color: #333;
-            transition: var(--transition-fast);
-        }
-
-        .form-input:focus,
-        .form-select:focus,
-        .form-textarea:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.1);
-            outline: none;
-        }
-
-        .form-textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        .form-radio-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 10px;
-        }
-
-        .form-radio-item {
-            display: flex;
-            align-items: center;
-        }
-
-        .form-radio {
-            margin-right: 8px;
-        }
-
-        .privacy-agreement {
-            background-color: var(--light-bg);
-            padding: 20px;
-            border-radius: 5px;
-            margin: 30px 0;
-            text-align: center;
-        }
-
-        .privacy-agreement a {
-            color: var(--primary-color);
-            text-decoration: underline;
-        }
-
-        .form-submit-button {
-            display: block;
-            background: var(--secondary-color);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            padding: 16px 40px;
-            font-size: 18px;
-            font-weight: 700;
-            width: 100%;
-            max-width: 400px;
-            margin: 40px auto 0;
-            cursor: pointer;
-            transition: var(--transition-fast);
-            position: relative;
-        }
-
-        .form-submit-button::after {
-            content: '無料';
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            background-color: #fff;
-            color: var(--secondary-color);
-            font-size: 14px;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-weight: bold;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .form-submit-button:hover {
-            background-color: #e03333;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(255, 58, 58, 0.3);
-        }
-
-        /* 成功事例セクション */
-        .case-studies-section {
-            margin-bottom: 80px;
-        }
-
-        .case-studies-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .case-study-item {
-            background-color: white;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow-soft);
-            transition: var(--transition-fast);
-        }
-
-        .case-study-item:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-strong);
-        }
-
-        .case-study-image {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-        }
-
-        .case-study-content {
-            padding: 20px;
-        }
-
-        .case-study-category {
-            display: inline-block;
-            background-color: var(--light-bg);
-            color: var(--secondary-color);
-            font-size: 12px;
-            font-weight: 700;
-            padding: 4px 10px;
-            border-radius: 20px;
-            margin-bottom: 10px;
-        }
-
-        .case-study-title {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: #333;
-            line-height: 1.4;
-        }
-
-        .case-study-result {
-            font-size: 15px;
-            color: #555;
-            line-height: 1.6;
-        }
-
-        .result-highlight {
-            color: var(--secondary-color);
-            font-weight: 700;
-        }
-
-        /* よくある質問セクション */
-        .faq-section {
-            margin-bottom: 80px;
-        }
-
-        .faq-list {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            margin-bottom: 20px;
-            border: 1px solid #eee;
-            border-radius: 8px;
-            overflow: hidden;
-            transition: var(--transition-fast);
-        }
-
-        .faq-item:hover {
-            box-shadow: var(--shadow-soft);
-        }
-
-        .faq-question {
-            background-color: var(--light-bg);
-            padding: 20px;
-            font-weight: 700;
-            font-size: 18px;
-            color: #333;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .faq-question span {
-            transition: transform 0.3s ease;
-        }
-
-        .faq-item.active .faq-question span {
-            transform: rotate(45deg);
-        }
-
-        .faq-answer {
-            padding: 0;
-            max-height: 0;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .faq-item.active .faq-answer {
-            padding: 20px;
-            max-height: 300px;
-        }
-
-        .faq-answer p {
-            margin: 0;
-            line-height: 1.8;
-            color: #555;
-        }
-
-        /* 注意書きセクション */
-        .notes-section {
-            background-color: var(--light-bg);
-            border-radius: var(--border-radius);
-            padding: 30px;
-            margin-bottom: 80px;
-        }
-
-        .notes-title {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: #333;
-        }
-
-        .notes-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .notes-item {
-            position: relative;
-            padding-left: 25px;
-            margin-bottom: 10px;
-            font-size: 14px;
-            color: #555;
-            line-height: 1.6;
-        }
-
-        .notes-item::before {
-            content: "※";
-            position: absolute;
-            left: 0;
-            top: 0;
-            color: #777;
-        }
-
-        /* レスポンシブ対応 */
-        @media (max-width: 1024px) {
-            .consultation-hero-title {
-                font-size: 36px;
-            }
-            
-            .service-intro-section {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            
-            .service-intro-content {
-                order: 2;
-            }
-            
-            .service-intro-image {
-                order: 1;
-                max-width: 600px;
-                margin: 0 auto;
-            }
-            
-            .process-steps::before {
-                display: none;
-            }
-            
-            .process-step {
-                min-width: 160px;
-                flex-basis: 50%;
-            }
-            
-            .case-studies-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .form-section {
-                padding: 40px 30px;
-            }
-        }
-
+        /* レスポンシブ（free-consultation固有部分のみ） */
         @media (max-width: 768px) {
-            .consultation-hero-section {
-                padding: 100px 0 60px;
-            }
-            
-            .consultation-hero-title {
-                font-size: 30px;
-            }
-            
-            .consultation-hero-lead {
-                font-size: 16px;
-            }
-            
-            .hero-free-badge {
-                font-size: 16px;
-                padding: 4px 15px;
-            }
-            
-            .consultation-container {
-                padding: 30px 20px 60px;
-            }
-            
-            .form-section-title {
-                font-size: 24px;
-            }
-            
-            .service-intro-title {
-                font-size: 26px;
-            }
-            
-            .section-title {
-                font-size: 26px;
-                margin-bottom: 40px;
-            }
-            
-            .process-step {
-                flex-basis: 100%;
-                margin-bottom: 30px;
-            }
-            
-            .case-studies-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            
-            .faq-question {
-                font-size: 16px;
-                padding: 15px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .consultation-hero-title {
-                font-size: 26px;
-            }
-            
-            .form-section {
-                padding: 30px 20px;
-            }
-            
-            .service-intro-title {
-                font-size: 22px;
-                margin-bottom: 15px;
-            }
-            
-            .service-intro-description {
-                font-size: 15px;
-                margin-bottom: 20px;
-            }
-            
-            .form-submit-button {
-                font-size: 16px;
-                padding: 14px 20px;
-            }
-            
-            .form-radio-group {
-                flex-direction: column;
-                gap: 10px;
-            }
+            .consultation-hero-section { padding: 100px 0 60px; }
+            .consultation-hero-title { font-size: 30px; }
+            .consultation-hero-lead { font-size: 16px; }
+            .hero-free-badge { font-size: 16px; padding: 4px 15px; }
         }
     </style>
 </head>
 <body>
-    <!-- SVG Symbol Definitions for Icons -->
-    <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <defs>
-        <symbol id="icon-pdf" viewBox="0 0 512 512">
-            <style type="text/css">
-                .st0{fill:#4B4B4B;}
-            </style>
-            <g>
-                <path class="st0" d="M378.413,0H208.297h-13.182L185.8,9.314L57.02,138.102l-9.314,9.314v13.176v265.514
-                    c0,47.36,38.528,85.895,85.896,85.895h244.811c47.353,0,85.881-38.535,85.881-85.895V85.896C464.294,38.528,425.766,0,378.413,0z
-                    M432.497,426.105c0,29.877-24.214,54.091-54.084,54.091H133.602c-29.884,0-54.098-24.214-54.098-54.091V160.591h83.716
-                    c24.885,0,45.077-20.178,45.077-45.07V31.804h170.116c29.87,0,54.084,24.214,54.084,54.092V426.105z"/>
-                <path class="st0" d="M171.947,252.785h-28.529c-5.432,0-8.686,3.533-8.686,8.825v73.754c0,6.388,4.204,10.599,10.041,10.599
-                    c5.711,0,9.914-4.21,9.914-10.599v-22.406c0-0.545,0.279-0.817,0.824-0.817h16.436c20.095,0,32.188-12.226,32.188-29.612
-                    C204.136,264.871,192.182,252.785,171.947,252.785z M170.719,294.888h-15.208c-0.545,0-0.824-0.272-0.824-0.81v-23.23
-                    c0-0.545,0.279-0.816,0.824-0.816h15.208c8.42,0,13.447,5.027,13.447,12.498C184.167,290,179.139,294.888,170.719,294.888z"/>
-                <path class="st0" d="M361.167,252.785h-44.812c-5.432,0-8.7,3.533-8.7,8.825v73.754c0,6.388,4.218,10.599,10.055,10.599
-                    c5.697,0,9.914-4.21,9.914-10.599v-26.351c0-0.538,0.265-0.81,0.81-0.81h26.086c5.837,0,9.23-3.532,9.23-8.56
-                    c0-5.028-3.393-8.553-9.23-8.553h-26.086c-0.545,0-0.81-0.272-0.81-0.817v-19.425c0-0.545,0.265-0.816,0.81-0.816h32.733
-                    c5.572,0,9.245-3.666,9.245-8.553C370.411,256.45,366.738,252.785,361.167,252.785z"/>
-            </g>
-        </symbol>
-        <symbol id="svg-triangle-color" viewBox="0 0 147.35 133">
-             <style>
-                .cls-1{fill:none;}
-                .cls-2{clip-path:url(#clip-path-triangle);} /* IDをユニークに */
-                .cls-3{fill:#80d4d4;}
-                .cls-4{fill:#3bb68b;}
-                .cls-5{fill:#4fbfec;}
-            </style>
-            <clipPath id="clip-path-triangle" transform="translate(0 0)">
-                <rect class="cls-1" width="147.35" height="133"/>
-            </clipPath>
-            <g class="cls-2">
-                <path class="cls-3" d="M127.06,133H73.66L53.11,111h58.11a7.36,7.36,0,0,0,6.38-11l-8.49-14.7,8.82-28.83,26.68,46.22A20.27,20.27,0,0,1,127.06,133" transform="translate(0 0)"/>
-                <path class="cls-4" d="M117.93,56.38l-8.82,28.83L85.05,43.54l-5-8.66a7.36,7.36,0,0,0-12.75,0L58.8,49.59,29.44,56.37,56.13,10.13a20.26,20.26,0,0,1,35.1,0l16.29,28.22Z" transform="translate(0 0)"/>
-                <path class="cls-5" d="M73.66,133H20.29A20.27,20.27,0,0,1,2.74,102.6L19,74.4l10.41-18L58.8,49.59l-24,41.67-5-8.65a7.36,7.36,0,0,0,6.38,11h17Z" transform="translate(0 0)"/>
-            </g>
-        </symbol>
-    </defs>
-    </svg>
-
-   <!-- ヘッダー -->
-<header class="site-header">
-    <div class="header-container">
-        <div class="site-logo-text">
-            <a href="index.html">CLAN</a>
-        </div>
-        <nav class="global-nav pc-nav">
-            <ul>
-                <li><a href="index.html" aria-current="page">ホーム</a></li>
-                <li><a href="about.html">オートファネル大学とは</a></li>
-                <li><a href="blog/index.html">ブログ</a></li>
-                <li><a href="seminar/index.html">オンライン講座</a></li>
-                <li><a href="tools/index.html">まえゆきツール</a></li>
-                <li><a href="achievement/index.html">お客様の声</a></li>
-            </ul>
-        </nav>
-        <div class="header-cta">
-            <a href="document.html" class="btn-document">
-                <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
-                資料請求する
-            </a>
-            <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
-                まずは相談する
-            </a>
-        </div>
-        <button class="hamburger-button sp-nav" aria-label="メニューを開く">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    </div>
-</header>
-
-<!-- モバイルメニュー（JavaScript で動的に生成される場合はこのコードは不要） -->
-<div class="mobile-menu">
-    <nav>
-        <ul>
-            <li><a href="index.html">ホーム</a></li>
-            <li><a href="about.html">オートファネル大学とは</a></li>
-            <li><a href="blog/index.html">ブログ</a></li>
-            <li><a href="seminar/index.html">オンライン講座</a></li>
-            <li><a href="tools/index.html">まえゆきツール</a></li>
-            <li><a href="achievement/index.html">お客様の声</a></li>
-        </ul>
-    </nav>
-    <div class="mobile-cta">
-        <a href="document.html" class="btn-document">
-            <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
-            資料請求する
-        </a>
-        <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
-            まずは相談する
-        </a>
-    </div>
-</div>
-
-<!-- スマホ用フッター固定CTA - 画像を削除 -->
-<div class="sp-fix-cta">
-    <ul>
-        <li class="mail"><a href="https://utage-marunage.com/it-hojo/">まずは相談する</a></li>
-        <li class="book"><a href="document.html">資料請求する</a></li>
-    </ul>
-</div>
-
+    <svg-icons></svg-icons>
+    <site-header></site-header>
 
     <main class="site-main">
         <!-- ヒーローセクション -->
@@ -815,7 +113,7 @@
                     </ul>
                 </div>
                 <div class="service-intro-image">
-                    <img src="images/consultation.webp" alt="無料相談">
+                    <img src="/images/consultation.webp" alt="無料相談">
                 </div>
             </div>
 
@@ -849,7 +147,7 @@
                 <h2 class="section-title">無料相談から始まった成功事例</h2>
                 <div class="case-studies-grid">
                     <div class="case-study-item">
-                        <img src="images/case-study1.webp" alt="ケース1" class="case-study-image">
+                        <img src="/images/case-study1.webp" alt="ケース1" class="case-study-image">
                         <div class="case-study-content">
                             <span class="case-study-category">コンサルタント</span>
                             <h3 class="case-study-title">セミナー集客から顧客管理までを自動化</h3>
@@ -857,7 +155,7 @@
                         </div>
                     </div>
                     <div class="case-study-item">
-                        <img src="images/case-study2.webp" alt="ケース2" class="case-study-image">
+                        <img src="/images/case-study2.webp" alt="ケース2" class="case-study-image">
                         <div class="case-study-content">
                             <span class="case-study-category">美容サロン</span>
                             <h3 class="case-study-title">問い合わせ対応と予約管理を自動化</h3>
@@ -865,7 +163,7 @@
                         </div>
                     </div>
                     <div class="case-study-item">
-                        <img src="images/case-study3.webp" alt="ケース3" class="case-study-image">
+                        <img src="/images/case-study3.webp" alt="ケース3" class="case-study-image">
                         <div class="case-study-content">
                             <span class="case-study-category">専門スクール</span>
                             <h3 class="case-study-title">オンライン講座の販売を24時間自動化</h3>
@@ -972,7 +270,7 @@
                     無料でダウンロードいただけます。
                 </p>
                 <div class="contact-cta-buttons">
-                    <a href="document.html" class="btn btn-document">
+                    <a href="/document.html" class="btn btn-document">
                         <svg><use xlink:href="#icon-pdf"></use></svg>
                         資料をダウンロードする
                     </a>
@@ -981,78 +279,9 @@
         </section>
     </main>
 
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-widgets">
-                <div class="widget-area footer-widget-1">
-                    <img src="images/logo-white.webp" alt="オートファネル大学 ロゴ白" class="footer-logo">
-                </div>
-                <div class="widget-area footer-widget-2">
-                    <h4>オンライン講座一覧</h4>
-                    <ul>
-                        <li><a href="course/lp.html">ランディングページ作成初級講座</a></li>
-                        <li><a href="course/lp.html">動画編集初級講座</a></li>
-                        <li><a href="course/lp.html">ステップメール設計初級講座</a></li>
-                        <li><a href="course/lp.html">オートファネル構築初級講座</a></li>
-                        <li><a href="course/lp.html">Youtubeサムネ作成初級講座</a></li>
-                        <li><a href="course/lp.html">Canvaデザイン初級講座</a></li>
-                    </ul>
-                </div>
-                <div class="widget-area footer-widget-3">
-                    <h4>無料コンテンツ</h4>
-                    <ul>
-                        <li><a href="blog/index.html">ブログ</a></li>
-                        <li><a href="book/index.html">電子書籍</a></li>
-                        <li><a href="free-seminar.html">無料セミナー</a></li>
-                        <li><a href="free-consultation.html">無料相談</a></li>
-                        <li><a href="achievement/index.html">お客様の声</a></li>
-                    </ul>
-                </div>
-                <div class="widget-area footer-widget-4">
-                    <h4>運営情報</h4>
-                    <ul>
-                        <li><a href="owner.html">運営者情報</a></li>
-                        <li><a href="terms.html">利用規約</a></li>
-                        <li><a href="privacy.html">プライバシーポリシー</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="site-copyright">
-                <small>© 2025 オートファネル大学</small>
-            </div>
-        </div>
-    </footer>
+    <site-footer></site-footer>
 
-    <script src="js/script.js"></script>
-    
-    <script>
-        // FAQ アコーディオン機能
-        document.addEventListener('DOMContentLoaded', function() {
-            const faqItems = document.querySelectorAll('.faq-item');
-            
-            faqItems.forEach(item => {
-                const question = item.querySelector('.faq-question');
-                
-                question.addEventListener('click', function() {
-                    // 現在の状態を取得
-                    const isActive = item.classList.contains('active');
-                    
-                    // 他のすべてのアイテムを閉じる
-                    faqItems.forEach(faqItem => {
-                        faqItem.classList.remove('active');
-                        const questionIcon = faqItem.querySelector('.faq-question span');
-                        questionIcon.textContent = '+';
-                    });
-                    
-                    // クリックされたアイテムが閉じていた場合は開く
-                    if (!isActive) {
-                        item.classList.add('active');
-                        const questionIcon = item.querySelector('.faq-question span');
-                        questionIcon.textContent = '−';
-                    }
-                });
-            });
-        });
-    </script>
+    <script src="/js/script.js"></script>
+    <script src="/assets/js/components.js"></script>
 </body>
 </html>

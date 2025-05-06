@@ -8,11 +8,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="/images/favicon.ico">
     <meta property="og:title" content="オートファネル構築初級講座 | オンライン講座 | オートファネル大学">
     <meta property="og:description" content="オートファネル大学のオートファネル構築初級講座。集客から販売までを自動化する仕組み「セールスファネル」の設計からUTAGEでの構築方法までを基礎から学べます。初心者歓迎。">
-    <meta property="og:image" content="../images/ogp_image_autofunnel_course.webp"> <!-- 仮のOGP画像 -->
+    <meta property="og:image" content="/images/ogp_image_autofunnel_course.webp"> <!-- 仮のOGP画像 -->
     <meta property="og:type" content="article">
 
     <style>
@@ -34,7 +34,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('../images/dots-pattern.webp');
+            background-image: url('/images/dots-pattern.webp');
             opacity: 0.07;
             z-index: 1;
         }
@@ -406,127 +406,8 @@
     </style>
 </head>
 <body>
-    <!-- SVG Symbol Definitions (共通) -->
-    <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <defs>
-        <symbol id="icon-pdf" viewBox="0 0 512 512">
-            <style type="text/css">
-                .st0{fill:#4B4B4B;}
-            </style>
-            <g>
-                <path class="st0" d="M378.413,0H208.297h-13.182L185.8,9.314L57.02,138.102l-9.314,9.314v13.176v265.514
-                    c0,47.36,38.528,85.895,85.896,85.895h244.811c47.353,0,85.881-38.535,85.881-85.895V85.896C464.294,38.528,425.766,0,378.413,0z
-                    M432.497,426.105c0,29.877-24.214,54.091-54.084,54.091H133.602c-29.884,0-54.098-24.214-54.098-54.091V160.591h83.716
-                    c24.885,0,45.077-20.178,45.077-45.07V31.804h170.116c29.87,0,54.084,24.214,54.084,54.092V426.105z"/>
-                <path class="st0" d="M171.947,252.785h-28.529c-5.432,0-8.686,3.533-8.686,8.825v73.754c0,6.388,4.204,10.599,10.041,10.599
-                    c5.711,0,9.914-4.21,9.914-10.599v-22.406c0-0.545,0.279-0.817,0.824-0.817h16.436c20.095,0,32.188-12.226,32.188-29.612
-                    C204.136,264.871,192.182,252.785,171.947,252.785z M170.719,294.888h-15.208c-0.545,0-0.824-0.272-0.824-0.81v-23.23
-                    c0-0.545,0.279-0.816,0.824-0.816h15.208c8.42,0,13.447,5.027,13.447,12.498C184.167,290,179.139,294.888,170.719,294.888z"/>
-                <path class="st0" d="M361.167,252.785h-44.812c-5.432,0-8.7,3.533-8.7,8.825v73.754c0,6.388,4.218,10.599,10.055,10.599
-                    c5.697,0,9.914-4.21,9.914-10.599v-26.351c0-0.538,0.265-0.81,0.81-0.81h26.086c5.837,0,9.23-3.532,9.23-8.56
-                    c0-5.028-3.393-8.553-9.23-8.553h-26.086c-0.545,0-0.81-0.272-0.81-0.817v-19.425c0-0.545,0.265-0.816,0.81-0.816h32.733
-                    c5.572,0,9.245-3.666,9.245-8.553C370.411,256.45,366.738,252.785,361.167,252.785z"/>
-            </g>
-        </symbol>
-         <symbol id="svg-triangle-color" viewBox="0 0 147.35 133">
-             <style>
-                .cls-1{fill:none;}
-                 /* IDをページ固有に */
-                .cls-2{clip-path:url(#clip-path-triangle-course-autofunnel);}
-                .cls-3{fill:#80d4d4;}
-                .cls-4{fill:#3bb68b;}
-                .cls-5{fill:#4fbfec;}
-            </style>
-            <!-- IDをページ固有に -->
-            <clipPath id="clip-path-triangle-course-autofunnel" transform="translate(0 0)">
-                <rect class="cls-1" width="147.35" height="133"/>
-            </clipPath>
-            <g class="cls-2">
-                <path class="cls-3" d="M127.06,133H73.66L53.11,111h58.11a7.36,7.36,0,0,0,6.38-11l-8.49-14.7,8.82-28.83,26.68,46.22A20.27,20.27,0,0,1,127.06,133" transform="translate(0 0)"/>
-                <path class="cls-4" d="M117.93,56.38l-8.82,28.83L85.05,43.54l-5-8.66a7.36,7.36,0,0,0-12.75,0L58.8,49.59,29.44,56.37,56.13,10.13a20.26,20.26,0,0,1,35.1,0l16.29,28.22Z" transform="translate(0 0)"/>
-                <path class="cls-5" d="M73.66,133H20.29A20.27,20.27,0,0,1,2.74,102.6L19,74.4l10.41-18L58.8,49.59l-24,41.67-5-8.65a7.36,7.36,0,0,0,6.38,11h17Z" transform="translate(0 0)"/>
-            </g>
-        </symbol>
-         <!-- YouTube, X, Instagram icons (From index.html) -->
-         <symbol viewBox="0 0 576 512" id="svg-youtube">
-            <path d="M549.7 124.1c-6.3-23.7-24.8-42.3-48.3-48.6C458.8 64 288 64 288 64S117.2 64 74.6 75.5c-23.5 6.3-42 24.9-48.3 48.6-11.4 42.9-11.4 132.3-11.4 132.3s0 89.4 11.4 132.3c6.3 23.7 24.8 41.5 48.3 47.8C117.2 448 288 448 288 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zM231.8 355.4l-10.8-7.4-10.8 7.4C187.8 370.3 160 355.4 160 328V184c0-27.4 27.8-42.3 50.2-27.4l10.8 7.4 10.8-7.4c22.4-14.9 50.2 0 50.2 27.4V328c0 27.4-27.8 42.3-50.2 27.4zM391.6 355.4l-10.8-7.4-10.8 7.4c-22.4 14.9-50.2 0-50.2-27.4V184c0-27.4 27.8-42.3 50.2-27.4l10.8 7.4 10.8-7.4C414.2 141.7 442 156.6 442 184V328c0 27.4-27.8 42.3-50.4 27.4z"/>
-        </symbol>
-        <symbol viewBox="0 0 512 512" id="svg-x">
-             <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/>
-         </symbol>
-         <symbol viewBox="0 0 448 512" id="svg-instagram">
-             <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9 26.3 26.2 58 34.4 93.9 36.2 37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6 42.6 29.5 11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
-         </symbol>
-          <!-- Font Awesome Icons (for social links if needed) -->
-         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    </defs>
-    </svg>
-
-   <!-- ヘッダー -->
-<header class="site-header">
-    <div class="header-container">
-        <div class="site-logo-text">
-            <a href="index.html">CLAN</a>
-        </div>
-        <nav class="global-nav pc-nav">
-            <ul>
-                <li><a href="index.html" aria-current="page">ホーム</a></li>
-                <li><a href="about.html">オートファネル大学とは</a></li>
-                <li><a href="blog/index.html">ブログ</a></li>
-                <li><a href="seminar/index.html">オンライン講座</a></li>
-                <li><a href="tools/index.html">まえゆきツール</a></li>
-                <li><a href="achievement/index.html">お客様の声</a></li>
-            </ul>
-        </nav>
-        <div class="header-cta">
-            <a href="document.html" class="btn-document">
-                <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
-                資料請求する
-            </a>
-            <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
-                まずは相談する
-            </a>
-        </div>
-        <button class="hamburger-button sp-nav" aria-label="メニューを開く">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    </div>
-</header>
-
-<!-- モバイルメニュー（JavaScript で動的に生成される場合はこのコードは不要） -->
-<div class="mobile-menu">
-    <nav>
-        <ul>
-            <li><a href="index.html">ホーム</a></li>
-            <li><a href="about.html">オートファネル大学とは</a></li>
-            <li><a href="blog/index.html">ブログ</a></li>
-            <li><a href="seminar/index.html">オンライン講座</a></li>
-            <li><a href="tools/index.html">まえゆきツール</a></li>
-            <li><a href="achievement/index.html">お客様の声</a></li>
-        </ul>
-    </nav>
-    <div class="mobile-cta">
-        <a href="document.html" class="btn-document">
-            <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
-            資料請求する
-        </a>
-        <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
-            まずは相談する
-        </a>
-    </div>
-</div>
-
-<!-- スマホ用フッター固定CTA - 画像を削除 -->
-<div class="sp-fix-cta">
-    <ul>
-        <li class="mail"><a href="https://utage-marunage.com/it-hojo/">まずは相談する</a></li>
-        <li class="book"><a href="document.html">資料請求する</a></li>
-    </ul>
-</div>
-
-
+<div id="svg-defs-placeholder"></div>
+<div id="header-placeholder"></div>
     <main class="site-main">
         <!-- ヒーローセクション -->
         <section class="course-detail-hero">
@@ -653,7 +534,7 @@
                  <div class="instructors-grid"> <!-- 講師紹介セクションの grid wrapperを流用 -->
                     <div class="instructor-card">
                         <div class="instructor-image">
-                            <img src="../images/instructor-avatar.webp" alt="前田由紀子">
+                            <img src="/images/instructor-avatar.webp" alt="前田由紀子">
                         </div>
                         <div class="instructor-info">
                             <h3 class="instructor-name">前田由紀子</h3>
@@ -765,52 +646,7 @@
             </div>
         </section>
     </main>
-
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-widgets">
-                <div class="widget-area footer-widget-1">
-                    <img src="../images/logo-white.webp" alt="オートファネル大学 ロゴ白" class="footer-logo">
-                </div>
-                <div class="widget-area footer-widget-2">
-                    <h4>オンライン講座一覧</h4>
-                    <ul>
-                        <li><a href="lp.html">ランディングページ作成初級講座</a></li>
-                        <li><a href="video.html">動画編集初級講座</a></li>
-                        <li><a href="step-mail.html">ステップメール設計初級講座</a></li>
-                        <li><a href="auto-funnel.html">オートファネル構築初級講座</a></li>
-                        <li><a href="youtube-thumbnail.html">Youtubeサムネ作成初級講座</a></li>
-                        <li><a href="canva.html">Canvaデザイン初級講座</a></li>
-                    </ul>
-                </div>
-                <div class="widget-area footer-widget-3">
-                    <h4>無料コンテンツ</h4>
-                    <ul>
-                        <li><a href="../blog/index.html">ブログ</a></li>
-                        <li><a href="../book/index.html">電子書籍</a></li>
-                        <li><a href="../free-seminar.html">無料セミナー</a></li>
-                        <li><a href="../free-consultation.html">無料相談</a></li>
-                        <li><a href="../achievement/index.html">お客様の声</a></li>
-                    </ul>
-                </div>
-                <div class="widget-area footer-widget-4">
-                    <h4>運営情報</h4>
-                    <ul>
-                        <li><a href="../owner.html">運営者情報</a></li>
-                        <li><a href="../terms.html">利用規約</a></li>
-                        <li><a href="../privacy.html">プライバシーポリシー</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="site-copyright">
-                <small>© 2025 オートファネル大学</small>
-            </div>
-        </div>
-    </footer>
-
-    <script src="../js/script.js"></script>
-    <!-- SVGアイコンがFont Awesomeの場合はこちらも必要 -->
-    <!-- <script src="https://kit.fontawesome.com/your-fontawesome-kit-code.js" crossorigin="anonymous"></script> -->
-
+<div id="footer-placeholder"></div>
+<script src="/js/script.js"></script>
 </body>
 </html>

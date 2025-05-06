@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="売れる仕組みを自動化する3つのステップと、オールインワンツールUtageを使った具体的なファネル構築方法を解説。業務効率化と売上アップを実現しましょう。">
-    <title>売れる仕組みを自動化する3つのステップと必須ツール(Utageで実現) - オートファネル大学ブログ</title>
+    <meta name="description" content="UTAGEシステム導入企業で売上が平均30%アップしている理由を徹底解説。オールインワン機能で、集客から販売までの仕組みを効率化・自動化する方法を紹介します。">
+    <title>UTAGEシステムとは?導入企業の売上が平均30%アップした理由を徹底解説 - オートファネル大学ブログ</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
     <!-- 外部CSSファイルがあればここにリンク（今回は<style>タグ内に全て記述します） -->
     <!-- <link rel="stylesheet" href="../css/style.css"> -->
-    <link rel="icon" href="../images/favicon.ico">
-    <meta property="og:title" content="売れる仕組みを自動化する3つのステップと必須ツール(Utageで実現) - オートファネル大学ブログ">
-    <meta property="og:description" content="売れる仕組みを自動化する3つのステップと、オールインワンツールUtageを使った具体的なファネル構築方法を解説。業務効率化と売上アップを実現しましょう。">
-    <meta property="og:image" content="../images/blog-funnel.webp"> <!-- サムネイル画像を想定 -->
+    <link rel="icon" href="/images/favicon.ico">
+    <meta property="og:title" content="UTAGEシステムとは?導入企業の売上が平均30%アップした理由を徹底解説 - オートファネル大学ブログ">
+    <meta property="og:description" content="UTAGEシステム導入企業で売上が平均30%アップしている理由を徹底解説。オールインワン機能で、集客から販売までの仕組みを効率化・自動化する方法を紹介します。">
+    <meta property="og:image" content="/images/blog-utage-intro.webp"> <!-- サムネイル画像を想定 -->
     <meta property="og:type" content="article">
     <style>
         /* カラーパレット定義 */
@@ -190,13 +190,12 @@
         }
 
         /* === 記事タイトル部分 === */
+        /* 記事タイトル部分はカラム構造の外に出し、中央寄せにする */
         .article-page-title {
             text-align: center; /* 中央寄せ */
             margin-bottom: 30px;
             padding: 20px; /* タイトル周りのパディング */
-            /* background-color: #fff; */ /* 背景色は本文とサイドバーのみに移動 */
-            /* border-radius: 10px; */ /* ボーダーラジアスも本文とサイドバーに移動 */
-            /* box-shadow: 0 2px 8px rgba(0,0,0,0.05); */ /* 影も本文とサイドバーに移動 */
+            /* 背景色、影、角丸は本文・サイドバーセクションに適用するためここには不要 */
         }
 
         .article-page-title img.header-icon {
@@ -214,8 +213,16 @@
         .article-page-meta {
             font-size: 14px;
             color: #666;
+            /* 元のHTMLの.article-metaから移設 */
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center; /* 中央寄せ */
         }
-
+         .article-page-meta .article-category {
+             color: var(--text-darkblue); /* カテゴリ色を合わせる */
+             font-weight: bold;
+         }
 
         /* === 3カラムレイアウト === */
         .article-container {
@@ -267,7 +274,7 @@
             fill: var(--text-darkblue);
          }
 
-        /* 中央メインコンテンツ (記事本文) */
+        /* 中央メインコンテンツ (記事本文、記事下著者、記事下シェア、関連記事) */
         .article-main {
             flex-basis: 0; /* flex-growで幅を決定 */
             flex-grow: 5; /* 5/7 の比率 (左サイドバーの固定幅を除いた残りスペースに対して) */
@@ -280,7 +287,8 @@
             margin-top: 20px; /* タイトルエリアとの隙間を調整 */
         }
 
-        /* 右サイドバー (プロフィール、目次) */
+        /* 右サイドバー (プロフィール、目次、ウィジェット) */
+        /* クラス名を .article-right-sidebar に修正 */
         .article-right-sidebar {
             flex-basis: 0; /* flex-growで幅を決定 */
             flex-grow: 2; /* 2/7 の比率 (左サイドバーの固定幅を除いた残りスペースに対して) */
@@ -288,6 +296,7 @@
              margin-top: 20px; /* タイトルエリアとの隙間を調整 */
         }
 
+        /* サイドバーの各セクションの共通スタイル */
          .sidebar-section {
             background-color: #fff; /* サイドバー各セクションの背景色 */
             border-radius: 10px;
@@ -306,6 +315,7 @@
              /* スクロール中に他の要素と重なる場合は、z-indexなどを調整 */
         }
 
+        /* サイドバーのタイトル */
         .sidebar-title {
             font-size: 18px;
             font-weight: bold;
@@ -316,7 +326,7 @@
 
 
         /* 記事本文内の既存スタイル */
-        /* .article-back は本文の上でなく、記事タイトルエリアの上にあるため、削除または移動推奨 */
+        /* .article-back は本文の上でなく、記事タイトルエリアの上にあるため、本文div内に移動し、スタイルを維持 */
         .article-back {
              display: inline-block; /* 表示に戻す */
              margin-bottom: 20px;
@@ -327,7 +337,16 @@
         .article-back:hover {
              color: var(--text-darkblue);
         }
-        
+
+        /* Featured Image - 本文エリア内に配置 */
+         .article-featured-image {
+             max-width: 100%;
+             height: auto;
+             border-radius: 5px; /* 前回のデザインに合わせる */
+             margin: 0 0 30px 0; /* 本文の上に配置するためマージン調整 */
+             object-fit: cover;
+         }
+
         /* 記事本文 */
         .article-content {
             line-height: 1.8;
@@ -336,6 +355,7 @@
         }
 
         /* 見出しのスタイル（緑バー + 薄背景） */
+        /* 前回のデザインの見出しスタイルを適用 */
         .article-content h2,
         .article-content h3 {
             font-weight: bold;
@@ -352,7 +372,7 @@
         .article-content h3 {
             font-size: 20px;
         }
-        
+
         .article-content p {
             margin-bottom: 20px;
         }
@@ -364,6 +384,7 @@
             margin-bottom: 10px;
         }
          /* テーブルスタイル調整 */
+         /* 前回のデザインのテーブルスタイルを適用 */
          .article-content table {
             width: 100%;
             border-collapse: separate; /* collapseから変更 */
@@ -425,6 +446,7 @@
         }
 
         /* 薄めのハイライトスタイル (背景色 + 太字) */
+        /* 前回のデザインのハイライトスタイルを適用 */
         .highlight-green { background-color: var(--highlight-bg-green); font-weight: bold; padding: 0 3px; }
         .highlight-blue { background-color: var(--highlight-bg-blue); font-weight: bold; padding: 0 3px; }
         .highlight-yellow { background-color: var(--highlight-bg-yellow); font-weight: bold; padding: 0 3px; }
@@ -432,12 +454,13 @@
         .highlight-red { background-color: var(--highlight-bg-red); font-weight: bold; padding: 0 3px; }
         /* 既存のhighlightクラスも薄い黄色ハイライトに */
         .highlight {
-            background-color: var(--highlight-bg-yellow);
+            background-color: var(--highlight-bg-yellow); /* 薄い黄色ハイライトに統一 */
             font-weight: bold;
             padding: 0 3px;
         }
 
         /* 太字色字スタイル (文字色 + 太字, 背景なし) */
+        /* 前回のデザインの色字スタイルを適用 */
         .text-green { color: var(--text-green); font-weight: bold; }
         .text-blue { color: var(--text-blue); font-weight: bold; }
         /* .text-yellow { color: var(--text-yellow); font-weight: bold; } */ /* 黄色の文字色は視認性が悪い可能性が高いのでコメントアウト */
@@ -446,6 +469,7 @@
 
 
         /* 会話コンテナ */
+        /* 前回のデザインの会話コンテナスタイルを適用 */
         .conversation-container {
             display: flex;
             background-color: #f8f9fa;
@@ -462,11 +486,13 @@
             flex-shrink: 0;
         }
         /* サンプルCSSに合わせてアイコン画像を共通に */
-        .conversation-container.yuki .character-icon,
-        .conversation-container.nyanta .character-icon {
-            background-image: url('../images/profile-YUKI.webp');
-            background-position: center;
+        .conversation-container.yuki .character-icon {
+            background-image: url('/images/profile-YUKI.webp'); /* YUKIのアイコン */
         }
+        .conversation-container.nyanta .character-icon {
+             background-image: url('/images/profile-nyanta.webp'); /* ニャン太のアイコンを想定 (画像パスは適宜修正してください) */
+        }
+
         .conversation-content {
             flex-grow: 1;
             margin-left: 15px;
@@ -482,21 +508,21 @@
             color: var(--text-normal); /* 新しいCSSの指定 */
         }
         /* 会話内のハイライト・色字も適用 */
-        .conversation-content .highlight-green { background-color: var(--highlight-bg-green); font-weight: bold; padding: 0 3px; }
-        .conversation-content .highlight-blue { background-color: var(--highlight-bg-blue); font-weight: bold; padding: 0 3px; }
-        .conversation-content .highlight-yellow { background-color: var(--highlight-bg-yellow); font-weight: bold; padding: 0 3px; }
-        .conversation-content .highlight-pink { background-color: var(--highlight-bg-pink); font-weight: bold; padding: 0 3px; }
-        .conversation-content .highlight-red { background-color: var(--highlight-bg-red); font-weight: bold; padding: 0 3px; }
-        .conversation-content .highlight { /* 会話内の既存highlightも薄い黄色ハイライトに */
-            background-color: var(--highlight-bg-yellow);
-            font-weight: bold;
-            padding: 0 3px;
-        }
-        .conversation-content .text-green { color: var(--text-green); font-weight: bold; }
-        .conversation-content .text-blue { color: var(--text-blue); font-weight: bold; }
-        /* .conversation-content .text-yellow { color: var(--text-yellow); font-weight: bold; } */
-        .conversation-content .text-pink { color: var(--text-pink); font-weight: bold; }
-        .conversation-content .text-red { color: var(--text-red); font-weight: bold; }
+        .conversation-container .highlight-green { background-color: var(--highlight-bg-green); font-weight: bold; padding: 0 3px; }
+        .conversation-container .highlight-blue { background-color: var(--highlight-bg-blue); font-weight: bold; padding: 0 3px; }
+        .conversation-container .highlight-yellow { background-color: var(--highlight-bg-yellow); font-weight: bold; padding: 0 3px; }
+        .conversation-container .highlight-pink { background-color: var(--highlight-bg-pink); font-weight: bold; padding: 0 3px; }
+        .conversation-container .highlight-red { background-color: var(--highlight-bg-red); font-weight: bold; padding: 0 3px; }
+         .conversation-container .highlight { /* 会話内の既存highlightも薄い黄色ハイライトに */
+             background-color: var(--highlight-bg-yellow);
+             font-weight: bold;
+             padding: 0 3px;
+         }
+        .conversation-container .text-green { color: var(--text-green); font-weight: bold; }
+        .conversation-container .text-blue { color: var(--text-blue); font-weight: bold; }
+        /* .conversation-container .text-yellow { color: var(--text-yellow); font-weight: bold; } */
+        .conversation-container .text-pink { color: var(--text-pink); font-weight: bold; }
+        .conversation-container .text-red { color: var(--text-red); font-weight: bold; }
 
 
         .cta-button {
@@ -516,6 +542,147 @@
         .cta-button:hover {
             background-color: #c0392b;
         }
+
+        /* 著者情報（記事下部） */
+         /* 前回のデザインに合わせる */
+         .author-box {
+            display: flex;
+            gap: 20px;
+            background-color: #f9f9f9;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 40px; /* 記事下の余白 */
+         }
+          .author-image {
+             width: 100px;
+             height: 100px;
+             border-radius: 50%;
+             object-fit: cover;
+         }
+         .author-info {
+             flex-grow: 1;
+         }
+         .author-name {
+             font-size: 18px;
+             font-weight: bold;
+             margin-bottom: 10px;
+         }
+          .author-bio {
+             line-height: 1.6;
+             font-size: 14px;
+             color: #555;
+         }
+
+
+        /* 記事下SNSシェア */
+        /* 前回のデザインに合わせる */
+        .share-box {
+            display: flex; /* flexboxを維持 */
+            align-items: center;
+            justify-content: center; /* 横並び中央寄せ */
+            margin-bottom: 40px; /* 前回のデザインに合わせる */
+            padding: 25px; /* 背景色と角丸のためにpaddingを追加 */
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            gap: 20px; /* タイトルとボタンの間に隙間 */
+        }
+        .share-title {
+            font-size: 18px;
+            font-weight: bold;
+             flex-shrink: 0; /* タイトルが縮まないように */
+        }
+        .share-buttons {
+            display: flex;
+            gap: 15px;
+             flex-grow: 1; /* ボタンコンテナが伸びるように */
+             justify-content: center; /* ボタンをコンテナ内で中央寄せ */
+        }
+        .share-button {
+            width: 40px; /* サイズ調整 */
+            height: 40px; /* サイズ調整 */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px; /* サイズ調整 */
+            transition: all 0.3s ease;
+            text-decoration: none; /* リンクの下線を削除 */
+        }
+        .share-button svg { /* SVGアイコンのサイズ調整 */
+             width: 1em;
+             height: 1em;
+             fill: currentColor;
+        }
+        .share-twitter {
+            background-color: #1DA1F2;
+        }
+        .share-facebook {
+            background-color: #4267B2;
+        }
+        .share-linkedin {
+            background-color: #0A66C2;
+        }
+        .share-button:hover {
+            transform: scale(1.1);
+        }
+
+
+        /* Related Articles */
+         /* 前回のデザインに合わせる */
+         .related-articles {
+             margin-top: 30px; /* 本文との余白 */
+             padding: 30px; /* 背景色と角丸、影のためにpaddingを追加 */
+             background-color: #fff;
+             border-radius: 10px;
+             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+         }
+          .related-title {
+             font-size: 20px; /* 少し小さく */
+             margin-bottom: 20px;
+             padding-bottom: 10px;
+             border-bottom: 2px solid var(--text-darkblue);
+          }
+          .related-list {
+             gap: 15px; /* 間隔調整 */
+             display: grid; /* 新しいCSSの指定 */
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* 新しいCSSの指定 */
+          }
+          .related-item {
+             box-shadow: none; /* 影をなくすか薄く */
+             border: 1px solid var(--border-light); /* 枠線をつける */
+             border-radius: 8px; /* 角丸追加 */
+             overflow: hidden; /* 画像の角丸のため */
+             background-color: #fff; /* 背景色 */
+             transition: transform 0.3s ease, box-shadow 0.3s ease;
+             text-decoration: none; /* リンクの下線を削除 */
+             color: inherit; /* 親要素の色を継承 */
+          }
+          .related-item:hover {
+             transform: translateY(-3px);
+             box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+          }
+          .related-image {
+            height: 120px; /* 画像の高さを調整 */
+             display: block;
+          }
+          .related-image img {
+             width: 100%; /* 親要素に合わせて幅を100%に */
+             height: 100%; /* 親要素に合わせて高さを100%に */
+             object-fit: cover;
+          }
+          .related-content {
+             padding: 10px; /* パディング調整 */
+          }
+          .related-item-title {
+             font-size: 15px; /* 少し小さく */
+             margin-bottom: 5px;
+             line-height: 1.4;
+          }
+           .related-meta {
+             font-size: 11px; /* 少し小さく */
+              color: #666;
+           }
 
         /* 著者情報（サイドバー用） */
         .sidebar-author-profile {
@@ -616,94 +783,13 @@
         }
         /* アクティブな目次項目などのスタイルは別途CSSやJSで実装 */
 
-        /* お知らせスタイル - この記事ではお知らせがないため無効化 */
-        .sidebar-notifications { display: none; }
+        /* 人気記事、カテゴリー、タグクラウドは削除 */
+        .popular-posts, .category-list, .tag-cloud {
+            display: none;
+        }
 
 
-        /* 人気記事、カテゴリー、タグクラウド - この記事では無効化 */
-        /* .popular-posts, .category-list, .tag-cloud { display: none; } */ /* HTMLから削除済み */
-
-
-        /* フッターや関連記事など、既存のスタイルは必要に応じてここに維持 */
-        /* 著者情報（記事下部）は元のHTMLのまま維持 */
-         .author-box {
-            display: flex;
-            gap: 20px;
-            background-color: #f9f9f9;
-            padding: 25px;
-            border-radius: 10px;
-            margin-bottom: 40px;
-         }
-          .author-image {
-             width: 100px;
-             height: 100px;
-             border-radius: 50%;
-             object-fit: cover;
-         }
-         .author-info {
-             flex-grow: 1;
-         }
-         .author-name {
-             font-size: 18px;
-             font-weight: bold;
-             margin-bottom: 10px;
-         }
-          .author-bio {
-             line-height: 1.6;
-             font-size: 14px;
-             color: #555;
-         }
-
-
-        /* Related Articles */
-         .related-articles {
-             margin-top: 30px; /* 本文との余白 */
-         }
-          .related-title {
-             font-size: 20px; /* 少し小さく */
-          }
-          .related-list {
-             gap: 15px; /* 間隔調整 */
-             display: grid; /* 新しいCSSの指定 */
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* 新しいCSSの指定 */
-          }
-          .related-item {
-             box-shadow: none; /* 影をなくすか薄く */
-             border: 1px solid var(--border-light); /* 枠線をつける */
-             border-radius: 8px; /* 角丸追加 */
-             overflow: hidden; /* 画像の角丸のため */
-             background-color: #fff; /* 背景色 */
-             transition: transform 0.3s ease, box-shadow 0.3s ease;
-             text-decoration: none; /* リンクの下線を削除 */
-             color: inherit; /* 親要素の色を継承 */
-          }
-          .related-item:hover {
-             transform: translateY(-3px);
-             box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-          }
-          .related-image {
-            height: 120px; /* 画像の高さを調整 */
-             display: block;
-          }
-          .related-image img {
-             width: 100%; /* 親要素に合わせて幅を100%に */
-             height: 100%; /* 親要素に合わせて高さを100%に */
-             object-fit: cover;
-          }
-          .related-content {
-             padding: 10px; /* パディング調整 */
-          }
-          .related-item-title {
-             font-size: 15px; /* 少し小さく */
-             margin-bottom: 5px;
-             line-height: 1.4;
-          }
-           .related-meta {
-             font-size: 11px; /* 少し小さく */
-              color: #666;
-           }
-
-        /* FooterのCSS（トップページからコピー） */
+        /* FooterのCSS（指定された新しいものを使用） */
          .site-footer {
              background-color: #0d3283; /* フッターの背景色 */
              color: white; /* 文字色 */
@@ -797,13 +883,13 @@
             /* 3カラムレイアウト */
             .article-container {
                 flex-direction: column; /* 縦並び */
-                gap: 20px;
+                gap: 20px; /* 前回のデザインに合わせる */
                 margin-top: 0;
                 padding: 0 15px;
             }
             .article-left-sidebar,
             .article-main,
-            .article-right-sidebar {
+            .article-right-sidebar { /* クラス名修正 */
                 flex-basis: auto;
                 flex-grow: 0;
                 width: 100%;
@@ -840,7 +926,7 @@
              }
 
             .article-main { order: 1; /* 本文を一番上に */ }
-            .article-right-sidebar { order: 3; /* サイドバーを本文の下に */ }
+            .article-right-sidebar { order: 3; /* サイドバーを本文の下に */ } /* クラス名修正 */
 
              /* 目次の追従解除 */
              .sidebar-toc {
@@ -856,13 +942,31 @@
                  padding: 15px;
                  margin-bottom: 20px;
             }
+             /* featured image モバイルでの調整 */
+            .article-featured-image {
+                margin-top: 20px; /* タイトルメタとの隙間 */
+                margin-bottom: 20px;
+            }
+
+             /* 記事下SNSシェア モバイル対応 */
+            .share-box {
+                 flex-direction: column; /* 縦並びに戻す */
+                 gap: 15px;
+                 padding: 20px;
+                 margin-bottom: 20px;
+            }
+            .share-buttons {
+                 justify-content: center; /* 中央寄せ */
+            }
 
             /* Related Articles */
+             /* 前回のデザインに合わせる */
              .related-articles {
                  padding: 20px; /* パディング追加 */
                  background-color: #fff;
                  border-radius: 10px;
                  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+                 margin-top: 20px; /* 本文との余白調整 */
              }
              .related-list {
                  grid-template-columns: 1fr; /* 1カラム表示 */
@@ -926,84 +1030,24 @@
     </style>
 </head>
 <body>
-   <!-- ヘッダー -->
-<header class="site-header">
-    <div class="header-container">
-        <div class="site-logo-text">
-            <a href="index.html">CLAN</a>
-        </div>
-        <nav class="global-nav pc-nav">
-            <ul>
-                <li><a href="index.html" aria-current="page">ホーム</a></li>
-                <li><a href="about.html">オートファネル大学とは</a></li>
-                <li><a href="blog/index.html">ブログ</a></li>
-                <li><a href="seminar/index.html">オンライン講座</a></li>
-                <li><a href="tools/index.html">まえゆきツール</a></li>
-                <li><a href="achievement/index.html">お客様の声</a></li>
-            </ul>
-        </nav>
-        <div class="header-cta">
-            <a href="document.html" class="btn-document">
-                <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
-                資料請求する
-            </a>
-            <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
-                まずは相談する
-            </a>
-        </div>
-        <button class="hamburger-button sp-nav" aria-label="メニューを開く">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    </div>
-</header>
-
-<!-- モバイルメニュー（JavaScript で動的に生成される場合はこのコードは不要） -->
-<div class="mobile-menu">
-    <nav>
-        <ul>
-            <li><a href="index.html">ホーム</a></li>
-            <li><a href="about.html">オートファネル大学とは</a></li>
-            <li><a href="blog/index.html">ブログ</a></li>
-            <li><a href="seminar/index.html">オンライン講座</a></li>
-            <li><a href="tools/index.html">まえゆきツール</a></li>
-            <li><a href="achievement/index.html">お客様の声</a></li>
-        </ul>
-    </nav>
-    <div class="mobile-cta">
-        <a href="document.html" class="btn-document">
-            <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
-            資料請求する
-        </a>
-        <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
-            まずは相談する
-        </a>
-    </div>
-</div>
-
-<!-- スマホ用フッター固定CTA - 画像を削除 -->
-<div class="sp-fix-cta">
-    <ul>
-        <li class="mail"><a href="https://utage-marunage.com/it-hojo/">まずは相談する</a></li>
-        <li class="book"><a href="document.html">資料請求する</a></li>
-    </ul>
-</div>
-
-
+<div id="svg-defs-placeholder"></div>
+<div id="header-placeholder"></div>
     <main class="site-main">
         <div class="page-container">
 
             <!-- 記事タイトルとメタ情報（カラムの外） -->
+            <!-- 元のHTMLのarticle-headerの内容をここに配置 -->
             <div class="article-page-title">
                  <!-- スクショのアイコンに合わせて調整（必要に応じて画像を差し替え） -->
                  <!-- <img src="../images/flower-icon.webp" alt="記事アイコン" class="header-icon"> -->
                  <!-- タイトルにハイライトクラス適用 -->
-                 <h1><span class="highlight-green">売れる仕組みを自動化する3つのステップと必須ツール</span>(Utageで実現)</h1> <!-- タイトル修正 -->
+                 <h1 class="article-title"><span class="highlight-green">UTAGEシステムとは</span>?導入企業の売上が<span class="highlight-blue">平均30%アップした理由</span>を徹底解説</h1> <!-- タイトル修正、highlightクラス追加 -->
                  <div class="article-page-meta">
-                     <span class="article-date">2025年5月1日</span> <!-- 日付を更新 -->
-                     <span class="article-category">ファネル構築</span> <!-- カテゴリを更新 -->
+                     <span class="article-date">2025年5月12日</span> <!-- 日付を更新 -->
+                     <span class="article-category">UTAGE</span> <!-- カテゴリを更新 -->
+                     <span class="article-author">投稿者: YUKI</span> <!-- 投稿者情報を追加 -->
                  </div>
+                 <!-- Featured Imageは本文エリア内に移動 -->
              </div>
 
             <!-- 記事本文とサイドバーのコンテナ -->
@@ -1036,17 +1080,23 @@
 
                 <!-- 中央メインコンテンツ -->
                 <div class="article-main">
-                     <a href="index.html" class="article-back">← ブログ一覧に戻る</a> <!-- ブログトップへのリンク -->
+                     <a href="index.html" class="article-back">← ブログ一覧に戻る</a>
                     <div class="article-content">
-                        <p>あなたのビジネスには、「見込み客を集めて、信頼関係を築き、最終的に商品やサービスを購入してもらう」という一連の流れ、つまり<span class="highlight-green">「売れる仕組み＝セールスファネル」</span>がありますか？ 多くの事業者がこの仕組みを構築しようと試みますが、<span class="highlight-yellow">手動での運用には限界があり、時間と労力が膨大にかかってしまいます</span>。</p>
+                        <!-- 元のHTMLの Featured Imageを本文直下に配置 -->
+                        <img src="/images/blog-utage-intro.webp" alt="Utageシステムのイメージ画像" class="article-featured-image">
 
-                        <p><span class="highlight-yellow">そこで必要になるのが</span>、「売れる仕組み」を<span class="text-blue">自動化</span>することです。本記事では、セールスファネルを自動化するための<span class="text-red">重要な3つのステップ</span>と、それを強力にサポートする<span class="highlight-blue">オールインワンツール「Utage」</span>を使った具体的な<span class="highlight-pink">実現方法</span>を解説します。<span class="highlight-green">自動化</span>によって、あなたのビジネスは<span class="text-green">劇的に効率化</span>され、<span class="text-red">売上アップ</span>へとつながるでしょう！🚀</p>
+                        <p><span class="highlight-yellow">オンラインビジネスを成功させるために重要な要素は何でしょうか？</span> 💡 魅力的な商品・サービス、質の高いコンテンツ、そして効率的な集客・販売の<span class="highlight-yellow">「仕組み」</span>です。</p> <!-- 黄色ハイライト追加 -->
+
+                        <p><span class="highlight-yellow">特に</span>、集客から見込み客の育成、そして販売・決済、さらに顧客管理までをスムーズに連携させる仕組み、すなわち<span class="highlight-blue">「セールスファネル」の構築と自動化</span>が、<span class="highlight-green">売上を安定的に伸ばす鍵</span>となります。<span class="highlight-yellow">しかし</span>、これを複数のツールで行うのは<span class="highlight-yellow">非常に煩雑</span>で、<span class="highlight-yellow">費用も時間もかかります</span>。</p> <!-- highlightをhighlight-blue/greenに変更、黄色ハイライト追加 -->
+
+                        <p><span class="highlight-yellow">そこで</span>、今多くの企業や個人事業主から注目されているのが<span class="highlight-red">オールインワンマーケティングツール「Utage」</span>です。<span class="highlight-green">実は</span>、<span class="text-red">Utageを導入した企業の売上が平均30%アップした</span>というデータもあります（※）。<span class="highlight-pink">本記事では</span>、なぜUtageがそれほどまでに成果に繋がるのか、その理由と機能を徹底的に解説します！📈🚀</p> <!-- highlightをhighlight-red/green/pinkに変更 -->
+                        <small>（※Utage導入企業様の事例に基づく平均値であり、全ての企業で同様の成果を保証するものではありません。）</small>
 
                         <div class="conversation-container yuki">
                             <div class="character-icon"></div>
                             <div class="conversation-content">
                                 <p class="character-name">YUKI</p>
-                                <p><span class="highlight-blue">ファネル</span>って、お客さんがあなたの商品やサービスに出会ってから、実際に買ってくれるまでの道のりのことだよ。<span class="highlight-green">この道のりをスムーズにして、途中で離脱する人を減らすのがファネル構築の目的</span>だよ！</p>
+                                <p>Utageって、オンラインビジネスに必要なツールが<span class="highlight-yellow">全部一つになったシステム</span>なんだよ。<span class="highlight-yellow">LP作成、メール配信、LINE配信、決済、顧客管理とか、色々な機能がパックになっている</span>んだ。</p> <!-- 黄色ハイライト追加 -->
                             </div>
                         </div>
 
@@ -1054,160 +1104,118 @@
                             <div class="character-icon"></div>
                             <div class="conversation-content">
                                 <p class="character-name">ニャン太</p>
-                                <p>ニャー！<span class="text-blue">自動化</span>できれば、<span class="highlight-blue">お客さんが勝手に育って、買ってくれる仕組み</span>が作れるってことニャね！✨ <span class="text-green">寝ている間も、遊んでいる間も、ビジネスが動いてくれるなんて最高</span>ニャー！😻</p>
+                                <p>ニャー！それってすごいニャ！😲 <span class="highlight-yellow">個別に契約する手間も省ける</span>し、<span class="highlight-yellow">ツール同士の連携で悩むこともない</span>ニャね！</p> <!-- 黄色ハイライト追加 -->
                             </div>
                         </div>
 
                         <p>この記事は特に以下のような方におすすめです：</p>
 
                         <ul>
-                            <li>ビジネスの<span class="highlight-green">「売れる仕組み」</span>を<span class="highlight-pink">構築</span>したい方</li>
-                            <li>集客から販売までのプロセスを<span class="text-blue">自動化</span>して<span class="text-green">効率化</span>したい方</li>
-                            <li><span class="highlight-pink">ステップメールやLINE配信、LPなどを連携させて使いたい方</span></li>
-                            <li><span class="highlight-blue">オールインワンのマーケティングツール</span>を探している方</li>
-                            <li><span class="highlight-green">時間と場所に縛られない働き方を実現したい方</span></li>
+                            <li>オンラインビジネスの<span class="text-red">売上を伸ばしたい</span>と考えている方</li> <!-- text-red追加 -->
+                            <li><span class="highlight-green">集客から販売までのプロセスを効率化・自動化</span>したい方</li> <!-- highlight-green追加 -->
+                            <li><span class="highlight-yellow">複数のマーケティングツール管理に疲れている</span>方</li> <!-- 黄色ハイライト追加 -->
+                            <li><span class="highlight-blue">オールインワンのマーケティングツール</span>を探している方</li> <!-- highlight-blue追加 -->
+                            <li>Utageが<span class="highlight-yellow">どんなツールなのか詳しく知りたい</span>方</li> <!-- 黄色ハイライト追加 -->
                         </ul>
 
-                        <h2 id="section1">1. 売れる仕組みを<span class="text-blue">自動化</span>する<span class="text-red">3つのステップ</span></h2>
+                        <h2 id="section1"><span class="highlight-green">Utageシステム</span>が売上30%アップに貢献する理由</h2> <!-- IDをsection1に設定、highlight-green追加 -->
 
-                        <p><span class="highlight-green">セールスファネル</span>を<span class="text-blue">自動化</span>するための<span class="highlight-pink">基本的なステップ</span>は以下の<span class="text-red">3つ</span>です。</p>
+                        <p><span class="highlight-blue">Utageの導入企業で成果が出やすい主な理由</span>は、その<span class="highlight-red">「オールインワン」</span>であることと、<span class="text-red">「自動化」</span>に特化した機能設計にあります。</p> <!-- highlightを具体的な色クラスに変更 -->
 
-                        <h3 id="section1-1">ステップ1：<span class="highlight-green">集客ファネルの構築</span>（見込み客を集める）</h3>
+                        <h3 id="section1-1">シームレスな「売れる仕組み」が構築できる</h3> <!-- IDをsection1-1に設定 -->
 
-                        <p>まずは、あなたのビジネスに興味を持ってくれる<span class="highlight-blue">「見込み客」を集める仕組み</span>を作ります。ウェブサイトへのアクセス、ブログ記事の閲覧、SNSからの流入、広告クリックなど、様々な方法で見込み客はあなたのビジネスに触れます。</p>
-                        <p><span class="text-blue">自動化の観点</span>では、特に以下のような<span class="highlight-pink">仕組み</span>が<span class="text-red">重要</span>です。</p>
-                        <ul>
-                            <li>✅ <span class="highlight-green"><strong>魅力的な無料オファーの用意</strong></span>（例：無料レポート、動画講座、チェックリスト）</li>
-                            <li>✅ <span class="highlight-pink"><strong>無料オファーと交換で見込み客の連絡先（メールアドレス、LINE）を獲得する仕組み</strong></span>（例：LP+入力フォーム）</li>
-                            <li>✅ <span class="highlight-pink"><strong>広告やSNSからLPへ誘導する設計</strong></span></li>
-                        </ul>
-
-                        <h3 id="section1-2">ステップ2：<span class="highlight-blue">育成ファネルの構築</span>（見込み客を顧客にする）</h3>
-
-                        <p>次に、獲得した見込み客に対して、あなたのビジネスの価値や信頼性を伝え、商品・サービスへの興味・関心を高めてもらう<span class="highlight-pink">「育成」のプロセス</span>です。<span class="highlight-yellow">ここで活躍するのがステップメールやLINEステップ配信です</span>。</p>
-                        <p><span class="text-blue">自動化のポイント</span>は以下の通りです。</p>
-                        <ul>
-                            <li>📩 <span class="highlight-pink"><strong>登録から〇日後に自動で送られるステップメール/LINE</strong></span></li>
-                            <li>📚 <span class="highlight-pink"><strong>見込み客の疑問や不安を解消するコンテンツ配信</strong></span></li>
-                            <li>🤝 <span class="highlight-pink"><strong>信頼関係を築くためのストーリーテリング</strong></span></li>
-                            <li>🔥 <span class="highlight-pink"><strong>商品やサービスの導入メリットを伝える構成</strong></span></li>
-                        </ul>
-                         <span class="text-red">この育成プロセスが、見込み客を「そのうち客」から「今すぐ客」に変える鍵</span>となります。
-
-                        <div class="conversation-container yuki">
-                            <div class="character-icon"></div>
-                            <div class="conversation-content">
-                                <p class="character-name">YUKI</p>
-                                <p><span class="highlight-blue">育成</span>って<span class="text-red">すごく大事</span>なんだよね。<span class="highlight-yellow">人はすぐに買わないことが多いから</span>、<span class="text-blue">定期的に役立つ情報を提供したり、あなたのビジネスのファンになってもらったりする期間が必要</span>なんだ。<span class="highlight-yellow">これを自動でやってくれるのがステップメールやLINEステップなんだよ</span>。</p>
-                            </div>
-                        </div>
-
-                        <h3 id="section1-3">ステップ3：<span class="highlight-green">販売ファネルの構築</span>（購入・契約を促す）</h3>
-
-                        <p>最後に、育成された見込み客に対して、商品やサービスの購入・契約を促す<span class="highlight-pink">「販売」の仕組み</span>です。<span class="text-blue">商品の魅力を最大限に伝え、購入へのハードルを下げる工夫が必要</span>です。</p>
-                        <p><span class="text-blue">自動化</span>できる要素は以下の通りです。</p>
-                        <ul>
-                            <li>🛒 <span class="highlight-pink"><strong>購入ボタンや申し込みフォームへの誘導</strong></span></li>
-                            <li>💳 <span class="highlight-blue"><strong>LP一体型の決済システム</strong></span></li>
-                            <li>📈 <span class="highlight-pink"><strong>限定特典や緊急性を伝えるメッセージ配信</strong></span></li>
-                            <li>💬 <span class="highlight-pink"><strong>購入後の自動フォローアップメール/LINE</strong></span></li>
-                        </ul>
-                        <p>販売後のフォローアップも<span class="text-blue">自動化</span>することで、<span class="text-red">リピート率や顧客単価アップ</span>にも繋がります。</p>
-
-                         <img src="../images/funnel-automation-steps.webp" alt="自動化ファネルの3ステップ図" /> <!-- 図の画像を想定 -->
-
-
-                        <h2 id="section2">2. ファネル構築に<span class="text-red">必須な</span><span class="highlight-blue">オールインワンツール「Utage」</span></h2>
-
-                        <p><span class="highlight-green">集客、育成、販売の各ステップ</span>を<span class="highlight-blue">連携</span>させて<span class="text-blue">自動化</span>するためには、複数のツールを使い分けるのが一般的でした。<span class="highlight-yellow">しかし、それぞれのツールを契約・設定・連携させるのは非常に手間がかかります</span>。<span class="highlight-yellow">そこで注目したいのが</span>、これらの機能を一つにまとめた<span class="highlight-blue">オールインワンツール</span>です。その<span class="highlight-green">代表例</span>が<span class="highlight-red">「Utage」</span>です。</p>
-
-                        <p><span class="highlight-red">Utage</span>は、<span class="highlight-green">ファネル構築</span>に<span class="text-red">必要な以下の機能</span>を全て備えています。</p>
-
-                        <ul>
-                            <li>🖱️ <span class="text-blue"><strong>高機能LP・ウェブサイト作成機能</strong></span>：<span class="highlight-yellow">コーディング不要でデザイン性の高いLPを簡単に作成</span></li>
-                            <li>📧 <span class="text-blue"><strong>メール配信システム</strong></span>：<span class="highlight-pink">ステップメール、メルマガ一斉配信、セグメント配信</span></li>
-                            <li>📱 <span class="text-blue"><strong>LINE配信システム</strong></span>：<span class="highlight-blue">LINE公式アカウントと連携</span>した<span class="highlight-pink">ステップ配信、個別メッセージ</span></li>
-                            <li>📝 <span class="text-blue"><strong>フォーム作成機能</strong></span>：<span class="highlight-pink">登録フォーム、問い合わせフォーム、アンケートフォーム</span></li>
-                            <li>💳 <span class="text-blue"><strong>決済システム</strong></span>：<span class="highlight-blue">Stripeなどと連携</span>した<span class="highlight-pink">LP一体型決済機能</span></li>
-                            <li>📈 <span class="text-blue"><strong>会員サイト・顧客管理機能</strong></span>：<span class="highlight-blue">見込み客・顧客情報の一元管理</span>、<span class="highlight-pink">会員限定コンテンツ配信</span></li>
-                            <li>📊 <span class="text-blue"><strong>分析機能</strong></span>：<span class="highlight-blue">LPのアクセス数、CVR、メール開封率などのデータ分析</span></li>
-                        </ul>
+                        <p>前述の通り、UtageはLP作成、メール・LINE配信、決済、顧客管理といった、セールスファネルの各段階に必要な機能を<span class="highlight-yellow">全て内包</span>しています。<span class="highlight-green">これにより</span>、</p> <!-- 黄色ハイライト追加 -->
+                        <p><strong>集客（LP） → 育成（ステップメール/LINE） → 販売（決済付きLP） → 顧客管理</strong></p>
+                        <p>といった<span class="highlight-blue">一連の流れを、一つのシステム内でスムーズに連携・自動化</span>できます。<span class="highlight-yellow">ツール間のデータ移行や設定の手間がなくなり</span>、見込み客の取りこぼしを防ぎ、効率的に購入へと導く仕組みが<span class="highlight-yellow">簡単に作れます</span>。</p> <!-- highlightをhighlight-blueに変更、黄色ハイライト追加 -->
 
                         <div class="conversation-container nyanta">
                             <div class="character-icon"></div>
                             <div class="conversation-content">
                                 <p class="character-name">ニャン太</p>
-                                <p>ニャー！<span class="highlight-red">Utage一つあれば</span>、<span class="highlight-blue">LPもメールもLINEも決済も全部できちゃう</span>ニャね！😲 <span class="highlight-yellow">個別に契約するより、設定も連携も楽チン</span>ニャ！</p>
+                                <p>ニャー！お客さんがLPを見てくれた後、<span class="highlight-yellow">自動でメールを送ったり、LINEでフォローしたり</span>…手間なく全部自動でやってくれるんだニャ！🤩</p> <!-- 黄色ハイライト追加 -->
                             </div>
                         </div>
 
-                        <h2 id="section3">3. <span class="highlight-red">Utage活用</span>の<span class="text-red">メリット</span></h2> <!-- IDは section3 のまま維持 -->
+                        <h3 id="section1-2">強力な自動化機能で業務効率が劇的に向上</h3> <!-- IDをsection1-2に設定 -->
 
-                        <p><span class="highlight-red">Utage</span>を<span class="highlight-green">ファネル構築</span>に<span class="highlight-blue">活用</span>する主な<span class="text-red">メリット</span>は以下の通りです。</p>
+                        <p>Utageの真骨頂は、その<span class="highlight-green">シナリオ自動化機能</span>です。「LPを閲覧した人」「特定メールを開封した人」「商品を購入した人」など、<span class="highlight-blue">顧客の行動をトリガーとして</span>、あらかじめ設定しておいた<span class="highlight-pink">ステップメール配信、LINEメッセージ送信、タグ付け、特定コンテンツへのアクセス権付与などを自動で実行</span>できます。<span class="highlight-yellow">これにより</span>、</p> <!-- highlightクラスを具体的な色クラスに変更 -->
+                        <ul>
+                            <li>⏱️ <span class="highlight-green">毎日手動で行っていたメール配信や顧客フォローの時間をゼロに</span></li> <!-- highlight-green追加 -->
+                            <li>🎯 顧客一人ひとりの状況に合わせた<span class="highlight-blue">最適な情報提供</span></li> <!-- highlight-blue追加 -->
+                            <li>💰 高単価商品への<span class="highlight-red">アップセル・クロスセルを自動で促進</span></li> <!-- highlight-red追加 -->
+                        </ul>
+                        <p>といったことが可能になり、<span class="text-red">マーケティング・セールス業務の効率が劇的に向上し、売上アップに直結</span>します。</p>
+
+                        <h3 id="section1-3">初心者でも使いやすい直感的な操作性</h3> <!-- IDをsection1-3に設定 -->
+
+                        <p>「<span class="highlight-yellow">多機能なツールは難しそう…</span>」と感じるかもしれませんが、Utageは<span class="highlight-green">オンラインビジネス初心者でも迷わず使えるように設計</span>されています。<span class="highlight-yellow">ドラッグ＆ドロップでLPを作成したり、フローチャートを見ながら自動化シナリオを設定したり</span>と、<span class="highlight-blue">直感的な操作が可能</span>です。<span class="highlight-yellow">これにより</span>、ツールの使い方を覚える時間よりも、戦略を考えたりコンテンツを作成したりする時間に集中できます。</p> <!-- 黄色ハイライト追加、highlight-green/blue追加 -->
+
+                        <div class="conversation-container yuki">
+                            <div class="character-icon"></div>
+                            <div class="conversation-content">
+                                <p class="character-name">YUKI</p>
+                                <p>難しくて使いこなせないツールだと、<span class="highlight-yellow">結局使わなくなってしまってもったいない</span>もんね。<span class="highlight-green">Utageは「これなら自分でもできそう！」って思えるような、分かりやすい操作画面が特徴</span>なんだ。</p> <!-- 黄色ハイライト追加、highlight-green追加 -->
+                            </div>
+                        </div>
+
+
+                        <h2 id="section2">Utageシステムの主要機能</h2> <!-- IDをsection2に設定 -->
+
+                        <p><span class="highlight-blue">Utageが提供する主な機能</span>は以下の通りです。これらの機能が連携し合うことで、<span class="highlight-green">強力な売れる仕組みが実現</span>します。</p> <!-- highlight-blue/green追加 -->
 
                         <ul>
-                            <li>✨ <span class="text-red"><strong>マーケティング全体をシームレスに連携</strong></span>：集客から販売までを<span class="highlight-red">Utage内で完結</span>できるため、<span class="highlight-yellow">ツール間の連携ミスや設定の手間がありません</span>。</li>
-                            <li>⏱️ <span class="text-red"><strong>作業時間を大幅に削減</strong></span>：各ツールを個別に管理・操作する手間がなくなり、<span class="text-green">マーケティング業務全体の効率が向上</span>します。</li>
-                            <li>💰 <span class="text-red"><strong>コスト削減</strong></span>：<span class="highlight-yellow">複数のツールを契約するよりも、Utage一つにまとめることで月額費用を抑えられる</span>場合があります。</li>
-                            <li>💡 <span class="text-green"><strong>初心者でも使いやすい設計</strong></span>：<span class="highlight-yellow">直感的な操作画面で、マーケティングツールの利用が初めての方でもファネルを構築しやすいように設計</span>されています。</li>
-                            <li>💪 <span class="text-blue"><strong>サポート体制</strong></span>：国内ツールのため、<span class="highlight-yellow">日本語での手厚いサポートが期待できます</span>。（※サポート内容はプランによる）</li>
+                            <li>💻 <span class="text-blue"><strong>LP・ウェブサイト作成</strong></span>：豊富なテンプレートと直感的なエディタで高品質なページを制作</li>
+                            <li>📧 <span class="text-blue"><strong>メールマーケティング</strong></span>：ステップメール、メルマガ、効果測定、セグメント配信</li>
+                            <li>📱 <span class="text-blue"><strong>LINEマーケティング</strong></span>：LINE公式アカウント連携、ステップ配信、個別メッセージ</li>
+                            <li>📝 <span class="text-blue"><strong>フォーム作成</strong></span>：登録フォーム、問い合わせフォーム、アンケートフォーム</li>
+                            <li>💳 <span class="text-blue"><strong>決済機能</strong></span>：Stripe等連携、LP一体型決済、定期課金対応</li>
+                            <li>📚 <span class="text-blue"><strong>会員サイト作成</strong></span>：会員限定コンテンツ配信、顧客管理</li>
+                            <li>📈 <span class="text-blue"><strong>分析機能</strong></span>：アクセス解析、CVR、開封率など詳細なデータ分析</li>
+                            <li>🔄 <span class="text-blue"><strong>シナリオ自動化</strong></span>：顧客行動に基づく複雑な自動化フロー設定</li>
                         </ul>
+                        <p><span class="text-red">これらの機能が全て一つのプラットフォームで提供される</span>ため、<span class="highlight-yellow">ツール間の連携や管理の手間が一切ありません</span>。</p> <!-- 黄色ハイライト追加 -->
 
-                         <img src="../images/utage-all-in-one.webp" alt="Utageのオールインワン機能イメージ" /> <!-- 機能紹介の図を想定 -->
+                         <img src="/images/utage-functions.webp" alt="Utageの主要機能一覧イメージ" /> <!-- 機能一覧図を想定 -->
 
-                        <span class="text-red">特に中小企業や個人事業主のように、専任のマーケティング担当者がいない場合でも、Utageのようなツールを活用すれば、プロのような「売れる仕組み」を比較的容易に構築・運用できる</span>のが<span class="text-red">大きな強み</span>です。
 
-                        <h2 id="section4">4. <span class="highlight-red">Utageを活用したファネル構築成功事例</span></h2>
+                        <h2 id="section3">どんなビジネスでUtageは活用できる？</h2> <!-- IDをsection3に設定 -->
 
-                        <p>実際に<span class="highlight-red">Utage</span>を<span class="highlight-blue">活用</span>して<span class="highlight-green">ファネル構築</span>を<span class="text-blue">自動化</span>し、<span class="text-red">成果を上げている事例</span>をご紹介します。（※架空の事例を含みます）</p>
+                        <p>Utageは、<span class="highlight-green">様々な業種・規模のオンラインビジネスで活用</span>されています。</p> <!-- highlight-green追加 -->
 
-                        <p><strong>事例：<span class="highlight-green">オンラインコーチング事業</span>（個人事業主）</strong></p>
                         <ul>
-                            <li><span class="text-red"><strong>課題</strong></span>：ブログからの見込み客リスト獲得～無料体験セッションへの誘導～本契約までのプロセスが<span class="highlight-yellow">手動で非効率</span>。個別対応に時間がかかり、 ScaleUpが難しい。</li>
-                            <li><span class="text-blue"><strong>導入ツール</strong></span>：<span class="text-red">Utage</span>（オールインワンプラン）</li>
-                            <li><span class="highlight-pink"><strong>Utageでの施策</strong></span>：
-                                <ul>
-                                    <li>ウェブサイト内に<span class="highlight-yellow">無料特典（動画講座）受け取り用LP</span>を<span class="highlight-red">Utage</span>で作成。</li>
-                                    <li>LPから登録した見込み客に対して、<span class="highlight-pink">自動でステップメール/LINEステップを配信</span>。講座コンテンツの提供と、<span class="highlight-pink">無料体験セッションへの案内を自動化</span>。</li>
-                                    <li><span class="highlight-pink"><strong>無料体験セッション申し込みフォーム</strong></span>を<span class="highlight-red">Utage</span>で作成。</li>
-                                    <li>体験セッション後、<span class="highlight-pink">フォローアップメールを自動配信</span>し、<span class="highlight-pink">本契約用LP（決済機能付き）</span>へ誘導。</li>
-                                    <li><span class="text-blue">顧客情報</span>を<span class="highlight-red">Utage</span>で<span class="highlight-blue">一元管理</span>。</li>
-                                </ul>
-                            </li>
-                            <li><span class="text-red"><strong>成果</strong></span>：
-                                <ul>
-                                    <li><span class="highlight-blue">見込み客の育成プロセスが自動化</span>され、<span class="text-red">無料体験セッションへの参加率が2倍</span>に向上。</li>
-                                    <li><span class="text-red">成約までの時間が平均30%短縮</span>。</li>
-                                    <li><span class="highlight-yellow">手動でのフォロー業務がほぼゼロ</span>になり、<span class="text-green">コーチング提供に集中できる時間が増加</span>。</li>
-                                    <li><span class="text-red">売上が前年比1.5倍</span>に増加。</li>
-                                </ul>
-                            </li>
+                            <li>✅ <span class="text-blue"><strong>オンライン講座・スクール販売</strong></span>：LPで受講生を集め、ステップメールで育成し、会員サイトで講座コンテンツを提供。</li>
+                            <li>✅ <span class="text-blue"><strong>デジタルコンテンツ販売</strong></span>：電子書籍、テンプレートなどの販売ページ作成と決済。</li>
+                            <li>✅ <span class="text-blue"><strong>コーチング・コンサルティング</strong></span>：体験セッションへの誘導、個別相談の申し込み受付、クライアント管理。</li>
+                            <li>✅ <span class="text-blue"><strong>店舗ビジネスのオンライン化</strong></span>：予約受付、顧客管理、メールやLINEでの情報発信。</li>
+                            <li>✅ <span class="text-blue"><strong>アフィリエイト・情報発信</strong></span>：メルマガリスト獲得用LP、ステップメールでの教育。</li>
                         </ul>
-                        <p><span class="highlight-yellow">この事例のように</span>、<span class="highlight-red">Utage</span>一つで集客～育成～販売～決済までの<span class="highlight-green">ファネル全体</span>を<span class="text-blue">自動化</span>することで、<span class="highlight-yellow">属人的な作業を減らし</span>、<span class="text-green">効率的に売上を伸ばすことが可能</span>になります。</p>
+                        <p><span class="highlight-blue">特に</span>、<span class="highlight-green">商品単価が高めであったり、見込み客との信頼構築（育成）が重要なビジネス</span>と<span class="highlight-yellow">相性が良い</span>と言われています。</p> <!-- highlight-blue/green/yellow追加 -->
 
-                        <h2 id="section5">5. <span class="highlight-green">まとめ</span>：今すぐ<span class="highlight-green">ファネル自動化</span>で<span class="text-red">ビジネスを躍進</span>させよう！</h2>
+                        <h2 id="section4"><span class="highlight-green">まとめ</span>：<span class="highlight-blue">Utage</span>であなたのビジネスも売上アップを！</h2> <!-- IDをsection4に設定、highlight-green/blue追加 -->
 
-                        <p><span class="highlight-green">「売れる仕組み」</span>を<span class="text-blue">自動化</span>することは、現代ビジネスにおいて<span class="text-red">非常に重要</span>です。<span class="highlight-green">集客、育成、販売の3つのステップ</span>をしっかりと<span class="highlight-pink">構築</span>し、特に<span class="highlight-blue">育成プロセス</span>を<span class="text-blue">自動化</span>することで、<span class="highlight-green">限られたリソースでも効率的に売上を最大化</span>できます。</p>
+                        <p><span class="highlight-green">Utageシステムが導入企業で平均30%もの売上アップを実現している理由</span>は、オンラインビジネスの根幹である「売れる仕組み」を、<span class="highlight-blue">オールインワンかつ強力な自動化機能で、誰でも簡単に構築・運用できる</span>点にあります。<span class="highlight-yellow">複数のツールを使い分ける煩雑さから解放</span>され、マーケティング活動全体の<span class="text-red">効率が劇的に向上</span>。見込み客を<span class="highlight-green">効率的に育成</span>し、販売へと繋げる自動化シナリオが、<span class="text-red">成果を最大化</span>します。</p> <!-- highlight-green/blue/yellow追加、text-red追加 -->
 
-                        <p><span class="highlight-red">Utage</span>のような<span class="highlight-blue">オールインワンツール</span>は、この<span class="highlight-green">ファネル構築・自動化</span>を<span class="highlight-yellow">コーディング不要で、簡単かつ低コストで実現</span>するための<span class="highlight-green">強力な選択肢</span>です。<span class="highlight-yellow">複数のツールを使い分ける煩雑さから解放</span>され、<span class="text-green">ビジネスの本質的な活動に集中できる</span>ようになります。</p>
+                        <p>もしあなたが、<span class="highlight-yellow">オンラインビジネスの売上を伸ばしたい</span>、<span class="highlight-yellow">日々のマーケティング業務を効率化したい</span>、<span class="highlight-yellow">見込み客育成や顧客フォローを自動化したい</span>と考えているなら、Utageは間違いなく<span class="highlight-green">強力な味方</span>となるでしょう。💪🔥</p> <!-- 黄色ハイライト追加、highlight-green追加 -->
 
-                        <p>ぜひ、この機会にあなたのビジネスに<span class="text-red">最適な「売れる仕組み」を自動化</span>し、<span class="highlight-green">時間と場所に縛られない働き方</span>、そして<span class="text-red">さらなるビジネスの躍進</span>を<span class="highlight-pink">実現</span>してください！💪🔥</p>
+                        <p><span class="highlight-blue">ぜひこの機会にUtageを検討し</span>、あなたのビジネスも<span class="text-red">売上平均30%アップ</span>を目指してください！🚀📈</p> <!-- highlight-blue追加、text-red追加 -->
 
-                        <p><a href="/consultation" class="cta-button">Utageを使ったファネル自動化について無料相談する</a></p>
+                        <p><a href="/consultation" class="cta-button">Utageシステムについて無料相談する</a></p>
                     </div>
                     
-                    <!-- 著者情報 - 元のHTMLから移動 -->
+                    <!-- 著者情報 - 中央メインコンテンツ内に配置 -->
                     <div class="author-box">
-                        <img src="../images/profile-YUKI.webp" alt="YUKIのプロフィール写真" class="author-image">
+                        <img src="/images/profile-YUKI.webp" alt="YUKIのプロフィール写真" class="author-image">
                         <div class="author-info">
                             <h3 class="author-name">YUKI</h3>
                             <div class="author-bio">
-                                <p>マーケティングコンサルタント、オートファネル大学学長。大手IT企業でのマーケティング責任者を経て独立。これまでに500社以上のビジネスをサポートし、累計売上100億円以上の実績を持つ。InstagramやTwitterなどのSNSでは合計50万人以上のフォロワーを抱え、実践的なマーケティングノウハウを発信している。著書に「お金と幸福の法則」「SNSマーケティング完全ガイド」など。（※プロフィールはサンプルです）</p> <!-- プロフィール文をサンプルと明記 -->
+                                <p>株式会社CLAN代表取締役社長｜デジタルスキル教育と構築代行事業を経営｜</p>
+                                <p>168名の受講生が学ぶスキル習得スクールを運営、法人向けUTAGE構築代行実績は70社以上｜</p>
+                                <p>IT導入補助金支援事業者として、企業のDX推進をサポート。</p>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- SNSシェア - 元のHTMLから移動 -->
+                    <!-- SNSシェア - 中央メインコンテンツ内に配置 -->
                     <div class="share-box">
                         <h3 class="share-title">この記事をシェアする</h3>
                         <div class="share-buttons">
@@ -1222,15 +1230,15 @@
                             </a>
                         </div>
                     </div>
-                    
-                    <!-- 関連記事 -->
+
+                    <!-- 関連記事 - 中央メインコンテンツ内に配置 -->
                     <div class="related-articles">
                         <h3 class="related-title">関連記事</h3>
                         <div class="related-list">
                              <!-- サンプルデータに合わせてPlaceholderリンクと画像を配置 -->
                             <a href="#" class="related-item">
                                 <div class="related-image">
-                                    <img src="../images/blog-1.webp" alt="関連記事サムネイル">
+                                    <img src="/images/blog-1.webp" alt="関連記事サムネイル">
                                 </div>
                                 <div class="related-content">
                                     <h4 class="related-item-title">2025年に注目すべきマーケティングトレンド5選</h4>
@@ -1239,7 +1247,7 @@
                             </a>
                             <a href="#" class="related-item">
                                 <div class="related-image">
-                                    <img src="../images/blog-2.webp" alt="関連記事サムネイル">
+                                    <img src="/images/blog-2.webp" alt="関連記事サムネイル">
                                 </div>
                                 <div class="related-content">
                                     <h4 class="related-item-title">DX成功の鍵：中小企業が押さえるべき3つのポイント</h4>
@@ -1248,7 +1256,7 @@
                             </a>
                             <a href="#" class="related-item">
                                 <div class="related-image">
-                                    <img src="../images/blog-4.webp" alt="関連記事サムネイル">
+                                    <img src="/images/blog-4.webp" alt="関連記事サムネイル">
                                 </div>
                                 <div class="related-content">
                                     <h4 class="related-item-title">小さな会社が大企業に勝つ方法：差別化戦略の実践ガイド</h4>
@@ -1258,24 +1266,28 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- 右サイドバー -->
+                <!-- クラス名を .article-right-sidebar に修正 -->
                 <div class="article-right-sidebar">
                     <!-- プロフィール -->
                     <div class="sidebar-section sidebar-author-profile">
-                         <img src="../images/profile-YUKI.webp" alt="YUKIのプロフィール写真" class="author-image">
+                         <img src="/images/profile-YUKI.webp" alt="YUKIのプロフィール写真" class="author-image">
                          <h3 class="author-name">YUKI</h3>
                          <p class="author-title">マーケティングコンサルタント</p>
                          <div class="author-sns">
                              <a href="#" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg></a>
-                              <a href="#" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="1em" height="1em" fill="currentColor"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9 26.3 26.2 58 34.4 93.9 36.2 37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5 9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg></a>
+                              <a href="#" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="1em" height="1em" fill="currentColor"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9 26.3 26.2 58 34.4 93.9 36.2 37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8 19.6 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg></a>
                          </div>
                          <p class="author-bio">
-                             マーケティングコンサルタント、オートファネル大学学長。大手IT企業でのマーケティング責任者を経て独立。これまでに500社以上のビジネスをサポートし、累計売上100億円以上の実績を持つ。InstagramやTwitterなどのSNSでは合計50万人以上のフォロワーを抱え、実践的なマーケティングノウハウを発信している。著書に「お金と幸福の法則」「SNSマーケティング完全ガイド」など。（※プロフィールはサンプルです）
+                             株式会社CLAN代表取締役社長｜デジタルスキル教育と構築代行事業を経営｜
+                             168名の受講生が学ぶスキル習得スクールを運営、法人向けUTAGE構築代行実績は70社以上｜
+                             IT導入補助金支援事業者として、企業のDX推進をサポート。
                          </p>
                          <a href="#" class="author-link">プロフィール詳細</a>
-                         <a href="#" class="cta-button">バッジを贈る</a>
-                         <p class="button-hint">バッジを贈るには→</p>
+                         <!-- サイドバーCTAボタンのテキストを更新 -->
+                         <a href="/free-consultation" class="cta-button">無料相談をする</a>
+                         <p class="button-hint">無料相談をするには→</p>
                     </div>
 
                     <!-- 目次 -->
@@ -1283,87 +1295,27 @@
                     <div class="sidebar-section sidebar-toc">
                          <h3 class="sidebar-title">目次</h3>
                          <ul class="toc-list">
-                             <li><a href="#section1">1. 売れる仕組みを自動化する3つのステップ<span class="toc-dot"></span></a></li>
-                             <li><a href="#section1-1">1-1. 集客ファネルの構築（見込み客を集める）<span class="toc-dot"></span></a></li>
-                             <li><a href="#section1-2">1-2. 育成ファネルの構築（見込み客を顧客にする）<span class="toc-dot"></span></a></li>
-                             <li><a href="#section1-3">1-3. 販売ファネルの構築（購入・契約を促す）<span class="toc-dot"></span></a></li>
-                             <li><a href="#section2">2. ファネル構築に必須なオールインワンツール「Utage」<span class="toc-dot"></span></a></li>
-                             <li><a href="#section3">3. Utage活用のメリット<span class="toc-dot"></span></a></li>
-                             <li><a href="#section4">4. Utageを活用したファネル構築成功事例<span class="toc-dot"></span></a></li>
-                             <li><a href="#section5">5. まとめ：今すぐファネル自動化でビジネスを躍進させよう！<span class="toc-dot"></span></a></li>
+                            <li><a href="#section1">Utageシステムが売上30%アップに貢献する理由<span class="toc-dot"></span></a>
+                                <ul>
+                                    <li><a href="#section1-1">シームレスな「売れる仕組み」が構築できる<span class="toc-dot"></span></a></li>
+                                    <li><a href="#section1-2">強力な自動化機能で業務効率が劇的に向上<span class="toc-dot"></span></a></li>
+                                    <li><a href="#section1-3">初心者でも使いやすい直感的な操作性<span class="toc-dot"></span></a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#section2">Utageシステムの主要機能<span class="toc-dot"></span></a></li>
+                            <li><a href="#section3">どんなビジネスでUtageは活用できる？<span class="toc-dot"></span></a></li>
+                            <li><a href="#section4">まとめ：Utageであなたのビジネスも売上アップを！<span class="toc-dot"></span></a></li>
                          </ul>
                     </div>
 
-                    <!-- お知らせ、人気記事、カテゴリー、タグクラウドは削除済み -->
+                    <!-- 人気記事、カテゴリー、タグクラウドはHTMLごと削除 -->
 
                 </div>
             </div>
         </div>
     </main>
-
-    <!-- ここからFooter（トップページからコピー） -->
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-widgets">
-                <div class="widget-area footer-widget-1">
-                    <img src="../images/logo-white.webp" alt="オートファネル大学 ロゴ白" class="footer-logo"> <!-- パスを修正 -->
-                    <div class="footer-sns">
-                        <a href="#" aria-label="YouTube">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="1em" height="1em" fill="currentColor">
-                                <path d="M549.7 124.1c-6.3-23.7-24.8-42.3-48.3-48.6C458.8 64 288 64 288 64S117.2 64 74.6 75.5c-23.5 6.3-42 24.9-48.3 48.6-11.4 42.9-11.4 132.3-11.4 132.3s0 89.4 11.4 132.3c6.3 23.7 24.8 41.5 48.3 47.8C117.2 448 288 448 288 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zM231.8 355.4l-10.8-7.4-10.8 7.4C187.8 370.3 160 355.4 160 328V184c0-27.4 27.8-42.3 50.2-27.4l10.8 7.4 10.8-7.4c22.4-14.9 50.2 0 50.2 27.4V328c0 27.4-27.8 42.3-50.2 27.4zM391.6 355.4l-10.8-7.4-10.8 7.4c-22.4 14.9-50.2 0-50.2-27.4V184c0-27.4 27.8-42.3 50.2-27.4l10.8 7.4 10.8-7.4C414.2 141.7 442 156.6 442 184V328c0 27.4-27.8 42.3-50.4 27.4z"/>
-                            </svg>
-                        </a>
-                        <a href="#" aria-label="X (Twitter)">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor">
-                                <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/>
-                            </svg>
-                        </a>
-                        <a href="#" aria-label="Instagram">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="1em" height="1em" fill="currentColor">
-                                <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9 26.3 26.2 58 34.4 93.9 36.2 37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg></a>
-                    </div>
-                </div>
-                <div class="widget-area footer-widget-2">
-                    <h4>オンライン講座一覧</h4>
-                    <ul>
-                        <li><a href="../course/lp.html">ランディングページ作成初級講座</a></li> <!-- パスを修正 -->
-                        <li><a href="../course/video.html">動画編集初級講座</a></li> <!-- パスを修正 -->
-                        <li><a href="../course/step-mail.html">ステップメール設計初級講座</a></li> <!-- パスを修正 -->
-                        <li><a href="../course/auto-funnel.html">オートファネル構築初級講座</a></li> <!-- パスを修正 -->
-                        <li><a href="../course/youtube-thumbnail.html">Youtubeサムネ作成初級講座</a></li> <!-- パスを修正 -->
-                        <li><a href="../course/canva.html">Canvaデザイン初級講座</a></li> <!-- パスを修正 -->
-                    </ul>
-                </div>
-                <div class="widget-area footer-widget-3">
-                    <h4>無料コンテンツ</h4>
-                    <ul>
-                        <li><a href="../blog/index.html">ブログ</a></li> <!-- パスを修正 -->
-                        <li><a href="../book/index.html">電子書籍</a></li> <!-- パスを修正 -->
-                        <li><a href="../free-seminar.html">無料セミナー</a></li> <!-- パスを修正 -->
-                        <li><a href="../free-consultation.html">無料相談</a></li> <!-- パスを修正 -->
-                        <li><a href="../achievement/index.html">お客様の声</a></li> <!-- パスを修正 -->
-                    </ul>
-                </div>
-                <div class="widget-area footer-widget-4">
-                    <h4>運営情報</h4>
-                    <ul>
-                        <li><a href="../owner.html">運営者情報</a></li> <!-- パスを修正 -->
-                        <li><a href="../terms.html">利用規約</a></li> <!-- パスを修正 -->
-                        <li><a href="../privacy.html">プライバシーポリシー</a></li> <!-- パスを修正 -->
-                    </ul>
-                </div>
-            </div>
-            <div class="site-copyright">
-                <small>© 2025 オートファネル大学</small>
-            </div>
-        </div>
-    </footer>
-    <!-- /Footerここまで -->
-    
-    <!-- JSファイルがあればここにリンク -->
-    <!-- <script src="../js/script.js"></script> -->
-    <!-- ハンバーガーメニューの開閉など、モバイル用JSが必要な場合はここに実装 -->
-
+<div id="footer-placeholder"></div>
+<script src="/js/include.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Intersection Observer APIでスクロール時の見出しを監視

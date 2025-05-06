@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>末岡俊也様 - UTAGE導入事例</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Common CSS and Favicon -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="/images/favicon.ico">
+    <!-- Common JS -->
+    <script src="/js/include.js" defer></script>
     <style>
         /* 基本スタイル */
         * {
@@ -39,87 +43,6 @@
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        
-        /* ヘッダー用のスタイル */
-        .site-header {
-            background-color: #fff;
-            border-bottom: 1px solid #e6e6e6;
-            top: 0;
-            z-index: 1000;
-        }
-        
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 86px;
-        }
-        
-        .site-logo img {
-            height: 50px;
-            width: auto;
-        }
-        
-        .global-nav {
-            flex-grow: 1;
-            display: flex;
-            justify-content: flex-end;
-        }
-        
-        .global-nav ul {
-            display: flex;
-            align-items: center;
-            list-style: none;
-        }
-        
-        .global-nav li {
-            margin-left: 16px;
-        }
-        
-        .global-nav a {
-            color: #333;
-            font-weight: bold;
-            font-size: 14px;
-            transition: color 0.3s ease;
-            text-decoration: none;
-        }
-        
-        .global-nav a:not(.btn-nav):hover {
-            color: #17a7cc;
-        }
-        
-        .btn-nav {
-            display: inline-block;
-            padding: 8px 18px;
-            color: #fff !important;
-            border-radius: 3px;
-            font-size: 14px;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-            line-height: 1.5;
-            text-decoration: none;
-        }
-        
-        .btn-red {
-            background-color: #dd3333;
-        }
-        
-        .btn-red:hover {
-            background-color: #b32929;
-            color: #fff !important;
-        }
-        
-        .btn-blue {
-            background-color: #0d3283;
-        }
-        
-        .btn-blue:hover {
-            background-color: #082258;
-            color: #fff !important;
         }
         
         /* メインヘッダー */
@@ -693,70 +616,9 @@
     </style>
 </head>
 <body>
-    <!-- ヘッダー -->
-<header class="site-header">
-    <div class="header-container">
-        <div class="site-logo-text">
-            <a href="index.html">CLAN</a>
-        </div>
-        <nav class="global-nav pc-nav">
-            <ul>
-                <li><a href="index.html" aria-current="page">ホーム</a></li>
-                <li><a href="about.html">オートファネル大学とは</a></li>
-                <li><a href="blog/index.html">ブログ</a></li>
-                <li><a href="seminar/index.html">オンライン講座</a></li>
-                <li><a href="tools/index.html">まえゆきツール</a></li>
-                <li><a href="achievement/index.html">お客様の声</a></li>
-            </ul>
-        </nav>
-        <div class="header-cta">
-            <a href="document.html" class="btn-document">
-                <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
-                資料請求する
-            </a>
-            <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
-                まずは相談する
-            </a>
-        </div>
-        <button class="hamburger-button sp-nav" aria-label="メニューを開く">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    </div>
-</header>
+    <div id="svg-defs-placeholder"></div>
 
-<!-- モバイルメニュー（JavaScript で動的に生成される場合はこのコードは不要） -->
-<div class="mobile-menu">
-    <nav>
-        <ul>
-            <li><a href="index.html">ホーム</a></li>
-            <li><a href="about.html">オートファネル大学とは</a></li>
-            <li><a href="blog/index.html">ブログ</a></li>
-            <li><a href="seminar/index.html">オンライン講座</a></li>
-            <li><a href="tools/index.html">まえゆきツール</a></li>
-            <li><a href="achievement/index.html">お客様の声</a></li>
-        </ul>
-    </nav>
-    <div class="mobile-cta">
-        <a href="document.html" class="btn-document">
-            <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
-            資料請求する
-        </a>
-        <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
-            まずは相談する
-        </a>
-    </div>
-</div>
-
-<!-- スマホ用フッター固定CTA - 画像を削除 -->
-<div class="sp-fix-cta">
-    <ul>
-        <li class="mail"><a href="https://utage-marunage.com/it-hojo/">まずは相談する</a></li>
-        <li class="book"><a href="document.html">資料請求する</a></li>
-    </ul>
-</div>
-
+    <div id="header-placeholder"></div>
 
     <div class="header">
         <div class="main-header-container">
@@ -797,7 +659,7 @@
                 </div>
             </div>
             <div class="section-image">
-                <img src="profile-image.webp" alt="末岡俊也様プロフィール">
+                <img src="/images/achieve-2.webp" alt="末岡俊也様プロフィール">
             </div>
         </section>
         
@@ -847,7 +709,7 @@
                 <i class="fas fa-question-circle"></i> UTAGE導入前の悩み・課題
             </h2>
             <div class="section-image">
-                <img src="challenge-image.webp" alt="導入前の課題">
+                <img src="/images/achieve-2.webp" alt="導入前の課題">
             </div>
             <div class="interview-qa">
                 <div class="interview-question">前田： 皆さん、こんにちは。UTAGE構築代行「丸投げちゃん」の前田です。本日は、末岡俊也様をお迎えしております。末岡様はなんと、ゴルフでベストスコア63、ベストハーフ29という卓越した成績をお持ちで、メンタル、脳科学、運動生理学に基づくゴルフ指導のパイオニアとして知られています。20年以上にわたり、ツアープロから一般ゴルファーまでのべ1万人以上の方々にレッスンを提供されてきました。また、オンラインによるゴルフ上達マスター講座を運営し、多くのゴルファーのスキル向上に貢献されています。さらに、YouTubeチャンネル「末岡俊也 脳科学ゴルフ」を運営し、チャンネル登録者数は2万5300人に上ります。今回は、弊社のUTAGE構築代行「丸投げちゃん」をご利用いただいたご縁で末岡様にお話を伺います。末岡様、どうぞよろしくお願いします。</div>
@@ -868,7 +730,7 @@
                 <i class="fas fa-check-circle"></i> 「丸投げちゃん」を選んだ理由
             </h2>
             <div class="section-image">
-                <img src="reason-image.webp" alt="選んだ理由">
+                <img src="/images/achieve-3.webp" alt="選んだ理由">
             </div>
             <div class="interview-qa">
                 <div class="interview-question">前田： 講座に入られて、実際に学んでみられて、オンラインレッスンの構築をしようと思ったら、どれくらいの期間かかるなって思いましたか？</div>
@@ -900,7 +762,7 @@
                 <i class="fas fa-chart-bar"></i> 導入後の変化と効果
             </h2>
             <div class="section-image">
-                <img src="effect-image.webp" alt="導入後の効果">
+                <img src="/images/achieve-4.webp" alt="導入後の効果">
             </div>
             <div class="interview-qa">
                 <div class="interview-question">前田： 「プロライン」を使われていた時や、UTAGEを導入し始めた時も、構築代行の方にお願いしたものの、スムーズに行かなかったご経験をされている末岡様に、本音で伺いたいのですが、この「丸投げちゃん」の構築代行はいかがでしたか？</div>
@@ -928,7 +790,7 @@
                 <i class="fas fa-comment-dots"></i> 迷っている方へのメッセージ
             </h2>
             <div class="section-image">
-                <img src="message-image.webp" alt="迷っている方へのメッセージ">
+                <img src="/images/achieve-5.webp" alt="迷っている方へのメッセージ">
             </div>
             <div class="interview-qa">
                 <div class="interview-answer">
@@ -946,7 +808,7 @@
                 <i class="fas fa-golf-ball"></i> ゴルフ上達へのメッセージ
             </h2>
             <div class="section-image">
-                <img src="golf-image.webp" alt="ゴルフ上達メッセージ">
+                <img src="/images/achieve-6.webp" alt="ゴルフ上達メッセージ">
             </div>
             <div class="interview-qa">
                 <div class="interview-answer">
@@ -976,9 +838,12 @@
         
         <!-- ナビゲーション -->
         <div class="navigation">
-            <a href="#" class="nav-button nav-prev">前の事例</a>
-            <a href="#" class="nav-button nav-next">次の事例</a>
+            <a href="/achievement/customer1.html" class="nav-button nav-prev">前の事例へ</a>
+            <a href="/achievement/customer3.html" class="nav-button nav-next">次の事例へ</a>
         </div>
     </div>
+
+    <div id="footer-placeholder"></div>
+
 </body>
 </html>

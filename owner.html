@@ -8,12 +8,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="/images/favicon.ico">
     <meta property="og:title" content="運営者情報 | オートファネル大学">
     <meta property="og:description" content="株式会社CLANの代表 前田由紀子のプロフィールと会社概要をご紹介します。">
-    <meta property="og:image" content="images/ogp_image_about.webp">
+    <meta property="og:image" content="/images/ogp_image_about.webp">
     <meta property="og:type" content="article">
+
+    <script src="/js/script.js" defer></script>
+    <script src="/assets/js/components.js" defer></script>
 
     <style>
         /* サイト全体共通の変数を再定義（またはstyle.cssから引き継ぎ） */
@@ -67,7 +70,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('images/dots-pattern.webp');
+            background-image: url('/images/dots-pattern.webp');
             opacity: 0.1;
             z-index: 1;
         }
@@ -135,7 +138,7 @@
         }
 
         .company-image {
-            background-image: url('images/company-office.webp');
+            background-image: url('/images/company-office.webp');
             background-size: cover;
             background-position: center;
             min-height: 100%;
@@ -231,7 +234,7 @@
         }
 
         .profile-photo {
-            background-image: url('images/profile-photo.webp');
+            background-image: url('/images/profile-photo.webp');
             background-size: cover;
             background-position: center top; /* 顔が中心に来るように */
             min-height: 100%;
@@ -354,7 +357,7 @@
             font-size: 22px;
             font-weight: 700;
             margin-bottom: 15px;
-            color: var(--dark-blue); /* 濃い青に */
+            color: var (--dark-blue); /* 濃い青に */
         }
 
         .vision-item-text {
@@ -385,7 +388,7 @@
             width: 100%;
             height: 100%;
             /* ドットパターンを重ねる */
-            background-image: url('images/dots-pattern.webp');
+            background-image: url('/images/dots-pattern.webp');
             opacity: 0.15;
             z-index: 1;
         }
@@ -737,337 +740,171 @@
     </style>
 </head>
 <body>
-    <!-- SVG Symbol Definitions for Icons (共通) -->
-    <!-- index.htmlや他のページにあるSVG定義と重複しないように注意 -->
-    <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <defs>
-        <symbol id="icon-pdf" viewBox="0 0 512 512">
-            <style type="text/css">
-                .st0{fill:#4B4B4B;}
-            </style>
-            <g>
-                <path class="st0" d="M378.413,0H208.297h-13.182L185.8,9.314L57.02,138.102l-9.314,9.314v13.176v265.514
-                    c0,47.36,38.528,85.895,85.896,85.895h244.811c47.353,0,85.881-38.535,85.881-85.895V85.896C464.294,38.528,425.766,0,378.413,0z
-                    M432.497,426.105c0,29.877-24.214,54.091-54.084,54.091H133.602c-29.884,0-54.098-24.214-54.098-54.091V160.591h83.716
-                    c24.885,0,45.077-20.178,45.077-45.07V31.804h170.116c29.87,0,54.084,24.214,54.084,54.092V426.105z"/>
-                <path class="st0" d="M171.947,252.785h-28.529c-5.432,0-8.686,3.533-8.686,8.825v73.754c0,6.388,4.204,10.599,10.041,10.599
-                    c5.711,0,9.914-4.21,9.914-10.599v-22.406c0-0.545,0.279-0.817,0.824-0.817h16.436c20.095,0,32.188-12.226,32.188-29.612
-                    C204.136,264.871,192.182,252.785,171.947,252.785z M170.719,294.888h-15.208c-0.545,0-0.824-0.272-0.824-0.81v-23.23
-                    c0-0.545,0.279-0.816,0.824-0.816h15.208c8.42,0,13.447,5.027,13.447,12.498C184.167,290,179.139,294.888,170.719,294.888z"/>
-                <path class="st0" d="M361.167,252.785h-44.812c-5.432,0-8.7,3.533-8.7,8.825v73.754c0,6.388,4.218,10.599,10.055,10.599
-                    c5.697,0,9.914-4.21,9.914-10.599v-26.351c0-0.538,0.265-0.81,0.81-0.81h26.086c5.837,0,9.23-3.532,9.23-8.56
-                    c0-5.028-3.393-8.553-9.23-8.553h-26.086c-0.545,0-0.81-0.272-0.81-0.817v-19.425c0-0.545,0.265-0.816,0.81-0.816h32.733
-                    c5.572,0,9.245-3.666,9.245-8.553C370.411,256.45,366.738,252.785,361.167,252.785z"/>
-            </g>
-        </symbol>
-        <symbol id="svg-triangle-color" viewBox="0 0 147.35 133">
-             <style>
-                .cls-1{fill:none;}
-                .cls-2{clip-path:url(#clip-path-triangle-owner);} /* IDをページ固有に */
-                .cls-3{fill:#80d4d4;}
-                .cls-4{fill:#3bb68b;}
-                .cls-5{fill:#4fbfec;}
-            </style>
-            <clipPath id="clip-path-triangle-owner" transform="translate(0 0)">
-                <rect class="cls-1" width="147.35" height="133"/>
-            </clipPath>
-            <g class="cls-2">
-                <path class="cls-3" d="M127.06,133H73.66L53.11,111h58.11a7.36,7.36,0,0,0,6.38-11l-8.49-14.7,8.82-28.83,26.68,46.22A20.27,20.27,0,0,1,127.06,133" transform="translate(0 0)"/>
-                <path class="cls-4" d="M117.93,56.38l-8.82,28.83L85.05,43.54l-5-8.66a7.36,7.36,0,0,0-12.75,0L58.8,49.59,29.44,56.37,56.13,10.13a20.26,20.26,0,0,1,35.1,0l16.29,28.22Z" transform="translate(0 0)"/>
-                <path class="cls-5" d="M73.66,133H20.29A20.27,20.27,0,0,1,2.74,102.6L19,74.4l10.41-18L58.8,49.59l-24,41.67-5-8.65a7.36,7.36,0,0,0,6.38,11h17Z" transform="translate(0 0)"/>
-            </g>
-        </symbol>
-    </defs>
-    </svg>
 
-    <!-- ヘッダー -->
-<header class="site-header">
-    <div class="header-container">
-        <div class="site-logo-text">
-            <a href="index.html">CLAN</a>
+<svg-icons></svg-icons>
+<site-header></site-header>
+
+<main class="site-main">
+    <!-- ヒーローセクション -->
+    <section class="owner-hero-section">
+        <div class="owner-hero-container">
+            <h1 class="owner-hero-title">運営者情報</h1>
+            <p class="owner-hero-lead">難しい設定も面倒な作業も一切不要。ビジネスの「集客・教育・販売」を自動化し、<br>売上アップと自由な時間を同時に手に入れるUTAGEの活用法を学ぶオートファネル大学をご紹介します。</p>
         </div>
-        <nav class="global-nav pc-nav">
-            <ul>
-                <li><a href="index.html" aria-current="page">ホーム</a></li>
-                <li><a href="about.html">オートファネル大学とは</a></li>
-                <li><a href="blog/index.html">ブログ</a></li>
-                <li><a href="seminar/index.html">オンライン講座</a></li>
-                <li><a href="tools/index.html">まえゆきツール</a></li>
-                <li><a href="achievement/index.html">お客様の声</a></li>
-            </ul>
-        </nav>
-        <div class="header-cta">
-            <a href="document.html" class="btn-document">
-                <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
-                資料請求する
-            </a>
-            <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
-                まずは相談する
-            </a>
-        </div>
-        <button class="hamburger-button sp-nav" aria-label="メニューを開く">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    </div>
-</header>
+    </section>
 
-<!-- モバイルメニュー（JavaScript で動的に生成される場合はこのコードは不要） -->
-<div class="mobile-menu">
-    <nav>
-        <ul>
-            <li><a href="index.html">ホーム</a></li>
-            <li><a href="about.html">オートファネル大学とは</a></li>
-            <li><a href="blog/index.html">ブログ</a></li>
-            <li><a href="seminar/index.html">オンライン講座</a></li>
-            <li><a href="tools/index.html">まえゆきツール</a></li>
-            <li><a href="achievement/index.html">お客様の声</a></li>
-        </ul>
-    </nav>
-    <div class="mobile-cta">
-        <a href="document.html" class="btn-document">
-            <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
-            資料請求する
-        </a>
-        <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
-            まずは相談する
-        </a>
-    </div>
-</div>
-
-<!-- スマホ用フッター固定CTA - 画像を削除 -->
-<div class="sp-fix-cta">
-    <ul>
-        <li class="mail"><a href="https://utage-marunage.com/it-hojo/">まずは相談する</a></li>
-        <li class="book"><a href="document.html">資料請求する</a></li>
-    </ul>
-</div>
+    <div class="owner-container">
+         <!-- 背景装飾エレメントの配置 -->
+         <span class="decoration decoration-circle1"></span>
+         <span class="decoration decoration-circle2"></span>
+         <span class="decoration decoration-square-rotated"></span>
+         <span class="decoration decoration-triangle"></span>
 
 
-    <main class="site-main">
-        <!-- ヒーローセクション -->
-        <section class="owner-hero-section">
-            <div class="owner-hero-container">
-                <h1 class="owner-hero-title">運営者情報</h1>
-                <p class="owner-hero-lead">難しい設定も面倒な作業も一切不要。ビジネスの「集客・教育・販売」を自動化し、<br>売上アップと自由な時間を同時に手に入れるUTAGEの活用法を学ぶオートファネル大学をご紹介します。</p>
+        <!-- ビジョンセクション -->
+        <section class="vision-section animate-fade-up">
+            <h2 class="vision-title">ビジネス自動化の新時代へ</h2>
+            <div class="vision-content">
+                <p>「集客はしているのに成約に繋がらない」「教育・販売のプロセスが属人化している」「ツール選びに悩み、時間とコストがかかる」</p>
+                <p>オートファネル大学は、こうした悩みを解決し、あなたのビジネスを自動で回す仕組みづくりをサポートします。UTAGEという強力なツールを活用し、LP作成、LINE連携、会員サイト構築、決済システムなど、すべての機能を一つに集約。あなたの専門知識を「自動で売れる仕組み」に変え、寝ている間も売上を生み出すビジネスモデルを構築できます。</p>
             </div>
-        </section>
-
-        <div class="owner-container">
-             <!-- 背景装飾エレメントの配置 -->
-             <span class="decoration decoration-circle1"></span>
-             <span class="decoration decoration-circle2"></span>
-             <span class="decoration decoration-square-rotated"></span>
-             <span class="decoration decoration-triangle"></span>
-
-
-            <!-- ビジョンセクション -->
-            <section class="vision-section animate-fade-up">
-                <h2 class="vision-title">ビジネス自動化の新時代へ</h2>
-                <div class="vision-content">
-                    <p>「集客はしているのに成約に繋がらない」「教育・販売のプロセスが属人化している」「ツール選びに悩み、時間とコストがかかる」</p>
-                    <p>オートファネル大学は、こうした悩みを解決し、あなたのビジネスを自動で回す仕組みづくりをサポートします。UTAGEという強力なツールを活用し、LP作成、LINE連携、会員サイト構築、決済システムなど、すべての機能を一つに集約。あなたの専門知識を「自動で売れる仕組み」に変え、寝ている間も売上を生み出すビジネスモデルを構築できます。</p>
+            <div class="vision-highlight">
+                <div class="vision-item">
+                    <div class="vision-item-title">集客から販売まで丸ごと自動化</div>
+                    <div class="vision-item-text">UTAGEを活用し、見込み客の獲得から信頼構築、成約までの全プロセスを自動化。24時間365日、あなたに代わって働く仕組みを構築します。</div>
                 </div>
-                <div class="vision-highlight">
-                    <div class="vision-item">
-                        <div class="vision-item-title">集客から販売まで丸ごと自動化</div>
-                        <div class="vision-item-text">UTAGEを活用し、見込み客の獲得から信頼構築、成約までの全プロセスを自動化。24時間365日、あなたに代わって働く仕組みを構築します。</div>
-                    </div>
-                    <div class="vision-item">
-                        <div class="vision-item-title">専門知識ゼロでも構築可能</div>
-                        <div class="vision-item-text">難しい設定や面倒な作業は一切不要。直感的に操作できるUTAGEを使って、マーケティングの専門知識がなくても効果的なファネルを構築できます。</div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- 会社概要セクション -->
-            <div class="company-section info-card animate-fade-up">
-                <div class="company-info">
-                    <h2 class="section-title">会社概要</h2>
-                    <dl class="company-details">
-                        <dt>社名</dt>
-                        <dd>株式会社CLAN</dd>
-                        
-                        <dt>所在地</dt>
-                        <dd>〒892-0851 鹿児島県鹿児島市上竜尾町1番2号</dd>
-                        
-                        <dt>代表者</dt>
-                        <dd>前田 由紀子</dd>
-                        
-                        <dt>資本金</dt>
-                        <dd>3,000,000円</dd>
-                        
-                        <dt>連絡先</dt>
-                        <dd><a href="mailto:info@clanbiz.net">info@clanbiz.net</a></dd>
-                        
-                        <dt>受付時間</dt>
-                        <dd>9:00〜18:00（土日祝を除く）</dd>
-                        
-                        <dt>事業内容</dt>
-                        <dd>セールスファネル構築代行</dd>
-                    </dl>
-                </div>
-                <div class="company-image"></div>
-            </div>
-            
-            <!-- プロフィールセクション -->
-            <div class="profile-section animate-fade-up">
-                <div class="profile-info">
-                    <h2 class="section-title">代表プロフィール</h2>
-                    <h3 class="profile-name">前田 由紀子</h3>
-                    <p class="profile-position">Web集客コンサルタント / UTAGE構築・運用スペシャリスト</p>
-                    
-                    <div class="profile-bio">
-                        <p>1980年鹿児島県生まれ。高校卒業後、ブルガリなどのハイブランドで13年間勤務。2011年、ローフードとファスティングの事業で福岡で起業。協会設立を経て、東京・青山に料理教室を開講。現在、株式会社CLANの代表取締役として活動中。</p>
-                    </div>
-                    
-                    <dl class="profile-details">
-                        <dt>著書</dt>
-                        <dd><a href="https://www.amazon.co.jp/dp/B09X1Y2L4F" target="_blank" rel="noopener noreferrer">美人は7日でつくられる</a></dd>
-                        
-                        <dt>専門分野</dt>
-                        <dd>オートマーケティング、セールスファネル構築、集客戦略策定</dd>
-                        
-                        <dt>実績</dt>
-                        <dd>UTAGE構築代行による売上改善事例300件以上</dd>
-                    </dl>
-                </div>
-                <div class="profile-photo"></div>
-            </div>
-            
-            <!-- フィーチャーセクション -->
-            <section class="features-section animate-fade-up">
-                <h2 class="features-title">UTAGEで実現する4つの強み</h2>
-                <div class="features-grid">
-                    <div class="feature-item">
-                        <div class="feature-icon">🔄</div>
-                        <h3 class="feature-title">ツール選びに終止符</h3>
-                        <p class="feature-text">LP作成、LINE連携、会員サイト構築、決済システム...もうツール選びに悩む必要はありません。すべての機能が一つに統合されたUTAGEで完結します。</p>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">⏱️</div>
-                        <h3 class="feature-title">24時間自動で売上生成</h3>
-                        <p class="feature-text">寝ている間も休日も、あなたに代わって見込み客を集め、育成し、商品を販売する自動ファネルを構築。時間と場所の制約から解放されます。</p>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">📊</div>
-                        <h3 class="feature-title">データ分析で継続的改善</h3>
-                        <p class="feature-text">顧客の行動データを自動で収集・分析し、常に最適化されたマーケティングを実現。感覚ではなくデータに基づいた意思決定が可能になります。</p>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">💰</div>
-                        <h3 class="feature-title">IT導入補助金で導入可能</h3>
-                        <p class="feature-text">IT導入補助金2025を活用して最大450万円の補助金が受けられます。申請は完全丸投げOK！あなたは事業成長に集中できます。</p>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- CTA Section (IT導入補助金バナー部分を置き換え) -->
-            <section class="cta-section animate-fade-up">
-                <div class="cta-content">
-                    <span class="cta-badge">期間限定</span>
-                    <h2 class="cta-title">UTAGE構築にIT導入補助金が使えます</h2>
-                    <p class="cta-description">UTAGE構築代行サービスがIT導入補助金の対象になりました。最大450万円の補助金を活用して、あなたのビジネスにオートファネルを導入するチャンスです。面倒な申請手続きも完全丸投げOK！</p>
-                    <a href="https://utage-marunage.com/it-hojo/" class="cta-button" target="_blank">詳細を確認する</a>
-                </div>
-            </section>
-        </div>
-
-        <!-- Contact CTA Section (フッター直前) -->
-        <section class="contact-cta-section">
-            <!-- index.htmlと共通のSVG定義を使用するため、このファイルのdefsは省略 -->
-             <!-- IDをページ固有に -->
-            <svg class="contact-cta-bg-deco contact-cta-bg-triangle1"><use xlink:href="#svg-triangle-color-owner"></use></svg>
-            <svg class="contact-cta-bg-deco contact-cta-bg-triangle2"><use xlink:href="#svg-triangle-color-owner"></use></svg>
-            <span class="contact-cta-bg-deco contact-cta-bg-circle1"></span>
-            <span class="contact-cta-bg-deco contact-cta-bg-circle2"></span>
-
-            <div class="contact-cta-container">
-                <span class="contact-cta-subtitle">Contact</span>
-                <h2 class="contact-cta-title">まずは無料でご相談ください</h2>
-                <p class="contact-cta-lead">
-                    オートファネルの構築やマーケティングの自動化について、<br class="pc-only">
-                    専門家があなたの状況をお伺いし、最適なステップをご提案します。<br class="pc-only">
-                    まずはお気軽にお問い合わせください。
-                </p>
-                <div class="contact-cta-buttons">
-                    <a href="https://utage-marunage.com/it-hojo/" class="btn btn-contact">
-                        無料相談してみる
-                        <span class="free-label">無料</span>
-                    </a>
-                    <a href="document.html" class="btn btn-document">
-                        <svg><use xlink:href="#icon-pdf"></use></svg>
-                        資料請求する
-                    </a>
+                <div class="vision-item">
+                    <div class="vision-item-title">専門知識ゼロでも構築可能</div>
+                    <div class="vision-item-text">難しい設定や面倒な作業は一切不要。直感的に操作できるUTAGEを使って、マーケティングの専門知識がなくても効果的なファネルを構築できます。</div>
                 </div>
             </div>
         </section>
-    </main>
-
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-widgets">
-                <div class="widget-area footer-widget-1">
-                    <img src="images/logo-white.webp" alt="オートファネル大学 ロゴ白" class="footer-logo">
+        
+        <!-- 会社概要セクション -->
+        <div class="company-section info-card animate-fade-up">
+            <div class="company-info">
+                <h2 class="section-title">会社概要</h2>
+                <dl class="company-details">
+                    <dt>社名</dt>
+                    <dd>株式会社CLAN</dd>
+                    
+                    <dt>所在地</dt>
+                    <dd>〒892-0851 鹿児島県鹿児島市上竜尾町1番2号</dd>
+                    
+                    <dt>代表者</dt>
+                    <dd>前田 由紀子</dd>
+                    
+                    <dt>資本金</dt>
+                    <dd>3,000,000円</dd>
+                    
+                    <dt>連絡先</dt>
+                    <dd><a href="mailto:info@clanbiz.net">info@clanbiz.net</a></dd>
+                    
+                    <dt>受付時間</dt>
+                    <dd>9:00〜18:00（土日祝を除く）</dd>
+                    
+                    <dt>事業内容</dt>
+                    <dd>セールスファネル構築代行</dd>
+                </dl>
+            </div>
+            <div class="company-image"></div>
+        </div>
+        
+        <!-- プロフィールセクション -->
+        <div class="profile-section animate-fade-up">
+            <div class="profile-info">
+                <h2 class="section-title">代表プロフィール</h2>
+                <h3 class="profile-name">前田 由紀子</h3>
+                <p class="profile-position">Web集客コンサルタント / UTAGE構築・運用スペシャリスト</p>
+                
+                <div class="profile-bio">
+                    <p>1980年鹿児島県生まれ。高校卒業後、ブルガリなどのハイブランドで13年間勤務。2011年、ローフードとファスティングの事業で福岡で起業。協会設立を経て、東京・青山に料理教室を開講。現在、株式会社CLANの代表取締役として活動中。</p>
                 </div>
-                <div class="widget-area footer-widget-2">
-                    <h4>オンライン講座一覧</h4>
-                    <ul>
-                         <!-- 各コースページへのリンクを修正 -->
-                        <li><a href="course/lp.html">ランディングページ作成初級講座</a></li>
-                        <li><a href="course/video.html">動画編集初級講座</a></li>
-                        <li><a href="course/step-mail.html">ステップメール設計初級講座</a></li>
-                        <li><a href="course/auto-funnel.html">オートファネル構築初級講座</a></li>
-                        <li><a href="course/youtube-thumbnail.html">Youtubeサムネ作成初級講座</a></li>
-                        <li><a href="course/canva.html">Canvaデザイン初級講座</a></li>
-                    </ul>
+                
+                <dl class="profile-details">
+                    <dt>著書</dt>
+                    <dd><a href="https://www.amazon.co.jp/dp/B09X1Y2L4F" target="_blank" rel="noopener noreferrer">美人は7日でつくられる</a></dd>
+                    
+                    <dt>専門分野</dt>
+                    <dd>オートマーケティング、セールスファネル構築、集客戦略策定</dd>
+                    
+                    <dt>実績</dt>
+                    <dd>UTAGE構築代行による売上改善事例300件以上</dd>
+                </dl>
+            </div>
+            <div class="profile-photo"></div>
+        </div>
+        
+        <!-- フィーチャーセクション -->
+        <section class="features-section animate-fade-up">
+            <h2 class="features-title">UTAGEで実現する4つの強み</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">🔄</div>
+                    <h3 class="feature-title">ツール選びに終止符</h3>
+                    <p class="feature-text">LP作成、LINE連携、会員サイト構築、決済システム...もうツール選びに悩む必要はありません。すべての機能が一つに統合されたUTAGEで完結します。</p>
                 </div>
-                <div class="widget-area footer-widget-3">
-                    <h4>無料コンテンツ</h4>
-                    <ul>
-                        <li><a href="blog/index.html">ブログ</a></li>
-                        <li><a href="book/index.html">電子書籍</a></li>
-                        <li><a href="free-seminar.html">無料セミナー</a></li>
-                        <li><a href="free-consultation.html">無料相談</a></li>
-                        <li><a href="achievement/index.html">お客様の声</a></li>
-                    </ul>
+                <div class="feature-item">
+                    <div class="feature-icon">⏱️</div>
+                    <h3 class="feature-title">24時間自動で売上生成</h3>
+                    <p class="feature-text">寝ている間も休日も、あなたに代わって見込み客を集め、育成し、商品を販売する自動ファネルを構築。時間と場所の制約から解放されます。</p>
                 </div>
-                <div class="widget-area footer-widget-4">
-                    <h4>運営情報</h4>
-                    <ul>
-                        <li><a href="owner.html">運営者情報</a></li>
-                        <li><a href="terms.html">利用規約</a></li>
-                        <li><a href="privacy.html">プライバシーポリシー</a></li>
-                    </ul>
+                <div class="feature-item">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="feature-title">データ分析で継続的改善</h3>
+                    <p class="feature-text">顧客の行動データを自動で収集・分析し、常に最適化されたマーケティングを実現。感覚ではなくデータに基づいた意思決定が可能になります。</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">💰</div>
+                    <h3 class="feature-title">IT導入補助金で導入可能</h3>
+                    <p class="feature-text">IT導入補助金2025を活用して最大450万円の補助金が受けられます。申請は完全丸投げOK！あなたは事業成長に集中できます。</p>
                 </div>
             </div>
-            <div class="site-copyright">
-                <small>© 2025 オートファネル大学</small>
+        </section>
+        
+        <!-- CTA Section (IT導入補助金バナー部分を置き換え) -->
+        <section class="cta-section animate-fade-up">
+            <div class="cta-content">
+                <span class="cta-badge">期間限定</span>
+                <h2 class="cta-title">UTAGE構築にIT導入補助金が使えます</h2>
+                <p class="cta-description">UTAGE構築代行サービスがIT導入補助金の対象になりました。最大450万円の補助金を活用して、あなたのビジネスにオートファネルを導入するチャンスです。面倒な申請手続きも完全丸投げOK！</p>
+                <a href="https://utage-marunage.com/it-hojo/" class="cta-button" target="_blank">詳細を確認する</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Contact CTA Section (フッター直前) -->
+    <section class="contact-cta-section">
+        <!-- index.htmlと共通のSVG定義を使用するため、このファイルのdefsは省略 -->
+         <!-- IDをページ固有に -->
+        <svg class="contact-cta-bg-deco contact-cta-bg-triangle1"><use xlink:href="#svg-triangle-color-owner"></use></svg>
+        <svg class="contact-cta-bg-deco contact-cta-bg-triangle2"><use xlink:href="#svg-triangle-color-owner"></use></svg>
+        <span class="contact-cta-bg-deco contact-cta-bg-circle1"></span>
+        <span class="contact-cta-bg-deco contact-cta-bg-circle2"></span>
+
+        <div class="contact-cta-container">
+            <span class="contact-cta-subtitle">Contact</span>
+            <h2 class="contact-cta-title">まずは無料でご相談ください</h2>
+            <p class="contact-cta-lead">
+                オートファネルの構築やマーケティングの自動化について、<br class="pc-only">
+                専門家があなたの状況をお伺いし、最適なステップをご提案します。<br class="pc-only">
+                まずはお気軽にお問い合わせください。
+            </p>
+            <div class="contact-cta-buttons">
+                <a href="https://utage-marunage.com/it-hojo/" class="btn btn-contact">
+                    無料相談してみる
+                    <span class="free-label">無料</span>
+                </a>
+                <a href="/document.html" class="btn btn-document">
+                    資料請求する
+                </a>
             </div>
         </div>
-    </footer>
+    </section>
+</main>
 
-    <script src="js/script.js"></script>
-    
-    <script>
-        // スクロールによるフェードインアニメーション
-        document.addEventListener('DOMContentLoaded', function() {
-            const animatedElements = document.querySelectorAll('.animate-fade-up');
-            
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target); // 一度表示されたら監視を解除
-                    }
-                });
-            }, { threshold: 0.2 }); // 要素の20%が見えたら発火
+<site-footer></site-footer>
 
-            animatedElements.forEach(element => {
-                 observer.observe(element);
-            });
-        });
-    </script>
+<script src="/js/script.js"></script>
 </body>
 </html>

@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>星美紗貴様 - UTAGE導入事例</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Removed Font Awesome CDN link -->
+    <!-- Common CSS and Favicon -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="/images/favicon.ico">
+    <!-- Common JS -->
+    <script src="/js/include.js" defer></script>
     <style>
         /* 基本スタイル */
         * {
@@ -41,113 +46,13 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
         
-        /* ヘッダー用のスタイル */
-        .site-header {
-            background-color: #fff;
-            border-bottom: 1px solid #e6e6e6;
-            top: 0;
-            z-index: 1000;
-        }
-        
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 86px;
-        }
-        
-        .site-logo img {
-            height: 50px;
-            width: auto;
-        }
-        
-        .global-nav {
-            flex-grow: 1;
-            display: flex;
-            justify-content: flex-end;
-        }
-        
-        .global-nav ul {
-            display: flex;
-            align-items: center;
-            list-style: none;
-        }
-        
-        .global-nav li {
-            margin-left: 16px;
-        }
-        
-        .global-nav a {
-            color: #333;
-            font-weight: bold;
-            font-size: 14px;
-            transition: color 0.3s ease;
-            text-decoration: none;
-        }
-        
-        .global-nav a:not(.btn-nav):hover {
-            color: #17a7cc;
-        }
-        
-        .btn-nav {
-            display: inline-block;
-            padding: 8px 18px;
-            color: #fff !important;
-            border-radius: 3px;
-            font-size: 14px;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-            line-height: 1.5;
-            text-decoration: none;
-        }
-        
-        .btn-red {
-            background-color: #dd3333;
-        }
-        
-        .btn-red:hover {
-            background-color: #b32929;
-            color: #fff !important;
-        }
-        
-        .btn-blue {
-            background-color: #0d3283;
-        }
-        
-        .btn-blue:hover {
-            background-color: #082258;
-            color: #fff !important;
-        }
+        /* ヘッダー用のスタイル削除 */
         
         /* メインヘッダー */
         .header {
             background: linear-gradient(135deg, #0d3283 0%, #082258 100%);
             color: white;
             padding: 40px 0;
-        }
-        
-        .main-header-container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 20px;
-            position: relative;
-        }
-        
-        .header-title {
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            line-height: 1.3;
-            color: #fff;
-        }
-        
-        .header-subtitle {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            margin-bottom: 20px;
         }
         
         /* メイン成果セクション */
@@ -693,70 +598,11 @@
     </style>
 </head>
 <body>
- <!-- ヘッダー -->
-<header class="site-header">
-    <div class="header-container">
-        <div class="site-logo-text">
-            <a href="index.html">CLAN</a>
-        </div>
-        <nav class="global-nav pc-nav">
-            <ul>
-                <li><a href="index.html" aria-current="page">ホーム</a></li>
-                <li><a href="about.html">オートファネル大学とは</a></li>
-                <li><a href="blog/index.html">ブログ</a></li>
-                <li><a href="seminar/index.html">オンライン講座</a></li>
-                <li><a href="tools/index.html">まえゆきツール</a></li>
-                <li><a href="achievement/index.html">お客様の声</a></li>
-            </ul>
-        </nav>
-        <div class="header-cta">
-            <a href="document.html" class="btn-document">
-                <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
-                資料請求する
-            </a>
-            <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
-                まずは相談する
-            </a>
-        </div>
-        <button class="hamburger-button sp-nav" aria-label="メニューを開く">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    </div>
-</header>
+    <div id="svg-defs-placeholder"></div>
 
-<!-- モバイルメニュー（JavaScript で動的に生成される場合はこのコードは不要） -->
-<div class="mobile-menu">
-    <nav>
-        <ul>
-            <li><a href="index.html">ホーム</a></li>
-            <li><a href="about.html">オートファネル大学とは</a></li>
-            <li><a href="blog/index.html">ブログ</a></li>
-            <li><a href="seminar/index.html">オンライン講座</a></li>
-            <li><a href="tools/index.html">まえゆきツール</a></li>
-            <li><a href="achievement/index.html">お客様の声</a></li>
-        </ul>
-    </nav>
-    <div class="mobile-cta">
-        <a href="document.html" class="btn-document">
-            <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
-            資料請求する
-        </a>
-        <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
-            まずは相談する
-        </a>
-    </div>
-</div>
+    <div id="header-placeholder"></div>
 
-<!-- スマホ用フッター固定CTA - 画像を削除 -->
-<div class="sp-fix-cta">
-    <ul>
-        <li class="mail"><a href="https://utage-marunage.com/it-hojo/">まずは相談する</a></li>
-        <li class="book"><a href="document.html">資料請求する</a></li>
-    </ul>
-</div>
-
+    <!-- Removed redundant header/footer HTML -->
 
     <div class="header">
         <div class="main-header-container">
@@ -798,7 +644,7 @@
                 </div>
             </div>
             <div class="section-image">
-                <img src="profile-image.webp" alt="星美紗貴様プロフィール">
+                <img src="/images/achieve-1.webp" alt="星美紗貴様プロフィール">
             </div>
         </section>
         
@@ -848,7 +694,7 @@
                 <i class="fas fa-question-circle"></i> UTAGE導入前の悩み・課題
             </h2>
             <div class="section-image">
-                <img src="challenge-image.webp" alt="導入前の課題">
+                <img src="/images/achieve-2.webp" alt="導入前の課題">
             </div>
             <div class="interview-qa">
                 <div class="interview-question">前田： 皆さん、こんにちは。「UTAGE構築代行丸投げちゃん」の前田です。本日は、コーチ、ヒーラー、セラピスト、女性サロン経営者のビジネスメンターで、女性起業コミュニティ「Girl Boss Elite 」を主催されている星 美紗貴さんをお迎えしています。美紗貴さんは現在シンガポールでコーチングサービスを提供する会社のCEOとして活躍され、「Girl Boss Elite 」からは、ゼロからコーチングやセッションなどのサービスをスタートさせる女性起業家を多数輩出されています。起業支援では珍しい潜在意識へのアプローチを得意とされていて、今回は弊社の「UTAGE構築代行丸投げちゃん」をご利用いただいたご縁で、お話を伺います。美紗貴さん、よろしくお願いします。</div>
@@ -880,7 +726,7 @@
                 <i class="fas fa-check-circle"></i> 「丸投げちゃん」を選んだ理由
             </h2>
             <div class="section-image">
-                <img src="reason-image.webp" alt="選んだ理由">
+                <img src="/images/achieve-3.webp" alt="選んだ理由">
             </div>
             <div class="interview-qa">
                 <div class="interview-question">前田： 数ある構築代行サービスの中で、なぜ弊社のUTAGE構築代行を選んでいただいたのでしょうか？</div>
@@ -904,7 +750,7 @@
                 <i class="fas fa-chart-bar"></i> 導入後の変化と効果
             </h2>
             <div class="section-image">
-                <img src="effect-image.webp" alt="導入後の効果">
+                <img src="/images/achieve-4.webp" alt="導入後の効果">
             </div>
             <div class="interview-qa">
                 <div class="interview-question">前田： 実際にUTAGEに移行してみて、どのような効果がありましたか？</div>
@@ -939,7 +785,7 @@
                 <i class="fas fa-comment-dots"></i> 迷っている方へのアドバイス
             </h2>
             <div class="section-image">
-                <img src="message-image.webp" alt="迷っている方へのメッセージ">
+                <img src="/images/achieve-5.webp" alt="迷っている方へのメッセージ">
             </div>
             <div class="interview-qa">
                 <div class="interview-answer">
@@ -956,7 +802,7 @@
                 <i class="fas fa-shopping-bag"></i> セールスに対するアプローチ
             </h2>
             <div class="section-image">
-                <img src="sales-image.webp" alt="セールスアプローチ">
+                <img src="/images/achieve-6.webp" alt="セールスアプローチ">
             </div>
             <div class="interview-qa">
                 <h3 style="margin-bottom: 20px; color: #0d3283; display: flex; align-items: center;">
@@ -986,9 +832,12 @@
         
         <!-- ナビゲーション -->
         <div class="navigation">
-            <a href="customer3.html" class="nav-button nav-prev">前の事例</a>
-            <a href="customer5.html" class="nav-button nav-next">次の事例</a>
+            <a href="/achievement/customer3.html" class="nav-button nav-prev">前の事例</a>
+            <a href="/achievement/customer5.html" class="nav-button nav-next">次の事例</a>
         </div>
     </div>
+
+    <div id="footer-placeholder"></div>
+
 </body>
 </html>

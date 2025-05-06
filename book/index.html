@@ -8,11 +8,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="/assets/images/favicon.ico">
     <meta property="og:title" content="電子書籍一覧 | オートファネル大学">
     <meta property="og:description" content="オートファネル大学が提供する無料の電子書籍一覧です。マーケティング自動化、ファネル構築、効率的な集客・販売のノウハウを詳しく解説しています。">
-    <meta property="og:image" content="../images/ogp_image_book.webp">
+    <meta property="og:image" content="/assets/images/ogp_image_book.webp">
     <meta property="og:type" content="article">
 
     <style>
@@ -55,7 +55,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('../images/dots-pattern.webp');
+            background-image: url('/assets/images/dots-pattern.webp');
             opacity: 0.07;
             z-index: 1;
         }
@@ -445,66 +445,52 @@
     </style>
 </head>
 <body>
-    <!-- SVG Symbol Definitions for Icons -->
-    <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+<!-- SVGアイコン定義 -->
+<svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden" xmlns="http://www.w3.org/2000/svg">
     <defs>
-        <symbol id="icon-pdf" viewBox="0 0 512 512">
-            <style type="text/css">
-                .st0{fill:#4B4B4B;}
-            </style>
-            <g>
-                <path class="st0" d="M378.413,0H208.297h-13.182L185.8,9.314L57.02,138.102l-9.314,9.314v13.176v265.514
-                    c0,47.36,38.528,85.895,85.896,85.895h244.811c47.353,0,85.881-38.535,85.881-85.895V85.896C464.294,38.528,425.766,0,378.413,0z
-                    M432.497,426.105c0,29.877-24.214,54.091-54.084,54.091H133.602c-29.884,0-54.098-24.214-54.098-54.091V160.591h83.716
-                    c24.885,0,45.077-20.178,45.077-45.07V31.804h170.116c29.87,0,54.084,24.214,54.084,54.092V426.105z"/>
-                <path class="st0" d="M171.947,252.785h-28.529c-5.432,0-8.686,3.533-8.686,8.825v73.754c0,6.388,4.204,10.599,10.041,10.599
-                    c5.711,0,9.914-4.21,9.914-10.599v-22.406c0-0.545,0.279-0.817,0.824-0.817h16.436c20.095,0,32.188-12.226,32.188-29.612
-                    C204.136,264.871,192.182,252.785,171.947,252.785z M170.719,294.888h-15.208c-0.545,0-0.824-0.272-0.824-0.81v-23.23
-                    c0-0.545,0.279-0.816,0.824-0.816h15.208c8.42,0,13.447,5.027,13.447,12.498C184.167,290,179.139,294.888,170.719,294.888z"/>
-                <path class="st0" d="M361.167,252.785h-44.812c-5.432,0-8.7,3.533-8.7,8.825v73.754c0,6.388,4.218,10.599,10.055,10.599
-                    c5.697,0,9.914-4.21,9.914-10.599v-26.351c0-0.538,0.265-0.81,0.81-0.81h26.086c5.837,0,9.23-3.532,9.23-8.56
-                    c0-5.028-3.393-8.553-9.23-8.553h-26.086c-0.545,0-0.81-0.272-0.81-0.817v-19.425c0-0.545,0.265-0.816,0.81-0.816h32.733
-                    c5.572,0,9.245-3.666,9.245-8.553C370.411,256.45,366.738,252.785,361.167,252.785z"/>
-            </g>
+        <!-- PDFアイコン -->
+        <symbol id="icon-pdf" viewBox="0 0 32 32">
+            <path d="M20 2H4C2.9 2 2 2.9 2 4v24c0 1.1.9 2 2 2h24c1.1 0 2-.9 2-2V10L20 2zm4 26H6V4h14v8h6v16zM13.3 14.7c-.7 0-1.3.6-1.3 1.3s.6 1.3 1.3 1.3 1.3-.6 1.3-1.3-.6-1.3-1.3-1.3zm4 8c0-1.5-2.7-2.3-4-2.3s-4 .8-4 2.3v.7h8v-.7z"/>
         </symbol>
-        <symbol id="svg-triangle-color" viewBox="0 0 147.35 133">
-             <style>
-                .cls-1{fill:none;}
-                .cls-2{clip-path:url(#clip-path-triangle);} /* IDをユニークに */
-                .cls-3{fill:#80d4d4;}
-                .cls-4{fill:#3bb68b;}
-                .cls-5{fill:#4fbfec;}
-            </style>
-            <clipPath id="clip-path-triangle" transform="translate(0 0)">
-                <rect class="cls-1" width="147.35" height="133"/>
-            </clipPath>
-            <g class="cls-2">
-                <path class="cls-3" d="M127.06,133H73.66L53.11,111h58.11a7.36,7.36,0,0,0,6.38-11l-8.49-14.7,8.82-28.83,26.68,46.22A20.27,20.27,0,0,1,127.06,133" transform="translate(0 0)"/>
-                <path class="cls-4" d="M117.93,56.38l-8.82,28.83L85.05,43.54l-5-8.66a7.36,7.36,0,0,0-12.75,0L58.8,49.59,29.44,56.37,56.13,10.13a20.26,20.26,0,0,1,35.1,0l16.29,28.22Z" transform="translate(0 0)"/>
-                <path class="cls-5" d="M73.66,133H20.29A20.27,20.27,0,0,1,2.74,102.6L19,74.4l10.41-18L58.8,49.59l-24,41.67-5-8.65a7.36,7.36,0,0,0,6.38,11h17Z" transform="translate(0 0)"/>
-            </g>
+        <!-- メールアイコン -->
+        <symbol id="icon-mail" viewBox="0 0 32 32">
+            <path d="M16 0C7.2 0 0 7.2 0 16s7.2 16 16 16 16-7.2 16-16S24.8 0 16 0zM8 8h16c.3 0 .6.1.8.2L16 18.5 7.2 8.2c.2-.1.5-.2.8-.2zm-2 14v-12c0-.1 0-.1 0-.1l5.9 6.8-5.8 5.8c0-.2-.1-.3-.1-.5zm18 2H8c-.2 0-.4 0-.5-.1l5.7-5.7 2.8 3.3 2.8-3.3 5.7 5.7c-.2 0-.3.1-.5.1zm2-2c0 .2 0 .4-.1.5l-5.8-5.8 5.9-6.8v12.1z"/>
+        </symbol>
+        <!-- 本アイコン -->
+        <symbol id="icon-book" viewBox="0 0 32 32">
+            <path d="M28 4v26H7c-1.7 0-3-1.3-3-3s1.3-3 3-3h19V4H7C4.8 4 3 5.8 3 8v24c0 2.2 1.8 4 4 4h24V4h-3z"/>
+            <path d="M7 26c-.6 0-1 .4-1 1s.4 1 1 1h19v-2H7z"/>
+        </symbol>
+        <!-- カラフルな三角形 -->
+        <symbol id="svg-triangle-color" viewBox="0 0 200 200">
+            <polygon points="0,0 200,0 0,200" fill="rgba(255,255,255,.15)"/>
+        </symbol>
+        <!-- 検索アイコン -->
+        <symbol id="icon-search" viewBox="0 0 32 32">
+            <path d="M31 27.2l-7.6-6.4c-.8-.7-1.6-1-2.3-1 1.8-2.1 2.9-4.8 2.9-7.8 0-6.6-5.4-12-12-12S0 5.4 0 12s5.4 12 12 12c3 0 5.7-1.1 7.8-2.9 0 .7.3 1.5 1 2.3l6.4 7.6c1.1 1.2 2.9 1.3 4 .2s1-2.9-.2-4zM12 20c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8z"/>
         </symbol>
     </defs>
-    </svg>
+</svg>
 
-   <!-- ヘッダー -->
+<!-- ヘッダー -->
 <header class="site-header">
     <div class="header-container">
         <div class="site-logo-text">
-            <a href="index.html">CLAN</a>
+            <a href="/index.html">CLAN</a>
         </div>
         <nav class="global-nav pc-nav">
             <ul>
-                <li><a href="index.html" aria-current="page">ホーム</a></li>
-                <li><a href="about.html">オートファネル大学とは</a></li>
-                <li><a href="blog/index.html">ブログ</a></li>
-                <li><a href="seminar/index.html">オンライン講座</a></li>
-                <li><a href="tools/index.html">まえゆきツール</a></li>
-                <li><a href="achievement/index.html">お客様の声</a></li>
+                <li><a href="/index.html">ホーム</a></li>
+                <li><a href="/about.html">オートファネル大学とは</a></li>
+                <li><a href="/blog/index.html">ブログ</a></li>
+                <li><a href="/seminar/index.html">オンライン講座</a></li>
+                <li><a href="/tools/index.html">まえゆきツール</a></li>
+                <li><a href="/achievement/index.html">お客様の声</a></li>
             </ul>
         </nav>
         <div class="header-cta">
-            <a href="document.html" class="btn-document">
+            <a href="/document.html" class="btn-document">
                 <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
                 資料請求する
             </a>
@@ -520,20 +506,20 @@
     </div>
 </header>
 
-<!-- モバイルメニュー（JavaScript で動的に生成される場合はこのコードは不要） -->
+<!-- モバイルメニュー -->
 <div class="mobile-menu">
     <nav>
         <ul>
-            <li><a href="index.html">ホーム</a></li>
-            <li><a href="about.html">オートファネル大学とは</a></li>
-            <li><a href="blog/index.html">ブログ</a></li>
-            <li><a href="seminar/index.html">オンライン講座</a></li>
-            <li><a href="tools/index.html">まえゆきツール</a></li>
-            <li><a href="achievement/index.html">お客様の声</a></li>
+            <li><a href="/index.html">ホーム</a></li>
+            <li><a href="/about.html">オートファネル大学とは</a></li>
+            <li><a href="/blog/index.html">ブログ</a></li>
+            <li><a href="/seminar/index.html">オンライン講座</a></li>
+            <li><a href="/tools/index.html">まえゆきツール</a></li>
+            <li><a href="/achievement/index.html">お客様の声</a></li>
         </ul>
     </nav>
     <div class="mobile-cta">
-        <a href="document.html" class="btn-document">
+        <a href="/document.html" class="btn-document">
             <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
             資料請求する
         </a>
@@ -543,14 +529,13 @@
     </div>
 </div>
 
-<!-- スマホ用フッター固定CTA - 画像を削除 -->
+<!-- スマホ用フッター固定CTA -->
 <div class="sp-fix-cta">
     <ul>
         <li class="mail"><a href="https://utage-marunage.com/it-hojo/">まずは相談する</a></li>
-        <li class="book"><a href="document.html">資料請求する</a></li>
+        <li class="book"><a href="/document.html">資料請求する</a></li>
     </ul>
 </div>
-
 
     <main class="site-main">
         <!-- ヒーローセクション -->
@@ -601,7 +586,7 @@
                     <!-- 書籍1 -->
                     <div class="book-card">
                         <div class="book-cover">
-                            <img src="../images/book-cover-1.webp" alt="AI時代のマーケティング革命">
+                            <img src="/assets/images/book-cover-1.webp" alt="AI時代のマーケティング革命">
                             <span class="book-badge badge-new">NEW</span>
                         </div>
                         <div class="book-content">
@@ -618,7 +603,7 @@
                     <!-- 書籍2 -->
                     <div class="book-card">
                         <div class="book-cover">
-                            <img src="../images/book-cover-2.webp" alt="Canva活用術">
+                            <img src="/assets/images/book-cover-2.webp" alt="Canva活用術">
                             <span class="book-badge badge-new">NEW</span>
                         </div>
                         <div class="book-content">
@@ -635,7 +620,7 @@
                     <!-- 書籍3 -->
                     <div class="book-card">
                         <div class="book-cover">
-                            <img src="../images/book-cover-3.webp" alt="オンラインセミナー集客術">
+                            <img src="/assets/images/book-cover-3.webp" alt="オンラインセミナー集客術">
                             <span class="book-badge badge-new">NEW</span>
                         </div>
                         <div class="book-content">
@@ -652,7 +637,7 @@
                     <!-- 書籍4 -->
                     <div class="book-card">
                         <div class="book-cover">
-                            <img src="../images/book-cover-4.webp" alt="動画マーケティング攻略法">
+                            <img src="/assets/images/book-cover-4.webp" alt="動画マーケティング攻略法">
                             <span class="book-badge badge-new">NEW</span>
                         </div>
                         <div class="book-content">
@@ -679,7 +664,7 @@
                     <!-- 書籍5 -->
                     <div class="book-card">
                         <div class="book-cover">
-                            <img src="../images/book-cover-5.webp" alt="マーケティング自動化入門">
+                            <img src="/assets/images/book-cover-5.webp" alt="マーケティング自動化入門">
                             <span class="book-badge badge-free">無料</span>
                         </div>
                         <div class="book-content">
@@ -696,7 +681,7 @@
                     <!-- 書籍6 -->
                     <div class="book-card">
                         <div class="book-cover">
-                            <img src="../images/book-cover-6.webp" alt="オートファネル構築マスターガイド">
+                            <img src="/assets/images/book-cover-6.webp" alt="オートファネル構築マスターガイド">
                             <span class="book-badge badge-free">無料</span>
                         </div>
                         <div class="book-content">
@@ -713,7 +698,7 @@
                     <!-- 書籍7 -->
                     <div class="book-card">
                         <div class="book-cover">
-                            <img src="../images/book-cover-7.webp" alt="UTAGE完全マニュアル">
+                            <img src="/assets/images/book-cover-7.webp" alt="UTAGE完全マニュアル">
                             <span class="book-badge badge-free">無料</span>
                         </div>
                         <div class="book-content">
@@ -730,7 +715,7 @@
                     <!-- 書籍8 -->
                     <div class="book-card">
                         <div class="book-cover">
-                            <img src="../images/book-cover-8.webp" alt="オートファネル成功事例集">
+                            <img src="/assets/images/book-cover-8.webp" alt="オートファネル成功事例集">
                             <span class="book-badge badge-free">無料</span>
                         </div>
                         <div class="book-content">
@@ -757,7 +742,7 @@
                     <!-- 書籍9 -->
                     <div class="book-card">
                         <div class="book-cover">
-                            <img src="../images/book-cover-9.webp" alt="売れるLP作成の極意">
+                            <img src="/assets/images/book-cover-9.webp" alt="売れるLP作成の極意">
                             <span class="book-badge badge-free">無料</span>
                         </div>
                         <div class="book-content">
@@ -774,7 +759,7 @@
                     <!-- 書籍10 -->
                     <div class="book-card">
                         <div class="book-cover">
-                            <img src="../images/book-cover-10.webp" alt="ステップメール戦略バイブル">
+                            <img src="/assets/images/book-cover-10.webp" alt="ステップメール戦略バイブル">
                             <span class="book-badge badge-free">無料</span>
                         </div>
                         <div class="book-content">
@@ -791,7 +776,7 @@
                     <!-- 書籍11 -->
                     <div class="book-card">
                         <div class="book-cover">
-                            <img src="../images/book-cover-11.webp" alt="デジタルマーケティング戦略">
+                            <img src="/assets/images/book-cover-11.webp" alt="デジタルマーケティング戦略">
                             <span class="book-badge badge-free">無料</span>
                         </div>
                         <div class="book-content">
@@ -808,7 +793,7 @@
                     <!-- 書籍12 -->
                     <div class="book-card">
                         <div class="book-cover">
-                            <img src="../images/book-cover-12.webp" alt="IT導入補助金活用ガイド">
+                            <img src="/assets/images/book-cover-12.webp" alt="IT導入補助金活用ガイド">
                             <span class="book-badge badge-free">無料</span>
                         </div>
                         <div class="book-content">
@@ -865,7 +850,7 @@
                         無料相談してみる
                         <span class="free-label">無料</span>
                     </a>
-                    <a href="../document.html" class="btn btn-document">
+                    <a href="/document.html" class="btn btn-document">
                         <svg><use xlink:href="#icon-pdf"></use></svg>
                         資料請求する
                     </a>
@@ -878,45 +863,43 @@
         <div class="footer-container">
             <div class="footer-widgets">
                 <div class="widget-area footer-widget-1">
-                    <img src="../images/logo-white.webp" alt="オートファネル大学 ロゴ白" class="footer-logo">
+                    <div class="footer-logo-text">CLAN</div>
                 </div>
                 <div class="widget-area footer-widget-2">
                     <h4>オンライン講座一覧</h4>
                     <ul>
-                        <li><a href="../course/lp.html">ランディングページ作成初級講座</a></li>
-                        <li><a href="../course/lp.html">動画編集初級講座</a></li>
-                        <li><a href="../course/lp.html">ステップメール設計初級講座</a></li>
-                        <li><a href="../course/lp.html">オートファネル構築初級講座</a></li>
-                        <li><a href="../course/lp.html">Youtubeサムネ作成初級講座</a></li>
-                        <li><a href="../course/lp.html">Canvaデザイン初級講座</a></li>
+                        <li><a href="/course/lp.html">ランディングページ作成初級講座</a></li>
+                        <li><a href="/course/video.html">動画編集初級講座</a></li>
+                        <li><a href="/course/step-mail.html">ステップメール設計初級講座</a></li>
+                        <li><a href="/course/auto-funnel.html">オートファネル構築初級講座</a></li>
+                        <li><a href="/course/youtube-thumbnail.html">Youtubeサムネ作成初級講座</a></li>
+                        <li><a href="/course/canva.html">Canvaデザイン初級講座</a></li>
                     </ul>
                 </div>
                 <div class="widget-area footer-widget-3">
                     <h4>無料コンテンツ</h4>
                     <ul>
-                        <li><a href="../blog/index.html">ブログ</a></li>
-                        <li><a href="index.html">電子書籍</a></li>
-                        <li><a href="../free-seminar.html">無料セミナー</a></li>
-                        <li><a href="../free-consultation.html">無料相談</a></li>
-                        <li><a href="../achievement/index.html">お客様の声</a></li>
+                        <li><a href="/blog/index.html">ブログ</a></li>
+                        <li><a href="/book/index.html">電子書籍</a></li>
+                        <li><a href="/free-seminar.html">無料セミナー</a></li>
+                        <li><a href="/free-consultation.html">無料相談</a></li>
+                        <li><a href="/achievement/index.html">お客様の声</a></li>
+                        <li><a href="/tools/index.html">まえゆきツール</a></li>
                     </ul>
                 </div>
                 <div class="widget-area footer-widget-4">
                     <h4>運営情報</h4>
                     <ul>
-                        <li><a href="../owner.html">運営者情報</a></li>
-                        <li><a href="../terms.html">利用規約</a></li>
-                        <li><a href="../privacy.html">プライバシーポリシー</a></li>
+                        <li><a href="/owner.html">運営者情報</a></li>
+                        <li><a href="/terms.html">利用規約</a></li>
+                        <li><a href="/privacy.html">プライバシーポリシー</a></li>
                     </ul>
                 </div>
-            </div>
-            <div class="site-copyright">
-                <small>© 2025 オートファネル大学</small>
             </div>
         </div>
     </footer>
 
-    <script src="../js/script.js"></script>
+    <script src="/js/script.js"></script>
     
     <script>
         // 書籍フィルター機能

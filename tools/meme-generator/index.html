@@ -539,89 +539,26 @@
    </style>
    
    <!-- 非クリティカルCSSは非同期ロード -->
-   <link rel="stylesheet" href="../css/style.css" media="print" onload="this.media='all'">
+   <link rel="stylesheet" href="/css/style.css" media="print" onload="this.media='all'">
    
    <!-- JavaScriptの遅延ロード -->
-   <script src="../js/script.js" defer></script>
+   <script src="/js/script.js" defer></script>
    
    <!-- フォールバック -->
    <noscript>
      <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
-     <link rel="stylesheet" href="../css/style.css">
+     <link rel="stylesheet" href="/css/style.css">
    </noscript>
    
-   <link rel="icon" href="../images/favicon.ico">
+   <link rel="icon" href="/images/favicon.ico">
    <meta property="og:title" content="ミームジェネレーター | まえゆきツール">
    <meta property="og:description" content="自分だけのオリジナルミームを簡単に作成できる無料ツールです。テキストを追加して画像をシェアしましょう。">
-   <meta property="og:image" content="../images/ogp_image_tools.webp">
+   <meta property="og:image" content="/images/ogp_image_tools.webp">
    <meta property="og:type" content="website">
 </head>
 <body>
-  <!-- ヘッダー -->
-<header class="site-header">
-    <div class="header-container">
-        <div class="site-logo-text">
-            <a href="index.html">CLAN</a>
-        </div>
-        <nav class="global-nav pc-nav">
-            <ul>
-                <li><a href="index.html" aria-current="page">ホーム</a></li>
-                <li><a href="about.html">オートファネル大学とは</a></li>
-                <li><a href="blog/index.html">ブログ</a></li>
-                <li><a href="seminar/index.html">オンライン講座</a></li>
-                <li><a href="tools/index.html">まえゆきツール</a></li>
-                <li><a href="achievement/index.html">お客様の声</a></li>
-            </ul>
-        </nav>
-        <div class="header-cta">
-            <a href="document.html" class="btn-document">
-                <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
-                資料請求する
-            </a>
-            <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
-                まずは相談する
-            </a>
-        </div>
-        <button class="hamburger-button sp-nav" aria-label="メニューを開く">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    </div>
-</header>
-
-<!-- モバイルメニュー（JavaScript で動的に生成される場合はこのコードは不要） -->
-<div class="mobile-menu">
-    <nav>
-        <ul>
-            <li><a href="index.html">ホーム</a></li>
-            <li><a href="about.html">オートファネル大学とは</a></li>
-            <li><a href="blog/index.html">ブログ</a></li>
-            <li><a href="seminar/index.html">オンライン講座</a></li>
-            <li><a href="tools/index.html">まえゆきツール</a></li>
-            <li><a href="achievement/index.html">お客様の声</a></li>
-        </ul>
-    </nav>
-    <div class="mobile-cta">
-        <a href="document.html" class="btn-document">
-            <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
-            資料請求する
-        </a>
-        <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
-            まずは相談する
-        </a>
-    </div>
-</div>
-
-<!-- スマホ用フッター固定CTA - 画像を削除 -->
-<div class="sp-fix-cta">
-    <ul>
-        <li class="mail"><a href="https://utage-marunage.com/it-hojo/">まずは相談する</a></li>
-        <li class="book"><a href="document.html">資料請求する</a></li>
-    </ul>
-</div>
-
-
+<div id="svg-defs-placeholder"></div>
+<div id="header-placeholder"></div>
    <main class="site-main">
       <!-- ツールセクション -->
       <section class="tool-section">
@@ -867,7 +804,7 @@
          </div>
       </section>
    </main>
-
+<div id="footer-placeholder"></div>
    <footer class="site-footer">
        <div class="footer-container">
            <div class="footer-widgets">
@@ -1292,3 +1229,6 @@
               });
           });
       });
+   </script>
+</body>
+</html>

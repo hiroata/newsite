@@ -8,576 +8,234 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="/images/favicon.ico">
     <meta property="og:title" content="オートファネル大学 | ビジネス自動化の新常識">
     <meta property="og:description" content="オートファネル大学は、マーケティング自動化と効率化でビジネスを自動化。難しい設定・面倒な作業、一切不要。あなたのビジネスが自動で回り出すUTAGEの活用法を学びます。">
-    <meta property="og:image" content="images/ogp_image_about.webp">
+    <meta property="og:image" content="/images/ogp_image_about.webp">
     <meta property="og:type" content="article">
 
+    <!-- JavaScriptの遅延ロード -->
+    <script src="/js/script.js" defer></script>
+    
+    <!-- 共通部分読み込み用のスクリプト -->
+    <script src="/assets/js/components.js" defer></script>
+
     <style>
-        /* スタイリッシュな追加スタイル */
+        /* aboutページ固有の追加スタイルのみ残す */
         :root {
             --primary-color: #0066ff;
             --secondary-color: #ff3a3a;
             --accent-color: #ff9500;
             --dark-blue: #0d3283;
             --light-bg: #f8f9fa;
-            --gradient-primary: linear-gradient(135deg, #0066ff, #00b8ff);
+            --gradient-primary: linear-gradient(135deg, #6a82fb 0%, #fc5c7d 100%);
             --gradient-secondary: linear-gradient(135deg, #ff3a3a, #ff7d7d);
+            --gradient-success: linear-gradient(135deg, #00c853, #69f0ae);
             --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08);
             --shadow-strong: 0 15px 40px rgba(0, 0, 0, 0.12);
             --transition-fast: all 0.3s ease;
             --border-radius: 12px;
         }
-
-        body {
-            font-family: 'Noto Sans JP', sans-serif;
-            line-height: 1.8;
-            color: #333;
-            overflow-x: hidden;
-        }
-
         .page-hero-section {
-            background: var(--gradient-primary);
-            padding: 120px 0 80px;
+            background: var(--gradient-primary), url('/assets/images/hero-pc.webp') center/cover no-repeat;
+            padding: 100px 0 60px;
             position: relative;
             overflow: hidden;
             color: white;
             text-align: center;
             box-shadow: var(--shadow-soft);
+            min-height: 380px;
         }
-
+        @media (max-width: 768px) {
+            .page-hero-section {
+                background: var(--gradient-primary), url('/assets/images/hero-sp.webp') center/cover no-repeat;
+                min-height: 220px;
+                padding: 60px 0 30px;
+            }
+        }
         .page-hero-section::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('images/dots-pattern.webp');
-            opacity: 0.07;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.18) 100%);
             z-index: 1;
         }
-
         .page-hero-container {
             position: relative;
             z-index: 2;
-            max-width: 900px;
         }
-
         .page-hero-title {
-            font-size: 48px;
+            font-size: 34px;
             font-weight: 900;
-            margin-bottom: 25px;
+            margin-bottom: 18px;
             letter-spacing: -0.02em;
             line-height: 1.2;
         }
-
         .page-hero-lead {
-            font-size: 20px;
-            max-width: 800px;
-            margin: 0 auto 30px;
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto 18px;
             line-height: 1.7;
         }
-
         .hero-sub-heading {
-            font-size: 22px;
+            font-size: 18px;
             color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 40px;
+            margin-bottom: 28px;
             font-weight: 500;
         }
-
         .cta-button-hero {
             display: inline-block;
             background: white;
             color: var(--primary-color);
-            padding: 18px 40px;
+            padding: 12px 28px;
             border-radius: 50px;
             font-weight: 700;
-            font-size: 18px;
+            font-size: 16px;
             text-decoration: none;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.10);
             transition: var(--transition-fast);
-            margin: 15px 10px;
+            margin: 10px 6px;
         }
-
-        .cta-button-hero:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
         .cta-button-hero.secondary {
             background: var(--secondary-color);
             color: white;
         }
-
-        .section-title-container {
-            text-align: center;
-            margin-bottom: 60px;
+        /* セクション共通 */
+        section {
+            margin-bottom: 48px;
         }
-
-        .section-subtitle {
-            display: inline-block;
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 12px;
-            background: rgba(0, 102, 255, 0.08);
-            padding: 8px 20px;
-            border-radius: 50px;
-        }
-
         .section-title {
-            font-size: 38px;
+            font-size: 26px;
             font-weight: 800;
-            margin: 0 0 20px;
+            margin-bottom: 10px;
             color: var(--dark-blue);
-            letter-spacing: -0.01em;
-            position: relative;
-            display: inline-block;
         }
-
-        .section-title::after {
-            content: '';
+        .section-subtitle {
+            color: var(--secondary-color);
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+        }
+        /* 特徴・サービス画像を大きく */
+        .features-list img,
+        .services-grid img,
+        .achievement-card img {
+            width: 180px !important;
+            height: 180px !important;
+            object-fit: contain;
+            margin-bottom: 18px;
             display: block;
-            width: 60px;
-            height: 4px;
-            background: var(--primary-color);
-            margin: 15px auto 0;
-            border-radius: 2px;
+            margin-left: auto;
+            margin-right: auto;
         }
-
-        .vision-section {
-            padding: 100px 0;
-            background: white;
+        @media (max-width: 768px) {
+            .features-list img, .services-grid img, .achievement-card img { width: 110px !important; height: 110px !important; }
         }
-
-        .vision-content {
-            font-size: 18px;
-            line-height: 1.8;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .vision-content p {
-            margin-bottom: 25px;
-        }
-
-        .features-section {
-            background-color: var(--light-bg);
-            padding: 100px 0;
-            position: relative;
-        }
-
-        .features-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .feature-item {
-            background: white;
-            padding: 40px 30px;
-            border-radius: var(--border-radius);
-            transition: var(--transition-fast);
-            box-shadow: var(--shadow-soft);
-            position: relative;
-            z-index: 1;
-            overflow: hidden;
+        .feature-item, .service-item {
             text-align: center;
+            padding: 18px 10px;
+            border-radius: 10px;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            margin-bottom: 18px;
         }
-
-        .feature-item:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-strong);
-        }
-
-        .feature-item img {
-    width: 480px;  /* 値を変更 */
-    height: 240px; /* 値を変更 */
-    margin-bottom: 25px;
-    transition: var(--transition-fast);
-}
-
-        .feature-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .feature-item h3 {
-            font-size: 22px;
-            font-weight: 700;
-            margin: 0 0 15px;
-            color: var(--dark-blue);
-        }
-
-        .feature-item p {
-            font-size: 16px;
-            line-height: 1.7;
-            color: #555;
-        }
-
-        .services-section {
-            padding: 100px 0;
-            background: white;
-        }
-
-        .services-grid {
+        .features-list, .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
         }
-
-        .service-item {
-            background: white;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow-soft);
-            transition: var(--transition-fast);
+        .achievement-card-list {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
-
-        .service-item:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-strong);
-        }
-
-        .service-item img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            transition: var(--transition-fast);
-        }
-
-        .service-item:hover img {
-            transform: scale(1.05);
-        }
-
-        .service-item h3 {
-            font-size: 20px;
-            font-weight: 700;
-            margin: 0;
-            color: var(--dark-blue);
-            padding: 25px 25px 10px;
-        }
-
-        .service-item p {
-            font-size: 16px;
-            line-height: 1.7;
-            color: #555;
-            padding: 0 25px 25px;
-        }
-
-        .more-button-container {
+        .achievement-card {
+            width: 220px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
             text-align: center;
-            margin-top: 60px;
+            padding: 12px 8px 18px;
         }
-
-        .btn-more {
-            display: inline-block;
-            padding: 15px 40px;
-            background: var(--primary-color);
-            color: white;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 16px;
-            text-decoration: none;
-            transition: var(--transition-fast);
-            box-shadow: 0 5px 15px rgba(0, 102, 255, 0.3);
+        .achievement-card p {
+            font-size: 14px;
+            margin: 8px 0 0;
         }
-
-        .btn-more:hover {
-            background: var(--dark-blue);
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 102, 255, 0.4);
-        }
-
-        .target-section {
-            padding: 100px 0;
-            background: var(--light-bg);
-            position: relative;
-        }
-
-        .target-list {
-            max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            padding: 40px 50px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-soft);
-        }
-
         .target-list ul {
             list-style: none;
             padding: 0;
-            margin: 0;
         }
-
         .target-list li {
+            margin-bottom: 10px;
+            font-size: 15px;
+            padding-left: 1.2em;
             position: relative;
-            padding-left: 35px;
-            margin-bottom: 25px;
-            font-size: 18px;
-            line-height: 1.7;
         }
-
-        .target-list li:last-child {
-            margin-bottom: 0;
-        }
-
-        .text-red {
+        .target-list li .text-red {
+            color: var(--secondary-color);
             position: absolute;
             left: 0;
-            top: 4px;
-            color: var(--secondary-color);
-            font-weight: 900;
-            font-size: 22px;
+            top: 0;
         }
-
-        .achievement-section {
-            padding: 100px 0;
-            background: white;
-        }
-
-        .achievement-card-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .achievement-card {
-            background: white;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow-soft);
-            transition: var(--transition-fast);
-        }
-
-        .achievement-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-strong);
-        }
-
-        .achievement-card a {
-            display: block;
-            text-decoration: none;
-        }
-
-        .achievement-card img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            transition: var(--transition-fast);
-        }
-
-        .achievement-card:hover img {
-            transform: scale(1.05);
-        }
-
-        .achievement-card p {
-            padding: 25px;
-            font-size: 17px;
-            font-weight: 700;
-            color: #333;
-            margin: 0;
-            line-height: 1.5;
-        }
-
-        .contact-cta-section {
-            background: var(--gradient-secondary);
-            padding: 100px 0;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .contact-cta-bg-deco {
-            position: absolute;
-            opacity: 0.1;
-        }
-
-        .contact-cta-container {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .contact-cta-subtitle {
-            display: inline-block;
-            font-size: 16px;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 8px 20px;
-            border-radius: 50px;
-            margin-bottom: 20px;
-            font-weight: 500;
-        }
-
-        .contact-cta-title {
-            font-size: 42px;
-            font-weight: 900;
-            margin: 0 0 25px;
-            letter-spacing: -0.01em;
-        }
-
-        .contact-cta-lead {
-            font-size: 18px;
-            margin: 0 0 40px;
-            line-height: 1.8;
-        }
-
-        .contact-cta-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            padding: 15px 35px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 18px;
-            transition: var(--transition-fast);
-        }
-
-        .btn-contact {
-            background: white;
-            color: var(--secondary-color);
-            position: relative;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .btn-contact:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn-document {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-
-        .btn-document:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-5px);
-        }
-
-        .btn-document svg {
-            width: 20px;
-            height: 20px;
-            margin-right: 10px;
-            fill: white;
-        }
-
-        .free-label {
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            background: var(--accent-color);
-            color: white;
-            font-size: 12px;
-            padding: 3px 10px;
-            border-radius: 20px;
-            font-weight: 700;
-        }
-
-        /* レスポンシブスタイル */
         @media (max-width: 768px) {
-            .page-hero-title {
-                font-size: 36px;
-            }
-            
-            .page-hero-lead {
-                font-size: 18px;
-            }
-            
-            .section-title {
-                font-size: 30px;
-            }
-            
-            .vision-content {
-                font-size: 16px;
-            }
-            
-            .feature-item, .service-item {
-                padding: 30px 20px;
-            }
-            
-            .target-list {
-                padding: 30px;
-            }
-            
-            .contact-cta-title {
-                font-size: 32px;
-            }
-            
-            .contact-cta-lead {
-                font-size: 16px;
-            }
-            
-            .cta-button-hero {
-                padding: 15px 30px;
-                font-size: 16px;
-                display: block;
-                max-width: 280px;
-                margin: 15px auto;
-            }
-            
-            .achievement-card-list, .features-list, .services-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .achievement-card img {
-                height: 200px;
-            }
-            
-            .btn {
-                width: 100%;
-                justify-content: center;
-                padding: 15px 20px;
-            }
+            .page-hero-title { font-size: 22px; }
+            .page-hero-lead { font-size: 15px; }
+            .cta-button-hero { padding: 10px 16px; font-size: 15px; }
+            .features-list img, .services-grid img, .achievement-card img { width: 48px; height: 48px; }
+            .feature-item, .service-item, .achievement-card { padding: 10px 4px 12px; }
+            .section-title { font-size: 18px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- SVG Symbol Definitions -->
-    <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<!-- SVGアイコン定義 -->
+<svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden" xmlns="http://www.w3.org/2000/svg">
     <defs>
-        <!-- SVGシンボル定義のコード -->
+        <!-- PDFアイコン -->
+        <symbol id="icon-pdf" viewBox="0 0 32 32">
+            <path d="M20 2H4C2.9 2 2 2.9 2 4v24c0 1.1.9 2 2 2h24c1.1 0 2-.9 2-2V10L20 2zm4 26H6V4h14v8h6v16zM13.3 14.7c-.7 0-1.3.6-1.3 1.3s.6 1.3 1.3 1.3 1.3-.6 1.3-1.3-.6-1.3-1.3-1.3zm4 8c0-1.5-2.7-2.3-4-2.3s-4 .8-4 2.3v.7h8v-.7z"/>
+        </symbol>
+        <!-- メールアイコン -->
+        <symbol id="icon-mail" viewBox="0 0 32 32">
+            <path d="M16 0C7.2 0 0 7.2 0 16s7.2 16 16 16 16-7.2 16-16S24.8 0 16 0zM8 8h16c.3 0 .6.1.8.2L16 18.5 7.2 8.2c.2-.1.5-.2.8-.2zm-2 14v-12c0-.1 0-.1 0-.1l5.9 6.8-5.8 5.8c0-.2-.1-.3-.1-.5zm18 2H8c-.2 0-.4 0-.5-.1l5.7-5.7 2.8 3.3 2.8-3.3 5.7 5.7c-.2 0-.3.1-.5.1zm2-2c0 .2 0 .4-.1.5l-5.8-5.8 5.9-6.8v12.1z"/>
+        </symbol>
+        <!-- 本アイコン -->
+        <symbol id="icon-book" viewBox="0 0 32 32">
+            <path d="M28 4v26H7c-1.7 0-3-1.3-3-3s1.3-3 3-3h19V4H7C4.8 4 3 5.8 3 8v24c0 2.2 1.8 4 4 4h24V4h-3z"/>
+            <path d="M7 26c-.6 0-1 .4-1 1s.4 1 1 1h19v-2H7z"/>
+        </symbol>
+        <!-- カラフルな三角形 -->
+        <symbol id="svg-triangle-color" viewBox="0 0 200 200">
+            <polygon points="0,0 200,0 0,200" fill="rgba(255,255,255,.15)"/>
+        </symbol>
+        <!-- 検索アイコン -->
+        <symbol id="icon-search" viewBox="0 0 32 32">
+            <path d="M31 27.2l-7.6-6.4c-.8-.7-1.6-1-2.3-1 1.8-2.1 2.9-4.8 2.9-7.8 0-6.6-5.4-12-12-12S0 5.4 0 12s5.4 12 12 12c3 0 5.7-1.1 7.8-2.9 0 .7.3 1.5 1 2.3l6.4 7.6c1.1 1.2 2.9 1.3 4 .2s1-2.9-.2-4zM12 20c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8z"/>
+        </symbol>
     </defs>
-    </svg>
+</svg>
 
-
-   <!-- ヘッダー -->
+<!-- ヘッダー -->
 <header class="site-header">
     <div class="header-container">
         <div class="site-logo-text">
-            <a href="index.html">CLAN</a>
+            <a href="/index.html">CLAN</a>
         </div>
         <nav class="global-nav pc-nav">
             <ul>
-                <li><a href="index.html" aria-current="page">ホーム</a></li>
-                <li><a href="about.html">オートファネル大学とは</a></li>
-                <li><a href="blog/index.html">ブログ</a></li>
-                <li><a href="seminar/index.html">オンライン講座</a></li>
-                <li><a href="tools/index.html">まえゆきツール</a></li>
-                <li><a href="achievement/index.html">お客様の声</a></li>
+                <li><a href="/index.html">ホーム</a></li>
+                <li><a href="/about.html" aria-current="page">オートファネル大学とは</a></li>
+                <li><a href="/blog/index.html">ブログ</a></li>
+                <li><a href="/seminar/index.html">オンライン講座</a></li>
+                <li><a href="/tools/index.html">まえゆきツール</a></li>
+                <li><a href="/achievement/index.html">お客様の声</a></li>
             </ul>
         </nav>
         <div class="header-cta">
-            <a href="document.html" class="btn-document">
+            <a href="/document.html" class="btn-document">
                 <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
                 資料請求する
             </a>
@@ -593,20 +251,20 @@
     </div>
 </header>
 
-<!-- モバイルメニュー（JavaScript で動的に生成される場合はこのコードは不要） -->
+<!-- モバイルメニュー -->
 <div class="mobile-menu">
     <nav>
         <ul>
-            <li><a href="index.html">ホーム</a></li>
-            <li><a href="about.html">オートファネル大学とは</a></li>
-            <li><a href="blog/index.html">ブログ</a></li>
-            <li><a href="seminar/index.html">オンライン講座</a></li>
-            <li><a href="tools/index.html">まえゆきツール</a></li>
-            <li><a href="achievement/index.html">お客様の声</a></li>
+            <li><a href="/index.html">ホーム</a></li>
+            <li><a href="/about.html" aria-current="page">オートファネル大学とは</a></li>
+            <li><a href="/blog/index.html">ブログ</a></li>
+            <li><a href="/seminar/index.html">オンライン講座</a></li>
+            <li><a href="/tools/index.html">まえゆきツール</a></li>
+            <li><a href="/achievement/index.html">お客様の声</a></li>
         </ul>
     </nav>
     <div class="mobile-cta">
-        <a href="document.html" class="btn-document">
+        <a href="/document.html" class="btn-document">
             <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
             資料請求する
         </a>
@@ -616,234 +274,231 @@
     </div>
 </div>
 
-<!-- スマホ用フッター固定CTA - 画像を削除 -->
+<!-- スマホ用フッター固定CTA -->
 <div class="sp-fix-cta">
     <ul>
         <li class="mail"><a href="https://utage-marunage.com/it-hojo/">まずは相談する</a></li>
-        <li class="book"><a href="document.html">資料請求する</a></li>
+        <li class="book"><a href="/document.html">資料請求する</a></li>
     </ul>
 </div>
 
-    <main class="site-main">
+<main class="site-main">
 
-        <!-- ページタイトル/ファーストビューセクション -->
-        <section class="page-hero-section">
-            <div class="page-hero-container inner">
-                 <h1 class="page-hero-title">難しい設定・面倒な作業、一切不要<br>あなたのビジネスが自動で回り出す</h1>
-                 <p class="page-hero-lead">
-                     集客から教育、販売まであらゆるプロセスを自動化し<br>
-                     売上アップと自由な時間を同時に手に入れる方法
-                 </p>
-                 <p class="hero-sub-heading">オンラインビジネス成功の鍵は「自動化」にあり</p>
-                 <a href="https://utage-marunage.com/it-hojo/" class="cta-button-hero">無料相談で可能性を探る</a>
-                 <a href="document.html" class="cta-button-hero secondary">資料請求する</a>
-            </div>
-        </section>
+    <!-- ページタイトル/ファーストビューセクション -->
+    <section class="page-hero-section">
+        <div class="page-hero-container inner">
+             <h1 class="page-hero-title">あなたの知識と情熱を、<br>自動で売れる仕組みに。</h1>
+             <p class="page-hero-lead">
+                 オートファネル大学は「自分らしい働き方」と「売上の安定」を両立したい方のための、<br>
+                 マーケティング自動化・デジタル活用の学び場です。
+             </p>
+             <p class="hero-sub-heading">もう、ツールや設定で悩まない。<br>“仕組み化”で、あなたの時間と心に余裕を。</p>
+             <a href="https://utage-marunage.com/it-hojo/" class="cta-button-hero">無料で相談する</a>
+             <a href="/document.html" class="cta-button-hero secondary">資料ダウンロード</a>
+        </div>
+    </section>
 
-        <!-- オートファネル大学の理念/ビジョン -->
-        <section class="vision-section section-padding inner-md">
-            <div class="section-title-container">
-                <span class="section-subtitle">VISION</span>
-                <h2 class="section-title">自動化で解放される未来へ</h2>
-            </div>
-            <div class="vision-content">
-                <p>
-                    オートファネル大学は、「<strong>ビジネスオーナーを時間と場所の制約から解放する</strong>」というビジョンのもと誕生しました。
-                    情報過多な現代では、効果的なマーケティングと効率的な実行が成功の鍵です。
-                    特に、リソースが限られる個人事業主や中小企業にとって、マーケティングの自動化は単なる選択肢ではなく、必須のスキルとなっています。
-                </p>
-                <p>
-                    私たちは、最先端のマーケティング自動化ツール「<strong>UTAGE</strong>」の活用法を、専門知識ゼロの方にも分かりやすく実践的に教えます。
-                    LP作成、LINE連携、会員サイト構築、決済システム...もうツール選びに悩む必要はありません。
-                    あなたの専門知識を「<strong>自動で売れる仕組み</strong>」に変え、寝ている間も売上を生み出す仕組みを構築するサポートをします。
-                </p>
-            </div>
-        </section>
+    <!-- オートファネル大学の理念/ビジョン -->
+    <section class="vision-section section-padding inner-md">
+        <div class="section-title-container">
+            <span class="section-subtitle">VISION</span>
+            <h2 class="section-title">自動化で、もっと自由な毎日へ</h2>
+        </div>
+        <div class="vision-content">
+            <p>
+                オートファネル大学は「<strong>ビジネスオーナーを“作業”から解放する</strong>」ことを目指しています。<br>
+                仕組み化・自動化は、あなたの時間・心・売上に“ゆとり”を生み出します。
+            </p>
+            <ul style="margin:18px 0 0 0; padding-left:1.2em; font-size:15px;">
+                <li>・集客や販売の「やるべきこと」が自動で回る</li>
+                <li>・本当にやりたい仕事や家族との時間が増える</li>
+                <li>・売上が安定し、将来の不安が減る</li>
+            </ul>
+            <p style="margin-top:18px;">「自分の知識や経験を、もっと多くの人に届けたい」<br>そんな想いを、仕組みで叶えませんか？</p>
+        </div>
+    </section>
 
-        <!-- 選ばれる理由/特徴 -->
-        <section class="features-section section-padding inner">
-            <div class="section-title-container">
-                <span class="section-subtitle">WHY CHOOSE US</span>
-                <h2 class="section-title">選ばれる4つの理由</h2>
+    <!-- 選ばれる理由/特徴 -->
+    <section class="features-section section-padding inner">
+        <div class="section-title-container">
+            <span class="section-subtitle">WHY CHOOSE US</span>
+            <h2 class="section-title">選ばれる4つの理由</h2>
+        </div>
+        <div class="features-list">
+            <div class="feature-item">
+                <img src="/assets/images/feature-icon1.webp" alt="特徴1アイコン">
+                <h3>すぐ使える実践型カリキュラム</h3>
+                <p>「学んだその日から実践」。動画・ワーク・個別サポートで、知識ゼロでも自分のビジネスに落とし込めます。</p>
             </div>
-            <div class="features-list">
-                <div class="feature-item">
-                    <img src="images/feature-icon1.webp" alt="特徴1アイコン">
-                    <h3>即実践のカリキュラム</h3>
-                    <p>「明日から使える」を徹底。理論だけでなく、その場で自分のビジネスに適用できる実践的なスキルを習得できます。講座内で自分だけのオートファネルを構築できます。</p>
-                </div>
-                <div class="feature-item">
-                     <img src="images/feature-icon2.webp" alt="特徴2アイコン">
-                    <h3>UTAGE徹底マスター</h3>
-                    <p>ツール迷子の終着点「UTAGE」に特化。LP作成から顧客管理、決済まですべてを一つのツールで完結。高機能なのに使いやすいUTAGEをマスターできます。</p>
-                </div>
-                <div class="feature-item">
-                     <img src="images/feature-icon3.webp" alt="特徴3アイコン">
-                    <h3>専門家の個別サポート</h3>
-                    <p>「分からない」を解消。専門家によるマンツーマンサポートで挫折なし。一人ひとりの課題に合わせたフィードバックで、確実に成果を出せるよう導きます。</p>
-                </div>
-                <div class="feature-item">
-                     <img src="images/feature-icon4.webp" alt="特徴4アイコン">
-                    <h3>実績豊富な成功事例</h3>
-                    <p>300件以上の導入実績から得た知見を公開。様々な業種・規模の成功パターンを学び、自分のビジネスに最適なモデルを見つけることができます。</p>
-                </div>
+            <div class="feature-item">
+                 <img src="/assets/images/feature-icon2.webp" alt="特徴2アイコン">
+                <h3>UTAGE特化で迷わない</h3>
+                <p>「何を使えばいい？」の悩みゼロ。LP・決済・会員サイト・LINE連携…全部UTAGEで完結。</p>
             </div>
-        </section>
+            <div class="feature-item">
+                 <img src="/assets/images/feature-icon3.webp" alt="特徴3アイコン">
+                <h3>プロが伴走サポート</h3>
+                <p>「一人じゃ不安」も大丈夫。現役の専門家があなたの課題に寄り添い、成果までしっかり導きます。</p>
+            </div>
+            <div class="feature-item">
+                 <img src="/assets/images/feature-icon4.webp" alt="特徴4アイコン">
+                <h3>豊富な成功事例</h3>
+                <p>300件超の導入実績。あなたの業種・規模に合った“勝ちパターン”が見つかります。</p>
+            </div>
+        </div>
+    </section>
 
-        <!-- 提供サービス/学べること -->
-        <section class="services-section section-padding inner">
-             <div class="section-title-container">
-                 <span class="section-subtitle">OUR SERVICES</span>
-                 <h2 class="section-title">ビジネス自動化の全てを学ぶ</h2>
+    <!-- 提供サービス/学べること -->
+    <section class="services-section section-padding inner">
+         <div class="section-title-container">
+             <span class="section-subtitle">OUR SERVICES</span>
+             <h2 class="section-title">ビジネス自動化の全てを学ぶ</h2>
+         </div>
+         <div class="services-grid">
+             <div class="service-item">
+                 <img src="/assets/images/service-lp.webp" alt="ランディングページ">
+                 <h3>売れるLPの作り方</h3>
+                 <p>「なぜ売れない？」を解決。成約率UPの構成・デザイン・コピーを実践で学べます。</p>
              </div>
-             <div class="services-grid">
-                 <div class="service-item">
-                     <img src="images/service-lp.webp" alt="ランディングページ">
-                     <h3>高コンバージョンLPの作成</h3>
-                     <p>成約率を2倍、3倍に引き上げる顧客心理に基づいたLP構成・ライティング・デザインの極意を学びます。</p>
-                 </div>
-                 <div class="service-item">
-                      <img src="images/service-stepmail.webp" alt="ステップメール">
-                     <h3>自動顧客育成システム</h3>
-                     <p>見込み客を熱狂的なファンに変えるステップメール設計。開封率50%以上を実現する手法を伝授します。</p>
-                 </div>
-                 <div class="service-item">
-                      <img src="images/service-funnel.webp" alt="ファネル構築">
-                     <h3>完全自動販売の仕組み作り</h3>
-                     <p>24時間365日、寝ている間も売上を生み出すオートファネルの設計から実装までを徹底解説します。</p>
-                 </div>
-                  <div class="service-item">
-                      <img src="images/service-video.webp" alt="動画">
-                     <h3>集客動画マーケティング</h3>
-                     <p>視聴者を惹きつけ、自然と商品購入へ導く動画コンテンツの企画・制作・最適化テクニックを学びます。</p>
-                 </div>
+             <div class="service-item">
+                  <img src="/assets/images/service-stepmail.webp" alt="ステップメール">
+                 <h3>自動で“ファン化”する仕組み</h3>
+                 <p>見込み客を熱狂的なファンに変えるステップメール設計。開封率UPのコツも伝授。</p>
              </div>
-             <div class="more-button-container">
-                 <a href="seminar/index.html" class="btn-more">講座の詳細を見る</a>
+             <div class="service-item">
+                  <img src="/assets/images/service-funnel.webp" alt="ファネル構築">
+                 <h3>24時間自動販売</h3>
+                 <p>「寝ている間も売れる」仕組みをゼロから構築。自動化の全体像がわかります。</p>
              </div>
-        </section>
+              <div class="service-item">
+                  <img src="/assets/images/service-video.webp" alt="動画">
+                 <h3>動画で集客・教育</h3>
+                 <p>「伝わる動画」の作り方・活用法を基礎から。スマホ1台でもOK。</p>
+             </div>
+         </div>
+         <div class="more-button-container">
+             <a href="/seminar/index.html" class="btn-more">講座の詳細を見る</a>
+         </div>
+    </section>
 
-        <!-- 受講対象者 -->
-         <section class="target-section section-padding inner-md">
-             <div class="section-title-container">
-                 <span class="section-subtitle">WHO SHOULD JOIN</span>
-                 <h2 class="section-title">こんな方に最適です</h2>
-             </div>
-             <div class="target-list">
-                 <ul>
-                     <li><span class="text-red">✔</span> 時間と場所に縛られない働き方を実現したい個人事業主・フリーランス</li>
-                     <li><span class="text-red">✔</span> 従業員のリソースを増やさずに効率的に売上を伸ばしたい中小企業経営者</li>
-                     <li><span class="text-red">✔</span> 自分の知識やノウハウをオンラインで収益化したいコンサルタント・専門家</li>
-                     <li><span class="text-red">✔</span> 複数のマーケティングツールの連携に悩み、一元管理したいビジネスオーナー</li>
-                     <li><span class="text-red">✔</span> IT導入補助金2025を活用してビジネスをデジタル化したい事業者</li>
-                 </ul>
-             </div>
-         </section>
+    <!-- 受講対象者 -->
+     <section class="target-section section-padding inner-md">
+         <div class="section-title-container">
+             <span class="section-subtitle">WHO SHOULD JOIN</span>
+             <h2 class="section-title">こんな方に最適です</h2>
+         </div>
+         <div class="target-list">
+             <ul>
+                 <li><span class="text-red">✔</span> 時間と場所に縛られない働き方を実現したい個人事業主・フリーランス</li>
+                 <li><span class="text-red">✔</span> 従業員のリソースを増やさずに効率的に売上を伸ばしたい中小企業経営者</li>
+                 <li><span class="text-red">✔</span> 自分の知識やノウハウをオンラインで収益化したいコンサルタント・専門家</li>
+                 <li><span class="text-red">✔</span> 複数のマーケティングツールの連携に悩み、一元管理したいビジネスオーナー</li>
+                 <li><span class="text-red">✔</span> IT導入補助金2025を活用してビジネスをデジタル化したい事業者</li>
+             </ul>
+         </div>
+     </section>
 
-        <!-- お客様の声セクション -->
-        <section class="achievement-section section-padding inner-lg">
-            <div class="section-title-container">
-                 <span class="section-subtitle">SUCCESS STORIES</span>
-                 <h2 class="section-title">自動化で実現した成功事例</h2>
+    <!-- お客様の声セクション -->
+    <section class="achievement-section section-padding inner-lg">
+        <div class="section-title-container">
+             <span class="section-subtitle">SUCCESS STORIES</span>
+             <h2 class="section-title">自動化で実現した成功事例</h2>
+        </div>
+
+        <div class="achievement-card-list">
+            <div class="achievement-card">
+                <a href="/achievement/customer1.html">
+                    <img src="/assets/images/achieve-1.webp" alt="実績1">
+                    <p>問い合わせ対応を50%削減し、売上40%アップ（美容サロン）</p>
+                </a>
             </div>
-
-            <div class="achievement-card-list">
-                <div class="achievement-card">
-                    <a href="achievement/customer1.html">
-                        <img src="images/achieve-1.webp" alt="実績1">
-                        <p>【自動化成功事例】問い合わせ対応を50%削減し、売上40%アップを実現した美容サロン</p>
-                    </a>
-                </div>
-                <div class="achievement-card">
-                    <a href="achievement/customer2.html">
-                        <img src="images/achieve-2.webp" alt="実績2">
-                        <p>【個人コンサルタント事例】オートファネル導入で月商2倍！労働時間は半分に</p>
-                    </a>
-                </div>
-                <div class="achievement-card">
-                    <a href="achievement/customer3.html">
-                        <img src="images/achieve-3.webp" alt="実績3">
-                        <p>【オートウェビナー事例】24時間販売の自動化で初月から800万円売上達成！</p>
-                    </a>
-                </div>
+            <div class="achievement-card">
+                <a href="/achievement/customer2.html">
+                    <img src="/assets/images/achieve-2.webp" alt="実績2">
+                    <p>オートファネル導入で月商2倍・労働時間半減（コンサルタント）</p>
+                </a>
             </div>
-             <div class="more-button-container">
-                 <a href="achievement/index.html" class="btn-more">全ての成功事例を見る</a>
-             </div>
-        </section>
-
-        <!-- Contact CTA Section -->
-        <section class="contact-cta-section">
-            <svg class="contact-cta-bg-deco contact-cta-bg-triangle1"><use xlink:href="#svg-triangle-color"></use></svg>
-            <svg class="contact-cta-bg-deco contact-cta-bg-triangle2"><use xlink:href="#svg-triangle-color"></use></svg>
-            <span class="contact-cta-bg-deco contact-cta-bg-circle1"></span>
-            <span class="contact-cta-bg-deco contact-cta-bg-circle2"></span>
-
-            <div class="contact-cta-container">
-                <span class="contact-cta-subtitle">LET'S GET STARTED</span>
-                <h2 class="contact-cta-title">ビジネス自動化の第一歩</h2>
-                <p class="contact-cta-lead">
-                    IT導入補助金を活用したUTAGE導入で最大450万円の補助金が受けられます。<br class="pc-only">
-                    あなたのビジネスに最適な自動化プランと導入ステップをご提案します。<br class="pc-only">
-                    申請は完全丸投げOK！あなたは事業成長に集中できます。
-                </p>
-                <div class="contact-cta-buttons">
-                    <a href="https://utage-marunage.com/it-hojo/" class="btn btn-contact">
-                        無料診断を受ける
-                        <span class="free-label">無料</span>
-                    </a>
-                    <a href="document.html" class="btn btn-document">
-                        <svg><use xlink:href="#icon-pdf"></use></svg>
-                        資料をダウンロード
-                    </a>
-                </div>
+            <div class="achievement-card">
+                <a href="/achievement/customer3.html">
+                    <img src="/assets/images/achieve-3.webp" alt="実績3">
+                    <p>24時間販売の自動化で初月800万円達成（ウェビナー）</p>
+                </a>
             </div>
-        </section>
+        </div>
+         <div class="more-button-container">
+             <a href="/achievement/index.html" class="btn-more">全ての成功事例を見る</a>
+         </div>
+    </section>
 
-   </main>
+    <!-- Contact CTA Section -->
+    <section class="contact-cta-section">
+        <svg class="contact-cta-bg-deco contact-cta-bg-triangle1"><use xlink:href="#svg-triangle-color"></use></svg>
+        <svg class="contact-cta-bg-deco contact-cta-bg-triangle2"><use xlink:href="#svg-triangle-color"></use></svg>
+        <span class="contact-cta-bg-deco contact-cta-bg-circle1"></span>
+        <span class="contact-cta-bg-deco contact-cta-bg-circle2"></span>
 
-   <footer class="site-footer">
-       <div class="footer-container">
-           <div class="footer-widgets">
-               <div class="widget-area footer-widget-1">
-                   <img src="images/logo-white.webp" alt="オートファネル大学 ロゴ白" class="footer-logo">
-               </div>
-               <div class="widget-area footer-widget-2">
-                   <h4>オンライン講座一覧</h4>
-                   <ul>
-                       <li><a href="course/lp.html">ランディングページ作成初級講座</a></li>
-                       <li><a href="course/lp.html">動画編集初級講座</a></li>
-                       <li><a href="course/lp.html">ステップメール設計初級講座</a></li>
-                       <li><a href="course/lp.html">オートファネル構築初級講座</a></li>
-                       <li><a href="course/lp.html">Youtubeサムネ作成初級講座</a></li>
-                       <li><a href="course/lp.html">Canvaデザイン初級講座</a></li>
-                   </ul>
-               </div>
-               <div class="widget-area footer-widget-3">
-                   <h4>無料コンテンツ</h4>
-                   <ul>
-                       <li><a href="blog/index.html">ブログ</a></li>
-                       <li><a href="book/index.html">電子書籍</a></li>
-                       <li><a href="free-seminar.html">無料セミナー</a></li>
-                       <li><a href="free-consultation.html">無料相談</a></li>
-                       <li><a href="achievement/index.html">お客様の声</a></li>
-                   </ul>
-               </div>
-               <div class="widget-area footer-widget-4">
-                   <h4>運営情報</h4>
-                   <ul>
-                       <li><a href="owner.html">運営者情報</a></li>
-                       <li><a href="terms.html">利用規約</a></li>
-                       <li><a href="privacy.html">プライバシーポリシー</a></li>
-                   </ul>
-               </div>
-           </div>
-           <div class="site-copyright">
-               <small>© 2025 オートファネル大学</small>
-           </div>
-       </div>
-   </footer>
+        <div class="contact-cta-container">
+            <span class="contact-cta-subtitle">LET'S GET STARTED</span>
+            <h2 class="contact-cta-title">ビジネス自動化の第一歩</h2>
+            <p class="contact-cta-lead">
+                IT導入補助金を活用したUTAGE導入で最大450万円の補助金が受けられます。<br class="pc-only">
+                あなたのビジネスに最適な自動化プランと導入ステップをご提案します。<br class="pc-only">
+                申請は完全丸投げOK！あなたは事業成長に集中できます。
+            </p>
+            <div class="contact-cta-buttons">
+                <a href="https://utage-marunage.com/it-hojo/" class="btn btn-contact">
+                    無料診断を受ける
+                    <span class="free-label">無料</span>
+                </a>
+                <a href="/document.html" class="btn btn-document">
+                    <svg><use xlink:href="#icon-pdf"></use></svg>
+                    資料をダウンロード
+                </a>
+            </div>
+        </div>
+    </section>
+</main>
 
-    <script src="js/script.js"></script>
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-widgets">
+            <div class="widget-area footer-widget-1">
+                <div class="footer-logo-text">CLAN</div>
+            </div>
+            <div class="widget-area footer-widget-2">
+                <h4>オンライン講座一覧</h4>
+                <ul>
+                    <li><a href="/course/lp.html">ランディングページ作成初級講座</a></li>
+                    <li><a href="/course/video.html">動画編集初級講座</a></li>
+                    <li><a href="/course/step-mail.html">ステップメール設計初級講座</a></li>
+                    <li><a href="/course/auto-funnel.html">オートファネル構築初級講座</a></li>
+                    <li><a href="/course/youtube-thumbnail.html">Youtubeサムネ作成初級講座</a></li>
+                    <li><a href="/course/canva.html">Canvaデザイン初級講座</a></li>
+                </ul>
+            </div>
+            <div class="widget-area footer-widget-3">
+                <h4>無料コンテンツ</h4>
+                <ul>
+                    <li><a href="/blog/index.html">ブログ</a></li>
+                    <li><a href="/book/index.html">電子書籍</a></li>
+                    <li><a href="/free-seminar.html">無料セミナー</a></li>
+                    <li><a href="/free-consultation.html">無料相談</a></li>
+                    <li><a href="/achievement/index.html">お客様の声</a></li>
+                    <li><a href="/tools/index.html">まえゆきツール</a></li>
+                </ul>
+            </div>
+            <div class="widget-area footer-widget-4">
+                <h4>運営情報</h4>
+                <ul>
+                    <li><a href="/owner.html">運営者情報</a></li>
+                    <li><a href="/terms.html">利用規約</a></li>
+                    <li><a href="/privacy.html">プライバシーポリシー</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="/js/script.js"></script>
 </body>
 </html>
