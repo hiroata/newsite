@@ -195,7 +195,7 @@ footer{flex-shrink:0}
   .hamburger-button {
     margin-left: auto;
     margin-right: 0;
-    display: flex !重要：スマホでは必ず表示 */
+    display: flex;
   }
   
   /* モバイルメニューの位置調整 */
@@ -537,5 +537,102 @@ body.theme-orange { --primary: #ff9500; }
   }
   body.menu-open {
     overflow: hidden;
+  }
+}
+
+/* プライバシーポリシー・特定商取引法ページ専用調整 */
+.privacy-hero {
+  background: #f8f9fa;
+  padding: 60px 0 30px 0;
+  margin-top: var(--header-h);
+  text-align: center;
+}
+.privacy-hero-container h1 {
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin-bottom: 0.7em;
+  color: var(--dark-blue);
+}
+.privacy-hero-container p {
+  color: #555;
+  font-size: 1.1rem;
+}
+.page-container {
+  max-width: 800px;
+  margin: 0 auto 40px auto;
+  padding: 0 20px;
+}
+.privacy-detail {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  padding: 40px 24px 32px 24px;
+  font-size: 1rem;
+  color: var(--text-dark);
+}
+.privacy-toc {
+  background: #f5f7fa;
+  border-radius: 8px;
+  padding: 18px 18px 10px 18px;
+  margin-bottom: 32px;
+  font-size: 0.98em;
+}
+.privacy-toc-title {
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: var(--secondary);
+}
+.privacy-toc ul {
+  padding-left: 1.2em;
+}
+.privacy-toc li {
+  margin-bottom: 4px;
+}
+.privacy-section {
+  margin-bottom: 32px;
+}
+.privacy-section h2 {
+  font-size: 1.2em;
+  color: var(--primary);
+  margin-bottom: 0.5em;
+  font-weight: bold;
+}
+.privacy-section p, .privacy-section ul, .privacy-section ol {
+  margin-bottom: 1em;
+}
+.contact-highlight {
+  background: #f8f9fa;
+  border-left: 4px solid var(--secondary);
+  padding: 12px 18px;
+  margin: 18px 0;
+  border-radius: 6px;
+  font-size: 0.98em;
+}
+.update-info {
+  text-align: right;
+  color: #888;
+  font-size: 0.95em;
+  margin-top: 24px;
+}
+@media (max-width: 600px) {
+  .privacy-detail {
+    padding: 18px 6px 18px 6px;
+    font-size: 0.97em;
+  }
+  .privacy-hero {
+    padding: 40px 0 18px 0;
+  }
+  .page-container {
+    padding: 0 6px;
+  }
+}
+/* 特定商取引法ページのh1段落下げ */
+.tokutei-h1 {
+  margin-top: 100px !important;
+  display: block;
+}
+@media (max-width: 768px) {
+  .tokutei-h1 {
+    margin-top: 70px !important;
   }
 }
