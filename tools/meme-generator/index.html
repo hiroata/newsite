@@ -558,7 +558,35 @@
 </head>
 <body>
 <div id="svg-defs-placeholder"></div>
-<div id="header-placeholder"></div>
+<header class="site-header">
+  <div class="header-container">
+    <div class="site-logo-text">
+      <a href="/index.html">CLAN</a>
+    </div>
+    <nav class="global-nav pc-nav">
+      <ul>
+        <li><a href="/index.html">ホーム</a></li>
+        <li><a href="/about.html">オートファネル大学とは</a></li>
+        <li><a href="/blog/index.html">ブログ</a></li>
+        <li><a href="/seminar/index.html">オンライン講座</a></li>
+        <li><a href="/tools/index.html" aria-current="page">まえゆきツール</a></li>
+        <li><a href="/achievement/index.html">お客様の声</a></li>
+      </ul>
+    </nav>
+    <div class="header-cta">
+      <a href="/document.html" class="btn-document">
+        <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
+        資料請求する
+      </a>
+      <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
+        まずは相談する
+      </a>
+    </div>
+    <button class="hamburger-button sp-nav" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
    <main class="site-main">
       <!-- ツールセクション -->
       <section class="tool-section">
@@ -719,34 +747,6 @@
                   </li>
                </ul>
             </div>
-            
-            <!-- シェアセクション -->
-            <div class="share-section">
-               <div class="share-section-title">このツールをシェア</div>
-               <div class="share-section-buttons">
-                  <a href="https://twitter.com/share?url=https://yourdomain.com/tools/meme-generator/&text=%E7%B0%A1%E5%8D%98%E3%83%9F%E3%83%BC%E3%83%A0%E3%82%B8%E3%82%A7%E3%83%8D%E3%83%AC%E3%83%BC%E3%82%BF%E3%83%BC%EF%BD%9C%E3%81%BE%E3%81%88%E3%82%86%E3%81%8D%E3%83%84%E3%83%BC%E3%83%AB" target="_blank" rel="nofollow noopener noreferrer" class="share-section-button share-twitter">
-                     <svg width="20" height="20" fill="#fff" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
-                  </a>
-                  <a href="https://www.facebook.com/share.php?u=https://yourdomain.com/tools/meme-generator/" target="_blank" rel="nofollow noopener noreferrer" class="share-section-button share-facebook">
-                     <svg width="20" height="20" fill="#fff" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                  </a>
-                  <a href="https://social-plugins.line.me/lineit/share?url=https://yourdomain.com/tools/meme-generator/" target="_blank" rel="nofollow noopener noreferrer" class="share-section-button share-line">
-                     <svg width="20" height="20" fill="#fff" viewBox="0 0 24 24"><path d="M24 10.304c0-5.369-5.383-9.738-12-9.738-6.616 0-12 4.369-12 9.738 0 4.814 4.269 8.846 10.036 9.608.391.084.922.258 1.057.592.121.303.079.778.039 1.085l-.171 1.027c-.053.303-.242 1.186 1.039.647 1.281-.54 6.911-4.069 9.428-6.967 1.739-1.907 2.572-3.843 2.572-5.992zm-18.988-2.595c.129 0 .234.105.234.234v4.153c0 .129-.105.234-.234.234h-.662c-.129 0-.234-.105-.234-.234v-4.153c0-.129.105-.234.234-.234zm5.323 0c.129 0 .234.105.234.234v4.153c0 .129-.105.234-.234.234h-.661c-.129 0-.234-.105-.234-.234v-2.566l-1.838 2.481c-.051.067-.131.107-.215.107h-.033c-.084 0-.164-.04-.215-.107l-1.838-2.481v2.566c0 .129-.105.234-.234.234h-.662c-.129 0-.234-.105-.234-.234v-4.153c0-.129.105-.234.234-.234h.66c.085 0 .165.04.216.109l2.081 2.811 2.081-2.811c.051-.069.131-.109.216-.109zm5.323 0c.129 0 .234.105.234.234v4.153c0 .129-.105.234-.234.234h-.662c-.129 0-.234-.105-.234-.234v-4.153c0-.129.105-.234.234-.234zm2.662 0c.129 0 .234.105.234.234v4.153c0 .129-.105.234-.234.234h-.662c-.129 0-.234-.105-.234-.234v-4.153c0-.129.105-.234.234-.234z"/></svg>
-                  </a>
-               </div>
-            </div>
-            
-            <!-- 他のツールリンク -->
-            <div class="other-tools">
-               <h2 class="other-tools-title">その他のまえゆきツール</h2>
-               <div class="tools-list">
-                  <a href="../tools/image-resize/" class="tool-link">画像サイズ変更</a>
-                  <a href="../tools/png-to-jpeg/" class="tool-link">PNG→JPEG変換</a>
-                  <a href="../tools/png-jpeg-to-webp/" class="tool-link">WebP変換ツール</a>
-                  <a href="../tools/countdown/" class="tool-link">Webでカウントダウン</a>
-                  <a href="../tools/letters-counter/" class="tool-link">文字数カウント</a>
-               </div>
-            </div>
          </div>
       </section>
 
@@ -805,430 +805,7 @@
       </section>
    </main>
 <div id="footer-placeholder"></div>
-   <footer class="site-footer">
-       <div class="footer-container">
-           <div class="footer-widgets">
-               <div class="widget-area footer-widget-1">
-                   <div class="site-logo-text" style="color: white; font-size: 24px; font-weight: bold; margin-bottom: 20px;">
-                       CLAN
-                   </div>
-               </div>
-               <div class="widget-area footer-widget-2">
-                   <h4>オンライン講座一覧</h4>
-                   <ul>
-                       <li><a href="../course/lp.html">ランディングページ作成初級講座</a></li>
-                       <li><a href="../course/video.html">動画編集初級講座</a></li>
-                       <li><a href="../course/step-mail.html">ステップメール設計初級講座</a></li>
-                       <li><a href="../course/auto-funnel.html">オートファネル構築初級講座</a></li>
-                       <li><a href="../course/youtube-thumbnail.html">Youtubeサムネ作成初級講座</a></li>
-                       <li><a href="../course/canva.html">Canvaデザイン初級講座</a></li>
-                   </ul>
-               </div>
-               <div class="widget-area footer-widget-3">
-                   <h4>便利コンテンツ</h4>
-                   <ul>
-                       <li><a href="../blog/index.html">ブログ</a></li>
-                       <li><a href="../tools/index.html">まえゆきツール</a></li>
-                       <li><a href="../book/index.html">電子書籍</a></li>
-                       <li><a href="../free-seminar.html">無料セミナー</a></li>
-                       <li><a href="../free-consultation.html">無料相談</a></li>
-                       <li><a href="../achievement/index.html">お客様の声</a></li>
-                   </ul>
-               </div>
-               <div class="widget-area footer-widget-4">
-                   <h4>運営情報</h4>
-                   <ul>
-                       <li><a href="../owner.html">運営者情報</a></li>
-                       <li><a href="../terms.html">利用規約</a></li>
-                       <li><a href="../privacy.html">プライバシーポリシー</a></li>
-                   </ul>
-               </div>
-           </div>
-           <div class="site-copyright">
-               <small>© 2025 オートファネル大学</small>
-           </div>
-       </div>
-   </footer>
-
-   <!-- ミームジェネレーター用JavaScript -->
-   <script>
-      document.addEventListener('DOMContentLoaded', function() {
-          // 要素の参照
-          const dropArea = document.getElementById('dropArea');
-          const fileInput = document.getElementById('fileInput');
-          const templateGrid = document.getElementById('templateGrid');
-          const memeEditor = document.getElementById('memeEditor');
-          const noTemplateMessage = document.getElementById('noTemplateMessage');
-          const canvasContainer = document.getElementById('canvasContainer');
-          const memeCanvas = document.getElementById('memeCanvas');
-          const topTextInput = document.getElementById('topText');
-          const bottomTextInput = document.getElementById('bottomText');
-          const fontSizeSelect = document.getElementById('fontSize');
-          const fontFamilySelect = document.getElementById('fontFamily');
-          const textColorInput = document.getElementById('textColor');
-          const strokeColorInput = document.getElementById('strokeColor');
-          const downloadBtn = document.getElementById('downloadBtn');
-          const shareBtn = document.getElementById('shareBtn');
-          const shareModal = document.getElementById('shareModal');
-          const shareClose = document.getElementById('shareClose');
-          const sharePreviewImg = document.getElementById('sharePreviewImg');
-          const shareTwitter = document.getElementById('shareTwitter');
-          const shareFacebook = document.getElementById('shareFacebook');
-          const shareLine = document.getElementById('shareLine');
-          const shareCopy = document.getElementById('shareCopy');
-          const loading = document.getElementById('loading');
-          
-          // キャンバスコンテキスト
-          const ctx = memeCanvas.getContext('2d');
-          
-          // 状態管理
-          let currentImage = null;
-          let currentImageAspect = 1;
-          
-          // 人気テンプレート（URLは自分のサーバーの画像に置き換える）
-          const popularTemplates = [
-              { name: 'Drake Hotline Bling', url: 'https://i.imgflip.com/30b1gx.jpg' },
-              { name: 'Two Buttons', url: 'https://i.imgflip.com/1g8my4.jpg' },
-              { name: 'Distracted Boyfriend', url: 'https://i.imgflip.com/1ur9b0.jpg' },
-              { name: 'Running Away Balloon', url: 'https://i.imgflip.com/261o3j.jpg' },
-              { name: 'Buff Doge vs. Cheems', url: 'https://i.imgflip.com/43a45p.png' },
-              { name: 'Change My Mind', url: 'https://i.imgflip.com/24y43o.jpg' },
-              { name: 'Left Exit 12 Off Ramp', url: 'https://i.imgflip.com/22bdq6.jpg' },
-              { name: 'UNO Draw 25 Cards', url: 'https://i.imgflip.com/3lmzyx.jpg' }
-          ];
-          
-          // テンプレートをグリッドに追加
-          function loadTemplates() {
-              popularTemplates.forEach((template, index) => {
-                  const templateImg = document.createElement('img');
-                  templateImg.src = template.url;
-                  templateImg.alt = template.name;
-                  templateImg.className = 'template-item';
-                  templateImg.dataset.index = index;
-                  
-                  templateImg.addEventListener('click', () => {
-                      selectTemplateImage(template.url);
-                  });
-                  
-                  templateGrid.appendChild(templateImg);
-              });
-          }
-          
-          // テンプレート画像を選択
-          function selectTemplateImage(url) {
-              loading.style.display = 'flex';
-              
-              const img = new Image();
-              img.crossOrigin = 'Anonymous';
-              img.onload = function() {
-                  currentImage = img;
-                  currentImageAspect = img.width / img.height;
-                  initializeCanvas();
-                  drawMeme();
-                  
-                  memeEditor.style.display = 'block';
-                  noTemplateMessage.style.display = 'none';
-                  
-                  downloadBtn.disabled = false;
-                  shareBtn.disabled = false;
-                  
-                  loading.style.display = 'none';
-              };
-              
-              img.onerror = function() {
-                  alert('画像の読み込みに失敗しました。別の画像を試してください。');
-                  loading.style.display = 'none';
-              };
-              
-              img.src = url;
-          }
-          
-          // キャンバスの初期化
-          function initializeCanvas() {
-              // キャンバスのサイズを設定
-              const maxWidth = 600;
-              const maxHeight = 600;
-              
-              let canvasWidth, canvasHeight;
-              
-              if (currentImageAspect > 1) {
-                  // 横長画像
-                  canvasWidth = Math.min(currentImage.width, maxWidth);
-                  canvasHeight = canvasWidth / currentImageAspect;
-              } else {
-                  // 縦長画像
-                  canvasHeight = Math.min(currentImage.height, maxHeight);
-                  canvasWidth = canvasHeight * currentImageAspect;
-              }
-              
-              memeCanvas.width = canvasWidth;
-              memeCanvas.height = canvasHeight;
-              
-              // コンテナのサイズを設定
-              canvasContainer.style.width = canvasWidth + 'px';
-              canvasContainer.style.height = canvasHeight + 'px';
-          }
-          
-          // ミームを描画
-          function drawMeme() {
-              // キャンバスをクリア
-              ctx.clearRect(0, 0, memeCanvas.width, memeCanvas.height);
-              
-              // 画像を描画
-              ctx.drawImage(currentImage, 0, 0, memeCanvas.width, memeCanvas.height);
-              
-              // テキスト設定
-              const fontSize = parseInt(fontSizeSelect.value);
-              const fontFamily = fontFamilySelect.value;
-              const textColor = textColorInput.value;
-              const strokeColor = strokeColorInput.value;
-              
-              ctx.font = `bold ${fontSize}px ${fontFamily}`;
-              ctx.textAlign = 'center';
-              ctx.fillStyle = textColor;
-              ctx.strokeStyle = strokeColor;
-              ctx.lineWidth = fontSize / 15;
-              
-              // 上部テキスト
-              const topText = topTextInput.value.toUpperCase();
-              if (topText) {
-                  drawTextWithWrapping(ctx, topText, memeCanvas.width / 2, fontSize * 1.2, fontSize, memeCanvas.width * 0.9);
-              }
-              
-              // 下部テキスト
-              const bottomText = bottomTextInput.value.toUpperCase();
-              if (bottomText) {
-                  drawTextWithWrapping(ctx, bottomText, memeCanvas.width / 2, memeCanvas.height - fontSize, fontSize, memeCanvas.width * 0.9);
-              }
-          }
-          
-          // テキストを折り返して描画
-          function drawTextWithWrapping(ctx, text, x, y, fontSize, maxWidth) {
-              const words = text.split(' ');
-              const lines = [];
-              let currentLine = words[0];
-              
-              for (let i = 1; i < words.length; i++) {
-                  const word = words[i];
-                  const width = ctx.measureText(currentLine + ' ' + word).width;
-                  
-                  if (width < maxWidth) {
-                      currentLine += ' ' + word;
-                  } else {
-                      lines.push(currentLine);
-                      currentLine = word;
-                  }
-              }
-              
-              lines.push(currentLine);
-              
-              // テキストの描画
-              if (y < memeCanvas.height / 2) {
-                  // 上部テキスト
-                  for (let i = 0; i < lines.length; i++) {
-                      const line = lines[i];
-                      const lineY = y + i * fontSize * 1.2;
-                      
-                      ctx.strokeText(line, x, lineY);
-                      ctx.fillText(line, x, lineY);
-                  }
-              } else {
-                  // 下部テキスト
-                  for (let i = 0; i < lines.length; i++) {
-                      const lineIndex = lines.length - 1 - i;
-                      const line = lines[lineIndex];
-                      const lineY = y - (i * fontSize * 1.2);
-                      
-                      ctx.strokeText(line, x, lineY);
-                      ctx.fillText(line, x, lineY);
-                  }
-              }
-          }
-          
-          // ドラッグ&ドロップイベント
-          ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-              dropArea.addEventListener(eventName, preventDefaults, false);
-          });
-          
-          function preventDefaults(e) {
-              e.preventDefault();
-              e.stopPropagation();
-          }
-          
-          ['dragenter', 'dragover'].forEach(eventName => {
-              dropArea.addEventListener(eventName, highlight, false);
-          });
-          
-          ['dragleave', 'drop'].forEach(eventName => {
-              dropArea.addEventListener(eventName, unhighlight, false);
-          });
-          
-          function highlight() {
-              dropArea.classList.add('dragover');
-          }
-          
-          function unhighlight() {
-              dropArea.classList.remove('dragover');
-          }
-          
-          // ファイルのドロップ
-          dropArea.addEventListener('drop', handleDrop, false);
-          
-          function handleDrop(e) {
-              const dt = e.dataTransfer;
-              const files = dt.files;
-              handleFile(files[0]);
-          }
-          
-          // ファイル選択
-          fileInput.addEventListener('change', function() {
-              handleFile(this.files[0]);
-          });
-          
-          // ファイル処理
-          function handleFile(file) {
-              if (!file) return;
-              
-              const validTypes = ['image/jpeg', 'image/png', 'image/gif'];
-              if (!validTypes.includes(file.type)) {
-                  alert('JPEG, PNG, または GIF 画像を選択してください。');
-                  return;
-              }
-              
-              loading.style.display = 'flex';
-              
-              const reader = new FileReader();
-              reader.onload = function(e) {
-                  const img = new Image();
-                  img.onload = function() {
-                      currentImage = img;
-                      currentImageAspect = img.width / img.height;
-                      initializeCanvas();
-                      drawMeme();
-                      
-                      memeEditor.style.display = 'block';
-                      noTemplateMessage.style.display = 'none';
-                      
-                      downloadBtn.disabled = false;
-                      shareBtn.disabled = false;
-                      
-                      loading.style.display = 'none';
-                  };
-                  
-                  img.src = e.target.result;
-              };
-              
-              reader.readAsDataURL(file);
-          }
-          
-          // テキスト入力イベント
-          topTextInput.addEventListener('input', drawMeme);
-          bottomTextInput.addEventListener('input', drawMeme);
-          
-          // スタイル変更イベント
-          fontSizeSelect.addEventListener('change', drawMeme);
-          fontFamilySelect.addEventListener('change', drawMeme);
-          textColorInput.addEventListener('input', drawMeme);
-          strokeColorInput.addEventListener('input', drawMeme);
-          
-          // ダウンロードボタン
-          downloadBtn.addEventListener('click', function() {
-              if (!currentImage) return;
-              
-              // 一時的なリンク要素を作成
-              const link = document.createElement('a');
-              link.download = 'my-meme.jpg';
-              link.href = memeCanvas.toDataURL('image/jpeg', 0.9);
-              document.body.appendChild(link);
-              link.click();
-              document.body.removeChild(link);
-          });
-          
-          // シェアボタン
-          shareBtn.addEventListener('click', function() {
-              if (!currentImage) return;
-              
-              // プレビュー画像を設定
-              sharePreviewImg.src = memeCanvas.toDataURL('image/jpeg', 0.9);
-              
-              // モーダルを表示
-              shareModal.style.display = 'flex';
-              
-              // シェアリンクを更新
-              const shareUrl = memeCanvas.toDataURL('image/jpeg', 0.9);
-              
-              // Twitter
-              shareTwitter.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent('まえゆきツールで作成したミーム')}&url=${encodeURIComponent(window.location.href)}`;
-              
-              // Facebook
-              shareFacebook.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`;
-              
-              // LINE
-              shareLine.href = `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(window.location.href)}`;
-              
-              // クリップボードにコピー
-              shareCopy.onclick = function(e) {
-                  e.preventDefault();
-                  
-                  // キャンバスを画像データとしてクリップボードにコピー
-                  memeCanvas.toBlob(function(blob) {
-                      try {
-                          const item = new ClipboardItem({ 'image/png': blob });
-                          navigator.clipboard.write([item]).then(function() {
-                              alert('画像をクリップボードにコピーしました！');
-                          }, function(error) {
-                              console.error('クリップボードへのコピーに失敗しました: ', error);
-                              fallbackCopyText();
-                          });
-                      } catch (e) {
-                          console.error('クリップボード機能が利用できません: ', e);
-                          fallbackCopyText();
-                      }
-                  });
-              };
-              
-              // テキストとしてURLをコピーするフォールバック
-              function fallbackCopyText() {
-                  const textArea = document.createElement('textarea');
-                  textArea.value = window.location.href;
-                  document.body.appendChild(textArea);
-                  textArea.select();
-                  document.execCommand('copy');
-                  document.body.removeChild(textArea);
-                  alert('ツールのURLをコピーしました！');
-              }
-          });
-          
-          // モーダルを閉じる
-          shareClose.addEventListener('click', function() {
-              shareModal.style.display = 'none';
-          });
-          
-          // モーダル外クリックで閉じる
-          shareModal.addEventListener('click', function(e) {
-              if (e.target === shareModal) {
-                  shareModal.style.display = 'none';
-              }
-          });
-          
-          // ページ読み込み時
-          window.addEventListener('load', function() {
-              // テンプレートを読み込む
-              loadTemplates();
-              
-              // キャンバスのサイズを初期化
-              memeCanvas.width = 600;
-              memeCanvas.height = 600;
-              
-              // ウィンドウサイズ変更時にキャンバスを再描画
-              window.addEventListener('resize', function() {
-                  if (currentImage) {
-                      initializeCanvas();
-                      drawMeme();
-                  }
-              });
-          });
-      });
-   </script>
+<script src="/js/include.js"></script>
+<script src="/js/script.js"></script>
 </body>
 </html>

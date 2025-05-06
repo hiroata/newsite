@@ -40,17 +40,35 @@
    <meta property="og:type" content="website">
 </head>
 <body>
-<div id="svg-defs-placeholder"></div>
-<div id="header-placeholder"></div>
-
-<!-- スマホ用フッター固定CTA - 画像を削除 -->
-<div class="sp-fix-cta">
-    <ul>
-        <li class="mail"><a href="https://utage-marunage.com/it-hojo/">まずは相談する</a></li>
-        <li class="book"><a href="document.html">資料請求する</a></li>
-    </ul>
-</div>
-
+<header class="site-header">
+  <div class="header-container">
+    <div class="site-logo-text">
+      <a href="/index.html">CLAN</a>
+    </div>
+    <nav class="global-nav pc-nav">
+      <ul>
+        <li><a href="/index.html">ホーム</a></li>
+        <li><a href="/about.html">オートファネル大学とは</a></li>
+        <li><a href="/blog/index.html">ブログ</a></li>
+        <li><a href="/seminar/index.html">オンライン講座</a></li>
+        <li><a href="/tools/index.html" aria-current="page">まえゆきツール</a></li>
+        <li><a href="/achievement/index.html">お客様の声</a></li>
+      </ul>
+    </nav>
+    <div class="header-cta">
+      <a href="/document.html" class="btn-document">
+        <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
+        資料請求する
+      </a>
+      <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
+        まずは相談する
+      </a>
+    </div>
+    <button class="hamburger-button sp-nav" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
 
    <main class="site-main">
       <!-- ツールセクション -->
@@ -146,30 +164,6 @@
                </form>
             </div>
 
-            <!-- シェアセクション -->
-            <div class="share-box" id="sharePanel">
-               <h3 class="share-title">このタイマーを共有</h3>
-
-               <div class="share-url-area">
-                  <input type="text" id="shareLinkInput" class="share-input-field" readonly>
-                  <button class="app-btn btn-action" id="copyLinkBtn">URLコピー</button>
-               </div>
-
-               <p class="share-info-text">作成したカウントダウンのURLです。このURLを開くと同じタイマーが表示されます。ブックマークにもどうぞ。</p>
-
-               <div class="share-social-buttons">
-                  <a href="#" id="shareX" class="social-button share-twitter" target="_blank" rel="noopener noreferrer" aria-label="Xでシェア">
-                     <svg width="20" height="20" fill="#fff" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
-                  </a>
-                  <a href="#" id="shareFacebook" class="social-button share-facebook" target="_blank" rel="noopener noreferrer" aria-label="Facebookでシェア">
-                     <svg width="20" height="20" fill="#fff" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                  </a>
-                  <a href="#" id="shareLine" class="social-button share-line" target="_blank" rel="noopener noreferrer" aria-label="LINEでシェア">
-                     <svg width="20" height="20" fill="#fff" viewBox="0 0 24 24"><path d="M24 10.304c0-5.369-5.383-9.738-12-9.738-6.616 0-12 4.369-12 9.738 0 4.814 4.269 8.846 10.036 9.608.391.084.922.258 1.057.592.121.303.079.778.039 1.085l-.171 1.027c-.053.303-.242 1.186 1.039.647 1.281-.54 6.911-4.069 9.428-6.967 1.739-1.907 2.572-3.843 2.572-5.992zm-18.988-2.595c.129 0 .234.105.234.234v4.153c0 .129-.105.234-.234.234h-.662c-.129 0-.234-.105-.234-.234v-4.153c0-.129.105-.234.234-.234zm5.323 0c.129 0 .234.105.234.234v4.153c0 .129-.105.234-.234.234h-.661c-.129 0-.234-.105-.234-.234v-2.566l-1.838 2.481c-.051.067-.131.107-.215.107h-.033c-.084 0-.164-.04-.215-.107l-1.838-2.481v2.566c0 .129-.105.234-.234.234h-.662c-.129 0-.234-.105-.234-.234v-4.153c0-.129.105-.234.234-.234h.66c.085 0 .165.04.216.109l2.081 2.811 2.081-2.811c.051-.069.131-.109.216-.109zm5.323 0c.129 0 .234.105.234.234v4.153c0 .129-.105.234-.234.234h-.662c-.129 0-.234-.105-.234-.234v-4.153c0-.129.105-.234.234-.234zm2.662 0c.129 0 .234.105.234.234v4.153c0 .129-.105.234-.234.234h-.662c-.129 0-.234-.105-.234-.234v-4.153c0-.129.105-.234.234-.234z"/></svg>
-                  </a>
-               </div>
-            </div>
-
             <!-- プリセットカウントダウン -->
             <div class="preset-options">
                <h3 class="preset-title">便利なプリセット</h3>
@@ -252,6 +246,8 @@
    </main>
 
 <div id="footer-placeholder"></div>
+<script src="/js/include.js"></script>
+<script src="/js/script.js"></script>
 
    <!-- カスタムタイマー用JavaScript -->
    <script>

@@ -1,910 +1,123 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="オートファネル大学の運営者情報ページです。株式会社CLANの代表 前田由紀子のプロフィールと会社概要をご紹介します。">
-    <title>運営者情報 | オートファネル大学</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="icon" href="/images/favicon.ico">
-    <meta property="og:title" content="運営者情報 | オートファネル大学">
-    <meta property="og:description" content="株式会社CLANの代表 前田由紀子のプロフィールと会社概要をご紹介します。">
-    <meta property="og:image" content="/images/ogp_image_about.webp">
-    <meta property="og:type" content="article">
-
-    <script src="/js/script.js" defer></script>
-    <script src="/assets/js/components.js" defer></script>
-
-    <style>
-        /* サイト全体共通の変数を再定義（またはstyle.cssから引き継ぎ） */
-        :root {
-            --primary-color: #0066ff;       /* 青系 */
-            --secondary-color: #ff3a3a;     /* 赤系 */
-            --accent-color: #ff9500;        /* オレンジ系 */
-            --dark-blue: #0d3283;           /* 濃い青系 */
-            --light-bg: #f8f9fa;            /* 薄い背景色 */
-            --gradient-primary: linear-gradient(135deg, #0066ff, #00b8ff);
-            --gradient-secondary: linear-gradient(135deg, #ff3a3a, #ff7d7d);
-            --gradient-accent: linear-gradient(135deg, #ff9500, #ffbd4a);
-            --gradient-colorful: linear-gradient(135deg, #ff3a3a, #ff9500, #0066ff, #3bb68b); /* ポップなグラデーションを追加 */
-            --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08);
-            --shadow-strong: 0 15px 40px rgba(0, 0, 0, 0.12);
-            --transition-fast: all 0.3s ease;
-            --border-radius: 12px;
-        }
-
-        /* ページ全体のスタイル */
-        body {
-            font-family: 'Noto Sans JP', sans-serif;
-            color: #333;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #eef2f7; /* 少し明るくポップな背景色 */
-        }
-
-        .owner-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 60px 20px 80px;
-        }
-
-        /* ヒーローセクション */
-        .owner-hero-section {
-            background: var(--gradient-colorful); /* カラフルなグラデーション */
-            padding: 130px 0 80px;
-            color: white;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            margin-bottom: 100px;
-        }
-
-        .owner-hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('/images/dots-pattern.webp');
-            opacity: 0.1;
-            z-index: 1;
-        }
-
-        .owner-hero-container {
-            position: relative;
-            z-index: 2;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .owner-hero-title {
-            font-size: 48px;
-            font-weight: 900;
-            margin-bottom: 20px;
-            letter-spacing: -0.02em;
-            /* テキストのグラデーションはそのままに */
-            background: linear-gradient(90deg, #fffa8d, #ff3a3a); /* よりポップなグラデーションに仮変更 */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            display: inline-block;
-        }
-
-        .owner-hero-lead {
-            font-size: 20px;
-            max-width: 800px;
-            margin: 0 auto;
-            opacity: 0.9;
-            font-weight: 500;
-            line-height: 1.8;
-        }
-
-        /* カード共通スタイル */
-        .info-card {
-            background-color: white;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow-soft);
-            margin-bottom: 80px;
-            transition: var(--transition-fast);
-            position: relative;
-            z-index: 1;
-        }
-
-        .info-card:hover {
-            transform: translateY(-8px); /* 少し大きめに */
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15); /* 影を濃く */
-        }
-
-        /* 会社概要セクション */
-        .company-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            margin-bottom: 100px;
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1); /* カード風に */
-            border-radius: var(--border-radius);
-            overflow: hidden;
-        }
-
-        .company-info {
-            padding: 60px;
-             background-color: #ffffff;
-        }
-
-        .company-image {
-            background-image: url('/images/company-office.webp');
-            background-size: cover;
-            background-position: center;
-            min-height: 100%;
-            position: relative;
-        }
-
-        .company-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            /* ポップなグラデーションオーバーレイ */
-            background: linear-gradient(135deg, rgba(0, 102, 255, 0.3), rgba(60, 220, 180, 0.3));
-            mix-blend-mode: multiply; /* 重ね方を調整 */
-        }
-
-        .section-title {
-            position: relative;
-            font-size: 32px;
-            font-weight: 800;
-            margin-bottom: 40px;
-            color: var(--dark-blue); /* タイトルはダークブルーに */
-            display: inline-block;
-            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color)); /* タイトル自体もグラデーション */
-             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-         /* 下線もグラデーションに */
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 60px;
-            height: 4px;
-            background: var(--gradient-secondary); /* 赤系のグラデーション */
-            border-radius: 2px;
-            left: 50%;
-            transform: translateX(-50%); /* 中央寄せに */
-            background: var(--gradient-colorful); /* ポップなグラデーション */
-            width: 80px; /* 少し太く */
-        }
-
-
-        .company-details, .profile-details {
-            margin: 0;
-            padding: 0;
-        }
-
-        .company-details dt, .profile-details dt {
-            font-weight: 700;
-            color: var(--dark-blue); /* 項目名を濃い青に */
-            font-size: 18px;
-            margin-top: 25px;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-        }
-
-        .company-details dt::before, .profile-details dt::before {
-            content: '◆'; /* ポップなアイコンに変更 */
-            display: inline-block;
-            color: var(--secondary-color); /* アクセントカラー */
-            margin-right: 10px;
-            font-size: 1.2em;
-        }
-
-        .company-details dd, .profile-details dd {
-            margin: 0 0 15px 18px;
-            line-height: 1.7;
-            color: #555;
-            font-size: 16px;
-        }
-
-        /* プロフィールセクション */
-        .profile-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            margin-bottom: 100px;
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-        }
-
-        .profile-info {
-            padding: 60px;
-            order: 1;
-            background-color: #ffffff;
-        }
-
-        .profile-photo {
-            background-image: url('/images/profile-photo.webp');
-            background-size: cover;
-            background-position: center top; /* 顔が中心に来るように */
-            min-height: 100%;
-            order: 2;
-            position: relative;
-        }
-
-        .profile-photo::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-             /* プロフィール写真用オーバーレイ */
-            background: linear-gradient(135deg, rgba(255, 58, 58, 0.4), rgba(255, 149, 0, 0.4));
-            mix-blend-mode: multiply;
-        }
-
-        .profile-name {
-            font-size: 36px;
-            font-weight: 900;
-            margin-bottom: 5px;
-            color: #222;
-            line-height: 1.2;
-        }
-
-        .profile-position {
-            font-size: 20px;
-            color: var(--accent-color); /* オレンジに */
-            margin-bottom: 30px;
-            font-weight: 500;
-            line-height: 1.4;
-        }
-
-        .profile-bio {
-            background: #fff5f5; /* 薄い赤系の背景 */
-            border-left: 4px solid var(--secondary-color);
-            border-radius: 0 8px 8px 0;
-            padding: 25px;
-            margin-bottom: 30px;
-            position: relative;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-        }
-
-        .profile-bio p {
-            position: relative;
-            margin: 0;
-            line-height: 1.8;
-            color: #444;
-            font-size: 16px;
-        }
-
-        /* ビジョンセクション */
-        .vision-section {
-            margin-bottom: 100px;
-            text-align: center;
-            padding: 80px 40px;
-            background-color: #ffffff; /* 白背景 */
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-soft);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .vision-title {
-            font-size: 36px;
-            font-weight: 900;
-            margin-bottom: 40px;
-            color: var(--dark-blue);
-            position: relative;
-            display: inline-block;
-        }
-
-        .vision-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--gradient-primary); /* 青系グラデーション */
-            border-radius: 2px;
-        }
-
-        .vision-content {
-            max-width: 900px;
-            margin: 0 auto;
-            font-size: 18px;
-            line-height: 2;
-            color: #444;
-        }
-
-        .vision-highlight {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin-top: 60px;
-        }
-
-        .vision-item {
-            flex: 1;
-            min-width: 300px;
-            padding: 30px;
-            background: var(--light-bg); /* 薄い背景 */
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-soft);
-            transition: var(--transition-fast);
-             border-top: 5px solid var(--primary-color); /* 青い上部ボーダー */
-        }
-
-        .vision-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .vision-item-title {
-            font-size: 22px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: var (--dark-blue); /* 濃い青に */
-        }
-
-        .vision-item-text {
-            font-size: 16px;
-            line-height: 1.8;
-            color: #555;
-        }
-
-        /* CTA セクション (IT導入補助金バナー部分) */
-         .cta-section {
-            /* 背景画像ではなくグラデーションに */
-            background: var(--gradient-accent); /* オレンジ系グラデーション */
-            color: white;
-            border-radius: var(--border-radius);
-            padding: 80px 60px;
-            text-align: center;
-            box-shadow: var(--shadow-strong);
-            margin-bottom: 100px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            /* ドットパターンを重ねる */
-            background-image: url('/images/dots-pattern.webp');
-            opacity: 0.15;
-            z-index: 1;
-        }
-
-        .cta-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .cta-badge {
-            display: inline-block;
-            background-color: rgba(255, 255, 255, 0.2); /* 薄い白背景 */
-            color: white;
-            font-size: 14px;
-            font-weight: 700;
-            padding: 8px 20px;
-            border-radius: 30px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .cta-title {
-            font-size: 36px;
-            font-weight: 900;
-            margin-bottom: 25px;
-            /* テキストシャドウはそのまま */
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-            line-height: 1.4;
-            color: white; /* 白文字 */
-        }
-
-        .cta-description {
-            font-size: 18px;
-            max-width: 800px;
-            margin: 0 auto 40px;
-            line-height: 1.8;
-            opacity: 0.9;
-            color: white; /* 白文字 */
-        }
-
-        .cta-button {
-            display: inline-block;
-            /* ボタンを白く、文字色を濃い青に */
-            background: white;
-            color: var(--dark-blue);
-            font-weight: 700;
-            font-size: 18px;
-            padding: 18px 50px;
-            border-radius: 50px;
-            text-decoration: none;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-            transition: var(--transition-fast);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-button::after {
-            content: '';
-            position: absolute;
-            width: 30px;
-            height: 200px;
-            background: rgba(0, 0, 0, 0.05); /* 薄い黒の光沢 */
-            transform: rotate(45deg);
-            top: -50px;
-            left: -100px;
-            transition: all 0.5s ease;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-             background: #f0f0f0; /* 薄くグレーに */
-        }
-
-        .cta-button:hover::after {
-            left: 200%;
-        }
-
-
-        /* フィーチャーセクション */
-        .features-section {
-            margin-bottom: 100px;
-        }
-
-        .features-title {
-            text-align: center;
-            font-size: 36px;
-            font-weight: 900;
-            margin-bottom: 50px;
-            color: var(--dark-blue);
-             background: linear-gradient(90deg, var(--primary-color), var(--dark-blue)); /* タイトルグラデーション */
-             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            display: inline-block; /* グラデーションのために必須 */
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 少し狭くして4つ並びやすく */
-            gap: 30px;
-        }
-
-        .feature-item {
-            background-color: #fff;
-            border-radius: var(--border-radius);
-            padding: 40px 30px;
-            box-shadow: var(--shadow-soft);
-            transition: var(--transition-fast);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            /* 上部ボーダーはシンプルに */
-             border-top: 5px solid var(--primary-color);
-        }
-
-         .feature-item:nth-child(2) { border-top-color: var(--secondary-color); } /* 2番目は赤 */
-         .feature-item:nth-child(3) { border-top-color: var(--accent-color); } /* 3番目はオレンジ */
-         .feature-item:nth-child(4) { border-top-color: #3bb68b; } /* 4番目は緑 */
-
-
-        .feature-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .feature-icon {
-            font-size: 40px;
-            color: var(--primary-color); /* 青アイコン */
-            margin-bottom: 20px;
-        }
-
-         .feature-item:nth-child(2) .feature-icon { color: var(--secondary-color); } /* 赤アイコン */
-         .feature-item:nth-child(3) .feature-icon { color: var(--accent-color); } /* オレンジアイコン */
-         .feature-item:nth-child(4) .feature-icon { color: #3bb68b; } /* 緑アイコン */
-
-
-        .feature-title {
-            font-size: 22px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: #222;
-        }
-
-        .feature-text {
-            font-size: 16px;
-            line-height: 1.8;
-            color: #555;
-        }
-
-        /* 装飾エレメント */
-        .decoration {
-            position: absolute;
-            z-index: 0; /* コンテンツの下に配置 */
-            opacity: 0.1; /* 薄く */
-            pointer-events: none; /* クリックできないように */
-        }
-
-        .decoration-circle1 {
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: var(--secondary-color);
-            top: -150px;
-            right: -100px;
-             opacity: 0.08;
-        }
-
-        .decoration-circle2 {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: var(--primary-color);
-            bottom: -100px;
-            left: -80px;
-             opacity: 0.08;
-        }
-
-         /* 新しい装飾を追加 */
-         .decoration-square-rotated {
-             width: 200px;
-             height: 200px;
-             background: var(--accent-color);
-             top: 20%;
-             left: -50px;
-             transform: rotate(45deg);
-             opacity: 0.05;
-         }
-
-         .decoration-triangle {
-             width: 0;
-             height: 0;
-             border-left: 100px solid transparent;
-             border-right: 100px solid transparent;
-             border-bottom: 173.2px solid #3bb68b; /* 緑 */
-             bottom: 10%;
-             right: -50px;
-             opacity: 0.05;
-         }
-
-
-        /* アニメーション */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px); /* 少し大きく動かす */
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate-fade-up {
-             opacity: 0; /* 初期状態を非表示に */
-             transform: translateY(30px);
-             transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* なめらかなイージングに */
-        }
-
-        .animate-fade-up.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* レスポンシブ対応 */
-        @media (max-width: 1024px) {
-            .owner-hero-title {
-                font-size: 36px;
-            }
-            
-            .company-section, .profile-section {
-                grid-template-columns: 1fr;
-            }
-            
-            .company-image, .profile-photo {
-                min-height: 350px;
-            }
-            
-            .company-info, .profile-info {
-                padding: 40px;
-            }
-            
-            .section-title {
-                font-size: 28px;
-                margin-bottom: 30px;
-            }
-            
-            .vision-section, .cta-section {
-                padding: 50px 30px;
-            }
-            
-            .vision-title, .cta-title, .features-title {
-                font-size: 28px;
-            }
-            
-            .cta-description {
-                font-size: 16px;
-            }
-
-            .vision-item {
-                min-width: 280px; /* 調整 */
-            }
-
-             .features-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 調整 */
-             }
-
-             .decoration {
-                 display: none; /* 装飾はSPで非表示に */
-             }
-        }
-
-        @media (max-width: 768px) {
-            .owner-hero-section {
-                padding: 100px 0 60px;
-            }
-            
-            .owner-hero-title {
-                font-size: 30px;
-            }
-            
-            .owner-hero-lead {
-                font-size: 16px;
-            }
-            
-            .owner-container {
-                padding: 40px 20px 60px;
-            }
-            
-            .profile-info {
-                order: 2;
-            }
-            
-            .profile-photo {
-                order: 1;
-            }
-            
-            .profile-name {
-                font-size: 28px;
-            }
-            
-            .profile-position {
-                font-size: 18px;
-            }
-            
-            .company-image, .profile-photo {
-                min-height: 250px;
-            }
-            
-            .cta-button {
-                width: 100%;
-                box-sizing: border-box;
-                padding: 18px 30px; /* パディング調整 */
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-             .company-info, .profile-info {
-                padding: 30px 20px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .owner-hero-title {
-                font-size: 26px;
-            }
-            
-            .vision-section, .cta-section {
-                padding: 40px 20px;
-            }
-            
-            .vision-title, .cta-title, .features-title {
-                font-size: 24px;
-            }
-            
-            .cta-description {
-                font-size: 15px;
-                margin-bottom: 30px;
-            }
-            
-            .cta-button {
-                font-size: 16px;
-                padding: 15px 30px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>運営者情報 | オートファネル大学</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .owner-main-card {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+      max-width: 520px;
+      margin: 60px auto 40px auto;
+      padding: 36px 24px 32px 24px;
+      text-align: center;
+    }
+    .owner-photo {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.10);
+      margin: 0 auto 18px auto;
+      display: block;
+      border: 4px solid #f8f9fa;
+      background: #f8f9fa;
+    }
+    .owner-name {
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin-bottom: 0.2em;
+      color: var(--dark-blue, #0d3283);
+    }
+    .owner-title {
+      color: var(--secondary, #ff3a3a);
+      font-size: 1.05rem;
+      margin-bottom: 1em;
+      font-weight: 500;
+    }
+    .owner-profile {
+      font-size: 0.98em;
+      color: #444;
+      margin-bottom: 1.2em;
+      line-height: 1.8;
+    }
+    .owner-list {
+      text-align: left;
+      margin: 1.2em auto 1.5em auto;
+      padding-left: 1.2em;
+      max-width: 350px;
+      font-size: 0.97em;
+      color: #333;
+    }
+    .owner-list li {
+      margin-bottom: 0.5em;
+      list-style: disc;
+    }
+    .owner-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0 auto 0.5em auto;
+      background: #f8f9fa;
+      border-radius: 10px;
+      overflow: hidden;
+      font-size: 0.98em;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+    }
+    .owner-table th, .owner-table td {
+      padding: 8px 10px;
+      text-align: left;
+    }
+    .owner-table th {
+      color: var(--secondary, #ff3a3a);
+      background: #f3f3f3;
+      width: 34%;
+      font-weight: 700;
+      border-right: 1px solid #eee;
+    }
+    .owner-table td {
+      color: #333;
+      background: #fff;
+    }
+    @media (max-width: 600px) {
+      .owner-main-card { padding: 18px 4vw 18px 4vw; }
+      .owner-photo { width: 90px; height: 90px; }
+      .owner-table th, .owner-table td { padding: 7px 5px; font-size: 0.97em; }
+    }
+  </style>
 </head>
 <body>
-
-<svg-icons></svg-icons>
-<site-header></site-header>
-
-<main class="site-main">
-    <!-- ヒーローセクション -->
-    <section class="owner-hero-section">
-        <div class="owner-hero-container">
-            <h1 class="owner-hero-title">運営者情報</h1>
-            <p class="owner-hero-lead">難しい設定も面倒な作業も一切不要。ビジネスの「集客・教育・販売」を自動化し、<br>売上アップと自由な時間を同時に手に入れるUTAGEの活用法を学ぶオートファネル大学をご紹介します。</p>
-        </div>
-    </section>
-
-    <div class="owner-container">
-         <!-- 背景装飾エレメントの配置 -->
-         <span class="decoration decoration-circle1"></span>
-         <span class="decoration decoration-circle2"></span>
-         <span class="decoration decoration-square-rotated"></span>
-         <span class="decoration decoration-triangle"></span>
-
-
-        <!-- ビジョンセクション -->
-        <section class="vision-section animate-fade-up">
-            <h2 class="vision-title">ビジネス自動化の新時代へ</h2>
-            <div class="vision-content">
-                <p>「集客はしているのに成約に繋がらない」「教育・販売のプロセスが属人化している」「ツール選びに悩み、時間とコストがかかる」</p>
-                <p>オートファネル大学は、こうした悩みを解決し、あなたのビジネスを自動で回す仕組みづくりをサポートします。UTAGEという強力なツールを活用し、LP作成、LINE連携、会員サイト構築、決済システムなど、すべての機能を一つに集約。あなたの専門知識を「自動で売れる仕組み」に変え、寝ている間も売上を生み出すビジネスモデルを構築できます。</p>
-            </div>
-            <div class="vision-highlight">
-                <div class="vision-item">
-                    <div class="vision-item-title">集客から販売まで丸ごと自動化</div>
-                    <div class="vision-item-text">UTAGEを活用し、見込み客の獲得から信頼構築、成約までの全プロセスを自動化。24時間365日、あなたに代わって働く仕組みを構築します。</div>
-                </div>
-                <div class="vision-item">
-                    <div class="vision-item-title">専門知識ゼロでも構築可能</div>
-                    <div class="vision-item-text">難しい設定や面倒な作業は一切不要。直感的に操作できるUTAGEを使って、マーケティングの専門知識がなくても効果的なファネルを構築できます。</div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- 会社概要セクション -->
-        <div class="company-section info-card animate-fade-up">
-            <div class="company-info">
-                <h2 class="section-title">会社概要</h2>
-                <dl class="company-details">
-                    <dt>社名</dt>
-                    <dd>株式会社CLAN</dd>
-                    
-                    <dt>所在地</dt>
-                    <dd>〒892-0851 鹿児島県鹿児島市上竜尾町1番2号</dd>
-                    
-                    <dt>代表者</dt>
-                    <dd>前田 由紀子</dd>
-                    
-                    <dt>資本金</dt>
-                    <dd>3,000,000円</dd>
-                    
-                    <dt>連絡先</dt>
-                    <dd><a href="mailto:info@clanbiz.net">info@clanbiz.net</a></dd>
-                    
-                    <dt>受付時間</dt>
-                    <dd>9:00〜18:00（土日祝を除く）</dd>
-                    
-                    <dt>事業内容</dt>
-                    <dd>セールスファネル構築代行</dd>
-                </dl>
-            </div>
-            <div class="company-image"></div>
-        </div>
-        
-        <!-- プロフィールセクション -->
-        <div class="profile-section animate-fade-up">
-            <div class="profile-info">
-                <h2 class="section-title">代表プロフィール</h2>
-                <h3 class="profile-name">前田 由紀子</h3>
-                <p class="profile-position">Web集客コンサルタント / UTAGE構築・運用スペシャリスト</p>
-                
-                <div class="profile-bio">
-                    <p>1980年鹿児島県生まれ。高校卒業後、ブルガリなどのハイブランドで13年間勤務。2011年、ローフードとファスティングの事業で福岡で起業。協会設立を経て、東京・青山に料理教室を開講。現在、株式会社CLANの代表取締役として活動中。</p>
-                </div>
-                
-                <dl class="profile-details">
-                    <dt>著書</dt>
-                    <dd><a href="https://www.amazon.co.jp/dp/B09X1Y2L4F" target="_blank" rel="noopener noreferrer">美人は7日でつくられる</a></dd>
-                    
-                    <dt>専門分野</dt>
-                    <dd>オートマーケティング、セールスファネル構築、集客戦略策定</dd>
-                    
-                    <dt>実績</dt>
-                    <dd>UTAGE構築代行による売上改善事例300件以上</dd>
-                </dl>
-            </div>
-            <div class="profile-photo"></div>
-        </div>
-        
-        <!-- フィーチャーセクション -->
-        <section class="features-section animate-fade-up">
-            <h2 class="features-title">UTAGEで実現する4つの強み</h2>
-            <div class="features-grid">
-                <div class="feature-item">
-                    <div class="feature-icon">🔄</div>
-                    <h3 class="feature-title">ツール選びに終止符</h3>
-                    <p class="feature-text">LP作成、LINE連携、会員サイト構築、決済システム...もうツール選びに悩む必要はありません。すべての機能が一つに統合されたUTAGEで完結します。</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">⏱️</div>
-                    <h3 class="feature-title">24時間自動で売上生成</h3>
-                    <p class="feature-text">寝ている間も休日も、あなたに代わって見込み客を集め、育成し、商品を販売する自動ファネルを構築。時間と場所の制約から解放されます。</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">📊</div>
-                    <h3 class="feature-title">データ分析で継続的改善</h3>
-                    <p class="feature-text">顧客の行動データを自動で収集・分析し、常に最適化されたマーケティングを実現。感覚ではなくデータに基づいた意思決定が可能になります。</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">💰</div>
-                    <h3 class="feature-title">IT導入補助金で導入可能</h3>
-                    <p class="feature-text">IT導入補助金2025を活用して最大450万円の補助金が受けられます。申請は完全丸投げOK！あなたは事業成長に集中できます。</p>
-                </div>
-            </div>
-        </section>
-        
-        <!-- CTA Section (IT導入補助金バナー部分を置き換え) -->
-        <section class="cta-section animate-fade-up">
-            <div class="cta-content">
-                <span class="cta-badge">期間限定</span>
-                <h2 class="cta-title">UTAGE構築にIT導入補助金が使えます</h2>
-                <p class="cta-description">UTAGE構築代行サービスがIT導入補助金の対象になりました。最大450万円の補助金を活用して、あなたのビジネスにオートファネルを導入するチャンスです。面倒な申請手続きも完全丸投げOK！</p>
-                <a href="https://utage-marunage.com/it-hojo/" class="cta-button" target="_blank">詳細を確認する</a>
-            </div>
-        </section>
+<div id="header-placeholder"></div>
+<main>
+  <div class="owner-main-card">
+    <img src="/assets/images/profile-photo.webp" alt="前田由紀子 プロフィール写真" class="owner-photo">
+    <div class="owner-name">前田 由紀子</div>
+    <div class="owner-title">Web集客コンサルタント / UTAGE構築・運用スペシャリスト</div>
+    <div class="owner-profile">
+      1980年鹿児島県生まれ。高校卒業後、ブルガリなどのハイブランドで13年間勤務。2011年、ローフードとファスティングの事業で福岡で起業。協会設立を経て、東京・青山に料理教室を開講。現在、株式会社CLANの代表取締役として活動中。
     </div>
-
-    <!-- Contact CTA Section (フッター直前) -->
-    <section class="contact-cta-section">
-        <!-- index.htmlと共通のSVG定義を使用するため、このファイルのdefsは省略 -->
-         <!-- IDをページ固有に -->
-        <svg class="contact-cta-bg-deco contact-cta-bg-triangle1"><use xlink:href="#svg-triangle-color-owner"></use></svg>
-        <svg class="contact-cta-bg-deco contact-cta-bg-triangle2"><use xlink:href="#svg-triangle-color-owner"></use></svg>
-        <span class="contact-cta-bg-deco contact-cta-bg-circle1"></span>
-        <span class="contact-cta-bg-deco contact-cta-bg-circle2"></span>
-
-        <div class="contact-cta-container">
-            <span class="contact-cta-subtitle">Contact</span>
-            <h2 class="contact-cta-title">まずは無料でご相談ください</h2>
-            <p class="contact-cta-lead">
-                オートファネルの構築やマーケティングの自動化について、<br class="pc-only">
-                専門家があなたの状況をお伺いし、最適なステップをご提案します。<br class="pc-only">
-                まずはお気軽にお問い合わせください。
-            </p>
-            <div class="contact-cta-buttons">
-                <a href="https://utage-marunage.com/it-hojo/" class="btn btn-contact">
-                    無料相談してみる
-                    <span class="free-label">無料</span>
-                </a>
-                <a href="/document.html" class="btn btn-document">
-                    資料請求する
-                </a>
-            </div>
-        </div>
-    </section>
+    <ul class="owner-list">
+      <li>著書: <a href="https://www.amazon.co.jp/dp/B09X1Y2L4F" target="_blank" rel="noopener">美人は7日でつくられる</a></li>
+      <li>専門分野: オートマーケティング、セールスファネル構築、集客戦略策定</li>
+      <li>実績: UTAGE構築代行による売上改善事例300件以上</li>
+    </ul>
+    <h2 style="font-size:1.1rem;font-weight:bold;margin:2em 0 0.7em 0;color:var(--dark-blue,#0d3283);">会社概要</h2>
+    <table class="owner-table">
+      <tbody>
+        <tr><th>社名</th><td>株式会社CLAN</td></tr>
+        <tr><th>所在地</th><td>〒892-0851 鹿児島県鹿児島市上竜尾町1番2号</td></tr>
+        <tr><th>代表者</th><td>前田 由紀子</td></tr>
+        <tr><th>資本金</th><td>3,000,000円</td></tr>
+        <tr><th>連絡先</th><td><a href="mailto:info@clanbiz.net">info@clanbiz.net</a></td></tr>
+        <tr><th>受付時間</th><td>9:00〜18:00（土日祝を除く）</td></tr>
+        <tr><th>事業内容</th><td>セールスファネル構築代行</td></tr>
+      </tbody>
+    </table>
+  </div>
 </main>
-
-<site-footer></site-footer>
-
-<script src="/js/script.js"></script>
+<div id="footer-placeholder"></div>
+<script src="/js/include.js"></script>
 </body>
 </html>

@@ -72,9 +72,35 @@
     </style>
 </head>
 <body>
-
-<svg-icons></svg-icons>
-<site-header></site-header>
+<header class="site-header">
+  <div class="header-container">
+    <div class="site-logo-text">
+      <a href="/index.html">CLAN</a>
+    </div>
+    <nav class="global-nav pc-nav">
+      <ul>
+        <li><a href="/index.html">ホーム</a></li>
+        <li><a href="/about.html">オートファネル大学とは</a></li>
+        <li><a href="/blog/index.html">ブログ</a></li>
+        <li><a href="/seminar/index.html">オンライン講座</a></li>
+        <li><a href="/tools/index.html">まえゆきツール</a></li>
+        <li><a href="/achievement/index.html">お客様の声</a></li>
+      </ul>
+    </nav>
+    <div class="header-cta">
+      <a href="/document.html" class="btn-document">
+        <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
+        資料請求する
+      </a>
+      <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
+        まずは相談する
+      </a>
+    </div>
+    <button class="hamburger-button sp-nav" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
 
 <main class="site-main">
     <!-- ヒーローセクション -->
@@ -217,8 +243,8 @@
     </section>
 </main>
 
-<site-footer></site-footer>
-
+<div id="footer-placeholder"></div>
+<script src="/js/include.js"></script>
 <script src="/js/script.js"></script>
 </body>
 </html>
