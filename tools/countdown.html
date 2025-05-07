@@ -18,6 +18,46 @@
          margin-top: var(--header-h);
          background: linear-gradient(to bottom, #f0f0f0 0%, #e0e0e0 100%);
      }
+     /* タイマー数字の枠・数字の整列を調整 */
+     .timer-panels {
+         display: flex;
+         justify-content: center;
+         align-items: flex-end;
+         gap: 16px;
+         margin: 32px 0 16px 0;
+     }
+     .panel-unit {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         min-width: 64px;
+         background: #fff;
+         border-radius: 12px;
+         box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+         padding: 12px 8px 8px 8px;
+     }
+     .panel-value {
+         font-size: 2.4rem;
+         font-weight: bold;
+         line-height: 1.1;
+         text-align: center;
+         letter-spacing: 0.05em;
+         min-width: 40px;
+         min-height: 2.8em;
+         margin-bottom: 2px;
+     }
+     .panel-label {
+         font-size: 1rem;
+         color: #666;
+         margin-top: 2px;
+         text-align: center;
+     }
+     @media (max-width: 600px) {
+       .timer-panels { gap: 8px; }
+       .panel-unit { min-width: 44px; padding: 8px 4px 6px 4px; }
+       .panel-value { font-size: 1.4rem; min-width: 24px; min-height: 1.8em; }
+       .panel-label { font-size: 0.85rem; }
+     }
      /* ここから下は固有デザインのみ残す（共通UI部品はstyle.cssへ移動済み） */
    </style>
 
@@ -211,12 +251,26 @@
             <div class="related-tools">
                <h2 class="related-tools-title">関連ツール</h2>
                <div class="tool-navigation-list">
-                  <a href="../tools/calc/" class="tool-nav-link">単位換算</a>
-                  <a href="../tools/roulette/" class="tool-nav-link">Webルーレット</a>
-                  <a href="../tools/bingo/" class="tool-nav-link">ビンゴ抽選</a>
-                  <a href="../tools/image-resize/" class="tool-nav-link">画像リサイズ</a>
-                  <a href="../tools/letters-counter/" class="tool-nav-link">文字数チェック</a>
-                  <a href="../tools/wareki-seireki/" class="tool-nav-link">年齢・和暦計算</a>
+                  <a href="calc.html" class="tool-nav-link">単位換算</a>
+                  <a href="roulette.html" class="tool-nav-link">Webルーレット</a>
+                  <a href="bingo.html" class="tool-nav-link">ビンゴ抽選</a>
+                  <a href="image-resize.html" class="tool-nav-link">画像リサイズ</a>
+                  <a href="letters-counter.html" class="tool-nav-link">文字数チェック</a>
+                  <a href="wareki-seireki.html" class="tool-nav-link">年齢・和暦計算</a>
+               </div>
+            </div>
+
+            <div class="other-tools">
+               <h2 class="other-tools-title">その他のまえゆきツール</h2>
+               <div class="tools-list">
+                  <a href="calc.html" class="tool-link">単位換算と計算</a>
+                  <a href="countdown.html" class="tool-link">Webでカウントダウン</a>
+                  <a href="roulette.html" class="tool-link">Webでルーレット</a>
+                  <a href="bingo.html" class="tool-link">ビンゴ・マシーン</a>
+                  <a href="image-resize.html" class="tool-link">画像リサイズ</a>
+                  <a href="png-to-jpeg.html" class="tool-link">PNG→JPEG変換</a>
+                  <a href="png-jpeg-to-webp.html" class="tool-link">WebP変換</a>
+                  <a href="wareki-seireki.html" class="tool-link">年齢・和暦計算</a>
                </div>
             </div>
          </div>
