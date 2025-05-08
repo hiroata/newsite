@@ -16,631 +16,135 @@
     <meta property="og:type" content="article">
 
     <style>
-        /* Individual Course Page Specific Styles (Temporary) */
         .course-detail-hero {
-            background: linear-gradient(135deg, #3bb68b, #80d4d4); /* 動画編集っぽい色に仮変更 */
-            padding: 120px 0 60px;
-            color: white;
+            background: linear-gradient(135deg, #3bb68b, #80d4d4);
+            padding: 100px 0 60px;
+            color: #fff;
+            text-align: center;
             position: relative;
-            overflow: hidden;
         }
-
-        .course-detail-hero::before {
-             content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('/images/dots-pattern.webp');
-            opacity: 0.07;
-            z-index: 1;
-        }
-
-        .course-detail-hero-container {
-            position: relative;
-            z-index: 2;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 20px;
-            text-align: center; /* センター寄せに仮調整 */
-        }
-
-        .course-detail-title {
-            font-size: 38px;
+        .course-detail-hero .course-title {
+            font-size: 2.2rem;
             font-weight: 900;
-            margin-bottom: 15px;
-            line-height: 1.3;
+            margin-bottom: 12px;
+            color: #fff;
         }
-
-        .course-detail-subtitle {
-             font-size: 20px;
-             margin-bottom: 20px;
-             opacity: 0.9;
-             font-weight: 500;
+        .course-detail-hero .course-lead {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            margin-bottom: 24px;
         }
-
-        .course-detail-lead {
-            font-size: 17px;
-            max-width: 700px;
-            margin: 0 auto 30px;
-            opacity: 0.9;
-            line-height: 1.7;
+        .course-detail-hero img {
+            width: 320px;
+            max-width: 90vw;
+            border-radius: 18px;
+            margin-bottom: 24px;
+            box-shadow: 0 8px 32px rgba(59,182,139,0.10);
         }
-
         .course-detail-meta {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin-bottom: 40px;
+            gap: 18px;
             font-size: 15px;
             opacity: 0.9;
+            margin-bottom: 30px;
         }
-
-        .course-detail-meta span {
-            display: flex;
-            align-items: center;
-        }
-
-         .course-detail-meta span::before {
-             content: "•";
-             margin-right: 5px;
-         }
-
-         .course-detail-meta span:first-child::before {
-             content: none; /* 最初の要素の前には表示しない */
-         }
-
-
-        .course-detail-cta-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-
-        /* Main Content Layout */
-        .course-content-wrapper {
-            max-width: 1000px;
-            margin: 60px auto 80px;
-            padding: 0 20px;
-        }
-
         .course-section {
-            margin-bottom: 60px;
-            padding: 40px;
-            background-color: #fff;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-soft);
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+            margin: 40px 0;
+            padding: 40px 28px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
-
-         .course-section-title {
-             font-size: 28px;
-             font-weight: 800;
-             color: var(--dark-blue);
-             margin-bottom: 30px;
-             text-align: center;
-             position: relative;
-         }
-
-         .course-section-title::after {
-             content: '';
-             display: block;
-             width: 60px;
-             height: 4px;
-             background-color: var(--secondary-color);
-             margin: 15px auto 0;
-             border-radius: 2px;
-         }
-
-
-        /* Course Outline/Curriculum */
+        .course-section-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #3bb68b;
+            margin-bottom: 18px;
+            text-align: center;
+        }
         .course-outline-list {
-            list-style: none;
+            margin: 0 0 20px 0;
             padding: 0;
-            margin: 0;
+            list-style: none;
         }
-
         .course-outline-item {
-            border: 1px solid #eee;
+            margin-bottom: 12px;
+            background: #f8f9fa;
             border-radius: 8px;
-            margin-bottom: 15px;
-            overflow: hidden;
+            padding: 18px 20px;
         }
-
-        .course-outline-item summary {
-            display: block; /* 三角形を非表示にする */
-            padding: 15px 20px;
-            background-color: #f8f8f8;
-            font-size: 17px;
+        .course-outline-item strong {
+            color: #3bb68b;
+        }
+        .course-detail-cta {
+            margin: 40px 0 0 0;
+            text-align: center;
+        }
+        .course-detail-cta .course-price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #3bb68b;
+            margin-bottom: 18px;
+        }
+        .course-detail-cta .course-detail-button {
+            width: 100%;
+            max-width: 320px;
+            margin: 0 auto;
+            display: block;
+            background: linear-gradient(90deg,#3bb68b,#80d4d4);
+            color: #fff;
             font-weight: 700;
-            color: var(--dark-blue);
-            cursor: pointer;
-            outline: none;
-            position: relative;
+            border-radius: 6px;
+            padding: 16px 0;
+            font-size: 18px;
+            margin-top: 8px;
+            transition: background 0.2s;
         }
-
-        .course-outline-item summary::after {
-            content: '+';
-            position: absolute;
-            top: 50%;
-            right: 20px;
-            transform: translateY(-50%);
-            font-size: 24px;
-            font-weight: normal;
-            transition: transform 0.2s ease;
+        .course-detail-cta .course-detail-button:hover {
+            background: linear-gradient(90deg,#80d4d4,#3bb68b);
         }
-
-        .course-outline-item[open] summary::after {
-             content: '-';
-        }
-
-        .course-outline-content {
-            padding: 15px 20px 20px;
-            line-height: 1.7;
-            color: #555;
-        }
-
-        .course-outline-content ul {
-            list-style: disc;
-            margin: 10px 0 0 20px;
-            padding: 0;
-        }
-
-        .course-outline-content li {
-            margin-bottom: 8px;
-        }
-
-        /* Instructor Section (Using styles from seminar/index.html) */
-        .instructor-card {
-            /* seminar/index.html のスタイルを継承 */
-            max-width: 350px; /* 少し狭めに調整 */
-            margin: 0 auto; /* 中央寄せ */
-        }
-
-         /* Testimonials Section (Using styles similar to achievement cards) */
-         .testimonials-grid {
-             display: grid;
-             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-             gap: 30px;
-         }
-
-         .testimonial-card {
-             background-color: #f8f8f8;
-             border-left: 5px solid var(--primary-color);
-             padding: 25px;
-             border-radius: 0 var(--border-radius) var(--border-radius) 0;
-             box-shadow: var(--shadow-soft);
-             font-size: 15px;
-             line-height: 1.7;
-             color: #555;
-         }
-
-         .testimonial-author {
-             margin-top: 15px;
-             font-weight: 700;
-             color: var(--dark-blue);
-             text-align: right;
-         }
-
-         /* Pricing Section */
-         .pricing-card {
-             background: linear-gradient(135deg, #fff, #f5f5f5);
-             border: 1px solid #eee;
-             border-radius: var(--border-radius);
-             padding: 30px;
-             text-align: center;
-             max-width: 400px;
-             margin: 0 auto;
-             box-shadow: var(--shadow-soft);
-         }
-
-         .pricing-card h3 {
-             font-size: 24px;
-             font-weight: 700;
-             color: var(--dark-blue);
-             margin-bottom: 20px;
-         }
-
-         .pricing-price {
-             font-size: 40px;
-             font-weight: 900;
-             color: var(--secondary-color);
-             margin-bottom: 20px;
-         }
-
-         .pricing-price span {
-             font-size: 20px;
-             font-weight: 700;
-             margin-left: 5px;
-         }
-
-         .pricing-features-list {
-             list-style: none;
-             padding: 0;
-             margin: 0 0 30px;
-             text-align: left;
-         }
-
-         .pricing-features-list li {
-             font-size: 16px;
-             color: #555;
-             margin-bottom: 10px;
-             padding-left: 25px;
-             position: relative;
-         }
-
-          .pricing-features-list li::before {
-             content: '✓';
-             position: absolute;
-             left: 0;
-             color: var(--primary-color); /* 例: 青色 */
-             font-weight: bold;
-          }
-
-
-        /* FAQ Section */
-        .faq-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .faq-item {
-            border-bottom: 1px solid #eee;
-            padding: 20px 0;
-        }
-
-        .faq-item summary {
-            font-size: 17px;
-            font-weight: 700;
-            color: var(--dark-blue);
-            cursor: pointer;
-            outline: none;
-            position: relative;
-            padding-right: 30px; /* 三角形のためのスペース */
-        }
-
-         .faq-item summary::marker {
-             display: none; /* デフォルトの三角形を非表示 (非対応ブラウザ向け) */
-         }
-
-        .faq-item summary::after {
-            content: '▼'; /* 三角形を矢印に変更 */
-            position: absolute;
-            top: 50%;
-            right: 0;
-            transform: translateY(-50%);
-            font-size: 14px;
-            transition: transform 0.2s ease;
-        }
-
-        .faq-item[open] summary::after {
-             transform: translateY(-50%) rotate(180deg);
-        }
-
-        .faq-answer {
-            padding: 15px 0 0;
-            font-size: 15px;
-            line-height: 1.7;
-            color: #555;
-        }
-
-
-        /* Responsive Adjustments */
-         @media (max-width: 768px) {
-             .course-detail-hero {
-                 padding: 100px 0 40px;
-             }
-             .course-detail-title {
-                 font-size: 30px;
-             }
-             .course-detail-subtitle {
-                 font-size: 18px;
-             }
-             .course-detail-lead {
-                 font-size: 15px;
-             }
-             .course-detail-meta {
-                 flex-direction: column;
-                 gap: 10px;
-             }
-             .course-detail-cta-buttons {
-                 flex-direction: column;
-                 gap: 15px;
-             }
-             .course-detail-cta-buttons .btn {
-                 width: 80%; /* ボタンを少し狭く */
-                 margin: 0 auto;
-             }
-
-             .course-content-wrapper {
-                 margin: 40px auto 60px;
-             }
-
-             .course-section {
-                 padding: 30px 20px;
-             }
-
-             .course-section-title {
-                 font-size: 24px;
-             }
-
-             .course-outline-item summary {
-                 font-size: 16px;
-             }
-
-             .course-outline-content {
-                 font-size: 14px;
-             }
-
-             .testimonial-card {
-                 padding: 20px;
-                 font-size: 14px;
-             }
-
-             .pricing-card h3 {
-                 font-size: 20px;
-             }
-             .pricing-price {
-                 font-size: 32px;
-             }
-             .pricing-price span {
-                 font-size: 18px;
-             }
-             .pricing-features-list li {
-                 font-size: 14px;
-             }
-
-             .faq-item summary {
-                 font-size: 16px;
-             }
-             .faq-answer {
-                 font-size: 14px;
-             }
-         }
     </style>
 </head>
 <body>
-<div id="svg-defs-placeholder"></div>
-<div id="header-placeholder"></div>
-    <main class="site-main">
-        <!-- ヒーローセクション -->
+    <main>
         <section class="course-detail-hero">
-            <div class="course-detail-hero-container">
-                <span class="section-subtitle">VIDEO EDITING COURSE</span>
-                <h1 class="course-detail-title">「最後まで見てもらえない…」を解決！<br>売上UPに繋がる動画編集スキル初級講座</h1>
-                 <p class="course-detail-subtitle">ビジネスに必須！集客から販売まで自動化する動画活用法をマスター</p>
-                <p class="course-detail-lead">
-                   この講座では、あなたのビジネスを加速させるための動画編集スキルを基礎から実践レベルまで習得します。<br>
-                   視聴者を惹きつける構成、テロップ、BGM、効果音の使い方など、売上に直結する動画作成のコツを徹底解説。UTAGEを使った自動化導線への組み込み方も学べます。
-                </p>
-                <div class="course-detail-meta">
-                     <span>対象：動画編集初心者</span>
-                     <span>レベル：初級</span>
-                     <span>形式：オンライン動画講座</span>
-                     <span>特典：講師への質問権</span>
-                 </div>
-                <div class="course-detail-cta-buttons">
-                    <a href="https://utage-marunage.com/it-hojo/" class="btn btn-contact">
-                        無料相談してみる
-                        <span class="free-label">無料</span>
-                    </a>
-                    <a href="../document.html" class="btn btn-document">
-                        <svg><use xlink:href="#icon-pdf"></use></svg>
-                        資料請求する
-                    </a>
-                </div>
+            <img src="/assets/images/course-video.webp" alt="動画編集講座">
+            <h1 class="course-title">伝わる動画で売上UP！<br>動画編集初級講座</h1>
+            <div class="course-lead">
+                動画の力で集客・販売を加速。<br>
+                視聴者を惹きつける構成・編集・BGM・テロップのコツを基礎から学べます。
+            </div>
+            <div class="course-detail-meta">
+                <span>レベル：初級</span>
+                <span>動画講座</span>
+                <span>講師：前田由紀子</span>
             </div>
         </section>
-
-        <div class="course-content-wrapper">
-
-            <!-- 講座で学べること -->
-            <section class="course-section">
-                <h2 class="course-section-title">この講座で学べること</h2>
-                <p>
-                    この講座では、以下のスキルを習得し、あなたのビジネスに動画を効果的に活用できるようになります。
-                </p>
-                <ul>
-                    <li>動画編集ツールの基本操作と効率的な使い方</li>
-                    <li>視聴者の離脱を防ぎ、最後まで見てもらう構成術</li>
-                    <li>商品やサービスの魅力を引き出すテロップ・アニメーション</li>
-                    <li>感情を動かすBGM・効果音の選び方と使い方</li>
-                    <li>YouTubeやSNSで再生数を伸ばすための最適化</li>
-                    <li>動画をUTAGEファネルに組み込み、集客・販売を自動化する方法</li>
-                </ul>
-            </section>
-
-            <!-- こんな方におすすめ -->
-            <section class="course-section">
-                <h2 class="course-section-title">こんな方におすすめ</h2>
-                <p>
-                    <ul>
-                        <li>動画編集の経験が全くない方</li>
-                        <li>YouTubeやSNSで集客を始めたい個人事業主・コンサルタント</li>
-                        <li>自分でプロモーション動画を作成したい方</li>
-                        <li>高額な外注費用を削減したい方</li>
-                        <li>動画を活用して売上を自動化する仕組みを作りたい方</li>
-                        <li>UTAGEシステムで動画を効果的に活用したい方</li>
-                    </ul>
-                </p>
-            </section>
-
-
-            <!-- カリキュラム/目次 -->
-            <section class="course-section">
-                <h2 class="course-section-title">カリキュラム (一部抜粋)</h2>
-                <div class="course-outline-list">
-                     <details class="course-outline-item" open>
-                         <summary>モジュール1: 動画編集の基礎知識と準備</summary>
-                         <div class="course-outline-content">
-                             <ul>
-                                 <li>なぜ今、動画マーケティングが重要なのか？</li>
-                                 <li>動画編集ツールの種類と選び方（初心者向け紹介）</li>
-                                 <li>編集に必要な機材と環境設定</li>
-                                 <li>プロジェクトの作成と基本設定</li>
-                                 <li>素材（動画、画像、音声）の取り込み方法</li>
-                             </ul>
-                         </div>
-                     </details>
-                     <details class="course-outline-item">
-                         <summary>モジュール2: カット編集と構成術</summary>
-                          <div class="course-outline-content">
-                             <ul>
-                                 <li>動画編集の基本：カット編集</li>
-                                 <li>視聴者を飽きさせないカットのタイミング</li>
-                                 <li>ビジネス動画のためのストーリー構成</li>
-                                 <li>冒頭10秒で惹きつけるオープニングの作り方</li>
-                                 <li>テンポの良い編集のコツ</li>
-                             </ul>
-                         </div>
-                     </details>
-                      <details class="course-outline-item">
-                         <summary>モジュール3: テロップ・BGM・効果音</summary>
-                           <div class="course-outline-content">
-                             <ul>
-                                 <li>伝わりやすいテロップの入れ方</li>
-                                 <li>感情を動かすBGMの選び方と使い方</li>
-                                 <li>動画をリッチにする効果音の活用</li>
-                                 <li>著作権フリーの音楽・素材サイト</li>
-                                 <li>音声の音量調整とノイズ除去</li>
-                             </ul>
-                         </div>
-                     </details>
-                      <details class="course-outline-item">
-                         <summary>モジュール4: UTAGEファネルとの連携と活用事例</summary>
-                           <div class="course-outline-content">
-                             <ul>
-                                 <li>UTAGEで動画をどう活用するか？</li>
-                                 <li>LP動画、ステップメール動画、セールス動画の役割</li>
-                                 <li>動画を使ったUTAGEファネル構築手順</li>
-                                 <li>成功事例から学ぶ動画×UTAGEの組み合わせ</li>
-                                 <li>動画編集の外注・効率化について</li>
-                             </ul>
-                         </div>
-                     </details>
-                 </div>
-            </section>
-
-            <!-- 教えてくれる人 -->
-            <section class="course-section">
-                <h2 class="course-section-title">教えてくれる人</h2>
-                 <!-- seminar/index.html の講師カード構造を流用 -->
-                 <div class="instructors-grid"> <!-- 講師紹介セクションの grid wrapperを流用 -->
-                    <div class="instructor-card">
-                        <div class="instructor-image">
-                            <img src="/images/instructor-avatar.webp" alt="前田由紀子">
-                        </div>
-                        <div class="instructor-info">
-                            <h3 class="instructor-name">前田由紀子</h3>
-                            <p class="instructor-title">Web集客コンサルタント / UTAGE構築・運用スペシャリスト</p>
-                            <p class="instructor-bio">1980年鹿児島県生まれ。高校卒業後、ブルガリなどのハイブランドで13年間勤務。2011年、ローフードとファスティングの事業で福岡で起業。協会設立を経て、東京・青山に料理教室を開講。現在、株式会社CLANの代表取締役として活動中。</p>
-                            <div class="social-links">
-                                <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                                <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                                <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 受講者の声 -->
-            <section class="course-section">
-                <h2 class="course-section-title">受講者の声</h2>
-                <div class="testimonials-grid">
-                     <div class="testimonial-card">
-                         <p>動画編集は全く初めてでしたが、ツールの基本的な使い方から丁寧に教えてもらえて、短時間で一通りの編集ができるようになりました。特にテロップの入れ方やBGMの選び方のモジュールは、すぐに自分の動画に活かせました！</p>
-                         <p class="testimonial-author">T.K様 (サービス業・個人事業主)</p>
-                     </div>
-                      <div class="testimonial-card">
-                         <p>UTAGEとの連携方法が知りたくて受講しました。動画をファネルのどの段階でどう使うのか、具体的な事例もあって非常に分かりやすかったです。自分のオンライン講座のプロモーション動画を自動化できるようになりました。</p>
-                         <p class="testimonial-author">M.S様 (コンサルタント)</p>
-                     </div>
-                      <div class="testimonial-card">
-                         <p>編集ソフトの操作だけでなく、どういう動画が「見られる」のか、どういう動画が「売れる」のかというマーケティング視点が学べたのが大きかったです。これからは自分で動画を作ってどんどん活用していきたいと思います。</p>
-                         <p class="testimonial-author">Y.N様 (コーチング業)</p>
-                     </div>
-                 </div>
-            </section>
-
-            <!-- 価格 -->
-            <section class="course-section">
-                <h2 class="course-section-title">価格</h2>
-                <div class="pricing-card">
-                     <h3>動画編集初級講座</h3>
-                     <div class="pricing-price">¥24,800<span>(税込)</span></div>
-                     <ul class="pricing-features-list">
-                         <li>買い切り型オンライン動画講座</li>
-                         <li>無期限視聴可能</li>
-                         <li>講座資料ダウンロード</li>
-                         <li>講師への個別質問権（期間限定）</li>
-                         <li>最新情報への無料アップデート</li>
-                     </ul>
-                     <a href="#" class="btn btn-contact">今すぐ購入する</a> <!-- 仮のリンク -->
-                 </div>
-            </section>
-
-             <!-- よくある質問 -->
-             <section class="course-section">
-                 <h2 class="course-section-title">よくある質問</h2>
-                 <ul class="faq-list">
-                      <details class="faq-item">
-                          <summary>動画編集は全くの初心者ですが大丈夫ですか？</summary>
-                          <div class="faq-answer">
-                              はい、ご安心ください。この講座は動画編集未経験の方を主な対象としています。ツールのインストールから基本的な操作方法、編集の考え方まで、基礎から丁寧に解説します。</div>
-                      </details>
-                      <details class="faq-item">
-                          <summary>特定の編集ソフトを使った講座ですか？</summary>
-                          <div class="faq-answer">
-                              講座内では、初心者でも扱いやすい無料または安価な編集ソフトをいくつかご紹介し、基本的な操作はデモンストレーションを交えて解説します。特定のソフトに依存せず、汎用的な動画編集の考え方やスキルを身につけることを目的としています。</div>
-                      </details>
-                      <details class="faq-item">
-                          <summary>講座の視聴期限はありますか？</summary>
-                          <div class="faq-answer">
-                             この講座は買い切り型のため、一度ご購入いただければ視聴期限はありません。ご自身のペースで、何度でも繰り返し学習いただけます。</div>
-                      </details>
-                       <details class="faq-item">
-                          <summary>質問はできますか？</summary>
-                          <div class="faq-answer">
-                             はい、受講者様向けの質問フォーラムや、期間限定の個別質問サポートをご用意しています。講座内容で不明な点があれば、いつでもご質問ください。</div>
-                      </details>
-                 </ul>
-             </section>
-
+        <section class="course-section">
+            <h2 class="course-section-title">この講座で学べること</h2>
+            <ul class="course-outline-list">
+                <li class="course-outline-item"><strong>動画編集の基本操作</strong>と構成術</li>
+                <li class="course-outline-item">視聴者を飽きさせないカット・テロップ・BGM</li>
+                <li class="course-outline-item">UTAGEでの動画活用・自動化</li>
+                <li class="course-outline-item">売上につなげる動画の作り方</li>
+            </ul>
+        </section>
+        <section class="course-section">
+            <h2 class="course-section-title">こんな方におすすめ</h2>
+            <ul class="course-outline-list">
+                <li class="course-outline-item">動画で集客・販売したい方</li>
+                <li class="course-outline-item">編集初心者・自作したい方</li>
+                <li class="course-outline-item">UTAGEで動画を活用したい方</li>
+            </ul>
+        </section>
+        <div class="course-detail-cta">
+            <div class="course-price">¥24,800（税込）</div>
+            <a href="https://utage-marunage.com/it-hojo/" class="course-detail-button">今すぐ申し込む</a>
         </div>
-
-
-        <!-- Contact CTA Section (フッター直前) -->
-        <section class="contact-cta-section">
-            <!-- 背景装飾 -->
-            <svg class="contact-cta-bg-deco contact-cta-bg-triangle1"><use xlink:href="#svg-triangle-color"></use></svg>
-            <svg class="contact-cta-bg-deco contact-cta-bg-triangle2"><use xlink:href="#svg-triangle-color"></use></svg>
-            <span class="contact-cta-bg-deco contact-cta-bg-circle1"></span>
-            <span class="contact-cta-bg-deco contact-cta-bg-circle2"></span>
-
-            <div class="contact-cta-container">
-                <span class="contact-cta-subtitle">IT導入補助金2025活用可能</span>
-                <h2 class="contact-cta-title">申請は完全丸投げOK！</h2>
-                <p class="contact-cta-lead">
-                    UTAGEの導入で最大450万円の補助金が受けられます。<br class="pc-only">
-                    面倒な申請手続きはすべてお任せください。<br class="pc-only">
-                    あなたは事業成長に集中するだけでOKです。
-                </p>
-                <div class="contact-cta-buttons">
-                    <a href="https://utage-marunage.com/it-hojo/" class="btn btn-contact">
-                        無料相談してみる
-                        <span class="free-label">無料</span>
-                    </a>
-                    <a href="../document.html" class="btn btn-document">
-                        <svg><use xlink:href="#icon-pdf"></use></svg>
-                        資料請求する
-                    </a>
-                </div>
-            </div>
-        </section>
     </main>
 <div id="footer-placeholder"></div>
 <script src="/js/script.js"></script>

@@ -16,635 +16,137 @@
     <meta property="og:type" content="article">
 
     <style>
-        /* Individual Course Page Specific Styles (Temporary) */
-        /* 各コースページで共通のスタイルはcss/style.cssに集約することを検討してください */
         .course-detail-hero {
-             /* Youtubeっぽい色に仮変更 */
-            background: linear-gradient(135deg, #ff3a3a, #ff9500); /* red to orange */
-            padding: 120px 0 60px;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .course-detail-hero::before {
-             content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('/images/dots-pattern.webp');
-            opacity: 0.07;
-            z-index: 1;
-        }
-
-        .course-detail-hero-container {
-            position: relative;
-            z-index: 2;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 20px;
+            background: linear-gradient(135deg, #ff3a3a, #ff9500);
+            padding: 100px 0 60px;
+            color: #fff;
             text-align: center;
+            position: relative;
         }
-
-        .course-detail-title {
-            font-size: 38px;
+        .course-detail-hero .course-title {
+            font-size: 2.2rem;
             font-weight: 900;
-            margin-bottom: 15px;
-            line-height: 1.3;
+            margin-bottom: 12px;
+            color: #fff;
         }
-
-        .course-detail-subtitle {
-             font-size: 20px;
-             margin-bottom: 20px;
-             opacity: 0.9;
-             font-weight: 500;
+        .course-detail-hero .course-lead {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            margin-bottom: 24px;
         }
-
-        .course-detail-lead {
-            font-size: 17px;
-            max-width: 700px;
-            margin: 0 auto 30px;
-            opacity: 0.9;
-            line-height: 1.7;
+        .course-detail-hero img {
+            width: 320px;
+            max-width: 90vw;
+            border-radius: 18px;
+            margin-bottom: 24px;
+            box-shadow: 0 8px 32px rgba(255,149,0,0.10);
         }
-
         .course-detail-meta {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin-bottom: 40px;
+            gap: 18px;
             font-size: 15px;
             opacity: 0.9;
+            margin-bottom: 30px;
         }
-
-        .course-detail-meta span {
-            display: flex;
-            align-items: center;
-        }
-
-         .course-detail-meta span::before {
-             content: "•";
-             margin-right: 5px;
-         }
-
-         .course-detail-meta span:first-child::before {
-             content: none; /* 最初の要素の前には表示しない */
-         }
-
-
-        .course-detail-cta-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-
-        /* Main Content Layout */
-        .course-content-wrapper {
-            max-width: 1000px;
-            margin: 60px auto 80px;
-            padding: 0 20px;
-        }
-
         .course-section {
-            margin-bottom: 60px;
-            padding: 40px;
-            background-color: #fff;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-soft);
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+            margin: 40px 0;
+            padding: 40px 28px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
-
-         .course-section-title {
-             font-size: 28px;
-             font-weight: 800;
-             color: var(--dark-blue);
-             margin-bottom: 30px;
-             text-align: center;
-             position: relative;
-         }
-
-         .course-section-title::after {
-             content: '';
-             display: block;
-             width: 60px;
-             height: 4px;
-             background-color: var(--secondary-color); /* 目立つ色に */
-             margin: 15px auto 0;
-             border-radius: 2px;
-         }
-
-
-        /* Course Outline/Curriculum */
+        .course-section-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #ff9500;
+            margin-bottom: 18px;
+            text-align: center;
+        }
         .course-outline-list {
-            list-style: none;
+            margin: 0 0 20px 0;
             padding: 0;
-            margin: 0;
+            list-style: none;
         }
-
         .course-outline-item {
-            border: 1px solid #eee;
+            margin-bottom: 12px;
+            background: #f8f9fa;
             border-radius: 8px;
-            margin-bottom: 15px;
-            overflow: hidden;
+            padding: 18px 20px;
         }
-
-        .course-outline-item summary {
+        .course-outline-item strong {
+            color: #ff9500;
+        }
+        .course-detail-cta {
+            margin: 40px 0 0 0;
+            text-align: center;
+        }
+        .course-detail-cta .course-price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ff9500;
+            margin-bottom: 18px;
+        }
+        .course-detail-cta .course-detail-button {
+            width: 100%;
+            max-width: 320px;
+            margin: 0 auto;
             display: block;
-            padding: 15px 20px;
-            background-color: #f8f8f8;
-            font-size: 17px;
+            background: linear-gradient(90deg,#ff9500,#ff3a3a);
+            color: #fff;
             font-weight: 700;
-            color: var(--dark-blue);
-            cursor: pointer;
-            outline: none;
-            position: relative;
+            border-radius: 6px;
+            padding: 16px 0;
+            font-size: 18px;
+            margin-top: 8px;
+            transition: background 0.2s;
         }
-
-        .course-outline-item summary::after {
-            content: '+';
-            position: absolute;
-            top: 50%;
-            right: 20px;
-            transform: translateY(-50%);
-            font-size: 24px;
-            font-weight: normal;
-            transition: transform 0.2s ease;
+        .course-detail-cta .course-detail-button:hover {
+            background: linear-gradient(90deg,#ff3a3a,#ff9500);
         }
-
-        .course-outline-item[open] summary::after {
-             content: '-';
-        }
-
-        .course-outline-content {
-            padding: 15px 20px 20px;
-            line-height: 1.7;
-            color: #555;
-        }
-
-        .course-outline-content ul {
-            list-style: disc;
-            margin: 10px 0 0 20px;
-            padding: 0;
-        }
-
-        .course-outline-content li {
-            margin-bottom: 8px;
-        }
-
-        /* Instructor Section (Using styles from seminar/index.html) */
-        .instructor-card {
-            /* seminar/index.html のスタイルを継承 */
-            max-width: 350px; /* 少し狭めに調整 */
-            margin: 0 auto; /* 中央寄せ */
-        }
-
-         /* Testimonials Section (Using styles similar to achievement cards) */
-         .testimonials-grid {
-             display: grid;
-             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-             gap: 30px;
-         }
-
-         .testimonial-card {
-             background-color: #f8f8f8;
-             border-left: 5px solid var(--primary-color); /*primary colorを適用*/
-             padding: 25px;
-             border-radius: 0 var(--border-radius) var(--border-radius) 0;
-             box-shadow: var(--shadow-soft);
-             font-size: 15px;
-             line-height: 1.7;
-             color: #555;
-         }
-
-         .testimonial-author {
-             margin-top: 15px;
-             font-weight: 700;
-             color: var(--dark-blue);
-             text-align: right;
-         }
-
-         /* Pricing Section */
-         .pricing-card {
-             background: linear-gradient(135deg, #fff, #f5f5f5);
-             border: 1px solid #eee;
-             border-radius: var(--border-radius);
-             padding: 30px;
-             text-align: center;
-             max-width: 400px;
-             margin: 0 auto;
-             box-shadow: var(--shadow-soft);
-         }
-
-         .pricing-card h3 {
-             font-size: 24px;
-             font-weight: 700;
-             color: var(--dark-blue);
-             margin-bottom: 20px;
-         }
-
-         .pricing-price {
-             font-size: 40px;
-             font-weight: 900;
-             color: var(--secondary-color);
-             margin-bottom: 20px;
-         }
-
-         .pricing-price span {
-             font-size: 20px;
-             font-weight: 700;
-             margin-left: 5px;
-         }
-
-         .pricing-features-list {
-             list-style: none;
-             padding: 0;
-             margin: 0 0 30px;
-             text-align: left;
-         }
-
-         .pricing-features-list li {
-             font-size: 16px;
-             color: #555;
-             margin-bottom: 10px;
-             padding-left: 25px;
-             position: relative;
-         }
-
-          .pricing-features-list li::before {
-             content: '✓';
-             position: absolute;
-             left: 0;
-             color: var(--primary-color);
-             font-weight: bold;
-          }
-
-
-        /* FAQ Section */
-        .faq-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .faq-item {
-            border-bottom: 1px solid #eee;
-            padding: 20px 0;
-        }
-
-        .faq-item summary {
-            font-size: 17px;
-            font-weight: 700;
-            color: var(--dark-blue);
-            cursor: pointer;
-            outline: none;
-            position: relative;
-            padding-right: 30px;
-        }
-
-         .faq-item summary::marker {
-             display: none;
-         }
-
-        .faq-item summary::after {
-            content: '▼';
-            position: absolute;
-            top: 50%;
-            right: 0;
-            transform: translateY(-50%);
-            font-size: 14px;
-            transition: transform 0.2s ease;
-        }
-
-        .faq-item[open] summary::after {
-             transform: translateY(-50%) rotate(180deg);
-        }
-
-        .faq-answer {
-            padding: 15px 0 0;
-            font-size: 15px;
-            line-height: 1.7;
-            color: #555;
-        }
-
-
-        /* Responsive Adjustments */
-         @media (max-width: 768px) {
-             .course-detail-hero {
-                 padding: 100px 0 40px;
-             }
-             .course-detail-title {
-                 font-size: 30px;
-             }
-             .course-detail-subtitle {
-                 font-size: 18px;
-             }
-             .course-detail-lead {
-                 font-size: 15px;
-             }
-             .course-detail-meta {
-                 flex-direction: column;
-                 gap: 10px;
-             }
-             .course-detail-cta-buttons {
-                 flex-direction: column;
-                 gap: 15px;
-             }
-              .course-detail-cta-buttons .btn {
-                 width: 80%;
-                 margin: 0 auto;
-             }
-
-
-             .course-content-wrapper {
-                 margin: 40px auto 60px;
-             }
-
-             .course-section {
-                 padding: 30px 20px;
-             }
-
-             .course-section-title {
-                 font-size: 24px;
-             }
-
-             .course-outline-item summary {
-                 font-size: 16px;
-             }
-
-             .course-outline-content {
-                 font-size: 14px;
-             }
-
-             .testimonial-card {
-                 padding: 20px;
-                 font-size: 14px;
-             }
-
-             .pricing-card h3 {
-                 font-size: 20px;
-             }
-             .pricing-price {
-                 font-size: 32px;
-             }
-             .pricing-price span {
-                 font-size: 18px;
-             }
-             .pricing-features-list li {
-                 font-size: 14px;
-             }
-
-             .faq-item summary {
-                 font-size: 16px;
-             }
-             .faq-answer {
-                 font-size: 14px;
-             }
-         }
     </style>
 </head>
 <body>
 <div id="svg-defs-placeholder"></div>
 <div id="header-placeholder"></div>
     <main class="site-main">
-        <!-- ヒーローセクション -->
         <section class="course-detail-hero">
-            <div class="course-detail-hero-container">
-                <span class="section-subtitle">YOUTUBE THUMBNAIL COURSE</span>
-                <h1 class="course-detail-title">「再生数が伸びない…」を解決！<br>視聴者の目を惹きつけるYoutubeサムネ作成初級講座</h1>
-                 <p class="course-detail-subtitle">デザインセンスゼロでも大丈夫！クリック率を劇的に上げるサムネ作成の極意をマスター</p>
-                <p class="course-detail-lead">
-                   YouTubeで動画の内容がどんなに素晴らしくても、サムネイルがクリックされなければ再生数は伸びません。<br>
-                   本講座では、視聴者の興味を引きつけ、思わずクリックしたくなる「魅せるサムネイル」を作るための法則、Canvaなどのツールを使った具体的な作成方法、そしてYouTube集客とUTAGEファネルを連携させるためのサムネ戦略までを徹底解説します。
-                </p>
-                <div class="course-detail-meta">
-                     <span>対象：Youtube初心者、Canva初心者</span>
-                     <span>レベル：初級</span>
-                     <span>形式：オンライン動画講座</span>
-                     <span>特典：サムネ作成用Canvaテンプレート</span>
-                 </div>
-                <div class="course-detail-cta-buttons">
-                    <a href="https://utage-marunage.com/it-hojo/" class="btn btn-contact">
-                        無料相談してみる
-                        <span class="free-label">無料</span>
-                    </a>
-                    <a href="/document.html" class="btn btn-document">
-                        <svg><use xlink:href="#icon-pdf"></use></svg>
-                        資料請求する
-                    </a>
-                </div>
+            <img src="/assets/images/course-youtube-thumbnail.webp" alt="Youtubeサムネ作成講座">
+            <h1 class="course-title">クリックされるサムネの極意！<br>Youtubeサムネ作成初級講座</h1>
+            <div class="course-lead">
+                再生数UPのカギはサムネイル。<br>
+                デザイン初心者でも「目を引く・伝わる」サムネを作れるコツとテンプレートを伝授します。
+            </div>
+            <div class="course-detail-meta">
+                <span>レベル：初級</span>
+                <span>動画講座</span>
+                <span>講師：前田由紀子</span>
             </div>
         </section>
-
-        <div class="course-content-wrapper">
-
-            <!-- 講座で学べること -->
-            <section class="course-section">
-                <h2 class="course-section-title">この講座で学べること</h2>
-                <p>
-                    この講座では、以下のスキルを習得し、あなたのYouTube動画の再生数・集客力を最大化できます。
-                </p>
-                <ul>
-                    <li>なぜサムネイルが重要なのか？クリック率の基本</li>
-                    <li>クリックされやすいサムネイルの3つの要素（画像、文字、デザイン）</li>
-                    <li>ターゲットに刺さるキャッチコピーと文字配置の法則</li>
-                    <li>目を引く色彩、フォント、アイコンの選び方</li>
-                    <li>Canvaを使った具体的なサムネイル作成手順</li>
-                    <li>スマホ・PC両方で映えるサムネイルの作り方</li>
-                    <li>YouTubeアナリティクスを使ったサムネの検証・改善</li>
-                    <li>YouTube集客とUTAGEファネルを連携させるサムネ戦略</li>
-                </ul>
-            </section>
-
-            <!-- こんな方におすすめ -->
-            <section class="course-section">
-                <h2 class="course-section-title">こんな方におすすめ</h2>
-                <p>
-                    <ul>
-                        <li>YouTubeを始めたばかりで、再生数が伸び悩んでいる方</li>
-                        <li>サムネイルの作り方が分からない、デザインセンスに自信がない方</li>
-                        <li>プロに頼まず自分で魅力的なサムネイルを作りたい方</li>
-                        <li>YouTube集客から売上自動化に繋げたい個人事業主</li>
-                        <li>Canvaを使った画像作成に興味がある方</li>
-                        <li>UTAGEシステムとYouTubeを連携させたい方</li>
-                    </ul>
-                </p>
-            </section>
-
-
-            <!-- カリキュラム/目次 -->
-            <section class="course-section">
-                <h2 class="course-section-title">カリキュラム (一部抜粋)</h2>
-                <div class="course-outline-list">
-                     <details class="course-outline-item" open>
-                         <summary>モジュール1: サムネイルの重要性と基本原則</summary>
-                         <div class="course-outline-content">
-                             <ul>
-                                 <li>YouTube成功の鍵はサムネイル</li>
-                                 <li>クリック率とは何か？その重要性</li>
-                                 <li>良いサムネイルと悪いサムネイルの違い</li>
-                                 <li>サムネイル作成の基本サイズと形式</li>
-                             </ul>
-                         </div>
-                     </details>
-                     <details class="course-outline-item">
-                         <summary>モジュール2: クリックされる構成とデザイン</summary>
-                          <div class="course-outline-content">
-                             <ul>
-                                 <li>目を引くレイアウトと構図</li>
-                                 <li>感情を動かす色彩心理と配色</li>
-                                 <li>読ませる文字、目立たせる文字</li>
-                                 <li>人物写真やイラストの効果的な使い方</li>
-                             </ul>
-                         </div>
-                     </details>
-                      <details class="course-outline-item">
-                         <summary>モジュール3: Canvaを使ったサムネイル作成実践</summary>
-                           <div class="course-outline-content">
-                             <ul>
-                                 <li>Canvaの基本操作とYouTubeサムネ作成機能</li>
-                                 <li>ゼロから作る、テンプレートから作る</li>
-                                 <li>画像編集、文字入れ、装飾</li>
-                                 <li>デザイン素材の活用と注意点</li>
-                                 <li>PC・スマホ両方で最適化</li>
-                             </ul>
-                         </div>
-                     </details>
-                      <details class="course-outline-item">
-                         <summary>モジュール4: YouTube連携と集客戦略</summary>
-                           <div class="course-outline-content">
-                             <ul>
-                                 <li>YouTube Studioでのサムネイル設定</li>
-                                 <li>タイトルとの連携戦略</li>
-                                 <li>アナリティクスを使ったサムネ効果測定</li>
-                                 <li>UTAGEファネルへの誘導を意識したサムネ</li>
-                                 <li>成功事例に見るサムネのトレンド</li>
-                             </ul>
-                         </div>
-                     </details>
-                 </div>
-            </section>
-
-            <!-- 教えてくれる人 -->
-            <section class="course-section">
-                <h2 class="course-section-title">教えてくれる人</h2>
-                 <!-- seminar/index.html の講師カード構造を流用 -->
-                 <div class="instructors-grid"> <!-- 講師紹介セクションの grid wrapperを流用 -->
-                    <div class="instructor-card">
-                        <div class="instructor-image">
-                            <img src="/images/instructor-avatar.webp" alt="前田由紀子">
-                        </div>
-                        <div class="instructor-info">
-                            <h3 class="instructor-name">前田由紀子</h3>
-                            <p class="instructor-title">Web集客コンサルタント / UTAGE構築・運用スペシャリスト</p>
-                            <p class="instructor-bio">1980年鹿児島県生まれ。高校卒業後、ブルガリなどのハイブランドで13年間勤務。2011年、ローフードとファスティングの事業で福岡で起業。協会設立を経て、東京・青山に料理教室を開講。現在、株式会社CLANの代表取締役として活動中。</p>
-                            <div class="social-links">
-                                <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                                <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                                <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 受講者の声 -->
-            <section class="course-section">
-                <h2 class="course-section-title">受講者の声</h2>
-                <div class="testimonials-grid">
-                     <div class="testimonial-card">
-                         <p>今までサムネイルは何となく作っていましたが、この講座でクリックされるための明確な法則を知り、意識して作れるようになりました。Canvaの具体的な使い方も分かり、すぐに実践できました。再生数が少しずつ伸び始めています！</p>
-                         <p class="testimonial-author">R.O様 (YouTuber初心者)</p>
-                     </div>
-                      <div class="testimonial-card">
-                         <p>デザインセンスが全くないので不安でしたが、配色や文字の配置のルールが分かりやすく、プロっぽいサムネイルが作れるようになって驚いています。UTAGEとの連携についても触れていて、YouTubeからの集客導線を考える上で非常に参考になりました。</p>
-                         <p class="testimonial-author">T.S様 (コーチ)</p>
-                     </div>
-                      <div class="testimonial-card">
-                         <p>Canvaは使ったことがありましたが、YouTubeサムネに特化した講座は初めてで、目から鱗の情報ばかりでした。特にターゲットに合わせたデザイン戦略が学びになり、自分のチャンネルの方向性が見えてきました。</p>
-                         <p class="testimonial-author">K.F様 (オンライン講師)</p>
-                     </div>
-                 </div>
-            </section>
-
-            <!-- 価格 -->
-            <section class="course-section">
-                <h2 class="course-section-title">価格</h2>
-                <div class="pricing-card">
-                     <h3>Youtubeサムネ作成初級講座</h3>
-                     <div class="pricing-price">¥19,800<span>(税込)</span></div>
-                     <ul class="pricing-features-list">
-                         <li>買い切り型オンライン動画講座</li>
-                         <li>無期限視聴可能</li>
-                         <li>講座資料・サムネ作成用Canvaテンプレートダウンロード</li>
-                         <li>講師への個別質問権（期間限定）</li>
-                         <li>最新情報への無料アップデート</li>
-                     </ul>
-                     <a href="#" class="btn btn-contact">今すぐ購入する</a> <!-- 仮のリンク -->
-                 </div>
-            </section>
-
-             <!-- よくある質問 -->
-             <section class="course-section">
-                 <h2 class="course-section-title">よくある質問</h2>
-                 <ul class="faq-list">
-                      <details class="faq-item">
-                          <summary>デザイン経験が全くありませんが大丈夫ですか？</summary>
-                          <div class="faq-answer">
-                              はい、ご安心ください。この講座はデザイン初心者の方を対象としています。デザインセンスに頼らずとも、クリックされるサムネイルに必要な構成、配色、文字の扱い方など、再現性の高いノウハウを基礎からお伝えします。</div>
-                      </details>
-                      <details class="faq-item">
-                          <summary>Canvaを使ったことがありません。</summary>
-                          <div class="faq-answer">
-                             Canvaの基本的な操作方法から丁寧に解説しますので、Canva未経験の方でも問題なく受講いただけます。講座内で実際に手を動かしながら、サムネイル作成を習得していきます。</div>
-                      </details>
-                       <details class="faq-item">
-                          <summary>YouTubeチャンネルは必須ですか？</summary>
-                          <div class="faq-answer">
-                             これからYouTubeを始めたい方でも受講いただけます。サムネイル作成スキルは、YouTubeチャンネルの立ち上げから運営までを通して非常に重要になります。すでにチャンネルをお持ちの方、集客に活用したい方には、さらに効果的な内容です。</div>
-                      </details>
-                       <details class="faq-item">
-                          <summary>講座の視聴期限はありますか？</summary>
-                          <div class="faq-answer">
-                             この講座は買い切り型のため、一度ご購入いただければ視聴期限はありません。ご自身のペースで、何度でも繰り返し学習いただけます。</div>
-                      </details>
-                 </ul>
-             </section>
-
+        <section class="course-section">
+            <h2 class="course-section-title">この講座で学べること</h2>
+            <ul class="course-outline-list">
+                <li class="course-outline-item"><strong>クリックされるサムネの法則</strong></li>
+                <li class="course-outline-item">Canvaでの簡単デザイン術</li>
+                <li class="course-outline-item">色・フォント・レイアウトのコツ</li>
+                <li class="course-outline-item">UTAGE×YouTube集客導線</li>
+            </ul>
+        </section>
+        <section class="course-section">
+            <h2 class="course-section-title">こんな方におすすめ</h2>
+            <ul class="course-outline-list">
+                <li class="course-outline-item">YouTubeで集客したい方</li>
+                <li class="course-outline-item">デザイン初心者</li>
+                <li class="course-outline-item">Canvaを活用したい方</li>
+            </ul>
+        </section>
+        <div class="course-detail-cta">
+            <div class="course-price">¥19,800（税込）</div>
+            <a href="https://utage-marunage.com/it-hojo/" class="course-detail-button">今すぐ申し込む</a>
         </div>
-
-
-        <!-- Contact CTA Section (フッター直前) -->
-        <section class="contact-cta-section">
-            <!-- 背景装飾 -->
-             <!-- IDをページ固有に -->
-            <svg class="contact-cta-bg-deco contact-cta-bg-triangle1"><use xlink:href="#svg-triangle-color-youtubethumb"></use></svg>
-            <svg class="contact-cta-bg-deco contact-cta-bg-triangle2"><use xlink:href="#svg-triangle-color-youtubethumb"></use></svg>
-            <span class="contact-cta-bg-deco contact-cta-bg-circle1"></span>
-            <span class="contact-cta-bg-deco contact-cta-bg-circle2"></span>
-
-            <div class="contact-cta-container">
-                <span class="contact-cta-subtitle">IT導入補助金2025活用可能</span>
-                <h2 class="contact-cta-title">申請は完全丸投げOK！</h2>
-                <p class="contact-cta-lead">
-                    UTAGEの導入で最大450万円の補助金が受けられます。<br class="pc-only">
-                    面倒な申請手続きはすべてお任せください。<br class="pc-only">
-                    あなたは事業成長に集中するだけでOKです。
-                </p>
-                <div class="contact-cta-buttons">
-                    <a href="https://utage-marunage.com/it-hojo/" class="btn btn-contact">
-                        無料相談してみる
-                        <span class="free-label">無料</span>
-                    </a>
-                    <a href="/document.html" class="btn btn-document">
-                        <svg><use xlink:href="#icon-pdf"></use></svg>
-                        資料請求する
-                    </a>
-                </div>
-            </div>
-        </section>
     </main>
 <div id="footer-placeholder"></div>
 <script src="/js/script.js"></script>

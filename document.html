@@ -157,18 +157,402 @@
         <div class="form-section">
             <h2 class="form-section-title">資料請求フォーム</h2>
             <p class="form-section-lead">
-                以下のボタンから資料請求フォームにアクセスいただくと、<br class="pc-only">
+                以下のフォームにご記入いただくと、<br class="pc-only">
                 すぐに資料のダウンロードリンクをメールでお送りします。
             </p>
 
-            <div style="text-align: center; margin-top: 40px;">
-                <a href="https://utage-system.com/event/tgNspV9MaQ68/register" target="_blank" class="form-submit-button" style="display: inline-block; text-decoration: none;">
-                    資料請求フォームに進む
-                </a>
-                <p style="margin-top: 20px; font-size: 14px; color: #666;">
-                  
-                </p>
+            <!-- ステップ分割型フォーム -->
+            <div class="multi-step-form">
+                <!-- ステップインジケーター -->
+                <div class="form-steps">
+                    <div class="step active" data-step="1">基本情報</div>
+                    <div class="step" data-step="2">ビジネス情報</div>
+                    <div class="step" data-step="3">完了</div>
+                </div>
+
+                <form id="documentRequestForm" class="document-form">
+                    <!-- ステップ1: 基本情報 -->
+                    <div class="form-step-content active" data-step="1">
+                        <div class="form-group">
+                            <label for="name">お名前 <span class="required">*</span></label>
+                            <input type="text" id="name" name="name" placeholder="山田 太郎" required>
+                            <div class="form-feedback"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">メールアドレス <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" placeholder="example@domain.com" required>
+                            <div class="form-feedback"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="company">会社名</label>
+                            <input type="text" id="company" name="company" placeholder="株式会社○○○">
+                        </div>
+                        <div class="form-buttons">
+                            <button type="button" class="next-step btn-primary">次へ進む</button>
+                        </div>
+                    </div>
+
+                    <!-- ステップ2: ビジネス情報 -->
+                    <div class="form-step-content" data-step="2">
+                        <div class="form-group">
+                            <label for="industry">業種</label>
+                            <select id="industry" name="industry">
+                                <option value="">選択してください</option>
+                                <option value="コンサルタント・コーチ">コンサルタント・コーチ</option>
+                                <option value="教育・研修">教育・研修</option>
+                                <option value="士業">士業</option>
+                                <option value="IT・Web">IT・Web</option>
+                                <option value="小売業">小売業</option>
+                                <option value="サービス業">サービス業</option>
+                                <option value="その他">その他</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>興味のある項目（複数選択可）</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox">
+                                    <input type="checkbox" name="interests" value="ビジネス自動化"> ビジネス自動化
+                                </label>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="interests" value="集客・マーケティング"> 集客・マーケティング
+                                </label>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="interests" value="IT導入補助金"> IT導入補助金
+                                </label>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="interests" value="UTAGE導入"> UTAGE導入
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-buttons">
+                            <button type="button" class="prev-step">戻る</button>
+                            <button type="submit" class="btn-primary">資料をダウンロード</button>
+                        </div>
+                    </div>
+                    
+                    <!-- ステップ3: 完了画面 -->
+                    <div class="form-step-content" data-step="3">
+                        <div class="completion-message">
+                            <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/>
+                            </svg>
+                            <h3>資料請求ありがとうございます！</h3>
+                            <p>ご入力いただいたメールアドレス宛に、<br>資料のダウンロードリンクをお送りしました。</p>
+                            
+                            <div class="download-direct">
+                                <p>すぐに資料を確認したい方は下記からダウンロードできます</p>
+                                <a href="/assets/documents/utage-business-guide.pdf" class="download-button" download>
+                                    <svg width="16" height="16" viewBox="0 0 24 24">
+                                        <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                                    </svg>
+                                    資料をダウンロード
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
+
+            <div class="form-note">
+                <p>※ご入力いただいた個人情報は、資料送付および関連情報のご案内のみに使用します。<br>
+                詳しくは<a href="/privacy.html">プライバシーポリシー</a>をご確認ください。</p>
+            </div>
+
+            <!-- フォームステップ機能を制御するJavaScript -->
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    // 要素の取得
+                    const form = document.getElementById('documentRequestForm');
+                    const steps = document.querySelectorAll('.form-steps .step');
+                    const stepContents = document.querySelectorAll('.form-step-content');
+                    const nextButtons = document.querySelectorAll('.next-step');
+                    const prevButtons = document.querySelectorAll('.prev-step');
+                    
+                    // 次へボタンのイベント
+                    nextButtons.forEach(button => {
+                        button.addEventListener('click', function() {
+                            // 現在のステップを取得
+                            const currentStep = parseInt(button.closest('.form-step-content').dataset.step);
+                            const nextStep = currentStep + 1;
+                            
+                            // バリデーション（ステップ1の場合）
+                            if(currentStep === 1) {
+                                const name = document.getElementById('name');
+                                const email = document.getElementById('email');
+                                let isValid = true;
+                                
+                                // 名前の検証
+                                if(!name.value.trim()) {
+                                    showError(name, 'お名前を入力してください');
+                                    isValid = false;
+                                } else {
+                                    clearError(name);
+                                }
+                                
+                                // メールの検証
+                                if(!email.value.trim()) {
+                                    showError(email, 'メールアドレスを入力してください');
+                                    isValid = false;
+                                } else if(!isValidEmail(email.value)) {
+                                    showError(email, '有効なメールアドレスを入力してください');
+                                    isValid = false;
+                                } else {
+                                    clearError(email);
+                                }
+                                
+                                if(!isValid) return;
+                            }
+                            
+                            // ステップの切り替え
+                            updateStep(nextStep);
+                        });
+                    });
+                    
+                    // 戻るボタンのイベント
+                    prevButtons.forEach(button => {
+                        button.addEventListener('click', function() {
+                            const currentStep = parseInt(button.closest('.form-step-content').dataset.step);
+                            updateStep(currentStep - 1);
+                        });
+                    });
+                    
+                    // フォーム送信のイベント
+                    form.addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        
+                        // フォームデータの収集とAPI送信処理
+                        const formData = new FormData(form);
+                        // 実際のAPI呼び出しはここに実装
+                        
+                        // 完了ステップに進む
+                        updateStep(3);
+                        
+                        // アナリティクスイベントのトラッキング
+                        if(typeof gtag === 'function') {
+                            gtag('event', 'document_request', {
+                                'event_category': 'conversion',
+                                'event_label': 'document_download'
+                            });
+                        }
+                    });
+                    
+                    // ステップ更新関数
+                    function updateStep(stepNumber) {
+                        // ステップインジケーターの更新
+                        steps.forEach(step => {
+                            const stepNum = parseInt(step.dataset.step);
+                            if(stepNum === stepNumber) {
+                                step.classList.add('active');
+                            } else if(stepNum < stepNumber) {
+                                step.classList.add('complete');
+                                step.classList.remove('active');
+                            } else {
+                                step.classList.remove('active', 'complete');
+                            }
+                        });
+                        
+                        // ステップコンテンツの更新
+                        stepContents.forEach(content => {
+                            if(parseInt(content.dataset.step) === stepNumber) {
+                                content.classList.add('active');
+                            } else {
+                                content.classList.remove('active');
+                            }
+                        });
+                    }
+                    
+                    // エラー表示関数
+                    function showError(input, message) {
+                        const formGroup = input.closest('.form-group');
+                        const feedback = formGroup.querySelector('.form-feedback');
+                        formGroup.classList.add('error');
+                        feedback.textContent = message;
+                    }
+                    
+                    // エラークリア関数
+                    function clearError(input) {
+                        const formGroup = input.closest('.form-group');
+                        const feedback = formGroup.querySelector('.form-feedback');
+                        formGroup.classList.remove('error');
+                        feedback.textContent = '';
+                    }
+                    
+                    // メールバリデーション関数
+                    function isValidEmail(email) {
+                        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        return re.test(String(email).toLowerCase());
+                    }
+                });
+            </script>
+
+            <!-- ステップフォーム用のスタイル -->
+            <style>
+                .multi-step-form {
+                    max-width: 600px;
+                    margin: 0 auto;
+                    background: white;
+                    padding: 30px;
+                    border-radius: 10px;
+                    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+                }
+                .form-steps {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 30px;
+                    position: relative;
+                }
+                .form-steps::before {
+                    content: '';
+                    position: absolute;
+                    top: 15px;
+                    left: 10%;
+                    right: 10%;
+                    height: 2px;
+                    background: #e0e0e0;
+                    z-index: 1;
+                }
+                .step {
+                    position: relative;
+                    z-index: 2;
+                    background: white;
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                    border: 2px solid #e0e0e0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-weight: bold;
+                    color: #666;
+                }
+                .step::before {
+                    content: attr(data-step);
+                }
+                .step.active {
+                    border-color: var(--primary-color);
+                    background: var(--primary-color);
+                    color: white;
+                }
+                .step.complete {
+                    border-color: var(--primary-color);
+                    background: white;
+                    color: var(--primary-color);
+                }
+                .step.complete::before {
+                    content: '✓';
+                }
+                .form-step-content {
+                    display: none;
+                }
+                .form-step-content.active {
+                    display: block;
+                }
+                .form-group {
+                    margin-bottom: 20px;
+                }
+                .form-group label {
+                    display: block;
+                    margin-bottom: 5px;
+                    font-weight: 500;
+                }
+                .form-group input, 
+                .form-group select {
+                    width: 100%;
+                    padding: 10px;
+                    border: 1px solid #ddd;
+                    border-radius: 4px;
+                    font-size: 16px;
+                }
+                .form-group.error input {
+                    border-color: #ff3a3a;
+                }
+                .form-feedback {
+                    color: #ff3a3a;
+                    font-size: 14px;
+                    min-height: 20px;
+                }
+                .required {
+                    color: #ff3a3a;
+                }
+                .checkbox-group {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                    gap: 10px;
+                }
+                .checkbox {
+                    display: flex;
+                    align-items: center;
+                    cursor: pointer;
+                }
+                .checkbox input {
+                    margin-right: 8px;
+                    width: auto;
+                }
+                .form-buttons {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-top: 30px;
+                }
+                .prev-step {
+                    background: none;
+                    border: 1px solid #ddd;
+                    padding: 10px 20px;
+                    border-radius: 4px;
+                    cursor: pointer;
+                }
+                .btn-primary {
+                    background: var(--primary-color);
+                    color: white;
+                    border: none;
+                    padding: 12px 24px;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    font-weight: bold;
+                }
+                .completion-message {
+                    text-align: center;
+                    padding: 20px 0;
+                }
+                .check-icon {
+                    width: 80px;
+                    height: 80px;
+                    fill: #4CAF50;
+                    margin-bottom: 20px;
+                }
+                .download-direct {
+                    margin-top: 30px;
+                    padding-top: 20px;
+                    border-top: 1px solid #eee;
+                }
+                .download-button {
+                    display: inline-flex;
+                    align-items: center;
+                    background: var(--primary-color);
+                    color: white;
+                    padding: 12px 24px;
+                    border-radius: 4px;
+                    text-decoration: none;
+                    margin-top: 10px;
+                }
+                .download-button svg {
+                    margin-right: 8px;
+                    fill: currentColor;
+                }
+                .form-note {
+                    text-align: center;
+                    margin-top: 20px;
+                    font-size: 14px;
+                    color: #666;
+                }
+                @media (max-width: 768px) {
+                    .multi-step-form {
+                        padding: 20px;
+                    }
+                    .checkbox-group {
+                        grid-template-columns: 1fr;
+                    }
+                }
+            </style>
         </div>
 
         <div class="faq-section">
@@ -232,7 +616,6 @@
             <div class="contact-cta-buttons">
                 <a href="https://utage-marunage.com/it-hojo/" class="btn btn-contact">
                     無料相談してみる
-                    <span class="free-label">無料</span>
                 </a>
                 <a href="/document.html" class="btn btn-document">
                     <svg><use xlink:href="#icon-pdf"></use></svg>

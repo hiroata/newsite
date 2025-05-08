@@ -5,11 +5,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="オートファネル大学は、マーケティング自動化とファネル構築であなたのビジネスを加速させるオンラインスクールです。Utageシステム導入やIT導入補助金活用もサポート。">
     <title>オートファネル大学｜マーケティング自動化とファネル構築でビジネスを加速</title>
+    <!-- フォントの最適化: プリロードとサブセット化 -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap&subset=japanese&font-display=swap" as="style">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap&subset=japanese&font-display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css?v=20250505"> <!-- バージョン番号付与 -->
+    
+    <!-- クリティカルCSS インライン化 -->
+    <style>
+        /* クリティカルパスCSS（ファーストビューに必要な最小限のスタイル） */
+        :root {
+            --primary-color: #0066ff;
+            --secondary-color: #ff3a3a;
+            --accent-color: #ff9500;
+            --dark-blue: #0d3283;
+            --light-bg: #f8f9fa;
+            --border-light: #e9ecef;
+            --gray-light: #f2f2f2;
+            --text-normal: #333;
+            --text-muted: #6c757d;
+            --gradient-primary: linear-gradient(45deg, #0066ff, #0099ff);
+        }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--text-normal);
+            margin: 0;
+            padding: 0;
+        }
+        .site-header, .hero-section {
+            position: relative;
+            z-index: 100;
+        }
+        .site-header {
+            background-color: #fff;
+            box-shadow: 0 1px 10px rgba(0,0,0,0.05);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .hero-section {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 120px 0 60px;
+            overflow: hidden;
+        }
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+    </style>
+    
+    <!-- メインCSSは遅延読み込み -->
+    <link rel="stylesheet" href="/css/style.css?v=20250505" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="/css/style.css?v=20250505"></noscript>
+    
     <link rel="icon" href="/images/favicon.ico"> <!-- Absolute path -->
+    <link rel="canonical" href="https://example.com/"> <!-- canonicalタグ追加 -->
     <meta property="og:title" content="オートファネル大学｜マーケティング自動化とファネル構築でビジネスを加速">
     <meta property="og:description" content="オートファネル大学は、マーケティング自動化とファネル構築であなたのビジネスを加速させるオンラインスクールです。Utageシステム導入やIT導入補助金活用もサポート。">
     <meta property="og:image" content="/images/ogp_image_top.webp"> <!-- Absolute path, 仮の画像パス -->
@@ -19,6 +87,28 @@
     <meta name="twitter:title" content="オートファネル大学｜マーケティング自動化とファネル構築でビジネスを加速">
     <meta name="twitter:description" content="オートファネル大学は、マーケティング自動化とファネル構築であなたのビジネスを加速させるオンラインスクールです。Utageシステム導入やIT導入補助金活用もサポート。">
     <meta name="twitter:image" content="/images/ogp_image_top.webp"> <!-- Absolute path, 仮の画像パス -->
+    
+    <!-- 構造化データ（JSON-LD）追加 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "オートファネル大学",
+      "url": "https://example.com/",
+      "logo": "https://example.com/images/logo.webp",
+      "description": "マーケティング自動化とファネル構築であなたのビジネスを加速させるオンラインスクール",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "",
+        "contactType": "customer support",
+        "email": "info@clanbiz.net",
+        "availableLanguage": "Japanese"
+      },
+      "sameAs": [
+        "https://utage-marunage.com/it-hojo/"
+      ]
+    }
+    </script>
     
     <!-- キャッシュ制御 -->
     <meta http-equiv="Cache-Control" content="max-age=31536000, public">
