@@ -22,6 +22,9 @@
     
     // モバイルメニューの改善（新規追加）
     enhanceMobileMenu();
+
+    // 目次ハイライト機能の初期化（ブログページ用）
+    initTocHighlight();
   }
   
   // ハンバーガーメニューの初期化
@@ -229,5 +232,93 @@
       rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
       rect.right <= (window.innerWidth || document.documentElement.clientWidth)
     );
+  }
+
+  // 目次ハイライト機能の初期化
+  function initTocHighlight() {
+    // ブログ記事の目次とセクション見出しを取得
+    const tocLinks = document.querySelectorAll('.toc-list a');
+    if (tocLinks.length === 0) return; // 目次がなければ終了
+
+    const sections = [];
+    
+    // 各セクションの対象要素を収集
+    tocLinks.forEach(function(link) {
+      const targetId = link.getAttribute('href');
+      if (!targetId || targetId.charAt(0) !== '#') return;
+      
+      const targetElement = document.querySelector(targetId);
+      if (!targetElement) return;
+      
+      sections.push({
+        id: targetId,
+        element: targetElement,
+        link: link
+      });
+    });
+    
+    if (sections.length === 0) return; // セクションが見つからなければ終了
+    
+    // スクロールイベントでセクション位置を確認し目次をハイライト
+    window.addEventListener('scroll', function() {
+      highlightActiveTocItem(sections);
+    });
+    
+    // 初期表示時にも実行
+    highlightActiveTocItem(sections);
+  }
+  
+  // アクティブなセクションに対応する目次項目をハイライト
+  function highlightActiveTocItem(sections) {
+    // 現在のスクロール位置を取得（少し余裕を持たせる）
+    const scrollPosition = window.scrollY + 100;
+    
+    // 画面下端のスクロール位置
+    const scrollBottom = scrollPosition + window.innerHeight;
+    
+    // ページ全体の高さ
+    const pageHeight = document.documentElement.scrollHeight;
+    
+    // 一番下までスクロールした場合は最後のセクションをハイライト
+    if (scrollBottom >= pageHeight - 10) {
+      setActiveTocItem(sections[sections.length - 1]);
+      return;
+    }
+    
+    // 現在表示されているセクションを探す
+    let activeSection = null;
+    
+    for (let i = 0; i < sections.length; i++) {
+      const section = sections[i];
+      const sectionTop = section.element.getBoundingClientRect().top + window.scrollY;
+      
+      // このセクションがまだ表示位置に来ていなければ終了
+      if (sectionTop > scrollPosition) {
+        if (i === 0) {
+          activeSection = section; // 最初のセクションもハイライト
+        }
+        break;
+      }
+      
+      activeSection = section;
+    }
+    
+    if (activeSection) {
+      setActiveTocItem(activeSection);
+    }
+  }
+  
+  // アクティブな目次項目を設定
+  function setActiveTocItem(activeSection) {
+    // すべての目次項目からアクティブクラスを削除
+    const allTocLinks = document.querySelectorAll('.toc-list a');
+    allTocLinks.forEach(function(link) {
+      link.classList.remove('active');
+    });
+    
+    // アクティブセクションの目次項目にアクティブクラスを追加
+    if (activeSection && activeSection.link) {
+      activeSection.link.classList.add('active');
+    }
   }
 })();
