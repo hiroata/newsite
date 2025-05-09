@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="オートウェビナー大学のステップメール設計初級講座。見込み客を熱狂的なファンに変え、自動で売上を生むステップメールの設計・ライティング・UTAGEでの設定方法を学べます。">
+    <title>ステップメール設計初級講座 | オンライン講座 | オートウェビナー大学</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="/images/favicon.ico">
+    <meta property="og:title" content="ステップメール設計初級講座 | オンライン講座 | オートウェビナー大学">
+    <meta property="og:description" content="オートウェビナー大学のステップメール設計初級講座。見込み客を熱狂的なファンに変え、自動で売上を生むステップメールの設計・ライティング・UTAGEでの設定方法を学べます。">
+    <meta property="og:image" content="/images/ogp_image_stepmail_course.webp"> <!-- 仮のOGP画像 -->
+    <meta property="og:type" content="article">
+
+    <style>
+        /* Individual Course Page Specific Styles (Temporary) */
+        /* course/video.html や course/lp.html と共通化できる部分はcss/style.cssに移動を推奨 */
+        .course-detail-hero {
+            background: linear-gradient(135deg, #ff9500, #ff3a3a);
+            padding: 100px 0 60px;
+            color: #fff;
+            text-align: center;
+            position: relative;
+        }
+
+        .course-detail-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('/images/dots-pattern.webp');
+            opacity: 0.07;
+            z-index: 1;
+        }
+
+        .course-detail-hero-container {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .course-title {
+            font-size: 2.2rem;
+            font-weight: 900;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .course-lead {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            margin-bottom: 24px;
+        }
+
+        .course-detail-hero img {
+            width: 320px;
+            max-width: 90vw;
+            border-radius: 18px;
+            margin-bottom: 24px;
+            box-shadow: 0 8px 32px rgba(255,149,0,0.10);
+        }
+
+        .course-detail-meta {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            font-size: 15px;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .course-detail-meta span {
+            display: flex;
+            align-items: center;
+        }
+
+        .course-detail-meta span::before {
+            content: "•";
+            margin-right: 5px;
+        }
+
+        .course-detail-meta span:first-child::before {
+            content: none; /* 最初の要素の前には表示しない */
+        }
+
+        .course-detail-cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* Main Content Layout */
+        .course-content-wrapper {
+            max-width: 1000px;
+            margin: 60px auto 80px;
+            padding: 0 20px;
+        }
+
+        .course-section {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+            margin: 40px 0;
+            padding: 40px 28px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .course-section-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #ff9500;
+            margin-bottom: 18px;
+            text-align: center;
+        }
+
+        .course-outline-list {
+            margin: 0 0 20px 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .course-outline-item {
+            margin-bottom: 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 18px 20px;
+        }
+
+        .course-outline-item strong {
+            color: #ff9500;
+        }
+
+        .course-detail-cta {
+            margin: 40px 0 0 0;
+            text-align: center;
+        }
+
+        .course-detail-cta .course-price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ff9500;
+            margin-bottom: 18px;
+        }
+
+        .course-detail-cta .course-detail-button {
+            width: 100%;
+            max-width: 320px;
+            margin: 0 auto;
+            display: block;
+            background: linear-gradient(90deg,#ff9500,#ff3a3a);
+            color: #fff;
+            font-weight: 700;
+            border-radius: 6px;
+            padding: 16px 0;
+            font-size: 18px;
+            margin-top: 8px;
+            transition: background 0.2s;
+        }
+
+        .course-detail-cta .course-detail-button:hover {
+            background: linear-gradient(90deg,#ff3a3a,#ff9500);
+        }
+
+        /* Instructor Section (Using styles from seminar/index.html) */
+        .instructor-card {
+            /* seminar/index.html のスタイルを継承 */
+            max-width: 350px; /* 少し狭めに調整 */
+            margin: 0 auto; /* 中央寄せ */
+        }
+
+        /* Testimonials Section (Using styles similar to achievement cards) */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background-color: #f8f8f8;
+            border-left: 5px solid var(--primary-color); /*primary colorを適用*/
+            padding: 25px;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            box-shadow: var(--shadow-soft);
+            font-size: 15px;
+            line-height: 1.7;
+            color: #555;
+        }
+
+        .testimonial-author {
+            margin-top: 15px;
+            font-weight: 700;
+            color: var(--dark-blue);
+            text-align: right;
+        }
+
+        /* Pricing Section */
+        .pricing-card {
+            background: linear-gradient(135deg, #fff, #f5f5f5);
+            border: 1px solid #eee;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            text-align: center;
+            max-width: 400px;
+            margin: 0 auto;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .pricing-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark-blue);
+            margin-bottom: 20px;
+        }
+
+        .pricing-price {
+            font-size: 40px;
+            font-weight: 900;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        .pricing-price span {
+            font-size: 20px;
+            font-weight: 700;
+            margin-left: 5px;
+        }
+
+        .pricing-features-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 30px;
+            text-align: left;
+        }
+
+        .pricing-features-list li {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .pricing-features-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* FAQ Section */
+        .faq-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #eee;
+            padding: 20px 0;
+        }
+
+        .faq-item summary {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--dark-blue);
+            cursor: pointer;
+            outline: none;
+            position: relative;
+            padding-right: 30px;
+        }
+
+        .faq-item summary::marker {
+            display: none;
+        }
+
+        .faq-item summary::after {
+            content: '▼';
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            font-size: 14px;
+            transition: transform 0.2s ease;
+        }
+
+        .faq-item[open] summary::after {
+            transform: translateY(-50%) rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 15px 0 0;
+            font-size: 15px;
+            line-height: 1.7;
+            color: #555;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .course-detail-hero {
+                padding: 100px 0 40px;
+            }
+            .course-title {
+                font-size: 30px;
+            }
+            .course-lead {
+                font-size: 15px;
+            }
+            .course-detail-meta {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .course-detail-cta-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .course-detail-cta-buttons .btn {
+                width: 80%;
+                margin: 0 auto;
+            }
+            .course-content-wrapper {
+                margin: 40px auto 60px;
+            }
+            .course-section {
+                padding: 30px 20px;
+            }
+            .course-section-title {
+                font-size: 24px;
+            }
+            .course-outline-item summary {
+                font-size: 16px;
+            }
+            .course-outline-content {
+                font-size: 14px;
+            }
+            .testimonial-card {
+                padding: 20px;
+                font-size: 14px;
+            }
+            .pricing-card h3 {
+                font-size: 20px;
+            }
+            .pricing-price {
+                font-size: 32px;
+            }
+            .pricing-price span {
+                font-size: 18px;
+            }
+            .pricing-features-list li {
+                font-size: 14px;
+            }
+            .faq-item summary {
+                font-size: 16px;
+            }
+            .faq-answer {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="svg-defs-placeholder"></div>
+<div id="header-placeholder"></div>
+<main class="site-main">
+    <!-- ヒーローセクション -->
+    <section class="course-detail-hero">
+        <img src="/assets/images/course-step-mail.webp" alt="ステップメール設計講座">
+        <h1 class="course-title">売れる仕組みを自動化！<br>ステップメール設計初級講座</h1>
+        <div class="course-lead">
+            メールで自動的にファンを育て、売上を生み出す。<br>
+            開封率・成約率を高めるシナリオ設計とライティングを実践的に学べます。
+        </div>
+        <div class="course-detail-meta">
+            <span>レベル：初級</span>
+            <span>動画講座</span>
+            <span>講師：前田由紀子</span>
+        </div>
+    </section>
+
+    <div class="course-content-wrapper">
+
+        <!-- 講座で学べること -->
+        <section class="course-section">
+            <h2 class="course-section-title">この講座で学べること</h2>
+            <ul class="course-outline-list">
+                <li class="course-outline-item"><strong>ステップメールの全体設計</strong>と心理トリガー</li>
+                <li class="course-outline-item">開封率・クリック率を上げる件名・本文の書き方</li>
+                <li class="course-outline-item">UTAGEでの自動配信設定</li>
+                <li class="course-outline-item">成果が出るテンプレート活用法</li>
+            </ul>
+        </section>
+
+        <!-- こんな方におすすめ -->
+        <section class="course-section">
+            <h2 class="course-section-title">こんな方におすすめ</h2>
+            <ul class="course-outline-list">
+                <li class="course-outline-item">自動で売上を生みたい方</li>
+                <li class="course-outline-item">メールマーケティング初心者</li>
+                <li class="course-outline-item">UTAGEを活用したい方</li>
+            </ul>
+        </section>
+
+        <!-- カリキュラム/目次 -->
+        <section class="course-section">
+            <h2 class="course-section-title">カリキュラム (一部抜粋)</h2>
+            <div class="course-outline-list">
+                <details class="course-outline-item" open>
+                    <summary>モジュール1: ステップメールの基礎と戦略</summary>
+                    <div class="course-outline-content">
+                        <ul>
+                            <li>ステップメールが「自動で売れる」仕組みを作る理由</li>
+                            <li>セールスファネルにおけるステップメールの役割</li>
+                            <li>目標設定とターゲット顧客の定義</li>
+                            <li>全体シナリオの設計図作成</li>
+                        </ul>
+                    </div>
+                </details>
+                <details class="course-outline-item">
+                    <summary>モジュール2: 各メールのライティングと構成</summary>
+                    <div class="course-outline-content">
+                        <ul>
+                            <li>【第1通】心を掴む最初の挨拶と自己紹介</li>
+                            <li>【第2～4通】信頼関係を築き、教育・育成する内容</li>
+                            <li>【第5～6通】購買意欲を高める仕掛けと事例</li>
+                            <li>【第7通】自然なオファーと行動喚起 (CTA)</li>
+                            <li>件名・差出人名の最適化</li>
+                        </ul>
+                    </div>
+                </details>
+                <details class="course-outline-item">
+                    <summary>モジュール3: UTAGEを使った設定と自動化</summary>
+                    <div class="course-outline-content">
+                        <ul>
+                            <li>UTAGEステップメール機能の概要</li>
+                            <li>シナリオの新規作成と基本設定</li>
+                            <li>各メールの登録と送信タイミング設定</li>
+                            <li>セグメント分けと条件分岐の活用</li>
+                            <li>LPやフォームからの連携設定</li>
+                        </ul>
+                    </div>
+                </details>
+                <details class="course-outline-item">
+                    <summary>モジュール4: 効果測定と改善、応用</summary>
+                    <div class="course-outline-content">
+                        <ul>
+                            <li>開封率、クリック率、成約率の測定</li>
+                            <li>A/Bテストによる改善方法</li>
+                            <li>効果的なフォローアップメール</li>
+                            <li>最新のメールマーケティングトレンド</li>
+                            <li>他のUTAGE機能（LINE連携など）との組み合わせ</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <!-- 教えてくれる人 -->
+        <section class="course-section">
+            <h2 class="course-section-title">教えてくれる人</h2>
+            <!-- seminar/index.html の講師カード構造を流用 -->
+            <div class="instructors-grid"> <!-- 講師紹介セクションの grid wrapperを流用 -->
+                <div class="instructor-card">
+                    <div class="instructor-image">
+                        <img src="/images/instructor-avatar.webp" alt="前田由紀子">
+                    </div>
+                    <div class="instructor-info">
+                        <h3 class="instructor-name">前田由紀子</h3>
+                        <p class="instructor-title">Web集客コンサルタント / UTAGE構築・運用スペシャリスト</p>
+                        <p class="instructor-bio">1980年鹿児島県生まれ。高校卒業後、ブルガリなどのハイブランドで13年間勤務。2011年、ローフードとファスティングの事業で福岡で起業。協会設立を経て、東京・青山に料理教室を開講。現在、株式会社CLANの代表取締役として活動中。</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 受講者の声 -->
+        <section class="course-section">
+            <h2 class="course-section-title">受講者の声</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p>メールが苦手でしたが、この講座で基本からしっかり学べました。特にシナリオ設計の部分は目から鱗でした。設定したステップメールから、驚くほど自然に商品が売れるようになって感動しています！</p>
+                    <p class="testimonial-author">Y.K様 (スピリチュアルコーチ)</p>
+                </div>
+                <div class="testimonial-card">
+                    <p>UTAGEのステップメール機能は知っていましたが、どういう内容を書けばいいか迷っていました。この講座のテンプレートや構成例を参考にしたら、わずか数日でステップメールを完成させることができました。自動化の力がすごい。</p>
+                    <p class="testimonial-author">S.T様 (美容系コンサルタント)</p>
+                </div>
+                <div class="testimonial-card">
+                    <p>手作業でメルマガを送っていましたが、この講座で自動化に切り替えたことで、圧倒的に時間ができました。教育から販売までUTAGEに任せられる安心感があります。もっと早く知りたかったです！</p>
+                    <p class="testimonial-author">M.A様 (ファイナンシャルプランナー)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 価格 -->
+        <section class="course-section">
+            <h2 class="course-section-title">価格</h2>
+            <div class="pricing-card">
+                <h3>ステップメール設計初級講座</h3>
+                <div class="pricing-price">¥24,800<span>(税込)</span></div>
+                <ul class="pricing-features-list">
+                    <li>買い切り型オンライン動画講座</li>
+                    <li>無期限視聴可能</li>
+                    <li>講座資料・ステップメールテンプレート集ダウンロード</li>
+                    <li>講師への個別質問権（期間限定）</li>
+                    <li>最新情報への無料アップデート</li>
+                </ul>
+                <a href="#" class="btn btn-contact">今すぐ購入する</a> <!-- 仮のリンク -->
+            </div>
+        </section>
+
+        <!-- よくある質問 -->
+        <section class="course-section">
+            <h2 class="course-section-title">よくある質問</h2>
+            <ul class="faq-list">
+                <details class="faq-item">
+                    <summary>メールマーケティングの経験がなくても大丈夫ですか？</summary>
+                    <div class="faq-answer">
+                        はい、ご安心ください。ステップメールの基礎からシナリオ設計、ライティング、そしてUTAGEでの設定方法まで、順を追って分かりやすく解説します。メール初心者の方でもステップメールを構築できるようになります。
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary>UTAGEシステムは必須ですか？</summary>
+                    <div class="faq-answer">
+                        講座内ではUTAGEを使った具体的な設定方法を解説しますが、ステップメールのシナリオ設計やライティングに関する内容は、UTAGE以外の他のメール配信スタンドやCRMツールでも応用可能です。ただし、UTAGEをお使いいただくと、講座内容を最も効率的に実践できます。
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary>どんな業種・業界にステップメールは有効ですか？</summary>
+                    <div class="faq-answer">
+                        オンラインで商品やサービス（特に高単価な講座、コンサル、 coachingなど）を販売されている個人事業主、コンサルタント、コーチ、オンライン講師、士業、サロン経営者など、幅広い業種で有効です。見込み客との信頼関係構築や顧客教育が必要なビジネスに特に効果を発揮します。
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary>講座の視聴期限はありますか？</summary>
+                    <div class="faq-answer">
+                        この講座は買い切り型のため、一度ご購入いただければ視聴期限はありません。ご自身のペースで、何度でも繰り返し学習いただけます。
+                    </div>
+                </details>
+            </ul>
+        </section>
+
+    </div>
+
+    <!-- Contact CTA Section (フッター直前) -->
+    <section class="contact-cta-section">
+        <!-- 背景装飾 -->
+        <!-- IDをページ固有に -->
+        <svg class="contact-cta-bg-deco contact-cta-bg-triangle1"><use xlink:href="#svg-triangle-color-stepmail"></use></svg>
+        <svg class="contact-cta-bg-deco contact-cta-bg-triangle2"><use xlink:href="#svg-triangle-color-stepmail"></use></svg>
+        <span class="contact-cta-bg-deco contact-cta-bg-circle1"></span>
+        <span class="contact-cta-bg-deco contact-cta-bg-circle2"></span>
+
+        <div class="contact-cta-container">
+            <span class="contact-cta-subtitle">IT導入補助金2025活用可能</span>
+            <h2 class="contact-cta-title">申請は完全丸投げOK！</h2>
+            <p class="contact-cta-lead">
+                UTAGEの導入で最大450万円の補助金が受けられます。<br class="pc-only">
+                面倒な申請手続きはすべてお任せください。<br class="pc-only">
+                あなたは事業成長に集中するだけでOKです。
+            </p>
+            <div class="contact-cta-buttons">
+                <a href="https://utage-marunage.com/it-hojo/" class="btn btn-contact">
+                    無料相談してみる
+                </a>
+                <a href="../document.html" class="btn btn-document">
+                    <svg><use xlink:href="#icon-pdf"></use></svg>
+                    資料請求する
+                </a>
+            </div>
+        </div>
+    </section>
+</main>
+<div id="footer-placeholder"></div>
+<script src="/js/script.js"></script>
+<script src="/js/include.js"></script>
+</body>
+</html>

@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="description" content="まえゆきツールのカウントダウンタイマー - 日付や時間を指定して、イベントまでの残り時間をカウントダウン表示できる無料ツールです。">
+   <title>カスタムタイマー | まえゆきツール</title>
+
+   <!-- リソースの先読み -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+   <!-- クリティカルCSS インライン化 -->
+   <style>
+     /* カスタムタイマーツールスタイル */
+     .app-wrapper {
+         padding: 80px 0 40px;
+         margin-top: var(--header-h);
+         background: linear-gradient(to bottom, #f0f0f0 0%, #e0e0e0 100%);
+     }
+     /* タイマー数字の枠・数字の整列を調整 */
+     .timer-panels {
+         display: flex;
+         justify-content: center;
+         align-items: flex-end;
+         gap: 16px;
+         margin: 32px 0 16px 0;
+     }
+     .panel-unit {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         min-width: 64px;
+         background: #fff;
+         border-radius: 12px;
+         box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+         padding: 12px 8px 8px 8px;
+     }
+     .panel-value {
+         font-size: 2.4rem;
+         font-weight: bold;
+         line-height: 1.1;
+         text-align: center;
+         letter-spacing: 0.05em;
+         min-width: 40px;
+         min-height: 2.8em;
+         margin-bottom: 2px;
+     }
+     .panel-label {
+         font-size: 1rem;
+         color: #666;
+         margin-top: 2px;
+         text-align: center;
+     }
+     @media (max-width: 600px) {
+       .timer-panels { gap: 8px; }
+       .panel-unit { min-width: 44px; padding: 8px 4px 6px 4px; }
+       .panel-value { font-size: 1.4rem; min-width: 24px; min-height: 1.8em; }
+       .panel-label { font-size: 0.85rem; }
+     }
+     /* ここから下は固有デザインのみ残す（共通UI部品はstyle.cssへ移動済み） */
+   </style>
+
+   <!-- 非クリティカルCSSは非同期ロード -->
+   <link rel="stylesheet" href="/css/style.css" media="print" onload="this.media='all'">
+
+   <!-- JavaScriptの遅延ロード -->
+   <script src="/js/script.js" defer></script>
+
+   <!-- フォールバック -->
+   <noscript>
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="/css/style.css">
+   </noscript>
+
+   <link rel="icon" href="/images/favicon.ico">
+   <meta property="og:title" content="カスタムタイマー | まえゆきツール">
+   <meta property="og:description" content="日付や時間を指定して、イベントまでの残り時間をカウントダウン表示できる無料ツールです。">
+   <meta property="og:image" content="/images/ogp_image_tools.webp">
+   <meta property="og:type" content="website">
+</head>
+<body>
+<header class="site-header">
+  <div class="header-container">
+    <div class="site-logo-text">
+      <a href="/index.html">CLAN</a>
+    </div>
+    <nav class="global-nav pc-nav">
+      <ul>
+        <li><a href="/index.html">ホーム</a></li>
+        <li><a href="/about.html">オートウェビナー大学とは</a></li>
+        <li><a href="/blog/index.html">ブログ</a></li>
+        <li><a href="/seminar/index.html">オンライン講座</a></li>
+        <li><a href="/tools/index.html" aria-current="page">まえゆきツール</a></li>
+        <li><a href="/achievement/index.html">お客様の声</a></li>
+      </ul>
+    </nav>
+    <div class="header-cta">
+      <a href="/document.html" class="btn-document">
+        <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
+        資料請求する
+      </a>
+      <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
+        まずは相談する
+      </a>
+    </div>
+    <button class="hamburger-button sp-nav" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+   <main class="site-main">
+      <!-- ツールセクション -->
+      <section class="app-wrapper">
+         <div class="app-container">
+            <h1 class="app-title">カスタムカウントダウン</h1>
+            <p class="app-description">イベントや目標までの残り時間を自由に設定・表示できます。</p>
+
+            <!-- タイマー表示部分 -->
+            <div class="display-box">
+               <h2 class="display-title" id="displayTitleElem">イベントまで</h2>
+               <p class="display-subtitle" id="displaySubTitleElem">残り時間をカウントダウン</p>
+
+               <div class="timer-panels">
+                  <div class="panel-unit">
+                     <div class="panel-value" id="dayValue">00</div>
+                     <div class="panel-label">日</div>
+                  </div>
+                  <div class="panel-unit">
+                     <div class="panel-value" id="hourValue">00</div>
+                     <div class="panel-label">時間</div>
+                  </div>
+                  <div class="panel-unit">
+                     <div class="panel-value" id="minuteValue">00</div>
+                     <div class="panel-label">分</div>
+                  </div>
+                  <div class="panel-unit">
+                     <div class="panel-value" id="secondValue">00</div>
+                     <div class="panel-label">秒</div>
+                  </div>
+               </div>
+
+               <div class="completion-message" id="timerCompletionMessage">
+                  カウントダウン終了！
+               </div>
+
+               <div class="control-buttons">
+                  <button class="app-btn btn-secondary" id="toggleShareBtn">
+                     シェア
+                  </button>
+                  <button class="app-btn btn-action" id="toggleConfigBtn">
+                     設定
+                  </button>
+               </div>
+            </div>
+
+            <!-- 設定フォーム -->
+            <div class="config-panel" id="configPanel">
+               <h3 class="config-title">タイマー設定</h3>
+
+               <form class="config-form" id="configFormElement">
+                  <div class="form-group">
+                     <label for="targetNameInput" class="form-label">タイトル</label>
+                     <input type="text" id="targetNameInput" name="targetName" class="form-input" placeholder="カウントダウンのタイトル" value="イベントまで">
+                  </div>
+
+                  <div class="form-group">
+                     <label for="targetDescInput" class="form-label">説明文（オプション）</label>
+                     <input type="text" id="targetDescInput" name="targetDescription" class="form-input" placeholder="詳細や補足" value="残り時間をカウントダウン">
+                  </div>
+
+                  <div class="config-row">
+                     <div class="form-group">
+                        <label for="targetDateInput" class="form-label">日付</label>
+                        <input type="date" id="targetDateInput" name="targetDate" class="form-input">
+                     </div>
+
+                     <div class="form-group">
+                        <label for="targetTimeInput" class="form-label">時間</label>
+                        <input type="time" id="targetTimeInput" name="targetTime" class="form-input">
+                     </div>
+                  </div>
+
+                  <div class="form-group">
+                     <label for="styleSelect" class="form-label">テーマカラー</label>
+                     <select id="styleSelect" name="themeStyle" class="form-select">
+                        <option value="blue">ブルー</option>
+                        <option value="red">レッド</option>
+                        <option value="green">グリーン</option>
+                        <option value="purple">パープル</option>
+                        <option value="orange">オレンジ</option>
+                     </select>
+                  </div>
+
+                  <div class="form-actions">
+                     <button type="button" class="app-btn btn-secondary" id="resetConfigBtn">
+                        初期設定に戻す
+                     </button>
+                     <button type="submit" class="app-btn btn-action" id="applyConfigBtn">
+                        この設定で開始
+                     </button>
+                  </div>
+               </form>
+            </div>
+
+            <!-- プリセットカウントダウン -->
+            <div class="preset-options">
+               <h3 class="preset-title">便利なプリセット</h3>
+
+               <div class="preset-list">
+                  <a href="#" class="preset-link" data-config-key="tomorrow">明日の0時</a>
+                  <a href="#" class="preset-link" data-config-key="new-year">来年の元旦</a>
+                  <a href="#" class="preset-link" data-config-key="xmas">クリスマス</a>
+                  <a href="#" class="preset-link" data-config-key="halloween">ハロウィン</a>
+                  <a href="#" class="preset-link" data-config-key="valentines">バレンタイン</a>
+                  <a href="#" class="preset-link" data-config-key="childrens-day">こどもの日</a>
+               </div>
+            </div>
+
+            <!-- 時間指定カウントダウン -->
+            <div class="preset-options">
+               <h3 class="preset-title">タイマー設定（〇分後など）</h3>
+
+               <div class="preset-list">
+                  <a href="#" class="preset-link" data-duration-sec="10">10秒</a>
+                  <a href="#" class="preset-link" data-duration-sec="30">30秒</a>
+                  <a href="#" class="preset-link" data-duration-sec="60">1分</a>
+                  <a href="#" class="preset-link" data-duration-sec="300">5分</a>
+                  <a href="#" class="preset-link" data-duration-sec="600">10分</a>
+                  <a href="#" class="preset-link" data-duration-sec="1800">30分</a>
+                  <a href="#" class="preset-link" data-duration-sec="3600">1時間</a>
+               </div>
+            </div>
+
+            <!-- ツールの使い方 -->
+            <div class="guide-section">
+               <h3 class="guide-title">使い方ガイド</h3>
+
+               <ul class="guide-list">
+                  <li class="guide-item">日付と時間を指定して、イベントまでの日、時間、分、秒をカウントダウンします。</li>
+                  <li class="guide-item">「設定」ボタンから、タイトル、説明文、目標日時、テーマカラーを変更できます。</li>
+                  <li class="guide-item">「便利なプリセット」から、一般的なイベントまでのカウントダウンを簡単に設定できます。</li>
+                  <li class="guide-item">「タイマー設定」から、指定した秒数・分数・時間後のタイマーを設定できます。</li>
+                  <li class="guide-item">「シェア」ボタンから、現在の設定が保存されたURLを取得・コピーできます。</li>
+                  <li class="guide-item">Webブラウザで動作するため、特別なアプリのインストールは不要です。</li>
+               </ul>
+            </div>
+
+            <!-- 他のツールリンク -->
+            <div class="related-tools">
+               <h2 class="related-tools-title">関連ツール</h2>
+               <div class="tool-navigation-list">
+                  <a href="calc.html" class="tool-nav-link">単位換算</a>
+                  <a href="roulette.html" class="tool-nav-link">Webルーレット</a>
+                  <a href="bingo.html" class="tool-nav-link">ビンゴ抽選</a>
+                  <a href="image-resize.html" class="tool-nav-link">画像リサイズ</a>
+                  <a href="letters-counter.html" class="tool-nav-link">文字数チェック</a>
+                  <a href="wareki-seireki.html" class="tool-nav-link">年齢・和暦計算</a>
+               </div>
+            </div>
+
+            <div class="other-tools">
+               <h2 class="other-tools-title">その他のまえゆきツール</h2>
+               <div class="tools-list">
+                  <a href="calc.html" class="tool-link">単位換算と計算</a>
+                  <a href="countdown.html" class="tool-link">Webでカウントダウン</a>
+                  <a href="roulette.html" class="tool-link">Webでルーレット</a>
+                  <a href="bingo.html" class="tool-link">ビンゴ・マシーン</a>
+                  <a href="image-resize.html" class="tool-link">画像リサイズ</a>
+                  <a href="png-to-jpeg.html" class="tool-link">PNG→JPEG変換</a>
+                  <a href="png-jpeg-to-webp.html" class="tool-link">WebP変換</a>
+                  <a href="wareki-seireki.html" class="tool-link">年齢・和暦計算</a>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <!-- Contact CTA Section -->
+      <section class="contact-cta-section">
+         <div class="contact-cta-container">
+            <span class="contact-cta-subtitle">IT導入補助金2025活用可能</span>
+            <h2 class="contact-cta-title">申請は完全丸投げOK！</h2>
+            <p class="contact-cta-lead">
+               UTAGEの導入で最大450万円の補助金が受けられます。<br class="pc-only">
+               面倒な申請手続きはすべてお任せください。<br class="pc-only">
+               あなたは事業成長に集中するだけでOKです。
+            </p>
+            <div class="contact-cta-buttons">
+               <a href="https://utage-marunage.com/it-hojo/" class="btn btn-contact">
+                  無料相談してみる
+               </a>
+               <a href="../document.html" class="btn btn-document">
+                  <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
+                  資料請求する
+               </a>
+            </div>
+         </div>
+      </section>
+   </main>
+
+<div id="footer-placeholder"></div>
+<script src="/js/include.js"></script>
+<script src="/js/script.js"></script>
+
+   <!-- カスタムタイマー用JavaScript -->
+   <script>
+      document.addEventListener('DOMContentLoaded', () => {
+          // DOM要素参照を収集
+          const displayTitleElem = document.getElementById('displayTitleElem');
+          const displaySubTitleElem = document.getElementById('displaySubTitleElem');
+          const dayValue = document.getElementById('dayValue');
+          const hourValue = document.getElementById('hourValue');
+          const minuteValue = document.getElementById('minuteValue');
+          const secondValue = document.getElementById('secondValue');
+          const timerCompletionMessage = document.getElementById('timerCompletionMessage');
+          const toggleConfigBtn = document.getElementById('toggleConfigBtn');
+          const toggleShareBtn = document.getElementById('toggleShareBtn');
+          const configPanel = document.getElementById('configPanel');
+          const sharePanel = document.getElementById('sharePanel');
+          const configFormElement = document.getElementById('configFormElement');
+          const targetNameInput = document.getElementById('targetNameInput');
+          const targetDescInput = document.getElementById('targetDescInput');
+          const targetDateInput = document.getElementById('targetDateInput');
+          const targetTimeInput = document.getElementById('targetTimeInput');
+          const styleSelect = document.getElementById('styleSelect');
+          const resetConfigBtn = document.getElementById('resetConfigBtn');
+          const applyConfigBtn = document.getElementById('applyConfigBtn');
+          const shareLinkInput = document.getElementById('shareLinkInput');
+          const copyLinkBtn = document.getElementById('copyLinkBtn');
+          const shareX = document.getElementById('shareX');
+          const shareFacebook = document.getElementById('shareFacebook');
+          const shareLine = document.getElementById('shareLine');
+          const presetLinks = document.querySelectorAll('.preset-link[data-config-key]');
+          const timerLinks = document.querySelectorAll('.preset-link[data-duration-sec]');
+          const timerPanels = document.querySelector('.timer-panels');
+
+          // タイマー設定を保持するオブジェクト
+          let appSettings = {
+              title: 'イベントまで',
+              subtitle: '残り時間をカウントダウン',
+              targetMoment: new Date(new Date().getTime() + 24 * 60 * 60 * 1000), // デフォルトは明日
+              themeStyle: 'blue',
+              isDurationTimer: false // 日付/時間指定かタイマー指定か
+          };
+
+          // タイマー処理ID
+          let timerInterval;
+
+          // URLパラメータから設定を読み込む
+          const loadSettingsFromUrl = () => {
+              const queryParams = new URLSearchParams(window.location.search);
+
+              if (queryParams.has('t')) { // Title
+                  appSettings.title = decodeURIComponent(queryParams.get('t'));
+              }
+
+              if (queryParams.has('s')) { // Subtitle
+                  appSettings.subtitle = decodeURIComponent(queryParams.get('s'));
+              }
+
+              if (queryParams.has('d') && queryParams.has('tm')) { // Date & Time
+                  const dateStr = queryParams.get('d');
+                  const timeStr = queryParams.get('tm');
+                  const targetDateTime = new Date(`${dateStr}T${timeStr}`);
+
+                  if (!isNaN(targetDateTime.getTime())) {
+                      appSettings.targetMoment = targetDateTime;
+                      appSettings.isDurationTimer = false;
+                  }
+              } else if (queryParams.has('sec')) { // Duration in Seconds
+                  const seconds = parseInt(queryParams.get('sec'), 10);
+                  if (!isNaN(seconds)) {
+                      appSettings.targetMoment = new Date(new Date().getTime() + seconds * 1000);
+                      appSettings.isDurationTimer = true;
+                  }
+              }
+
+              if (queryParams.has('c')) { // Color
+                  appSettings.themeStyle = queryParams.get('c');
+              }
+          };
+
+          // 現在の設定をURLパラメータに反映
+          const updateUrlParameters = () => {
+              const params = new URLSearchParams();
+
+              params.set('t', encodeURIComponent(appSettings.title));
+              params.set('s', encodeURIComponent(appSettings.subtitle));
+
+              if (appSettings.isDurationTimer) {
+                  // タイマーの場合は残り秒数を記録
+                  const remainingSeconds = Math.max(0, Math.floor((appSettings.targetMoment - new Date()) / 1000));
+                  params.set('sec', remainingSeconds.toString());
+              } else {
+                  // 日付指定の場合は日付と時間を記録
+                  const datePart = appSettings.targetMoment.toISOString().split('T')[0];
+                  const timePart = appSettings.targetMoment.toTimeString().slice(0, 5);
+                  params.set('d', datePart);
+                  params.set('tm', timePart);
+              }
+
+              params.set('c', appSettings.themeStyle);
+
+              const newUrl = `${window.location.pathname}?${params.toString()}`;
+              window.history.replaceState({}, '', newUrl);
+
+              // シェア用URLフィールド更新
+              shareLinkInput.value = window.location.href;
+
+              // ソーシャルシェアリンク更新
+              const pageTitle = document.title; // ページのタイトルを取得
+              const shareText = encodeURIComponent(`${pageTitle}: ${appSettings.title}`);
+              const currentUrl = encodeURIComponent(window.location.href);
+
+              shareX.href = `https://twitter.com/intent/tweet?text=${shareText}&url=${currentUrl}`;
+              shareFacebook.href = `https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`;
+              shareLine.href = `https://social-plugins.line.me/lineit/share?url=${currentUrl}`;
+          };
+
+          // フォームに現在の設定値を反映
+          const reflectSettingsToForm = () => {
+              targetNameInput.value = appSettings.title;
+              targetDescInput.value = appSettings.subtitle;
+
+              const datePart = appSettings.targetMoment.toISOString().split('T')[0];
+              const timePart = appSettings.targetMoment.toTimeString().slice(0, 5);
+
+              targetDateInput.value = datePart;
+              targetTimeInput.value = timePart;
+              styleSelect.value = appSettings.themeStyle;
+          };
+
+          // タイマー表示を更新
+          const refreshTimerDisplay = () => {
+              const currentTime = new Date();
+              const timeDifference = appSettings.targetMoment - currentTime;
+
+              // タイマー終了判定
+              if (timeDifference <= 0) {
+                  clearInterval(timerInterval);
+                  dayValue.textContent = '00';
+                  hourValue.textContent = '00';
+                  minuteValue.textContent = '00';
+                  secondValue.textContent = '00';
+
+                  timerPanels.style.display = 'none';
+                  timerCompletionMessage.style.display = 'block';
+
+                   // URLパラメータの秒数を0に更新 (タイマーの場合のみ)
+                   if (appSettings.isDurationTimer) {
+                       const params = new URLSearchParams(window.location.search);
+                       if (params.has('sec')) {
+                           params.set('sec', '0');
+                           window.history.replaceState({}, '', `${window.location.pathname}?${params.toString()}`);
+                           shareLinkInput.value = window.location.href; // シェアURLも更新
+                       }
+                   }
+
+
+                  return;
+              }
+
+              // 残り時間を計算
+              const totalSeconds = Math.floor(timeDifference / 1000);
+              const days = Math.floor(totalSeconds / (60 * 60 * 24));
+              const hours = Math.floor((totalSeconds % (60 * 60 * 24)) / (60 * 60));
+              const minutes = Math.floor((totalSeconds % (60 * 60)) / 60);
+              const seconds = totalSeconds % 60;
+
+              // 表示要素更新
+              dayValue.textContent = String(days).padStart(2, '0');
+              hourValue.textContent = String(hours).padStart(2, '0');
+              minuteValue.textContent = String(minutes).padStart(2, '0');
+              secondValue.textContent = String(seconds).padStart(2, '0');
+          };
+
+          // タイマーを開始/再開
+          const startTimer = () => {
+              // 既存のタイマーを停止
+              if (timerInterval) {
+                  clearInterval(timerInterval);
+              }
+
+              // タイトルと説明を更新
+              displayTitleElem.textContent = appSettings.title;
+              displaySubTitleElem.textContent = appSettings.subtitle;
+
+              // テーマカラースタイル適用
+              document.body.className = ''; // 既存クラスをクリア
+              document.body.classList.add(`theme-${appSettings.themeStyle}`);
+               document.querySelectorAll('.panel-value').forEach(el => {
+                   el.style.color = ''; // CSSで色指定するためインラインスタイルをリセット
+               });
+
+
+              // タイマー表示要素を表示、終了メッセージを非表示
+              timerPanels.style.display = 'flex';
+              timerCompletionMessage.style.display = 'none';
+
+
+              // 初回表示更新
+              refreshTimerDisplay();
+
+              // 1秒ごとに更新
+              timerInterval = setInterval(refreshTimerDisplay, 1000);
+          };
+
+           // プリセット設定適用
+           const applyPresetSettings = (key) => {
+               const now = new Date();
+               const currentYear = now.getFullYear();
+               let targetDateObj;
+
+               switch(key) {
+                   case 'tomorrow':
+                       targetDateObj = new Date();
+                       targetDateObj.setDate(targetDateObj.getDate() + 1);
+                       targetDateObj.setHours(0, 0, 0, 0);
+                       appSettings.title = '明日まで';
+                       appSettings.subtitle = '終日';
+                       break;
+
+                   case 'new-year':
+                       targetDateObj = new Date(currentYear + 1, 0, 1, 0, 0, 0, 0); // 翌年1月1日
+                       appSettings.title = `${currentYear + 1}年まで`;
+                       appSettings.subtitle = '新年まであと';
+                       break;
+
+                   case 'xmas':
+                       targetDateObj = new Date(currentYear, 11, 25, 0, 0, 0, 0); // 12月25日
+                       if (now > targetDateObj) {
+                           targetDateObj.setFullYear(currentYear + 1);
+                       }
+                       appSettings.title = 'クリスマスまで';
+                       appSettings.subtitle = 'ホーリーナイト🎄';
+                       break;
+
+                   case 'halloween':
+                       targetDateObj = new Date(currentYear, 9, 31, 0, 0, 0, 0); // 10月31日
+                       if (now > targetDateObj) {
+                           targetDateObj.setFullYear(currentYear + 1);
+                       }
+                       appSettings.title = 'ハロウィンまで';
+                       appSettings.subtitle = 'トリック・オア・トリート！🎃';
+                       break;
+
+                   case 'valentines':
+                       targetDateObj = new Date(currentYear, 1, 14, 0, 0, 0, 0); // 2月14日
+                       if (now > targetDateObj) {
+                           targetDateObj.setFullYear(currentYear + 1);
+                       }
+                       appSettings.title = 'バレンタインまで';
+                       appSettings.subtitle = '愛を込めて💝';
+                       break;
+
+                   case 'childrens-day':
+                       targetDateObj = new Date(currentYear, 4, 5, 0, 0, 0, 0); // 5月5日
+                       if (now > targetDateObj) {
+                           targetDateObj.setFullYear(currentYear + 1);
+                       }
+                       appSettings.title = 'こどもの日まで';
+                       appSettings.subtitle = '元気いっぱい🎏';
+                       break;
+
+                    default:
+                        return; // 未知のキーの場合は何もしない
+               }
+
+               appSettings.targetMoment = targetDateObj;
+               appSettings.isDurationTimer = false;
+
+               reflectSettingsToForm(); // フォームを更新
+               updateUrlParameters(); // URLを更新
+               startTimer(); // タイマー開始
+           };
+
+           // タイマー（時間指定）設定適用
+           const applyDurationTimer = (seconds) => {
+               const targetMoment = new Date(new Date().getTime() + seconds * 1000);
+
+               appSettings.title = `${formatSecondsToReadable(seconds)}タイマー`;
+               appSettings.subtitle = 'スタート！';
+               appSettings.targetMoment = targetMoment;
+               appSettings.isDurationTimer = true;
+
+               reflectSettingsToForm(); // フォームを更新
+               updateUrlParameters(); // URLを更新
+               startTimer(); // タイマー開始
+           };
+
+           // 秒数を 'N分M秒' のように整形
+           const formatSecondsToReadable = (totalSeconds) => {
+               const hours = Math.floor(totalSeconds / 3600);
+               const minutes = Math.floor((totalSeconds % 3600) / 60);
+               const seconds = totalSeconds % 60;
+               let parts = [];
+               if (hours > 0) parts.push(`${hours}時間`);
+               if (minutes > 0 || hours > 0) parts.push(`${minutes}分`); // 1時間以上なら0分でも表示
+               parts.push(`${seconds}秒`);
+               return parts.join('');
+           };
+
+
+          // イベントハンドラ設定
+          const setupEventHandlers = () => {
+              // 設定ボタン押下
+              toggleConfigBtn.addEventListener('click', () => {
+                  configPanel.style.display = configPanel.style.display === 'block' ? 'none' : 'block';
+                  sharePanel.style.display = 'none'; // シェアパネルは非表示
+                  if (configPanel.style.display === 'block') {
+                      // スクロール
+                      window.scrollTo({
+                          top: configPanel.offsetTop - 80,
+                          behavior: 'smooth'
+                      });
+                  }
+              });
+
+              // シェアボタン押下
+              toggleShareBtn.addEventListener('click', () => {
+                  sharePanel.style.display = sharePanel.style.display === 'block' ? 'none' : 'block';
+                  configPanel.style.display = 'none'; // 設定パネルは非表示
+                  if (sharePanel.style.display === 'block') {
+                      // スクロール
+                       window.scrollTo({
+                           top: sharePanel.offsetTop - 80,
+                           behavior: 'smooth'
+                       });
+                  }
+              });
+
+              // URLコピーボタン押下
+              copyLinkBtn.addEventListener('click', () => {
+                  shareLinkInput.select();
+                  navigator.clipboard.writeText(shareLinkInput.value).then(() => {
+                       const initialText = copyLinkBtn.textContent;
+                       copyLinkBtn.textContent = 'コピー完了！';
+                       setTimeout(() => {
+                           copyLinkBtn.textContent = initialText;
+                       }, 2000);
+                  }).catch(err => {
+                       console.error('Failed to copy: ', err);
+                  });
+              });
+
+              // 設定フォーム送信
+              configFormElement.addEventListener('submit', (e) => {
+                  e.preventDefault();
+
+                  appSettings.title = targetNameInput.value.trim() || '無題のイベント';
+                  appSettings.subtitle = targetDescInput.value.trim() || '目標まで';
+
+                  const datePart = targetDateInput.value;
+                  const timePart = targetTimeInput.value || '00:00';
+                  const combinedDateTime = new Date(`${datePart}T${timePart}`);
+
+                  if (!isNaN(combinedDateTime.getTime())) {
+                      appSettings.targetMoment = combinedDateTime;
+                  }
+
+                  appSettings.themeStyle = styleSelect.value;
+                  appSettings.isDurationTimer = false; // フォームからの設定は日付/時間指定
+
+                  updateUrlParameters(); // URL更新
+                  startTimer(); // タイマー開始
+
+                  // 設定パネルを閉じる
+                   configPanel.style.display = 'none';
+                   window.scrollTo({ top: 0, behavior: 'smooth' });
+              });
+
+              // リセットボタン押下
+              resetConfigBtn.addEventListener('click', () => {
+                  targetNameInput.value = 'イベントまで';
+                  targetDescInput.value = '残り時間をカウントダウン';
+
+                  const tomorrow = new Date();
+                  tomorrow.setDate(tomorrow.getDate() + 1);
+                  targetDateInput.value = tomorrow.toISOString().split('T')[0];
+                  targetTimeInput.value = '00:00';
+                  styleSelect.value = 'blue';
+              });
+
+              // プリセットリンククリック
+              presetLinks.forEach(link => {
+                  link.addEventListener('click', (e) => {
+                      e.preventDefault();
+                      const presetKey = link.getAttribute('data-config-key');
+                      applyPresetSettings(presetKey);
+                  });
+              });
+
+              // タイマーリンククリック
+              timerLinks.forEach(link => {
+                  link.addEventListener('click', (e) => {
+                      e.preventDefault();
+                      const secondsValue = parseInt(link.getAttribute('data-duration-sec'), 10);
+                      applyDurationTimer(secondsValue);
+                  });
+              });
+          };
+
+          // アプリケーション起動時の初期処理
+          const initializeApp = () => {
+              // フォームのデフォルト日付として明日を設定
+              const tomorrow = new Date();
+              tomorrow.setDate(tomorrow.getDate() + 1);
+              targetDateInput.value = tomorrow.toISOString().split('T')[0];
+              targetTimeInput.value = '00:00';
+
+              // URLパラメータから設定を読み込む
+              loadSettingsFromUrl();
+
+              // フォームに設定を反映
+              reflectSettingsToForm();
+
+              // URLパラメータを最新の設定で更新
+              updateUrlParameters();
+
+              // タイマーを開始
+              startTimer();
+
+              // イベントハンドラを設定
+              setupEventHandlers();
+
+              // 設定/シェアパネルは最初は隠しておく
+              configPanel.style.display = 'none';
+              sharePanel.style.display = 'none';
+          };
+
+          // アプリケーション起動
+          initializeApp();
+      });
+   </script>
+</body>
+</html>

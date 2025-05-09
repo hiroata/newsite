@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>長門浩二様 - UTAGE導入事例</title>
+    <!-- Removed Font Awesome CDN link -->
+    <!-- Common CSS and Favicon -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="/images/favicon.ico">
+    <!-- Common JS -->
+    <script src="/js/include.js" defer></script>
+    <style>
+        /* 基本スタイル */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: #333;
+            line-height: 1.7;
+            background-color: #f9f9f9;
+            font-size: 16px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+        }
+        
+        .section-image {
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* ヘッダー用のスタイル削除 */
+        
+        /* メインヘッダー */
+        .header {
+            background: linear-gradient(135deg, #0d3283 0%, #082258 100%);
+            color: white;
+            padding: 40px 0;
+            /* margin-top adjustment removed */
+        }
+        
+        /* メイン成果セクション */
+        .main-results {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+            padding: 35px;
+            margin-top: -60px;
+            position: relative;
+            z-index: 10;
+            text-align: center;
+        }
+        
+        /* 目次 */
+        .toc {
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 40px 0;
+        }
+        
+        .toc-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            color: #0d3283;
+        }
+        
+        .toc-title i {
+            margin-right: 10px;
+            color: #0d3283;
+        }
+        
+        .toc-list {
+            list-style-type: none;
+        }
+        
+        .toc-list li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .toc-list li i {
+            position: absolute;
+            left: 0;
+            top: 5px;
+            color: #0d3283;
+        }
+        
+        .toc-list a {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+        
+        .toc-list a:hover {
+            color: #0d3283;
+        }
+        
+        /* プロフィールセクション */
+        .profile-section {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+            overflow: hidden;
+        }
+        
+        .profile-header {
+            background-color: #f0f7ff;
+            padding: 20px;
+            border-bottom: 1px solid #e1eeff;
+            display: flex;
+            align-items: center;
+        }
+        
+        .profile-header i {
+            margin-right: 10px;
+            color: #0d3283;
+            font-size: 20px;
+        }
+        
+        .profile-header h2 {
+            margin: 0;
+            color: #0d3283;
+            font-size: 1.3rem;
+        }
+        
+        .profile-details {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 25px;
+        }
+        
+        .profile-info {
+            flex: 1;
+        }
+        
+        .profile-name {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            color: #0d3283;
+            display: flex;
+            align-items: center;
+        }
+        
+        .profile-name i {
+            margin-right: 10px;
+            color: #0d3283;
+        }
+        
+        .profile-company {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            color: #666;
+            display: flex;
+            align-items: center;
+        }
+        
+        .profile-company i {
+            margin-right: 10px;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .profile-description p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+        
+        /* 成果ボックス */
+        .results-section {
+            background: linear-gradient(135deg, #0d3283 0%, #1a5cb5 100%);
+            color: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin: 40px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .results-section::before {
+            content: '';
+            position: absolute;
+            right: -50px;
+            top: -50px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+        }
+        
+        .results-title {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .results-title i {
+            margin-right: 10px;
+            color: #ffdd57;
+        }
+        
+        .results-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+        }
+        
+        .result-item {
+            flex: 1;
+            min-width: 150px;
+            padding: 20px 10px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        
+        .result-item:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255,255,255,0.2);
+        }
+        
+        .result-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #7bdcb5;
+        }
+        
+        .result-label {
+            font-size: 0.9rem;
+        }
+        
+        /* 引用ボックス */
+        .highlight-box {
+            background-color: #fff9e5;
+            border-left: 5px solid #f39800;
+            padding: 25px;
+            margin: 40px 0;
+            border-radius: 0 8px 8px 0;
+            position: relative;
+        }
+        
+        .highlight-box::before {
+            content: '"';
+            position: absolute;
+            top: 5px;
+            left: 15px;
+            font-size: 60px;
+            color: rgba(243, 152, 0, 0.2);
+            font-family: serif;
+            line-height: 1;
+        }
+        
+        .highlight-box p {
+            font-size: 1.05rem;
+            color: #333;
+            font-weight: 500;
+            line-height: 1.7;
+            position: relative;
+            padding-left: 15px;
+        }
+        
+        /* セクションヘッダー */
+        .section-header {
+            background: linear-gradient(135deg, #0d3283 0%, #1a5cb5 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 40px 0 20px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-header i {
+            margin-right: 10px;
+        }
+        
+        .section-header::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 40px;
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.15) 100%);
+        }
+        
+        /* インタビューQ&A */
+        .interview-section {
+            margin-bottom: 50px;
+        }
+        
+        .interview-qa {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+        
+        .interview-question {
+            color: #0d3283;
+            font-weight: bold;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-left: 4px solid #0d3283;
+            line-height: 1.5;
+            background-color: #f0f7ff;
+            border-radius: 0 8px 8px 0;
+            position: relative;
+        }
+        
+        .interview-question::before {
+            content: 'Q';
+            position: absolute;
+            left: -14px;
+            top: 15px;
+            width: 24px;
+            height: 24px;
+            background-color: #0d3283;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+        
+        .interview-answer {
+            padding-left: 20px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .interview-answer::before {
+            content: 'A';
+            position: absolute;
+            left: -14px;
+            top: 0;
+            width: 24px;
+            height: 24px;
+            background-color: #ff6347;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+        
+        .interview-answer p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+        
+        .interview-answer p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* CTA セクション */
+        .cta-section {
+            background: linear-gradient(135deg, #0d3283 0%, #1a5cb5 100%);
+            color: white;
+            border-radius: 8px;
+            padding: 40px 30px;
+            text-align: center;
+            margin: 50px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before,
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+        }
+        
+        .cta-section::before {
+            top: -100px;
+            right: -100px;
+        }
+        
+        .cta-section::after {
+            bottom: -100px;
+            left: -100px;
+        }
+        
+        .cta-title {
+            font-size: 1.7rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .cta-title i {
+            margin-right: 15px;
+            color: #ffdd57;
+        }
+        
+        .cta-description {
+            margin-bottom: 25px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: #7bdcb5;
+            color: #0d3283;
+            padding: 12px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            font-size: 1.05rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        
+        .cta-button:hover {
+            background-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        
+        /* ナビゲーション */
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin: 40px 0;
+        }
+        
+        .nav-button {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+        
+        .nav-button:hover {
+            transform: translateY(-3px);
+            color: #0d3283;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+        
+        .nav-prev::before {
+            content: '←';
+            margin-right: 10px;
+        }
+        
+        .nav-next::after {
+            content: '→';
+            margin-left: 10px;
+        }
+        
+        /* ハイライト */
+        .highlight {
+            background-color: #fffde7;
+            padding: 2px 0;
+            font-weight: 500;
+            box-shadow: 4px 0 0 #fffde7, -4px 0 0 #fffde7;
+            box-decoration-break: clone;
+        }
+        
+        .yellow-highlight {
+            background-color: #ffff00;
+            padding: 2px 0;
+            font-weight: bold;
+            box-shadow: 4px 0 0 #ffff00, -4px 0 0 #ffff00;
+            box-decoration-break: clone;
+        }
+        
+        .red-text {
+            color: #ff0000;
+            font-weight: bold;
+        }
+        
+        .bold-text {
+            font-weight: bold;
+        }
+        
+        .badge {
+            display: inline-block;
+            background-color: #ff6347;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+        
+        /* メリットポイント */
+        .benefit-points {
+            background-color: #f0f7ff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .benefit-points h4 {
+            color: #0d3283;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            border-bottom: 2px solid #0d3283;
+            padding-bottom: 10px;
+        }
+        
+        .benefit-points ul {
+            padding-left: 0;
+            list-style-type: none;
+        }
+        
+        .benefit-points li {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f5f5f5;
+            border-left: 3px solid #0d3283;
+            font-weight: 500;
+        }
+        
+        /* レスポンシブ対応 */
+        @media (max-width: 768px) {
+            .header-title {
+                font-size: 1.8rem;
+            }
+            
+            .profile-details {
+                flex-direction: column;
+            }
+            
+            .section-header {
+                font-size: 1.2rem;
+            }
+            
+            .results-grid {
+                flex-direction: column;
+                max-width: 280px;
+                margin: 0 auto;
+            }
+        }
+        
+        /* アニメーション */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div id="svg-defs-placeholder"></div>
+
+    <div id="header-placeholder"></div>
+
+    <!-- Removed redundant header/footer/cta HTML -->
+
+    <div class="header">
+        <div class="main-header-container">
+            <h1 class="header-title">長門浩二様 - UTAGE導入事例</h1>
+            <p class="header-subtitle">治療院専門販売トレーナーとして売り込まずに売れる販売術を指導</p>
+        </div>
+    </div>
+    
+    <div class="container">
+        <!-- メイン成果バナー -->
+        <div class="main-results">
+            <h2 style="font-size: 1.7rem; color: #ff6347; margin-bottom: 15px;">
+                <i class="fas fa-trophy"></i> <span class="yellow-highlight">UTAGE構築代行丸投げちゃん導入成功事例</span>
+            </h2>
+            <p style="font-size: 1.1rem;">
+                <span class="red-text">オフライン中心からオンライン自動化へ</span><br>治療院専門販売トレーナーが語るUTAGE導入による業務効率化
+            </p>
+        </div>
+        
+        <!-- プロフィールセクション -->
+        <section class="profile-section">
+            <div class="profile-header">
+                <i class="fas fa-user-check"></i>
+                <h2>UTAGE構築代行丸投げちゃんでの成功事例</h2>
+                <span class="badge pulse">CASE STUDY</span>
+            </div>
+            <div class="profile-details">
+                <div class="profile-info">
+                    <h3 class="profile-name">
+                        <i class="fas fa-user-tie"></i> 長門 浩二 様
+                    </h3>
+                    <p class="profile-company">
+                        <i class="fas fa-building"></i> 株式会社NextStage 代表
+                    </p>
+                    <div class="profile-description">
+                        <p><span class="yellow-highlight">治療院専門販売トレーナー</span>として活躍。治療院の先生方に売り込みにならないような接客技術、提案技術、販売技術を指導し、患者さんが治療を受ける決断をサポートする方法を伝えています。</p>
+                        <p>これまでは主にオフラインでの繋がりを通じてビジネスを展開していましたが、<span class="bold-text">Webを活用したマーケティングにも力を入れ</span>、より多くの治療院経営者に販売ノウハウを届けることを目指しています。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="section-image">
+                <img src="/images/achieve-1.webp" alt="長門浩二様プロフィール"> <!-- Corrected path -->
+            </div>
+        </section>
+        
+        <!-- 目次 -->
+        <section class="toc">
+            <h3 class="toc-title">
+                <i class="fas fa-list"></i> 目次
+            </h3>
+            <ol class="toc-list">
+                <li><i class="fas fa-angle-right"></i> <a href="#section1">UTAGE導入前の悩み・課題</a></li>
+                <li><i class="fas fa-angle-right"></i> <a href="#section2">「丸投げちゃん」を選んだ理由</a></li>
+                <li><i class="fas fa-angle-right"></i> <a href="#section3">導入後の変化と効果</a></li>
+                <li><i class="fas fa-angle-right"></i> <a href="#section4">迷っている方へのアドバイス</a></li>
+                <li><i class="fas fa-angle-right"></i> <a href="#section5">治療院経営者へのメッセージ</a></li>
+            </ol>
+        </section>
+        
+        <!-- 成果セクション -->
+        <section class="results-section">
+            <h2 class="results-title">
+                <i class="fas fa-chart-line"></i> UTAGE導入後の効果
+            </h2>
+            <div class="results-grid">
+                <div class="result-item">
+                    <div class="result-number">100% <i class="fas fa-cogs" style="color: #7bdcb5; font-size: 1.5rem;"></i></div>
+                    <div class="result-label">業務自動化</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-number">新規 <i class="fas fa-users" style="color: #7bdcb5; font-size: 1.2rem;"></i></div>
+                    <div class="result-label">未接触客からの申込</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-number">楽々 <i class="fas fa-calendar-check" style="color: #7bdcb5; font-size: 1.2rem;"></i></div>
+                    <div class="result-label">顧客管理</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 引用セクション -->
+        <div class="highlight-box">
+            <p>"予想以上に…やはりオールインワンになっているUTAGEの仕組みというところが<span class="yellow-highlight">「楽」だというのがあります</span>。これ、「使っていない人は早く使った方がいいよ」といつも思っていて、よく口コミもしていますし、<span class="red-text">「丸投げちゃん」の話もよくしています</span>。"</p>
+        </div>
+        
+        <!-- インタビューセクション - UTAGE導入前の悩み・課題 -->
+        <section class="interview-section" id="section1">
+            <h2 class="section-header">
+                <i class="fas fa-question-circle"></i> UTAGE導入前の悩み・課題
+            </h2>
+            <div class="section-image">
+                <img src="/images/achieve-2.webp" alt="導入前の課題"> <!-- Corrected path -->
+            </div>
+            <div class="interview-qa">
+                <div class="interview-question">前田： 皆さんこんにちは。「UTAGE構築代行丸投げちゃん」の前田と申します。本日は「UTAGE構築代行丸投げちゃん」をご活用いただきました方にインタビューを受けていただきたいと思います。それでは長門様、よろしくお願いします。</div>
+                <div class="interview-answer">
+                    <p>長門： よろしくお願いします。</p>
+                </div>
+                
+                <div class="interview-question">前田： 長門様は治療院専門販売トレーナーでいらっしゃって、株式会社NextStageの代表でいらっしゃいます。治療院の先生たちに、売り込まずに売れる販売の術を教えていらっしゃいます。では長門様、まず簡単に自己紹介をお願いしてもよろしいですか？</div>
+                <div class="interview-answer">
+                    <p>長門： はい、株式会社NextStageの長門 浩二と申します。現在、<span class="bold-text">治療院の先生方に売り込みにならないような接客技術、提案技術、販売技術</span>をお伝えしております。</p>
+                </div>
+                
+                <div class="interview-question">前田： ありがとうございます。では長門さん、最初にお伺いしたいんですが、このUTAGE構築代行を利用する前に、どのような悩みや課題がありましたか？</div>
+                <div class="interview-answer">
+                    <p>長門： そうですね、販売技術を学ぶというのは、治療院業界ではあまりピンとこない内容ではあったんです。でも、<span class="yellow-highlight">オフラインの繋がりで、コツコツと必要性を知っていただいて、申し込みいただいて講座をさせていただいていた</span>という流れでした。</p>
+                    <p>ただ、そこに限界を感じていて。<span class="red-text">Webでしっかりと宣伝広告をしながら魅力を感じてもらいたい、受けてもらいたい</span>というところが、一番のきっかけであり課題でした。</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- インタビューセクション - 丸投げちゃんを選んだ理由 -->
+        <section class="interview-section" id="section2">
+            <h2 class="section-header">
+                <i class="fas fa-check-circle"></i> 「丸投げちゃん」を選んだ理由
+            </h2>
+            <div class="section-image">
+                <img src="/images/achieve-3.webp" alt="選んだ理由"> <!-- Corrected path -->
+            </div>
+            <div class="interview-qa">
+                <div class="interview-question">前田： UTAGEは自分で構築するという選択肢も考えられたと思うんですが、長門様、UTAGEが会員サイトも作れて認知や集客に繋がりそうだと思って調べられた時、ご自身でちょっと触ってみようという思いはありましたか？</div>
+                <div class="interview-answer">
+                    <p>長門： ありました、ありました。できれば<span class="bold-text">自分で使えるようになるのがいいな</span>とは思ったので。YouTubeで調べて、「どういうサービスなんだろう」と思ったんですけど、「できるかな？」というところとの葛藤がありましたね。</p>
+                </div>
+                
+                <div class="interview-question">前田： 「できるかな」と思った時、どの辺が難しそうだと感じましたか？</div>
+                <div class="interview-answer">
+                    <p>長門： 私はCanvaとかは使うので、素材作りはちょこちょこやるんですけど、<span class="red-text">ZOOMとの連携や決済との連携、あとはLINEステップのようなステップ配信やメルマガ配信などの構築が全然分からなくて</span>。「無理だ」と思ったというよりも、「時間がすごくかかるな」と思いましたね。</p>
+                </div>
+                
+                <div class="interview-question">前田： 比較検討する代行の方もいらっしゃったかと思うんですが、弊社に依頼することを決めていただいた理由は何でしょうか？</div>
+                <div class="interview-answer">
+                    <p>長門： こちらが何をしたいのかを伝えた時に、<span class="yellow-highlight">必要なことをもうパンパンパンと図にしてくれたりとか。そのキャッチボールがすごく楽だった</span>。「打ち合わせだけで作ってもらえる」と思ったのが、すごく楽でしたね。私がしたことというのは、修正チェックだけだったので。本当に「これは楽だぞ」「これだ」と思いました。</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- インタビューセクション - 導入後の変化と効果 -->
+        <section class="interview-section" id="section3">
+            <h2 class="section-header">
+                <i class="fas fa-chart-bar"></i> 導入後の変化と効果
+            </h2>
+            <div class="section-image">
+                <img src="/images/achieve-4.webp" alt="導入後の効果"> <!-- Corrected path -->
+            </div>
+            <div class="interview-qa">
+                <div class="interview-question">前田： 実際に構築した後の話を聞きたいんですけれども、率直に言って、どのような変化がありましたか？</div>
+                <div class="interview-answer">
+                    <p>長門： 率直に言いますと…「<span class="red-text">楽だな</span>」という印象です。これまでは、興味がある人から問い合わせをいただいたら、そこに一つ一つ対応して、やり取りをしたり、ZOOMしたり、何工程も踏んで、それから決済に行くという流れでした。でも今は<span class="yellow-highlight">全部自動化されています</span>。</p>
+                    <p>登録された、申し込みが入った、という通知が来て、申し込みが入った人がどこまで受講を受けているのかとか、全部自動で管理できるので。本当に何もしなくていいんです。</p>
+                </div>
+                
+                <div class="interview-question">前田： 売上的にはどういった変化がありましたか？</div>
+                <div class="interview-answer">
+                    <p>長門： 要は、サブスクでの売上が勝手に上がって…<span class="bold-text">全然知らない、関わりのない方がお客さんになってくれている</span>というのが結構あります。これまでは何かの繋がりで、一度コンタクトを取っている人からの声がけが多かったんですけど、今は動画講座でのフロントオファーなどで、知らないところで私の人柄を知っていただいたり、私のことをリサーチしてくれて、メッセージも届いて、決断してくれるという工程がもう仕組みの中に入っているので。</p>
+                </div>
+            </div>
+            
+            <!-- メリットポイント -->
+            <div class="benefit-points">
+                <h4><i class="fas fa-lightbulb"></i> 構築代行の主なメリット</h4>
+                <ul>
+                    <li>✓ 登録、申し込みが全て自動化され、管理が楽になった</li>
+                    <li>✓ 全く知らない方からの申し込みが入るようになった</li>
+                    <li>✓ 予約管理やZOOMリンクの発行が自動化された</li>
+                    <li>✓ メルマガ配信などの機能も使えるようになった</li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- インタビューセクション - 迷っている方へのアドバイス -->
+        <section class="interview-section" id="section4">
+            <h2 class="section-header">
+                <i class="fas fa-comment-dots"></i> 迷っている方へのアドバイス
+            </h2>
+            <div class="section-image">
+                <img src="/images/achieve-5.webp" alt="迷っている方へのメッセージ"> <!-- Corrected path -->
+            </div>
+            <div class="interview-qa">
+                <div class="interview-answer">
+                    <p>「まずUTAGEというシステムの魅力を理解しているかどうかによると思いますが、<span class="yellow-highlight">自分がやりたいことや自動化したいことがあるのであれば、UTAGEは使った方がいい</span>と思います。費用対効果としてはとても良いですね。</p>
+                    <p>次の費用対効果としては、あなた自身のスキルというところ。セッティングやライティングスキルなどに自信がないのであれば、コスパは非常に良いと思います。「<span class="red-text">丸投げした方がいい</span>」というのは、経営者の方には特に言いたいですね。</p>
+                    <p>自分でなんとかしようではなく、<span class="bold-text">自分の時給と計算して、どちらがコスパが良いのかを考える時に</span>、私はそんなに得意ではなかった。そこそこはできるんです。Canvaを教えたりしているレベルなので。でも構築は違うなと。こういうシステムを使いこなすというのは相当な労力が必要なので、「餅は餅屋」ということで、プロにお願いするのが間違いなく早いし、クオリティが違います。</p>
+                    <p>悩んでいる人は、頼んでしまった方が早いんじゃないですか？ そして、覚えたいのであれば、頼んだ後に、できたものを見て「こういう形で作っているんだ」というのを触っていって少しずつ覚えているんです。」</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- インタビューセクション - 治療院経営者へのメッセージ -->
+        <section class="interview-section" id="section5">
+            <h2 class="section-header">
+                <i class="fas fa-hospital-user"></i> 治療院経営者へのメッセージ
+            </h2>
+            <div class="section-image">
+                <img src="/images/achieve-6.webp" alt="治療院経営者へのメッセージ"> <!-- Corrected path -->
+            </div>
+            <div class="interview-qa">
+                <h3 style="margin-bottom: 20px; color: #0d3283; display: flex; align-items: center;">
+                    <i class="fas fa-hands-helping" style="margin-right: 10px;"></i> 治療院の販売力を高めるために
+                </h3>
+                <div class="interview-answer">
+                    <p>治療家の先生は、患者さんに対して技術を提供するものだと思われている方が多いんですけども、実は<span class="yellow-highlight">体のケアをするために時間とお金を投資する「決断をさせる」ということがなかなかできなくて</span>、困っている方が多いと思うんです。</p>
+                    <p>技術のある先生が、患者さんに対して決断をさせるというスキルが手に入ったら、<span class="bold-text">リピート率や売上がどんどん上がっていく</span>ので。この提案技術、販売技術を学んでいただくことで、患者さんの笑顔が増え、それが先生がやりたいことだと思います。</p>
+                    <p>ぜひ、<span class="red-text">販売技術というのは物を売る技術ではないということを理解していただいて</span>、先生が伝えたいことを相手に伝わるようにする技術を身につけていただきたいと思っています。</p>
+                    <p>そして、そういった技術をオンラインで学ぶ場合、UTAGEのような仕組みを使うことで、対面セミナーとは違ったアプローチが可能になります。自分の時間を最大限に有効活用し、より多くの先生方に価値を届けることができるようになるのです。</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CTA セクション -->
+        <section class="cta-section">
+            <h2 class="cta-title">
+                <i class="fas fa-rocket"></i> あなたも「UTAGE構築代行丸投げちゃん」で成功事例を作りませんか？
+            </h2>
+            <p class="cta-description">
+                煩わしいシステム構築をプロに任せて、本来の業務に集中しましょう。長門様のように、業務を自動化し、新規顧客の獲得を実現できます。
+            </p>
+            <a href="https://utage-marunage.com/it-hojo/" class="cta-button pulse">
+                <i class="fas fa-calendar-check"></i> 無料相談を予約する
+            </a>
+        </section>
+        
+        <!-- ナビゲーション -->
+        <div class="navigation">
+            <a href="/achievement/customer4.html" class="nav-button nav-prev">前の事例</a> <!-- Corrected path -->
+            <a href="/achievement/customer1.html" class="nav-button nav-next">次の事例</a> <!-- Corrected path -->
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+</body>
+</html>

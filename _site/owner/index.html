@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>運営者情報 | オートウェビナー大学</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .owner-main-card {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+      max-width: 520px;
+      margin: 60px auto 40px auto;
+      padding: 36px 24px 32px 24px;
+      text-align: center;
+    }
+    .owner-photo {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.10);
+      margin: 0 auto 18px auto;
+      display: block;
+      border: 4px solid #f8f9fa;
+      background: #f8f9fa;
+    }
+    .owner-name {
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin-bottom: 0.2em;
+      color: var(--dark-blue, #0d3283);
+    }
+    .owner-title {
+      color: var(--secondary, #ff3a3a);
+      font-size: 1.05rem;
+      margin-bottom: 1em;
+      font-weight: 500;
+    }
+    .owner-profile {
+      font-size: 0.98em;
+      color: #444;
+      margin-bottom: 1.2em;
+      line-height: 1.8;
+    }
+    .owner-list {
+      text-align: left;
+      margin: 1.2em auto 1.5em auto;
+      padding-left: 1.2em;
+      max-width: 350px;
+      font-size: 0.97em;
+      color: #333;
+    }
+    .owner-list li {
+      margin-bottom: 0.5em;
+      list-style: disc;
+    }
+    .owner-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0 auto 0.5em auto;
+      background: #f8f9fa;
+      border-radius: 10px;
+      overflow: hidden;
+      font-size: 0.98em;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+    }
+    .owner-table th, .owner-table td {
+      padding: 8px 10px;
+      text-align: left;
+    }
+    .owner-table th {
+      color: var(--secondary, #ff3a3a);
+      background: #f3f3f3;
+      width: 34%;
+      font-weight: 700;
+      border-right: 1px solid #eee;
+    }
+    .owner-table td {
+      color: #333;
+      background: #fff;
+    }
+    @media (max-width: 600px) {
+      .owner-main-card { padding: 18px 4vw 18px 4vw; }
+      .owner-photo { width: 90px; height: 90px; }
+      .owner-table th, .owner-table td { padding: 7px 5px; font-size: 0.97em; }
+    }
+  </style>
+</head>
+<body>
+<div id="header-placeholder"></div>
+<main>
+  <div class="owner-main-card">
+    <img src="/assets/images/profile-photo.webp" alt="前田由紀子 プロフィール写真" class="owner-photo">
+    <div class="owner-name">前田 由紀子</div>
+    <div class="owner-title">Web集客コンサルタント / UTAGE構築・運用スペシャリスト</div>
+    <div class="owner-profile">
+      1980年鹿児島県生まれ。高校卒業後、ブルガリなどのハイブランドで13年間勤務。2011年、ローフードとファスティングの事業で福岡で起業。協会設立を経て、東京・青山に料理教室を開講。現在、株式会社CLANの代表取締役として活動中。
+    </div>
+    <ul class="owner-list">
+      <li>著書: <a href="https://www.amazon.co.jp/dp/B09X1Y2L4F" target="_blank" rel="noopener">美人は7日でつくられる</a></li>
+      <li>専門分野: オートマーケティング、セールスファネル構築、集客戦略策定</li>
+      <li>実績: UTAGE構築代行による売上改善事例300件以上</li>
+    </ul>
+    <h2 style="font-size:1.1rem;font-weight:bold;margin:2em 0 0.7em 0;color:var(--dark-blue,#0d3283);">会社概要</h2>
+    <table class="owner-table">
+      <tbody>
+        <tr><th>社名</th><td>株式会社CLAN</td></tr>
+        <tr><th>所在地</th><td>〒892-0851 鹿児島県鹿児島市上竜尾町1番2号</td></tr>
+        <tr><th>代表者</th><td>前田 由紀子</td></tr>
+        <tr><th>資本金</th><td>3,000,000円</td></tr>
+        <tr><th>連絡先</th><td><a href="mailto:info@clanbiz.net">info@clanbiz.net</a></td></tr>
+        <tr><th>受付時間</th><td>9:00〜18:00（土日祝を除く）</td></tr>
+        <tr><th>事業内容</th><td>セールスファネル構築代行</td></tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+<div id="footer-placeholder"></div>
+<script src="/js/include.js"></script>
+</body>
+</html>

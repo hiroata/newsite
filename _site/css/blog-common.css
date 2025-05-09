@@ -1,0 +1,134 @@
+/* オートウェビナー大学 ブログ共通CSS - 改良版 */
+:root {
+  --primary: #0066ff;
+  --secondary: #ff3a3a;
+  --accent: #ff9500;
+  --dark-blue: #0d3283;
+  --light-bg: #f8f9fa;
+  --text-dark: #333;
+  --text-mid: #555;
+  --text-light: #777;
+  --grad-primary: linear-gradient(135deg,#0066ff,#00b8ff);
+  --grad-secondary: linear-gradient(135deg,#ff3a3a,#ff7d7d);
+  --shadow-soft: 0 5px 15px rgba(0,0,0,.08);
+  --shadow-strong: 0 10px 25px rgba(0,0,0,.12);
+  --trans: all .3s ease;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --header-h: 60px;
+  --heading-green-bar: #4CAF50;
+  --heading-bg-green: #E8F5E9;
+  --highlight-bg-green: #E8F5E9;
+  --highlight-bg-blue: #E3F2FD;
+  --highlight-bg-yellow: #FFFDE7;
+  --highlight-bg-pink: #FCE4EC;
+  --highlight-bg-red: #FFEBEE;
+  --text-green: #388E3C;
+  --text-blue: #1976D2;
+  --text-pink: #C2185B;
+  --text-red: #D32F2F;
+  --layout-bg: #F5F7FA;
+  --border-light: #eee;
+  --toc-active-color: var(--dark-blue);
+}
+
+/* ...以下、all-in-one-utage-benefits.htmlのstyleタグから主要部分を抽出... */
+
+body {
+  font: 16px/1.6 'Noto Sans JP',sans-serif;
+  color: var(--text-dark);
+  background: #fff;
+  letter-spacing: .02em;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeSpeed;
+}
+img { max-width: 100%; height: auto; vertical-align: middle; border: 0; }
+a { text-decoration: none; color: inherit; transition: var(--trans); }
+ul { list-style: none; }
+button { border: 0; background: 0; cursor: pointer; font: inherit; }
+main { flex: 1 0 auto; }
+footer { flex-shrink: 0; }
+
+.page-container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+.article-page-title { text-align: center; margin-bottom: 30px; padding: 20px; }
+.article-page-title h1 { font-size: 32px; font-weight: bold; line-height: 1.4; margin: 0 0 10px 0; }
+.article-page-meta { font-size: 14px; color: #666; }
+.article-container { display: flex; gap: 30px; }
+.article-left-sidebar { flex-basis: 80px; flex-shrink: 0; flex-grow: 0; padding: 15px; margin-top: 20px; }
+.social-buttons { display: flex; flex-direction: column; gap: 15px; align-items: center; }
+.social-button { display: flex; flex-direction: column; align-items: center; font-size: 12px; color: #666; text-decoration: none; cursor: pointer; transition: color 0.3s, fill 0.3s; }
+.social-button svg { width: 24px; height: 24px; margin-bottom: 5px; fill: #666; }
+.social-button:hover { color: var(--dark-blue); }
+.social-button:hover svg { fill: var(--dark-blue); }
+.article-main { flex-basis: 0; flex-grow: 5; max-width: 700px; min-width: 400px; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); padding: 30px; margin-top: 20px; }
+.article-right-sidebar { flex-basis: 0; flex-grow: 2; min-width: 250px; margin-top: 20px; }
+.sidebar-section { background: #fff; border-radius: 10px; padding: 25px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+.sidebar-toc { position: sticky; top: 20px; }
+.sidebar-title { font-size: 18px; font-weight: bold; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--dark-blue); }
+.toc-list { list-style: none; padding: 0; margin: 0; }
+.toc-list li { margin-bottom: 8px; }
+.toc-list a { color: var(--text-mid); text-decoration: none; transition: color 0.3s; font-size: 14px; display: block; }
+.toc-list a:hover { color: var(--dark-blue); }
+.toc-list a.active { color: var(--toc-active-color); font-weight: bold; background: rgba(0,102,255,0.05); border-radius: 4px; position: relative; }
+.toc-list a.active::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--primary); border-radius: 2px; }
+.toc-list ul { padding-left: 15px; margin-top: 8px; }
+.toc-list ul li { margin-bottom: 5px; }
+.toc-list ul a { font-size: 13px; }
+.article-back { display: inline-block; margin-bottom: 20px; color: #666; text-decoration: none; transition: color 0.3s; }
+.article-back:hover { color: var(--dark-blue); }
+.article-content { line-height: 1.8; color: var(--text-dark); }
+.article-content h2, .article-content h3 { font-weight: bold; margin: 40px 0 20px; padding: 10px 15px; border-left: 8px solid var(--heading-green-bar); background: var(--heading-bg-green); border-radius: 4px; line-height: 1.5; }
+.article-content h2 { font-size: 24px; }
+.article-content h3 { font-size: 20px; }
+.article-content p { margin-bottom: 20px; }
+.article-content ul, .article-content ol { margin: 20px 0; padding-left: 25px; }
+.article-content li { margin-bottom: 10px; }
+.article-content table { width: 100%; border-collapse: separate; margin: 20px 0; background: #f9f9f9; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-spacing: 0; }
+.article-content table th, .article-content table td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border-light); border-right: 1px solid var(--border-light); }
+.article-content table th:last-child, .article-content table td:last-child { border-right: none; }
+.article-content table tr:last-child td { border-bottom: none; }
+.article-content table th { background: var(--heading-green-bar); color: #fff; font-weight: bold; }
+.article-content tr:nth-child(even) { background: #fdfdfd; }
+.article-content tr:hover { background: #f0f0f0; }
+.article-content img { max-width: 100%; height: auto; border-radius: 5px; margin: 20px 0; object-fit: cover; }
+.article-content a { color: var(--dark-blue); text-decoration: underline; transition: color 0.3s; }
+.article-content a:hover { color: #092058; }
+.article-content blockquote { border-left: 4px solid var(--heading-green-bar); padding-left: 20px; font-style: italic; margin: 20px 0; color: #555; }
+.highlight-green { background: var(--highlight-bg-green); font-weight: bold; padding: 0 3px; }
+.highlight-blue { background: var(--highlight-bg-blue); font-weight: bold; padding: 0 3px; }
+.highlight-yellow { background: var(--highlight-bg-yellow); font-weight: bold; padding: 0 3px; }
+.highlight-pink { background: var(--highlight-bg-pink); font-weight: bold; padding: 0 3px; }
+.highlight-red { background: var(--highlight-bg-red); font-weight: bold; padding: 0 3px; }
+.highlight { background: var(--highlight-bg-yellow); font-weight: bold; padding: 0 3px; }
+.text-green { color: var(--text-green); font-weight: bold; }
+.text-blue { color: var(--text-blue); font-weight: bold; }
+.text-pink { color: var(--text-pink); font-weight: bold; }
+.text-red { color: var(--text-red); font-weight: bold; }
+.conversation-container { display: flex; background: #f8f9fa; border-radius: 10px; padding: 15px; margin: 20px 0; }
+.character-icon { width: 60px; height: 60px; border-radius: 50%; background-size: cover; background-position: center; flex-shrink: 0; }
+.conversation-container.yuki .character-icon, .conversation-container.nyanta .character-icon { background-image: url('../images/profile-YUKI.webp'); background-position: center; }
+.conversation-content { flex-grow: 1; margin-left: 15px; }
+.character-name { font-weight: bold; color: var(--dark-blue); margin-bottom: 5px; }
+.conversation-content p { margin: 0; color: var(--text-dark); }
+.cta-button { display: inline-block; padding: 15px 30px; background: #e74c3c; color: #fff; text-decoration: none; border-radius: 5px; font-weight: bold; margin: 20px auto; width: fit-content; text-align: center; transition: background 0.3s; }
+.cta-button:hover { background: #c0392b; }
+.author-box { display: flex; gap: 20px; background: #f9f9f9; padding: 25px; border-radius: 10px; margin-bottom: 40px; }
+.author-image { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; }
+.author-info { flex-grow: 1; }
+.author-name { font-size: 18px; font-weight: bold; margin-bottom: 10px; }
+.author-bio { line-height: 1.6; font-size: 14px; color: #555; }
+.related-articles { margin-top: 30px; }
+.related-title { font-size: 20px; font-weight: bold; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid var(--border-light); }
+.related-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; }
+.related-item { box-shadow: none; border: 1px solid var(--border-light); border-radius: 8px; overflow: hidden; background: #fff; transition: transform 0.3s, box-shadow 0.3s; display: block; text-decoration: none; color: inherit; }
+.related-item:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.08); }
+.related-image { height: 120px; overflow: hidden; display: block; }
+.related-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.related-content { padding: 10px; }
+.related-item-title { font-size: 15px; margin-bottom: 5px; line-height: 1.4; }
+.related-meta { font-size: 11px; color: #666; }
+
+/* ...レスポンシブや細かい部分は省略。必要に応じて追加... */

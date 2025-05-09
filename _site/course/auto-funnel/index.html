@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="オートウェビナー大学のオートウェビナー構築初級講座。集客から販売までを自動化する仕組み「オートウェビナー」の設計からUTAGEでの構築方法までを基礎から学べます。初心者歓迎。">
+    <title>オートウェビナー構築初級講座 | オンライン講座 | オートウェビナー大学</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="/images/favicon.ico">
+    <meta property="og:title" content="オートウェビナー構築初級講座 | オンライン講座 | オートウェビナー大学">
+    <meta property="og:description" content="オートウェビナー大学のオートウェビナー構築初級講座。集客から販売までを自動化する仕組み「オートウェビナー」の設計からUTAGEでの構築方法までを基礎から学べます。初心者歓迎。">
+    <meta property="og:image" content="/images/ogp_image_autowebinar_course.webp"> <!-- 仮のOGP画像 -->
+    <meta property="og:type" content="article">
+
+    <style>
+        /* Individual Course Page Specific Styles */
+        /* ヒーローセクション */
+        .course-detail-hero {
+            background: linear-gradient(135deg, #ff3a3a, #ff7d7d, #ff5a5a);
+            background-size: 200% 200%;
+            animation: gradient-shift 15s ease infinite;
+            padding: 120px 0 80px;
+            color: #fff;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 0 0 30px 30px;
+            box-shadow: 0 10px 30px rgba(255, 58, 58, 0.2);
+        }
+
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50% }
+            50% { background-position: 100% 50% }
+            100% { background-position: 0% 50% }
+        }
+
+        .course-detail-hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('/assets/images/pattern-dots.svg');
+            opacity: 0.1;
+        }
+
+        .course-hero-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .course-detail-hero .course-badge {
+            background-color: #fff;
+            color: #ff3a3a;
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 8px 18px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .course-detail-hero img {
+            width: 380px;
+            max-width: 90vw;
+            border-radius: 24px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+            transform: perspective(1000px) rotateX(5deg);
+            transition: transform 0.5s ease;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .course-detail-hero img:hover {
+            transform: perspective(1000px) rotateX(0deg) scale(1.02);
+        }
+
+        .course-detail-hero .course-title {
+            font-size: 2.6rem;
+            font-weight: 900;
+            margin-bottom: 18px;
+            color: #fff;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+            line-height: 1.3;
+        }
+
+        .course-detail-hero .course-lead {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .course-detail-meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            font-size: 0.95rem;
+            background: rgba(0, 0, 0, 0.1);
+            padding: 12px 24px;
+            border-radius: 50px;
+            margin-top: 10px;
+        }
+
+        .course-detail-meta span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .course-detail-meta i {
+            font-size: 16px;
+        }
+
+        /* セクション共通スタイル */
+        .course-content-wrapper {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .course-section {
+            background: #fff;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+            margin: 60px 0;
+            padding: 40px;
+            position: relative;
+            border: 1px solid rgba(0,0,0,0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .course-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .course-section-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .course-section-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #ff3a3a, #ff7d7d);
+            border-radius: 2px;
+        }
+
+        /* アウトライン・学べることリスト */
+        .course-outline-list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .course-outline-item {
+            margin-bottom: 16px;
+            background: #f8f9fa;
+            border-radius: 14px;
+            padding: 20px 24px;
+            position: relative;
+            border-left: 4px solid #ff3a3a;
+            transition: transform 0.2s ease;
+        }
+
+        .course-outline-item:hover {
+            transform: translateX(5px);
+        }
+
+        .course-outline-item strong {
+            color: #ff3a3a;
+            font-weight: 700;
+        }
+
+        /* カリキュラム */
+        .course-outline-list details {
+            margin-bottom: 16px;
+            background: #f8f9fa;
+            border-radius: 14px;
+            border-left: 4px solid #ff3a3a;
+            overflow: hidden;
+        }
+
+        .course-outline-list details summary {
+            padding: 20px 24px;
+            cursor: pointer;
+            position: relative;
+            font-weight: 700;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .course-outline-list details summary::after {
+            content: "+";
+            font-size: 1.5rem;
+            color: #ff3a3a;
+            transition: transform 0.3s ease;
+        }
+
+        .course-outline-list details[open] summary::after {
+            transform: rotate(45deg);
+        }
+
+        .course-outline-content {
+            padding: 0 24px 20px;
+        }
+
+        .course-outline-content ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .course-outline-content li {
+            margin-bottom: 8px;
+            position: relative;
+        }
+
+        /* 受講者の声 */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .testimonial-card {
+            background: linear-gradient(145deg, #f9f9f9, #ffffff);
+            border-radius: 16px;
+            padding: 25px;
+            position: relative;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .testimonial-card::before {
+            content: """;
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            font-size: 60px;
+            color: rgba(255, 58, 58, 0.1);
+            font-family: serif;
+            line-height: 0.5;
+        }
+
+        .testimonial-card p {
+            position: relative;
+            z-index: 1;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: #555;
+            text-align: right;
+            margin-top: 15px;
+        }
+
+        /* 価格セクション */
+        .pricing-card {
+            background: linear-gradient(145deg, #ffffff, #f9f9ff);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .pricing-price {
+            font-size: 4rem;
+            font-weight: 800;
+            color: #ff3a3a;
+            line-height: 1;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .pricing-price span {
+            font-size: 1.2rem;
+            position: relative;
+            top: -10px;
+            margin-left: 5px;
+        }
+
+        .pricing-features-list {
+            list-style: none;
+            padding: 0;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .pricing-features-list li {
+            padding: 12px 0;
+            border-bottom: 1px dashed #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pricing-features-list li::before {
+            content: "✓";
+            color: #ff3a3a;
+            font-weight: bold;
+        }
+
+        /* FAQ */
+        .faq-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .faq-item {
+            margin-bottom: 16px;
+            background: #f8f9fa;
+            border-radius: 14px;
+            overflow: hidden;
+        }
+
+        .faq-item summary {
+            padding: 20px 24px;
+            cursor: pointer;
+            position: relative;
+            font-weight: 700;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-item summary::after {
+            content: "+";
+            font-size: 1.5rem;
+            color: #ff3a3a;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item[open] summary::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            padding: 0 24px 20px;
+            line-height: 1.6;
+        }
+
+        /* CTA */
+        .course-detail-cta {
+            margin: 60px 0;
+            text-align: center;
+            background: linear-gradient(145deg, #f9f9ff, #fff);
+            padding: 60px 0;
+            border-radius: 30px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+            position: relative;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .course-price {
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: #ff3a3a;
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .course-price::before {
+            content: "¥";
+            position: absolute;
+            top: 5px;
+            left: -25px;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .course-detail-button {
+            background: linear-gradient(90deg, #ff3a3a, #ff7d7d);
+            color: white !important;
+            font-size: 1.2rem;
+            font-weight: 700;
+            padding: 16px 40px;
+            border-radius: 50px;
+            display: inline-block;
+            text-decoration: none;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(255, 58, 58, 0.25);
+        }
+
+        .course-detail-button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.2);
+            transition: all 0.4s ease;
+        }
+
+        .course-detail-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(255, 58, 58, 0.3);
+        }
+
+        .course-detail-button:hover::before {
+            left: 100%;
+        }
+
+        /* スティッキーCTA */
+        .sticky-cta-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(90deg, #fff, rgba(255,255,255,0.97));
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.08);
+            padding: 15px 20px;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(0,0,0,0.05);
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .sticky-cta-visible {
+            transform: translateY(0);
+        }
+
+        .sticky-price-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sticky-price {
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: #ff3a3a;
+            line-height: 1;
+        }
+
+        .sticky-price-note {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .sticky-cta-button {
+            background: linear-gradient(90deg, #ff3a3a, #ff7d7d);
+            color: white;
+            font-weight: 700;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 5px 15px rgba(255, 58, 58, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .sticky-cta-button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.2);
+            transition: all 0.4s ease;
+        }
+
+        .sticky-cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 58, 58, 0.4);
+        }
+
+        .sticky-cta-button:hover::before {
+            left: 100%;
+        }
+
+        /* レスポンシブ対応 */
+        @media (max-width: 768px) {
+            .course-detail-hero {
+                padding: 100px 0 60px;
+            }
+
+            .course-detail-hero .course-title {
+                font-size: 2rem;
+            }
+
+            .course-section {
+                padding: 30px 20px;
+            }
+
+            .course-detail-meta {
+                flex-direction: column;
+                gap: 10px;
+                padding: 15px;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sticky-price {
+                font-size: 1.5rem;
+            }
+
+            .sticky-cta-button {
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="svg-defs-placeholder"></div>
+<div id="header-placeholder"></div>
+    <main class="site-main">
+        <!-- ヒーローセクション -->
+        <section class="course-detail-hero">
+            <div class="course-hero-content">
+                <span class="course-badge">初級者向け講座</span>
+                <img src="/assets/images/course-auto-funnel.webp" alt="オートウェビナー構築講座">
+                <h1 class="course-title">24時間自動で売れる仕組みを作る！<br>オートウェビナー構築マスター講座</h1>
+                <div class="course-lead">
+                    ウェビナーを活用した集客から販売までの完全自動化。<br>
+                    理想の見込み客を集め、信頼を構築し、寝ている間も売上が生まれる仕組みをゼロから学べます。
+                </div>
+                <div class="course-detail-meta">
+                    <span><i class="fas fa-signal"></i>レベル：初級</span>
+                    <span><i class="fas fa-calendar-alt"></i>最新版：2025年5月更新</span>
+                    <span><i class="fas fa-chalkboard-teacher"></i>講師：前田由紀子</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="course-content-wrapper">
+            <!-- 講座で学べること -->
+            <section class="course-section">
+                <h2 class="course-section-title">この講座で学べること</h2>
+                <ul class="course-outline-list">
+                    <li class="course-outline-item"><strong>オートウェビナーの全体像</strong>と戦略的な設計手順をマスター</li>
+                    <li class="course-outline-item"><strong>見込み客獲得から教育・販売までの自動化</strong>で売上の仕組み化</li>
+                    <li class="course-outline-item"><strong>UTAGEの高度な機能</strong>を使いこなしたウェビナー構築実践</li>
+                    <li class="course-outline-item"><strong>成約率を2倍に高める</strong>シナリオとコンテンツの作り方</li>
+                </ul>
+            </section>
+
+            <!-- こんな方におすすめ -->
+            <section class="course-section">
+                <h2 class="course-section-title">こんな方におすすめ</h2>
+                <ul class="course-outline-list">
+                    <li class="course-outline-item">自動で<strong>24時間365日売上が発生する仕組み</strong>を構築したい方</li>
+                    <li class="course-outline-item">日々の<strong>営業活動や個別対応に追われて</strong>いる時間を減らしたい方</li>
+                    <li class="course-outline-item"><strong>UTAGEの機能を最大限に活用</strong>して自動化を実現したい方</li>
+                    <li class="course-outline-item">商品やサービスの<strong>魅力を最大限に伝える</strong>販売導線を作りたい方</li>
+                </ul>
+            </section>
+
+            <!-- カリキュラム/目次 -->
+            <section class="course-section curriculum-section">
+                <span class="section-badge">CURRICULUM</span>
+                <h2 class="course-section-title">最短で成果を出せる実践カリキュラム</h2>
+                <div class="course-outline-list">
+                     <div class="module-card">
+                         <div class="module-header" data-module="1">
+                             オートウェビナーの基礎と全体像
+                             <i class="fas fa-chevron-down module-toggle"></i>
+                         </div>
+                         <div class="module-content">
+                             <ul class="module-list">
+                                 <li class="module-item">
+                                     <i class="fas fa-play-circle module-item-icon"></i>
+                                     オートウェビナーとは？その重要性と効果
+                                 </li>
+                                 <li class="module-item">
+                                     <i class="fas fa-play-circle module-item-icon"></i>
+                                     基本的なウェビナー構造（集客→教育→販売）の解説
+                                 </li>
+                                 <li class="module-item">
+                                     <i class="fas fa-file-pdf module-item-icon"></i>
+                                     理想の顧客を引き寄せるウェビナー設計ワークシート
+                                 </li>
+                                 <li class="module-item">
+                                     <i class="fas fa-play-circle module-item-icon"></i>
+                                     高額商品購入に繋げるウェビナー後フォローのコツ
+                                 </li>
+                             </ul>
+                         </div>
+                     </div>
+                     
+                     <div class="module-card">
+                         <div class="module-header" data-module="2">
+                             各ステップの設計とコンテンツ作成
+                             <i class="fas fa-chevron-down module-toggle"></i>
+                         </div>
+                         <div class="module-content">
+                             <ul class="module-list">
+                                 <li class="module-item">
+                                     <i class="fas fa-play-circle module-item-icon"></i>
+                                     【集客】見込み客獲得LP・リードマグネットの作り方
+                                 </li>
+                                 <li class="module-item">
+                                     <i class="fas fa-play-circle module-item-icon"></i>
+                                     【教育】信頼を築くウェビナーシナリオ設計
+                                 </li>
+                                 <li class="module-item">
+                                     <i class="fas fa-file-alt module-item-icon"></i>
+                                     【販売】成約率を高めるウェビナープレゼン構成テンプレート
+                                 </li>
+                                 <li class="module-item">
+                                     <i class="fas fa-play-circle module-item-icon"></i>
+                                     特典やアップセル・クロスセルの設計と実装方法
+                                 </li>
+                             </ul>
+                         </div>
+                     </div>
+                      
+                     <div class="module-card">
+                         <div class="module-header" data-module="3">
+                             UTAGEを使ったオートウェビナー構築実践
+                             <i class="fas fa-chevron-down module-toggle"></i>
+                         </div>
+                         <div class="module-content">
+                             <ul class="module-list">
+                                 <li class="module-item">
+                                     <i class="fas fa-play-circle module-item-icon"></i>
+                                     UTAGEウェビナー機能のステップバイステップ解説
+                                 </li>
+                                 <li class="module-item">
+                                     <i class="fas fa-play-circle module-item-icon"></i>
+                                     LP、ウェビナー、販売ページ、サンキューページの作成実践
+                                 </li>
+                                 <li class="module-item">
+                                     <i class="fas fa-desktop module-item-icon"></i>
+                                     各ページと自動ウェビナーの連携設定・シームレスな自動化の実現
+                                 </li>
+                                 <li class="module-item">
+                                     <i class="fas fa-play-circle module-item-icon"></i>
+                                     決済システムとの連携・購入者動線の最適化
+                                 </li>
+                                 <li class="module-item">
+                                     <i class="fas fa-play-circle module-item-icon"></i>
+                                     タグ付け・セグメント設定による顧客管理の自動化
+                                 </li>
+                             </ul>
+                         </div>
+                     </div>
+                      
+                     <div class="module-card">
+                         <div class="module-header" data-module="4">
+                             運用・効果測定・最適化
+                             <i class="fas fa-chevron-down module-toggle"></i>
+                         </div>
+                         <div class="module-content">
+                             <ul class="module-list">
+                                 <li class="module-item">
+                                     <i class="fas fa-play-circle module-item-icon"></i>
+                                     ウェビナー全体のテストと確認手順
+                                 </li>
+                                 <li class="module-item">
+                                     <i class="fas fa-chart-line module-item-icon"></i>
+                                     UTAGEダッシュボードでの数値分析と改善ポイントの特定
+                                 </li>
+                                 <li class="module-item">
+                                     <i class="fas fa-play-circle module-item-icon"></i>
+                                     どこを改善すべきか？ボトルネック特定と改善策
+                                 </li>
+                                 <li class="module-item">
+                                     <i class="fas fa-play-circle module-item-icon"></i>
+                                     A/Bテストの実践と継続的な成約率向上の仕組み
+                                 </li>
+                                 <li class="module-item">
+                                     <i class="fas fa-rocket module-item-icon"></i>
+                                     ウェビナーのスケールアップ戦略と多商品展開
+                                 </li>
+                             </ul>
+                         </div>
+                     </div>
+                 </div>
+                 <p class="curriculum-note">※全21レッスン・合計6時間以上のビデオコンテンツと実践ワークシート付き</p>
+            </section>
+
+            <!-- 教えてくれる人 -->
+            <section class="course-section instructor-section">
+                <h2 class="course-section-title">教えてくれる人</h2>
+                <div class="instructor-profile">
+                    <div class="instructor-image">
+                        <img src="/assets/images/profile-photo.webp" alt="前田由紀子">
+                    </div>
+                    <div class="instructor-details">
+                        <div class="instructor-name">前田由紀子</div>
+                        <div class="instructor-title">Web集客コンサルタント / オートウェビナー構築の専門家</div>
+                        <div class="instructor-stats">
+                            <div class="instructor-stat">
+                                <span class="stat-value">350+</span>
+                                <span class="stat-label">サポート企業数</span>
+                            </div>
+                            <div class="instructor-stat">
+                                <span class="stat-value">98%</span>
+                                <span class="stat-label">満足度</span>
+                            </div>
+                            <div class="instructor-stat">
+                                <span class="stat-value">5年</span>
+                                <span class="stat-label">UTAGE経験</span>
+                            </div>
+                        </div>
+                        <p class="instructor-bio">
+                            1980年鹿児島県生まれ。高校卒業後、ブルガリなどのハイブランドで13年間勤務。2011年、ローフードとファスティングの事業で福岡で起業。協会設立を経て、東京・青山に料理教室を開講。現在、株式会社CLANの代表取締役として活動中。自身のオンラインビジネスでUTAGEを活用したオートウェビナーを構築し、月商7桁を達成。そのノウハウを元に、中小企業やフリーランス向けにウェビナー構築支援を行っている。
+                        </p>
+                        <div class="social-links">
+                            <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 受講者の声 -->
+            <section class="course-section testimonial-section">
+                <span class="section-badge">SUCCESS STORIES</span>
+                <h2 class="course-section-title">受講者の成功体験</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-content">ウェビナー構築は難しいイメージでしたが、この講座で全体像からUTAGEでの具体的な手順まで、とても分かりやすく理解できました。受講後3週間で初の自動販売を達成できました！</p>
+                        <div class="testimonial-author-info">
+                            <img src="/assets/images/achieve-1.webp" alt="D.K様" class="testimonial-author-image">
+                            <div>
+                                <div class="testimonial-author-name">D.K様</div>
+                                <div class="testimonial-author-title">フリーランスエンジニア</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-content">集客はできていたのに、その後の教育や販売が手薄でした。この講座でウェビナーの考え方を学び、UTAGEで自動化したところ、問い合わせや購入に繋がる確率が格段に上がりました！</p>
+                        <div class="testimonial-author-info">
+                            <img src="/assets/images/achieve-2.webp" alt="N.S様" class="testimonial-author-image">
+                            <div>
+                                <div class="testimonial-author-name">N.S様</div>
+                                <div class="testimonial-author-title">美容サロンオーナー</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p class="testimonial-content">UTAGEの機能は多く複雑でしたが、この講座でウェビナー構築という目的に沿って学ぶことで必要な機能が整理されて理解できました。売上が月30%アップしています！</p>
+                        <div class="testimonial-author-info">
+                            <img src="/assets/images/achieve-3.webp" alt="A.I様" class="testimonial-author-image">
+                            <div>
+                                <div class="testimonial-author-name">A.I様</div>
+                                <div class="testimonial-author-title">オンライン秘書</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 価格 -->
+            <section class="course-section">
+                <h2 class="course-section-title">価格</h2>
+                <div class="pricing-card">
+                     <h3>オートウェビナー構築初級講座</h3>
+                     <div class="pricing-price">¥39,800<span>(税込)</span></div>
+                     <ul class="pricing-features-list">
+                         <li>買い切り型オンライン動画講座</li>
+                         <li>無期限視聴可能</li>
+                         <li>講座資料・ウェビナー構造テンプレートダウンロード</li>
+                         <li>講師への個別質問権（期間限定）</li>
+                         <li>最新情報への無料アップデート</li>
+                     </ul>
+                     <a href="#" class="btn btn-contact">今すぐ購入する</a> <!-- 仮のリンク -->
+                 </div>
+            </section>
+
+             <!-- よくある質問 -->
+             <section class="course-section">
+                 <h2 class="course-section-title">よくある質問</h2>
+                 <ul class="faq-list">
+                      <details class="faq-item">
+                          <summary>オートウェビナー構築は全くの初心者ですが大丈夫ですか？</summary>
+                          <div class="faq-answer">
+                              はい、ご安心ください。この講座はオートウェビナーやマーケティング自動化の経験がない方を対象としています。ウェビナーの概念から設計、UTAGEでの具体的な構築手順まで、基礎から丁寧に解説します。</div>
+                      </details>
+                      <details class="faq-item">
+                          <summary>UTAGE以外のツールを使っていますが、役立ちますか？</summary>
+                          <div class="faq-answer">
+                             オートウェビナーの設計思想や各ステップに必要な要素、心理トリガーなどの内容は、特定のツールに依存しないマーケティングの普遍的な知識であり、他のツールをお使いの場合でも大いに役立ちます。ただし、UTAGEをお使いいただくと、講座内容を最も効率的に実践できます。</div>
+                      </details>
+                       <details class="faq-item">
+                          <summary>IT導入補助金について講座内で触れますか？</summary>
+                          <div class="faq-answer">
+                             本講座はオートウェビナー構築の実践スキル習得に焦点を当てていますが、UTAGEがIT導入補助金の対象ツールであることや、補助金を活用した導入についても補足的に触れる可能性があります。詳しい補助金情報は別途お問い合わせください。</div>
+                      </details>
+                       <details class="faq-item">
+                          <summary>講座の視聴期限はありますか？</summary>
+                          <div class="faq-answer">
+                             この講座は買い切り型のため、一度ご購入いただければ視聴期限はありません。ご自身のペースで、何度でも繰り返し学習いただけます。</div>
+                      </details>
+                 </ul>
+             </section>
+
+        </div>
+
+        <div class="course-detail-cta">
+            <div class="course-price">¥39,800（税込）</div>
+            <a href="https://utage-marunage.com/it-hojo/" class="course-detail-button">今すぐ申し込む</a>
+        </div>
+
+        <!-- Contact CTA Section (フッター直前) -->
+        <section class="contact-cta-section">
+            <!-- 背景装飾 -->
+            <!-- IDをページ固有に -->
+            <svg class="contact-cta-bg-deco contact-cta-bg-triangle1"><use xlink:href="#svg-triangle-color-autowebinar"></use></svg>
+            <svg class="contact-cta-bg-deco contact-cta-bg-triangle2"><use xlink:href="#svg-triangle-color-autowebinar"></use></svg>
+            <span class="contact-cta-bg-deco contact-cta-bg-circle1"></span>
+            <span class="contact-cta-bg-deco contact-cta-bg-circle2"></span>
+
+            <div class="contact-cta-container">
+                <span class="contact-cta-subtitle">IT導入補助金2025活用可能</span>
+                <h2 class="contact-cta-title">申請は完全丸投げOK！</h2>
+                <p class="contact-cta-lead">
+                    UTAGEの導入で最大450万円の補助金が受けられます。<br class="pc-only">
+                    面倒な申請手続きはすべてお任せください。<br class="pc-only">
+                    あなたは事業成長に集中するだけでOKです。
+                </p>
+                <div class="contact-cta-buttons">
+                    <a href="https://utage-marunage.com/it-hojo/" class="btn btn-contact">
+                        無料相談してみる
+                    </a>
+                    <a href="../document.html" class="btn btn-document">
+                        <svg><use xlink:href="#icon-pdf"></use></svg>
+                        資料請求する
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+<div id="footer-placeholder"></div>
+<script src="/js/script.js"></script>
+<script src="/js/include.js"></script>
+</body>
+</html>

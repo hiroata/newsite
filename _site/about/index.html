@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="オートウェビナー大学は、マーケティング自動化とウェビナー構築であなたのビジネスを加速させるオンラインスクールです。UTAGEを活用したオートウェビナー構築で時間と売上を手に入れましょう。">
+    <title>オートウェビナー大学とは｜マーケティング自動化とウェビナー構築でビジネスを加速</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="/images/favicon.ico">
+    <meta property="og:title" content="オートウェビナー大学とは｜マーケティング自動化とウェビナー構築でビジネスを加速">
+    <meta property="og:description" content="オートウェビナー大学は、マーケティング自動化とウェビナー構築であなたのビジネスを加速させるオンラインスクールです。UTAGEを活用したオートウェビナー構築で時間と売上を手に入れましょう。">
+    <meta property="og:image" content="/images/ogp_image_about.webp">
+    <meta property="og:type" content="article">
+
+    <!-- JavaScriptの遅延ロード -->
+    <script src="/js/script.js" defer></script>
+    
+    <!-- 共通部分読み込み用のスクリプト -->
+    <script src="/assets/js/components.js" defer></script>
+
+    <style>
+        /* aboutページ固有の追加スタイルのみ残す */
+        :root {
+            --primary-color: #0066ff;
+            --secondary-color: #ff3a3a;
+            --accent-color: #ff9500;
+            --dark-blue: #0d3283;
+            --light-bg: #f8f9fa;
+            --gradient-primary: linear-gradient(135deg, #6a82fb 0%, #fc5c7d 100%);
+            --gradient-secondary: linear-gradient(135deg, #ff3a3a, #ff7d7d);
+            --gradient-success: linear-gradient(135deg, #00c853, #69f0ae);
+            --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --shadow-strong: 0 15px 40px rgba(0, 0, 0, 0.12);
+            --transition-fast: all 0.3s ease;
+            --border-radius: 12px;
+        }
+        .page-hero-section {
+            background: var(--gradient-primary), url('/assets/images/hero-pc.webp') center/cover no-repeat;
+            padding: 100px 0 60px;
+            position: relative;
+            overflow: hidden;
+            color: white;
+            text-align: center;
+            box-shadow: var(--shadow-soft);
+            min-height: 380px;
+        }
+        @media (max-width: 768px) {
+            .page-hero-section {
+                background: var(--gradient-primary), url('/assets/images/hero-sp.webp') center/cover no-repeat;
+                min-height: 220px;
+                padding: 60px 0 30px;
+            }
+        }
+        .page-hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.18) 100%);
+            z-index: 1;
+        }
+        .page-hero-container {
+            position: relative;
+            z-index: 2;
+        }
+        .page-hero-title {
+            font-size: 34px;
+            font-weight: 900;
+            margin-bottom: 18px;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+        .page-hero-lead {
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto 18px;
+            line-height: 1.7;
+        }
+        .hero-sub-heading {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 28px;
+            font-weight: 500;
+        }
+        .cta-button-hero {
+            display: inline-block;
+            background: white;
+            color: var(--primary-color);
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 16px;
+            text-decoration: none;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.10);
+            transition: var(--transition-fast);
+            margin: 10px 6px;
+        }
+        .cta-button-hero.secondary {
+            background: var(--secondary-color);
+            color: white;
+        }
+        /* セクション共通 */
+        section {
+            margin-bottom: 48px;
+        }
+        .section-title {
+            font-size: 26px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: var(--dark-blue);
+        }
+        .section-subtitle {
+            color: var(--secondary-color);
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+        }
+        /* 特徴・サービス画像を大きく */
+        .features-list img,
+        .services-grid img,
+        .achievement-card img {
+            width: 180px !important;
+            height: 180px !important;
+            object-fit: contain;
+            margin-bottom: 18px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        @media (max-width: 768px) {
+            .features-list img, .services-grid img, .achievement-card img { width: 110px !important; height: 110px !important; }
+        }
+        .feature-item, .service-item {
+            text-align: center;
+            padding: 18px 10px;
+            border-radius: 10px;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            margin-bottom: 18px;
+        }
+        .features-list, .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+        }
+        .achievement-card-list {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .achievement-card {
+            width: 220px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            text-align: center;
+            padding: 12px 8px 18px;
+        }
+        .achievement-card p {
+            font-size: 14px;
+            margin: 8px 0 0;
+        }
+        .target-list ul {
+            list-style: none;
+            padding: 0;
+        }
+        .target-list li {
+            margin-bottom: 10px;
+            font-size: 15px;
+            padding-left: 1.2em;
+            position: relative;
+        }
+        .target-list li .text-red {
+            color: var(--secondary-color);
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        @media (max-width: 768px) {
+            .page-hero-title { font-size: 22px; }
+            .page-hero-lead { font-size: 15px; }
+            .cta-button-hero { padding: 10px 16px; font-size: 15px; }
+            .features-list img, .services-grid img, .achievement-card img { width: 48px; height: 48px; }
+            .feature-item, .service-item, .achievement-card { padding: 10px 4px 12px; }
+            .section-title { font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- SVGアイコン定義 -->
+<svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <!-- PDFアイコン -->
+        <symbol id="icon-pdf" viewBox="0 0 32 32">
+            <path d="M20 2H4C2.9 2 2 2.9 2 4v24c0 1.1.9 2 2 2h24c1.1 0 2-.9 2-2V10L20 2zm4 26H6V4h14v8h6v16zM13.3 14.7c-.7 0-1.3.6-1.3 1.3s.6 1.3 1.3 1.3 1.3-.6 1.3-1.3-.6-1.3-1.3-1.3zm4 8c0-1.5-2.7-2.3-4-2.3s-4 .8-4 2.3v.7h8v-.7z"/>
+        </symbol>
+        <!-- メールアイコン -->
+        <symbol id="icon-mail" viewBox="0 0 32 32">
+            <path d="M16 0C7.2 0 0 7.2 0 16s7.2 16 16 16 16-7.2 16-16S24.8 0 16 0zM8 8h16c.3 0 .6.1.8.2L16 18.5 7.2 8.2c.2-.1.5-.2.8-.2zm-2 14v-12c0-.1 0-.1 0-.1l5.9 6.8-5.8 5.8c0-.2-.1-.3-.1-.5zm18 2H8c-.2 0-.4 0-.5-.1l5.7-5.7 2.8 3.3 2.8-3.3 5.7 5.7c-.2 0-.3.1-.5.1zm2-2c0 .2 0 .4-.1.5l-5.8-5.8 5.9-6.8v12.1z"/>
+        </symbol>
+        <!-- 本アイコン -->
+        <symbol id="icon-book" viewBox="0 0 32 32">
+            <path d="M28 4v26H7c-1.7 0-3-1.3-3-3s1.3-3 3-3h19V4H7C4.8 4 3 5.8 3 8v24c0 2.2 1.8 4 4 4h24V4h-3z"/>
+            <path d="M7 26c-.6 0-1 .4-1 1s.4 1 1 1h19v-2H7z"/>
+        </symbol>
+        <!-- カラフルな三角形 -->
+        <symbol id="svg-triangle-color" viewBox="0 0 200 200">
+            <polygon points="0,0 200,0 0,200" fill="rgba(255,255,255,.15)"/>
+        </symbol>
+        <!-- 検索アイコン -->
+        <symbol id="icon-search" viewBox="0 0 32 32">
+            <path d="M31 27.2l-7.6-6.4c-.8-.7-1.6-1-2.3-1 1.8-2.1 2.9-4.8 2.9-7.8 0-6.6-5.4-12-12-12S0 5.4 0 12s5.4 12 12 12c3 0 5.7-1.1 7.8-2.9 0 .7.3 1.5 1 2.3l6.4 7.6c1.1 1.2 2.9 1.3 4 .2s1-2.9-.2-4zM12 20c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8z"/>
+        </symbol>
+    </defs>
+</svg>
+
+<!-- ヘッダー -->
+<header class="site-header">
+    <div class="header-container">
+        <div class="site-logo-text">
+            <a href="/index.html">CLAN</a>
+        </div>
+        <nav class="global-nav pc-nav">
+            <ul>
+                <li><a href="/index.html">ホーム</a></li>
+                <li><a href="/about.html" aria-current="page">オートウェビナー大学とは</a></li>
+                <li><a href="/blog/index.html">ブログ</a></li>
+                <!-- <li><a href="/seminar/index.html">オンライン講座</a></li> -->
+                <li><a href="/tools/index.html">まえゆきツール</a></li>
+                <li><a href="/achievement/index.html">お客様の声</a></li>
+            </ul>
+        </nav>
+        <div class="header-cta">
+            <a href="/document.html" class="btn-document">
+                <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
+                資料請求する
+            </a>
+            <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
+                まずは相談する
+            </a>
+        </div>
+        <button class="hamburger-button sp-nav" aria-label="メニューを開く">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</header>
+
+<!-- モバイルメニュー -->
+<div class="mobile-menu">
+    <nav>
+        <ul>
+            <li><a href="/index.html">ホーム</a></li>
+            <li><a href="/about.html" aria-current="page">オートウェビナー大学とは</a></li>
+            <li><a href="/blog/index.html">ブログ</a></li>
+            <!-- <li><a href="/seminar/index.html">オンライン講座</a></li> -->
+            <li><a href="/tools/index.html">まえゆきツール</a></li>
+            <li><a href="/achievement/index.html">お客様の声</a></li>
+        </ul>
+    </nav>
+    <div class="mobile-cta">
+        <a href="/document.html" class="btn-document">
+            <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
+            資料請求する
+        </a>
+        <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
+            まずは相談する
+        </a>
+    </div>
+</div>
+
+<!-- スマホ用フッター固定CTA -->
+<div class="sp-fix-cta">
+    <ul>
+        <li class="mail"><a href="https://utage-marunage.com/it-hojo/">まずは相談する</a></li>
+        <li class="book"><a href="/document.html">資料請求する</a></li>
+    </ul>
+</div>
+
+<main class="site-main">
+
+    <!-- ページヒーローセクション -->
+    <section class="page-hero-section">
+        <div class="page-hero-container">
+            <h1 class="page-hero-title">あなたの知識と情熱を、<br>自動ウェビナーで届ける。</h1>
+            <p class="page-hero-lead">
+                オートウェビナー大学は「自分らしい働き方」と「売上の安定」を両立したい方のための、<br>
+                ウェビナー自動化・デジタル活用の学び場です。
+            </p>
+        </div>
+    </section>
+
+    <!-- コンセプトセクション -->
+    <section class="concept-section section-padding inner">
+        <div class="section-title-container">
+            <span class="section-subtitle">＼ オートウェビナー大学のコンセプト ／</span>
+            <h2 class="section-title">「自分らしい働き方」と<br class="sp-only">「売上の安定」の両立</h2>
+        </div>
+
+        <div class="concept-content">
+            <div class="concept-text">
+                <p>
+                    起業家やフリーランスの最大の悩みは「時間と収入のトレードオフ」。<br>
+                    <br>
+                    収入を増やそうとすると働く時間が増え、自由な時間を確保しようとすると収入が減る...<br>
+                    <br>
+                    そんなジレンマを解決するのが<strong>「オートウェビナー」</strong>の力です。<br>
+                    <br>
+                    24時間365日、あなたに代わって<br>
+                    ・お客様との信頼関係の構築<br>
+                    ・商品やサービスの説明<br>
+                    ・質問への回答<br>
+                    ・決済までのプロセス<br>
+                    <br>
+                    すべてを自動化することで、あなたは本来やりたいことや得意なことに集中できるようになります。
+                </p>
+            </div>
+            <div class="concept-image">
+                <!-- 画像はそのまま使用 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section section-padding inner">
+        <div class="section-title-container">
+            <span class="section-subtitle">＼ オートウェビナー大学の特徴 ／</span>
+            <h2 class="section-title">なぜオートウェビナーなのか</h2>
+        </div>
+
+        <div class="features-grid">
+            <!-- Feature 1 -->
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <img 
+                        src="/assets/images/feature-icon1.webp" 
+                        alt="複数ツールの連携が不要" 
+                        width="80" 
+                        height="80"
+                    >
+                </div>
+                <h3 class="feature-title">複数ツールの連携が不要</h3>
+                <p class="feature-text">
+                    LP作成、メール配信、決済システム、会員サイト...様々なツールの連携は複雑で時間がかかります。UTAGEは必要な機能がすべて揃った統合プラットフォーム。ツール選びや連携の手間から解放されます。
+                </p>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <img 
+                        src="/assets/images/feature-icon2.webp" 
+                        alt="寝ている間も売上が上がる" 
+                        width="80" 
+                        height="80"
+                    >
+                </div>
+                <h3 class="feature-title">寝ている間も売上が上がる</h3>
+                <p class="feature-text">
+                    オートウェビナーシステムは24時間365日稼働し、あなたに代わって見込み客の教育から販売までを自動で行います。時差のある海外からの購入も逃しません。自動化された販売の仕組みがあなたの代わりに働き続けます。
+                </p>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <img 
+                        src="/assets/images/feature-icon3.webp" 
+                        alt="ITスキル不要" 
+                        width="80" 
+                        height="80"
+                    >
+                </div>
+                <h3 class="feature-title">ITスキル不要</h3>
+                <p class="feature-text">
+                    「デジタルマーケティングは難しい...」そんな不安は不要です。私たちのサポートで、専門知識がなくても自分だけのオートウェビナーシステムを構築できます。まずはあなたの専門知識をお聞かせください。
+                </p>
+            </div>
+
+            <!-- Feature 4 -->
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <img 
+                        src="/assets/images/feature-icon4.webp" 
+                        alt="貴重な自分時間の確保" 
+                        width="80" 
+                        height="80"
+                    >
+                </div>
+                <h3 class="feature-title">貴重な自分時間の確保</h3>
+                <p class="feature-text">
+                    時間は有限です。オートウェビナーの導入により、問い合わせ対応や営業活動から解放され、クリエイティブな活動や家族との時間など、本当に大切なことに時間を使えるようになります。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Owner Profile Section -->
+    <section class="owner-profile-section section-padding inner">
+        <div class="section-title-container">
+            <span class="section-subtitle">＼ 運営者からのメッセージ ／</span>
+            <h2 class="section-title">前田 由紀子</h2>
+            <p class="section-sub-title">オートウェビナー構築の専門家</p>
+        </div>
+        <div class="owner-profile-container">
+            <div class="owner-profile-image">
+                <img 
+                    src="/assets/images/profile-photo.webp" 
+                    alt="前田 由紀子" 
+                    width="300" 
+                    height="300"
+                >
+            </div>
+            <div class="owner-profile-text">
+                <p>
+                    こんにちは。オートウェビナー大学の前田由紀子です。<br><br>
+                    
+                    私は元々IT企業のフロントエンドエンジニアとして活躍した後、フリーランスとして独立。<br><br>
+                    
+                    「自分らしく働きたい」と始めた独立生活でしたが、最初は時間と売上のトレードオフに悩み続けていました。<br><br>
+                    
+                    24時間対応の個別サポートと売上向上の両立を求めて様々なツールを試す中で出会ったのが「UTAGE」というオールインワンシステム。<br><br>
+                    
+                    UTAGEを活用したオートウェビナーシステムの構築で、自分の時間を確保しながらも安定した売上を実現できるように。<br><br>
+                    
+                    その経験を多くの方と共有したい、そんな想いからオートウェビナー大学が誕生しました。<br><br>
+                    
+                    ITエンジニアとフリーランスの両方の経験を活かし、「テクノロジーを使いこなせない」という悩みを持つ個人事業主やコンサルタントの方々の「売れる仕組み」づくりをサポートしています。
+                </p>
+                <a href="/owner.html" class="btn-more">詳しく見る</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Section -->
+    <section class="service-section section-padding inner">
+        <div class="section-title-container">
+            <span class="section-subtitle">＼ オートウェビナー大学のサービス ／</span>
+            <h2 class="section-title">自動化を実現する3つのサービス</h2>
+        </div>
+        <div class="service-list">
+            <!-- Service 1 -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img 
+                        src="/assets/images/service-funnel.webp" 
+                        alt="オートウェビナー構築代行" 
+                        width="400" 
+                        height="250"
+                    >
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">オートウェビナー構築代行</h3>
+                    <p class="service-description">
+                        24時間あなたに代わって商品を売り続ける自動販売システムの構築を代行します。コンセプト設計からUTAGE設定、LP制作、動画編集まで。IT補助金対象サービスです。
+                    </p>
+                    <a href="https://utage-marunage.com/it-hojo/" class="service-button">詳細を見る</a>
+                </div>
+            </div>
+        
+            <!-- Service 2 -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img 
+                        src="/assets/images/service-lp.webp" 
+                        alt="ウェビナー用LP制作" 
+                        width="400" 
+                        height="250"
+                    >
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">ウェビナー用LP制作</h3>
+                    <p class="service-description">
+                        集客から成約までを導くランディングページを制作します。あなたの強みやストーリーを魅力的に伝え、ウェビナーへの申し込みを最大化します。
+                    </p>
+                    <a href="/course/lp.html" class="service-button">Coming Soon</a>
+                </div>
+            </div>
+            
+            <!-- Service 3 -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img 
+                        src="/assets/images/service-video.webp" 
+                        alt="ウェビナー動画制作" 
+                        width="400" 
+                        height="250"
+                    >
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">ウェビナー動画制作</h3>
+                    <p class="service-description">
+                        視聴者を惹きつけ、説得力のあるウェビナー動画を制作します。あなたのメッセージを効果的に伝え、視聴者の行動を促すための動画編集サービスです。
+                    </p>
+                    <a href="/course/video.html" class="service-button">Coming Soon</a>
+                </div>
+            </div>
+            
+            <!-- Service 4 -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img 
+                        src="/assets/images/service-stepmail.webp" 
+                        alt="フォローアップメール設計" 
+                        width="400" 
+                        height="250"
+                    >
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">フォローアップメール設計</h3>
+                    <p class="service-description">
+                        ウェビナー後の購入率を高めるフォローアップメールシナリオを設計します。お客様との関係構築から購入決断を促すシナリオ設計まで一貫してサポートします。
+                    </p>
+                    <a href="/course/step-mail.html" class="service-button">Coming Soon</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section section-padding inner">
+        <div class="section-title-container">
+            <span class="section-subtitle">＼ よくあるご質問 ／</span>
+            <h2 class="section-title">FAQ</h2>
+        </div>
+        
+        <div class="faq-list">
+            <details class="faq-item">
+                <summary class="faq-question">
+                    <span>UTAGEってどんなシステムですか？</span>
+                </summary>
+                <div class="faq-answer">
+                    <p>UTAGEは、ランディングページ制作、メール・LINE配信、会員サイト構築、決済システムなどがオールインワンで揃った統合型マーケティングプラットフォームです。複数のツールを連携させる手間なく、一つのシステムで集客から販売までの全プロセスを自動化できます。</p>
+                </div>
+            </details>
+            
+            <details class="faq-item">
+                <summary class="faq-question">
+                    <span>IT導入補助金は本当に使えますか？</span>
+                </summary>
+                <div class="faq-answer">
+                    <p>はい、UTAGEを活用したオートウェビナー構築サービスはIT導入補助金の対象となります。2025年度のIT導入補助金では最大450万円の補助金が受けられ、面倒な申請手続きもすべて私たちが代行します。詳しくは「詳細を見る」ボタンからご確認ください。</p>
+                </div>
+            </details>
+            
+            <details class="faq-item">
+                <summary class="faq-question">
+                    <span>ITが苦手でも大丈夫ですか？</span>
+                </summary>
+                <div class="faq-answer">
+                    <p>はい、問題ありません！私たちのオートウェビナー構築代行サービスでは、システムの設定から運用まですべてサポートします。「丸投げプラン」なら、あなたはコンテンツの核となる専門知識を提供するだけで、技術的な部分はすべて私たちが対応します。また、ご自身で運用されたい場合には、専用のマニュアルや個別サポートもご用意しています。</p>
+                </div>
+            </details>
+            
+            <details class="faq-item">
+                <summary class="faq-question">
+                    <span>どんな業種や職種に向いていますか？</span>
+                </summary>
+                <div class="faq-answer">
+                    <p>コンサルタント、コーチ、セラピスト、士業（税理士、行政書士など）、専門知識を持つ個人事業主の方など、自分の専門知識やノウハウをサービスとして販売している方に特に適しています。また、オンラインスクールやセミナー運営、会員サイト運営などのビジネスモデルとの相性も抜群です。B to Cだけでなく、B to Bの営業プロセスの効率化にも効果を発揮します。</p>
+                </div>
+            </details>
+            
+            <details class="faq-item">
+                <summary class="faq-question">
+                    <span>費用対効果はどうですか？</span>
+                </summary>
+                <div class="faq-answer">
+                    <p>オートウェビナー構築の初期投資は、IT導入補助金を活用すれば実質負担を大幅に抑えられます。また、構築後は24時間365日稼働する販売システムとなるため、例えば月に数件の高額商品が自動で販売されるだけでも十分な投資回収が見込めます。また、時間的コストの削減効果も大きく、営業や個別説明に費やしていた時間を創造的な活動や家族との時間に使えるようになります。</p>
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <!-- Contact CTA Section -->
+    <section class="contact-cta-section">
+        <div class="contact-cta-container">
+            <span class="contact-cta-subtitle">まずは気軽にご相談ください</span>
+            <h2 class="contact-cta-title">無料相談受付中</h2>
+            <p class="contact-cta-lead">
+                「自分のビジネスに合うか分からない」<br class="pc-only">
+                「どんな効果が期待できるの？」<br class="pc-only">
+                「費用はどのくらい？」<br class="pc-only">
+                などのご質問に、分かりやすくお答えします。
+            </p>
+            <div class="contact-cta-buttons">
+                <a href="/free-consultation.html" class="btn btn-contact">無料相談してみる</a>
+                <a href="/document.html" class="btn btn-document">資料請求する</a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<div id="footer-placeholder"></div>
+<script src="/js/include.js"></script>
+<script src="/js/script.js"></script>
+</body>
+</html>

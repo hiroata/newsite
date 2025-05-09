@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="オートウェビナー大学の講座を受講された方々の成功事例やビジネス成果をご紹介します。実際にUTAGEを活用した自動化で売上アップを実現した事例を多数掲載。">
+    <title>お客様の声・成功事例一覧 | オートウェビナー大学</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="/assets/images/favicon.ico">
+    <meta property="og:title" content="お客様の声・成功事例一覧 | オートウェビナー大学">
+    <meta property="og:description" content="オートウェビナー大学の講座を受講された方々の成功事例やビジネス成果をご紹介します。実際にUTAGEを活用した自動化で売上アップを実現した事例を多数掲載。">
+    <meta property="og:image" content="/assets/images/ogp_image_achievements.webp">
+    <meta property="og:type" content="website">
+    <script src="/assets/js/components.js" defer></script>
+    <style>
+        :root {
+            --primary-color: #0066ff;
+            --secondary-color: #ff3a3a;
+            --accent-color: #ff9500;
+            --dark-blue: #0d3283;
+            --light-bg: #f8f9fa;
+            --gradient-primary: linear-gradient(135deg, #0066ff, #00b8ff);
+            --gradient-secondary: linear-gradient(135deg, #ff3a3a, #ff7d7d);
+            --gradient-success: linear-gradient(135deg, #00c853, #69f0ae);
+            --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --shadow-strong: 0 15px 40px rgba(0, 0, 0, 0.12);
+            --transition-fast: all 0.3s ease;
+            --border-radius: 12px;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: #333;
+            line-height: 1.8;
+            background-color: #f9fafc;
+        }
+
+        .achievement-hero {
+            background: var(--gradient-primary);
+            padding: 110px 0 70px;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .achievement-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('/assets/images/dots-pattern.webp');
+            opacity: 0.07;
+            z-index: 1;
+        }
+
+        .achievement-hero-container {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .achievement-hero-title {
+            font-size: 44px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .achievement-hero-lead {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+
+        .achievement-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 20px 30px;
+            border-radius: 15px;
+            text-align: center;
+            min-width: 180px;
+        }
+
+        .stat-number {
+            font-size: 42px;
+            font-weight: 900;
+            margin-bottom: 5px;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 15px;
+            opacity: 0.9;
+        }
+
+        .achievement-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .filter-section {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .filter-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--dark-blue);
+        }
+
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .filter-button {
+            background: white;
+            color: #555;
+            border: 1px solid #e0e0e0;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .filter-button:hover, .filter-button.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+            box-shadow: 0 5px 15px rgba(0, 102, 255, 0.2);
+        }
+
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 30px;
+        }
+
+        .achievement-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition-fast);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .achievement-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-primary);
+        }
+
+        .achievement-image {
+            width: 100%;
+            height: auto;
+            overflow: hidden;
+        }
+
+        .achievement-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .achievement-card:hover .achievement-image img {
+            transform: scale(1.05);
+        }
+
+        .achievement-header {
+            padding: 25px 25px 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .achievement-tag {
+            display: inline-block;
+            background: rgba(0, 102, 255, 0.1);
+            color: var(--primary-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .achievement-tag.tag-ecommerce {
+            background: rgba(255, 87, 34, 0.1);
+            color: #ff5722;
+        }
+
+        .achievement-tag.tag-service {
+            background: rgba(0, 200, 83, 0.1);
+            color: #00c853;
+        }
+
+        .achievement-tag.tag-consulting {
+            background: rgba(156, 39, 176, 0.1);
+            color: #9c27b0;
+        }
+
+        .achievement-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #333;
+            line-height: 1.4;
+            margin: 0 0 10px;
+        }
+
+        .achievement-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #777;
+        }
+
+        .achievement-company {
+            display: flex;
+            align-items: center;
+        }
+
+        .achievement-company-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #f0f0f0;
+            margin-right: 8px;
+            overflow: hidden;
+        }
+
+        .achievement-company-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .achievement-content {
+            padding: 20px 25px;
+            flex-grow: 1;
+        }
+
+        .achievement-stats-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .achievement-stat {
+            flex: 1;
+            min-width: 100px;
+            background: var(--light-bg);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .achievement-stat-number {
+            display: block;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .achievement-stat-label {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .achievement-description {
+            margin-bottom: 20px;
+            font-size: 15px;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .achievement-quote {
+            background: #f9f9f9;
+            border-left: 4px solid var(--primary-color);
+            padding: 15px;
+            font-style: italic;
+            color: #555;
+            font-size: 14px;
+            margin-bottom: 0;
+        }
+
+        .achievement-cta {
+            padding: 15px 25px;
+            border-top: 1px solid #f0f0f0;
+            text-align: right;
+        }
+
+        .achievement-cta-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 14px;
+            text-decoration: none;
+            transition: var(--transition-fast);
+        }
+
+        .achievement-cta-link:hover {
+            color: var(--dark-blue);
+        }
+
+        .achievement-cta-link svg {
+            width: 18px;
+            height: 18px;
+            margin-left: 5px;
+            transition: var(--transition-fast);
+        }
+
+        .achievement-cta-link:hover svg {
+            transform: translateX(5px);
+        }
+
+        .achievement-testimonial {
+            background: white;
+            padding: 70px 0;
+            margin-top: 40px;
+        }
+
+        .testimonial-title {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 900;
+            margin-bottom: 50px;
+            color: var(--dark-blue);
+        }
+
+        .testimonial-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            padding: 0 20px;
+        }
+
+        .testimonial-quote {
+            position: relative;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        .testimonial-quote::before {
+            content: '"';
+            position: absolute;
+            top: -30px;
+            left: 20px;
+            font-size: 120px;
+            color: var(--primary-color);
+            opacity: 0.2;
+            font-family: serif;
+            line-height: 1;
+        }
+
+        .testimonial-text {
+            position: relative;
+            z-index: 1;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            margin-left: 30px;
+        }
+
+        .testimonial-author-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-author-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .testimonial-author-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .testimonial-author-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .testimonial-author-title {
+            font-size: 14px;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .achievement-hero {
+                padding: 90px 0 60px;
+            }
+            
+            .achievement-hero-title {
+                font-size: 32px;
+            }
+            
+            .achievement-hero-lead {
+                font-size: 16px;
+            }
+            
+            .stat-item {
+                min-width: 140px;
+                padding: 15px;
+            }
+            
+            .stat-number {
+                font-size: 32px;
+            }
+            
+            .achievement-container {
+                padding: 50px 15px;
+            }
+            
+            .achievement-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonial-quote {
+                padding: 20px;
+            }
+            
+            .testimonial-text {
+                font-size: 16px;
+            }
+            
+            .testimonial-title {
+                font-size: 28px;
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- SVGアイコン定義 -->
+<svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <!-- PDFアイコン -->
+        <symbol id="icon-pdf" viewBox="0 0 32 32">
+            <path d="M20 2H4C2.9 2 2 2.9 2 4v24c0 1.1.9 2 2 2h24c1.1 0 2-.9 2-2V10L20 2zm4 26H6V4h14v8h6v16zM13.3 14.7c-.7 0-1.3.6-1.3 1.3s.6 1.3 1.3 1.3 1.3-.6 1.3-1.3-.6-1.3-1.3-1.3zm4 8c0-1.5-2.7-2.3-4-2.3s-4 .8-4 2.3v.7h8v-.7z"/>
+        </symbol>
+        <!-- メールアイコン -->
+        <symbol id="icon-mail" viewBox="0 0 32 32">
+            <path d="M16 0C7.2 0 0 7.2 0 16s7.2 16 16 16 16-7.2 16-16S24.8 0 16 0zM8 8h16c.3 0 .6.1.8.2L16 18.5 7.2 8.2c.2-.1.5-.2.8-.2zm-2 14v-12c0-.1 0-.1 0-.1l5.9 6.8-5.8 5.8c0-.2-.1-.3-.1-.5zm18 2H8c-.2 0-.4 0-.5-.1l5.7-5.7 2.8 3.3 2.8-3.3 5.7 5.7c-.2 0-.3.1-.5.1zm2-2c0 .2 0 .4-.1.5l-5.8-5.8 5.9-6.8v12.1z"/>
+        </symbol>
+        <!-- 本アイコン -->
+        <symbol id="icon-book" viewBox="0 0 32 32">
+            <path d="M28 4v26H7c-1.7 0-3-1.3-3-3s1.3-3 3-3h19V4H7C4.8 4 3 5.8 3 8v24c0 2.2 1.8 4 4 4h24V4h-3z"/>
+            <path d="M7 26c-.6 0-1 .4-1 1s.4 1 1 1h19v-2H7z"/>
+        </symbol>
+        <!-- カラフルな三角形 -->
+        <symbol id="svg-triangle-color" viewBox="0 0 200 200">
+            <polygon points="0,0 200,0 0,200" fill="rgba(255,255,255,.15)"/>
+        </symbol>
+        <!-- 検索アイコン -->
+        <symbol id="icon-search" viewBox="0 0 32 32">
+            <path d="M31 27.2l-7.6-6.4c-.8-.7-1.6-1-2.3-1 1.8-2.1 2.9-4.8 2.9-7.8 0-6.6-5.4-12-12-12S0 5.4 0 12s5.4 12 12 12c3 0 5.7-1.1 7.8-2.9 0 .7.3 1.5 1 2.3l6.4 7.6c1.1 1.2 2.9 1.3 4 .2s1-2.9-.2-4zM12 20c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8z"/>
+        </symbol>
+    </defs>
+</svg>
+
+<!-- ヘッダー -->
+<header class="site-header">
+    <div class="header-container">
+        <div class="site-logo-text">
+            <a href="/index.html">CLAN</a>
+        </div>
+        <nav class="global-nav pc-nav">
+            <ul>
+                <li><a href="/index.html">ホーム</a></li>
+                <li><a href="/about.html">オートウェビナー大学とは</a></li>
+                <li><a href="/blog/index.html">ブログ</a></li>
+                <li><a href="/seminar/index.html">オンライン講座</a></li>
+                <li><a href="/tools/index.html">まえゆきツール</a></li>
+                <li><a href="/achievement/index.html" aria-current="page">お客様の声</a></li>
+            </ul>
+        </nav>
+        <div class="header-cta">
+            <a href="/document.html" class="btn-document">
+                <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
+                資料請求する
+            </a>
+            <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
+                まずは相談する
+            </a>
+        </div>
+        <button class="hamburger-button sp-nav" aria-label="メニューを開く">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</header>
+
+<!-- モバイルメニュー -->
+<div class="mobile-menu">
+    <nav>
+        <ul>
+            <li><a href="/index.html">ホーム</a></li>
+            <li><a href="/about.html">オートウェビナー大学とは</a></li>
+            <li><a href="/blog/index.html">ブログ</a></li>
+            <li><a href="/seminar/index.html">オンライン講座</a></li>
+            <li><a href="/tools/index.html">まえゆきツール</a></li>
+            <li><a href="/achievement/index.html" aria-current="page">お客様の声</a></li>
+        </ul>
+    </nav>
+    <div class="mobile-cta">
+        <a href="/document.html" class="btn-document">
+            <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
+            資料請求する
+        </a>
+        <a href="https://utage-marunage.com/it-hojo/" class="btn-contact">
+            まずは相談する
+        </a>
+    </div>
+</div>
+
+<!-- スマホ用フッター固定CTA -->
+<div class="sp-fix-cta">
+    <ul>
+        <li class="mail"><a href="https://utage-marunage.com/it-hojo/">まずは相談する</a></li>
+        <li class="book"><a href="/document.html">資料請求する</a></li>
+    </ul>
+</div>
+
+<main class="site-main">
+    <section class="achievement-hero">
+        <div class="achievement-hero-container">
+            <h1 class="achievement-hero-title">ビジネス自動化の成功事例</h1>
+            <p class="achievement-hero-lead">
+                UTAGEを活用した自動化で売上アップと時間の自由を実現した<br>
+                オートウェビナー大学の導入企業様の実績をご紹介します
+            </p>
+
+            <div class="achievement-stats">
+                <div class="stat-item">
+                    <div class="stat-number">300+</div>
+                    </div>
+                    <div class="achievement-content">
+                        <div class="achievement-stats-row">
+                            <div class="achievement-stat">
+                                <span class="achievement-stat-number">2倍</span>
+                                <span class="achievement-stat-label">月商アップ</span>
+                            </div>
+                            <div class="achievement-stat">
+                                <span class="achievement-stat-number">70%</span>
+                                <span class="achievement-stat-label">作業時間削減</span>
+                            </div>
+                            <div class="achievement-stat">
+                                <span class="achievement-stat-number">4週間</span>
+                                <span class="achievement-stat-label">導入期間</span>
+                            </div>
+                        </div>
+                        <p class="achievement-description">
+                            フリーランスWebデザイナーが集客からクロージングまでの全プロセスを自動化。見込み客の教育と販売を24時間自動で行う仕組みを構築しました。
+                        </p>
+                        <blockquote class="achievement-quote">
+                            「これまで営業に時間を取られていましたが、今は本業に集中でき、さらに収入も増えました。自動化の威力を実感しています」
+                        </blockquote>
+                    </div>
+                    <div class="achievement-cta">
+                        <a href="/achievement/customer2.html" class="achievement-cta-link">
+                            詳細を見る
+                        </a>
+                    </div>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-image">
+                        <img src="/assets/images/achieve-3.webp" alt="24時間販売の自動化動線完成！">
+                    </div>
+                    <div class="achievement-header">
+                        <span class="achievement-tag tag-consulting">コンサルタント</span>
+                        <h3 class="achievement-title">24時間販売の自動化動線完成！</h3>
+                        <div class="achievement-meta">
+                            <div class="achievement-company">
+                                <span class="achievement-company-icon">
+                                    <img src="/assets/images/company-icon3.webp" alt="企業アイコン">
+                                </span>
+                                <span>起業コンサルタント</span>
+                            </div>
+                            <div class="achievement-date">2024年11月</div>
+                        </div>
+                    </div>
+                    <div class="achievement-content">
+                        <div class="achievement-stats-row">
+                            <div class="achievement-stat">
+                                <span class="achievement-stat-number">450万</span>
+                                <span class="achievement-stat-label">月間売上</span>
+                            </div>
+                            <div class="achievement-stat">
+                                <span class="achievement-stat-number">100%</span>
+                                <span class="achievement-stat-label">自動化率</span>
+                            </div>
+                            <div class="achievement-stat">
+                                <span class="achievement-stat-number">6週間</span>
+                                <span class="achievement-stat-label">導入期間</span>
+                            </div>
+                        </div>
+                        <p class="achievement-description">
+                            起業コンサルタントがオートウェビナーシステムを構築。商品説明から決済までを完全自動化し、寝ている間も売上が発生する仕組みを実現しました。
+                        </p>
+                        <blockquote class="achievement-quote">
+                            「セミナー集客と販売に時間を取られていましたが、今は自動で売れる仕組みができ、新規コンテンツ開発に集中できています」
+                        </blockquote>
+                    </div>
+                    <div class="achievement-cta">
+                        <a href="/achievement/customer3.html" class="achievement-cta-link">
+                            詳細を見る
+                        </a>
+                    </div>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-image">
+                        <img src="/assets/images/achieve-4.webp" alt="移行初月に月商8桁達成！">
+                    </div>
+                    <div class="achievement-header">
+                        <span class="achievement-tag tag-ecommerce">ECサイト</span>
+                        <h3 class="achievement-title">移行初月に月商8桁達成！</h3>
+                        <div class="achievement-meta">
+                            <div class="achievement-company">
+                                <span class="achievement-company-icon">
+                                    <img src="/assets/images/company-icon4.webp" alt="企業アイコン">
+                                </span>
+                                <span>健康食品販売</span>
+                            </div>
+                            <div class="achievement-date">2024年10月</div>
+                        </div>
+                    </div>
+                    <div class="achievement-content">
+                        <div class="achievement-stats-row">
+                            <div class="achievement-stat">
+                                <span class="achievement-stat-number">1200万</span>
+                                <span class="achievement-stat-label">月間売上</span>
+                            </div>
+                            <div class="achievement-stat">
+                                <span class="achievement-stat-number">3.5倍</span>
+                                <span class="achievement-stat-label">顧客単価UP</span>
+                            </div>
+                            <div class="achievement-stat">
+                                <span class="achievement-stat-number">8週間</span>
+                                <span class="achievement-stat-label">導入期間</span>
+                            </div>
+                        </div>
+                        <p class="achievement-description">
+                            既存ECサイトからUTAGEに移行し、顧客育成と販売の自動化を実現。アップセル・クロスセルの自動化で顧客単価が大幅向上しました。
+                        </p>
+                        <blockquote class="achievement-quote">
+                            「これまでバラバラだったツールを統合し、一元管理できるようになったことで業務効率が劇的に改善。売上も想像以上に伸びました」
+                        </blockquote>
+                    </div>
+                    <div class="achievement-cta">
+                        <a href="/achievement/customer4.html" class="achievement-cta-link">
+                            詳細を見る
+                        </a>
+                    </div>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-image">
+                        <img src="/assets/images/achieve-5.webp" alt="手作業対応ゼロ、新規商談が24時間自動化！">
+                    </div>
+                    <div class="achievement-header">
+                        <span class="achievement-tag">中小企業</span>
+                        <h3 class="achievement-title">手作業対応ゼロ、新規商談が24時間自動化！</h3>
+                        <div class="achievement-meta">
+                            <div class="achievement-company">
+                                <span class="achievement-company-icon">
+                                    <img src="/assets/images/company-icon5.webp" alt="企業アイコン">
+                                </span>
+                                <span>士業事務所</span>
+                            </div>
+                            <div class="achievement-date">2024年9月</div>
+                        </div>
+                    </div>
+                    <div class="achievement-content">
+                        <div class="achievement-stats-row">
+                            <div class="achievement-stat">
+                                <span class="achievement-stat-number">300%</span>
+                                <span class="achievement-stat-label">リード増加</span>
+                            </div>
+                            <div class="achievement-stat">
+                                <span class="achievement-stat-number">15時間</span>
+                                <span class="achievement-stat-label">週間削減</span>
+                            </div>
+                            <div class="achievement-stat">
+                                <span class="achievement-stat-number">5週間</span>
+                                <span class="achievement-stat-label">導入期間</span>
+                            </div>
+                        </div>
+                        <p class="achievement-description">
+                            士業事務所が顧客獲得プロセスを自動化。初期相談から予約、資料提供までを自動化し、高品質なリードを常時獲得できる体制を構築しました。
+                        </p>
+                        <blockquote class="achievement-quote">
+                            「これまで新規開拓に多くの時間を費やしていましたが、今はリードが自動的に集まり、本業の専門業務に集中できるようになりました」
+                        </blockquote>
+                    </div>
+                    <div class="achievement-cta">
+                        <a href="/achievement/customer5.html" class="achievement-cta-link">
+                            詳細を見る
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="contact-cta-section">
+            <span class="contact-cta-bg-deco contact-cta-bg-circle1"></span>
+            <span class="contact-cta-bg-deco contact-cta-bg-circle2"></span>
+
+            <div class="contact-cta-container">
+                <span class="contact-cta-subtitle">LET'S GET STARTED</span>
+                <h2 class="contact-cta-title">あなたも成功事例を作りませんか？</h2>
+                <p class="contact-cta-lead">
+                    IT導入補助金を活用したUTAGE導入で最大450万円の補助金が受けられます。<br class="pc-only">
+                    あなたのビジネスに最適な自動化プランと導入ステップをご提案します。<br class="pc-only">
+                    申請は完全丸投げOK！あなたは事業成長に集中できます。
+                </p>
+                <div class="contact-cta-buttons">
+                    <a href="https://utage-marunage.com/it-hojo/" class="btn btn-contact">
+                        無料相談してみる
+                    </a>
+                    <a href="/document.html" class="btn btn-document">
+                        <svg><use xlink:href="#icon-pdf"></use></svg>
+                        資料請求する
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div id="footer-placeholder"></div>
+    <script src="/js/include.js"></script>
+    <script>
+        const filterButtons = document.querySelectorAll('.filter-button');
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                
+                const cards = document.querySelectorAll('.achievement-card');
+                cards.forEach(card => {
+                    card.style.opacity = '0.5';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                    }, 300);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
