@@ -1,4 +1,4 @@
-/*! オートファネル大学 スタイルシート */
+/*! オートウェビナー大学 スタイルシート */
 :root{--primary:#0066ff;--secondary:#ff3a3a;--accent:#ff9500;--dark-blue:#0d3283;--light-bg:#f8f9fa;--text-dark:#333;--text-mid:#555;--text-light:#777;--grad-primary:linear-gradient(135deg,#0066ff,#00b8ff);--grad-secondary:linear-gradient(135deg,#ff3a3a,#ff7d7d);--shadow-soft:0 5px 15px rgba(0,0,0,.08);--shadow-strong:0 10px 25px rgba(0,0,0,.12);--trans:all .3s ease;--radius:12px;--radius-sm:8px;--header-h:60px}
 *,::after,::before{box-sizing:border-box;margin:0;padding:0}
 html,body{overflow-x:hidden}
