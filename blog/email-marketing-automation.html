@@ -9,14 +9,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
     <!-- 外部CSSファイルがあればここにリンク（今回は<style>タグ内に全て記述します） -->
-    <!-- <link rel="stylesheet" href="../css/style.css"> -->
-    <link rel="icon" href="/images/favicon.ico">
+    <!-- <link rel="stylesheet" href="../css/style.css"> -->    <link rel="icon" href="../images/favicon.ico">
     <meta property="og:title" content="UTAGE構築代行サービスの選び方 - 自社の目的に合った最適なパートナー選定法 - オートファネル大学ブログ">
     <meta property="og:description" content="Utageの構築をプロに任せたい方向けに、代行サービスの選び方、メリット、失敗しないためのポイントを解説。自社に最適なパートナーを見つけましょう。">
-    <meta property="og:image" content="/images/blog-utage-service.webp"> <!-- サムネイル画像を想定 -->
+    <meta property="og:image" content="../images/blog-utage-service.webp"> <!-- サムネイル画像を想定 -->
     <meta property="og:type" content="article">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/blog-common.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/blog-common.css">
     <style>
         /* カラーパレット定義 */
         :root {
@@ -1030,7 +1029,7 @@
              }
         }
     </style>
-    <script src="/js/include.js"></script>
+    <script src="../js/include.js"></script>
 </head>
 <body>
 <div id="svg-defs-placeholder"></div>
@@ -1459,6 +1458,75 @@
         }
       ]
     }
+    </script>
+    
+    <!-- 目次ハイライト機能 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Intersection Observer APIでスクロール時の見出しを監視
+            const headings = document.querySelectorAll('.article-content h2[id], .article-content h3[id]');
+            const tocLinks = document.querySelectorAll('.toc-list a');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px 0px -50% 0px',
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                // 現在表示されている見出しを一時的に保持するSet
+                const visibleHeadings = new Set();
+
+                entries.forEach(entry => {
+                    const id = entry.target.getAttribute('id');
+                    if (entry.isIntersecting) {
+                        visibleHeadings.add(id);
+                    } else {
+                        visibleHeadings.delete(id);
+                    }
+                });
+
+                // すべての目次リンクのアクティブクラスを削除
+                tocLinks.forEach(link => link.classList.remove('active'));
+
+                if (visibleHeadings.size > 0) {
+                    // visibleHeadingsのIDリストを、HTML上の出現順に並べ替える
+                    const sortedVisibleHeadings = Array.from(headings)
+                        .filter(heading => visibleHeadings.has(heading.id))
+                        .map(heading => heading.id);
+
+                    if (sortedVisibleHeadings.length > 0) {
+                        const firstVisibleHeadingId = sortedVisibleHeadings[0];
+                        const activeTocLink = document.querySelector(`.toc-list a[href="#${firstVisibleHeadingId}"]`);
+                        if (activeTocLink) {
+                            activeTocLink.classList.add('active');
+                        }
+                    }
+                }
+            }, observerOptions);
+
+            // 全ての見出しを監視対象に設定
+            headings.forEach(heading => {
+                observer.observe(heading);
+            });
+
+            // 目次リンククリック時のスムーズスクロール
+            tocLinks.forEach(link => {
+                 link.addEventListener('click', function(event) {
+                     event.preventDefault();
+                     const targetId = this.getAttribute('href').substring(1);
+                     const targetElement = document.getElementById(targetId);
+
+                     if (targetElement) {
+                         window.scrollTo({
+                             top: targetElement.offsetTop - 80,
+                             behavior: 'smooth'
+                         });
+                         history.pushState(null, null, `#${targetId}`);
+                     }
+                 });
+            });
+        });
     </script>
 </body>
 </html>

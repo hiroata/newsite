@@ -9,14 +9,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
     <!-- 外部CSSファイルがあればここにリンク（今回は<style>タグ内に全て記述します） -->
-    <!-- <link rel="stylesheet" href="../css/style.css"> -->
-    <link rel="icon" href="/images/favicon.ico">
+    <!-- <link rel="stylesheet" href="../css/style.css"> -->    <link rel="icon" href="../images/favicon.ico">
     <meta property="og:title" content="UTAGEシステムとは?導入企業の売上が平均30%アップした理由を徹底解説 - オートウェビナー大学ブログ">
     <meta property="og:description" content="UTAGEシステム導入企業で売上が平均30%アップしている理由を徹底解説。オールインワン機能で、集客から販売までの仕組みを効率化・自動化する方法を紹介します。">
-    <meta property="og:image" content="/images/blog-utage-intro.webp"> <!-- サムネイル画像を想定 -->
+    <meta property="og:image" content="../images/blog-utage-intro.webp"> <!-- サムネイル画像を想定 -->
     <meta property="og:type" content="article">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/blog-common.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/blog-common.css">
     <style>
         /* カラーパレット定義 */
         :root {
@@ -1148,7 +1147,7 @@
 
                         <h3 id="section1-3">初心者でも使いやすい直感的な操作性</h3> <!-- IDをsection1-3に設定 -->
 
-                        <p>「<span class="highlight-yellow">多機能なツールは難しそう…</span>」と感じるかもしれませんが、Utageは<span class="highlight-green">オンラインビジネス初心者でも迷わず使えるように設計</span>されています。<span class="highlight-yellow">ドラッグ＆ドロップでLPを作成したり、フローチャートを見ながら自動化シナリオを設定したり</span>と、<span class="highlight-blue">直感的な操作が可能</span>です。<span class="highlight-yellow">これにより</span>、ツールの使い方を覚える時間よりも、戦略を考えたりコンテンツを作成したりする時間に集中できます。</p> <!-- 黄色ハイライト追加、highlight-green/blue追加 -->
+                        <p>「<span class="highlight-yellow">多機能なツールは難しそう…</span>」と感じるかもしれませんが、Utageは<span class="highlight-green">オンラインビジネス初心者でも迷わず使えるように設計</span>されています。<span class="highlight-yellow">ドラッグ＆ドロップでLPを作成したり、フローチャートを見ながら自動化シナリオを設定したり</span>と、<span class="highlight-blue">直感的な操作が可能</span>です。<span class="highlight黄色">これにより</span>、ツールの使い方を覚える時間よりも、戦略を考えたりコンテンツを作成したりする時間に集中できます。</p> <!-- 黄色ハイライト追加、highlight-green/blue追加 -->
 
                         <div class="conversation-container yuki">
                             <div class="character-icon"></div>
@@ -1315,7 +1314,7 @@
         </div>
     </main>
 <div id="footer-placeholder"></div>
-<script src="/js/include.js"></script>
+<script src="../js/include.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Intersection Observer APIでスクロール時の見出しを監視
@@ -1467,6 +1466,75 @@
         }
       ]
     }
+    </script>
+    
+    <!-- 目次ハイライト機能 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Intersection Observer APIでスクロール時の見出しを監視
+            const headings = document.querySelectorAll('.article-content h2[id], .article-content h3[id]');
+            const tocLinks = document.querySelectorAll('.toc-list a');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px 0px -50% 0px',
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                // 現在表示されている見出しを一時的に保持するSet
+                const visibleHeadings = new Set();
+
+                entries.forEach(entry => {
+                    const id = entry.target.getAttribute('id');
+                    if (entry.isIntersecting) {
+                        visibleHeadings.add(id);
+                    } else {
+                        visibleHeadings.delete(id);
+                    }
+                });
+
+                // すべての目次リンクのアクティブクラスを削除
+                tocLinks.forEach(link => link.classList.remove('active'));
+
+                if (visibleHeadings.size > 0) {
+                    // visibleHeadingsのIDリストを、HTML上の出現順に並べ替える
+                    const sortedVisibleHeadings = Array.from(headings)
+                        .filter(heading => visibleHeadings.has(heading.id))
+                        .map(heading => heading.id);
+
+                    if (sortedVisibleHeadings.length > 0) {
+                        const firstVisibleHeadingId = sortedVisibleHeadings[0];
+                        const activeTocLink = document.querySelector(`.toc-list a[href="#${firstVisibleHeadingId}"]`);
+                        if (activeTocLink) {
+                            activeTocLink.classList.add('active');
+                        }
+                    }
+                }
+            }, observerOptions);
+
+            // 全ての見出しを監視対象に設定
+            headings.forEach(heading => {
+                observer.observe(heading);
+            });
+
+            // 目次リンククリック時のスムーズスクロール
+            tocLinks.forEach(link => {
+                 link.addEventListener('click', function(event) {
+                     event.preventDefault();
+                     const targetId = this.getAttribute('href').substring(1);
+                     const targetElement = document.getElementById(targetId);
+
+                     if (targetElement) {
+                         window.scrollTo({
+                             top: targetElement.offsetTop - 80,
+                             behavior: 'smooth'
+                         });
+                         history.pushState(null, null, `#${targetId}`);
+                     }
+                 });
+            });
+        });
     </script>
 </body>
 </html>
