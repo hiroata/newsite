@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="オートウェビナー大学の利用規約です。当サイトをご利用いただく際の規約条件について詳しく説明しています。">
-    <title>利用規約 | オートウェビナー大学</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <title>利用規約 | オートウェビナー大学</title>    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/apple-style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
     <link rel="icon" href="/images/favicon.ico">
     <meta property="og:title" content="利用規約 | オートウェビナー大学">
     <meta property="og:description" content="オートウェビナー大学の利用規約です。当サイトをご利用いただく際の規約条件について詳しく説明しています。">
@@ -17,6 +18,7 @@
 
     <!-- JavaScriptの遅延ロード -->
     <script src="/js/script.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     
     <!-- 共通部分読み込み用のスクリプト -->
     <script src="/assets/js/components.js" defer></script>
@@ -24,17 +26,14 @@
 <body>
 <div id="header-placeholder"></div>
 
-<main class="site-main">
-    <!-- ヒーローセクション -->
-    <section class="privacy-hero">
-        <div class="privacy-hero-container">
-            <h1>利用規約</h1>
-            <p>オートウェビナー大学をご利用いただく際のルールとお約束事項</p>
+<main class="site-main">    <!-- ヒーローセクション -->
+    <section class="apple-hero-section">
+        <div class="apple-hero-container">
+            <h1 class="apple-hero-title" data-aos="fade-up" data-aos-delay="100">利用規約</h1>
+            <p class="apple-hero-subtitle" data-aos="fade-up" data-aos-delay="200">オートウェビナー大学をご利用いただく際のルールとお約束事項</p>
         </div>
-    </section>
-
-    <div class="page-container">
-        <div class="privacy-detail">
+    </section>    <div class="apple-page-container">
+        <div class="apple-card" data-aos="fade-up">
             <!-- 目次 -->
             <div class="privacy-toc">
                 <div class="privacy-toc-title">目次</div>
@@ -164,5 +163,16 @@
 <div id="footer-placeholder"></div>
 <script src="/js/script.js"></script>
 <script src="/js/include.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // AOS初期化
+        AOS.init({
+            duration: 450,
+            easing: 'ease-out',
+            once: true,
+            offset: 60
+        });
+    });
+</script>
 </body>
 </html>

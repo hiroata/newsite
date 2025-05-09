@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8">
+<head>  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>運営者情報 | オートウェビナー大学</title>
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/apple-style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <style>
     .owner-main-card {
       background: #fff;
@@ -91,7 +93,14 @@
 <body>
 <div id="header-placeholder"></div>
 <main>
-  <div class="owner-main-card">
+  <section class="apple-hero-section">
+    <div class="apple-hero-container">
+      <h1 class="apple-hero-title" data-aos="fade-up" data-aos-delay="100">運営者情報</h1>
+      <p class="apple-hero-subtitle" data-aos="fade-up" data-aos-delay="200">オートウェビナー大学を運営するチームのご紹介</p>
+    </div>
+  </section>
+  <div class="apple-page-container" data-aos="fade-up" data-aos-delay="300">
+    <div class="owner-main-card">
     <img src="/assets/images/profile-photo.webp" alt="前田由紀子 プロフィール写真" class="owner-photo">
     <div class="owner-name">前田 由紀子</div>
     <div class="owner-title">Web集客コンサルタント / UTAGE構築・運用スペシャリスト</div>
@@ -100,10 +109,9 @@
     </div>
     <ul class="owner-list">
       <li>著書: <a href="https://www.amazon.co.jp/dp/B09X1Y2L4F" target="_blank" rel="noopener">美人は7日でつくられる</a></li>
-      <li>専門分野: オートマーケティング、セールスファネル構築、集客戦略策定</li>
-      <li>実績: UTAGE構築代行による売上改善事例300件以上</li>
+      <li>専門分野: オートマーケティング、セールスファネル構築、集客戦略策定</li>      <li>実績: UTAGE構築代行による売上改善事例300件以上</li>
     </ul>
-    <h2 style="font-size:1.1rem;font-weight:bold;margin:2em 0 0.7em 0;color:var(--dark-blue,#0d3283);">会社概要</h2>
+    <h2 style="font-size:1.1rem;font-weight:bold;margin:2em 0 0.7em 0;color:var(--apple-primary);">会社概要</h2>
     <table class="owner-table">
       <tbody>
         <tr><th>社名</th><td>株式会社CLAN</td></tr>
@@ -119,5 +127,16 @@
 </main>
 <div id="footer-placeholder"></div>
 <script src="/js/include.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // AOS初期化
+        AOS.init({
+            duration: 450,
+            easing: 'ease-out',
+            once: true,
+            offset: 60
+        });
+    });
+</script>
 </body>
 </html>

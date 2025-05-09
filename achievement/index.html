@@ -4,17 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="オートウェビナー大学の講座を受講された方々の成功事例やビジネス成果をご紹介します。実際にUTAGEを活用した自動化で売上アップを実現した事例を多数掲載。">
-    <title>お客様の声・成功事例一覧 | オートウェビナー大学</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <title>お客様の声・成功事例一覧 | オートウェビナー大学</title>    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/apple-style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
     <link rel="icon" href="/assets/images/favicon.ico">
     <meta property="og:title" content="お客様の声・成功事例一覧 | オートウェビナー大学">
     <meta property="og:description" content="オートウェビナー大学の講座を受講された方々の成功事例やビジネス成果をご紹介します。実際にUTAGEを活用した自動化で売上アップを実現した事例を多数掲載。">
     <meta property="og:image" content="/assets/images/ogp_image_achievements.webp">
     <meta property="og:type" content="website">
     <script src="/assets/js/components.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <style>
         :root {
             --primary-color: #0066ff;
@@ -576,16 +578,15 @@
     </ul>
 </div>
 
-<main class="site-main">
-    <section class="achievement-hero">
-        <div class="achievement-hero-container">
-            <h1 class="achievement-hero-title">ビジネス自動化の成功事例</h1>
-            <p class="achievement-hero-lead">
+<main class="site-main">    <section class="apple-hero-section">
+        <div class="apple-hero-container">
+            <h1 class="apple-hero-title" data-aos="fade-up" data-aos-delay="100">ビジネス自動化の成功事例</h1>
+            <p class="apple-hero-subtitle" data-aos="fade-up" data-aos-delay="200">
                 UTAGEを活用した自動化で売上アップと時間の自由を実現した<br>
                 オートウェビナー大学のお客様の実績をご紹介します
             </p>
 
-            <div class="achievement-stats">
+            <div class="achievement-stats" data-aos="fade-up" data-aos-delay="300">
                 <div class="stat-item">
                     <div class="stat-number">300+</div>
                     </div>
@@ -616,9 +617,7 @@
                             詳細を見る
                         </a>
                     </div>
-                </div>
-
-                <div class="achievement-card">
+                </div>                <div class="achievement-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="achievement-image">
                         <img src="/assets/images/achieve-3.webp" alt="24時間販売の自動化動線完成！">
                     </div>
@@ -782,21 +781,30 @@
             </div>
         </section>
     </main>
-    <div id="footer-placeholder"></div>
-    <script src="/js/include.js"></script>
+    <div id="footer-placeholder"></div>    <script src="/js/include.js"></script>
     <script>
-        const filterButtons = document.querySelectorAll('.filter-button');
-        filterButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                this.classList.add('active');
-                
-                const cards = document.querySelectorAll('.achievement-card');
-                cards.forEach(card => {
-                    card.style.opacity = '0.5';
-                    setTimeout(() => {
-                        card.style.opacity = '1';
-                    }, 300);
+        document.addEventListener('DOMContentLoaded', function() {
+            // AOS初期化
+            AOS.init({
+                duration: 450,
+                easing: 'ease-out',
+                once: true,
+                offset: 60
+            });
+            
+            const filterButtons = document.querySelectorAll('.filter-button');
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const cards = document.querySelectorAll('.achievement-card');
+                    cards.forEach(card => {
+                        card.style.opacity = '0.5';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                        }, 300);
+                    });
                 });
             });
         });

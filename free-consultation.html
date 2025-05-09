@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="オートウェビナー大学の無料相談ページ。ビジネス自動化の専門家が、あなたの状況に合ったUTAGE活用法を無料でアドバイスします。IT導入補助金の申請サポートも実施中。">
-    <title>無料相談 | オートウェビナー大学</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <title>無料相談 | オートウェビナー大学</title>    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/apple-style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
     <link rel="icon" href="/images/favicon.ico">
     <meta property="og:title" content="無料相談 | オートウェビナー大学">
     <meta property="og:description" content="オートウェビナー大学の無料相談ページ。ビジネス自動化の専門家が、あなたの状況に合ったUTAGE活用法を無料でアドバイスします。IT導入補助金の申請サポートも実施中。">
@@ -17,6 +18,7 @@
 
     <script src="/js/script.js" defer></script>
     <script src="/assets/js/components.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 
     <style>
         /* free-consultationページ固有の追加スタイルのみ残す */
@@ -111,22 +113,20 @@
   </div>
 </header>
 
-    <main class="site-main">
-        <!-- ヒーローセクション -->
-        <section class="consultation-hero-section">
-            <div class="consultation-hero-container">
-                <span class="hero-free-badge">無料相談実施中</span>
-                <h1 class="consultation-hero-title">ビジネス自動化の専門家に相談する</h1>
-                <p class="consultation-hero-lead">
+    <main class="site-main">        <!-- ヒーローセクション -->
+        <section class="apple-hero-section">
+            <div class="apple-hero-container">
+                <span class="hero-free-badge" data-aos="fade-up" data-aos-delay="50">無料相談実施中</span>
+                <h1 class="apple-hero-title" data-aos="fade-up" data-aos-delay="100">ビジネス自動化の専門家に相談する</h1>
+                <p class="apple-hero-subtitle" data-aos="fade-up" data-aos-delay="200">
                     「集客から販売までの自動化」「IT導入補助金の活用」について<br>
                     あなたのビジネスに最適なプランを無料でご提案します。
                 </p>
             </div>
         </section>
 
-        <div class="consultation-container">
-            <div class="service-intro-section">
-                <div class="service-intro-content">
+        <div class="consultation-container">            <div class="service-intro-section">
+                <div class="service-intro-content" data-aos="fade-up">
                     <h2 class="service-intro-title">ビジネスの悩みを無料で相談できます</h2>
                     <p class="service-intro-description">
                         「もっと効率的に売上を上げたい」「繰り返し作業から解放されたい」「リピート率を高めたい」など、ビジネスの悩みはさまざまです。無料相談では、300件以上のUTAGE導入実績を持つ専門家が、あなたのビジネスに最適な自動化プランをご提案します。
@@ -168,11 +168,9 @@
                         <p class="step-description">あなたのビジネスに最適な自動化プランと導入ステップをご提案します。</p>
                     </div>
                 </div>
-            </div>
-
-            <div class="case-studies-section">
-                <h2 class="section-title">無料相談から始まった成功事例</h2>
-                <div class="case-studies-grid">
+            </div>            <div class="case-studies-section">
+                <h2 class="section-title" data-aos="fade-up">無料相談から始まった成功事例</h2>
+                <div class="case-studies-grid" data-aos="fade-up" data-aos-delay="100">
                     <div class="case-study-item">
                         <img src="/images/case-study1.webp" alt="ケース1" class="case-study-image">
                         <div class="case-study-content">
@@ -198,11 +196,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="form-section">
-                <h2 class="form-section-title">無料相談のお申し込み</h2>
-                <p class="form-section-lead">
+            </div>            <div class="form-section">
+                <h2 class="form-section-title" data-aos="fade-up">無料相談のお申し込み</h2>
+                <p class="form-section-lead" data-aos="fade-up" data-aos-delay="100">
                     以下のボタンから無料相談フォームにアクセスいただくと、<br class="pc-only">
                     担当者から24時間以内にご連絡いたします。
                 </p>
@@ -306,8 +302,18 @@
         </section>
     </main>
 
-    <div id="footer-placeholder"></div>
-    <script src="/js/include.js"></script>
+    <div id="footer-placeholder"></div>    <script src="/js/include.js"></script>
     <script src="/js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // AOS初期化
+            AOS.init({
+                duration: 450,
+                easing: 'ease-out',
+                once: true,
+                offset: 60
+            });
+        });
+    </script>
 </body>
 </html>

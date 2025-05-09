@@ -4,12 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>特定商取引法に基づく表記 | オートウェビナー大学</title>
-  <meta name="description" content="オートウェビナー大学（UTAGE構築代行丸投げちゃん）の特定商取引法に基づく表記ページです。">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <meta name="description" content="オートウェビナー大学（UTAGE構築代行丸投げちゃん）の特定商取引法に基づく表記ページです。">  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap&subset=japanese&font-display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css?v=20250505">
+  <link rel="stylesheet" href="/css/apple-style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
   <link rel="icon" href="/images/favicon.ico">
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 </head>
 <body>
 <!-- SVGアイコン定義 -->
@@ -39,16 +41,14 @@
   </defs>
 </svg>
 <div id="header-placeholder"></div>
-<main class="site-main">
-  <section class="privacy-hero">
-    <div class="privacy-hero-container">
-      <h1>特定商取引法に基づく表記</h1>
-      <p>安心してご利用いただくための運営者情報・取引条件を明記しています</p>
+<main class="site-main">  <section class="apple-hero-section">
+    <div class="apple-hero-container">
+      <h1 class="apple-hero-title" data-aos="fade-up" data-aos-delay="100">特定商取引法に基づく表記</h1>
+      <p class="apple-hero-subtitle" data-aos="fade-up" data-aos-delay="200">安心してご利用いただくための運営者情報・取引条件を明記しています</p>
     </div>
-  </section>
-  <div class="page-container">
-    <div class="privacy-detail">
-      <table class="tokutei-table" style="width:100%;border-collapse:collapse;line-height:2;">
+  </section>  <div class="apple-page-container">
+    <div class="apple-card" data-aos="fade-up">
+      <table class="apple-table" style="width:100%;border-collapse:collapse;line-height:2;">
         <tbody>
           <tr><th style="width:30%;text-align:left;vertical-align:top;">販売事業者</th><td>株式会社CLAN</td></tr>
           <tr><th>運営責任者</th><td>前田 由紀子</td></tr>
@@ -72,5 +72,16 @@
 <div id="footer-placeholder"></div>
 <script src="/js/script.js?v=20250505"></script>
 <script src="/js/include.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // AOS初期化
+        AOS.init({
+            duration: 450,
+            easing: 'ease-out',
+            once: true,
+            offset: 60
+        });
+    });
+</script>
 </body>
 </html>
