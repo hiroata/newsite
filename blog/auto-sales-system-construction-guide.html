@@ -9,9 +9,8 @@
     <!-- フォントの先読み/読み込み -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
-
-    <link rel="icon" href="../images/favicon.ico">    <!-- 外部CSSファイルを参照 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">    <link rel="icon" href="../images/favicon.ico">
+    <!-- 外部CSSファイルを参照 -->
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/blog-common.css">
 
@@ -138,17 +137,22 @@
         /* Header追従解除に伴うmainのpadding-top調整 */
         main {
              padding-top: 0; /* Headerがstaticになったためpadding-top不要 */
-        }
-
-        /* ブログ記事のレイアウト、本文、サイドバーなどのスタイル */
+        }        /* ブログ記事のレイアウト、本文、サイドバーなどのスタイル */
         .page-container {
             max-width: 1200px; margin: 0 auto; padding: 20px;
         }
         .article-page-title { text-align: center; margin-bottom: 30px; padding: 20px; }
         .article-page-title img.header-icon { height: 40px; margin-bottom: 10px; }
         .article-page-title h1 { font-size: 32px; font-weight: bold; line-height: 1.4; margin: 0 0 10px 0; }
-        .article-page-meta { font-size: 14px; color: #666; }
-        .article-container { display: flex; gap: 30px; }
+        .article-page-meta { font-size: 14px; color: #666; }        .article-container { 
+            display: flex; 
+            gap: 30px; 
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            justify-content: center; /* コンテンツを中央に配置 */
+            flex-wrap: wrap; /* 必要に応じて折り返す */
+        }
 
         /* 左サイドバー */
         .article-left-sidebar { flex-basis: 80px; flex-shrink: 0; flex-grow: 0; padding: 15px; margin-top: 20px; }
@@ -337,83 +341,96 @@
         }
 
         @media (max-width: 768px) {
-            /* style.css のモバイル定義 */
-            .site-header { height: 50px; position: static; }
-            .header-container { padding: 0 10px; }
-            .header-cta { display: none !important; }
-            .site-logo-text { font-size: 18px; }
-            .hamburger-button { margin-left: auto; margin-right: 0; display: block; }
-            .mobile-menu { top: 50px; height: calc(100vh - 50px); }
-            .pc-nav { display: none !important; }
-            .sp-fix-cta { display: block; } /* 表示 */
-
-            /* ブログ記事のモバイルスタイル */
-            main { padding-top: 0; }
-            .page-container { padding: 15px; }
-            .section-padding{padding:40px 0}
-
-            .article-container { flex-direction: column; gap: 20px; margin-top: 0; padding: 0 15px; }
-            .article-left-sidebar, .article-main, .article-right-sidebar { flex-basis: auto; flex-grow: 0; width: 100%; padding: 0; margin-top: 0; }
-            .article-main { padding: 20px; }
-            .sidebar-section { padding: 20px; }
+            /* 3カラムレイアウト */
+            .article-container {
+                flex-direction: column; /* 縦並び */
+                gap: 20px;
+                margin-top: 0;
+                padding: 0 15px;
+            }
+            
+            .article-left-sidebar,
+            .article-main,
+            .article-right-sidebar {
+                flex-basis: auto;
+                flex-grow: 0;
+                width: 100%;
+                padding: 0;
+                margin-top: 0;
+                min-width: unset; /* ここが重要: スマホで画面幅いっぱいまで広がるよう制約を解除 */
+            }
+            
+            /* 各コンテンツブロックの内側のパディングをモバイル用に調整 */
+            .article-main {
+                padding: 20px;
+            }
+            
+            .sidebar-section {
+                padding: 20px;
+            }
+            
             .article-left-sidebar {
-                 order: 2; flex-direction: row; justify-content: center; padding: 10px 0;
-                 background-color: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin-bottom: 20px;
+                order: 2; /* 本文の下に移動 */
+                flex-direction: row; /* ボタンを横並びに */
+                justify-content: center; /* 中央寄せ */
+                padding: 10px 0; /* 上下のパディング */
+                background-color: #fff; /* 背景追加 */
+                border-radius: 10px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+                margin-bottom: 20px;
             }
-            .social-buttons { flex-direction: row; gap: 20px; }
-            .social-button { flex-direction: row; align-items: center; gap: 5px; }
-            .social-button svg { margin-bottom: 0; }
-            .article-main { order: 1; }
-            .article-right-sidebar { order: 3; }
-            .sidebar-toc { position: static; top: auto; } /* 追従解除 */
-            .article-page-title h1 { font-size: 24px; }
-            .article-page-title { padding: 15px; margin-bottom: 20px; }
-
-            /* 関連記事モバイルスタイル */
-            .related-articles { padding: 20px; background-color: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin-top: 20px; }
-            .related-list { grid-template-columns: 1fr; gap:15px;}
-            .related-item {
-                 border: none; box-shadow: none; border-bottom: 1px solid var(--border-light); padding-bottom: 15px;
-                 border-radius: 0; display: flex; align-items: center;
+            
+            .social-buttons {
+                flex-direction: row; /* ボタンを横並びに */
+                gap: 20px; /* 間隔調整 */
             }
-            .related-item:last-child { border-bottom: none; padding-bottom: 0;}
-            .related-item:hover { transform: none; box-shadow: none; }
-            .related-image { width: 80px; height: 60px; flex-shrink: 0; margin-right: 10px; }
-            .related-content { padding: 0; flex-grow: 1; }
-            .related-item-title { font-size: 15px; margin-bottom: 2px; }
-            .related-meta { font-size: 11px; }
-
-            /* 著者情報モバイルスタイル */
-             .author-box { flex-direction: column; text-align: center; }
-             .author-image { margin: 0 auto 10px auto; } /* 中央寄せ */
-
-
-            /* style.css のフッターモバイル定義 */
-            .site-footer{padding:30px 10px}
-            .footer-widgets{flex-direction:column;gap:20px; margin-bottom: 30px;}
-            .widget-area{flex-basis:auto;flex-grow:0;width:100%;text-align:center}
-            .widget-area ul{text-align:center}
-            .widget-area li{display:inline-block;margin:5px 10px}
-            .footer-widget-1{ margin-bottom: 20px;}
-            .site-logo-text.footer-logo { font-size: 20px; margin:0 auto 15px; }
-            .site-copyright{padding:10px 0}
-
-            /* スマホ固定CTA表示時のbody下余白 */
-            body { padding-bottom: 50px; }
+            
+            .social-button {
+                flex-direction: row; /* アイコンとテキストを横並びに */
+                align-items: center;
+                gap: 5px;
+            }
+            
+            .social-button svg {
+                margin-bottom: 0;
+            }
+            
+            .article-main {
+                order: 1; /* 本文を一番上に */
+            }
+            
+            .article-right-sidebar {
+                order: 3; /* サイドバーを本文の下に */
+            }
+            
+            /* 目次の追従解除 */
+            .sidebar-toc {
+                position: static;
+                top: auto;
+            }
+            
+            /* 記事タイトル周り */
+            .article-page-title h1 {
+                font-size: 24px;
+            }
+            
+            .article-page-title {
+                padding: 15px;
+                margin-bottom: 20px;
+            }
         }
 
-        /* Tablets (Portrait) and large phones */
-        @media (min-width:769px) and (max-width:1024px){
-            /* style.css */
-            .section-title,.contact-cta-title{font-size:28px}
-
-            /* ブログ記事の Related Articles 2カラム調整 */
-             .related-list { grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); }
+        @media (max-width: 1024px) {
+            .article-container {
+                padding: 0 10px;
+            }
+            
+            .article-main {
+                max-width: 650px; /* タブレットサイズでの最大幅を少し狭く */
+            }
         }
 
-        /* Mobile Landscape and small tablets */
-        /* @media (max-width:480px){ ... } は style.css で定義済み */
-        @media (max-width:480px){
+        @media (max-width: 480px){
              .site-logo-text{font-size:16px}
              .header-container{padding:0 8px}
              .hero-catch{font-size:28px}

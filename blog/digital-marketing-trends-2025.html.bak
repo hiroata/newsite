@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="UTAGEシステム導入企業で売上が平均30%アップしている理由を徹底解説。オールインワン機能で、集客から販売までの仕組みを効率化・自動化する方法を紹介します。">
-    <title>UTAGEシステムとは?導入企業の売上が平均30%アップした理由を徹底解説 - オートウェビナー大学ブログ</title>
+    <meta name="description" content="Utageの構築をプロに任せたい方向けに、代行サービスの選び方、メリット、失敗しないためのポイントを解説。自社に最適なパートナーを見つけましょう。">
+    <title>UTAGE構築代行サービスの選び方 - 自社の目的に合った最適なパートナー選定法 - オートウェビナー大学ブログ</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="../images/favicon.ico">
-    <meta property="og:title" content="UTAGEシステムとは?導入企業の売上が平均30%アップした理由を徹底解説 - オートウェビナー大学ブログ">
-    <meta property="og:description" content="UTAGEシステム導入企業で売上が平均30%アップしている理由を徹底解説。オールインワン機能で、集客から販売までの仕組みを効率化・自動化する方法を紹介します。">
-    <meta property="og:image" content="../images/blog-utage-intro.webp">
+    <!-- 外部CSSファイルがあればここにリンク（今回は<style>タグ内に全て記述します） -->
+    <!-- <link rel="stylesheet" href="../css/style.css"> -->    <link rel="icon" href="../images/favicon.ico">
+    <meta property="og:title" content="UTAGE構築代行サービスの選び方 - 自社の目的に合った最適なパートナー選定法 - オートウェビナー大学ブログ">
+    <meta property="og:description" content="Utageの構築をプロに任せたい方向けに、代行サービスの選び方、メリット、失敗しないためのポイントを解説。自社に最適なパートナーを見つけましょう。">
+    <meta property="og:image" content="../images/blog-utage-service.webp"> <!-- サムネイル画像を想定 -->
     <meta property="og:type" content="article">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/blog-common.css">
-    <link rel="stylesheet" href="../css/components.css">    
     <style>
         /* カラーパレット定義 */
         :root {
@@ -234,6 +234,8 @@
         }
 
         /* 左サイドバー (いいね、シェアボタン) */
+        .article-left-sidebar {
+            flex-basis: 80px; /* 固定幅 (1/8は画面幅によるので、デザインに合わせ固定が現実的) */
             flex-shrink: 0; /* 縮まない */
             flex-grow: 0; /* 伸びない */
             /* position: sticky; */ /* スクロール追従させたい場合 (要調整) */
@@ -1027,6 +1029,7 @@
              }
         }
     </style>
+    <script src="../js/include.js"></script>
 </head>
 <body>
 <div id="svg-defs-placeholder"></div>
@@ -1040,10 +1043,10 @@
                  <!-- スクショのアイコンに合わせて調整（必要に応じて画像を差し替え） -->
                  <!-- <img src="../images/flower-icon.webp" alt="記事アイコン" class="header-icon"> -->
                  <!-- タイトルにハイライトクラス適用 -->
-                 <h1 class="article-title"><span class="highlight-green">UTAGEシステムとは</span>?導入企業の売上が<span class="highlight-blue">平均30%アップした理由</span>を徹底解説</h1> <!-- タイトル修正、highlightクラス追加 -->
+                 <h1 class="article-title"><span class="highlight-green">UTAGE構築代行サービス</span>の選び方 - <span class="highlight-blue">自社の目的に合った最適なパートナー選定法</span></h1> <!-- タイトル修正、ハイライトクラス追加 -->
                  <div class="article-page-meta">
-                     <span class="article-date">2025年5月12日</span> <!-- 日付を更新 -->
-                     <span class="article-category">UTAGE</span> <!-- カテゴリを更新 -->
+                     <span class="article-date">2025年5月10日</span> <!-- 日付を更新 -->
+                     <span class="article-category">サポート・代行サービス</span> <!-- カテゴリを更新 -->
                      <span class="article-author">投稿者: YUKI</span> <!-- 投稿者情報を追加 -->
                  </div>
                  <!-- Featured Imageは本文エリア内に移動 -->
@@ -1082,20 +1085,17 @@
                      <a href="index.html" class="article-back">← ブログ一覧に戻る</a>
                     <div class="article-content">
                         <!-- 元のHTMLの Featured Imageを本文直下に配置 -->
-                        <img src="/images/blog-utage-intro.webp" alt="Utageシステムのイメージ画像" class="article-featured-image">
+                        <img src="/images/blog-utage-service.webp" alt="UTAGE構築代行サービスのイメージ画像" class="article-featured-image">
 
-                        <p><span class="highlight-yellow">オンラインビジネスを成功させるために重要な要素は何でしょうか？</span> 💡 魅力的な商品・サービス、質の高いコンテンツ、そして効率的な集客・販売の<span class="highlight-yellow">「仕組み」</span>です。</p> <!-- 黄色ハイライト追加 -->
+                        <p>オールインワンのマーケティングツールとして注目を集めている「Utage」。LP作成、メール・LINE配信、会員サイト、決済など、これ一つで「売れる仕組み」を構築できる強力なツールです。🚀 しかし、「契約したものの、<span class="highlight-yellow">設定が複雑で時間がかかる</span>…」「<span class="highlight-yellow">プロ並みのデザインや効果的なファネル設定ができるか不安</span>…」と感じている方も多いのではないでしょうか？🤔</p> <!-- 黄色ハイライト追加 -->
 
-                        <p><span class="highlight-yellow">特に</span>、集客から見込み客の育成、そして販売・決済、さらに顧客管理までをスムーズに連携させる仕組み、すなわち<span class="highlight-blue">「セールスファネル」の構築と自動化</span>が、<span class="highlight-green">売上を安定的に伸ばす鍵</span>となります。<span class="highlight黄色">しかし</span>、これを複数のツールで行うのは<span class="highlight-yellow">非常に煩雑</span>で、<span class="highlight-yellow">費用も時間もかかります</span>。</p> <!-- highlightをhighlight-blue/greenに変更、黄色ハイライト追加 -->
-
-                        <p><span class="highlight-yellow">そこで</span>、今多くの企業や個人事業主から注目されているのが<span class="highlight-red">オールインワンマーケティングツール「Utage」</span>です。<span class="highlight-green">実は</span>、<span class="text-red">Utageを導入した企業の売上が平均30%アップした</span>というデータもあります（※）。<span class="highlight-pink">本記事では</span>、なぜUtageがそれほどまでに成果に繋がるのか、その理由と機能を徹底的に解説します！📈🚀</p> <!-- highlightをhighlight-red/green/pinkに変更 -->
-                        <small>（※Utage導入企業様の事例に基づく平均値であり、全ての企業で同様の成果を保証するものではありません。）</small>
+                        <p>そんな時に役立つのが、<span class="highlight-blue">Utage構築代行サービス</span>です。プロに構築を任せることで、時間と労力を節約し、より高品質で成果につながるUtage環境を手に入れることができます。本記事では、<span class="highlight-green">Utage構築代行サービスを利用すべき理由</span>から、<span class="text-red">失敗しないための選び方</span>、そして自社に<span class="highlight-blue">最適なパートナーを見つけるためのポイント</span>を徹底解説します！🤝✨</p> <!-- highlightクラスを具体的な色クラスに変更 -->
 
                         <div class="conversation-container yuki">
                             <div class="character-icon"></div>
                             <div class="conversation-content">
                                 <p class="character-name">YUKI</p>
-                                <p>Utageって、オンラインビジネスに必要なツールが<span class="highlight-yellow">全部一つになったシステム</span>なんだよ。<span class="highlight-yellow">LP作成、メール配信、LINE配信、決済、顧客管理とか、色々な機能がパックになっている</span>んだ。</p> <!-- 黄色ハイライト追加 -->
+                                <p>Utageは本当に色々な機能があって便利だけど、全部自分で完璧に設定するのは大変だよね。<span class="highlight-yellow">特にビジネスを早く軌道に乗せたいなら</span>、得意な人に任せるのも賢い選択だよ。</p> <!-- 黄色ハイライト追加 -->
                             </div>
                         </div>
 
@@ -1103,102 +1103,96 @@
                             <div class="character-icon"></div>
                             <div class="conversation-content">
                                 <p class="character-name">ニャン太</p>
-                                <p>ニャー！それってすごいニャ！😲 <span class="highlight-yellow">個別に契約する手間も省ける</span>し、<span class="highlight-yellow">ツール同士の連携で悩むこともない</span>ニャね！</p> <!-- 黄色ハイライト追加 -->
+                                <p>ニャー！<span class="highlight-yellow">マニュアルとにらめっこして何日もかかるくらいなら</span>、プロにお願いしてサクッと作ってもらった方が、その間に他の大事な仕事ができるニャもんね！時間はお金ニャ！💰</p> <!-- 黄色ハイライト追加 -->
                             </div>
                         </div>
 
                         <p>この記事は特に以下のような方におすすめです：</p>
 
                         <ul>
-                            <li>オンラインビジネスの<span class="text-red">売上を伸ばしたい</span>と考えている方</li> <!-- text-red追加 -->
-                            <li><span class="highlight-green">集客から販売までのプロセスを効率化・自動化</span>したい方</li> <!-- highlight-green追加 -->
-                            <li><span class="highlight-yellow">複数のマーケティングツール管理に疲れている</span>方</li> <!-- 黄色ハイライト追加 -->
-                            <li><span class="highlight-blue">オールインワンのマーケティングツール</span>を探している方</li> <!-- highlight-blue追加 -->
-                            <li>Utageが<span class="highlight-yellow">どんなツールなのか詳しく知りたい</span>方</li> <!-- 黄色ハイライト追加 -->
+                            <li>Utageを導入したが、<span class="highlight-yellow">自分で構築する時間がない</span>方</li> <!-- 黄色ハイライト追加 -->
+                            <li>Utageで<span class="highlight-green">プロ並みのLPやファネル設定</span>をしたい方</li> <!-- highlight-green追加 -->
+                            <li><span class="highlight-yellow">技術的な設定や複雑な連携に自信がない</span>方</li> <!-- 黄色ハイライト追加 -->
+                            <li>Utage導入を検討しており、<span class="highlight-yellow">構築の手間が不安</span>な方</li> <!-- 黄色ハイライト追加 -->
+                            <li><span class="highlight-blue">Utage構築代行サービス</span>の選び方を知りたい方</li> <!-- highlight-blue追加 -->
                         </ul>
 
-                        <h2 id="section1"><span class="highlight-green">Utageシステム</span>が売上30%アップに貢献する理由</h2> <!-- IDをsection1に設定、highlight-green追加 -->
+                        <h2 id="section1">UTAGE構築代行サービスを利用すべき理由</h2> <!-- IDをsection1に設定 -->
 
-                        <p><span class="highlight-blue">Utageの導入企業で成果が出やすい主な理由</span>は、その<span class="highlight-red">「オールインワン」</span>であることと、<span class="text-red">「自動化」</span>に特化した機能設計にあります。</p> <!-- highlightを具体的な色クラスに変更 -->
+                        <p><span class="highlight-green">Utage構築代行サービスを利用することで得られるメリット</span>は多岐にわたります。</p> <!-- highlight-green追加 -->
 
-                        <h3 id="section1-1">シームレスな「売れる仕組み」が構築できる</h3> <!-- IDをsection1-1に設定 -->
+                        <h3 id="section1-1">構築時間を大幅に短縮できる</h3> <!-- IDをsection1-1に設定 -->
 
-                        <p>前述の通り、UtageはLP作成、メール・LINE配信、決済、顧客管理といった、セールスファネルの各段階に必要な機能を<span class="highlight-yellow">全て内包</span>しています。<span class="highlight-green">これにより</span>、</p> <!-- 黄色ハイライト追加 -->
-                        <p><strong>集客（LP） → 育成（ステップメール/LINE） → 販売（決済付きLP） → 顧客管理</strong></p>
-                        <p>といった<span class="highlight-blue">一連の流れを、一つのシステム内でスムーズに連携・自動化</span>できます。<span class="highlight-yellow">ツール間のデータ移行や設定の手間がなくなり</span>、見込み客の取りこぼしを防ぎ、効率的に購入へと導く仕組みが<span class="highlight-yellow">簡単に作れます</span>。</p> <!-- highlightをhighlight-blueに変更、黄色ハイライト追加 -->
+                        <p>Utageの多機能を最大限に活かした構築には、それなりの知識と時間が必要です。<span class="highlight-blue">代行サービスを利用すれば、プロが迅速かつ正確に設定を行う</span>ため、<span class="highlight-green">本来自分で構築にかかるはずだった時間を大幅に節約</span>できます。この時間を、コンテンツ作成や集客といった他の重要な業務に充てることが可能です。</p> <!-- highlightクラスを具体的な色クラスに変更 -->
+
+                        <h3 id="section1-2">高品質で成果につながる構築が可能</h3> <!-- IDをsection1-2に設定 -->
+
+                        <p>代行サービスを提供しているのは、Utageの機能やマーケティングの知識に精通したプロフェッショナルです。彼らは<span class="text-red">成果を出すためのファネル設計やLPデザイン、効果測定ができる設定</span>などを熟知しています。<span class="highlight-green">自分で試行錯誤するよりも、最初から最適化された環境でスタートできる</span>可能性が高まります。</p> <!-- highlight-green追加 -->
 
                         <div class="conversation-container nyanta">
                             <div class="character-icon"></div>
                             <div class="conversation-content">
                                 <p class="character-name">ニャン太</p>
-                                <p>ニャー！お客さんがLPを見てくれた後、<span class="highlight-yellow">自動でメールを送ったり、LINEでフォローしたり</span>…手間なく全部自動でやってくれるんだニャ！🤩</p> <!-- 黄色ハイライト追加 -->
+                                <p>ニャー！見た目がきれいなLPとか、お客さんがスムーズに流れるファネルとか、<span class="highlight-yellow">自分じゃ難しそうなこともプロならお手のもの</span>ニャね！仕上がりのクオリティが全然違うニャ！✨</p> <!-- 黄色ハイライト追加 -->
                             </div>
                         </div>
 
-                        <h3 id="section1-2">強力な自動化機能で業務効率が劇的に向上</h3> <!-- IDをsection1-2に設定 -->
+                        <h3 id="section1-3">技術的な不安を解消できる</h3> <!-- IDをsection1-3に設定 -->
 
-                        <p>Utageの真骨頂は、その<span class="highlight-green">シナリオ自動化機能</span>です。「LPを閲覧した人」「特定メールを開封した人」「商品を購入した人」など、<span class="highlight-blue">顧客の行動をトリガーとして</span>、あらかじめ設定しておいた<span class="highlight-pink">ステップメール配信、LINEメッセージ送信、タグ付け、特定コンテンツへのアクセス権付与などを自動で実行</span>できます。<span class="highlight-yellow">これにより</span>、</p> <!-- highlightクラスを具体的な色クラスに変更 -->
+                        <p><span class="highlight-yellow">ドメイン設定、メール認証設定、外部ツールとのAPI連携など</span>、Utageの構築には一部技術的な知識が必要な場面もあります。こうした複雑な設定も代行サービスに任せられるため、<span class="highlight-green">技術的なハードルを感じることなく、安心して導入を進める</span>ことができます。</p> <!-- 黄色ハイライト追加、highlight-green追加 -->
+
+                        <h3 id="section1-4">ビジネス戦略に集中できる</h3> <!-- IDをsection1-4に設定 -->
+
+                        <p>ツールの設定や構築といった作業から解放されることで、あなたは<span class="text-red">ビジネスの核となる戦略立案、顧客とのコミュニケーション、商品・サービスの改善</span>といった、<span class="highlight-green">より付加価値の高い業務に集中</span>できます。これが、事業成長を加速させる上で非常に重要です。</p> <!-- highlight-green追加 -->
+
+                        <h2 id="section2">UTAGE構築代行サービスで依頼できること</h2> <!-- IDをsection2に設定 -->
+
+                        <p>代行サービスによって内容は異なりますが、一般的に以下のような構築を依頼できます。</p>
+
                         <ul>
-                            <li>⏱️ <span class="highlight-green">毎日手動で行っていたメール配信や顧客フォローの時間をゼロに</span></li> <!-- highlight-green追加 -->
-                            <li>🎯 顧客一人ひとりの状況に合わせた<span class="highlight-blue">最適な情報提供</span></li> <!-- highlight-blue追加 -->
-                            <li>💰 高単価商品への<span class="highlight-red">アップセル・クロスセルを自動で促進</span></li> <!-- highlight-red追加 -->
+                            <li>🌐 <span class="text-blue"><strong>LP・ウェブサイト作成</strong></span>：デザインテンプレートの選定・カスタマイズ、コンテンツ（文章、画像）の流し込み、フォーム設置</li> <!-- text-blue追加 -->
+                            <li>📧 <span class="text-blue"><strong>メール配信設定</strong></span>：ステップメール、メルマガ設定、メール認証設定</li> <!-- text-blue追加 -->
+                            <li>📱 <span class="text-blue"><strong>LINE配信設定</strong></span>：LINE公式アカウント連携、LINEステップ配信設定</li> <!-- text-blue追加 -->
+                            <li>🛒 <span class="text-blue"><strong>決済システム連携設定</strong></span>：Stripeなど外部決済サービスとの連携設定</li> <!-- text-blue追加 -->
+                            <li>🔑 <span class="text-blue"><strong>会員サイト構築・設定</strong></span>：会員限定コンテンツページの作成、アクセス権限設定</li> <!-- text-blue追加 -->
+                            <li>📊 <span class="text-blue"><strong>ファネル全体設計・構築</strong></span>：集客～育成～販売の流れに基づいたLP、メール、LINEなどの連携設定</li> <!-- text-blue追加 -->
+                            <li>⚙️ <span class="text-blue"><strong>各種初期設定</strong></span>：ドメイン設定、各種連携設定など</li> <!-- text-blue追加 -->
                         </ul>
-                        <p>といったことが可能になり、<span class="text-red">マーケティング・セールス業務の効率が劇的に向上し、売上アップに直結</span>します。</p>
+                        <p><span class="highlight-yellow">どこまでを依頼したいか、自社の目的や予算に合わせてサービス範囲を選びましょう</span>。</p> <!-- 黄色ハイライト追加 -->
 
-                        <h3 id="section1-3">初心者でも使いやすい直感的な操作性</h3> <!-- IDをsection1-3に設定 -->
+                         <img src="/images/utage-service-scope.webp" alt="UTAGE構築代行サービス範囲のイメージ図" /> <!-- サービス範囲図を想定 -->
 
-                        <p>「<span class="highlight-yellow">多機能なツールは難しそう…</span>」と感じるかもしれませんが、Utageは<span class="highlight-green">オンラインビジネス初心者でも迷わず使えるように設計</span>されています。<span class="highlight-yellow">ドラッグ＆ドロップでLPを作成したり、フローチャートを見ながら自動化シナリオを設定したり</span>と、<span class="highlight-blue">直感的な操作が可能</span>です。<span class="highlight黄色">これにより</span>、ツールの使い方を覚える時間よりも、戦略を考えたりコンテンツを作成したりする時間に集中できます。</p> <!-- 黄色ハイライト追加、highlight-green/blue追加 -->
+
+                        <h2 id="section3">失敗しないUTAGE構築代行サービスの選び方</h2> <!-- IDをsection3に設定 -->
+
+                        <p><span class="highlight-yellow">数ある代行サービスの中から、自社に最適なパートナーを見つけるため</span>には、以下のポイントをじっくり比較検討しましょう。</p> <!-- 黄色ハイライト追加 -->
+
+                        <ol>
+                            <li>✅ <span class="text-red"><strong>実績と得意分野</strong></span>：<span class="highlight-yellow">過去にどのような業界、どのような目的（リスト獲得、商品販売、会員サイトなど）のUtage構築実績があるかを確認</span>しましょう。あなたのビジネスモデルに近い実績があるか、得意分野は何かをチェックします。</li> <!-- text-red追加、黄色ハイライト追加 -->
+                            <li>💬 <span class="text-red"><strong>コミュニケーションと提案力</strong></span>：あなたのビジネスについてしっかりとヒアリングし、一方的な作業だけでなく、<span class="highlight-green">より成果につながるための提案をしてくれるか</span>が重要です。担当者との相性も確認しましょう。</li> <!-- text-red追加、highlight-green追加 -->
+                            <li>💰 <span class="text-red"><strong>料金体系と見積もり</strong></span>：<span class="highlight-yellow">料金は明確か、何にいくらかかるのかが分かりやすいかを確認</span>しましょう。安さだけで決めず、提供されるサービス内容と価格が見合っているかを総合的に判断します。</li> <!-- text-red追加、黄色ハイライト追加 -->
+                            <li>⏳ <span class="text-red"><strong>納期とスケジュール</strong></span>：希望する納期に対応可能か、構築の具体的なスケジュールを提示してくれるかを確認しましょう。</li> <!-- text-red追加 -->
+                            <li>🤝 <span class="text-red"><strong>構築後のサポート</strong></span>：納品後の修正対応、使い方に関する簡単な質問への対応など、構築後のサポート体制があるかどうかも重要なポイントです。</li> <!-- text-red追加 -->
+                            <li>📝 <span class="text-red"><strong>契約内容と仕様確認</strong></span>：どこまでをサービス範囲とするか、どのような機能を含めるかなど、契約前に詳細な仕様をしっかりと確認し、認識のずれがないようにしましょう。</li> <!-- text-red追加 -->
+                        </ol>
 
                         <div class="conversation-container yuki">
                             <div class="character-icon"></div>
                             <div class="conversation-content">
                                 <p class="character-name">YUKI</p>
-                                <p>難しくて使いこなせないツールだと、<span class="highlight-yellow">結局使わなくなってしまってもったいない</span>もんね。<span class="highlight-green">Utageは「これなら自分でもできそう！」って思えるような、分かりやすい操作画面が特徴</span>なんだ。</p> <!-- 黄色ハイライト追加、highlight-green追加 -->
+                                <p>色々な代行サービスがあるから迷うよね。<span class="highlight-yellow">まずは、実績や提供サービスを見て、良さそうなところにいくつか問い合わせてみるのがいい</span>よ。無料相談とかがあれば、<span class="highlight-yellow">そこで直接話を聞いてみるのが一番</span>だよ。</p> <!-- 黄色ハイライト追加 -->
                             </div>
                         </div>
 
+                        <h2 id="section4"><span class="highlight-green">まとめ</span>：最適なパートナーと共に<span class="highlight-blue">UTAGE活用</span>を成功させよう！</h2> <!-- IDをsection4に設定、highlight-green/blue追加 -->
 
-                        <h2 id="section2">Utageシステムの主要機能</h2> <!-- IDをsection2に設定 -->
+                        <p><span class="highlight-red">Utageの強力な機能を最大限に活かし</span>、「売れる仕組み」を迅速かつ高品質に構築するために、<span class="highlight-blue">Utage構築代行サービスは非常に有効な選択肢</span>です。<span class="highlight-yellow">時間や技術的な制約がある場合でも</span>、プロの力を借りることで、ビジネスの本質的な活動に集中し、<span class="text-red">早期に成果を出す</span>ことが可能になります。</p> <!-- highlight-red/blue/yellow追加、text-red追加 -->
 
-                        <p><span class="highlight-blue">Utageが提供する主な機能</span>は以下の通りです。これらの機能が連携し合うことで、<span class="highlight-green">強力な売れる仕組みが実現</span>します。</p> <!-- highlight-blue/green追加 -->
+                        <p>代行サービスを選ぶ際は、実績、コミュニケーション、料金、構築後のサポートなどを総合的に比較検討し、<span class="highlight-green">あなたのビジネスの目的を深く理解してくれる最適なパートナー</span>を見つけましょう。🤝</p> <!-- highlight-green追加 -->
 
-                        <ul>
-                            <li>💻 <span class="text-blue"><strong>LP・ウェブサイト作成</strong></span>：豊富なテンプレートと直感的なエディタで高品質なページを制作</li>
-                            <li>📧 <span class="text-blue"><strong>メールマーケティング</strong></span>：ステップメール、メルマガ、効果測定、セグメント配信</li>
-                            <li>📱 <span class="text-blue"><strong>LINEマーケティング</strong></span>：LINE公式アカウント連携、ステップ配信、個別メッセージ</li>
-                            <li>📝 <span class="text-blue"><strong>フォーム作成</strong></span>：登録フォーム、問い合わせフォーム、アンケートフォーム</li>
-                            <li>💳 <span class="text-blue"><strong>決済機能</strong></span>：Stripe等連携、LP一体型決済、定期課金対応</li>
-                            <li>📚 <span class="text-blue"><strong>会員サイト作成</strong></span>：会員限定コンテンツ配信、顧客管理</li>
-                            <li>📈 <span class="text-blue"><strong>分析機能</strong></span>：アクセス解析、CVR、開封率など詳細なデータ分析</li>
-                            <li>🔄 <span class="text-blue"><strong>シナリオ自動化</strong></span>：顧客行動に基づく複雑な自動化フロー設定</li>
-                        </ul>
-                        <p><span class="text-red">これらの機能が全て一つのプラットフォームで提供される</span>ため、<span class="highlight-yellow">ツール間の連携や管理の手間が一切ありません</span>。</p> <!-- 黄色ハイライト追加 -->
+                        <p><span class="highlight-blue">最適なパートナーと共にUtageの活用を成功</span>させ、あなたのビジネスを<span class="text-red">次のステージへと押し上げてください</span>！🚀📈</p> <!-- highlight-blue, text-red追加 -->
 
-                         <img src="/images/utage-functions.webp" alt="Utageの主要機能一覧イメージ" /> <!-- 機能一覧図を想定 -->
-
-
-                        <h2 id="section3">どんなビジネスでUtageは活用できる？</h2> <!-- IDをsection3に設定 -->
-
-                        <p>Utageは、<span class="highlight-green">様々な業種・規模のオンラインビジネスで活用</span>されています。</p> <!-- highlight-green追加 -->
-
-                        <ul>
-                            <li>✅ <span class="text-blue"><strong>オンライン講座・スクール販売</strong></span>：LPで受講生を集め、ステップメールで育成し、会員サイトで講座コンテンツを提供。</li>
-                            <li>✅ <span class="text-blue"><strong>デジタルコンテンツ販売</strong></span>：電子書籍、テンプレートなどの販売ページ作成と決済。</li>
-                            <li>✅ <span class="text-blue"><strong>コーチング・コンサルティング</strong></span>：体験セッションへの誘導、個別相談の申し込み受付、クライアント管理。</li>
-                            <li>✅ <span class="text-blue"><strong>店舗ビジネスのオンライン化</strong></span>：予約受付、顧客管理、メールやLINEでの情報発信。</li>
-                            <li>✅ <span class="text-blue"><strong>アフィリエイト・情報発信</strong></span>：メルマガリスト獲得用LP、ステップメールでの教育。</li>
-                        </ul>
-                        <p><span class="highlight-blue">特に</span>、<span class="highlight-green">商品単価が高めであったり、見込み客との信頼構築（育成）が重要なビジネス</span>と<span class="highlight-yellow">相性が良い</span>と言われています。</p> <!-- highlight-blue/green/yellow追加 -->
-
-                        <h2 id="section4"><span class="highlight-green">まとめ</span>：<span class="highlight-blue">Utage</span>であなたのビジネスも売上アップを！</h2> <!-- IDをsection4に設定、highlight-green/blue追加 -->
-
-                        <p><span class="highlight-green">Utageシステムが導入企業で平均30%もの売上アップを実現している理由</span>は、オンラインビジネスの根幹である「売れる仕組み」を、<span class="highlight-blue">オールインワンかつ強力な自動化機能で、誰でも簡単に構築・運用できる</span>点にあります。<span class="highlight-yellow">複数のツールを使い分ける煩雑さから解放</span>され、マーケティング活動全体の<span class="text-red">効率が劇的に向上</span>。見込み客を<span class="highlight-green">効率的に育成</span>し、販売へと繋げる自動化シナリオが、<span class="text-red">成果を最大化</span>します。</p> <!-- highlight-green/blue/yellow追加、text-red追加 -->
-
-                        <p>もしあなたが、<span class="highlight-yellow">オンラインビジネスの売上を伸ばしたい</span>、<span class="highlight-yellow">日々のマーケティング業務を効率化したい</span>、<span class="highlight-yellow">見込み客育成や顧客フォローを自動化したい</span>と考えているなら、Utageは間違いなく<span class="highlight-green">強力な味方</span>となるでしょう。💪🔥</p> <!-- 黄色ハイライト追加、highlight-green追加 -->
-
-                        <p><span class="highlight-blue">ぜひこの機会にUtageを検討し</span>、あなたのビジネスも<span class="text-red">売上平均30%アップ</span>を目指してください！🚀📈</p> <!-- highlight-blue追加、text-red追加 -->
-
-                        <p><a href="/consultation" class="cta-button">Utageシステムについて無料相談する</a></p>
+                        <p><a href="/consultation" class="cta-button">UTAGE構築代行サービスについて無料相談する</a></p>
                     </div>
                     
                     <!-- 著者情報 - 中央メインコンテンツ内に配置 -->
@@ -1276,8 +1270,6 @@
                          <p class="author-title">マーケティングコンサルタント</p>
                          <div class="author-sns">
                              <a href="#" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg></a>
-                              <a href="#" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="1em" height="1em" fill="currentColor"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9 26.3 26.2 58 34.4 93.9 36.2 37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8 19.6 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg></a>
-                         </div>
                          <p class="author-bio">
                              株式会社CLAN代表取締役社長｜デジタルスキル教育と構築代行事業を経営｜
                              168名の受講生が学ぶスキル習得スクールを運営、法人向けUTAGE構築代行実績は70社以上｜
@@ -1294,16 +1286,17 @@
                     <div class="sidebar-section sidebar-toc">
                          <h3 class="sidebar-title">目次</h3>
                          <ul class="toc-list">
-                            <li><a href="#section1">Utageシステムが売上30%アップに貢献する理由<span class="toc-dot"></span></a>
+                            <li><a href="#section1">UTAGE構築代行サービスを利用すべき理由<span class="toc-dot"></span></a>
                                 <ul>
-                                    <li><a href="#section1-1">シームレスな「売れる仕組み」が構築できる<span class="toc-dot"></span></a></li>
-                                    <li><a href="#section1-2">強力な自動化機能で業務効率が劇的に向上<span class="toc-dot"></span></a></li>
-                                    <li><a href="#section1-3">初心者でも使いやすい直感的な操作性<span class="toc-dot"></span></a></li>
+                                    <li><a href="#section1-1">構築時間を大幅に短縮できる<span class="toc-dot"></span></a></li>
+                                    <li><a href="#section1-2">高品質で成果につながる構築が可能<span class="toc-dot"></span></a></li>
+                                    <li><a href="#section1-3">技術的な不安を解消できる<span class="toc-dot"></span></a></li>
+                                    <li><a href="#section1-4">ビジネス戦略に集中できる<span class="toc-dot"></span></a></li>
                                 </ul>
                             </li>
-                            <li><a href="#section2">Utageシステムの主要機能<span class="toc-dot"></span></a></li>
-                            <li><a href="#section3">どんなビジネスでUtageは活用できる？<span class="toc-dot"></span></a></li>
-                            <li><a href="#section4">まとめ：Utageであなたのビジネスも売上アップを！<span class="toc-dot"></span></a></li>
+                            <li><a href="#section2">UTAGE構築代行サービスで依頼できること<span class="toc-dot"></span></a></li>
+                            <li><a href="#section3">失敗しないUTAGE構築代行サービスの選び方<span class="toc-dot"></span></a></li>
+                            <li><a href="#section4">まとめ：最適なパートナーと共にUTAGE活用を成功させよう！<span class="toc-dot"></span></a></li>
                          </ul>
                     </div>
 
@@ -1314,7 +1307,6 @@
         </div>
     </main>
 <div id="footer-placeholder"></div>
-<script src="../js/include.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Intersection Observer APIでスクロール時の見出しを監視
