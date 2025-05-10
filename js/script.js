@@ -6,8 +6,7 @@
   
   // 読み込み完了後に実行
   document.addEventListener('DOMContentLoaded', initPage);
-  
-  function initPage() {
+    function initPage() {
     // ハンバーガーメニュー初期化
     initHamburgerMenu();
     
@@ -21,9 +20,7 @@
     initAnimations();
     
     // モバイルメニューの改善（新規追加）
-    enhanceMobileMenu();
-
-    // 目次ハイライト機能の初期化（ブログページ用）
+    enhanceMobileMenu();    // 目次ハイライト機能を有効化
     initTocHighlight();
   }
   

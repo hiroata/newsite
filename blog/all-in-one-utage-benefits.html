@@ -176,10 +176,25 @@
         .toc-list li { margin-bottom: 8px; }
         .toc-list a { color: var(--text-mid); text-decoration: none; transition: all 0.2s ease; font-size: 14px; display: block; }
         .toc-list a:hover { color: var(--dark-blue); }
-        .toc-list a.active { color: var(--toc-active-color); font-weight: bold; position: relative; } 
-        .toc-list a.active::after { 
-            content: ''; position: absolute; left: -10px; top: 50%; transform: translateY(-50%);
-            width: 4px; height: 14px; background-color: var(--toc-active-color); border-radius: 2px;
+        .toc-list a.active { 
+            color: var(--toc-active-color); 
+            font-weight: bold; 
+            position: relative;
+            background-color: rgba(0, 102, 255, 0.05);
+            border-radius: 4px;
+            padding: 4px 8px;
+            margin-left: -8px;
+            display: block;
+        } 
+        .toc-list a.active::before { 
+            content: ''; 
+            position: absolute; 
+            left: 0; 
+            top: 0; 
+            bottom: 0;
+            width: 3px; 
+            background-color: var(--primary); 
+            border-radius: 2px;
         }
         .toc-list a.active-parent { 
             color: var(--dark-blue); 
@@ -467,10 +482,7 @@
         }
 
     </style>
-    <script src="/js/include.js"></script>
-
-   <!-- モバイルUX向上のための追加CSS -->
-   <link rel="stylesheet" href="/css/mobile-enhancements.css">
+   <!-- モバイルUX向上のための追加CSS - 不要な外部CSSを削除（インライン化済み） -->
 </head>
 <body>
 <div id="svg-defs-placeholder"></div>
@@ -764,91 +776,9 @@
             </div>
         </div>
     </main>
-<!-- script.jsの読み込みは1つだけ残す -->
+<div id="footer-placeholder"></div>
+<script src="../js/include.js"></script>
+
+<!-- script.jsの読み込みは最後に配置 -->
 <script src="../js/script.js"></script>
-<script>
-(function() {
-  // 目次リンクと見出し要素を取得
-  const tocLinks = document.querySelectorAll('.toc-list a');
-  const headings = Array.from(tocLinks).map(link => {
-    const id = link.getAttribute('href').replace('#', '');
-    return document.getElementById(id);
-  });
-
-  // スクロールでハイライト
-  function highlightToc() {
-    let activeIndex = 0;
-    const scrollY = window.scrollY || window.pageYOffset;
-    for (let i = 0; i < headings.length; i++) {
-      if (headings[i] && headings[i].getBoundingClientRect().top + scrollY - 80 <= scrollY + 10) {
-        activeIndex = i;
-      }
-    }
-    tocLinks.forEach(link => link.classList.remove('active'));
-    if (tocLinks[activeIndex]) tocLinks[activeIndex].classList.add('active');
-  }
-
-  // クリック時のスムーススクロール
-  tocLinks.forEach((link, i) => {
-    link.addEventListener('click', function(e) {
-      const id = this.getAttribute('href').replace('#', '');
-      const target = document.getElementById(id);
-      if (target) {
-        e.preventDefault();
-        const y = target.getBoundingClientRect().top + window.pageYOffset - 60;
-        window.scrollTo({ top: y, behavior: 'smooth' });
-      }
-    });
-  });
-
-  window.addEventListener('scroll', highlightToc);
-  window.addEventListener('resize', highlightToc);
-  document.addEventListener('DOMContentLoaded', highlightToc);
-  setTimeout(highlightToc, 300); // 初期化遅延対策
-})();
-</script>
-<!-- サイトフッター -->
-<footer class="site-footer">
-    <div class="footer-container">
-        <div class="footer-widgets">
-            <div class="widget-area footer-widget-1">
-                <div class="site-logo-text footer-logo">オートウェビナー大学</div>
-                <p style="color:#eee;font-size:13px;margin-bottom:20px">
-                    成果の出るマーケティング自動化を<br>
-                    わかりやすくお伝えします
-                </p>
-            </div>
-            <div class="widget-area footer-widget-2">
-                <h4>サービス</h4>
-                <ul>
-                    <li><a href="../free-consultation.html">無料相談</a></li>
-                    <li><a href="../free-seminar.html">無料セミナー</a></li>
-                    <li><a href="../course/">オンラインコース</a></li>
-                    <li><a href="../book/">無料小冊子</a></li>
-                </ul>
-            </div>
-            <div class="widget-area footer-widget-3">
-                <h4>会社概要</h4>
-                <ul>
-                    <li><a href="../owner.html">代表紹介</a></li>
-                    <li><a href="../about.html">会社概要</a></li>
-                    <li><a href="../achievement/">導入事例</a></li>
-                </ul>
-            </div>
-            <div class="widget-area footer-widget-4">
-                <h4>お役立ち情報</h4>
-                <ul>
-                    <li><a href="../blog/">ブログ</a></li>
-                    <li><a href="../tools/">無料ツール</a></li>
-                    <li><a href="../document.html">資料ダウンロード</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="site-copyright">
-        <div class="inner-lg">
-            <small>&copy; 2023-2025 株式会社YUKI-Promotion All Rights Reserved.</small>
-        </div>
-    </div>
-</footer>
 </body></html>
