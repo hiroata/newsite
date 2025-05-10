@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="description" content="まえゆきツールのPNG→JPEG変換ツール - PNG画像をJPEG形式に一括変換できる無料ツールです。">
@@ -8,7 +6,7 @@
    
    <!-- リソースの先読み -->
    <link rel="preconnect" href="https://fonts.googleapis.com">
-   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
    
    <!-- クリティカルCSS インライン化 -->
    <style>
@@ -434,7 +432,7 @@
    <link rel="stylesheet" href="/css/style.css" media="print" onload="this.media='all'">
    
    <!-- JavaScriptの遅延ロード -->
-   <script src="/js/script.js" defer></script>
+   <script src="/js/script.js" defer=""></script>
    
    <!-- フォールバック -->
    <noscript>
@@ -447,6 +445,9 @@
    <meta property="og:description" content="PNG画像をJPEG形式に一括変換できる無料ツールです。">
    <meta property="og:image" content="/images/ogp_image_tools.webp">
    <meta property="og:type" content="website">
+
+   <!-- モバイルUX向上のための追加CSS -->
+   <link rel="stylesheet" href="/css/mobile-enhancements.css">
 </head>
 <body>
 <div id="svg-defs-placeholder"></div>
@@ -505,7 +506,7 @@
                   <p class="drop-area-or">もしくは</p>
                   <label class="file-button">
                      + ファイルを追加
-                     <input type="file" class="file-input" id="fileInput" accept="image/png" multiple>
+                     <input type="file" class="file-input" id="fileInput" accept="image/png" multiple="">
                   </label>
                </div>
 
@@ -542,7 +543,7 @@
                </div>
                
                <div class="action-container">
-                  <button class="convert-button" id="convertBtn" disabled>→ JPEGに変換する</button>
+                  <button class="convert-button" id="convertBtn" disabled="">→ JPEGに変換する</button>
                </div>
             </div>
 
@@ -553,7 +554,7 @@
                <p class="step-description">変換後のJPEG画像をZIPファイルとしてダウンロードできます。</p>
                
                <div class="action-container">
-                  <a class="download-button" id="downloadBtn" disabled>↓ 全てダウンロード（zip）</a>
+                  <a class="download-button" id="downloadBtn" disabled="">↓ 全てダウンロード（zip）</a>
                </div>
                
                <div id="resultTableContainer"></div>
@@ -584,7 +585,7 @@
                   <a href="../tools/roulette/" class="tool-link">Webでルーレット</a>
                   <a href="../tools/bingo/" class="tool-link">ビンゴ・マシーン</a>
                   <a href="../tools/letters-counter/" class="tool-link">文字数カウント</a>
-               </div>
+               </ul></div>
             </div>
             <div class="other-tools">
                <h2 class="other-tools-title">その他のまえゆきツール</h2>
@@ -599,7 +600,7 @@
                   <a href="wareki-seireki.html" class="tool-link">年齢・和暦計算</a>
                </div>
             </div>
-         </div>
+         
       </section>
 
       <!-- Contact CTA Section -->
@@ -952,5 +953,6 @@
           });
       });
    </script>
-</body>
-</html>
+
+
+</body></html>

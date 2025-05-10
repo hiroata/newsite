@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="description" content="まえゆきツールのWebP変換ツール - JPEG・PNG画像をまとめてWebP形式に変換できる無料ツールです。">
@@ -8,7 +6,7 @@
    
    <!-- リソースの先読み -->
    <link rel="preconnect" href="https://fonts.googleapis.com">
-   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
    
    <!-- クリティカルCSS インライン化 -->
    <style>
@@ -438,7 +436,7 @@
    <link rel="stylesheet" href="/css/style.css" media="print" onload="this.media='all'">
    
    <!-- JavaScriptの遅延ロード -->
-   <script src="/js/script.js" defer></script>
+   <script src="/js/script.js" defer=""></script>
    
    <!-- フォールバック -->
    <noscript>
@@ -451,6 +449,9 @@
    <meta property="og:description" content="JPEG・PNG画像をまとめてWebP形式に変換できる無料ツールです。">
    <meta property="og:image" content="/images/ogp_image_tools.webp">
    <meta property="og:type" content="website">
+
+   <!-- モバイルUX向上のための追加CSS -->
+   <link rel="stylesheet" href="/css/mobile-enhancements.css">
 </head>
 <body>
 <div id="svg-defs-placeholder"></div>
@@ -509,7 +510,7 @@
                   <p class="drop-area-or">もしくは</p>
                   <label class="file-button">
                      + ファイルを追加
-                     <input type="file" class="file-input" id="fileInput" accept="image/jpeg, image/png, image/gif" multiple>
+                     <input type="file" class="file-input" id="fileInput" accept="image/jpeg, image/png, image/gif" multiple="">
                   </label>
                </div>
 
@@ -536,7 +537,7 @@
                </div>
                
                <div class="action-container">
-                  <button class="convert-button" id="convertBtn" disabled>→ WebPに変換する</button>
+                  <button class="convert-button" id="convertBtn" disabled="">→ WebPに変換する</button>
                </div>
             </div>
 
@@ -547,7 +548,7 @@
                <p class="step-description">変換後のWebP画像をZIPファイルとしてダウンロードできます。</p>
                
                <div class="action-container">
-                  <a class="download-button" id="downloadBtn" disabled>↓ 全てダウンロード（zip）</a>
+                  <a class="download-button" id="downloadBtn" disabled="">↓ 全てダウンロード（zip）</a>
                </div>
                
                <div id="resultTableContainer"></div>
@@ -956,5 +957,6 @@
           });
       });
    </script>
-</body>
-</html>
+
+
+</body></html>

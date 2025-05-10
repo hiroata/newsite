@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">    <meta name="description" content="オートウェビナー大学が提供する無料の電子書籍一覧です。マーケティング自動化、ファネル構築、効率的な集客・販売のノウハウを詳しく解説しています。">
     <title>電子書籍一覧 | オートウェビナー大学</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="icon" href="/assets/images/favicon.ico">    <meta property="og:title" content="電子書籍一覧 | オートウェビナー大学">
     <meta property="og:description" content="オートウェビナー大学が提供する無料の電子書籍一覧です。マーケティング自動化、ファネル構築、効率的な集客・販売のノウハウを詳しく解説しています。">
@@ -441,6 +439,9 @@
             }
         }
     </style>
+
+   <!-- モバイルUX向上のための追加CSS -->
+   <link rel="stylesheet" href="/css/mobile-enhancements.css">
 </head>
 <body>
 
@@ -449,24 +450,24 @@
     <defs>
         <!-- PDFアイコン -->
         <symbol id="icon-pdf" viewBox="0 0 32 32">
-            <path d="M20 2H4C2.9 2 2 2.9 2 4v24c0 1.1.9 2 2 2h24c1.1 0 2-.9 2-2V10L20 2zm4 26H6V4h14v8h6v16zM13.3 14.7c-.7 0-1.3.6-1.3 1.3s.6 1.3 1.3 1.3 1.3-.6 1.3-1.3-.6-1.3-1.3-1.3zm4 8c0-1.5-2.7-2.3-4-2.3s-4 .8-4 2.3v.7h8v-.7z"/>
+            <path d="M20 2H4C2.9 2 2 2.9 2 4v24c0 1.1.9 2 2 2h24c1.1 0 2-.9 2-2V10L20 2zm4 26H6V4h14v8h6v16zM13.3 14.7c-.7 0-1.3.6-1.3 1.3s.6 1.3 1.3 1.3 1.3-.6 1.3-1.3-.6-1.3-1.3-1.3zm4 8c0-1.5-2.7-2.3-4-2.3s-4 .8-4 2.3v.7h8v-.7z"></path>
         </symbol>
         <!-- メールアイコン -->
         <symbol id="icon-mail" viewBox="0 0 32 32">
-            <path d="M16 0C7.2 0 0 7.2 0 16s7.2 16 16 16 16-7.2 16-16S24.8 0 16 0zM8 8h16c.3 0 .6.1.8.2L16 18.5 7.2 8.2c.2-.1.5-.2.8-.2zm-2 14v-12c0-.1 0-.1 0-.1l5.9 6.8-5.8 5.8c0-.2-.1-.3-.1-.5zm18 2H8c-.2 0-.4 0-.5-.1l5.7-5.7 2.8 3.3 2.8-3.3 5.7 5.7c-.2 0-.3.1-.5.1zm2-2c0 .2 0 .4-.1.5l-5.8-5.8 5.9-6.8v12.1z"/>
+            <path d="M16 0C7.2 0 0 7.2 0 16s7.2 16 16 16 16-7.2 16-16S24.8 0 16 0zM8 8h16c.3 0 .6.1.8.2L16 18.5 7.2 8.2c.2-.1.5-.2.8-.2zm-2 14v-12c0-.1 0-.1 0-.1l5.9 6.8-5.8 5.8c0-.2-.1-.3-.1-.5zm18 2H8c-.2 0-.4 0-.5-.1l5.7-5.7 2.8 3.3 2.8-3.3 5.7 5.7c-.2 0-.3.1-.5.1zm2-2c0 .2 0 .4-.1.5l-5.8-5.8 5.9-6.8v12.1z"></path>
         </symbol>
         <!-- 本アイコン -->
         <symbol id="icon-book" viewBox="0 0 32 32">
-            <path d="M28 4v26H7c-1.7 0-3-1.3-3-3s1.3-3 3-3h19V4H7C4.8 4 3 5.8 3 8v24c0 2.2 1.8 4 4 4h24V4h-3z"/>
-            <path d="M7 26c-.6 0-1 .4-1 1s.4 1 1 1h19v-2H7z"/>
+            <path d="M28 4v26H7c-1.7 0-3-1.3-3-3s1.3-3 3-3h19V4H7C4.8 4 3 5.8 3 8v24c0 2.2 1.8 4 4 4h24V4h-3z"></path>
+            <path d="M7 26c-.6 0-1 .4-1 1s.4 1 1 1h19v-2H7z"></path>
         </symbol>
         <!-- カラフルな三角形 -->
         <symbol id="svg-triangle-color" viewBox="0 0 200 200">
-            <polygon points="0,0 200,0 0,200" fill="rgba(255,255,255,.15)"/>
+            <polygon points="0,0 200,0 0,200" fill="rgba(255,255,255,.15)"></polygon>
         </symbol>
         <!-- 検索アイコン -->
         <symbol id="icon-search" viewBox="0 0 32 32">
-            <path d="M31 27.2l-7.6-6.4c-.8-.7-1.6-1-2.3-1 1.8-2.1 2.9-4.8 2.9-7.8 0-6.6-5.4-12-12-12S0 5.4 0 12s5.4 12 12 12c3 0 5.7-1.1 7.8-2.9 0 .7.3 1.5 1 2.3l6.4 7.6c1.1 1.2 2.9 1.3 4 .2s1-2.9-.2-4zM12 20c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8z"/>
+            <path d="M31 27.2l-7.6-6.4c-.8-.7-1.6-1-2.3-1 1.8-2.1 2.9-4.8 2.9-7.8 0-6.6-5.4-12-12-12S0 5.4 0 12s5.4 12 12 12c3 0 5.7-1.1 7.8-2.9 0 .7.3 1.5 1 2.3l6.4 7.6c1.1 1.2 2.9 1.3 4 .2s1-2.9-.2-4zM12 20c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8z"></path>
         </symbol>
     </defs>
 </svg>
@@ -582,7 +583,7 @@
                     <!-- 書籍1 -->
                     <div class="book-card">
                         <div class="book-cover">
-                            <img src="/assets/images/book-cover-1.webp" alt="AI時代のマーケティング革命">
+                            <img src="/assets/images/book-cover-1.webp" alt="AI時代のマーケティング革命" loading="lazy">
                             <span class="book-badge badge-new">NEW</span>
                         </div>
                         <div class="book-content">
@@ -599,7 +600,7 @@
                     <!-- 書籍2 -->
                     <div class="book-card">
                         <div class="book-cover">
-                            <img src="/assets/images/book-cover-2.webp" alt="Canva活用術">
+                            <img src="/assets/images/book-cover-2.webp" alt="Canva活用術" loading="lazy">
                             <span class="book-badge badge-new">NEW</span>
                         </div>
                         <div class="book-content">
@@ -616,7 +617,7 @@
                     <!-- 書籍3 -->
                     <div class="book-card">
                         <div class="book-cover">
-                            <img src="/assets/images/book-cover-3.webp" alt="オンラインセミナー集客術">
+                            <img src="/assets/images/book-cover-3.webp" alt="オンラインセミナー集客術" loading="lazy">
                             <span class="book-badge badge-new">NEW</span>
                         </div>
                         <div class="book-content">
@@ -633,7 +634,7 @@
                     <!-- 書籍4 -->
                     <div class="book-card">
                         <div class="book-cover">
-                            <img src="/assets/images/book-cover-4.webp" alt="動画マーケティング攻略法">
+                            <img src="/assets/images/book-cover-4.webp" alt="動画マーケティング攻略法" loading="lazy">
                             <span class="book-badge badge-new">NEW</span>
                         </div>
                         <div class="book-content">
@@ -660,7 +661,7 @@
                     <!-- 書籍5 -->
                     <div class="book-card">
                         <div class="book-cover">
-                            <img src="/assets/images/book-cover-5.webp" alt="マーケティング自動化入門">
+                            <img src="/assets/images/book-cover-5.webp" alt="マーケティング自動化入門" loading="lazy">
                             <span class="book-badge badge-free">無料</span>
                         </div>
                         <div class="book-content">
@@ -677,7 +678,7 @@
                     <!-- 書籍6 -->
                     <div class="book-card">
                         <div class="book-cover">
-                            <img src="/assets/images/book-cover-6.webp" alt="オートファネル構築マスターガイド">
+                            <img src="/assets/images/book-cover-6.webp" alt="オートファネル構築マスターガイド" loading="lazy">
                             <span class="book-badge badge-free">無料</span>
                         </div>
                         <div class="book-content">
@@ -694,7 +695,7 @@
                     <!-- 書籍7 -->
                     <div class="book-card">
                         <div class="book-cover">
-                            <img src="/assets/images/book-cover-7.webp" alt="UTAGE完全マニュアル">
+                            <img src="/assets/images/book-cover-7.webp" alt="UTAGE完全マニュアル" loading="lazy">
                             <span class="book-badge badge-free">無料</span>
                         </div>
                         <div class="book-content">
@@ -711,7 +712,7 @@
                     <!-- 書籍8 -->
                     <div class="book-card">
                         <div class="book-cover">
-                            <img src="/assets/images/book-cover-8.webp" alt="オートファネル成功事例集">
+                            <img src="/assets/images/book-cover-8.webp" alt="オートファネル成功事例集" loading="lazy">
                             <span class="book-badge badge-free">無料</span>
                         </div>
                         <div class="book-content">
@@ -738,7 +739,7 @@
                     <!-- 書籍9 -->
                     <div class="book-card">
                         <div class="book-cover">
-                            <img src="/assets/images/book-cover-9.webp" alt="売れるLP作成の極意">
+                            <img src="/assets/images/book-cover-9.webp" alt="売れるLP作成の極意" loading="lazy">
                             <span class="book-badge badge-free">無料</span>
                         </div>
                         <div class="book-content">
@@ -755,7 +756,7 @@
                     <!-- 書籍10 -->
                     <div class="book-card">
                         <div class="book-cover">
-                            <img src="/assets/images/book-cover-10.webp" alt="ステップメール戦略バイブル">
+                            <img src="/assets/images/book-cover-10.webp" alt="ステップメール戦略バイブル" loading="lazy">
                             <span class="book-badge badge-free">無料</span>
                         </div>
                         <div class="book-content">
@@ -772,7 +773,7 @@
                     <!-- 書籍11 -->
                     <div class="book-card">
                         <div class="book-cover">
-                            <img src="/assets/images/book-cover-11.webp" alt="デジタルマーケティング戦略">
+                            <img src="/assets/images/book-cover-11.webp" alt="デジタルマーケティング戦略" loading="lazy">
                             <span class="book-badge badge-free">無料</span>
                         </div>
                         <div class="book-content">
@@ -789,7 +790,7 @@
                     <!-- 書籍12 -->
                     <div class="book-card">
                         <div class="book-cover">
-                            <img src="/assets/images/book-cover-12.webp" alt="IT導入補助金活用ガイド">
+                            <img src="/assets/images/book-cover-12.webp" alt="IT導入補助金活用ガイド" loading="lazy">
                             <span class="book-badge badge-free">無料</span>
                         </div>
                         <div class="book-content">
@@ -908,5 +909,6 @@
             });
         });
     </script>
-</body>
-</html>
+
+
+</body></html>

@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>  <meta charset="UTF-8">
+<!DOCTYPE html><html lang="ja"><head>  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>運営者情報 | オートウェビナー大学</title>
   <link rel="stylesheet" href="/css/style.css">
@@ -89,6 +87,9 @@
       .owner-table th, .owner-table td { padding: 7px 5px; font-size: 0.97em; }
     }
   </style>
+
+   <!-- モバイルUX向上のための追加CSS -->
+   <link rel="stylesheet" href="/css/mobile-enhancements.css">
 </head>
 <body>
 <div id="header-placeholder"></div>
@@ -101,7 +102,7 @@
   </section>
   <div class="apple-page-container" data-aos="fade-up" data-aos-delay="300">
     <div class="owner-main-card">
-    <img src="/assets/images/profile-photo.webp" alt="前田由紀子 プロフィール写真" class="owner-photo">
+    <img src="/assets/images/profile-photo.webp" alt="前田由紀子 プロフィール写真" class="owner-photo" loading="lazy">
     <div class="owner-name">前田 由紀子</div>
     <div class="owner-title">Web集客コンサルタント / UTAGE構築・運用スペシャリスト</div>
     <div class="owner-profile">
@@ -124,7 +125,7 @@
       </tbody>
     </table>
   </div>
-</main>
+</div></main>
 <div id="footer-placeholder"></div>
 <script src="/js/include.js"></script>
 <script>
@@ -138,5 +139,6 @@
         });
     });
 </script>
-</body>
-</html>
+
+
+</body></html>

@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="description" content="まえゆきツールの文字数カウント - 日本語の文字数を簡単にカウントできる無料ツールです。空白や改行を除外した文字数も確認できます。">
@@ -8,7 +6,7 @@
    
    <!-- リソースの先読み -->
    <link rel="preconnect" href="https://fonts.googleapis.com">
-   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
    
    <!-- クリティカルCSS インライン化 -->
    <style>
@@ -308,7 +306,7 @@
    <link rel="stylesheet" href="/css/style.css" media="print" onload="this.media='all'">
    
    <!-- JavaScriptの遅延ロード -->
-   <script src="/js/script.js" defer></script>
+   <script src="/js/script.js" defer=""></script>
    
    <!-- フォールバック -->
    <noscript>
@@ -321,6 +319,9 @@
    <meta property="og:description" content="日本語の文字数を簡単にカウントできる無料ツールです。空白や改行を除外した文字数も確認できます。">
    <meta property="og:image" content="/images/ogp_image_tools.webp">
    <meta property="og:type" content="website">
+
+   <!-- モバイルUX向上のための追加CSS -->
+   <link rel="stylesheet" href="/css/mobile-enhancements.css">
 </head>
 <body>
 <div id="svg-defs-placeholder"></div>
@@ -364,7 +365,7 @@
                <div class="counter-bar">
                   ただ今の文字数は <strong id="currentCount">0</strong> 字
                </div>
-               <textarea id="textInput" class="counter-textarea" placeholder="カウントする文章を入力" autofocus></textarea>
+               <textarea id="textInput" class="counter-textarea" placeholder="カウントする文章を入力" autofocus=""></textarea>
             </div>
             
             <!-- 結果表示エリア -->
@@ -534,5 +535,6 @@
           countText();
       });
    </script>
-</body>
-</html>
+
+
+</body></html>
