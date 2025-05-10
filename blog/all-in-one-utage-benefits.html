@@ -174,16 +174,37 @@
         .sidebar-title { font-size: 18px; font-weight: bold; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--dark-blue); }
         .toc-list { list-style: none; padding: 0; margin: 0; }
         .toc-list li { margin-bottom: 8px; }
-        .toc-list a { color: var(--text-mid); text-decoration: none; transition: color 0.3s ease; font-size: 14px; display: block; }
+        .toc-list a { color: var(--text-mid); text-decoration: none; transition: all 0.2s ease; font-size: 14px; display: block; }
         .toc-list a:hover { color: var(--dark-blue); }
-        .toc-list a.active { color: var(--toc-active-color); font-weight: bold; }
+        .toc-list a.active { color: var(--toc-active-color); font-weight: bold; position: relative; } 
+        .toc-list a.active::after { 
+            content: ''; position: absolute; left: -10px; top: 50%; transform: translateY(-50%);
+            width: 4px; height: 14px; background-color: var(--toc-active-color); border-radius: 2px;
+        }
+        .toc-list a.active-parent { 
+            color: var(--dark-blue); 
+            position: relative; 
+            font-weight: 600;
+        } 
+        .toc-list a.active-parent::after { 
+            content: ''; 
+            position: absolute; 
+            left: -10px; 
+            top: 50%; 
+            transform: translateY(-50%);
+            width: 3px; 
+            height: 8px; 
+            background-color: var(--text-light); 
+            border-radius: 1.5px;
+            opacity: 0.7;
+        }
         .toc-list ul { padding-left: 15px; margin-top: 8px; } /* ネストされたリストのスタイル */
         .toc-list ul li { margin-bottom: 5px; }
         .toc-list ul a { font-size: 13px; }
 
         /* 記事本文内のスタイル */
         .article-back { display: inline-block; margin-bottom: 20px; color: #666; text-decoration: none; transition: color 0.3s ease; }
-        .article-back:hover { color: var(--dark-blue); }
+        .article-back:hover { color: var (--dark-blue); }
         .article-content { line-height: 1.8; color: var(--text-dark); }
         .article-content h2, .article-content h3 {
             font-weight: bold; margin: 40px 0 20px; padding: 10px 15px;
@@ -231,7 +252,8 @@
         /* 会話コンテナ */
         .conversation-container { display: flex; background-color: #f8f9fa; border-radius: 10px; padding: 15px; margin: 20px 0; }
         .character-icon { width: 60px; height: 60px; border-radius: 50%; background-size: cover; background-position: center; flex-shrink: 0; }
-        .conversation-container.yuki .character-icon, .conversation-container.nyanta .character-icon { background-image: url('../images/profile-YUKI.webp'); background-position: center; }
+        .conversation-container.yuki .character-icon { background-image: url('../assets/images/profile-YUKI.webp'); background-position: center; }
+        .conversation-container.nyanta .character-icon { background-image: url('../assets/images/profile-nyanta.webp'); background-position: center; }
         .conversation-content { flex-grow: 1; margin-left: 15px; }
         .character-name { font-weight: bold; color: var(--dark-blue); margin-bottom: 5px; }
         .conversation-content p { margin: 0; color: var(--text-dark); }
@@ -492,7 +514,7 @@
                              <span>Facebook</span> <!-- テキストラベル追加 -->
                          </a>
                          <a href="#" class="social-button" onclick="window.open('https://social-plugins.line.me/lineit/share?url='+encodeURIComponent(location.href), '_blank', 'width=600,height=600'); return false;"> <!-- LINEシェア機能追加 -->
-                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path></svg>
+                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8z"></path></svg>
                              <span>LINE</span> <!-- テキストラベル追加 -->
                          </a>
                     </div>
@@ -630,12 +652,12 @@
 
                     <!-- 著者情報（ブログ記事の内容を維持） -->
                     <div class="author-box">
-                        <img src="../images/profile-photo.webp" alt="YUKIのプロフィール写真" class="author-image" loading="lazy"> <!-- 画像パス修正 -->
+                        <img src="../assets/images/profile-YUKI.webp" alt="YUKIのプロフィール写真" class="author-image" loading="lazy"> <!-- 画像パス修正 -->
                         <div class="author-info">
                             <div class="author-name">YUKI (まえゆき)</div>
                             <p class="author-bio">
                                 オートウェビナー大学 学長。<br>
-                                累計200社以上の事業主の自動化・仕組み化を支援。マーケティングオートメーションツール「UTAGE」の認定パートナーとして、導入支援や活用コンサルティングを提供。<br>
+                                累計200社以上の事業主の自動化・仕組み化を支援。導入支援や活用コンサルティングを提供。<br>
                                 難しい専門用語を使わず、初心者にも分かりやすい解説を心がけています。
                             </p>
                             <!-- 必要であれば著者ページへのリンクなどを追加 -->
@@ -654,7 +676,7 @@
                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="30" height="30"><path fill="currentColor" d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"></path></svg>
                              </a>
                              <a href="#" class="social-button" onclick="window.open('https://social-plugins.line.me/lineit/share?url='+encodeURIComponent(location.href), '_blank', 'width=600,height=600'); return false;" style="display: inline-block; color: #06C755;"> <!-- LINEシェア機能追加, スタイル調整 -->
-                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="30" height="30"><path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path></svg>
+                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="30" height="30"><path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8z"></path></svg>
                              </a>
                         </div>
                     </div>
@@ -666,7 +688,7 @@
                             <!-- 関連記事アイテム -->
                             <a href="article-1.html" class="related-item">
                                 <div class="related-image">
-                                    <img src="../images/blog-utage-intro.webp" alt="UTAGEシステムとは？" loading="lazy">
+                                    <img src="../assets/images/blog-utage-intro.webp" alt="UTAGEシステムとは？" loading="lazy">
                                 </div>
                                 <div class="related-content">
                                     <h4 class="related-item-title">UTAGEシステムとは？初心者向けに機能やメリット・デメリットを徹底解説</h4>
@@ -675,7 +697,7 @@
                             </a>
                             <a href="article-3.html" class="related-item">
                                 <div class="related-image">
-                                    <img src="../images/blog-funnel.webp" alt="セールスファネルとは？" loading="lazy">
+                                    <img src="../assets/images/blog-funnel.webp" alt="セールスファネルとは？" loading="lazy">
                                 </div>
                                 <div class="related-content">
                                     <h4 class="related-item-title">セールスファネルとは？種類や作り方、成功事例を分かりやすく解説</h4>
@@ -684,7 +706,7 @@
                             </a>
                             <a href="article-4.html" class="related-item">
                                 <div class="related-image">
-                                    <img src="../images/blog-mail-system.webp" alt="ステップメール配信システム比較" loading="lazy">
+                                    <img src="../assets/images/blog-mail-system.webp" alt="ステップメール配信システム比較" loading="lazy">
                                 </div>
                                 <div class="related-content">
                                     <h4 class="related-item-title">ステップメール配信システム比較10選！選び方のポイントとおすすめツール</h4>
@@ -700,7 +722,7 @@
                 <div class="article-right-sidebar">
                     <!-- プロフィール -->
                     <div class="sidebar-section sidebar-author-profile" style="text-align: center;"> <!-- スタイル調整 -->
-                         <img src="../images/profile-photo.webp" alt="YUKIのプロフィール写真" class="author-image" style="width: 100px; height: 100px; border-radius: 50%; margin-bottom: 15px;" loading="lazy"> <!-- 画像パス修正, スタイル調整 -->
+                         <img src="../assets/images/profile-sidebar.webp" alt="YUKIのプロフィール写真" class="author-image" style="width: 100px; height: 100px; border-radius: 50%; margin-bottom: 15px;" loading="lazy"> <!-- 画像パス修正, スタイル調整 -->
                          <h3 class="author-name" style="font-size: 16px; font-weight: bold; margin-bottom: 5px;">YUKI (まえゆき)</h3>
                          <p class="author-title" style="font-size: 13px; color: #666; margin-bottom: 15px;">オートウェビナー大学 学長</p>
                          <div class="author-sns" style="margin-bottom: 15px;">
@@ -710,7 +732,7 @@
                              <a href="#" style="margin: 0 5px; color: #E1306C;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="20" height="20"><path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8z"></path></svg></a>
                          </div>
                          <p class="author-bio" style="font-size: 13px; line-height: 1.6; color: #555; margin-bottom: 15px;">
-                             自動化・仕組み化でビジネスを支援する専門家。UTAGE認定パートナー。
+                             自動化・仕組み化でビジネスを支援する専門家。
                          </p>
                          <a href="../owner.html" class="author-link" style="font-size: 13px; color: var(--dark-blue); text-decoration: underline;">プロフィール詳細</a> <!-- パスを修正, スタイル調整 -->
                          <!-- バッジ機能は削除 -->
@@ -742,240 +764,91 @@
             </div>
         </div>
     </main>
-<div id="footer-placeholder"></div>
-<script src="/js/script.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // --- 目次生成 ---
-            const tocList = document.querySelector('.toc-list');
-            const headings = document.querySelectorAll('.article-content h2[id], .article-content h3[id]');
-            let currentList = tocList;
-            let currentLevel = 2; // Start with h2
+<!-- script.jsの読み込みは1つだけ残す -->
+<script src="../js/script.js"></script>
+<script>
+(function() {
+  // 目次リンクと見出し要素を取得
+  const tocLinks = document.querySelectorAll('.toc-list a');
+  const headings = Array.from(tocLinks).map(link => {
+    const id = link.getAttribute('href').replace('#', '');
+    return document.getElementById(id);
+  });
 
-            headings.forEach(heading => {
-                const level = parseInt(heading.tagName.substring(1)); // h2 -> 2, h3 -> 3
-                const id = heading.getAttribute('id');
-                const text = heading.textContent || heading.innerText;
-
-                if (!id || !text) return; // Skip if no id or text
-
-                // Adjust list nesting based on heading level
-                while (level > currentLevel) {
-                    const sublist = document.createElement('ul');
-                    if (currentList.lastElementChild) {
-                        currentList.lastElementChild.appendChild(sublist);
-                    } else {
-                        // Handle case where parent list might be empty initially
-                        const tempLi = document.createElement('li');
-                        tempLi.appendChild(sublist);
-                        currentList.appendChild(tempLi);
-                    }
-                    currentList = sublist;
-                    currentLevel++;
-                }
-                while (level < currentLevel) {
-                    // Move up the hierarchy. Ensure currentList.parentElement exists and is a UL/OL before going up.
-                    if (currentList.parentElement && currentList.parentElement.closest('ul')) {
-                         // Go up two levels: li -> ul
-                         currentList = currentList.parentElement.closest('ul');
-                    } else {
-                         // Fallback or error handling if structure is unexpected
-                         console.warn("TOC generation: Could not move up in hierarchy for", heading);
-                         break; // Prevent infinite loop
-                    }
-                    currentLevel--;
-                }
-
-                // Create list item and link
-                const listItem = document.createElement('li');
-                const link = document.createElement('a');
-                link.setAttribute('href', `#${id}`);
-                link.textContent = text;
-                listItem.appendChild(link);
-                currentList.appendChild(listItem);
-            });
-
-
-            // --- 目次追従ハイライト (Intersection Observer) ---
-            const tocLinks = document.querySelectorAll('.toc-list a');
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px 0px -60% 0px', // Adjust margin to highlight when heading is near top
-                threshold: 0
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                let activeHeadingId = null;
-                // Find the topmost visible heading within the rootMargin
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        if (!activeHeadingId) { // Only set the first (topmost) one
-                            activeHeadingId = entry.target.getAttribute('id');
-                        }
-                    }
-                });
-
-                tocLinks.forEach(link => {
-                    link.classList.remove('active');
-                    const linkHref = link.getAttribute('href');
-                    if (linkHref === `#${activeHeadingId}`) {
-                        link.classList.add('active');
-                        // Optionally expand parent lists if needed (complex logic omitted for brevity)
-                    }
-                });
-            }, observerOptions);
-
-            headings.forEach(heading => {
-                 if (heading.id) {
-                    observer.observe(heading);
-                 }
-            });
-
-            // --- 目次クリック時のスムーズスクロール ---
-            tocLinks.forEach(link => {
-                 link.addEventListener('click', function(event) {
-                     event.preventDefault();
-                     const targetId = this.getAttribute('href').substring(1);
-                     const targetElement = document.getElementById(targetId);
-
-                     if (targetElement) {
-                         const headerHeight = document.querySelector('.site-header')?.offsetHeight || 0;
-                         const stickyTopOffset = 20; // Matches CSS .sidebar-toc { top: 20px; }
-                         const elementPosition = targetElement.getBoundingClientRect().top;
-                         const offsetPosition = elementPosition + window.pageYOffset - headerHeight - stickyTopOffset - 10; // Add small extra offset
-
-                         window.scrollTo({
-                             top: offsetPosition,
-                             behavior: 'smooth'
-                         });
-                         // history.pushState(null, null, `#${targetId}`); // Avoid changing URL during scroll
-                     }
-                 });
-            });
-
-            // --- スマホ用固定CTA表示/非表示 & body padding ---
-            // (script.js で制御される想定だが、念のため簡易版を記述)
-            const spFixCta = document.querySelector('.sp-fix-cta');
-            if (spFixCta) {
-                 function adjustForSpCta() {
-                     if (window.innerWidth <= 768) {
-                         // spFixCta.style.display = 'block'; // CSSで制御
-                         document.body.style.paddingBottom = `${spFixCta.offsetHeight}px`;
-                     } else {
-                         // spFixCta.style.display = 'none'; // CSSで制御
-                         document.body.style.paddingBottom = '0';
-                     }
-                 }
-                 adjustForSpCta();
-                 window.addEventListener('resize', adjustForSpCta);
-            }
-
-            // --- ハンバーガーメニュー制御 ---
-            // (script.js で制御される想定だが、念のため簡易版を記述)
-            const hamburgerButton = document.querySelector('.hamburger-button');
-            const mobileMenu = document.querySelector('.mobile-menu');
-            const body = document.body;
-
-            if (hamburgerButton && mobileMenu && body) {
-                hamburgerButton.addEventListener('click', function() {
-                    const isOpening = !mobileMenu.classList.contains('active');
-                    mobileMenu.classList.toggle('active', isOpening);
-                    hamburgerButton.classList.toggle('active', isOpening);
-                    body.classList.toggle('menu-open', isOpening);
-                    hamburgerButton.setAttribute('aria-expanded', String(isOpening));
-                    mobileMenu.style.transform = isOpening ? 'translateX(0)' : 'translateX(100%)';
-                });
-
-                // Close menu on link click
-                mobileMenu.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        if (mobileMenu.classList.contains('active')) {
-                            hamburgerButton.click(); // Simulate click to close
-                        }
-                    });
-                });
-
-                 // Close menu on resize to PC
-                 window.addEventListener('resize', () => {
-                     if (window.innerWidth > 768 && mobileMenu.classList.contains('active')) {
-                         hamburgerButton.click(); // Simulate click to close
-                     }
-                 });
-            }
-
-        });
-    </script>
-
-    <!-- ブログ記事のJSON-LDを維持 -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://newsite.example.com/blog/article-2.html" /* URLを実際のドメインに置き換える */
-      },
-      "headline": "マーケティング自動化ツール比較15選 – 中小企業が導入すべき理由と選び方のポイント",
-      "description": "中小企業・小規模事業者がマーケティング自動化ツールを導入すべき理由と、最適なツールの選び方を徹底解説。業務効率化や売上アップを実現しましょう。",
-      "image": "https://newsite.example.com/images/blog-marketing-automation.webp", /* URLを実際のドメインに置き換える */
-      "author": {
-        "@type": "Person",
-        "name": "YUKI (まえゆき)",
-        "url": "https://newsite.example.com/owner.html" /* URLを実際のドメインに置き換える */
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "オートウェビナー大学",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://newsite.example.com/images/logo.webp" /* URLを実際のドメインに置き換える */
-        }
-      },
-      "datePublished": "2025-04-25", /* 公開日 */
-      "dateModified": "2025-05-04" /* 最終更新日 */
+  // スクロールでハイライト
+  function highlightToc() {
+    let activeIndex = 0;
+    const scrollY = window.scrollY || window.pageYOffset;
+    for (let i = 0; i < headings.length; i++) {
+      if (headings[i] && headings[i].getBoundingClientRect().top + scrollY - 80 <= scrollY + 10) {
+        activeIndex = i;
+      }
     }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "中小企業がマーケティング自動化ツールを導入するメリットは何ですか？",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "限られたリソースを最大活用できる（定型業務の自動化）、見込み客・既存顧客の育成強化、営業効率の向上、顧客満足度とリピート率の向上などが挙げられます。"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "マーケティング自動化ツールの主要機能には何がありますか？",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "メールマーケティング（ステップメール含む）、LINE連携、フォーム作成、ランディングページ（LP）作成、顧客管理（CRM）連携、シナリオ設計、効果測定・分析レポートなどが挙げられます。"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "中小企業がマーケティング自動化ツールを選ぶ際のポイントは何ですか？",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "自社の課題と目的に合っているか、必要な機能が揃っているか、価格帯は予算に見合うか、操作は簡単か（使いやすいか）、サポート体制は充実しているか、他のツールとの連携は可能か、といった点が重要です。無料トライアルで実際に試してみることをおすすめします。"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "中小企業向けのおすすめマーケティング自動化関連ツールはありますか？",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "日本製品では、LP作成、LINE/メール配信、フォーム、決済など多くの機能が一つになったUTAGE、顧客データ管理や営業支援に強いクラウドEX、eセールスマネージャーなどがあります。会計システムや販売管理システム（弥生会計、freee会計、楽楽販売など）も、連携次第でマーケティング効率化に活用できます。"
-          }
-        }
-      ]
-    }
-    </script>
+    tocLinks.forEach(link => link.classList.remove('active'));
+    if (tocLinks[activeIndex]) tocLinks[activeIndex].classList.add('active');
+  }
 
+  // クリック時のスムーススクロール
+  tocLinks.forEach((link, i) => {
+    link.addEventListener('click', function(e) {
+      const id = this.getAttribute('href').replace('#', '');
+      const target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        const y = target.getBoundingClientRect().top + window.pageYOffset - 60;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    });
+  });
 
-
+  window.addEventListener('scroll', highlightToc);
+  window.addEventListener('resize', highlightToc);
+  document.addEventListener('DOMContentLoaded', highlightToc);
+  setTimeout(highlightToc, 300); // 初期化遅延対策
+})();
+</script>
+<!-- サイトフッター -->
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-widgets">
+            <div class="widget-area footer-widget-1">
+                <div class="site-logo-text footer-logo">オートウェビナー大学</div>
+                <p style="color:#eee;font-size:13px;margin-bottom:20px">
+                    成果の出るマーケティング自動化を<br>
+                    わかりやすくお伝えします
+                </p>
+            </div>
+            <div class="widget-area footer-widget-2">
+                <h4>サービス</h4>
+                <ul>
+                    <li><a href="../free-consultation.html">無料相談</a></li>
+                    <li><a href="../free-seminar.html">無料セミナー</a></li>
+                    <li><a href="../course/">オンラインコース</a></li>
+                    <li><a href="../book/">無料小冊子</a></li>
+                </ul>
+            </div>
+            <div class="widget-area footer-widget-3">
+                <h4>会社概要</h4>
+                <ul>
+                    <li><a href="../owner.html">代表紹介</a></li>
+                    <li><a href="../about.html">会社概要</a></li>
+                    <li><a href="../achievement/">導入事例</a></li>
+                </ul>
+            </div>
+            <div class="widget-area footer-widget-4">
+                <h4>お役立ち情報</h4>
+                <ul>
+                    <li><a href="../blog/">ブログ</a></li>
+                    <li><a href="../tools/">無料ツール</a></li>
+                    <li><a href="../document.html">資料ダウンロード</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="site-copyright">
+        <div class="inner-lg">
+            <small>&copy; 2023-2025 株式会社YUKI-Promotion All Rights Reserved.</small>
+        </div>
+    </div>
+</footer>
 </body></html>
