@@ -104,7 +104,7 @@ footer { flex-shrink: 0; }
 .toc-list a { 
     color: var(--text-mid); 
     text-decoration: none; 
-    transition: all 0.3s;
+    transition: all 0.15s;
     font-size: 14px; 
     display: block;
     padding: 5px 8px; /* クリック領域を広げる */

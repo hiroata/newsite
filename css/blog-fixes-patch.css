@@ -21,7 +21,7 @@
     color: var(--text-mid);
     text-decoration: none;
     font-size: 12px;
-    transition: all 0.3s ease;
+    transition: all 0.15s ease;
 }
 
 /* 左サイドバーのソーシャルボタン（いいね・ブックマーク以外を非表示） */

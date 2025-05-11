@@ -1,4 +1,4 @@
-/*! オートウェビナー大学 スタイルシート */
+/::root{--primary:#0066ff;--secondary:#ff3a3a;--accent:#ff9500;--dark-blue:#0d3283;--light-bg:#f8f9fa;--text-dark:#333;--text-mid:#555;--text-light:#777;--grad-primary:linear-gradient(135deg,#0066ff,#00b8ff);--grad-secondary:linear-gradient(135deg,#ff3a3a,#ff7d7d);--shadow-soft:0 5px 15px rgba(0,0,0,.08);--shadow-strong:0 10px 25px rgba(0,0,0,.12);--trans:all .15s ease;--radius:12px;--radius-sm:8px;--header-h:60px}! オートウェビナー大学 スタイルシート */
 :root{--primary:#0066ff;--secondary:#ff3a3a;--accent:#ff9500;--dark-blue:#0d3283;--light-bg:#f8f9fa;--text-dark:#333;--text-mid:#555;--text-light:#777;--grad-primary:linear-gradient(135deg,#0066ff,#00b8ff);--grad-secondary:linear-gradient(135deg,#ff3a3a,#ff7d7d);--shadow-soft:0 5px 15px rgba(0,0,0,.08);--shadow-strong:0 10px 25px rgba(0,0,0,.12);--trans:all .3s ease;--radius:12px;--radius-sm:8px;--header-h:60px}
 *,::after,::before{box-sizing:border-box;margin:0;padding:0}
 html,body{overflow-x:hidden}
@@ -52,7 +52,7 @@ footer{flex-shrink:0}
   height: 4px;
   background: #333;
   border-radius: 2px;
-  transition: all 0.3s;
+  transition: all 0.15s;
 }
 
 .hamburger-button span:nth-child(1) { top: 10px; }
@@ -96,18 +96,18 @@ footer{flex-shrink:0}
 .section-title{font-size:24px;font-weight:700;margin:0;color:var(--text-dark);letter-spacing:.02em}
 .important-notice{background:linear-gradient(135deg,#f06,#ff9966);color:#fff;text-align:center;padding:15px;font-weight:700;position:relative;z-index:10;margin:30px auto;max-width:1000px;border-radius:8px;box-shadow:0 5px 15px rgba(0,0,0,.1)}
 .important-notice h2{font-size:20px;line-height:1.4;margin:.5em 0;text-align:center}
-.important-notice-button{display:inline-block;background:#fff;color:#f06;padding:8px 20px;border-radius:30px;margin-top:10px;font-weight:700;text-decoration:none;transition:transform .3s ease}
+.important-notice-button{display:inline-block;background:#fff;color:#f06;padding:8px 20px;border-radius:30px;margin-top:10px;font-weight:700;text-decoration:none;transition:transform .15s ease}
 .important-notice-button:hover{transform:scale(1.05)}
 .achievement-section{background:var(--light-bg);position:relative;z-index:1;padding:50px 0}
 .achievement-card-list{display:grid;grid-template-columns:1fr;gap:20px;max-width:1180px;margin:0 auto;padding:0 15px}
-.achievement-card{background:#fff;border-radius:8px;overflow:hidden;box-shadow:var(--shadow-soft);transition:transform .3s ease,box-shadow .3s ease;display:block;height:100%}
+.achievement-card{background:#fff;border-radius:8px;overflow:hidden;box-shadow:var(--shadow-soft);transition:transform .15s ease,box-shadow .15s ease;display:block;height:100%}
 .achievement-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-strong);will-change:transform}
 .achievement-card a{display:block;color:var(--text-dark)}
 .achievement-card img{width:100%;height:200px;object-fit:cover;display:block}
 .achievement-card p{padding:15px;font-size:15px;font-weight:700;line-height:1.4}
 .online-courses-section{background:var(--light-bg);padding:50px 0;position:relative;z-index:1}
 .online-courses-grid{display:grid;grid-template-columns:1fr;gap:20px;max-width:1180px;margin:0 auto;padding:0 15px}
-.course-card{background:#fff;border-radius:18px;box-shadow:0 4px 24px rgba(0,0,0,0.07);border:none;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow 0.3s,transform 0.2s;min-height:480px;margin-bottom:10px}
+.course-card{background:#fff;border-radius:18px;box-shadow:0 4px 24px rgba(0,0,0,0.07);border:none;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow 0.15s,transform 0.1s;min-height:480px;margin-bottom:10px}
 .course-card:hover{box-shadow:0 8px 32px rgba(0,102,255,0.15);transform:translateY(-4px) scale(1.02)}
 .course-image{position:relative;height:180px;overflow:hidden}
 .course-image img{width:100%;height:100%;object-fit:cover;border-radius:0;min-height:180px}
@@ -115,15 +115,15 @@ footer{flex-shrink:0}
 .course-content{padding:15px;display:flex;flex-direction:column;flex-grow:1}
 .course-title{font-size:20px;font-weight:900;margin:12px 0 8px;line-height:1.4;color:var(--dark-blue)}
 .course-description{font-size:15px;color:#444;line-height:1.7;margin-bottom:18px;flex-grow:1;overflow:hidden;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;min-height:4.5em}
-.course-button{display:inline-block;background:var(--secondary);color:#fff;text-align:center;padding:8px 15px;border-radius:4px;font-weight:700;font-size:14px;transition:background-color .3s ease;align-self:flex-start}
+.course-button{display:inline-block;background:var(--secondary);color:#fff;text-align:center;padding:8px 15px;border-radius:4px;font-weight:700;font-size:14px;transition:background-color .15s ease;align-self:flex-start}
 .course-button:hover{background:#e03333;color:#fff}
 .course-meta{flex-direction:column;align-items:flex-start;gap:8px}
 .course-price{font-size:20px;font-weight:bold;color:var(--secondary)}
-.course-detail-button{width:100%;background:linear-gradient(90deg,#0066ff,#0099ff);color:#fff;font-weight:700;border-radius:6px;padding:12px 0;font-size:16px;margin-top:8px;transition:background 0.2s}
+.course-detail-button{width:100%;background:linear-gradient(90deg,#0066ff,#0099ff);color:#fff;font-weight:700;border-radius:6px;padding:12px 0;font-size:16px;margin-top:8px;transition:background 0.1s}
 .course-detail-button:hover{background:linear-gradient(90deg,#0099ff,#0066ff)}
 .blog-section{background:#fff;padding:50px 0;position:relative;z-index:1}
 .blog-list{display:grid;grid-template-columns:1fr;gap:20px;max-width:1180px;margin:0 auto;padding:0 15px}
-.blog-item{background:#fff;border-radius:8px;overflow:hidden;box-shadow:var(--shadow-soft);transition:box-shadow .3s ease,transform .3s ease;display:flex;flex-direction:column;height:100%}
+.blog-item{background:#fff;border-radius:8px;overflow:hidden;box-shadow:var(--shadow-soft);transition:box-shadow .15s ease,transform .15s ease;display:flex;flex-direction:column;height:100%}
 .blog-item:hover{box-shadow:var(--shadow-strong);transform:translateY(-5px);will-change:transform}
 .blog-item a{display:block;color:var(--text-dark)}
 .blog-meta{display:flex;gap:10px;font-size:12px;color:var(--text-light);padding:15px 15px 0}
@@ -136,7 +136,7 @@ footer{flex-shrink:0}
 .blog-readmore{display:inline-block;margin:0 15px 15px;color:var(--secondary);font-weight:700}
 .blog-readmore:hover{color:#e03333;text-decoration:underline}
 .more-button-container{text-align:center;margin-top:30px}
-.btn-more{display:inline-block;padding:10px 30px;background:var(--secondary);color:#fff;border-radius:4px;text-decoration:none;font-weight:700;transition:background-color .3s ease}
+.btn-more{display:inline-block;padding:10px 30px;background:var(--secondary);color:#fff;border-radius:4px;text-decoration:none;font-weight:700;transition:background-color .15s ease}
 .btn-more:hover{background:#e03333}
 .contact-cta-section{background:var(--secondary);color:#fff;padding:50px 0;position:relative;overflow:hidden}
 .contact-cta-container{position:relative;z-index:10;max-width:1000px;margin:0 auto;padding:0 20px;text-align:center}
@@ -144,7 +144,7 @@ footer{flex-shrink:0}
 .contact-cta-title{font-size:24px;font-weight:700;margin:0 0 15px;color:#fff}
 .contact-cta-lead{font-size:14px;margin:0 0 30px;color:#fff;opacity:.9}
 .contact-cta-buttons{display:flex;flex-direction:column;gap:15px;margin-top:20px}
-.contact-cta-buttons .btn{display:flex;align-items:center;padding:10px 20px;border-radius:4px;text-decoration:none;font-size:14px;font-weight:700;transition:all .3s ease;justify-content:center}
+.contact-cta-buttons .btn{display:flex;align-items:center;padding:10px 20px;border-radius:4px;text-decoration:none;font-size:14px;font-weight:700;transition:all .15s ease;justify-content:center}
 .contact-cta-buttons .btn-contact{background:#fff;color:var(--secondary);border:1px solid #fff;position:relative;overflow:hidden}
 .contact-cta-buttons .btn-contact:hover{background:#f5f5f5}
 .contact-cta-buttons .btn-document{background:transparent;color:#fff;border:2px solid #fff}
@@ -157,12 +157,12 @@ footer{flex-shrink:0}
 .footer-widget-1{margin-bottom:30px;text-align:center}
 .widget-area h4{font-size:16px;margin-bottom:15px;font-weight:700}
 .widget-area ul li{margin-bottom:10px}
-.widget-area ul li a{color:#eee;font-size:14px;transition:color .3s ease}
+.widget-area ul li a{color:#eee;font-size:14px;transition:color .15s ease}
 .widget-area ul li a:hover{color:#fff}
 .footer-logo{max-width:150px;margin:0 auto 20px}
 .site-copyright{background:#fff;color:#333;padding:15px 0;text-align:center;position:relative;z-index:2}
 .site-copyright small{font-size:12px}
-.fade-in,.fade-up,.fade-right,.fade-left{will-change:opacity,transform;opacity:0;transition:opacity .5s ease-out,transform .5s ease-out}
+.fade-in,.fade-up,.fade-right,.fade-left{will-change:opacity,transform;opacity:0;transition:opacity .25s ease-out,transform .25s ease-out}
 .fade-in.visible{opacity:1}
 .fade-up{transform:translateY(20px)}
 .fade-up.visible{opacity:1;transform:translateY(0)}
@@ -264,7 +264,7 @@ body.menu-open {
   border-radius: 25px;
   font-weight: 700;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.15s ease;
   border: none;
   font-size: 17px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -388,7 +388,7 @@ body.menu-open {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 .social-button:hover {
@@ -410,7 +410,7 @@ body.menu-open {
   border: 1px solid #ccc;
   border-radius: 20px;
   font-size: 14px;
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
   color: var(--text-dark);
 }
 .preset-link:hover {
@@ -459,7 +459,7 @@ body.menu-open {
   border-radius: 25px;
   border: 1px solid #ddd;
   font-size: 15px;
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
   color: var(--dark-blue);
   box-shadow: 0 2px 5px rgba(0,0,0,0.08);
 }
@@ -534,7 +534,7 @@ body.theme-orange { --primary: #ff9500; }
   height: 4px;
   background: #333;
   border-radius: 2px;
-  transition: all 0.3s;
+  transition: all 0.15s;
 }
 .hamburger-button span:nth-child(1) { top: 10px; }
 .hamburger-button span:nth-child(2) { top: 18px; }

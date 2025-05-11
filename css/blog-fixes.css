@@ -121,7 +121,7 @@
     border: 1px solid var(--border-light);
     border-radius: 8px;
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .related-image {
@@ -193,7 +193,7 @@
   background: #fff;
   max-height: calc(100vh - 100px); /* subtract top and bottom margins */
   overflow-y: auto; /* 高さが超えたらスクロール */
-  transition: max-height 0.3s ease;
+  transition: max-height 0.15s ease;
 }
 
 /* JavaScript連携用クラス */
