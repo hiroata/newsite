@@ -205,7 +205,7 @@
         .hero-section {
             height: 100vh;
             min-height: 700px;
-            background-color: #000;
+            background-color: #3a1c71; /* 青紫系の背景色 */
             color: white;
             position: relative;
             overflow: hidden;
@@ -230,13 +230,15 @@
             height: 100%;
             z-index: 0;
             overflow: hidden;
+            background: linear-gradient(135deg, #3a1c71, #5a54a4, #6948bb); /* 青紫系のグラデーション背景 */
         }
 
         .hero-video-container video {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.7;
+            opacity: 0.6; /* 動画の透明度を上げて、背景色をより見せる */
+            mix-blend-mode: overlay; /* 動画と背景のブレンドモードを変更 */
         }
 
         .hero-video-container::after {
@@ -246,7 +248,20 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.7) 100%);
+            background: linear-gradient(180deg, rgba(58,28,113,0.5) 0%, rgba(90,84,164,0.7) 100%); /* 青紫系のグラデーションオーバーレイ */
+        }
+
+        /* 視覚効果を追加: 浮遊する粒子のような要素 */
+        .hero-video-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXRlcm4iIHg9IjAiIHk9IjAiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgcGF0dGVyblRyYW5zZm9ybT0icm90YXRlKDMwKSI+PHJlY3QgeD0iMTkiIHk9IjE5IiB3aWR0aD0iMiIgaGVpZ2h0PSIyIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMSkiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjcGF0dGVybikiLz48L3N2Zz4=');
+            z-index: 1;
+            opacity: 0.4;
         }
 
         .hero-content {
@@ -848,7 +863,7 @@
                 ツール選びに悩まない、すべてが揃ったオールインワンプラットフォーム
             </p>
             <div class="services-grid">                <!-- コースカード1 -->
-                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <a href="course/lp.html" class="service-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="service-image">
                         <img src="assets/images/course-lp.webp" alt="ランディングページ作成初級講座" loading="lazy">
                     </div>
@@ -857,12 +872,11 @@
                         <p class="service-text">
                             「なぜ売れないの？」その悩み、LPが原因かもしれません。本講座では、購入ボタンをクリックしたくなる「売れるLP」の法則を徹底解説。もうWebデザイナーに依頼する必要はありません。
                         </p>
-                        <a href="free-consultation.html" class="service-btn">お問い合わせ <i class="fas fa-arrow-right"></i></a>
                     </div>
-                </div>
+                </a>
                 
                 <!-- コースカード2 -->
-                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <a href="course/video.html" class="service-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="service-image">
                         <img src="assets/images/course-video.webp" alt="動画編集初級講座" loading="lazy">
                     </div>
@@ -871,12 +885,11 @@
                         <p class="service-text">
                             「最後まで見てもらえない…」そんな悩みを解決する動画マーケティングスキルを習得。冒頭10秒で視聴者を惹きつける方法から、商品購入へと導くストーリー設計まで。
                         </p>
-                        <a href="free-consultation.html" class="service-btn">お問い合わせ <i class="fas fa-arrow-right"></i></a>
                     </div>
-                </div>
+                </a>
                 
                 <!-- コースカード3 -->
-                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                <a href="course/step-mail.html" class="service-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="service-image">
                         <img src="assets/images/course-step-mail.webp" alt="ステップメール設計初級講座" loading="lazy">
                     </div>
@@ -885,9 +898,8 @@
                         <p class="service-text">
                             「メールを送っても反応がない…」そんな悩みを解消するステップメールの極意を学べます。見込み客を熱狂的なファンに変える7ステップのメール設計術。
                         </p>
-                        <a href="free-consultation.html" class="service-btn">お問い合わせ <i class="fas fa-arrow-right"></i></a>
                     </div>
-                </div>            </div>
+                </a>            </div>
         </div>
     </section>    <!-- ブログ記事セクション -->
     <section class="section section-light">
