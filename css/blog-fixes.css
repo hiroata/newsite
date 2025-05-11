@@ -1,0 +1,327 @@
+/* blog-fixes.css - 2025-05-12 */
+
+/* 1. ヘッダー削除に伴うスタイル調整 */
+.site-main {
+    padding-top: 20px; /* ヘッダー削除後の余白調整 */
+}
+
+.page-container {
+    margin-top: 10px; /* コンテンツ全体の余白調整 */
+    overflow: visible; /* Ensure right sidebar and container allow sticky positioning */
+}
+
+/* 2. プロフィール画像とSNS画像のサイズ修正 */
+.sidebar-author-profile .author-image {
+    width: 70px; /* サイドバープロフィール画像サイズ縮小 */
+    height: 70px;
+    margin-bottom: 10px;
+}
+
+.sidebar-author-profile .author-sns svg {
+    width: 16px; /* SNSアイコンサイズ縮小 */
+    height: 16px;
+}
+
+.sidebar-author-profile .author-sns {
+    margin-bottom: 10px;
+}
+
+.sidebar-author-profile .author-name {
+    font-size: 15px;
+    margin-bottom: 3px;
+}
+
+.sidebar-author-profile .author-title {
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.sidebar-author-profile .author-bio {
+    font-size: 12px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    max-width: 100%; /* 長いテキストが親要素からはみ出さないように */
+    overflow-wrap: break-word; /* 単語の途中で改行 */
+    word-break: break-word; /* 必要に応じて単語を途中で改行 */
+}
+
+/* 3. YUKIとにゃんたのキャラクターアイコン表示修正 */
+.conversation-container.yuki .character-icon {
+    background-image: url('../assets/images/profile-YUKI.webp');
+    background-size: cover;
+    background-position: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.conversation-container.nyanta .character-icon {
+    background-image: url('../assets/images/profile-nyanta.webp');
+    background-size: cover;
+    background-position: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+/* 4. ブログ下部のプロフィール説明位置の修正 */
+.author-box {
+    margin-top: 60px;
+    margin-bottom: 40px;
+    display: flex;
+    gap: 20px;
+    background-color: #f9f9f9;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.author-box .author-image {
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+}
+
+.author-box .author-name {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.author-box .author-bio {
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.author-box a {
+    color: var(--dark-blue);
+    font-size: 13px;
+    text-decoration: underline;
+}
+
+/* 5. 関連記事セクションのサイズ修正 */
+.related-articles {
+    margin-top: 40px;
+}
+
+.related-title {
+    font-size: 18px; /* タイトルサイズ縮小 */
+    font-weight: bold;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.related-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 15px;
+}
+
+.related-item {
+    box-shadow: none;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.related-image {
+    height: 120px;
+    position: relative; /* メタ情報の絶対位置指定のため追加 */
+    overflow: hidden;
+}
+
+.related-content {
+    padding: 10px;
+}
+
+.related-item-title {
+    font-size: 14px; /* 記事タイトルサイズ縮小 */
+    margin-bottom: 5px;
+    line-height: 1.4;
+}
+
+.related-meta {
+    font-size: 12px; /* メタ情報サイズ微調整 */
+    color: #777; /* グレーテキストに変更 */
+    padding: 2px 0;
+    margin-top: 3px;
+}
+
+/* --- 目次sticky対応・サイドバー修正 --- */
+.article-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px; /* 記事とサイドバー間の間隔を確保 */
+  position: relative;
+  max-width: 100%;
+}
+
+.article-main {
+  flex: 1;
+  min-width: 0; /* flexboxアイテムが親コンテナをはみ出さないように */
+  max-width: calc(100% - 360px); /* サイドバーとの間隔を考慮 */
+  overflow-wrap: break-word; /* 長い単語を改行 */
+  word-break: break-word; /* 必要に応じて単語を途中で改行 */
+  padding-right: 10px; /* 右側の余白を追加 */
+}
+
+.article-right-sidebar {
+  width: 320px;
+  flex-shrink: 0;
+  height: auto; /* 高さを制限しない */
+  margin-left: auto; /* 右側に配置 */
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: visible; /* Ensure right sidebar and container allow sticky positioning */
+}
+
+.sidebar-section {
+  background: #fff;
+  border-radius: 10px;
+  padding: 25px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  overflow: visible;
+  width: 100%;
+}
+
+.sidebar-toc {
+  position: sticky;
+  top: 80px; /* adjust for fixed header height */
+  z-index: 10;
+  background: #fff;
+  max-height: calc(100vh - 100px); /* subtract top and bottom margins */
+  overflow-y: auto; /* 高さが超えたらスクロール */
+  transition: max-height 0.3s ease;
+}
+
+/* JavaScript連携用クラス */
+.sidebar-toc.is-sticky {
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+
+/* スクロールバーのスタイル */
+.sidebar-toc::-webkit-scrollbar {
+  width: 5px;
+}
+.sidebar-toc::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+.sidebar-toc::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+.sidebar-toc::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}
+
+@media (max-width: 768px) {
+  .article-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .article-main {
+    max-width: 100%;
+  }
+  
+  .article-right-sidebar {
+    width: 100%;
+    margin-top: 30px;
+  }
+  
+  .sidebar-toc {
+    position: static;
+    max-height: none;
+    overflow: visible;
+  }
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .site-main {
+        padding-top: 20px; /* モバイルではヘッダーが固定されていないため調整 */
+    }
+    
+    .page-container {
+        margin-top: 10px;
+    }
+    
+    .article-page-title h1 {
+        font-size: 22px;
+        line-height: 1.4;
+    }
+    
+    .author-box {
+        padding: 15px;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .author-box .author-image {
+        margin: 0 auto 15px;
+    }
+    
+    .related-title {
+        font-size: 16px;
+    }
+    
+    .related-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .related-item {
+        display: flex;
+        border-bottom: 1px solid var(--border-light);
+        border-radius: 0;
+        border: none;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+    }
+    
+    .related-item:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+    
+    .related-image {
+        width: 80px;
+        height: 60px;
+        flex-shrink: 0;
+        margin-right: 10px;
+    }
+    
+    .related-content {
+        padding: 0;
+    }
+    
+    .sidebar-author-profile {
+        text-align: center;
+    }
+      .sidebar-author-profile .author-image {
+        margin: 0 auto 10px;
+    }
+}
+
+/* 10. LINEシェアボタンのアイコン追加 */
+.share-line::after {
+    content: ""; /* テキストを削除 */
+}
+
+.share-line::before {
+    content: "";
+    display: block;
+    width: 24px;
+    height: 24px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.516.271l2.462 3.33V8.108c0-.345.282-.63.63-.63.346 0 .63.285.63.63v4.771h-.001zm-5.74 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314'/%3E%3C/svg%3E") no-repeat center center;
+    background-size: contain;
+}
+
+/* 11. はてなブックマークボタンの見た目強化 */
+.share-hatena {
+    font-size: 22px;
+    font-weight: bold;
+}

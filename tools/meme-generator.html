@@ -1,16 +1,26 @@
-<!DOCTYPE html><html lang="ja"><head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta name="description" content="まえゆきツールのミームジェネレーター - 自分だけのオリジナルミームを簡単に作成できる無料ツールです。テキストを追加して画像をシェアしましょう。">
-   <title>ミームジェネレーター | まえゆきツール</title>
-   
-   <!-- リソースの先読み -->
-   <link rel="preconnect" href="https://fonts.googleapis.com">
-   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-   
-   <!-- クリティカルCSS インライン化 -->
-   <style>
-     :root{--primary:#0066ff;--secondary:#ff3a3a;--accent:#ff9500;--dark-blue:#0d3283;--light-bg:#f8f9fa;--text-dark:#333;--text-mid:#555;--header-h:60px}*,::after,::before{box-sizing:border-box;margin:0;padding:0}body{font:16px/1.6 'Noto Sans JP',sans-serif;color:var(--text-dark);background:#fff;overflow-x:hidden;display:flex;flex-direction:column;min-height:100vh;-webkit-text-size-adjust:100%}img{max-width:100%;height:auto;vertical-align:middle;border:0}a{text-decoration:none;color:inherit}ul{list-style:none}main{flex:1 0 auto}.site-header{position:fixed;top:0;left:0;width:100%;z-index:1000;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.1);height:var(--header-h);display:flex;align-items:center}.header-container{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center;width:100%}.site-logo-text{font-weight:700;font-size:20px}.site-logo-text a{color:var(--dark-blue)}.hamburger-button{display:block;width:30px;height:30px;position:relative;z-index:1001;border:0;background:0;cursor:pointer}.hamburger-button span{display:block;position:absolute;width:100%;height:2px;background:var(--text-dark);left:0}.hamburger-button span:nth-child(1){top:8px}.hamburger-button span:nth-child(2){top:14px}.hamburger-button span:nth-child(3){bottom:8px}
+<!-- ツール共通テンプレート -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="まえゆきツールのミームジェネレーター - 自分だけのオリジナルミームを簡単に作成できる無料ツールです。テキストを追加して画像をシェアしましょう。">
+  <title>ミームジェネレーター | まえゆきツール</title>
+
+  <!-- リソースの先読み -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- 共通CSSとフォント -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- ツール共通CSS -->
+  <link rel="stylesheet" href="/css/tools-common.css">
+
+  <!-- 個別ツールのスタイル -->
+  <style>
+    :root{--primary:#0066ff;--secondary:#ff3a3a;--accent:#ff9500;--dark-blue:#0d3283;--light-bg:#f8f9fa;--text-dark:#333;--text-mid:#555;--header-h:60px}*,::after,::before{box-sizing:border-box;margin:0;padding:0}body{font:16px/1.6 'Noto Sans JP',sans-serif;color:var(--text-dark);background:#fff;overflow-x:hidden;display:flex;flex-direction:column;min-height:100vh;-webkit-text-size-adjust:100%}img{max-width:100%;height:auto;vertical-align:middle;border:0}a{text-decoration:none;color:inherit}ul{list-style:none}main{flex:1 0 auto}.site-header{position:fixed;top:0;left:0;width:100%;z-index:1000;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.1);height:var(--header-h);display:flex;align-items:center}.header-container{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center;width:100%}.site-logo-text{font-weight:700;font-size:20px}.site-logo-text a{color:var(--dark-blue)}.hamburger-button{display:block;width:30px;height:30px;position:relative;z-index:1001;border:0;background:0;cursor:pointer}.hamburger-button span{display:block;position:absolute;width:100%;height:2px;background:var(--text-dark);left:0}.hamburger-button span:nth-child(1){top:8px}.hamburger-button span:nth-child(2){top:14px}.hamburger-button span:nth-child(3){bottom:8px}
 
      /* ミームジェネレータースタイル */
      .tool-section {
@@ -534,59 +544,66 @@
              flex-direction: column;
          }
      }
-   </style>
-   
-   <!-- 非クリティカルCSSは非同期ロード -->
-   <link rel="stylesheet" href="/css/style.css" media="print" onload="this.media='all'">
-   
-   <!-- JavaScriptの遅延ロード -->
-   <script src="/js/script.js" defer=""></script>
-   
-   <!-- フォールバック -->
-   <noscript>
-     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
-     <link rel="stylesheet" href="/css/style.css">
-   </noscript>
-   
-   <link rel="icon" href="/images/favicon.ico">
-   <meta property="og:title" content="ミームジェネレーター | まえゆきツール">
-   <meta property="og:description" content="自分だけのオリジナルミームを簡単に作成できる無料ツールです。テキストを追加して画像をシェアしましょう。">
-   <meta property="og:image" content="/images/ogp_image_tools.webp">
-   <meta property="og:type" content="website">
+  </style>
 
-   <!-- モバイルUX向上のための追加CSS -->
-   <link rel="stylesheet" href="/css/mobile-enhancements.css">
+  <!-- JavaScriptの遅延ロード -->
+  <script src="/js/script.js" defer></script>
+
+  <link rel="icon" href="/images/favicon.ico">
+  <meta property="og:title" content="ミームジェネレーター | まえゆきツール">
+  <meta property="og:description" content="まえゆきツールのミームジェネレーター - 自分だけのオリジナルミームを簡単に作成できる無料ツールです。テキストを追加して画像をシェアしましょう。">
+  <meta property="og:image" content="/images/tool-ogp.webp">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/images/ogp_image_tools.webp">
+  <meta property="og:type" content="website">
 </head>
 <body>
-<div id="svg-defs-placeholder"></div>
-<header class="site-header">
-  <div class="header-container">
-    <div class="site-logo-text">
-      <a href="/index.html">CLAN</a>
+  <!-- ヘッダー -->
+  <header class="site-header">
+    <div class="header-container">
+      <div class="site-logo-text">
+        <a href="/index.html">CLAN</a>
+      </div>
+      <nav class="global-nav pc-nav">
+        <ul>
+          <li><a href="/index.html">ホーム</a></li>
+          <li><a href="/about.html">オートウェビナー大学とは</a></li>
+          <li><a href="/blog/index.html">ブログ</a></li>
+          <li><a href="/seminar/index.html">オンライン講座</a></li>
+          <li><a href="/tools/index.html" aria-current="page">まえゆきツール</a></li>
+          <li><a href="/achievement/index.html">お客様の声</a></li>
+        </ul>
+      </nav>
+      <div class="header-cta">
+        <a href="/document.html" class="btn-document">
+          <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
+          資料請求
+        </a>
+        <a href="/free-consultation.html" class="btn-contact">
+          <span class="free-label">無料</span>
+          個別相談
+        </a>
+      </div>
+      <button class="hamburger-button" aria-label="メニュー">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
-    <nav class="global-nav pc-nav">
-      <ul>
-        <li><a href="/index.html">ホーム</a></li>
-        <li><a href="/about.html">オートウェビナー大学とは</a></li>
-        <li><a href="/blog/index.html">ブログ</a></li>
-        <li><a href="/seminar/index.html">オンライン講座</a></li>
-        <li><a href="/tools/index.html" aria-current="page">まえゆきツール</a></li>
-        <li><a href="/achievement/index.html">お客様の声</a></li>
-      </ul>
-    </nav>
-    <div class="header-cta">
-      <a href="/document.html" class="btn-document">
-        <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
-        資料請求する
-      </a>      <a href="https://utage-system.com/p/EcESO02xLLoK" class="btn-contact">
-        まずは相談する
-      </a>
-    </div>
-    <button class="hamburger-button sp-nav" aria-label="メニューを開く">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</header>
+  </header>
+
+  <!-- メインコンテンツ -->
+  <main>
+    <!-- ツールのコンテナ -->
+    <div class="app-wrapper">
+      <div class="tool-container">
+        <div class="tool-header">
+          <h1>ミームジェネレーター</h1>
+          <p class="tool-description">{{sub_description}}</p>
+        </div>        <!-- ツール固有のコンテンツ -->
+        <div class="tool-content">
+          <div id="svg-defs-placeholder"></div>
+
    <main class="site-main">
       <!-- ツールセクション -->
       <section class="tool-section">
@@ -819,6 +836,81 @@
 <div id="footer-placeholder"></div>
 <script src="/js/include.js"></script>
 <script src="/js/script.js"></script>
+        </div>
+      </div>
+    </div>
 
+    <!-- ブログへの誘導セクション -->
+    <section class="blog-cta-section section-padding">
+      <div class="inner">
+        <div class="section-title-container">
+          <span class="section-subtitle">BLOG</span>
+          <h2 class="section-title">ビジネス自動化のヒント</h2>
+        </div>
+        <p class="section-description">
+          オンラインビジネスを効率的に運営するためのノウハウを発信しています。
+          ぜひご覧ください。
+        </p>
+        <div class="blog-cta">
+          <a href="/blog/index.html" class="btn-secondary">
+            ブログを見る
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
 
-</body></html>
+  <!-- フッター -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-info">
+        <div class="footer-logo">CLAN</div>
+        <p class="footer-desc">オンラインビジネス自動化サポート</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-links-group">
+          <h3 class="footer-links-title">サイトマップ</h3>
+          <ul>
+            <li><a href="/index.html">ホーム</a></li>
+            <li><a href="/about.html">オートウェビナー大学とは</a></li>
+            <li><a href="/blog/index.html">ブログ一覧</a></li>
+            <li><a href="/tools/index.html">まえゆきツール</a></li>
+            <li><a href="/achievement/index.html">お客様の声</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-group">
+          <h3 class="footer-links-title">サービス</h3>
+          <ul>
+            <li><a href="/seminar/index.html">無料セミナー</a></li>
+            <li><a href="/free-consultation.html">無料相談</a></li>
+            <li><a href="/document.html">資料請求</a></li>
+            <li><a href="/course/index.html">有料講座</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-group">
+          <h3 class="footer-links-title">お役立ち</h3>
+          <ul>
+            <li><a href="/owner.html">運営者情報</a></li>
+            <li><a href="/privacy.html">プライバシーポリシー</a></li>
+            <li><a href="/terms.html">利用規約</a></li>
+            <li><a href="/tokutei.html">特定商取引法に基づく表記</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">© 2025 CLAN All rights reserved.</div>
+  </footer>
+
+  <!-- SVGアイコン -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="icon-pdf" viewBox="0 0 24 24">
+      <path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"/>
+    </symbol>
+  </svg>
+
+  <!-- 個別ツールのJavaScript -->
+  <script>
+    
+  </script>
+</body>
+</html>

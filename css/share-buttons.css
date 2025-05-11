@@ -1,0 +1,155 @@
+/* share-buttons.css - シェアボタンスタイル改善 2025-05-11 */
+
+/* シェアボックス全体のスタイル */
+.share-box {
+    margin: 50px 0 30px;
+    padding: 25px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.share-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+}
+
+/* シェアボタンコンテナ */
+.share-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+/* 共通シェアボタンスタイル */
+.share-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    color: white;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.share-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: scale(0);
+    transition: transform 0.3s ease;
+}
+
+.share-button:hover::before {
+    transform: scale(1.5);
+}
+
+.share-button svg {
+    width: 20px;
+    height: 20px;
+    fill: white;
+    z-index: 1;
+}
+
+/* X (旧Twitter) シェアボタン */
+.share-twitter {
+    background-color: #000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+.share-twitter:hover {
+    transform: translateY(-3px);
+}
+
+/* Facebook シェアボタン */
+.share-facebook {
+    background-color: #1877F2;
+    box-shadow: 0 4px 10px rgba(24, 119, 242, 0.2);
+}
+.share-facebook:hover {
+    transform: translateY(-3px);
+}
+
+/* はてなブックマーク シェアボタン */
+.share-hatena {
+    background-color: #00A4DE;
+    box-shadow: 0 4px 10px rgba(0, 164, 222, 0.2);
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    width: 50px; /* 幅を固定 */
+    height: 50px; /* 高さを固定 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.share-hatena:hover {
+    transform: translateY(-3px);
+    background-color: #0086b3; /* ホバー時の色を少し濃く */
+}
+.share-hatena::after {
+    content: "B!";
+    color: white;
+    font-size: 22px;
+    line-height: 1;
+    position: relative;
+    z-index: 2;
+}
+
+/* LINE シェアボタン */
+.share-line {
+    background-color: #06C755;
+    box-shadow: 0 4px 10px rgba(6, 199, 85, 0.2);
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    width: 50px; /* 幅を固定 */
+    height: 50px; /* 高さを固定 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.share-line:hover {
+    transform: translateY(-3px);
+    background-color: #05a847; /* ホバー時の色を少し濃く */
+}
+.share-line::after {
+    content: "L";
+    color: white;
+    font-size: 26px;
+    font-weight: bold;
+    line-height: 1;
+    position: relative;
+    z-index: 2;
+}
+
+/* モバイル対応 */
+@media (max-width: 768px) {
+    .share-box {
+        padding: 20px 15px;
+    }
+    
+    .share-buttons {
+        gap: 10px;
+    }
+    
+    .share-button {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .share-title {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+}
