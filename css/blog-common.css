@@ -132,4 +132,18 @@ footer { flex-shrink: 0; }
 .related-item-title { font-size: 15px; margin-bottom: 5px; line-height: 1.4; }
 .related-meta { font-size: 11px; color: #666; }
 
+/* ブログ記事一覧ページ用スタイル追加 */
+.blog-excerpt-link {
+  display: block;
+  color: var(--text-dark);
+  transition: var(--trans);
+}
+.blog-excerpt-link:hover {
+  opacity: 0.8;
+}
+.blog-excerpt {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
 /* ...レスポンシブや細かい部分は省略。必要に応じて追加... */
