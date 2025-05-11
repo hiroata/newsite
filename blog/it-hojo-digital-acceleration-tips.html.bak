@@ -19,7 +19,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/blog-common.css">
-    <link rel="stylesheet" href="../css/blog-fixes-new.css">
+    <link rel="stylesheet" href="../css/blog-fixes.css">
     <link rel="stylesheet" href="../css/share-buttons.css">
     <link rel="icon" href="../images/favicon.ico">
     <!-- 目次固定表示のためのスクリプト -->
@@ -566,7 +566,7 @@
                 </div>
             </div>
             
-            <!-- 右サイドバー（ブログ記事の内容を維持） -->
+            <!-- 右サイドバー（プロフィールと目次部分を分離） -->
             <div class="article-right-sidebar">
                 <!-- プロフィール -->
                 <div class="sidebar-section sidebar-author-profile">
@@ -584,15 +584,17 @@
                      <a href="#" class="cta-button">バッジを贈る</a>
                      <p class="button-hint">バッジを贈るには→</p>
                 </div>
-
-                <!-- 目次（ブログ記事の内容を維持） -->
-                <div class="sidebar-section sidebar-toc">
-                     <h3 class="sidebar-title">目次</h3>
-                     <ul class="toc-list">
-                         <li><a href="#section1">1. IT導入補助金2025とは？<span class="toc-dot"></span></a></li>
-                         <li>
-                             <a href="#section1-1">1-1. 申請資格と条件<span class="toc-dot"></span></a>
-                         </li>
+            </div>
+            
+            <!-- 目次部分を別コンテナに分離（スクロール時に追従） -->
+            <div class="sidebar-toc">
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">目次</h3>
+                    <ul class="toc-list">
+                        <li><a href="#section1">1. IT導入補助金2025とは？<span class="toc-dot"></span></a></li>
+                        <li>
+                            <a href="#section1-1">1-1. 申請資格と条件<span class="toc-dot"></span></a>
+                        </li>
                           <li><a href="#section1-2">1-2. 2025年度の変更点<span class="toc-dot"></span></a></li>
                          <li><a href="#section2">2. 申請から採択までの流れ<span class="toc-dot"></span></a></li>
                          <li><a href="#section2-1">2-1. 申請の準備<span class="toc-dot"></span></a></li>
@@ -611,89 +613,24 @@
                          <li><a href="#section5-1">5-1. 業務プロセス数で補助上限が変わる<span class="toc-dot"></span></a></li>
                          <li><a href="#section5-2">5-2. クラウドサービスが優遇される<span class="toc-dot"></span></a></li>
                          <li><a href="#section5-3">5-3. 具体的なITツール例<span class="toc-dot"></span></a></li>
-                          <li><a href="#section6">6. IT導入補助金申請の審査ポイント<span class="toc-dot"></span></a></li>
+                         <li><a href="#section6">6. IT導入補助金申請の審査ポイント<span class="toc-dot"></span></a></li>
                          <li><a href="#section6-1">6-1. 事業面の審査<span class="toc-dot"></span></a></li>
                          <li><a href="#section6-2">6-2. 計画目標値の審査<span class="toc-dot"></span></a></li>
                          <li><a href="#section6-3">6-3. 政策面の審査<span class="toc-dot"></span></a></li>
                          <li><a href="#section7">7. まとめ<span class="toc-dot"></span></a></li>
-                     </ul>
+                    </ul>
                 </div>
 
-                <!-- お知らせ セクションは削除 -->
-
-                <!-- 人気記事やカテゴリー、タグクラウドがあればサイドバーに追加 -->
+                <!-- 今後必要ならば、ここに人気記事やカテゴリー、タグクラウドなどを追加可能 -->
             </div>
         </div>
     </div>
 </main>
 <div id="footer-placeholder"></div>
 <script src="../js/include.js"></script>
+<!-- このページで使用される追加スクリプト -->
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // ブログ記事固有のJS (目次追従、スムーズスクロール) - 再度確認・移植
-        const headings = document.querySelectorAll('.article-content h2[id], .article-content h3[id]');
-        const tocLinks = document.querySelectorAll('.toc-list a');
-
-        // Intersection Observer APIでスクロール時の見出しを監視し、目次をハイライト
-        const observerOptions = {
-            root: null, // ビューポートをルートとする
-            rootMargin: '0px 0px -50% 0px', // ビューポートの中央50%で見出しを判定
-            threshold: 0 // 見出しが少しでもビューポートに入ったら発火
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
-            const visibleHeadings = new Set();
-            entries.forEach(entry => {
-                const id = entry.target.getAttribute('id');
-                if (entry.isIntersecting) {
-                    visibleHeadings.add(id);
-                } 
-            });
-
-            // 一旦全てのアクティブクラスを削除
-            tocLinks.forEach(link => link.classList.remove('active'));
-
-            if (visibleHeadings.size > 0) {
-                // visibleHeadingsのIDリストを、HTML上の出現順に並べ替える
-                // IntersectionObserverのrootMarginでビューポート中央を基準にしているため、
-                // 必ずしも最も物理的に上にある見出しが最初にisIntersectingになるわけではないため、
-                // HTMLの順序でソートし、最初の要素をアクティブにする
-                const sortedVisibleHeadings = Array.from(headings)
-                    .filter(heading => visibleHeadings.has(heading.id))
-                    // Simple sort based on presence in the original 'headings' NodeList order
-                     // Simple sort based on presence in the original 'headings' NodeList order
-                     .sort((a, b) => {
-                         const indexA = Array.from(headings).indexOf(a);
-                         const indexB = Array.from(headings).indexOf(b);
-                         return indexA - indexB;
-                     })
-                    .map(heading => heading.id);
-
-
-                if (sortedVisibleHeadings.length > 0) {
-                    // ソートされたリストの最初の要素が、現在ビューポート中央付近にある最も上の見出し
-                    const firstVisibleHeadingId = sortedVisibleHeadings[0];
-                    const activeTocLink = document.querySelector(`.toc-list a[href="#${firstVisibleHeadingId}"]`);
-                    if (activeTocLink) {
-                        activeTocLink.classList.add('active');
-                    }
-                }
-            }
-        }, observerOptions);
-
-        // 全ての見出しを監視対象に設定
-        headings.forEach(heading => {
-             if (heading.id) { // IDがある見出しのみ監視
-                observer.observe(heading);
-             }
-        });
-
-        // 目次リンククリック時のスムーズスクロール
-        tocLinks.forEach(link => {
-             link.addEventListener('click', function(event) {
-                 event.preventDefault();
-                 const targetId = this.getAttribute('href').substring(1);
-                 const targetElement = document.getElementById(targetId);
+    console.log('Sticky TOC機能を初期化');
 
                  if (targetElement) {
                      // Headerの高さ (モバイル時は50px、PC時は60px) を考慮してスクロール位置を調整
