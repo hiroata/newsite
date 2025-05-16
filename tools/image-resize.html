@@ -1,4 +1,3 @@
-<!-- ツール共通テンプレート -->
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -20,40 +19,406 @@
 
   <!-- 個別ツールのスタイル -->
   <style>
-    /* 画像リサイズツール固有のデザインのみ残す（共通UI部品はstyle.cssへ移動済み） */
-     .tool-section {
-         padding: 80px 0 40px;
-         margin-top: var(--header-h);
-         background: #f9f3e9;
-     }
-     .tool-container {
-         max-width: 840px;
-         margin: 0 auto;
-         padding: 0 20px;
-     }
-     .tool-title {
-         font-size: 28px;
-         text-align: center;
-         margin-bottom: 1rem;
-         color: var(--text-dark);
-     }
-     .tool-subtitle {
-         font-size: 16px;
-         color: var(--text-mid);
-         text-align: center;
-         margin-bottom: 8px;
-     }
-     .tool-label {
-         font-size: 12px;
-         display: table;
-         margin: 0 auto;
-         padding: 4px 10px;
-         border-radius: 15px;
-         background: var(--text-mid);
-         color: #fff;
-         letter-spacing: .05em;
-     }
-     /* 以下、固有部分があれば追記 */
+    /* 画像リサイズツール固有のスタイル */
+    .drop-area {
+      border: 2px dashed #ccc;
+      border-radius: 8px;
+      padding: 30px;
+      text-align: center;
+      margin: 20px 0;
+      transition: all 0.3s;
+      background: #fff;
+    }
+    .drop-area.dragover {
+      background: #f0f7ff;
+      border-color: #3498db;
+    }
+    .drop-area-icon {
+      margin-bottom: 15px;
+      color: #888;
+    }
+    .drop-area-text {
+      font-size: 16px;
+      margin-bottom: 5px;
+      color: #333;
+    }
+    .drop-area-or {
+      font-size: 14px;
+      color: #666;
+      margin: 10px 0;
+    }
+    .file-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #2a86db;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .file-button:hover {
+      background: #1c6cb9;
+    }
+    .file-input {
+      display: none;
+    }
+    .files-meta {
+      margin: 10px 0;
+      font-size: 14px;
+      color: #666;
+    }
+    .files-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 15px;
+    }
+    .file-item {
+      width: 140px;
+      background: #fff;
+      border-radius: 5px;
+      padding: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: relative;
+    }
+    .file-preview {
+      width: 100%;
+      height: 100px;
+      object-fit: contain;
+      margin-bottom: 5px;
+      border-radius: 3px;
+      background: #f8f8f8;
+    }
+    .file-name {
+      font-size: 12px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 5px;
+    }
+    .file-remove {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: #ff5252;
+      color: white;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      cursor: pointer;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+    .setting-row {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      padding: 15px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .setting-title {
+      width: 160px;
+      font-weight: bold;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+    }
+    .setting-icon {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      line-height: 24px;
+      text-align: center;
+      background: #eaeaea;
+      border-radius: 50%;
+      margin-right: 8px;
+      font-size: 12px;
+    }
+    .setting-input {
+      flex: 1;
+      display: flex;
+      align-items: center;
+    }
+    .size-input {
+      width: 100px;
+      padding: 8px 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    .size-unit {
+      margin-left: 8px;
+      font-size: 14px;
+      color: #666;
+    }
+    .size-note {
+      margin-left: 8px;
+      font-size: 12px;
+      color: #999;
+    }
+    .quality-note {
+      margin-left: 8px;
+      font-size: 14px;
+      color: #666;
+    }
+    .action-container {
+      margin: 30px 0;
+      text-align: center;
+    }
+    .resize-button {
+      background: #2a86db;
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+      width: 260px;
+    }
+    .resize-button:hover {
+      background: #1c6cb9;
+    }
+    .resize-button:disabled {
+      background: #cccccc;
+      cursor: not-allowed;
+    }
+    .usage-box {
+      margin: 40px 0;
+      background: #fff;
+      border-radius: 8px;
+      padding: 25px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .usage-title {
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .usage-title-icon {
+      margin-right: 10px;
+      color: #666;
+    }
+    .usage-list {
+      margin: 0;
+      padding-left: 20px;
+    }
+    .usage-item {
+      margin-bottom: 10px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #444;
+    }
+    .usage-link {
+      color: #2a86db;
+      text-decoration: none;
+    }
+    .usage-link:hover {
+      text-decoration: underline;
+    }
+    .tools-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 15px;
+    }
+    .tool-link {
+      background: #f5f5f5;
+      padding: 8px 12px;
+      border-radius: 4px;
+      font-size: 13px;
+      color: #333;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .tool-link:hover {
+      background: #e0e0e0;
+    }
+    /* ツール共通のスタイル */
+    .tool-section {
+      padding: 80px 0 40px;
+      margin-top: var(--header-h);
+      background: #f9f3e9;
+    }
+    .tool-container {
+      max-width: 840px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .tool-title {
+      font-size: 28px;
+      text-align: center;
+      margin-bottom: 1rem;
+      color: var(--text-dark);
+    }
+    .tool-subtitle {
+      font-size: 16px;
+      color: var(--text-mid);
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    .tool-label {
+      font-size: 12px;
+      display: table;
+      margin: 0 auto;
+      padding: 4px 10px;
+      border-radius: 15px;
+      background: var(--text-mid);
+      color: #fff;
+      letter-spacing: .05em;
+    }
+    .step-section {
+      position: relative;
+      margin-top: 40px;
+      padding: 25px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .step-number {
+      position: absolute;
+      top: -15px;
+      left: 20px;
+      width: 30px;
+      height: 30px;
+      background: #2a86db;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    .step-title {
+      margin-top: 5px;
+      margin-bottom: 10px;
+      font-size: 18px;
+      color: #333;
+    }
+    .step-description {
+      margin-bottom: 20px;
+      font-size: 14px;
+      color: #666;
+      line-height: 1.6;
+    }
+    .other-tools-title {
+      margin: 40px 0 15px;
+      text-align: center;
+      font-size: 20px;
+      color: #333;
+    }
+    /* 新しいプリセットタブのスタイル */
+    .preset-tabs {
+      display: flex;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #ddd;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .preset-tab {
+      padding: 10px 20px;
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      font-size: 15px;
+      color: #666;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.3s;
+    }
+    .preset-tab.active {
+      color: #2a86db;
+      border-bottom-color: #2a86db;
+    }
+    .preset-tab:hover:not(.active) {
+      background-color: #f0f0f0;
+    }
+    .lock-aspect-ratio {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+      font-size: 14px;
+      color: #666;
+    }
+    .checkbox-wrapper {
+      position: relative;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      margin-right: 8px;
+    }
+    .aspect-checkbox {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
+    .checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 20px;
+      width: 20px;
+      background-color: #eee;
+      border-radius: 3px;
+    }
+    .checkbox-wrapper:hover .checkmark {
+      background-color: #ccc;
+    }
+    .aspect-checkbox:checked ~ .checkmark {
+      background-color: #2a86db;
+    }
+    .checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+    }
+    .aspect-checkbox:checked ~ .checkmark:after {
+      display: block;
+    }
+    .checkbox-wrapper .checkmark:after {
+      left: 7px;
+      top: 3px;
+      width: 5px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+    /* 進捗バー */
+    .progress-container {
+      display: none;
+      margin: 20px 0;
+      text-align: center;
+    }
+    .progress-bar {
+      width: 100%;
+      height: 10px;
+      background-color: #f0f0f0;
+      border-radius: 5px;
+      overflow: hidden;
+      margin: 10px 0;
+    }
+    .progress-inner {
+      height: 100%;
+      background-color: #27ae60;
+      width: 0%;
+      transition: width 0.3s;
+    }
+    .progress-text {
+      font-size: 14px;
+      color: #666;
+      margin: 5px 0;
+    }
   </style>
 
   <!-- JavaScriptの遅延ロード -->
@@ -63,8 +428,6 @@
   <meta property="og:title" content="画像サイズ変更ツール | まえゆきツール">
   <meta property="og:description" content="まえゆきツールの画像サイズ変更ツール - ブラウザ上でJPEG・PNG画像をまとめてリサイズ・縮小できる無料ツールです。">
   <meta property="og:image" content="/images/tool-ogp.webp">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="/images/ogp_image_tools.webp">
   <meta property="og:type" content="website">
 </head>
 <body>
@@ -104,559 +467,189 @@
 
   <!-- メインコンテンツ -->
   <main>
-    <!-- ツールのコンテナ -->
-    <div class="app-wrapper">
+    <!-- ツールセクション -->
+    <section class="tool-section">
       <div class="tool-container">
-        <div class="tool-header">
-          <h1>画像サイズ変更ツール</h1>
-          <p class="tool-description">{{sub_description}}</p>
-        </div>        <!-- ツール固有のコンテンツ -->
-        <div class="tool-content">
-          <div id="svg-defs-placeholder"></div>
+        <h1 class="tool-title">画像サイズ変更ツール</h1>
+        <p class="tool-subtitle">Webで画像サイズを一括縮小！</p>
+        <span class="tool-label">JPEG/PNG対応</span>
 
-   <main class="site-main">
-      <!-- ツールセクション -->
-      <section class="tool-section">
-         <div class="tool-container">
-            <h1 class="tool-title">画像サイズ変更ツール</h1>
-            <p class="tool-subtitle">Webで画像サイズを一括縮小！</p>
-            <span class="tool-label">JPEG/PNG対応</span>
-
-            <!-- ステップ1: 画像選択 -->
-            <div class="step-section">
-               <span class="step-number">1</span>
-               <h2 class="step-title">サイズ変更する画像を選択</h2>
-               <p class="step-description">複数枚を一括で縮小できます。JPEGもPNGもまとめてどうぞ！</p>
-               
-               <div class="drop-area" id="dropArea">
-                  <div class="drop-area-icon">
-                     <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                        <polyline points="17 8 12 3 7 8"></polyline>
-                        <line x1="12" y1="3" x2="12" y2="15"></line>
-                     </svg>
-                  </div>
-                  <p class="drop-area-text">ここに画像ファイルをドラッグ＆ドロップ</p>
-                  <p class="drop-area-or">もしくは</p>
-                  <label class="file-button">
-                     + ファイルを追加
-                     <input type="file" class="file-input" id="fileInput" accept="image/jpeg, image/png, image/gif" multiple="">
-                  </label>
-               </div>
-
-               <div class="files-meta" id="filesMeta"></div>
-               <div class="files-container" id="filesContainer"></div>
+        <!-- ステップ1: 画像選択 -->
+        <div class="step-section">
+          <span class="step-number">1</span>
+          <h2 class="step-title">サイズ変更する画像を選択</h2>
+          <p class="step-description">複数枚を一括で縮小できます。JPEGもPNGもまとめてどうぞ！</p>
+          
+          <div class="drop-area" id="dropArea">
+            <div class="drop-area-icon">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="17 8 12 3 7 8"></polyline>
+                <line x1="12" y1="3" x2="12" y2="15"></line>
+              </svg>
             </div>
+            <p class="drop-area-text">ここに画像ファイルをドラッグ＆ドロップ</p>
+            <p class="drop-area-or">もしくは</p>
+            <label class="file-button">
+              + ファイルを追加
+              <input type="file" class="file-input" id="fileInput" accept="image/jpeg, image/png, image/gif" multiple>
+            </label>
+          </div>
 
-            <!-- ステップ2: 設定 -->
-            <div class="step-section">
-               <span class="step-number">2</span>
-               <h2 class="step-title">指定したサイズに縮小</h2>
-               <p class="step-description">縦横比を保ったままサイズ変更します。</p>
-               
-               <div class="settings-container">
-                  <div class="setting-row">
-                     <div class="setting-title">
-                        <span class="setting-icon">↔</span> 画像の最大幅
-                     </div>
-                     <div class="setting-input">
-                        <input type="number" id="maxWidth" class="size-input" value="1200" min="1">
-                        <span class="size-unit">px</span>
-                        <span class="size-note">（ピクセル）</span>
-                     </div>
-                  </div>
-                  
-                  <div class="setting-row">
-                     <div class="setting-title">
-                        <span class="setting-icon">↕</span> 画像の最大高
-                     </div>
-                     <div class="setting-input" id="maxHeightContainer">
-                        <button class="no-setting-btn" id="toggleMaxHeight">
-                           指定なし
-                           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 5px;">
-                              <path d="M12 20h9"></path>
-                              <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
-                           </svg>
-                        </button>
-                     </div>
-                  </div>
-                  
-                  <div class="setting-row">
-                     <div class="setting-title">
-                        <span class="setting-icon">◎</span> 画質
-                     </div>
-                     <div class="quality-buttons" id="qualityBtns">
-                        <button class="quality-btn" data-quality="20">低</button>
-                        <button class="quality-btn" data-quality="50">中</button>
-                        <button class="quality-btn" data-quality="80">高</button>
-                        <button class="quality-btn active" data-quality="100">最高</button>
-                     </div>
-                  </div>
-               </div>
-               
-               <div class="action-container">
-                  <button class="resize-button" id="resizeBtn" disabled="">→ リサイズする</button>
-               </div>
-            </div>
+          <div class="files-meta" id="filesMeta"></div>
+          <div class="files-container" id="filesContainer"></div>
+        </div>
 
-            <!-- ステップ3: ダウンロード -->
-            <div class="step-section">
-               <span class="step-number">3</span>
-               <h2 class="step-title">画像を一括ダウンロード</h2>
-               
-               <div class="action-container">
-                  <a class="download-button" id="downloadBtn" disabled="">↓ 全てダウンロード（zip）</a>
-               </div>
-            </div>
-
-            <!-- 使い方ボックス -->
-            <div class="usage-box">
-               <h3 class="usage-title">
-                  <span class="usage-title-icon">
-                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 20h9"></path>
-                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
-                     </svg>
-                  </span>
-                  画像のサイズ変更の仕方
-               </h3>
-               
-               <ul class="usage-list">
-                  <li class="usage-item">Web（ブラウザ）で使える画像リサイズツールです。</li>
-                  <li class="usage-item">JPEG/PNG/GIF画像を複数選択して縮小できます。</li>
-                  <li class="usage-item">画像の選択後、最大幅や最大高を指定してください。</li>
-                  <li class="usage-item">たとえば、最大幅を500にすると、画像の横幅が500pxになります。</li>
-                  <li class="usage-item">画像の縦横比は固定です。比率が崩れる心配はありません。</li>
-                  <li class="usage-item">もともとの画像の大きさが指定されたサイズ以下の場合にはリサイズはスキップされます。</li>
-                  <li class="usage-item">[リサイズする]ボタンを押すと全画像が指定サイズに変更されます。</li>
-                  <li class="usage-item">リサイズ後の画像はzipファイルとして一括ダウンロードもできます。</li>
-                  <li class="usage-item">画像はパソコンやスマホのブラウザ上で処理されます。</li>
-                  <li class="usage-item">サーバーなどにも送信されないため、誰かに見られる心配はありません。</li>
-                  <li class="usage-item">
-                     <a href="../tools/png-to-jpeg/" class="usage-link">JPEG変換ツール</a>や
-                     <a href="../tools/png-jpeg-to-webp/" class="usage-link">WebP変換ツール</a>もぜひご利用ください。
-                  </li>
-               </ul>
+        <!-- ステップ2: 設定 -->
+        <div class="step-section">
+          <span class="step-number">2</span>
+          <h2 class="step-title">目的に合わせて設定</h2>
+          <p class="step-description">用途に合わせて最適なサイズを選びましょう。</p>
+          
+          <!-- プリセットタブ -->
+          <div class="preset-tabs" id="presetTabs">
+            <button class="preset-tab active" data-preset="custom">カスタム設定</button>
+            <button class="preset-tab" data-preset="web">Web用（軽量化）</button>
+            <button class="preset-tab" data-preset="sns">SNS投稿用</button>
+            <button class="preset-tab" data-preset="print">印刷用（高画質）</button>
+            <button class="preset-tab" data-preset="thumbnail">サムネイル作成</button>
+          </div>
+          
+          <div class="settings-container">
+            <div class="setting-row">
+              <div class="setting-title">
+                <span class="setting-icon">↔</span> 画像の最大幅
+              </div>
+              <div class="setting-input">
+                <input type="number" id="maxWidth" class="size-input" value="1200" min="1">
+                <span class="size-unit">px</span>
+                <span class="size-note">（ピクセル）</span>
+              </div>
             </div>
             
-            <!-- 他のツールリンク -->
-            <div class="other-tools">
-               <h2 class="other-tools-title">その他のまえゆきツール</h2>
-               <div class="tools-list">
-                  <a href="calc.html" class="tool-link">単位換算と計算</a>
-                  <a href="countdown.html" class="tool-link">Webでカウントダウン</a>
-                  <a href="roulette.html" class="tool-link">Webでルーレット</a>
-                  <a href="bingo.html" class="tool-link">ビンゴ・マシーン</a>
-                  <a href="image-resize.html" class="tool-link">画像リサイズ</a>
-                  <a href="png-to-jpeg.html" class="tool-link">PNG→JPEG変換</a>
-                  <a href="png-jpeg-to-webp.html" class="tool-link">WebP変換</a>
-                  <a href="wareki-seireki.html" class="tool-link">年齢・和暦計算</a>
-               </div>
+            <div class="setting-row">
+              <div class="setting-title">
+                <span class="setting-icon">↕</span> 画像の最大高
+              </div>
+              <div class="setting-input" id="maxHeightContainer">
+                <input type="number" id="maxHeight" class="size-input" value="1200" min="1">
+                <span class="size-unit">px</span>
+                <span class="size-note">（ピクセル）</span>
+                
+                <div class="lock-aspect-ratio">
+                  <label class="checkbox-wrapper">
+                    <input type="checkbox" class="aspect-checkbox" id="lockAspectRatio" checked>
+                    <span class="checkmark"></span>
+                  </label>
+                  縦横比を維持する
+                </div>
+              </div>
             </div>
-         </div>
-      </section>
-
-      <!-- Contact CTA Section -->
-      <section class="contact-cta-section">
-         <div class="contact-cta-container">
-            <span class="contact-cta-subtitle">IT導入補助金2025活用可能</span>
-            <h2 class="contact-cta-title">申請は完全丸投げOK！</h2>
-            <p class="contact-cta-lead">
-               UTAGEの導入で最大450万円の補助金が受けられます。<br class="pc-only">
-               面倒な申請手続きはすべてお任せください。<br class="pc-only">
-               あなたは事業成長に集中するだけでOKです。
-            </p>
-            <div class="contact-cta-buttons">               <a href="https://utage-system.com/p/EcESO02xLLoK" class="btn btn-contact">
-                  無料相談してみる
-               </a>
-               <a href="../document.html" class="btn btn-document">
-                  <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
-                  資料請求する
-               </a>
+            
+            <!-- 簡易化した画質設定 -->
+            <div class="setting-row">
+              <div class="setting-title">
+                <span class="setting-icon">◎</span> 画質設定
+              </div>
+              <div class="setting-input">
+                <select id="qualitySelect" class="size-input">
+                  <option value="85">標準（推奨）</option>
+                  <option value="60">軽量化優先</option>
+                  <option value="100">高画質優先</option>
+                </select>
+                <span class="quality-note">※標準設定で十分キレイに仕上がります</span>
+              </div>
             </div>
-         </div>
-      </section>
-   </main>
-<div id="footer-placeholder"></div>
-<script src="/js/include.js"></script>
-<script src="/js/script.js"></script>
-   <!-- JSZipの読み込み -->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-
-   <!-- 画像リサイズ用JavaScript -->
-   <script>
-      document.addEventListener('DOMContentLoaded', function() {
-          // 要素の参照
-          const dropArea = document.getElementById('dropArea');
-          const fileInput = document.getElementById('fileInput');
-          const filesContainer = document.getElementById('filesContainer');
-          const filesMeta = document.getElementById('filesMeta');
-          const maxWidthInput = document.getElementById('maxWidth');
-          const maxHeightContainer = document.getElementById('maxHeightContainer');
-          const toggleMaxHeight = document.getElementById('toggleMaxHeight');
-          const qualityBtns = document.querySelectorAll('.quality-btn');
-          const resizeBtn = document.getElementById('resizeBtn');
-          const downloadBtn = document.getElementById('downloadBtn');
+          </div>
           
-          // 状態管理
-          let selectedFiles = [];
-          let resizedImages = [];
-          let quality = 100;
-          let maxHeightEnabled = false;
-          let maxHeight = 0;
+          <!-- 進捗表示エリア -->
+          <div class="progress-container" id="progressContainer">
+            <div class="progress-bar">
+              <div class="progress-inner" id="progressBar"></div>
+            </div>
+            <div class="progress-text" id="progressText">処理中...</div>
+          </div>
           
-          // ドラッグ&ドロップイベント
-          ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-              dropArea.addEventListener(eventName, preventDefaults, false);
-          });
-          
-          function preventDefaults(e) {
-          }
-          
-          ['dragenter', 'dragover'].forEach(eventName => {
-              dropArea.addEventListener(eventName, highlight, false);
-          });
-          
-          ['dragleave', 'drop'].forEach(eventName => {
-              dropArea.addEventListener(eventName, unhighlight, false);
-          });
-          
-          function highlight() {
-              dropArea.classList.add('dragover');
-          }
-          
-          function unhighlight() {
-              dropArea.classList.remove('dragover');
-          }
-          
-          // ファイルのドロップ
-          dropArea.addEventListener('drop', handleDrop, false);
-          
-          function handleDrop(e) {
-              const dt = e.dataTransfer;
-              const files = dt.files;
-              handleFiles(files);
-          }
-          
-          // ファイル選択
-          fileInput.addEventListener('change', function() {
-              handleFiles(this.files);
-          });
-          
-          // ファイル処理
-          function handleFiles(files) {
-              const validFiles = Array.from(files).filter(file => {
-                  const type = file.type.toLowerCase();
-                  return type === 'image/jpeg' || type === 'image/png' || type === 'image/gif';
-              });
-              
-              if (validFiles.length === 0) return;
-              
-              // 既存のファイルに追加
-              selectedFiles = [...selectedFiles, ...validFiles];
-              
-              // UIを更新
-              updateFilesUI();
-              updateFilesMetaUI();
-              
-              // リサイズボタンを有効化
-              resizeBtn.disabled = selectedFiles.length === 0;
-          }
-          
-          // ファイルUI更新
-          function updateFilesUI() {
-              filesContainer.innerHTML = '';
-              
-              selectedFiles.forEach((file, index) => {
-                  const fileItem = document.createElement('div');
-                  fileItem.className = 'file-item';
-                  
-                  const filePreview = document.createElement('img');
-                  filePreview.className = 'file-preview';
-                  filePreview.alt = file.name;
-                  
-                  // ファイルプレビュー作成
-                  const reader = new FileReader();
-                  reader.onload = function(e) {
-                      filePreview.src = e.target.result;
-                  };
-                  reader.readAsDataURL(file);
-                  
-                  const fileName = document.createElement('div');
-                  fileName.className = 'file-name';
-                  fileName.textContent = file.name;
-                  
-                  const removeBtn = document.createElement('div');
-                  removeBtn.className = 'file-remove';
-                  removeBtn.innerHTML = '×';
-                  removeBtn.addEventListener('click', () => {
-                      selectedFiles.splice(index, 1);
-                      updateFilesUI();
-                      updateFilesMetaUI();
-                      resizeBtn.disabled = selectedFiles.length === 0;
-                  });
-                  
-                  fileItem.appendChild(filePreview);
-                  fileItem.appendChild(fileName);
-                  fileItem.appendChild(removeBtn);
-                  filesContainer.appendChild(fileItem);
-              });
-          }
-          
-          // ファイルメタ情報更新
-          function updateFilesMetaUI() {
-              if (selectedFiles.length === 0) {
-                  filesMeta.textContent = '';
-                  return;
-              }
-              
-              let totalSize = 0;
-              selectedFiles.forEach(file => {
-                  totalSize += file.size;
-              });
-              
-              const sizeInMB = (totalSize / (1024 * 1024)).toFixed(2);
-              filesMeta.textContent = `${selectedFiles.length}枚の画像（合計 ${sizeInMB} MB）`;
-          }
-          
-          // 最大高さの設定切り替え
-          toggleMaxHeight.addEventListener('click', function() {
-              maxHeightEnabled = !maxHeightEnabled;
-              
-              if (maxHeightEnabled) {
-                  // 入力フィールドに切り替え
-                  maxHeightContainer.innerHTML = `
-                      <input type="number" id="maxHeight" class="size-input" value="1200" min="1">
-                      <span class="size-unit">px</span>
-                      <span class="size-note">（ピクセル）</span>
-                  `;
-                  document.getElementById('maxHeight').value = maxWidthInput.value;
-              } else {
-                  // 指定なしに戻す
-                  maxHeightContainer.innerHTML = `
-                      <button class="no-setting-btn" id="toggleMaxHeight">
-                         指定なし
-                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 5px;">
-                            <path d="M12 20h9"></path>
-                            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
-                         </svg>
-                      </button>
-                  `;
-                  document.getElementById('toggleMaxHeight').addEventListener('click', toggleMaxHeight.click.bind(toggleMaxHeight));
-              }
-          });
-          
-          // 画質設定
-          qualityBtns.forEach(btn => {
-              btn.addEventListener('click', function() {
-                  qualityBtns.forEach(b => b.classList.remove('active'));
-                  this.classList.add('active');
-                  quality = parseInt(this.getAttribute('data-quality'));
-              });
-          });
-          
-          // リサイズボタン
-          resizeBtn.addEventListener('click', async function() {
-              if (selectedFiles.length === 0) return;
-              
-              resizeBtn.disabled = true;
-              resizeBtn.textContent = '処理中...';
-              
-              // サイズ設定を取得
-              const maxWidth = parseInt(maxWidthInput.value) || 1200;
-              const maxHeight = maxHeightEnabled ? (parseInt(document.getElementById('maxHeight').value) || 1200) : 0;
-              
-              // 画像を非同期でリサイズ
-              resizedImages = [];
-              
-              for (let i = 0; i < selectedFiles.length; i++) {
-                  const file = selectedFiles[i];
-                  try {
-                      const resizedBlob = await resizeImage(file, maxWidth, maxHeight, quality);
-                      resizedImages.push({
-                          name: file.name,
-                          blob: resizedBlob
-                      });
-                  } catch (err) {
-                      console.error('リサイズエラー:', err);
-                  }
-              }
-              
-              // ダウンロードボタンを有効化
-              downloadBtn.disabled = resizedImages.length === 0;
-              
-              // 処理完了表示
-              resizeBtn.textContent = 'リサイズ完了!';
-              setTimeout(() => {
-                  resizeBtn.textContent = '→ リサイズする';
-                  resizeBtn.disabled = false;
-              }, 2000);
-          });
-          
-          // 画像リサイズ処理
-          function resizeImage(file, maxWidth, maxHeight, quality) {
-              return new Promise((resolve, reject) => {
-                  const img = new Image();
-                  img.onload = function() {
-                      // 元のサイズ
-                      const origWidth = img.width;
-                      const origHeight = img.height;
-                      
-                      // リサイズ後のサイズを計算
-                      let newWidth = origWidth;
-                      let newHeight = origHeight;
-                      
-                      // 最大幅に合わせてリサイズ
-                      if (maxWidth > 0 && origWidth > maxWidth) {
-                          newWidth = maxWidth;
-                          newHeight = (origHeight * maxWidth) / origWidth;
-                      }
-                      
-                      // 最大高さに合わせてリサイズ（もし指定があれば）
-                      if (maxHeight > 0 && newHeight > maxHeight) {
-                          newWidth = (newWidth * maxHeight) / newHeight;
-                          newHeight = maxHeight;
-                      }
-                      
-                      // リサイズの必要がなければ元の画像を返す
-                      if (newWidth === origWidth && newHeight === origHeight) {
-                          file.arrayBuffer().then(buffer => {
-                              resolve(new Blob([buffer], { type: file.type }));
-                          }).catch(reject);
-                          return;
-                      }
-                      
-                      // キャンバスでリサイズ
-                      const canvas = document.createElement('canvas');
-                      canvas.width = newWidth;
-                      canvas.height = newHeight;
-                      
-                      const ctx = canvas.getContext('2d');
-                      ctx.drawImage(img, 0, 0, newWidth, newHeight);
-                      
-                      // JPEG/PNGで出力
-                      const mimeType = file.type;
-                      
-                      canvas.toBlob(blob => {
-                          resolve(blob);
-                      }, mimeType, quality / 100);
-                  };
-                  
-                  img.onerror = reject;
-                  
-                  // 画像読み込み
-                  const reader = new FileReader();
-                  reader.onload = function(e) {
-                      img.src = e.target.result;
-                  };
-                  reader.onerror = reject;
-                  reader.readAsDataURL(file);
-              });
-          }
-          
-          // ダウンロードボタン
-          downloadBtn.addEventListener('click', function(e) {
-              if (resizedImages.length === 0) {
-                  e.preventDefault();
-                  return;
-              }
-              
-              // 単一画像の場合は直接ダウンロード
-              if (resizedImages.length === 1) {
-                  const url = URL.createObjectURL(resizedImages[0].blob);
-                  downloadBtn.href = url;
-                  downloadBtn.download = `resized_${resizedImages[0].name}`;
-                  return;
-              }
-              
-              // 複数画像の場合はZIPでダウンロード
-              e.preventDefault();
-              
-              const zip = new JSZip();
-              
-              // 画像をZIPに追加
-              resizedImages.forEach(image => {
-                  zip.file(image.name, image.blob);
-              });
-              
-              // ZIPを生成してダウンロード
-              zip.generateAsync({ type: 'blob' }).then(content => {
-                  const url = URL.createObjectURL(content);
-                  const a = document.createElement('a');
-                  a.href = url;
-                  a.download = `resized_images_${new Date().toISOString().slice(0, 10)}.zip`;
-                  document.body.appendChild(a);
-                  a.click();
-                  document.body.removeChild(a);
-                  URL.revokeObjectURL(url);
-              });
-          });
-      });
-   </script>
+          <div class="action-container">
+            <button class="resize-button" id="resizeBtn" disabled>リサイズしてダウンロード</button>
+          </div>
         </div>
-      </div>
-    </div>
 
-    <!-- ブログへの誘導セクション -->
-    <section class="blog-cta-section section-padding">
-      <div class="inner">
-        <div class="section-title-container">
-          <span class="section-subtitle">BLOG</span>
-          <h2 class="section-title">ビジネス自動化のヒント</h2>
+        <!-- 使い方ボックス -->
+        <div class="usage-box">
+          <h3 class="usage-title">
+            <span class="usage-title-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 20h9"></path>
+                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+              </svg>
+            </span>
+            画像のサイズ変更の仕方
+          </h3>
+          
+          <ul class="usage-list">
+            <li class="usage-item">Web（ブラウザ）で使える画像リサイズツールです。</li>
+            <li class="usage-item">JPEG/PNG/GIF画像を複数選択して縮小できます。</li>
+            <li class="usage-item">タブから目的（Web用、SNS用など）に合わせたプリセットを選べます。</li>
+            <li class="usage-item">「縦横比を維持する」がオンの場合、自動的にアスペクト比が保たれます。</li>
+            <li class="usage-item">たとえば、最大幅を500にすると、画像の横幅が500pxになります。</li>
+            <li class="usage-item">画像の縦横比は固定です。比率が崩れる心配はありません。</li>
+            <li class="usage-item">もともとの画像の大きさが指定されたサイズ以下の場合にはリサイズはスキップされます。</li>
+            <li class="usage-item">「リサイズしてダウンロード」ボタンを押すと画像処理が開始され、完了後自動的にダウンロードされます。</li>
+            <li class="usage-item">複数画像の場合はzipファイルとして一括ダウンロードされます。</li>
+            <li class="usage-item">画像はパソコンやスマホのブラウザ上で処理されます。</li>
+            <li class="usage-item">サーバーなどにも送信されないため、誰かに見られる心配はありません。</li>
+            <li class="usage-item">
+              <a href="png-to-jpeg.html" class="usage-link">JPEG変換ツール</a>や
+              <a href="png-jpeg-to-webp.html" class="usage-link">WebP変換ツール</a>もぜひご利用ください。
+            </li>
+          </ul>
         </div>
-        <p class="section-description">
-          オンラインビジネスを効率的に運営するためのノウハウを発信しています。
-          ぜひご覧ください。
-        </p>
-        <div class="blog-cta">
-          <a href="/blog/index.html" class="btn-secondary">
-            ブログを見る
-          </a>
+        
+        <!-- 他のツールリンク -->
+        <div class="other-tools">
+          <h2 class="other-tools-title">その他のまえゆきツール</h2>
+          <div class="tools-list">
+            <a href="calc.html" class="tool-link">単位換算と計算</a>
+            <a href="countdown.html" class="tool-link">Webでカウントダウン</a>
+            <a href="roulette.html" class="tool-link">Webでルーレット</a>
+            <a href="bingo.html" class="tool-link">ビンゴ・マシーン</a>
+            <a href="image-resize.html" class="tool-link">画像リサイズ</a>
+            <a href="png-to-jpeg.html" class="tool-link">PNG→JPEG変換</a>
+            <a href="png-jpeg-to-webp.html" class="tool-link">WebP変換</a>
+            <a href="wareki-seireki.html" class="tool-link">年齢・和暦計算</a>
+          </div>
         </div>
       </div>
     </section>
-  </main>
 
-  <!-- フッター -->
-  <footer class="site-footer">
-    <div class="footer-container">
-      <div class="footer-info">
-        <div class="footer-logo">CLAN</div>
-        <p class="footer-desc">オンラインビジネス自動化サポート</p>
-      </div>
-      <div class="footer-links">
-        <div class="footer-links-group">
-          <h3 class="footer-links-title">サイトマップ</h3>
-          <ul>
-            <li><a href="/index.html">ホーム</a></li>
-            <li><a href="/about.html">オートウェビナー大学とは</a></li>
-            <li><a href="/blog/index.html">ブログ一覧</a></li>
-            <li><a href="/tools/index.html">まえゆきツール</a></li>
-            <li><a href="/achievement/index.html">お客様の声</a></li>
-          </ul>
-        </div>
-        <div class="footer-links-group">
-          <h3 class="footer-links-title">サービス</h3>
-          <ul>
-            <li><a href="/seminar/index.html">無料セミナー</a></li>
-            <li><a href="/free-consultation.html">無料相談</a></li>
-            <li><a href="/document.html">資料請求</a></li>
-            <li><a href="/course/index.html">有料講座</a></li>
-          </ul>
-        </div>
-        <div class="footer-links-group">
-          <h3 class="footer-links-title">お役立ち</h3>
-          <ul>
-            <li><a href="/owner.html">運営者情報</a></li>
-            <li><a href="/privacy.html">プライバシーポリシー</a></li>
-            <li><a href="/terms.html">利用規約</a></li>
-            <li><a href="/tokutei.html">特定商取引法に基づく表記</a></li>
-          </ul>
+    <!-- フッター（トップページと同じスタイルに変更） -->
+    <footer class="site-footer" style="background-color: #e6f7ff;">
+      <div class="footer-container" style="display:flex;align-items:flex-start;gap:32px;flex-wrap:wrap;">
+        <div style="font-weight:bold;font-size:1.3rem;color:#333;letter-spacing:0.08em;min-width:80px;">オートウェビナー大学</div>
+        <div class="footer-widgets" style="display:flex;gap:32px;flex-wrap:wrap;flex:1;">
+          <div class="widget-area">
+            <h4 style="color:#1a5276;">無料コンテンツ</h4>
+            <ul>
+              <li><a href="/blog/index.html">ブログ</a></li>
+              <li><a href="/book/index.html">電子書籍</a></li>
+              <li><a href="/free-seminar.html">無料セミナー</a></li>
+              <li><a href="/free-consultation.html">無料相談</a></li>
+              <li><a href="/achievement/index.html">お客様の声</a></li>
+            </ul>
+          </div>
+          <div class="widget-area">
+            <h4 style="color:#1a5276;">運営情報</h4>
+            <ul>
+              <li><a href="/owner.html">運営者情報</a></li>
+              <li><a href="/terms.html">利用規約</a></li>
+              <li><a href="/privacy.html">プライバシーポリシー</a></li>
+              <li><a href="/tokutei.html">特定商取引法に基づく表記</a></li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="copyright">© 2025 CLAN All rights reserved.</div>
-  </footer>
+    </footer>
 
   <!-- SVGアイコン -->
   <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -665,317 +658,417 @@
     </symbol>
   </svg>
 
-  <!-- 個別ツールのJavaScript -->
-  <script>
-    
+  <!-- JSZipの読み込み -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 
-document.addEventListener('DOMContentLoaded', function() {
-          // 要素の参照
-          const dropArea = document.getElementById('dropArea');
-          const fileInput = document.getElementById('fileInput');
-          const filesContainer = document.getElementById('filesContainer');
-          const filesMeta = document.getElementById('filesMeta');
-          const maxWidthInput = document.getElementById('maxWidth');
-          const maxHeightContainer = document.getElementById('maxHeightContainer');
-          const toggleMaxHeight = document.getElementById('toggleMaxHeight');
-          const qualityBtns = document.querySelectorAll('.quality-btn');
-          const resizeBtn = document.getElementById('resizeBtn');
-          const downloadBtn = document.getElementById('downloadBtn');
-          
-          // 状態管理
-          let selectedFiles = [];
-          let resizedImages = [];
-          let quality = 100;
-          let maxHeightEnabled = false;
-          let maxHeight = 0;
-          
-          // ドラッグ&ドロップイベント
-          ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-              dropArea.addEventListener(eventName, preventDefaults, false);
-          });
-          
-          function preventDefaults(e) {
-          }
-          
-          ['dragenter', 'dragover'].forEach(eventName => {
-              dropArea.addEventListener(eventName, highlight, false);
-          });
-          
-          ['dragleave', 'drop'].forEach(eventName => {
-              dropArea.addEventListener(eventName, unhighlight, false);
-          });
-          
-          function highlight() {
-              dropArea.classList.add('dragover');
-          }
-          
-          function unhighlight() {
-              dropArea.classList.remove('dragover');
-          }
-          
-          // ファイルのドロップ
-          dropArea.addEventListener('drop', handleDrop, false);
-          
-          function handleDrop(e) {
-              const dt = e.dataTransfer;
-              const files = dt.files;
-              handleFiles(files);
-          }
-          
-          // ファイル選択
-          fileInput.addEventListener('change', function() {
-              handleFiles(this.files);
-          });
-          
-          // ファイル処理
-          function handleFiles(files) {
-              const validFiles = Array.from(files).filter(file => {
-                  const type = file.type.toLowerCase();
-                  return type === 'image/jpeg' || type === 'image/png' || type === 'image/gif';
-              });
-              
-              if (validFiles.length === 0) return;
-              
-              // 既存のファイルに追加
-              selectedFiles = [...selectedFiles, ...validFiles];
-              
-              // UIを更新
-              updateFilesUI();
-              updateFilesMetaUI();
-              
-              // リサイズボタンを有効化
-              resizeBtn.disabled = selectedFiles.length === 0;
-          }
-          
-          // ファイルUI更新
-          function updateFilesUI() {
-              filesContainer.innerHTML = '';
-              
-              selectedFiles.forEach((file, index) => {
-                  const fileItem = document.createElement('div');
-                  fileItem.className = 'file-item';
-                  
-                  const filePreview = document.createElement('img');
-                  filePreview.className = 'file-preview';
-                  filePreview.alt = file.name;
-                  
-                  // ファイルプレビュー作成
-                  const reader = new FileReader();
-                  reader.onload = function(e) {
-                      filePreview.src = e.target.result;
-                  };
-                  reader.readAsDataURL(file);
-                  
-                  const fileName = document.createElement('div');
-                  fileName.className = 'file-name';
-                  fileName.textContent = file.name;
-                  
-                  const removeBtn = document.createElement('div');
-                  removeBtn.className = 'file-remove';
-                  removeBtn.innerHTML = '×';
-                  removeBtn.addEventListener('click', () => {
-                      selectedFiles.splice(index, 1);
-                      updateFilesUI();
-                      updateFilesMetaUI();
-                      resizeBtn.disabled = selectedFiles.length === 0;
-                  });
-                  
-                  fileItem.appendChild(filePreview);
-                  fileItem.appendChild(fileName);
-                  fileItem.appendChild(removeBtn);
-                  filesContainer.appendChild(fileItem);
-              });
-          }
-          
-          // ファイルメタ情報更新
-          function updateFilesMetaUI() {
-              if (selectedFiles.length === 0) {
-                  filesMeta.textContent = '';
-                  return;
-              }
-              
-              let totalSize = 0;
-              selectedFiles.forEach(file => {
-                  totalSize += file.size;
-              });
-              
-              const sizeInMB = (totalSize / (1024 * 1024)).toFixed(2);
-              filesMeta.textContent = `${selectedFiles.length}枚の画像（合計 ${sizeInMB} MB）`;
-          }
-          
-          // 最大高さの設定切り替え
-          toggleMaxHeight.addEventListener('click', function() {
-              maxHeightEnabled = !maxHeightEnabled;
-              
-              if (maxHeightEnabled) {
-                  // 入力フィールドに切り替え
-                  maxHeightContainer.innerHTML = `
-                      <input type="number" id="maxHeight" class="size-input" value="1200" min="1">
-                      <span class="size-unit">px</span>
-                      <span class="size-note">（ピクセル）</span>
-                  `;
-                  document.getElementById('maxHeight').value = maxWidthInput.value;
-              } else {
-                  // 指定なしに戻す
-                  maxHeightContainer.innerHTML = `
-                      <button class="no-setting-btn" id="toggleMaxHeight">
-                         指定なし
-                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 5px;">
-                            <path d="M12 20h9"></path>
-                            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
-                         </svg>
-                      </button>
-                  `;
-                  document.getElementById('toggleMaxHeight').addEventListener('click', toggleMaxHeight.click.bind(toggleMaxHeight));
-              }
-          });
-          
-          // 画質設定
-          qualityBtns.forEach(btn => {
-              btn.addEventListener('click', function() {
-                  qualityBtns.forEach(b => b.classList.remove('active'));
-                  this.classList.add('active');
-                  quality = parseInt(this.getAttribute('data-quality'));
-              });
-          });
-          
-          // リサイズボタン
-          resizeBtn.addEventListener('click', async function() {
-              if (selectedFiles.length === 0) return;
-              
-              resizeBtn.disabled = true;
-              resizeBtn.textContent = '処理中...';
-              
-              // サイズ設定を取得
-              const maxWidth = parseInt(maxWidthInput.value) || 1200;
-              const maxHeight = maxHeightEnabled ? (parseInt(document.getElementById('maxHeight').value) || 1200) : 0;
-              
-              // 画像を非同期でリサイズ
-              resizedImages = [];
-              
-              for (let i = 0; i < selectedFiles.length; i++) {
-                  const file = selectedFiles[i];
-                  try {
-                      const resizedBlob = await resizeImage(file, maxWidth, maxHeight, quality);
-                      resizedImages.push({
-                          name: file.name,
-                          blob: resizedBlob
-                      });
-                  } catch (err) {
-                      console.error('リサイズエラー:', err);
-                  }
-              }
-              
-              // ダウンロードボタンを有効化
-              downloadBtn.disabled = resizedImages.length === 0;
-              
-              // 処理完了表示
-              resizeBtn.textContent = 'リサイズ完了!';
-              setTimeout(() => {
-                  resizeBtn.textContent = '→ リサイズする';
-                  resizeBtn.disabled = false;
-              }, 2000);
-          });
-          
-          // 画像リサイズ処理
-          function resizeImage(file, maxWidth, maxHeight, quality) {
-              return new Promise((resolve, reject) => {
-                  const img = new Image();
-                  img.onload = function() {
-                      // 元のサイズ
-                      const origWidth = img.width;
-                      const origHeight = img.height;
-                      
-                      // リサイズ後のサイズを計算
-                      let newWidth = origWidth;
-                      let newHeight = origHeight;
-                      
-                      // 最大幅に合わせてリサイズ
-                      if (maxWidth > 0 && origWidth > maxWidth) {
-                          newWidth = maxWidth;
-                          newHeight = (origHeight * maxWidth) / origWidth;
-                      }
-                      
-                      // 最大高さに合わせてリサイズ（もし指定があれば）
-                      if (maxHeight > 0 && newHeight > maxHeight) {
-                          newWidth = (newWidth * maxHeight) / newHeight;
-                          newHeight = maxHeight;
-                      }
-                      
-                      // リサイズの必要がなければ元の画像を返す
-                      if (newWidth === origWidth && newHeight === origHeight) {
-                          file.arrayBuffer().then(buffer => {
-                              resolve(new Blob([buffer], { type: file.type }));
-                          }).catch(reject);
-                          return;
-                      }
-                      
-                      // キャンバスでリサイズ
-                      const canvas = document.createElement('canvas');
-                      canvas.width = newWidth;
-                      canvas.height = newHeight;
-                      
-                      const ctx = canvas.getContext('2d');
-                      ctx.drawImage(img, 0, 0, newWidth, newHeight);
-                      
-                      // JPEG/PNGで出力
-                      const mimeType = file.type;
-                      
-                      canvas.toBlob(blob => {
-                          resolve(blob);
-                      }, mimeType, quality / 100);
-                  };
-                  
-                  img.onerror = reject;
-                  
-                  // 画像読み込み
-                  const reader = new FileReader();
-                  reader.onload = function(e) {
-                      img.src = e.target.result;
-                  };
-                  reader.onerror = reject;
-                  reader.readAsDataURL(file);
-              });
-          }
-          
-          // ダウンロードボタン
-          downloadBtn.addEventListener('click', function(e) {
-              if (resizedImages.length === 0) {
-                  e.preventDefault();
-                  return;
-              }
-              
-              // 単一画像の場合は直接ダウンロード
-              if (resizedImages.length === 1) {
-                  const url = URL.createObjectURL(resizedImages[0].blob);
-                  downloadBtn.href = url;
-                  downloadBtn.download = `resized_${resizedImages[0].name}`;
-                  return;
-              }
-              
-              // 複数画像の場合はZIPでダウンロード
-              e.preventDefault();
-              
-              const zip = new JSZip();
-              
-              // 画像をZIPに追加
-              resizedImages.forEach(image => {
-                  zip.file(image.name, image.blob);
-              });
-              
-              // ZIPを生成してダウンロード
-              zip.generateAsync({ type: 'blob' }).then(content => {
-                  const url = URL.createObjectURL(content);
-                  const a = document.createElement('a');
-                  a.href = url;
-                  a.download = `resized_images_${new Date().toISOString().slice(0, 10)}.zip`;
-                  document.body.appendChild(a);
-                  a.click();
-                  document.body.removeChild(a);
-                  URL.revokeObjectURL(url);
-              });
-          });
-      });
+  <!-- 画像リサイズ用JavaScript -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 要素の参照
+        const dropArea = document.getElementById('dropArea');
+        const fileInput = document.getElementById('fileInput');
+        const filesContainer = document.getElementById('filesContainer');
+        const filesMeta = document.getElementById('filesMeta');
+        const maxWidthInput = document.getElementById('maxWidth');
+        const maxHeightInput = document.getElementById('maxHeight');
+        const lockAspectRatio = document.getElementById('lockAspectRatio');
+        const qualitySelect = document.getElementById('qualitySelect');
+        const presetTabs = document.querySelectorAll('.preset-tab');
+        const resizeBtn = document.getElementById('resizeBtn');
+        const progressContainer = document.getElementById('progressContainer');
+        const progressBar = document.getElementById('progressBar');
+        const progressText = document.getElementById('progressText');
+        
+        // 状態管理
+        let selectedFiles = [];
+        let resizedImages = [];
+        let originalAspectRatio = 1;
+        
+        // プリセット設定
+        const presets = {
+            custom: {
+                width: 1200,
+                height: 1200,
+                quality: 85,
+                description: "自分で設定を選べます"
+            },
+            web: {
+                width: 1024,
+                height: 768,
+                quality: 60,
+                description: "Webサイト用に最適化（軽量）"
+            },
+            sns: {
+                width: 1080,
+                height: 1080,
+                quality: 85,
+                description: "Instagram/Twitter等のSNS用"
+            },
+            print: {
+                width: 2048,
+                height: 2048,
+                quality: 100,
+                description: "印刷用の高画質設定"
+            },
+            thumbnail: {
+                width: 300,
+                height: 300,
+                quality: 85,
+                description: "サムネイル用の小さいサイズ"
+            }
+        };
+        
+        // プリセットタブ切り替え
+        presetTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                // アクティブタブ切り替え
+                presetTabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                // プリセット設定適用
+                const presetKey = this.getAttribute('data-preset');
+                const preset = presets[presetKey];
+                
+                maxWidthInput.value = preset.width;
+                maxHeightInput.value = preset.height;
+                
+                // 画質設定を更新
+                setQualityByValue(preset.quality);
+            });
+        });
+        
+        // 画質値に対応するセレクトオプションを選択
+        function setQualityByValue(value) {
+            if (value <= 60) {
+                qualitySelect.value = '60';
+            } else if (value >= 100) {
+                qualitySelect.value = '100';
+            } else {
+                qualitySelect.value = '85';
+            }
+        }
+        
+        // アスペクト比維持の処理
+        function updateAspectRatio() {
+            if (!lockAspectRatio.checked) return;
+            
+            // 現在のフォーカスされている要素を取得
+            const focused = document.activeElement;
+            
+            // 幅が変更された場合は高さを調整
+            if (focused === maxWidthInput) {
+                const newWidth = parseInt(maxWidthInput.value) || 0;
+                maxHeightInput.value = Math.round(newWidth / originalAspectRatio);
+            } 
+            // 高さが変更された場合は幅を調整
+            else if (focused === maxHeightInput) {
+                const newHeight = parseInt(maxHeightInput.value) || 0;
+                maxWidthInput.value = Math.round(newHeight * originalAspectRatio);
+            }
+        }
+        
+        // 入力フィールドの変更をリッスン
+        maxWidthInput.addEventListener('input', updateAspectRatio);
+        maxHeightInput.addEventListener('input', updateAspectRatio);
+        
+        // ドラッグ&ドロップイベント
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, preventDefaults, false);
+        });
+        
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropArea.addEventListener(eventName, highlight, false);
+        });
+        
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, unhighlight, false);
+        });
+        
+        function highlight() {
+            dropArea.classList.add('dragover');
+        }
+        
+        function unhighlight() {
+            dropArea.classList.remove('dragover');
+        }
+        
+        // ファイルのドロップ
+        dropArea.addEventListener('drop', handleDrop, false);
+        
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            handleFiles(files);
+        }
+        
+        // ファイル選択
+        fileInput.addEventListener('change', function() {
+            handleFiles(this.files);
+        });
+        
+        // ファイル処理
+        function handleFiles(files) {
+            const validFiles = Array.from(files).filter(file => {
+                const type = file.type.toLowerCase();
+                return type === 'image/jpeg' || type === 'image/png' || type === 'image/gif';
+            });
+            
+            if (validFiles.length === 0) return;
+            
+            // 既存のファイルに追加
+            selectedFiles = [...selectedFiles, ...validFiles];
+            
+            // 1つ目の画像のアスペクト比を計算し保存
+            if (selectedFiles.length === validFiles.length) {
+                const img = new Image();
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    img.onload = function() {
+                        originalAspectRatio = img.width / img.height;
+                        // 初期値を設定
+                        if (lockAspectRatio.checked) {
+                            maxHeightInput.value = Math.round(parseInt(maxWidthInput.value) / originalAspectRatio);
+                        }
+                    };
+                    img.src = e.target.result;
+                };
+                reader.readAsDataURL(validFiles[0]);
+            }
+            
+            // UIを更新
+            updateFilesUI();
+            updateFilesMetaUI();
+            
+            // リサイズボタンを有効化
+            resizeBtn.disabled = selectedFiles.length === 0;
+        }
+        
+        // ファイルUI更新
+        function updateFilesUI() {
+            filesContainer.innerHTML = '';
+            
+            selectedFiles.forEach((file, index) => {
+                const fileItem = document.createElement('div');
+                fileItem.className = 'file-item';
+                
+                const filePreview = document.createElement('img');
+                filePreview.className = 'file-preview';
+                filePreview.alt = file.name;
+                
+                // ファイルプレビュー作成
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    filePreview.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+                
+                const fileName = document.createElement('div');
+                fileName.className = 'file-name';
+                fileName.textContent = file.name;
+                
+                const removeBtn = document.createElement('div');
+                removeBtn.className = 'file-remove';
+                removeBtn.innerHTML = '×';
+                removeBtn.addEventListener('click', () => {
+                    selectedFiles.splice(index, 1);
+                    updateFilesUI();
+                    updateFilesMetaUI();
+                    resizeBtn.disabled = selectedFiles.length === 0;
+                });
+                
+                fileItem.appendChild(filePreview);
+                fileItem.appendChild(fileName);
+                fileItem.appendChild(removeBtn);
+                filesContainer.appendChild(fileItem);
+            });
+        }
+        
+        // ファイルメタ情報更新
+        function updateFilesMetaUI() {
+            if (selectedFiles.length === 0) {
+                filesMeta.textContent = '';
+                return;
+            }
+            
+            let totalSize = 0;
+            selectedFiles.forEach(file => {
+                totalSize += file.size;
+            });
+            
+            const sizeInMB = (totalSize / (1024 * 1024)).toFixed(2);
+            filesMeta.textContent = `${selectedFiles.length}枚の画像（合計 ${sizeInMB} MB）`;
+        }
+        
+        // リサイズボタン
+        resizeBtn.addEventListener('click', async function() {
+            if (selectedFiles.length === 0) return;
+            
+            // ボタンを無効化して処理中表示
+            resizeBtn.disabled = true;
+            resizeBtn.textContent = '処理中...';
+            
+            // 進捗表示を表示
+            progressContainer.style.display = 'block';
+            progressBar.style.width = '0%';
+            progressText.textContent = '画像処理中 (0/' + selectedFiles.length + ')';
+            
+            // サイズ設定を取得
+            const maxWidth = parseInt(maxWidthInput.value) || 1200;
+            const maxHeight = parseInt(maxHeightInput.value) || 1200;
+            const quality = parseInt(qualitySelect.value);
+            
+            // 画像を非同期でリサイズ
+            resizedImages = [];
+            
+            for (let i = 0; i < selectedFiles.length; i++) {
+                const file = selectedFiles[i];
+                try {
+                    const resizedBlob = await resizeImage(file, maxWidth, maxHeight, quality);
+                    resizedImages.push({
+                        name: file.name,
+                        blob: resizedBlob
+                    });
+                    
+                    // 進捗表示更新
+                    const progress = Math.round(((i + 1) / selectedFiles.length) * 100);
+                    progressBar.style.width = progress + '%';
+                    progressText.textContent = `画像処理中 (${i + 1}/${selectedFiles.length})`;
+                } catch (err) {
+                    console.error('リサイズエラー:', err);
+                }
+            }
+            
+            // 処理完了メッセージを表示
+            progressText.textContent = 'ダウンロード準備完了！';
+            
+            // ZIPファイルを作成してダウンロード
+            await downloadResizedImages();
+            
+            // 進捗バーを非表示にして、ボタンを元に戻す
+            setTimeout(() => {
+                progressContainer.style.display = 'none';
+                resizeBtn.textContent = 'リサイズしてダウンロード';
+                resizeBtn.disabled = false;
+            }, 1000);
+        });
+        
+        // 画像リサイズ処理
+        function resizeImage(file, maxWidth, maxHeight, quality) {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                img.onload = function() {
+                    // 元のサイズ
+                    const origWidth = img.width;
+                    const origHeight = img.height;
+                    
+                    // リサイズ後のサイズを計算
+                    let newWidth = origWidth;
+                    let newHeight = origHeight;
+                    
+                    // アスペクト比を保ったままリサイズ
+                    const aspectRatio = origWidth / origHeight;
+                    
+                    // 最大幅に合わせてリサイズ
+                    if (origWidth > maxWidth) {
+                        newWidth = maxWidth;
+                        newHeight = newWidth / aspectRatio;
+                    }
+                    
+                    // 最大高さに合わせてリサイズ
+                    if (newHeight > maxHeight) {
+                        newHeight = maxHeight;
+                        newWidth = newHeight * aspectRatio;
+                    }
+                    
+                    // 小数点以下を切り捨て
+                    newWidth = Math.floor(newWidth);
+                    newHeight = Math.floor(newHeight);
+                    
+                    // リサイズの必要がなければ元の画像を返す
+                    if (newWidth >= origWidth && newHeight >= origHeight) {
+                        file.arrayBuffer().then(buffer => {
+                            resolve(new Blob([buffer], { type: file.type }));
+                        }).catch(reject);
+                        return;
+                    }
+                    
+                    // キャンバスでリサイズ
+                    const canvas = document.createElement('canvas');
+                    canvas.width = newWidth;
+                    canvas.height = newHeight;
+                    
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, newWidth, newHeight);
+                    
+                    // JPEG/PNGで出力
+                    const mimeType = file.type;
+                    
+                    canvas.toBlob(blob => {
+                        resolve(blob);
+                    }, mimeType, quality / 100);
+                };
+                
+                img.onerror = reject;
+                
+                // 画像読み込み
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    img.src = e.target.result;
+                };
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
+        }
+        
+        // 画像ダウンロード処理
+        async function downloadResizedImages() {
+            if (resizedImages.length === 0) return;
+            
+            // 単一画像の場合は直接ダウンロード
+            if (resizedImages.length === 1) {
+                const url = URL.createObjectURL(resizedImages[0].blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `resized_${resizedImages[0].name}`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                return;
+            }
+            
+            // 複数画像の場合はZIPでダウンロード
+            const zip = new JSZip();
+            
+            // 画像をZIPに追加
+            resizedImages.forEach(image => {
+                zip.file(image.name, image.blob);
+            });
+            
+            // 進捗テキスト更新
+            progressText.textContent = 'ZIPファイル作成中...';
+            
+            // ZIPを生成してダウンロード
+            const content = await zip.generateAsync({ type: 'blob' });
+            const url = URL.createObjectURL(content);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `resized_images_${new Date().toISOString().slice(0, 10)}.zip`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            // 進捗テキスト更新
+            progressText.textContent = 'ダウンロード完了！';
+        }
+    });
   </script>
 </body>
 </html>
