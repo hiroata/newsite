@@ -1,66 +1,52 @@
 <!DOCTYPE html><html lang="ja"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS structure auto-fixed by script - 2025-05-11T13:34:47.862Z -->
+    
     <!-- タイトルとメタデータ -->
     <title>【費用相場】プロに依頼する集客代行サービスのメリットとデメリット - オートウェビナー大学ブログ</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="集客に悩む中小企業・個人事業主向けに、集客代行サービスのメリット・デメリット、費用相場、失敗しない選び方を徹底解説します。">
-    <meta property="og:title" content="{{TITLE}} - オートウェビナー大学ブログ">
-    <meta property="og:description" content="{{DESCRIPTION}}">
-    <meta property="og:image" content="../assets/images/blog-default.webp">
-    <meta property="og:type" content="article">
     
     <!-- スタイルシート -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&amp;display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/blog-optimized.css">
+    <link rel="stylesheet" href="../css/blog-common.css">
+    <link rel="stylesheet" href="../css/blog-fixes-new.css">
+    <link rel="stylesheet" href="../css/blog-fixes-patch.css">
+    <link rel="stylesheet" href="../css/share-buttons.css">
+    <link rel="stylesheet" href="../css/blog-fixes-critical.css">
     <link rel="icon" href="../images/favicon.ico">
-<script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "【費用相場】プロに依頼する集客代行サービスのメリットとデメリット",
-  "description": "集客に悩む中小企業・個人事業主向けに、集客代行サービスのメリット・デメリット、費用相場、失敗しない選び方を徹底解説します。",
-  "image": "https://autowebinar-daigaku.com../assets/images/blog-default.webp",
-  "datePublished": "2025年5月10日",
-  "dateModified": "2025年5月10日",
-  "author": {
-    "@type": "Person",
-    "name": "YUKI"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "オートウェビナー大学",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://autowebinar-daigaku.com/images/logo.webp"
-    }
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://autowebinar-daigaku.com/blog/membership-site-creation-guide.html"
-  }
-}</script></head>
+</head>
 <body>
 <div id="svg-defs-placeholder"></div>
 
-<main class="site-main">
-    <div class="page-container">
-        <!-- 記事タイトルとメタ情報 -->
-        <div class="article-page-title">
-            <h1><span class="highlight-green">【費用相場】</span>プロに依頼する集客代行サービスの<span class="highlight-blue">メリットとデメリット</span></h1>
-            <div class="article-page-meta">
-                <span class="article-date">2025年5月10日</span>
-                <span class="article-category">サポート・代行サービス</span>
-            </div>
-        </div>
+    <main class="site-main">
+        <div class="page-container">
 
-        <!-- 記事本文とサイドバーのコンテナ -->
-        <div class="article-container">
-            <!-- 左サイドバー（いいね、シェア） -->
-            <div class="article-left-sidebar">
-                <div class="social-buttons">
-                    
+            <!-- 記事タイトルとメタ情報（カラムの外） -->
+            <!-- 元のHTMLのarticle-headerの内容をここに配置 -->
+            <div class="article-page-title">
+                 <!-- スクショのアイコンに合わせて調整（必要に応じて画像を差し替え） -->
+                 <!-- <img src="/images/flower-icon.webp" alt="記事アイコン" class="header-icon"> -->
+                 <!-- タイトルにハイライトクラス適用 -->
+                 <h1 class="article-title"><span class="highlight-green">【費用相場】</span>プロに依頼する集客代行サービスの<span class="highlight-blue">メリットとデメリット</span></h1> <!-- タイトル修正、ハイライトクラス追加 -->
+                 <div class="article-page-meta">
+                     <span class="article-date">2025年5月10日</span> <!-- 日付を更新 -->
+                     <span class="article-category">サポート・代行サービス</span> <!-- カテゴリを更新 -->
+                     <span class="article-author">投稿者: YUKI</span> <!-- 投稿者情報を追加 -->
+                 </div>
+                 <!-- Featured Imageは本文エリア内に移動 -->
+             </div>
+
+            <!-- 記事本文とサイドバーのコンテナ -->
+            <div class="article-container">
+                <!-- 左サイドバー（いいね、シェア） -->
+                <div class="article-left-sidebar">
+                    <div class="social-buttons">
                          <a href="#" class="social-button">
                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5c0-48.4-39.6-88-88-88c-41.6 0-77.4 28.7-86.8 69.5c-9.4-40.8-45.1-69.5-86.8-69.5c-48.4 0-88 39.6-88 88v5c0 41.5 17.2 81.2 47.6 109.5z"></path></svg>
                              <span>712</span> <!-- カウントはサンプル -->
@@ -81,15 +67,13 @@
                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M361.5 1.2c5 2.1 16.9 5.1 28.5 11.7c27.7 15.9 41.7 41.4 46.2 80.2l.3 2.1c.7 12.9-.7 21.4-2.6 29.5c-2.3 9.8-8.1 17.1-23.1 33.3c-1.9 2.1-3.8 4.6-5.9 7.1c-15.7 17.7-25.7 30-36.8 42.6c-11.6 13.5-21.2 26.3-30.8 41c-4.8 7.6-8.9 15.3-13.3 23.2L331 283.3c.3 15.6-.8 26-2.9 34c-1.9 7.6-7.4 13.9-23.3 30.8c-1.6 1.7-3.5 4-5.7 6.5c-15.5 18.7-24.3 30.4-35.6 42.9c-11.3 12.6-21.1 25.7-30.9 40.6c-4.9 7.7-9.1 15.5-13.4 23.2L289.3 391.8c.4 15.6-1 26-3.1 34c-2 7.6-7.6 14-23.6 31c-1.6 1.8-3.5 4.1-5.7 6.6c-15.5 18.7-24.3 30.3-35.5 42.8c-11.3 12.6-21.1 25.7-30.9 40.6c-5 7.7-9.1 15.5-13.5 23.2L247.5 470c-.2 16.3-1.3 24.7-5.8 31.4c-2.9 4.2-6.5 7-11.1 9c-5.2 2.2-12.9 3.3-22.3 3.3c-10.7 0-19.6-1.4-25.8-3.6c-4.4-1.5-8.2-4-11.9-7.7c-2.9-2.9-6.3-6.3-10.4-10.9c-4-4.6-7.3-8.5-10.7-12.8L95.9 417.2c-3.2-4.1-6.1-7.9-9.2-11.8l-34-44.7C14.7 317.1 0 286.2 0 245.6C0 123.3 87.8 32.7 193.1 2.5c3.8-1.1 7.5-1.7 11.3-1.7H240c13.3 0 24 10.7 24 24V96c0 13.3-10.7 24-24 24H208 192c-10.1 0-19.6 4-26.5 11.5l-20 20c-3.6 3.6-5.6 8.4-5.6 13.5c0 5.1 2 9.9 5.6 13.5l32 32c7.8 7.8 20.5 7.8 28.3 0l48-48c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6L248 271.4c-15.6 15.6-15.6 40.9 0 56.6l20 20c3.6 3.6 8.4 5.6 13.5 5.6s9.9-2 13.5-5.6l56-56c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6l-20 20c-3.6 3.6-5.6 8.4-5.6 13.5s2 9.9 5.6 13.5l56 56c6.2 6.2 16.4 6.2 22.6 0s6.2-16.4 0-22.6L473.4 359c-3.6-3.6-5.6-8.4-5.6-13.5s2-9.9 5.6-13.5l20-20c3.6-3.6 8.4-5.6 13.5-5.6s9.9 2 13.5 5.6l32 32c.9-.9 1.7-1.8 2.5-2.6c18.9-20 32.7-36.3 42.6-52.2c-16.3-8.7-27.5-21.1-35-37.9c-4.5-10.1-6.6-20.5-6.6-31.2V144 128c0-26.5-21.5-48-48-48H416 384c-13.3 0-24-10.7-24-24V24C360 10.7 349.3 0 336 0H240 208c-13.3 0-24 10.7-24 24z"></path></svg>
                               <span>B!</span>
                          </a>
-                    
+                    </div>
                 </div>
-            </div>
 
-            <!-- 中央メインコンテンツ -->
-            <div class="article-main">
-                <a href="index.html" class="article-back">← ブログ一覧に戻る</a>
-                <div class="article-content">
-                    
+                <!-- 中央メインコンテンツ -->
+                <div class="article-main">
+                     <a href="index.html" class="article-back">← ブログ一覧に戻る</a>
+                    <div class="article-content">
                         <!-- 元のHTMLの Featured Imageを本文直下に配置 -->
                         <img src="/images/blog-lead-generation-agency.webp" alt="集客代行サービスのイメージ画像" class="article-featured-image" loading="lazy">
 
@@ -240,12 +224,10 @@
                         <p><span class="highlight-blue">集客代行サービスを賢く活用</span>して、あなたのビジネスを<span class="text-red">次のステージへと加速させましょう</span>！📈✨</p> <!-- highlight-blue/text-red追加 -->
 
                         <p><a href="/consultation" class="cta-button">集客代行サービスの活用について無料相談する</a></p>
+                    </div>
                     
-                </div>
-                
-                <!-- 著者情報 -->
-                <div class="author-box">
-                    
+                    <!-- 著者情報 - 中央メインコンテンツ内に配置 -->
+                    <div class="author-box">
                         <img src="/assets/images/profile-YUKI.webp" alt="YUKIのプロフィール写真" class="author-image" loading="lazy">
                         <div class="author-info">
                             <h3 class="author-name">YUKI</h3>
@@ -255,12 +237,32 @@
                                 <p>IT導入補助金支援事業者として、企業のDX推進をサポート。</p>
                             </div>
                         </div>
+                    </div>
                     
+                    <!-- SNSシェア - 中央メインコンテンツ内に配置 -->
+                    <div class="share-box">
+                    <h3 class="share-title">この記事をシェアする</h3>
+                    <div class="share-buttons">
+                        <!-- X（旧Twitter）シェアボタン -->
+                        <a href="https://twitter.com/intent/tweet?url=https://blog.autowebinar-daigaku.com/blog/membership-site-creation-guide.html&text=%E3%80%90%E8%B2%BB%E7%94%A8%E7%9B%B8%E5%A0%B4%E3%80%91%E3%83%97%E3%83%AD%E3%81%AB%E4%BE%9D%E9%A0%BC%E3%81%99%E3%82%8B%E9%9B%86%E5%AE%A2%E4%BB%A3%E8%A1%8C%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E3%83%A1%E3%83%AA%E3%83%83%E3%83%88%E3%81%A8%E3%83%87%E3%83%A1%E3%83%AA%E3%83%83%E3%83%88" target="_blank" rel="noopener noreferrer" class="share-button share-twitter" aria-label="Xでシェア">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
+                        </a>
+                        
+                        <!-- Facebookシェアボタン -->
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://blog.autowebinar-daigaku.com/blog/membership-site-creation-guide.html" target="_blank" rel="noopener noreferrer" class="share-button share-facebook" aria-label="Facebookでシェア">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/></svg>
+                        </a>
+                        
+                        <!-- はてなブックマークシェアボタン -->
+                        <a href="https://b.hatena.ne.jp/entry/s/blog.autowebinar-daigaku.com/blog/membership-site-creation-guide.html" target="_blank" rel="noopener noreferrer" class="share-button share-hatena" aria-label="はてなブックマーク"></a>
+                        
+                        <!-- LINEシェアボタン -->
+                        <a href="https://social-plugins.line.me/lineit/share?url=https://blog.autowebinar-daigaku.com/blog/membership-site-creation-guide.html" target="_blank" rel="noopener noreferrer" class="share-button share-line" aria-label="LINEでシェア"></a>
+                    </div>
                 </div>
-                
-                <!-- 関連記事 -->
-                <div class="related-articles">
-                    
+
+                    <!-- 関連記事 - 中央メインコンテンツ内に配置 -->
+                    <div class="related-articles">
                         <h3 class="related-title">関連記事</h3>
                         <div class="related-list">
                              <!-- サンプルデータに合わせてPlaceholderリンクと画像を配置 -->
@@ -292,39 +294,14 @@
                                 </div>
                             </a>
                         </div>
-                    
-                </div>
-                
-                <!-- シェアボックス -->
-                <div class="share-box">
-                    
-                    <h3 class="share-title">この記事をシェアする</h3>
-                    <div class="share-buttons">
-                        <!-- X（旧Twitter）シェアボタン -->
-                        <a href="https://twitter.com/intent/tweet?url=https://blog.autowebinar-daigaku.com/blog/membership-site-creation-guide.html&amp;text=%E3%80%90%E8%B2%BB%E7%94%A8%E7%9B%B8%E5%A0%B4%E3%80%91%E3%83%97%E3%83%AD%E3%81%AB%E4%BE%9D%E9%A0%BC%E3%81%99%E3%82%8B%E9%9B%86%E5%AE%A2%E4%BB%A3%E8%A1%8C%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E3%83%A1%E3%83%AA%E3%83%83%E3%83%88%E3%81%A8%E3%83%87%E3%83%A1%E3%83%AA%E3%83%83%E3%83%88" target="_blank" rel="noopener noreferrer" class="share-button share-twitter" aria-label="Xでシェア">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"></path></svg>
-                        </a>
-                        
-                        <!-- Facebookシェアボタン -->
-                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://blog.autowebinar-daigaku.com/blog/membership-site-creation-guide.html" target="_blank" rel="noopener noreferrer" class="share-button share-facebook" aria-label="Facebookでシェア">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"></path></svg>
-                        </a>
-                        
-                        <!-- はてなブックマークシェアボタン -->
-                        <a href="https://b.hatena.ne.jp/entry/s/blog.autowebinar-daigaku.com/blog/membership-site-creation-guide.html" target="_blank" rel="noopener noreferrer" class="share-button share-hatena" aria-label="はてなブックマーク"></a>
-                        
-                        <!-- LINEシェアボタン -->
-                        <a href="https://social-plugins.line.me/lineit/share?url=https://blog.autowebinar-daigaku.com/blog/membership-site-creation-guide.html" target="_blank" rel="noopener noreferrer" class="share-button share-line" aria-label="LINEでシェア"></a>
                     </div>
-                
                 </div>
-            </div>
-            
-            <!-- 右サイドバー -->
-            <div class="article-right-sidebar">
-                <!-- プロフィール -->
-                <div class="sidebar-section sidebar-author-profile">
-                    
+
+                <!-- 右サイドバー -->
+                <!-- クラス名を .article-right-sidebar に修正 -->
+                <div class="article-right-sidebar">
+                    <!-- プロフィール -->
+                    <div class="sidebar-section sidebar-author-profile">
                          <img src="/assets/images/profile-sidebar.webp" alt="YUKIのプロフィール写真" class="author-image" loading="lazy">
                          <h3 class="author-name">YUKI</h3>
                          <p class="author-title">マーケティングコンサルタント</p>
@@ -341,14 +318,13 @@
                          <!-- サイドバーCTAボタンのテキストを更新 -->
                          <a href="/free-consultation" class="cta-button">無料相談をする</a>
                          <p class="button-hint">無料相談をするには→</p>
-                    
-                </div>
+                    </div>
 
-                <!-- 目次 -->
-                <div class="sidebar-section sidebar-toc">
-                    <h3 class="sidebar-title">目次</h3>
-                    <ul class="toc-list">
-                        
+                    <!-- 目次 -->
+                    <!-- 目次追従は、.sidebar-toc自体にstickyを適用 -->
+                    <div class="sidebar-section sidebar-toc">
+                         <h3 class="sidebar-title">目次</h3>
+                         <ul class="toc-list">
                             <li><a href="#section1">集客代行サービスとは？どんなことをしてくれる？<span class="toc-dot"></span></a></li>
                             <li><a href="#section2">プロに集客代行を依頼するメリット<span class="toc-dot"></span></a>
                                 <ul>
@@ -368,16 +344,168 @@
                             </li>
                             <li><a href="#section4">集客代行サービスの費用相場<span class="toc-dot"></span></a></li>
                             <li><a href="#section5">まとめ：集客代行サービス活用でビジネスを加速させよう！<span class="toc-dot"></span></a></li>
-                         
-                    </ul>
+                         </ul>
+                    </div>
+
+                    <!-- 人気記事、カテゴリー、タグクラウドはHTMLごと削除 -->
+
                 </div>
             </div>
         </div>
-    </div>
-</main>
+    </main>
 <div id="footer-placeholder"></div>
 <script src="../js/include.js"></script>
-<script src="../js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Intersection Observer APIでスクロール時の見出しを監視
+            // IDが付与されているh2とh3要素を取得
+            const headings = document.querySelectorAll('.article-content h2[id], .article-content h3[id]');
+            const tocLinks = document.querySelectorAll('.toc-list a');
+
+            // headings.forEach(heading => console.log(heading.id)); // デバッグ用
+
+            const observerOptions = {
+                root: null, // ビューポートをルートとする
+                rootMargin: '0px 0px -50% 0px', // ビューポートの中央50%で見出しを判定
+                threshold: 0 // 見出しが少しでもビューポートに入ったら発火
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                // 現在表示されている見出しを一時的に保持するSet
+                const visibleHeadings = new Set();
+
+                entries.forEach(entry => {
+                    const id = entry.target.getAttribute('id');
+                    if (entry.isIntersecting) {
+                        visibleHeadings.add(id);
+                    } 
+                });
+
+                // すべての目次リンクのアクティブクラスを削除
+                tocLinks.forEach(link => link.classList.remove('active'));
+
+                // visibleHeadingsの中で最も上にある見出しに対応する目次をアクティブにする
+                // IntersectionObserverのrootMarginでビューポート中央を基準にしているため、
+                // 厳密に「最も上」というよりは「最初に中央に到達した」見出しがアクティブになりやすい
+                if (visibleHeadings.size > 0) {
+                    // visibleHeadingsのIDリストを、HTML上の出現順に並べ替える
+                    const sortedVisibleHeadings = Array.from(headings)
+                        .filter(heading => visibleHeadings.has(heading.id))
+                        .map(heading => heading.id);
+
+                    if (sortedVisibleHeadings.length > 0) {
+                        // ソートされたリストの最初の要素が、現在ビューポート中央付近にある最も上の見出し
+                        const firstVisibleHeadingId = sortedVisibleHeadings[0];
+                        const activeTocLink = document.querySelector(`.toc-list a[href="#${firstVisibleHeadingId}"]`);
+                        if (activeTocLink) {
+                            activeTocLink.classList.add('active');
+                        }
+                    }
+                }
 
 
-</body></html>
+            }, observerOptions);
+
+            // 全ての見出しを監視対象に設定
+            headings.forEach(heading => {
+                observer.observe(heading);
+            });
+
+            // 目次リンククリック時のスムーズスクロール（必要であれば）
+            tocLinks.forEach(link => {
+                 link.addEventListener('click', function(event) {
+                     event.preventDefault(); // デフォルトのリンク遷移をキャンセル
+                     const targetId = this.getAttribute('href').substring(1);
+                     const targetElement = document.getElementById(targetId);
+
+                     if (targetElement) {
+                         // スムーズスクロールを実行
+                         window.scrollTo({
+                             top: targetElement.offsetTop - 80, // 固定Headerの高さなどを考慮して調整
+                             behavior: 'smooth'
+                         });
+                          // URLのハッシュも更新する（オプション）
+                          history.pushState(null, null, `#${targetId}`);
+                     }
+                 });
+            });
+
+            // ハンバーガーメニューの開閉機能（簡易実装）
+            const hamburgerButton = document.querySelector('.hamburger-button');
+            const mobileNav = document.querySelector('.global-nav.sp-nav');
+
+            if (hamburgerButton && mobileNav) {
+                 hamburgerButton.addEventListener('click', function() {
+                     // mobileNav.style.display = mobileNav.style.display === 'block' ? 'none' : 'block'; // display切り替えではなくクラスで制御推奨
+                     mobileNav.classList.toggle('is-open');
+                 });
+
+                 // メニュー外をクリックしたら閉じる（簡易）
+                 document.addEventListener('click', function(event) {
+                      if (!hamburgerButton.contains(event.target) && !mobileNav.contains(event.target)) {
+                           mobileNav.classList.remove('is-open');
+                      }
+                 });
+                 // メニュー項目をクリックしたら閉じる
+                 mobileNav.querySelectorAll('a').forEach(link => {
+                      link.addEventListener('click', function() {
+                           mobileNav.classList.remove('is-open');
+                      });
+                 });
+            }
+
+        });
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "IT導入補助金2025の申請締切はいつですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "2025年度の申請締切は、第1回が2025年5月12日（月）17:00、第2回が2025年6月16日（月）17:00です。期限後の申請は受け付けられないため、早めの申請が推奨されます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "どのような企業がIT導入補助金を申請できますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "中小企業や小規模事業者が対象です。例えば製造業では資本金3億円以下または従業員300人以下、小売業では資本金5,000万円以下または従業員50人以下などの条件があります。また、医療法人、社会福祉法人、学校法人、商工会議所、NPOなども条件を満たせば申請できます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "補助率はどれくらいですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "通常枠では原則1/2以内ですが、地域最低賃金+50円を3ヶ月以上稼ぐ従業員が30%以上の企業は2/3に拡大されます。インボイス枠ではソフトウェア部分は50万円までが3/4（小規模事業者は4/5）、セキュリティ対策推進枠では小規模事業者向けに2/3に拡大されています。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "IT導入補助金の対象となるITツールにはどのようなものがありますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "会計管理、販売管理、顧客管理（CRM）、在庫管理、人事・給与管理などのビジネスプロセスをサポートするソフトウェアが対象です。具体例としては、弥生会計、勘定奉行クラウド、freee会計、商奉行クラウド、eセールスマネージャーなどがあります。ただし、対象となるのは事前に事務局の審査・登録を受けたITツールのみです。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "申請から採択までどれくらいの期間がかかりますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "申請締切から交付決定までは約1ヶ月程度です。第1回締切（2025年5月12日）の場合、交付決定日は2025年6月18日（予定）、第2回締切（2025年6月16日）の場合は、交付決定日は2025年7月24日（予定）となっています。交付決定後、指定された事業実施期間内にITツールを導入・活用する必要があります。"
+          }
+        }
+      ]
+    }
+    </script>
+
+
+</body>
+</html>
