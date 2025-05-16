@@ -170,6 +170,18 @@
             display: flex;
             flex-direction: column;
             position: relative;
+            text-decoration: none; /* リンクの下線を削除 */
+            color: inherit; /* 親要素の文字色を継承 */
+        }
+
+        /* クリック可能なカードのスタイル */
+        .clickable-card {
+            cursor: pointer;
+        }
+
+        .clickable-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-strong);
         }
 
         .achievement-card:hover {
@@ -312,13 +324,38 @@
         }
 
         .achievement-quote {
-            background: #f9f9f9;
+            background: #f0f7ff;
             border-left: 4px solid var(--primary-color);
-            padding: 15px;
+            padding: 20px 20px 20px 30px;
             font-style: italic;
-            color: #555;
-            font-size: 14px;
-            margin-bottom: 0;
+            color: #333;
+            font-size: 16px;
+            line-height: 1.6;
+            margin: 15px 0 5px;
+            border-radius: 8px;
+            position: relative;
+            box-shadow: 0 3px 15px rgba(0, 102, 255, 0.1);
+        }
+        
+        .achievement-quote::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 50px;
+            color: var(--primary-color);
+            opacity: 0.3;
+            font-family: serif;
+            line-height: 1;
+        }
+        
+        .achievement-quote::after {
+            content: '';
+            display: block;
+            margin-top: 10px;
+            height: 2px;
+            width: 40px;
+            background: var(--primary-color);
         }
 
         .achievement-cta {
@@ -584,176 +621,220 @@
                 UTAGEを活用した自動化で売上アップと時間の自由を実現した<br>
                 オートウェビナー大学のお客様の実績をご紹介します
             </p>
-
-            <div class="achievement-stats" data-aos="fade-up" data-aos-delay="300">
-                <div class="stat-item">
-                    <div class="stat-number">300+</div>
-                    </div>
-                    <div class="achievement-content">
-                        <div class="achievement-stats-row">
-                            <div class="achievement-stat">
-                                <span class="achievement-stat-number">2倍</span>
-                                <span class="achievement-stat-label">月商アップ</span>
-                            </div>
-                            <div class="achievement-stat">
-                                <span class="achievement-stat-number">70%</span>
-                                <span class="achievement-stat-label">作業時間削減</span>
-                            </div>
-                            <div class="achievement-stat">
-                                <span class="achievement-stat-number">4週間</span>
-                                <span class="achievement-stat-label">導入期間</span>
-                            </div>
+        </div>
+    </section>
+    
+    <section class="achievement-container">
+        <div class="filter-section" data-aos="fade-up">
+            <h2 class="section-title">成功事例</h2>
+        </div>
+        
+        <div class="achievement-grid">
+            <a href="/achievement/customer1.html" class="achievement-card clickable-card" data-aos="fade-up">
+                <div class="achievement-image">
+                    <img src="/assets/images/achieve-1.webp" alt="Webデザイナー事例" loading="lazy">
+                </div>
+                <div class="achievement-header">
+                    <span class="achievement-tag tag-service">デザイン</span>
+                    <h3 class="achievement-title">営業時間ゼロでも月商2倍達成！</h3>
+                    <div class="achievement-meta">
+                        <div class="achievement-company">
+                            <span class="achievement-company-icon">
+                                <img src="/assets/images/company-icon1.webp" alt="企業アイコン" loading="lazy">
+                            </span>
+                            <span>Webデザイナー</span>
                         </div>
-                        <p class="achievement-description">
-                            フリーランスWebデザイナーが集客からクロージングまでの全プロセスを自動化。見込み客の教育と販売を24時間自動で行う仕組みを構築しました。
-                        </p>
-                        <blockquote class="achievement-quote">
-                            「これまで営業に時間を取られていましたが、今は本業に集中でき、さらに収入も増えました。自動化の威力を実感しています」
-                        </blockquote>
-                    </div>
-                    <div class="achievement-cta">
-                        <a href="/achievement/customer2.html" class="achievement-cta-link">
-                            詳細を見る
-                        </a>
-                    </div>
-                </div>                <div class="achievement-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="achievement-image">
-                        <img src="/assets/images/achieve-3.webp" alt="24時間販売の自動化動線完成！" loading="lazy">
-                    </div>
-                    <div class="achievement-header">
-                        <span class="achievement-tag tag-consulting">コンサルタント</span>
-                        <h3 class="achievement-title">24時間販売の自動化動線完成！</h3>
-                        <div class="achievement-meta">
-                            <div class="achievement-company">
-                                <span class="achievement-company-icon">
-                                    <img src="/assets/images/company-icon3.webp" alt="企業アイコン" loading="lazy">
-                                </span>
-                                <span>起業コンサルタント</span>
-                            </div>
-                            <div class="achievement-date">2024年11月</div>
-                        </div>
-                    </div>
-                    <div class="achievement-content">
-                        <div class="achievement-stats-row">
-                            <div class="achievement-stat">
-                                <span class="achievement-stat-number">450万</span>
-                                <span class="achievement-stat-label">月間売上</span>
-                            </div>
-                            <div class="achievement-stat">
-                                <span class="achievement-stat-number">100%</span>
-                                <span class="achievement-stat-label">自動化率</span>
-                            </div>
-                            <div class="achievement-stat">
-                                <span class="achievement-stat-number">6週間</span>
-                                <span class="achievement-stat-label">導入期間</span>
-                            </div>
-                        </div>
-                        <p class="achievement-description">
-                            起業コンサルタントがオートウェビナーシステムを構築。商品説明から決済までを完全自動化し、寝ている間も売上が発生する仕組みを実現しました。
-                        </p>
-                        <blockquote class="achievement-quote">
-                            「セミナー集客と販売に時間を取られていましたが、今は自動で売れる仕組みができ、新規コンテンツ開発に集中できています」
-                        </blockquote>
-                    </div>
-                    <div class="achievement-cta">
-                        <a href="/achievement/customer3.html" class="achievement-cta-link">
-                            詳細を見る
-                        </a>
+                        <div class="achievement-date">2025年1月</div>
                     </div>
                 </div>
-
-                <div class="achievement-card">
-                    <div class="achievement-image">
-                        <img src="/assets/images/achieve-4.webp" alt="移行初月に月商8桁達成！" loading="lazy">
-                    </div>
-                    <div class="achievement-header">
-                        <span class="achievement-tag tag-ecommerce">ECサイト</span>
-                        <h3 class="achievement-title">移行初月に月商8桁達成！</h3>
-                        <div class="achievement-meta">
-                            <div class="achievement-company">
-                                <span class="achievement-company-icon">
-                                    <img src="/assets/images/company-icon4.webp" alt="企業アイコン" loading="lazy">
-                                </span>
-                                <span>健康食品販売</span>
-                            </div>
-                            <div class="achievement-date">2024年10月</div>
+                <div class="achievement-content">
+                    <div class="achievement-stats-row">
+                        <div class="achievement-stat">
+                            <span class="achievement-stat-number">2倍</span>
+                            <span class="achievement-stat-label">月商アップ</span>
+                        </div>
+                        <div class="achievement-stat">
+                            <span class="achievement-stat-number">70%</span>
+                            <span class="achievement-stat-label">作業時間削減</span>
+                        </div>
+                        <div class="achievement-stat">
+                            <span class="achievement-stat-number">4週間</span>
+                            <span class="achievement-stat-label">導入期間</span>
                         </div>
                     </div>
-                    <div class="achievement-content">
-                        <div class="achievement-stats-row">
-                            <div class="achievement-stat">
-                                <span class="achievement-stat-number">1200万</span>
-                                <span class="achievement-stat-label">月間売上</span>
-                            </div>
-                            <div class="achievement-stat">
-                                <span class="achievement-stat-number">3.5倍</span>
-                                <span class="achievement-stat-label">顧客単価UP</span>
-                            </div>
-                            <div class="achievement-stat">
-                                <span class="achievement-stat-number">8週間</span>
-                                <span class="achievement-stat-label">導入期間</span>
-                            </div>
+                    <p class="achievement-description">
+                        フリーランスWebデザイナーが集客からクロージングまでの全プロセスを自動化。見込み客の教育と販売を24時間自動で行う仕組みを構築しました。
+                    </p>
+                    <blockquote class="achievement-quote">
+                        「これまで営業に時間を取られていましたが、今は本業に集中でき、さらに収入も増えました。自動化の威力を実感しています」
+                    </blockquote>
+                </div>
+            </a>
+            
+            <a href="/achievement/customer2.html" class="achievement-card clickable-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="achievement-image">
+                    <img src="/assets/images/achieve-2.webp" alt="小売店事例" loading="lazy">
+                </div>
+                <div class="achievement-header">
+                    <span class="achievement-tag tag-ecommerce">小売</span>
+                    <h3 class="achievement-title">在庫管理と顧客対応の自動化で売上150%達成</h3>
+                    <div class="achievement-meta">
+                        <div class="achievement-company">
+                            <span class="achievement-company-icon">
+                                <img src="/assets/images/company-icon2.webp" alt="企業アイコン" loading="lazy">
+                            </span>
+                            <span>アパレル小売店</span>
                         </div>
-                        <p class="achievement-description">
-                            既存ECサイトからUTAGEに移行し、顧客育成と販売の自動化を実現。アップセル・クロスセルの自動化で顧客単価が大幅向上しました。
-                        </p>
-                        <blockquote class="achievement-quote">
-                            「これまでバラバラだったツールを統合し、一元管理できるようになったことで業務効率が劇的に改善。売上も想像以上に伸びました」
-                        </blockquote>
-                    </div>
-                    <div class="achievement-cta">
-                        <a href="/achievement/customer4.html" class="achievement-cta-link">
-                            詳細を見る
-                        </a>
+                        <div class="achievement-date">2024年12月</div>
                     </div>
                 </div>
-
-                <div class="achievement-card">
-                    <div class="achievement-image">
-                        <img src="/assets/images/achieve-5.webp" alt="手作業対応ゼロ、新規商談が24時間自動化！" loading="lazy">
-                    </div>
-                    <div class="achievement-header">
-                        <span class="achievement-tag">中小企業</span>
-                        <h3 class="achievement-title">手作業対応ゼロ、新規商談が24時間自動化！</h3>
-                        <div class="achievement-meta">
-                            <div class="achievement-company">
-                                <span class="achievement-company-icon">
-                                    <img src="/assets/images/company-icon5.webp" alt="企業アイコン" loading="lazy">
-                                </span>
-                                <span>士業事務所</span>
-                            </div>
-                            <div class="achievement-date">2024年9月</div>
+                <div class="achievement-content">
+                    <div class="achievement-stats-row">
+                        <div class="achievement-stat">
+                            <span class="achievement-stat-number">150%</span>
+                            <span class="achievement-stat-label">売上向上</span>
+                        </div>
+                        <div class="achievement-stat">
+                            <span class="achievement-stat-number">60%</span>
+                            <span class="achievement-stat-label">作業時間削減</span>
+                        </div>
+                        <div class="achievement-stat">
+                            <span class="achievement-stat-number">5週間</span>
+                            <span class="achievement-stat-label">導入期間</span>
                         </div>
                     </div>
-                    <div class="achievement-content">
-                        <div class="achievement-stats-row">
-                            <div class="achievement-stat">
-                                <span class="achievement-stat-number">300%</span>
-                                <span class="achievement-stat-label">リード増加</span>
-                            </div>
-                            <div class="achievement-stat">
-                                <span class="achievement-stat-number">15時間</span>
-                                <span class="achievement-stat-label">週間削減</span>
-                            </div>
-                            <div class="achievement-stat">
-                                <span class="achievement-stat-number">5週間</span>
-                                <span class="achievement-stat-label">導入期間</span>
-                            </div>
+                    <p class="achievement-description">
+                        アパレル小売店が在庫管理システムと顧客対応を自動化。リピート率が向上し、スタッフの作業負担も大幅に軽減されました。
+                    </p>
+                    <blockquote class="achievement-quote">
+                        「UTAGEを導入して以来、顧客対応の質が向上し、在庫切れのミスもなくなりました。店舗運営が格段に楽になっています」
+                    </blockquote>
+                </div>
+            </a>
+            
+            <a href="/achievement/customer3.html" class="achievement-card clickable-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="achievement-image">
+                    <img src="/assets/images/achieve-3.webp" alt="24時間販売の自動化動線完成！" loading="lazy">
+                </div>
+                <div class="achievement-header">
+                    <span class="achievement-tag tag-consulting">コンサルタント</span>
+                    <h3 class="achievement-title">24時間販売の自動化動線完成！</h3>
+                    <div class="achievement-meta">
+                        <div class="achievement-company">
+                            <span class="achievement-company-icon">
+                                <img src="/assets/images/company-icon3.webp" alt="企業アイコン" loading="lazy">
+                            </span>
+                            <span>起業コンサルタント</span>
                         </div>
-                        <p class="achievement-description">
-                            士業事務所が顧客獲得プロセスを自動化。初期相談から予約、資料提供までを自動化し、高品質なリードを常時獲得できる体制を構築しました。
-                        </p>
-                        <blockquote class="achievement-quote">
-                            「これまで新規開拓に多くの時間を費やしていましたが、今はリードが自動的に集まり、本業の専門業務に集中できるようになりました」
-                        </blockquote>
-                    </div>
-                    <div class="achievement-cta">
-                        <a href="/achievement/customer5.html" class="achievement-cta-link">
-                            詳細を見る
-                        </a>
+                        <div class="achievement-date">2024年11月</div>
                     </div>
                 </div>
-            </div>
+                <div class="achievement-content">
+                    <div class="achievement-stats-row">
+                        <div class="achievement-stat">
+                            <span class="achievement-stat-number">450万</span>
+                            <span class="achievement-stat-label">月間売上</span>
+                        </div>
+                        <div class="achievement-stat">
+                            <span class="achievement-stat-number">100%</span>
+                            <span class="achievement-stat-label">自動化率</span>
+                        </div>
+                        <div class="achievement-stat">
+                            <span class="achievement-stat-number">6週間</span>
+                            <span class="achievement-stat-label">導入期間</span>
+                        </div>
+                    </div>
+                    <p class="achievement-description">
+                        起業コンサルタントがオートウェビナーシステムを構築。商品説明から決済までを完全自動化し、寝ている間も売上が発生する仕組みを実現しました。
+                    </p>
+                    <blockquote class="achievement-quote">
+                        「セミナー集客と販売に時間を取られていましたが、今は自動で売れる仕組みができ、新規コンテンツ開発に集中できています」
+                    </blockquote>
+                </div>
+            </a>
+
+            <a href="/achievement/customer4.html" class="achievement-card clickable-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="achievement-image">
+                    <img src="/assets/images/achieve-4.webp" alt="移行初月に月商8桁達成！" loading="lazy">
+                </div>
+                <div class="achievement-header">
+                    <span class="achievement-tag tag-ecommerce">ECサイト</span>
+                    <h3 class="achievement-title">移行初月に月商8桁達成！</h3>
+                    <div class="achievement-meta">
+                        <div class="achievement-company">
+                            <span class="achievement-company-icon">
+                                <img src="/assets/images/company-icon4.webp" alt="企業アイコン" loading="lazy">
+                            </span>
+                            <span>健康食品販売</span>
+                        </div>
+                        <div class="achievement-date">2024年10月</div>
+                    </div>
+                </div>
+                <div class="achievement-content">
+                    <div class="achievement-stats-row">
+                        <div class="achievement-stat">
+                            <span class="achievement-stat-number">1200万</span>
+                            <span class="achievement-stat-label">月間売上</span>
+                        </div>
+                        <div class="achievement-stat">
+                            <span class="achievement-stat-number">3.5倍</span>
+                            <span class="achievement-stat-label">顧客単価UP</span>
+                        </div>
+                        <div class="achievement-stat">
+                            <span class="achievement-stat-number">8週間</span>
+                            <span class="achievement-stat-label">導入期間</span>
+                        </div>
+                    </div>
+                    <p class="achievement-description">
+                        既存ECサイトからUTAGEに移行し、顧客育成と販売の自動化を実現。アップセル・クロスセルの自動化で顧客単価が大幅向上しました。
+                    </p>
+                    <blockquote class="achievement-quote">
+                        「これまでバラバラだったツールを統合し、一元管理できるようになったことで業務効率が劇的に改善。売上も想像以上に伸びました」
+                    </blockquote>
+                </div>
+            </a>
+
+            <a href="/achievement/customer5.html" class="achievement-card clickable-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="achievement-image">
+                    <img src="/assets/images/achieve-5.webp" alt="手作業対応ゼロ、新規商談が24時間自動化！" loading="lazy">
+                </div>
+                <div class="achievement-header">
+                    <span class="achievement-tag">中小企業</span>
+                    <h3 class="achievement-title">手作業対応ゼロ、新規商談が24時間自動化！</h3>
+                    <div class="achievement-meta">
+                        <div class="achievement-company">
+                            <span class="achievement-company-icon">
+                                <img src="/assets/images/company-icon5.webp" alt="企業アイコン" loading="lazy">
+                            </span>
+                            <span>士業事務所</span>
+                        </div>
+                        <div class="achievement-date">2024年9月</div>
+                    </div>
+                </div>
+                <div class="achievement-content">
+                    <div class="achievement-stats-row">
+                        <div class="achievement-stat">
+                            <span class="achievement-stat-number">300%</span>
+                            <span class="achievement-stat-label">リード増加</span>
+                        </div>
+                        <div class="achievement-stat">
+                            <span class="achievement-stat-number">15時間</span>
+                            <span class="achievement-stat-label">週間削減</span>
+                        </div>
+                        <div class="achievement-stat">
+                            <span class="achievement-stat-number">5週間</span>
+                            <span class="achievement-stat-label">導入期間</span>
+                        </div>
+                    </div>
+                    <p class="achievement-description">
+                        士業事務所が顧客獲得プロセスを自動化。初期相談から予約、資料提供までを自動化し、高品質なリードを常時獲得できる体制を構築しました。
+                    </p>
+                    <blockquote class="achievement-quote">
+                        「これまで新規開拓に多くの時間を費やしていましたが、今はリードが自動的に集まり、本業の専門業務に集中できるようになりました」
+                    </blockquote>
+                </div>
+            </a>
+        </div>
         
 
         <section class="contact-cta-section">
@@ -790,19 +871,49 @@
                 offset: 60
             });
             
+            // フィルタリング機能
             const filterButtons = document.querySelectorAll('.filter-button');
+            const achievementCards = document.querySelectorAll('.achievement-card');
+            
             filterButtons.forEach(button => {
                 button.addEventListener('click', function() {
+                    // アクティブボタンのスタイル更新
                     filterButtons.forEach(btn => btn.classList.remove('active'));
                     this.classList.add('active');
                     
-                    const cards = document.querySelectorAll('.achievement-card');
-                    cards.forEach(card => {
+                    // フィルタリング処理
+                    const filter = this.getAttribute('data-filter');
+                    
+                    achievementCards.forEach(card => {
+                        // トランジション効果
                         card.style.opacity = '0.5';
+                        card.style.transform = 'scale(0.95)';
+                        
                         setTimeout(() => {
-                            card.style.opacity = '1';
+                            if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                                card.style.display = 'flex';
+                                setTimeout(() => {
+                                    card.style.opacity = '1';
+                                    card.style.transform = 'scale(1)';
+                                }, 50);
+                            } else {
+                                card.style.display = 'none';
+                            }
                         }, 300);
                     });
+                });
+            });
+            
+            // カード遷移時のアニメーション
+            document.querySelectorAll('.achievement-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    const img = this.querySelector('.achievement-image img');
+                    if (img) img.style.transform = 'scale(1.05)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    const img = this.querySelector('.achievement-image img');
+                    if (img) img.style.transform = 'scale(1)';
                 });
             });
         });
@@ -810,3 +921,5 @@
 
 
 </body></html>
+```
+</copilot-edited-file>
