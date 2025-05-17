@@ -1,25 +1,34 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="まえゆきツールの画像サイズ変更ツール - ブラウザ上でJPEG・PNG画像をまとめてリサイズ・縮小できる無料ツールです。">
+  <meta name="description" content="まえゆきツールの画像サイズ変更ツール - ブラウザ上でJPEG・PNG画像をまとめてリサイズ・縮小できる無料ツールです。アスペクト比を保ったまま複数の画像を一括処理できます。">
+  <meta name="keywords" content="画像リサイズ,画像サイズ変更,縮小,拡大,JPEG,PNG,一括処理,無料ツール">
   <title>画像サイズ変更ツール | まえゆきツール</title>
 
   <!-- リソースの先読み -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  
+  <!-- インクルード処理 -->
+  <script src="/js/include.js"></script>
+  
+  <!-- 画像遅延読み込み -->
+  <script src="/js/lazy-loading.js" defer=""></script>
 
   <!-- 共通CSSとフォント -->
   <link rel="stylesheet" href="/css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&amp;display=swap" rel="stylesheet">
   
   <!-- ツール共通CSS -->
   <link rel="stylesheet" href="/css/tools-common.css">
-
+  <link rel="stylesheet" href="/css/image-tools-styles.css">
+  
+  <!-- 共通スクリプト読み込み -->
+  <script src="/js/image-tools-utils.js"></script>
+  
   <!-- 個別ツールのスタイル -->
   <style>
-    /* 画像リサイズツール固有のスタイル */
+    /* 画像リサイズツール固有のスタイル - 必要な場合のみ追加 */
     .drop-area {
       border: 2px dashed #ccc;
       border-radius: 8px;
@@ -422,48 +431,17 @@
   </style>
 
   <!-- JavaScriptの遅延ロード -->
-  <script src="/js/script.js" defer></script>
+  <script src="/js/script.js" defer=""></script>
 
   <link rel="icon" href="/images/favicon.ico">
   <meta property="og:title" content="画像サイズ変更ツール | まえゆきツール">
   <meta property="og:description" content="まえゆきツールの画像サイズ変更ツール - ブラウザ上でJPEG・PNG画像をまとめてリサイズ・縮小できる無料ツールです。">
   <meta property="og:image" content="/images/tool-ogp.webp">
   <meta property="og:type" content="website">
-</head>
+<link rel="stylesheet" href="/css/image-tools-styles.css"><script src="/js/image-tools-utils.js"></script></head>
 <body>
   <!-- ヘッダー -->
-  <header class="site-header">
-    <div class="header-container">
-      <div class="site-logo-text">
-        <a href="/index.html">CLAN</a>
-      </div>
-      <nav class="global-nav pc-nav">
-        <ul>
-          <li><a href="/index.html">ホーム</a></li>
-          <li><a href="/about.html">オートウェビナー大学とは</a></li>
-          <li><a href="/blog/index.html">ブログ</a></li>
-          <li><a href="/seminar/index.html">オンライン講座</a></li>
-          <li><a href="/tools/index.html" aria-current="page">まえゆきツール</a></li>
-          <li><a href="/achievement/index.html">お客様の声</a></li>
-        </ul>
-      </nav>
-      <div class="header-cta">
-        <a href="/document.html" class="btn-document">
-          <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
-          資料請求
-        </a>
-        <a href="/free-consultation.html" class="btn-contact">
-          <span class="free-label">無料</span>
-          個別相談
-        </a>
-      </div>
-      <button class="hamburger-button" aria-label="メニュー">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </div>
-  </header>
+  <div id="header-placeholder"></div>
 
   <!-- メインコンテンツ -->
   <main>
@@ -492,7 +470,7 @@
             <p class="drop-area-or">もしくは</p>
             <label class="file-button">
               + ファイルを追加
-              <input type="file" class="file-input" id="fileInput" accept="image/jpeg, image/png, image/gif" multiple>
+              <input type="file" class="file-input" id="fileInput" accept="image/jpeg, image/png, image/gif" multiple="">
             </label>
           </div>
 
@@ -538,7 +516,7 @@
                 
                 <div class="lock-aspect-ratio">
                   <label class="checkbox-wrapper">
-                    <input type="checkbox" class="aspect-checkbox" id="lockAspectRatio" checked>
+                    <input type="checkbox" class="aspect-checkbox" id="lockAspectRatio" checked="">
                     <span class="checkmark"></span>
                   </label>
                   縦横比を維持する
@@ -571,7 +549,7 @@
           </div>
           
           <div class="action-container">
-            <button class="resize-button" id="resizeBtn" disabled>リサイズしてダウンロード</button>
+            <button class="resize-button" id="resizeBtn" disabled="">リサイズしてダウンロード</button>
           </div>
         </div>
 
@@ -654,7 +632,7 @@
   <!-- SVGアイコン -->
   <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
     <symbol id="icon-pdf" viewBox="0 0 24 24">
-      <path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"/>
+      <path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"></path>
     </symbol>
   </svg>
 
@@ -771,45 +749,8 @@
         maxWidthInput.addEventListener('input', updateAspectRatio);
         maxHeightInput.addEventListener('input', updateAspectRatio);
         
-        // ドラッグ&ドロップイベント
-        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-            dropArea.addEventListener(eventName, preventDefaults, false);
-        });
-        
-        function preventDefaults(e) {
-            e.preventDefault();
-            e.stopPropagation();
-        }
-        
-        ['dragenter', 'dragover'].forEach(eventName => {
-            dropArea.addEventListener(eventName, highlight, false);
-        });
-        
-        ['dragleave', 'drop'].forEach(eventName => {
-            dropArea.addEventListener(eventName, unhighlight, false);
-        });
-        
-        function highlight() {
-            dropArea.classList.add('dragover');
-        }
-        
-        function unhighlight() {
-            dropArea.classList.remove('dragover');
-        }
-        
-        // ファイルのドロップ
-        dropArea.addEventListener('drop', handleDrop, false);
-        
-        function handleDrop(e) {
-            const dt = e.dataTransfer;
-            const files = dt.files;
-            handleFiles(files);
-        }
-        
-        // ファイル選択
-        fileInput.addEventListener('change', function() {
-            handleFiles(this.files);
-        });
+        // 共通関数を使用してファイルドロップ設定
+        setupFileDropAndSelection(dropArea, fileInput, handleFiles);
         
         // ファイル処理
         function handleFiles(files) {
@@ -849,43 +790,22 @@
             resizeBtn.disabled = selectedFiles.length === 0;
         }
         
-        // ファイルUI更新
+        // ファイルUI更新（共通関数の一部を活用）
         function updateFilesUI() {
             filesContainer.innerHTML = '';
             
             selectedFiles.forEach((file, index) => {
-                const fileItem = document.createElement('div');
-                fileItem.className = 'file-item';
-                
-                const filePreview = document.createElement('img');
-                filePreview.className = 'file-preview';
-                filePreview.alt = file.name;
-                
-                // ファイルプレビュー作成
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    filePreview.src = e.target.result;
+                    const fileItem = createFileItem(file, e.target.result, () => {
+                        selectedFiles.splice(index, 1);
+                        updateFilesUI();
+                        updateFilesMetaUI();
+                        resizeBtn.disabled = selectedFiles.length === 0;
+                    });
+                    filesContainer.appendChild(fileItem);
                 };
                 reader.readAsDataURL(file);
-                
-                const fileName = document.createElement('div');
-                fileName.className = 'file-name';
-                fileName.textContent = file.name;
-                
-                const removeBtn = document.createElement('div');
-                removeBtn.className = 'file-remove';
-                removeBtn.innerHTML = '×';
-                removeBtn.addEventListener('click', () => {
-                    selectedFiles.splice(index, 1);
-                    updateFilesUI();
-                    updateFilesMetaUI();
-                    resizeBtn.disabled = selectedFiles.length === 0;
-                });
-                
-                fileItem.appendChild(filePreview);
-                fileItem.appendChild(fileName);
-                fileItem.appendChild(removeBtn);
-                filesContainer.appendChild(fileItem);
             });
         }
         
@@ -941,6 +861,8 @@
                     progressText.textContent = `画像処理中 (${i + 1}/${selectedFiles.length})`;
                 } catch (err) {
                     console.error('リサイズエラー:', err);
+                    // 共通関数を使用したエラーメッセージ表示
+                    updateUI('処理エラーが発生しました', true);
                 }
             }
             
@@ -949,6 +871,9 @@
             
             // ZIPファイルを作成してダウンロード
             await downloadResizedImages();
+            
+            // 共通関数でUI更新
+            updateUI('画像処理が完了しました！');
             
             // 進捗バーを非表示にして、ボタンを元に戻す
             setTimeout(() => {
@@ -959,26 +884,7 @@
         });
         
         // 画像リサイズ処理
-        function resizeImage(file, maxWidth, maxHeight, quality) {
-            return new Promise((resolve, reject) => {
-                const img = new Image();
-                img.onload = function() {
-                    // 元のサイズ
-                    const origWidth = img.width;
-                    const origHeight = img.height;
-                    
-                    // リサイズ後のサイズを計算
-                    let newWidth = origWidth;
-                    let newHeight = origHeight;
-                    
-                    // アスペクト比を保ったままリサイズ
-                    const aspectRatio = origWidth / origHeight;
-                    
-                    // 最大幅に合わせてリサイズ
-                    if (origWidth > maxWidth) {
-                        newWidth = maxWidth;
-                        newHeight = newWidth / aspectRatio;
-                    }
+        // resizeImageは共通関数を使用
                     
                     // 最大高さに合わせてリサイズ
                     if (newHeight > maxHeight) {
@@ -1070,5 +976,18 @@
         }
     });
   </script>
+
+    <!-- ツールリクエストセクション -->
+    <section class="tool-request">
+      <div class="request-card">
+        <h3>新しいツールをリクエスト</h3>
+        <p>ほしいツールがあれば教えてください！<br>可能な限り対応させていただきます。</p>
+        <a href="https://forms.gle/b1VzXaEvLcetLwceA" class="request-button" target="_blank" rel="noopener">ツールをリクエストする</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- フッター -->
+  <div id="footer-placeholder"></div>
 </body>
 </html>

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="オンラインルーレットツールで選択肢からランダムに結果を選びます。人数分け、料理選び、判断などあらゆるシーンで活用できます。">
+  <title>ルーレット | まえゆきツール</title>
+
+  <!-- リソースの先読み -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- 共通CSSとフォント -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- ツール共通CSS -->
+  <link rel="stylesheet" href="/css/tools-common.css">
+
+  <!-- 個別ツールのスタイル -->
+  <style>
+    .roulette-container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .roulette {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      margin: 30px auto;
+    }
+
+    .wheel {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      position: relative;
+      overflow: hidden;
+      transition: transform 5s cubic-bezier(0.25, 0.1, 0.25, 1);
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+
+    .wheel-center {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background: white;
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+      box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    }
+
+    .pointer {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-top: 30px solid #ff5252;
+      transform: translateX(-50%);
+      z-index: 2;
+    }
+
+    .slice {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 100%, 50% 100%);
+      transform-origin: center;
+    }
+
+    .slice-text {
+      position: absolute;
+      left: 50%;
+      top: 15%;
+      transform: translateX(-50%) rotate(90deg);
+      text-align: center;
+      width: 120px;
+      font-weight: bold;
+      color: white;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+    }
+
+    .controls {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .options-container {
+      margin-bottom: 20px;
+    }
+
+    .option-row {
+      display: flex;
+      margin-bottom: 10px;
+      align-items: center;
+    }
+
+    .option-input {
+      flex-grow: 1;
+      padding: 8px 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      margin-right: 10px;
+    }
+
+    .btn-remove {
+      background-color: #ff5252;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+
+    .btn-add {
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 8px 12px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    .btn-spin {
+      background-color: #2196f3;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-top: 20px;
+    }
+
+    .btn-spin:hover {
+      background-color: #0d8bf2;
+    }
+
+    .result {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+      min-height: 30px;
+    }
+
+    .template-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .template-btn {
+      background-color: #f0f0f0;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 8px 12px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .template-btn:hover {
+      background-color: #e0e0e0;
+    }
+    
+    @media (max-width: 600px) {
+      .roulette {
+        width: 250px;
+        height: 250px;
+      }
+      
+      .slice-text {
+        width: 100px;
+        font-size: 14px;
+      }
+    }
+  </style>
+
+  <!-- JavaScriptの遅延ロード -->
+  <script src="/js/script.js" defer></script>
+  <script src="/js/include.js"></script>
+
+  <link rel="icon" href="/images/favicon.ico">
+  <meta property="og:title" content="ルーレット | まえゆきツール">
+  <meta property="og:description" content="オンラインルーレットツールで選択肢からランダムに結果を選びます。人数分け、料理選び、判断などあらゆるシーンで活用できます。">
+  <meta property="og:image" content="/images/tool-ogp.webp">
+  <meta property="og:type" content="website">
+</head>
+<body>  <!-- ヘッダー -->
+  <div id="header-placeholder"></div>
+
+  <!-- メインコンテンツ -->
+  <main>
+    <!-- ツールのコンテナ -->
+    <div class="app-wrapper">
+      <div class="tool-container">
+        <div class="tool-header">
+          <h1>ルーレット</h1>
+          <p class="tool-description">選択肢からランダムに結果を選ぶオンラインルーレットです。人数の割り振りや料理選びなど、様々なシーンでご活用ください。</p>
+        </div>
+        <!-- ツール固有のコンテンツ -->
+        <div class="tool-content">
+          <div class="roulette-container">
+            <div class="template-buttons">
+              <button class="template-btn" data-template="foods">料理選び</button>
+              <button class="template-btn" data-template="members">人数分け</button>
+              <button class="template-btn" data-template="colors">色選び</button>
+              <button class="template-btn" data-template="yesno">Yes/No</button>
+            </div>
+            
+            <div class="options-container" id="optionsContainer">
+              <!-- オプション入力フィールドはJavaScriptで生成 -->
+            </div>
+            
+            <button class="btn-add" id="btnAdd">オプションを追加</button>
+
+            <div class="roulette">
+              <div class="pointer"></div>
+              <div class="wheel" id="wheel"></div>
+              <div class="wheel-center"></div>
+            </div>
+            
+            <div class="controls">
+              <button class="btn-spin" id="btnSpin">回転する</button>
+            </div>
+            
+            <div class="result" id="result"></div>
+          </div>
+        </div>
+      </div>
+    </div>    <!-- ツールリクエストへの誘導セクション -->
+    <section class="tool-request-section">
+      <div class="container">
+        <h2>欲しいツールがあればリクエスト！</h2>
+        <p>「こんなツールがあったら便利なのに」というアイデアがあれば、ぜひお知らせください。<br>
+        できる限り対応させていただきます。</p>
+        <a href="https://forms.gle/b1VzXaEvLcetLwceA" class="request-button" target="_blank" rel="noopener">ツールをリクエストする</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- フッター -->
+  <div id="footer-placeholder"></div>
+
+  <!-- 個別ツールのJavaScript -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const wheel = document.getElementById('wheel');
+      const btnSpin = document.getElementById('btnSpin');
+      const btnAdd = document.getElementById('btnAdd');
+      const optionsContainer = document.getElementById('optionsContainer');
+      const resultElement = document.getElementById('result');
+      const templateButtons = document.querySelectorAll('.template-btn');
+      
+      // 色の配列
+      const colors = [
+        '#FF5252', '#FF4081', '#E040FB', '#7C4DFF', '#536DFE',
+        '#448AFF', '#40C4FF', '#18FFFF', '#64FFDA', '#69F0AE',
+        '#B2FF59', '#EEFF41', '#FFFF00', '#FFD740', '#FFAB40'
+      ];
+      
+      // 初期オプション
+      let options = ['オプション1', 'オプション2', 'オプション3', 'オプション4'];
+      let spinning = false;
+      let currentRotation = 0;
+      
+      // テンプレートのオプション
+      const templates = {
+        foods: ['ラーメン', 'カレー', 'ハンバーグ', '寿司', 'パスタ', 'サラダ', 'うどん'],
+        members: ['Aチーム', 'Bチーム', 'Cチーム', 'Dチーム'],
+        colors: ['赤', '青', '緑', '黄色', '紫', 'オレンジ', 'ピンク'],
+        yesno: ['YES', 'NO', 'MAYBE']
+      };
+
+      // オプションの初期表示
+      renderOptionInputs();
+      renderWheel();
+      
+      // 「オプションを追加」ボタンのクリックイベント
+      btnAdd.addEventListener('click', () => {
+        options.push(`オプション${options.length + 1}`);
+        renderOptionInputs();
+        renderWheel();
+      });
+      
+      // テンプレートボタンのクリックイベント
+      templateButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const templateName = button.getAttribute('data-template');
+          if (templates[templateName]) {
+            options = [...templates[templateName]];
+            renderOptionInputs();
+            renderWheel();
+          }
+        });
+      });
+      
+      // 「回転する」ボタンのクリックイベント
+      btnSpin.addEventListener('click', spinWheel);
+      
+      // オプション入力フィールドの表示
+      function renderOptionInputs() {
+        optionsContainer.innerHTML = '';
+        options.forEach((option, index) => {
+          const row = document.createElement('div');
+          row.className = 'option-row';
+          
+          const input = document.createElement('input');
+          input.type = 'text';
+          input.className = 'option-input';
+          input.value = option;
+          input.addEventListener('input', (e) => {
+            options[index] = e.target.value;
+            renderWheel();
+          });
+          
+          const removeBtn = document.createElement('button');
+          removeBtn.className = 'btn-remove';
+          removeBtn.textContent = '削除';
+          removeBtn.addEventListener('click', () => {
+            options.splice(index, 1);
+            renderOptionInputs();
+            renderWheel();
+          });
+          
+          row.appendChild(input);
+          row.appendChild(removeBtn);
+          optionsContainer.appendChild(row);
+        });
+      }
+      
+      // ルーレットの表示
+      function renderWheel() {
+        wheel.innerHTML = '';
+        
+        if (options.length === 0) {
+          return;
+        }
+        
+        const sliceAngle = 360 / options.length;
+        
+        options.forEach((option, index) => {
+          const slice = document.createElement('div');
+          slice.className = 'slice';
+          
+          // 色を適用
+          const colorIndex = index % colors.length;
+          slice.style.backgroundColor = colors[colorIndex];
+          
+          // 回転角度を設定
+          slice.style.transform = `rotate(${index * sliceAngle}deg)`;
+          
+          // テキストを追加
+          const text = document.createElement('div');
+          text.className = 'slice-text';
+          text.textContent = option;
+          text.style.transform = `translateX(-50%) rotate(${sliceAngle / 2}deg)`;
+          
+          slice.appendChild(text);
+          wheel.appendChild(slice);
+        });
+      }
+      
+      // ルーレットを回転させる
+      function spinWheel() {
+        if (spinning || options.length === 0) return;
+        spinning = true;
+        resultElement.textContent = '';
+        btnSpin.disabled = true;
+        
+        // 回転角度をランダムに決定（5~10回転 + ランダムな角度）
+        const spinAngle = 1800 + Math.floor(Math.random() * 1800);
+        currentRotation += spinAngle;
+        wheel.style.transform = `rotate(${currentRotation}deg)`;
+        
+        // 回転が終わったら結果を表示
+        setTimeout(() => {
+          const sliceAngle = 360 / options.length;
+          const normalizedRotation = currentRotation % 360;
+          const winningIndex = Math.floor(normalizedRotation / sliceAngle);
+          const result = options[options.length - 1 - winningIndex % options.length];
+          
+          resultElement.textContent = `結果: ${result}`;
+          spinning = false;
+          btnSpin.disabled = false;
+        }, 5000);
+      }
+    });
+  </script>
+</body>
+</html>

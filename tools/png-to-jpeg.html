@@ -1,22 +1,31 @@
-<!-- ツール共通テンプレート -->
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!-- ツール共通テンプレート --><!DOCTYPE html><html lang="ja"><head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="まえゆきツールのPNG→JPEG変換ツール - PNG画像をJPEG形式に一括変換できる無料ツールです。">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  <meta name="description" content="まえゆきツールのPNG→JPEG変換ツール - PNG画像をJPEG形式に一括変換できる無料ツールです。品質調整も可能で、透過部分の背景色も自由に設定できます。">
+  <meta name="keywords" content="PNG変換,JPEG変換,透過PNG,画像変換,無料ツール,オンライン変換">
   <title>PNG→JPEG変換ツール | まえゆきツール</title>
 
   <!-- リソースの先読み -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  
+  <!-- インクルード処理 -->
+  <script src="/js/include.js"></script>
+  
+  <!-- 画像遅延読み込み -->
+  <script src="/js/lazy-loading.js" defer=""></script>
 
   <!-- 共通CSSとフォント -->
   <link rel="stylesheet" href="/css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&amp;display=swap" rel="stylesheet">
   
   <!-- ツール共通CSS -->
   <link rel="stylesheet" href="/css/tools-common.css">
+  <link rel="stylesheet" href="/css/image-tools-styles.css">
+  
+  <!-- 共通スクリプト読み込み -->
+  <script src="/js/image-tools-utils.js"></script>
+  
+  
 
   <!-- 個別ツールのスタイル -->
   <style>
@@ -439,7 +448,7 @@
   </style>
 
   <!-- JavaScriptの遅延ロード -->
-  <script src="/js/script.js" defer></script>
+  <script src="/js/script.js" defer=""></script>
 
   <link rel="icon" href="/images/favicon.ico">
   <meta property="og:title" content="PNG→JPEG変換ツール | まえゆきツール">
@@ -448,41 +457,10 @@
   <meta property="og:type" content="website">
   <meta property="og:image" content="/images/ogp_image_tools.webp">
   <meta property="og:type" content="website">
-</head>
+<link rel="stylesheet" href="/css/image-tools-styles.css"><script src="/js/image-tools-utils.js"></script></head>
 <body>
   <!-- ヘッダー -->
-  <header class="site-header">
-    <div class="header-container">
-      <div class="site-logo-text">
-        <a href="/index.html">CLAN</a>
-      </div>
-      <nav class="global-nav pc-nav">
-        <ul>
-          <li><a href="/index.html">ホーム</a></li>
-          <li><a href="/about.html">オートウェビナー大学とは</a></li>
-          <li><a href="/blog/index.html">ブログ</a></li>
-          <li><a href="/seminar/index.html">オンライン講座</a></li>
-          <li><a href="/tools/index.html" aria-current="page">まえゆきツール</a></li>
-          <li><a href="/achievement/index.html">お客様の声</a></li>
-        </ul>
-      </nav>
-      <div class="header-cta">
-        <a href="/document.html" class="btn-document">
-          <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
-          資料請求
-        </a>
-        <a href="/free-consultation.html" class="btn-contact">
-          <span class="free-label">無料</span>
-          個別相談
-        </a>
-      </div>
-      <button class="hamburger-button" aria-label="メニュー">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </div>
-  </header>
+  <div id="header-placeholder"></div>
 
   <!-- メインコンテンツ -->
   <main>
@@ -496,8 +474,6 @@
         <div class="tool-content">
           <div id="svg-defs-placeholder"></div>
 
-<div id="header-placeholder"></div>
-   <main class="site-main">
       <!-- ツールセクション -->
       <section class="tool-section">
          <div class="tool-container">
@@ -670,44 +646,19 @@
           let quality = 90;
           let bgColor = '#FFFFFF';
           
-          // ドラッグ&ドロップイベント
-          ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-              dropArea.addEventListener(eventName, preventDefaults, false);
+          // 共通関数を使用してファイルドロップ設定
+          setupFileDropAndSelection(dropArea, fileInput, handleFiles);
+          
+          // 品質スライダー
+          qualitySlider.addEventListener('input', function() {
+              quality = parseInt(this.value);
+              qualityValue.textContent = `${quality}%`;
           });
           
-          function preventDefaults(e) {
-              e.preventDefault();
-              e.stopPropagation();
-          }
-          
-          ['dragenter', 'dragover'].forEach(eventName => {
-              dropArea.addEventListener(eventName, highlight, false);
-          });
-          
-          ['dragleave', 'drop'].forEach(eventName => {
-              dropArea.addEventListener(eventName, unhighlight, false);
-          });
-          
-          function highlight() {
-              dropArea.classList.add('dragover');
-          }
-          
-          function unhighlight() {
-              dropArea.classList.remove('dragover');
-          }
-          
-          // ファイルのドロップ
-          dropArea.addEventListener('drop', handleDrop, false);
-          
-          function handleDrop(e) {
-              const dt = e.dataTransfer;
-              const files = dt.files;
-              handleFiles(files);
-          }
-          
-          // ファイル選択
-          fileInput.addEventListener('change', function() {
-              handleFiles(this.files);
+          // 背景色ピッカー
+          bgColorPicker.addEventListener('input', function() {
+              bgColor = this.value;
+              bgColorHex.textContent = bgColor.toUpperCase();
           });
           
           // ファイル処理
@@ -718,7 +669,8 @@
               });
               
               if (validFiles.length === 0) {
-                  alert('PNG画像を選択してください。');
+                  // 共通関数を使用してエラー表示
+                  updateUI('PNG画像を選択してください。', true);
                   return;
               }
               
@@ -733,43 +685,22 @@
               convertBtn.disabled = selectedFiles.length === 0;
           }
           
-          // ファイルUI更新
+          // ファイルUI更新（共通関数を使用）
           function updateFilesUI() {
               filesContainer.innerHTML = '';
               
               selectedFiles.forEach((file, index) => {
-                  const fileItem = document.createElement('div');
-                  fileItem.className = 'file-item';
-                  
-                  const filePreview = document.createElement('img');
-                  filePreview.className = 'file-preview';
-                  filePreview.alt = file.name;
-                  
-                  // ファイルプレビュー作成
                   const reader = new FileReader();
                   reader.onload = function(e) {
-                      filePreview.src = e.target.result;
+                      const fileItem = createFileItem(file, e.target.result, () => {
+                          selectedFiles.splice(index, 1);
+                          updateFilesUI();
+                          updateFilesMetaUI();
+                          convertBtn.disabled = selectedFiles.length === 0;
+                      });
+                      filesContainer.appendChild(fileItem);
                   };
                   reader.readAsDataURL(file);
-                  
-                  const fileName = document.createElement('div');
-                  fileName.className = 'file-name';
-                  fileName.textContent = file.name;
-                  
-                  const removeBtn = document.createElement('div');
-                  removeBtn.className = 'file-remove';
-                  removeBtn.innerHTML = '×';
-                  removeBtn.addEventListener('click', () => {
-                      selectedFiles.splice(index, 1);
-                      updateFilesUI();
-                      updateFilesMetaUI();
-                      convertBtn.disabled = selectedFiles.length === 0;
-                  });
-                  
-                  fileItem.appendChild(filePreview);
-                  fileItem.appendChild(fileName);
-                  fileItem.appendChild(removeBtn);
-                  filesContainer.appendChild(fileItem);
               });
           }
           
@@ -788,18 +719,6 @@
               const sizeInMB = (totalSize / (1024 * 1024)).toFixed(2);
               filesMeta.textContent = `${selectedFiles.length}枚のPNG画像（合計 ${sizeInMB} MB）`;
           }
-          
-          // 品質スライダー
-          qualitySlider.addEventListener('input', function() {
-              quality = parseInt(this.value);
-              qualityValue.textContent = `${quality}%`;
-          });
-          
-          // 背景色ピッカー
-          bgColorPicker.addEventListener('input', function() {
-              bgColor = this.value.toUpperCase();
-              bgColorHex.textContent = bgColor;
-          });
           
           // 変換ボタン
           convertBtn.addEventListener('click', async function() {
@@ -887,28 +806,7 @@
           });
           
           // PNG→JPEG形式に変換
-          function convertToJPEG(file, quality, bgColor) {
-              return new Promise((resolve, reject) => {
-                  const img = new Image();
-                  img.onload = function() {
-                      const canvas = document.createElement('canvas');
-                      canvas.width = img.width;
-                      canvas.height = img.height;
-                      
-                      const ctx = canvas.getContext('2d');
-                      
-                      // 背景色を設定して塗りつぶし
-                      ctx.fillStyle = bgColor;
-                      ctx.fillRect(0, 0, canvas.width, canvas.height);
-                      
-                      // 画像を描画
-                      ctx.drawImage(img, 0, 0);
-                      
-                      // JPEGに変換
-                      canvas.toBlob(blob => {
-                          if (blob) {
-                              resolve(blob);
-                          } else {
+          // convertToJPEGは共通関数を使用 else {
                               reject(new Error('JPEG変換に失敗しました'));
                           }
                       }, 'image/jpeg', quality / 100);
@@ -1038,7 +936,7 @@
   <!-- SVGアイコン -->
   <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
     <symbol id="icon-pdf" viewBox="0 0 24 24">
-      <path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"/>
+      <path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"></path>
     </symbol>
   </svg>
 
@@ -1066,44 +964,19 @@ document.addEventListener('DOMContentLoaded', function() {
           let quality = 90;
           let bgColor = '#FFFFFF';
           
-          // ドラッグ&ドロップイベント
-          ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-              dropArea.addEventListener(eventName, preventDefaults, false);
+          // 共通関数を使用してファイルドロップ設定
+          setupFileDropAndSelection(dropArea, fileInput, handleFiles);
+          
+          // 品質スライダー
+          qualitySlider.addEventListener('input', function() {
+              quality = parseInt(this.value);
+              qualityValue.textContent = `${quality}%`;
           });
           
-          function preventDefaults(e) {
-              e.preventDefault();
-              e.stopPropagation();
-          }
-          
-          ['dragenter', 'dragover'].forEach(eventName => {
-              dropArea.addEventListener(eventName, highlight, false);
-          });
-          
-          ['dragleave', 'drop'].forEach(eventName => {
-              dropArea.addEventListener(eventName, unhighlight, false);
-          });
-          
-          function highlight() {
-              dropArea.classList.add('dragover');
-          }
-          
-          function unhighlight() {
-              dropArea.classList.remove('dragover');
-          }
-          
-          // ファイルのドロップ
-          dropArea.addEventListener('drop', handleDrop, false);
-          
-          function handleDrop(e) {
-              const dt = e.dataTransfer;
-              const files = dt.files;
-              handleFiles(files);
-          }
-          
-          // ファイル選択
-          fileInput.addEventListener('change', function() {
-              handleFiles(this.files);
+          // 背景色ピッカー
+          bgColorPicker.addEventListener('input', function() {
+              bgColor = this.value;
+              bgColorHex.textContent = bgColor.toUpperCase();
           });
           
           // ファイル処理
@@ -1114,7 +987,8 @@ document.addEventListener('DOMContentLoaded', function() {
               });
               
               if (validFiles.length === 0) {
-                  alert('PNG画像を選択してください。');
+                  // 共通関数を使用してエラー表示
+                  updateUI('PNG画像を選択してください。', true);
                   return;
               }
               
@@ -1129,43 +1003,22 @@ document.addEventListener('DOMContentLoaded', function() {
               convertBtn.disabled = selectedFiles.length === 0;
           }
           
-          // ファイルUI更新
+          // ファイルUI更新（共通関数を使用）
           function updateFilesUI() {
               filesContainer.innerHTML = '';
               
               selectedFiles.forEach((file, index) => {
-                  const fileItem = document.createElement('div');
-                  fileItem.className = 'file-item';
-                  
-                  const filePreview = document.createElement('img');
-                  filePreview.className = 'file-preview';
-                  filePreview.alt = file.name;
-                  
-                  // ファイルプレビュー作成
                   const reader = new FileReader();
                   reader.onload = function(e) {
-                      filePreview.src = e.target.result;
+                      const fileItem = createFileItem(file, e.target.result, () => {
+                          selectedFiles.splice(index, 1);
+                          updateFilesUI();
+                          updateFilesMetaUI();
+                          convertBtn.disabled = selectedFiles.length === 0;
+                      });
+                      filesContainer.appendChild(fileItem);
                   };
                   reader.readAsDataURL(file);
-                  
-                  const fileName = document.createElement('div');
-                  fileName.className = 'file-name';
-                  fileName.textContent = file.name;
-                  
-                  const removeBtn = document.createElement('div');
-                  removeBtn.className = 'file-remove';
-                  removeBtn.innerHTML = '×';
-                  removeBtn.addEventListener('click', () => {
-                      selectedFiles.splice(index, 1);
-                      updateFilesUI();
-                      updateFilesMetaUI();
-                      convertBtn.disabled = selectedFiles.length === 0;
-                  });
-                  
-                  fileItem.appendChild(filePreview);
-                  fileItem.appendChild(fileName);
-                  fileItem.appendChild(removeBtn);
-                  filesContainer.appendChild(fileItem);
               });
           }
           
@@ -1184,18 +1037,6 @@ document.addEventListener('DOMContentLoaded', function() {
               const sizeInMB = (totalSize / (1024 * 1024)).toFixed(2);
               filesMeta.textContent = `${selectedFiles.length}枚のPNG画像（合計 ${sizeInMB} MB）`;
           }
-          
-          // 品質スライダー
-          qualitySlider.addEventListener('input', function() {
-              quality = parseInt(this.value);
-              qualityValue.textContent = `${quality}%`;
-          });
-          
-          // 背景色ピッカー
-          bgColorPicker.addEventListener('input', function() {
-              bgColor = this.value.toUpperCase();
-              bgColorHex.textContent = bgColor;
-          });
           
           // 変換ボタン
           convertBtn.addEventListener('click', async function() {
@@ -1283,28 +1124,7 @@ document.addEventListener('DOMContentLoaded', function() {
           });
           
           // PNG→JPEG形式に変換
-          function convertToJPEG(file, quality, bgColor) {
-              return new Promise((resolve, reject) => {
-                  const img = new Image();
-                  img.onload = function() {
-                      const canvas = document.createElement('canvas');
-                      canvas.width = img.width;
-                      canvas.height = img.height;
-                      
-                      const ctx = canvas.getContext('2d');
-                      
-                      // 背景色を設定して塗りつぶし
-                      ctx.fillStyle = bgColor;
-                      ctx.fillRect(0, 0, canvas.width, canvas.height);
-                      
-                      // 画像を描画
-                      ctx.drawImage(img, 0, 0);
-                      
-                      // JPEGに変換
-                      canvas.toBlob(blob => {
-                          if (blob) {
-                              resolve(blob);
-                          } else {
+          // convertToJPEGは共通関数を使用 else {
                               reject(new Error('JPEG変換に失敗しました'));
                           }
                       }, 'image/jpeg', quality / 100);
@@ -1365,6 +1185,19 @@ document.addEventListener('DOMContentLoaded', function() {
               });
           });
       });
-  </script>
+   </script>
+
+    <!-- ツールリクエストセクション -->
+    <section class="tool-request">
+      <div class="request-card">
+        <h3>新しいツールをリクエスト</h3>
+        <p>ほしいツールがあれば教えてください！<br>可能な限り対応させていただきます。</p>
+        <a href="https://forms.gle/b1VzXaEvLcetLwceA" class="request-button" target="_blank" rel="noopener">ツールをリクエストする</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- フッター -->
+  <div id="footer-placeholder"></div>
 </body>
 </html>

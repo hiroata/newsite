@@ -1,7 +1,4 @@
-<!-- ツール共通テンプレート -->
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!-- ツール共通テンプレート --><!DOCTYPE html><html lang="ja"><head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="まえゆきツールのミームジェネレーター - 自分だけのオリジナルミームを簡単に作成できる無料ツールです。テキストを追加して画像をシェアしましょう。">
@@ -9,14 +6,18 @@
 
   <!-- リソースの先読み -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 
   <!-- 共通CSSとフォント -->
   <link rel="stylesheet" href="/css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&amp;display=swap" rel="stylesheet">
   
   <!-- ツール共通CSS -->
   <link rel="stylesheet" href="/css/tools-common.css">
+  <link rel="stylesheet" href="/css/image-tools-styles.css">
+  
+  <!-- 共通スクリプト読み込み -->
+  <script src="/js/image-tools-utils.js"></script>
 
   <!-- 個別ツールのスタイル -->
   <style>
@@ -547,7 +548,7 @@
   </style>
 
   <!-- JavaScriptの遅延ロード -->
-  <script src="/js/script.js" defer></script>
+  <script src="/js/script.js" defer=""></script>
 
   <link rel="icon" href="/images/favicon.ico">
   <meta property="og:title" content="ミームジェネレーター | まえゆきツール">
@@ -556,41 +557,12 @@
   <meta property="og:type" content="website">
   <meta property="og:image" content="/images/ogp_image_tools.webp">
   <meta property="og:type" content="website">
+<link rel="stylesheet" href="/css/image-tools-styles.css"><script src="/js/image-tools-utils.js"></script>  <!-- インクルード処理 -->
+  <script src="/js/include.js"></script>
 </head>
 <body>
   <!-- ヘッダー -->
-  <header class="site-header">
-    <div class="header-container">
-      <div class="site-logo-text">
-        <a href="/index.html">CLAN</a>
-      </div>
-      <nav class="global-nav pc-nav">
-        <ul>
-          <li><a href="/index.html">ホーム</a></li>
-          <li><a href="/about.html">オートウェビナー大学とは</a></li>
-          <li><a href="/blog/index.html">ブログ</a></li>
-          <li><a href="/seminar/index.html">オンライン講座</a></li>
-          <li><a href="/tools/index.html" aria-current="page">まえゆきツール</a></li>
-          <li><a href="/achievement/index.html">お客様の声</a></li>
-        </ul>
-      </nav>
-      <div class="header-cta">
-        <a href="/document.html" class="btn-document">
-          <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
-          資料請求
-        </a>
-        <a href="/free-consultation.html" class="btn-contact">
-          <span class="free-label">無料</span>
-          個別相談
-        </a>
-      </div>
-      <button class="hamburger-button" aria-label="メニュー">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </div>
-  </header>
+  <div id="header-placeholder"></div>
 
   <!-- メインコンテンツ -->
   <main>
@@ -904,13 +876,25 @@
   <!-- SVGアイコン -->
   <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
     <symbol id="icon-pdf" viewBox="0 0 24 24">
-      <path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"/>
+      <path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"></path>
     </symbol>
   </svg>
 
   <!-- 個別ツールのJavaScript -->
   <script>
     
-  </script>
+  
+    <!-- ツールリクエストセクション -->
+    <section class="tool-request">
+      <div class="request-card">
+        <h3>新しいツールをリクエスト</h3>
+        <p>ほしいツールがあれば教えてください！<br>可能な限り対応させていただきます。</p>
+        <a href="https://forms.gle/b1VzXaEvLcetLwceA" class="request-button" target="_blank" rel="noopener">ツールをリクエストする</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- フッター -->
+  <div id="footer-placeholder"></div>
 </body>
 </html>

@@ -1,0 +1,309 @@
+<!-- image-tool-template.html -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="まえゆきツールの[ツール名] - [ツール説明]">
+  <meta name="keywords" content="[キーワード1],[キーワード2],[キーワード3],[キーワード4]">
+  <title>[ツール名] | まえゆきツール</title>
+
+  <!-- リソースの先読み -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- 画像遅延読み込み -->
+  <script src="/js/lazy-loading.js" defer></script>
+
+  <!-- 共通CSSとフォント -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- ツール共通CSS -->
+  <link rel="stylesheet" href="/css/tools-common.css">
+  <link rel="stylesheet" href="/css/image-tools-styles.css">
+  
+  <!-- 共通スクリプト読み込み -->
+  <script src="/js/image-tools-utils.js"></script>
+
+  <!-- キャッシング最適化（オプション） -->
+  <script type="module">
+    import { registerServiceWorker, optimizeCache } from '/js/tools-cache.js';
+    // サービスワーカー登録（プロダクション環境のみ）
+    if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+      registerServiceWorker();
+    }
+  </script>
+  
+  <!-- 外部ライブラリ -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  
+  <!-- 個別ツールのスタイル -->
+  <style>
+    /* ツール固有のスタイル - 必要な場合のみ追加 */
+  </style>
+</head>
+<body>
+  <!-- ヘッダーインクルード -->
+  <header class="site-header">
+    <div class="header-container">
+      <div class="site-logo-text"><a href="/">まえゆきツール</a></div>
+      <button class="hamburger-button" aria-label="メニュー">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ツールメイン部分 -->
+    <section class="tool-section">
+      <div class="container">
+        <h1 class="tool-title">[ツール名]</h1>
+        <p class="tool-description">[ツールの詳細説明]</p>
+        
+        <!-- ツールエリア -->
+        <div class="tool-area">
+          <!-- ドロップエリア -->
+          <div id="dropArea" class="drop-area">
+            <div class="drop-area-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+            </div>
+            <div class="drop-title">画像ファイルをドロップ</div>
+            <div class="drop-subtitle">または</div>
+            <label class="file-select-label">
+              ファイルを選択
+              <input type="file" id="fileInput" accept="image/*" multiple class="file-input">
+            </label>
+          </div>
+
+          <!-- 選択済みファイル -->
+          <div id="filesList" class="files-list"></div>
+          <div id="filesMeta" class="files-meta"></div>
+
+          <!-- 設定エリア -->
+          <div class="settings">
+            <!-- ツール固有の設定をここに追加 -->
+          </div>
+          
+          <!-- 処理ボタン -->
+          <div class="button-container">
+            <button id="processBtn" class="primary-button">[処理ボタンラベル]</button>
+          </div>
+          
+          <!-- 進捗表示 -->
+          <div id="progressContainer" class="progress-container" style="display: none;">
+            <div class="progress">
+              <div id="progressBar" class="progress-bar"></div>
+            </div>
+            <div id="progressText" class="progress-text">処理中...</div>
+          </div>
+          
+          <!-- メッセージ表示 -->
+          <div id="message" class="message"></div>
+        </div>
+        
+        <!-- 使い方セクション -->
+        <div class="usage-section">
+          <h2 class="usage-title">
+            <span class="usage-title-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+              </svg>
+            </span>
+            使い方
+          </h2>
+          <ul class="usage-list">
+            <li class="usage-item">[使い方説明1]</li>
+            <li class="usage-item">[使い方説明2]</li>
+            <li class="usage-item">[使い方説明3]</li>
+            <li class="usage-item">[使い方説明4]</li>
+            <li class="usage-item">[使い方説明5]</li>
+            <li class="usage-item">画像はパソコンやスマホのブラウザ上で処理されます。</li>
+            <li class="usage-item">サーバーなどにも送信されないため、誰かに見られる心配はありません。</li>
+          </ul>
+        </div>
+        
+        <!-- 他のツールリンク -->
+        <div class="other-tools">
+          <h2 class="other-tools-title">その他のまえゆきツール</h2>
+          <div class="tools-list">
+            <a href="calc.html" class="tool-link">単位換算と計算</a>
+            <a href="countdown.html" class="tool-link">Webでカウントダウン</a>
+            <a href="roulette.html" class="tool-link">Webでルーレット</a>
+            <a href="image-resize.html" class="tool-link">画像リサイズ</a>
+            <a href="png-to-jpeg.html" class="tool-link">PNG→JPEG変換</a>
+            <a href="png-jpeg-to-webp.html" class="tool-link">WebP変換</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- フッターインクルード -->
+    <footer class="site-footer" style="background-color: #e6f7ff;">
+      <div class="footer-container" style="display:flex;align-items:flex-start;gap:32px;flex-wrap:wrap;">
+        <div style="font-weight:bold;font-size:1.3rem;color:#333;letter-spacing:0.08em;min-width:80px;">オートウェビナー大学</div>
+        <div class="footer-widgets" style="display:flex;gap:32px;flex-wrap:wrap;flex:1;">
+          <div class="widget-area">
+            <h4 style="color:#1a5276;">無料コンテンツ</h4>
+            <ul>
+              <li><a href="/blog/index.html">ブログ</a></li>
+              <li><a href="/book/index.html">電子書籍</a></li>
+              <li><a href="/free-seminar.html">無料セミナー</a></li>
+              <li><a href="/free-consultation.html">無料相談</a></li>
+              <li><a href="/achievement/index.html">お客様の声</a></li>
+            </ul>
+          </div>
+          <!-- 略 -->
+        </div>
+      </div>
+      <div class="copyright" style="text-align:center;margin-top:32px;padding-top:16px;border-top:1px solid #ccc;font-size:12px;">
+        © 2025 まえゆきツール All Rights Reserved.
+      </div>
+    </footer>
+  </main>
+
+  <!-- ツールの共通スクリプト -->
+  <script>
+    // DOM要素
+    const dropArea = document.getElementById('dropArea');
+    const fileInput = document.getElementById('fileInput');
+    const filesList = document.getElementById('filesList');
+    const filesMeta = document.getElementById('filesMeta');
+    const processBtn = document.getElementById('processBtn');
+    const progressContainer = document.getElementById('progressContainer');
+    const progressBar = document.getElementById('progressBar');
+    const progressText = document.getElementById('progressText');
+    const messageElement = document.getElementById('message');
+    
+    // グローバル変数
+    let selectedFiles = [];
+    let processedFiles = [];
+    
+    // 共通関数を使用してファイルドロップ設定
+    setupFileDropAndSelection(dropArea, fileInput, handleFiles);
+    
+    // ファイル処理
+    function handleFiles(files) {
+      const validFiles = Array.from(files).filter(file => {
+        const type = file.type.toLowerCase();
+        return type.startsWith('image/');
+      });
+      
+      if (validFiles.length === 0) {
+        updateUI('画像ファイルのみ処理できます', true);
+        return;
+      }
+      
+      // ファイル一覧をクリアして追加
+      selectedFiles = validFiles;
+      updateFilesUI();
+    }
+    
+    // ファイル一覧UI更新
+    function updateFilesUI() {
+      filesList.innerHTML = '';
+      
+      // ファイルごとにリスト項目を作成
+      selectedFiles.forEach((file, index) => {
+        const fileItem = createFileItem(file, `file-${index}`, generateImagePreview, () => {
+          // 削除処理
+          selectedFiles = selectedFiles.filter((_, i) => i !== index);
+          updateFilesUI();
+        });
+        
+        filesList.appendChild(fileItem);
+      });
+      
+      // メタ情報更新
+      updateFilesMetaUI(selectedFiles, filesMeta);
+    }
+    
+    // 処理ボタンのクリックイベント
+    processBtn.addEventListener('click', async function() {
+      if (selectedFiles.length === 0) {
+        updateUI('ファイルを選択してください', true);
+        return;
+      }
+      
+      // ボタンを無効化して処理中表示
+      processBtn.disabled = true;
+      processBtn.textContent = '処理中...';
+      
+      // 進捗表示を表示
+      progressContainer.style.display = 'block';
+      progressBar.style.width = '0%';
+      progressText.textContent = '画像処理中 (0/' + selectedFiles.length + ')';
+      
+      // 設定を取得（ツール固有の設定に合わせて修正）
+      /*
+      const setting1 = ...
+      const setting2 = ...
+      */
+      
+      try {
+        // 画像を処理
+        processedFiles = [];
+        
+        for (let i = 0; i < selectedFiles.length; i++) {
+          const file = selectedFiles[i];
+          try {
+            // ここで画像処理を行う（ツール固有の処理に合わせて修正）
+            /*
+            const processedBlob = await processImage(file, setting1, setting2);
+            */
+            const processedBlob = file; // この行は実際の処理で置き換え
+            
+            processedFiles.push({
+              name: file.name, // 必要に応じてファイル名を変更
+              blob: processedBlob
+            });
+            
+            // 進捗表示更新
+            const progress = Math.round(((i + 1) / selectedFiles.length) * 100);
+            updateProgressBar(progress, progressBar, progressText, i + 1, selectedFiles.length);
+          } catch (err) {
+            console.error('処理エラー:', err);
+            updateUI(`${file.name}の処理中にエラーが発生しました`, true);
+          }
+        }
+        
+        if (processedFiles.length > 0) {
+          // ダウンロード処理
+          await downloadProcessedImages(processedFiles, '[prefix]_', progressText);
+          updateUI('処理が完了しました！', false);
+        } else {
+          updateUI('処理できるファイルがありませんでした', true);
+        }
+      } catch (error) {
+        console.error('処理全体エラー:', error);
+        updateUI('処理中にエラーが発生しました', true);
+      } finally {
+        // 進捗バーを非表示にして、ボタンを元に戻す
+        setTimeout(() => {
+          progressContainer.style.display = 'none';
+          processBtn.textContent = '[処理ボタンラベル]';
+          processBtn.disabled = false;
+        }, 1000);
+      }
+    });
+    
+    // メッセージ表示関数
+    function updateUI(message, isError = false) {
+      messageElement.textContent = message;
+      messageElement.className = isError ? 'message error' : 'message success';
+      messageElement.style.display = 'block';
+      
+      // 3秒後にメッセージを消す
+      setTimeout(() => {
+        messageElement.style.display = 'none';
+      }, 3000);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>まえゆきツール - 画像ツールテスト</title>
+  <style>
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      margin: 0;
+      padding: 20px;
+      line-height: 1.6;
+      color: #333;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #0066ff;
+      margin-top: 0;
+      border-bottom: 2px solid #eaeaea;
+      padding-bottom: 10px;
+    }
+    .test-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #0066ff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 10px 0;
+    }
+    .test-btn:hover {
+      background-color: #0055d4;
+    }
+    #testResults {
+      margin-top: 20px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #fff;
+      max-height: 500px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      font-family: monospace;
+    }
+    .success {
+      color: #2ecc71;
+      font-weight: bold;
+    }
+    .error {
+      color: #e74c3c;
+      font-weight: bold;
+    }
+    .note {
+      color: #3498db;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>画像ツール共通ユーティリティテスト</h1>
+    
+    <p>
+      このページでは、共通画像処理ユーティリティとツールテンプレートの機能をテストします。
+      テストを実行すると、開発者コンソールに詳細な結果が表示されます。
+    </p>
+    
+    <button id="runTests" class="test-btn">テスト実行</button>
+    
+    <div id="testResults">テストを実行するとここに結果が表示されます...</div>
+  </div>
+  
+  <!-- 必要なスクリプトを読み込み -->
+  <script src="/js/image-tools-utils.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  
+  <script>
+    // コンソール出力をキャプチャしてページに表示する
+    const testResults = document.getElementById('testResults');
+    const origConsoleLog = console.log;
+    const origConsoleError = console.error;
+    
+    // コンソール出力のキャプチャ
+    console.log = function() {
+      const args = Array.from(arguments);
+      origConsoleLog.apply(console, args);
+      
+      const text = args.join(' ').replace('%c', '').replace('%c', '');
+      
+      let className = '';
+      if (text.includes('✓ 成功')) className = 'success';
+      else if (text.includes('× 失敗')) className = 'error';
+      else if (text.includes('===')) className = 'note';
+      
+      const div = document.createElement('div');
+      div.className = className;
+      div.textContent = text;
+      testResults.appendChild(div);
+    };
+    
+    console.error = function() {
+      const args = Array.from(arguments);
+      origConsoleError.apply(console, args);
+      
+      const div = document.createElement('div');
+      div.className = 'error';
+      div.textContent = args.join(' ');
+      testResults.appendChild(div);
+    };
+    
+    // テスト実行ボタンの設定
+    document.getElementById('runTests').addEventListener('click', function() {
+      // 前回のテスト結果をクリア
+      testResults.innerHTML = '';
+      
+      // テストスクリプトを動的に読み込んで実行
+      const script = document.createElement('script');
+      script.src = '/js/image-tools-tester.js?t=' + new Date().getTime(); // キャッシュ回避
+      document.body.appendChild(script);
+    });
+  </script>
+</body>
+</html>

@@ -245,40 +245,12 @@
   <meta property="og:type" content="website">
   <meta property="og:image" content="/images/ogp_image_tools.webp">
   <meta property="og:type" content="website">
+  <!-- インクルード処理 -->
+  <script src="/js/include.js"></script>
 </head>
 <body>
   <!-- ヘッダー -->
-  <header class="site-header">
-    <div class="header-container">
-      <div class="site-logo-text">
-        <a href="/index.html">CLAN</a>
-      </div>
-      <nav class="global-nav pc-nav">
-        <ul>
-          <li><a href="/index.html">ホーム</a></li>
-          <li><a href="/about.html">オートウェビナー大学とは</a></li>
-          <li><a href="/blog/index.html">ブログ</a></li>
-          <!-- <li><a href="/seminar/index.html">オンライン講座</a></li> -->
-          <li><a href="/tools/index.html" aria-current="page">まえゆきツール</a></li>
-          <li><a href="/achievement/index.html">お客様の声</a></li>
-        </ul>
-      </nav>
-      <div class="header-cta">
-        <a href="/document.html" class="btn-document">
-          <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
-          資料請求する
-        </a>
-        <a href="https://utage-system.com/p/EcESO02xLLoK" class="btn-contact">
-          まずは相談する
-        </a>
-      </div>
-      <button class="hamburger-button sp-nav" aria-label="メニューを開く">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </div>
-  </header>
+  <div id="header-placeholder"></div>
 
   <!-- モバイルメニュー -->
   <div class="mobile-menu">
@@ -822,5 +794,8 @@
       initializeApp();
     });
   </script>
+</body>
+  <!-- フッター -->
+  <div id="footer-placeholder"></div>
 </body>
 </html>
