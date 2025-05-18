@@ -1,0 +1,39 @@
+/* ブログカードスタイル */
+.blog-meta {
+    font-size: 0.8rem;
+    color: var(--apple-text-light); 
+    margin-bottom: 8px;
+    display: block;
+}
+
+.blog-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.blog-card-text {
+    flex-grow: 1;
+    margin-bottom: 0;
+}
+
+.blog-card-container {
+    text-align: center;
+    margin: 40px auto 0;
+    max-width: 900px;
+}
+
+/* SVGアイコン */
+.svg-icon {
+    margin-right: 6px;
+}
+
+/* SVGスプライト用 */
+.svg-sprite {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}

@@ -1,0 +1,23 @@
+/* Hero banner スタイル */
+.hero-banner {
+    max-width: 100%;
+    height: auto;
+    box-shadow: var(--apple-shadow);
+    border-radius: var(--apple-border-radius);
+}
+
+/* データ属性用のスタイリング - アニメーション無効化 */
+/* アニメーションをすべて無効にして、常に表示状態にする */
+[data-aos] {
+    transition-duration: 0s !important;
+}
+
+[data-aos="fade-up"] {
+    transform: translateY(0) !important;
+    opacity: 1 !important; /* デフォルトで表示 */
+}
+
+[data-aos="fade-up"].aos-animate {
+    transform: translateY(0) !important;
+    opacity: 1 !important;
+}

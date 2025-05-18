@@ -1,7 +1,8 @@
 {
   "name": "newsite-optimizer",
   "version": "1.0.0",
-  "description": "ウェブサイト最適化ツール",  "scripts": {
+  "description": "ウェブサイト最適化ツール",
+  "scripts": {
     "add-lazy-loading": "node tools/add-lazy-loading.js",
     "fix-paths": "node tools/fix-relative-paths.js",
     "cleanup": "node tools/cleanup-tools.js",
@@ -13,5 +14,8 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.12",
     "glob": "^8.1.0"
+  },
+  "devDependencies": {
+    "html-validate": "^9.5.3"
   }
 }

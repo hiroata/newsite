@@ -1,5 +1,4 @@
-<!DOCTYPE html><html lang="ja"><head>
-    <meta charset="UTF-8">
+<!DOCTYPE html><html lang="ja"><head>    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="オートウェビナー大学は、マーケティング自動化とウェビナー構築であなたのビジネスを加速させるオンラインスクールです。Utageシステム導入やIT導入補助金活用もサポート。">
     <title>オートウェビナー大学｜マーケティング自動化とウェビナー構築でビジネスを加速</title>
@@ -8,7 +7,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap&amp;subset=japanese&amp;font-display=swap" rel="stylesheet">
-    
+    <!-- 画像遅延読み込み -->
+    <script src="js/lazy-loading.js" defer=""></script>
+    <link rel="stylesheet" href="css/hero-banner.css">
+    <link rel="stylesheet" href="css/blog-card.css">
+    <link rel="stylesheet" href="css/components.css">
+
     <!-- クリティカルCSS インライン化 -->
     <style>
         /* Appleスタイルのデザイン */
@@ -22,7 +26,7 @@
             --apple-bg-light: #f5f5f7;
             --apple-bg-medium: #e8e8ed;
             --apple-accent: #ff6131;            --apple-border-radius: 12px;
-            --apple-transition: all 0.15s cubic-bezier(0.25, 0.1, 0.25, 1);
+            --apple-transition: all 0.075s cubic-bezier(0.25, 0.1, 0.25, 1);
             --apple-shadow: 0 8px 30px rgba(0,0,0,0.12);
         }
 
@@ -138,7 +142,7 @@
                 flex-direction: column;
                 padding: 30px 20px;
             }
-            
+
             .newsletter-image {
                 order: -1;
             }
@@ -369,7 +373,7 @@
             opacity: 0;
             transition: opacity 0.6s ease-in-out;
         }
-        
+
         .fade-in.active {
             opacity: 1;
         }
@@ -425,7 +429,7 @@
             margin: 0 auto;
             padding: 0 20px;
         }
-        
+
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -513,7 +517,7 @@
             margin-left: 6px;
             font-size: 0.8rem;
         }
-        
+
         @media (max-width: 768px) {
             .services-grid {
                 grid-template-columns: 1fr;
@@ -599,13 +603,13 @@
             }
         }
     </style>
-    
+
     <!-- メインCSSは遅延読み込み -->    <link rel="stylesheet" href="css/style.css?v=20250505" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="css/style.css?v=20250505"></noscript>
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
-    
+
     <link rel="icon" href="images/favicon.ico"> <!-- 相対パスに修正 -->
     <link rel="canonical" href="https://example.com/"> <!-- canonicalタグ追加 -->
     <meta property="og:title" content="オートウェビナー大学｜マーケティング自動化とウェビナー構築でビジネスを加速">
@@ -617,7 +621,7 @@
     <meta name="twitter:title" content="オートウェビナー大学｜マーケティング自動化とウェビナー構築でビジネスを加速">
     <meta name="twitter:description" content="オートウェビナー大学は、マーケティング自動化とウェビナー構築であなたのビジネスを加速させるオンラインスクールです。Utageシステム導入やIT導入補助金活用もサポート。">
     <meta name="twitter:image" content="images/ogp_image_top.webp"> <!-- 相対パスに修正 -->
-    
+
     <!-- 構造化データ（JSON-LD）追加 -->
     <script type="application/ld+json">
     {
@@ -638,7 +642,7 @@
       ]
     }
     </script>
-    
+
     <!-- キャッシュ制御 -->
     <meta http-equiv="Cache-Control" content="max-age=31536000, public">
 
@@ -649,7 +653,7 @@
 
 <!-- SVGアイコン定義 -->
 <!-- common/svg-defs.html -->
-<svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden" xmlns="http://www.w3.org/2000/svg">
+<svg aria-hidden="true" class="svg-sprite" xmlns="http://www.w3.org/2000/svg">
     <defs>
         <!-- PDFアイコン -->
         <symbol id="icon-pdf" viewBox="0 0 32 32">
@@ -680,8 +684,7 @@
     <div class="header-container">
         <div class="site-logo-text">
             <a href="index.html">CLAN</a>
-        </div>
-        <nav class="global-nav pc-nav">
+        </div>        <nav class="global-nav pc-nav" aria-label="グローバルナビゲーション">
             <ul>
                 <li><a href="index.html" aria-current="page">ホーム</a></li>
                 <li><a href="about.html">オートウェビナー大学とは</a></li>
@@ -698,17 +701,14 @@
             </a>            <a href="https://utage-system.com/p/EcESO02xLLoK" class="btn-contact">
                 まずは相談する
             </a>
-        </div>
-        <button class="hamburger-button sp-nav" aria-label="メニューを開く">
+        </div>        <button class="hamburger-button sp-nav" aria-label="メニューを開く" type="button">
             <span></span>
             <span></span>
             <span></span>
         </button>
     </div>
-</header>
-
-<!-- モバイルメニュー -->    <div class="mobile-menu">
-    <nav>
+</header>    <!-- モバイルメニュー -->    <div class="mobile-menu">
+    <nav aria-label="モバイルメニュー">
         <ul>
             <li><a href="index.html">ホーム</a></li>
             <li><a href="about.html">オートウェビナー大学とは</a></li>
@@ -739,8 +739,7 @@
 <main class="site-main">    <!-- Hero Section -->
     <section class="hero-section">
         <div class="hero-video-container">
-            <!-- 動画背景（実際の実装時に用意） -->
-            <video autoplay="" muted="" loop="" playsinline="">
+            <!-- 動画背景（実際の実装時に用意） -->            <video muted="" loop="" playsinline="">
                 <source src="assets/videos/hero-bg.mp4" type="video/mp4">
             </video>
         </div>
@@ -762,9 +761,8 @@
 
             <div class="services-grid">
                 <!-- サービスカード1 -->
-                <a href="achievement/customer1.html" class="service-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="service-image">
-                        <img src="assets/images/achieve-1.webp" alt="22万円資産構築サブスク契約が2件獲得" loading="lazy">
+                <a href="achievement/customer1.html" class="service-card" data-aos="fade-up" data-aos-delay="100">                    <div class="service-image">
+                        <img data-src="assets/images/achieve-1.webp" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3C/svg%3E" alt="22万円資産構築サブスク契約が2件獲得" loading="lazy">
                     </div>
                     <div class="service-content">
                         <h3 class="service-title"><span class="highlight-metric">44万円</span> サブスク月間売上増加</h3>
@@ -775,11 +773,11 @@
                         </p>
                     </div>
                 </a>
-                
+
                 <!-- サービスカード2 -->
                 <a href="achievement/customer2.html" class="service-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="service-image">
-                        <img src="assets/images/achieve-2.webp" alt="スクールの基盤作り満足度100%" loading="lazy">
+                        <img data-src="assets/images/achieve-2.webp" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3C/svg%3E" alt="スクールの基盤作り満足度100%" loading="lazy">
                     </div>
                     <div class="service-content">
                         <h3 class="service-title"><span class="highlight-metric">100%</span> 顧客満足度達成</h3>
@@ -790,11 +788,11 @@
                         </p>
                     </div>
                 </a>
-                
+
                 <!-- サービスカード3 -->
                 <a href="achievement/customer3.html" class="service-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="service-image">
-                        <img src="assets/images/achieve-3.webp" alt="24時間販売の自動化動線完成" loading="lazy">
+                        <img data-src="assets/images/achieve-3.webp" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3C/svg%3E" alt="24時間販売の自動化動線完成" loading="lazy">
                     </div>
                     <div class="service-content">
                         <h3 class="service-title"><span class="highlight-metric">24時間</span> 無人販売システム構築</h3>
@@ -807,7 +805,7 @@
                 </a>                <!-- サービスカード4 -->
                 <a href="achievement/customer4.html" class="service-card" data-aos="fade-up" data-aos-delay="400">
                     <div class="service-image">
-                        <img src="assets/images/achieve-4.webp" alt="移行初月に月商8桁達成" loading="lazy">
+                        <img data-src="assets/images/achieve-4.webp" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3C/svg%3E" alt="移行初月に月商8桁達成" loading="lazy">
                     </div>
                     <div class="service-content">
                         <h3 class="service-title"><span class="highlight-metric">1,000万円+</span> 月商達成</h3>
@@ -818,11 +816,11 @@
                         </p>
                     </div>
                 </a>
-                
+
                 <!-- サービスカード5 -->
                 <a href="achievement/customer5.html" class="service-card" data-aos="fade-up" data-aos-delay="500">
                     <div class="service-image">
-                        <img src="assets/images/achieve-5.webp" alt="手作業対応ゼロ、新規商談が自動化" loading="lazy">
+                        <img data-src="assets/images/achieve-5.webp" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3C/svg%3E" alt="手作業対応ゼロ、新規商談が自動化" loading="lazy">
                     </div>
                     <div class="service-content">
                         <h3 class="service-title"><span class="highlight-metric">100%</span> 商談プロセス自動化</h3>
@@ -833,11 +831,11 @@
                         </p>
                     </div>
                 </a>
-                
+
                 <!-- サービスカード6 -->
                 <a href="https://utage-system.com/p/EcESO02xLLoK" class="service-card" data-aos="fade-up" data-aos-delay="600">
                     <div class="service-image">
-                        <img src="assets/images/achieve-6.webp" alt="その他の実績事例" loading="lazy">
+                        <img data-src="assets/images/achieve-6.webp" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3C/svg%3E" alt="その他の実績事例" loading="lazy">
                     </div>
                     <div class="service-content">
                         <h3 class="service-title"><span class="highlight-metric">70+</span> 導入企業の成功事例</h3>
@@ -865,7 +863,7 @@
             <div class="services-grid">                <!-- コースカード1 -->
                 <a href="course/lp.html" class="service-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="service-image">
-                        <img src="assets/images/course-lp.webp" alt="ランディングページ作成初級講座" loading="lazy">
+                        <img data-src="assets/images/course-lp.webp" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3C/svg%3E" alt="ランディングページ作成初級講座" loading="lazy">
                     </div>
                     <div class="service-content">
                         <h3 class="service-title">ランディングページ作成初級講座</h3>
@@ -874,11 +872,11 @@
                         </p>
                     </div>
                 </a>
-                
+
                 <!-- コースカード2 -->
                 <a href="course/video.html" class="service-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="service-image">
-                        <img src="assets/images/course-video.webp" alt="動画編集初級講座" loading="lazy">
+                        <img data-src="assets/images/course-video.webp" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3C/svg%3E" alt="動画編集初級講座" loading="lazy">
                     </div>
                     <div class="service-content">
                         <h3 class="service-title">動画編集初級講座</h3>
@@ -887,11 +885,11 @@
                         </p>
                     </div>
                 </a>
-                
+
                 <!-- コースカード3 -->
                 <a href="course/step-mail.html" class="service-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="service-image">
-                        <img src="assets/images/course-step-mail.webp" alt="ステップメール設計初級講座" loading="lazy">
+                        <img data-src="assets/images/course-step-mail.webp" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3C/svg%3E" alt="ステップメール設計初級講座" loading="lazy">
                     </div>
                     <div class="service-content">
                         <h3 class="service-title">ステップメール設計初級講座</h3>
@@ -909,65 +907,60 @@
                 ツール迷子の終着点、UTAGEを活用したビジネス加速のヒント
             </p>
 
-            <div class="services-grid">                <!-- ブログカード1 -->
-                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="service-image">
+            <div class="services-grid">                <!-- ブログカード1 -->                <div class="service-card" data-aos="fade-up" data-aos-delay="100">                    <div class="service-image">
                         <a href="blog/it-hojo-digital-acceleration-tips.html">
-                            <img src="assets/images/blog-3.webp" alt="IT導入補助金でデジタル化を加速！成功のコツ" loading="lazy">
+                            <img data-src="assets/images/blog-3.webp" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3C/svg%3E" alt="IT導入補助金でデジタル化を加速！成功のコツ" loading="lazy">
                         </a>
                     </div>
                     <div class="service-content">
-                        <span class="blog-meta" style="font-size: 0.8rem; color: var(--apple-text-light); margin-bottom: 8px; display: block;">2025年4月20日 | 補助金・助成金</span>
-                        <a href="blog/it-hojo-digital-acceleration-tips.html" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; flex-grow: 1;">
+                        <span class="blog-meta">2025年4月20日 | 補助金・助成金</span>
+                        <a href="blog/it-hojo-digital-acceleration-tips.html" class="blog-card-link">
                             <h3 class="service-title">IT導入補助金申請、完全丸投げで最大450万円！</h3>
-                            <p class="service-text" style="flex-grow: 1; margin-bottom: 0;">
+                            <p class="service-text blog-card-text">
                                 中小企業や個人事業主の皆さん、IT導入補助金2025を活用してUTAGEを導入するチャンスです。面倒な申請手続きは私たちにお任せください。
                             </p>
                         </a>
                     </div>
                 </div>
-                
-                <!-- ブログカード2 -->
-                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="service-image">
+
+                <!-- ブログカード2 -->                <div class="service-card" data-aos="fade-up" data-aos-delay="200">                    <div class="service-image">
                         <a href="blog/all-in-one-utage-benefits.html">
-                            <img src="assets/images/blog-marketing-automation.webp" alt="マーケティング自動化ツール比較15選" loading="lazy">
+                            <img data-src="assets/images/blog-marketing-automation.webp" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3C/svg%3E" alt="マーケティング自動化ツール比較15選" loading="lazy">
                         </a>
                     </div>
                     <div class="service-content">
-                        <span class="blog-meta" style="font-size: 0.8rem; color: var(--apple-text-light); margin-bottom: 8px; display: block;">2025年4月25日 | マーケティング自動化</span>
-                        <a href="blog/all-in-one-utage-benefits.html" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; flex-grow: 1;">
+                        <span class="blog-meta">2025年4月25日 | マーケティング自動化</span>
+                        <a href="blog/all-in-one-utage-benefits.html" class="blog-card-link">
                             <h3 class="service-title">もうツール選びに悩まない - すべてが一つに揃うUTAGEの魅力</h3>
-                            <p class="service-text" style="flex-grow: 1; margin-bottom: 0;">
+                            <p class="service-text blog-card-text">
                                 LP作成、LINE連携、会員サイト構築、決済システム...いくつものツールを連携させるのは大変です。UTAGEならすべての機能が一つのプラットフォームに統合されています。
                             </p>
                         </a>
                     </div>
                 </div>
-                
-                <!-- ブログカード3 -->
-                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+
+                <!-- ブログカード3 -->                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="service-image">
                         <a href="blog/marketing-funnel-basics.html">
-                            <img src="assets/images/blog-funnel.webp" alt="売れる仕組みを自動化する3つのステップと必須ツール" loading="lazy">
+                            <img data-src="assets/images/blog-funnel.webp" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3C/svg%3E" alt="売れる仕組みを自動化する3つのステップと必須ツール" loading="lazy">
                         </a>
                     </div>
                     <div class="service-content">
-                        <span class="blog-meta" style="font-size: 0.8rem; color: var(--apple-text-light); margin-bottom: 8px; display: block;">2025年5月12日 | ウェビナー構築</span>
-                        <a href="blog/marketing-funnel-basics.html" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; flex-grow: 1;">
+                        <span class="blog-meta">2025年5月12日 | ウェビナー構築</span>
+                        <a href="blog/marketing-funnel-basics.html" class="blog-card-link">
                             <h3 class="service-title">専門知識ゼロから始める自動販売システム構築法</h3>
-                            <p class="service-text" style="flex-grow: 1; margin-bottom: 0;">
+                            <p class="service-text blog-card-text">
                                 あなたの専門知識を「自動で売れる仕組み」に変換しませんか？難しい設定や面倒な作業は一切不要。UTAGEを活用すれば、寝ている間も収益を生み出す自動販売システムを簡単に構築できます。
                             </p>
                         </a>
                     </div>
                 </div>            </div>
-            <div data-aos="fade-up" data-aos-delay="400" style="text-align:center; margin: 40px auto 0; max-width: 900px;">
-                <img src="assets/images/hero-pc.webp" alt="CLANバナー" style="max-width:100%;height:auto;box-shadow:var(--apple-shadow);border-radius:var(--apple-border-radius);" loading="lazy">
+            <div data-aos="fade-up" data-aos-delay="400" class="blog-card-container">
+                <img data-src="assets/images/hero-pc.webp" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'%3E%3C/svg%3E" alt="CLANバナー" class="hero-banner" loading="lazy">
             </div>
         </div>
     </section>
-    
+
 
     <!-- CTA Section -->
     <section class="cta-section">
@@ -982,7 +975,7 @@
             <div class="cta-buttons" data-aos="fade-up" data-aos-delay="300">
                 <a href="free-consultation.html" class="cta-btn">無料相談してみる</a>
                 <a href="document.html" class="cta-btn cta-btn-secondary">
-                    <svg width="14" height="14" style="margin-right: 6px;"><use xlink:href="#icon-pdf"></use></svg>
+                    <svg width="14" height="14" class="svg-icon"><use xlink:href="#icon-pdf"></use></svg>
                     資料請求する
                 </a>
             </div>
@@ -995,14 +988,15 @@
 <script src="assets/js/components.js" defer=""></script>
 <script src="js/include.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<script>    document.addEventListener('DOMContentLoaded', function() {        // AOS初期化
+<script>    document.addEventListener('DOMContentLoaded', function() {        // AOS初期化 - アニメーションを無効化してすべてのウィジェットをすぐに表示
         AOS.init({
-            duration: 450,
+            duration: 0,
             easing: 'ease-out',
             once: true,
-            offset: 60
+            offset: 0,
+            disable: true // アニメーションを完全に無効化
         });
-        
+
         // スクロール検出のためのIntersection Observer
         const fadeElements = document.querySelectorAll('.fade-in');
         const observer = new IntersectionObserver(entries => {
@@ -1012,7 +1006,7 @@
                 }
             });
         }, { threshold: 0.1 });
-        
+
         fadeElements.forEach(element => {
             observer.observe(element);
         });

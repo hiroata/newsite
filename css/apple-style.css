@@ -8,9 +8,8 @@
     --apple-text-medium: #424245;
     --apple-bg-light: #f5f5f7;
     --apple-bg-medium: #e8e8ed;
-    --apple-accent: #ff6131;
-    --apple-border-radius: 12px;
-    --apple-transition: all 0.15s cubic-bezier(0.25, 0.1, 0.25, 1);
+    --apple-accent: #ff6131;    --apple-border-radius: 12px;
+    --apple-transition: all 0.075s cubic-bezier(0.25, 0.1, 0.25, 1);
     --apple-shadow: 0 8px 30px rgba(0,0,0,0.12);
 }
 

@@ -1,6 +1,296 @@
 /* オートウェビナー大学 コンポーネントCSS */
 /* ヘッダー、フッターなどの共通コンポーネント用のスタイル */
 
+/* ニュースレター登録セクションのスタイル */
+.newsletter-section {
+    background-color: var(--apple-bg-light);
+    padding: 80px 0;
+}
+
+.newsletter-container {
+    display: flex;
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+    background: white;
+    border-radius: var(--apple-border-radius);
+    box-shadow: var(--apple-shadow);
+    padding: 40px;
+}
+
+.newsletter-form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group select {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+}
+
+.newsletter-submit {
+    background: var(--apple-primary);
+    color: white;
+    border: none;
+    padding: 14px 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;    font-size: 16px;
+    margin-top: 10px;
+    transition: all 0.1s;
+}
+
+.newsletter-submit:hover {
+    background: var(--apple-primary-dark);
+    transform: translateY(-2px);
+}
+
+.newsletter-image {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.newsletter-image img {
+    max-width: 90%;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.newsletter-benefits {
+    font-size: 16px;
+    color: var(--apple-text-medium);
+    text-align: left;
+    line-height: 1.8;
+}
+
+.newsletter-signup-btn {
+    background-color: var(--apple-accent) !important;
+}
+
+.newsletter-signup-btn:hover {
+    background-color: #e54e21 !important;
+}
+
+@media (max-width: 768px) {
+    .newsletter-container {
+        flex-direction: column;
+        padding: 30px 20px;
+    }
+
+    .newsletter-image {
+        order: -1;
+    }
+}
+
+/* Services/Features Grid Styles */
+.features-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+}
+
+.service-card {
+    background: white;
+    border-radius: var(--apple-border-radius);
+    overflow: hidden;
+    box-shadow: var(--apple-shadow);
+    /* ホバーエフェクトの無効化 */
+    /* transition: var(--apple-transition); */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    color: inherit;
+    text-decoration: none;
+}
+
+/* ホバーエフェクトの無効化 - コメントアウトのみで空のルールセットを避ける */
+/*
+.service-card:hover {
+    transform: translateY(-5px);
+}
+*/
+
+.service-image {
+    width: 100%;
+    height: 0;
+    padding-bottom: 60%;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* ホバーエフェクトの無効化 */
+    /* transition: transform 0.5s ease; */
+}
+
+/* ホバーエフェクトの無効化 - コメントアウトのみで空のルールセットを避ける */
+/*
+.service-card:hover .service-image img {
+    transform: scale(1.05);
+}
+*/
+
+.service-content {
+    padding: 30px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--apple-text-dark);
+}
+
+.service-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--apple-text-light);
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.service-btn {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    background: var(--apple-primary);
+    color: white;
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 980px;
+    text-decoration: none;
+    transition: var(--apple-transition);
+    font-size: 0.9rem;
+}
+
+.service-btn:hover {
+    background: var(--apple-primary-dark);
+}
+
+.service-btn i {
+    margin-left: 6px;
+    font-size: 0.8rem;
+}
+
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* CTA Section Styles */
+.cta-section {
+    background: linear-gradient(135deg, #0071e3, #00c2ff);
+    color: white;
+    text-align: center;
+    padding: 100px 0;
+}
+
+.cta-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.cta-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.cta-subtitle {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.cta-text {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    color: var(--apple-primary);
+    font-weight: 600;
+    padding: 16px 32px;
+    border-radius: 980px;
+    text-decoration: none;
+    transition: var(--apple-transition);
+    min-width: 180px;
+}
+
+.cta-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.cta-btn-secondary {
+    background: rgba(255,255,255,0.15);
+    color: white;
+    backdrop-filter: blur(10px);
+}
+
+.cta-btn-secondary:hover {
+    background: rgba(255,255,255,0.25);
+}
+
+@media (max-width: 768px) {
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    .cta-title {
+        font-size: 2rem;
+    }
+}
+
 /* ヘッダースタイル */
 header {
   background-color: #fff;
