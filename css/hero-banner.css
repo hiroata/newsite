@@ -10,14 +10,23 @@
 /* アニメーションをすべて無効にして、常に表示状態にする */
 [data-aos] {
     transition-duration: 0s !important;
+    opacity: 1 !important; /* すべての要素をデフォルトで表示 */
+    transform: none !important; /* 変形をリセット */
 }
 
-[data-aos="fade-up"] {
-    transform: translateY(0) !important;
+/* 個別のアニメーション効果をすべて無効化 */
+[data-aos="fade-up"],
+[data-aos="fade-down"],
+[data-aos="fade-left"],
+[data-aos="fade-right"],
+[data-aos="zoom-in"],
+[data-aos="zoom-out"] {
+    transform: none !important;
     opacity: 1 !important; /* デフォルトで表示 */
 }
 
-[data-aos="fade-up"].aos-animate {
-    transform: translateY(0) !important;
+/* アニメーションされた要素のスタイルを強制適用 */
+[data-aos].aos-animate {
+    transform: none !important;
     opacity: 1 !important;
 }

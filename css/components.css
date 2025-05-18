@@ -118,14 +118,14 @@
     background: white;
     border-radius: var(--apple-border-radius);
     overflow: hidden;
-    box-shadow: var(--apple-shadow);
-    /* ホバーエフェクトの無効化 */
-    /* transition: var(--apple-transition); */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12); /* シャドウを強調 */
     height: 100%;
     display: flex;
     flex-direction: column;
     color: inherit;
     text-decoration: none;
+    border: 1px solid rgba(0,0,0,0.05); /* 微妙な境界線を追加 */
+    position: relative; /* 疑似要素のために必要 */
 }
 
 /* ホバーエフェクトの無効化 - コメントアウトのみで空のルールセットを避ける */
@@ -143,6 +143,17 @@
     overflow: hidden;
 }
 
+.service-image:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,0.3) 100%); /* 画像の下部にグラデーションをかける */
+    z-index: 1;
+}
+
 .service-image img {
     position: absolute;
     top: 0;
@@ -150,8 +161,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* ホバーエフェクトの無効化 */
-    /* transition: transform 0.5s ease; */
+    filter: saturate(1.1); /* 彩度を少し上げる */
 }
 
 /* ホバーエフェクトの無効化 - コメントアウトのみで空のルールセットを避ける */
@@ -162,23 +172,37 @@
 */
 
 .service-content {
-    padding: 30px;
+    padding: 25px 30px;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+    position: relative;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.95), rgba(250,250,255,1)); /* 微妙なグラデーションを追加 */
+    border-top: 1px solid rgba(0,0,0,0.05); /* 上部に微妙な境界線 */
 }
 
 .service-title {
     font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
+    font-weight: 700; /* より太く */
+    margin-bottom: 1.2rem;
     color: var(--apple-text-dark);
+    position: relative;
+}
+
+.service-title:after {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background: var(--apple-primary); /* タイトル下にアクセントカラーのラインを追加 */
 }
 
 .service-text {
     font-size: 1rem;
     line-height: 1.6;
-    color: var(--apple-text-light);
+    color: var(--apple-text-medium); /* 少し暗めの色に */
     margin-bottom: 1.5rem;
     flex-grow: 1;
 }
