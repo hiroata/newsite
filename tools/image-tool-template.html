@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+    <script src="/js/prevent-duplicate-includes.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="まえゆきツールの[ツール名] - [ツール説明]">
@@ -44,6 +45,7 @@
   </style>
 </head>
 <body>
+<!-- header -->
   <!-- ヘッダーインクルード -->
   <header class="site-header">
     <div class="header-container">
@@ -166,7 +168,9 @@
         © 2025 まえゆきツール All Rights Reserved.
       </div>
     </footer>
-  </main>
+  </p></p>
+</li></li></li></li></li></li></li></li></li>
+</main>
 
   <!-- ツールの共通スクリプト -->
   <script>
@@ -305,5 +309,14 @@
       }, 3000);
     }
   </script>
+
+<!-- footer -->
+<script>
+    if (!window.isScriptLoaded || !window.isScriptLoaded('/js/include.js')) {
+        document.write('<script src="/js/include.js"><\/script>');
+    } else {
+        console.log('include.jsのロードをスキップしました');
+    }
+</script>
 </body>
 </html>

@@ -1,4 +1,5 @@
 <!-- ツール共通テンプレート --><!DOCTYPE html><html lang="ja"><head>
+    <script src="/js/prevent-duplicate-includes.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">  <meta name="description" content="まえゆきツールのPNG→JPEG変換ツール - PNG画像をJPEG形式に一括変換できる無料ツールです。品質調整も可能で、透過部分の背景色も自由に設定できます。">
   <meta name="keywords" content="PNG変換,JPEG変換,透過PNG,画像変換,無料ツール,オンライン変換">
@@ -9,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
   
   <!-- インクルード処理 -->
-  <script src="/js/include.js"></script>
+  
   
   <!-- 画像遅延読み込み -->
   <script src="/js/lazy-loading.js" defer=""></script>
@@ -459,8 +460,10 @@
   <meta property="og:type" content="website">
 <link rel="stylesheet" href="/css/image-tools-styles.css"><script src="/js/image-tools-utils.js"></script></head>
 <body>
+<!-- header -->
   <!-- ヘッダー -->
   <div id="header-placeholder"></div>
+  
 
   <!-- メインコンテンツ -->
   <main>
@@ -616,9 +619,19 @@
             </div>
          </div>
       </section>
-   </main>
+   </p></p></p>
+</li></li></li></li></li></li></li></li></li></li></li>
+</th></th>
+</main>
 <div id="footer-placeholder"></div>
-<script src="/js/include.js"></script>
+  <script>
+    if (!window.isScriptLoaded || !window.isScriptLoaded('/js/include.js')) {
+        document.write('<script src="/js/include.js"><\/script>');
+    } else {
+        console.log('include.jsのロードをスキップしました');
+    }
+</script>
+
 <script src="/js/script.js"></script>
 
    <!-- JSZipの読み込み -->
@@ -1198,6 +1211,8 @@ document.addEventListener('DOMContentLoaded', function() {
   </main>
 
   <!-- フッター -->
-  <div id="footer-placeholder"></div>
+  
+
+<!-- footer -->
 </body>
 </html>

@@ -1,4 +1,5 @@
 <!-- ツール共通テンプレート --><!DOCTYPE html><html lang="ja"><head>
+    <script src="/js/prevent-duplicate-includes.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">  <meta name="description" content="まえゆきツールのWebP変換ツール - JPEG・PNG画像をまとめてWebP形式に変換できる無料ツールです。ファイルサイズを最大70%削減し、Webサイトの表示速度を向上できます。">
   <meta name="keywords" content="WebP変換,WebP画像,画像圧縮,JPEG変換,PNG変換,無料ツール,オンライン変換">
@@ -9,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
   
   <!-- インクルード処理 -->
-  <script src="/js/include.js"></script>
+  
   
   <!-- 画像遅延読み込み -->
   <script src="/js/lazy-loading.js" defer=""></script>
@@ -461,23 +462,13 @@
   <meta property="og:type" content="website">
 </head>
 <body>
+<!-- header -->
   <!-- ヘッダー -->
-  <div id="header-placeholder"></div>
+  <div id="header-placeholder">
+  
 
   <!-- メインコンテンツ -->
-  <main>
-    <!-- ツールのコンテナ -->
-    <div class="app-wrapper">
-      <div class="tool-container">
-        <div class="tool-header">
-          <h1>WebP変換ツール</h1>
-          <p class="tool-description">{{sub_description}}</p>
-        </div>        <!-- ツール固有のコンテンツ -->
-        <div class="tool-content">
-          <div id="svg-defs-placeholder"></div>
-
-
-   <main class="site-main">
+  <main class="site-main">
       <!-- ツールセクション -->
       <section class="tool-section">
          <div class="tool-container">
@@ -498,14 +489,14 @@
                         <polyline points="17 8 12 3 7 8"></polyline>
                         <line x1="12" y1="3" x2="12" y2="15"></line>
                      </svg>
-                  </div>
+                  
                   <p class="drop-area-text">ここに画像ファイルをドラッグ＆ドロップ</p>
                   <p class="drop-area-or">もしくは</p>
                   <label class="file-button">
                      + ファイルを追加
                      <input type="file" class="file-input" id="fileInput" accept="image/jpeg, image/png, image/gif" multiple="">
                   </label>
-               </div>
+               
 
                <div class="files-meta" id="filesMeta"></div>
                <div class="files-container" id="filesContainer"></div>
@@ -611,9 +602,19 @@
             <a href="wareki-seireki.html" class="tool-link">年齢・和暦計算</a>
          </div>
       </div>
-   </main>
+   </p></p></p>
+</li></li></li></li></li></li></li></li></li></li>
+</th></th>
+</main>
 <div id="footer-placeholder"></div>
-<script src="/js/include.js"></script>
+  <script>
+    if (!window.isScriptLoaded || !window.isScriptLoaded('/js/include.js')) {
+        document.write('<script src="/js/include.js"><\/script>');
+    } else {
+        console.log('include.jsのロードをスキップしました');
+    }
+</script>
+
 <script src="/js/script.js"></script>
    <!-- JSZipの読み込み -->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
@@ -1222,4 +1223,6 @@
   </script>
 
 
+
+<!-- footer -->
 </body></html>

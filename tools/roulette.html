@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+    <script src="/js/prevent-duplicate-includes.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="オンラインルーレットツールで選択肢からランダムに結果を選びます。人数分け、料理選び、判断などあらゆるシーンで活用できます。">
@@ -193,7 +194,7 @@
 
   <!-- JavaScriptの遅延ロード -->
   <script src="/js/script.js" defer></script>
-  <script src="/js/include.js"></script>
+  
 
   <link rel="icon" href="/images/favicon.ico">
   <meta property="og:title" content="ルーレット | まえゆきツール">
@@ -201,8 +202,10 @@
   <meta property="og:image" content="/images/tool-ogp.webp">
   <meta property="og:type" content="website">
 </head>
-<body>  <!-- ヘッダー -->
+<body>
+<!-- header -->  <!-- ヘッダー -->
   <div id="header-placeholder"></div>
+  
 
   <!-- メインコンテンツ -->
   <main>
@@ -252,10 +255,19 @@
         <a href="https://forms.gle/b1VzXaEvLcetLwceA" class="request-button" target="_blank" rel="noopener">ツールをリクエストする</a>
       </div>
     </section>
-  </main>
+  </li></li></li></li></li></li>
+</main>
 
   <!-- フッター -->
   <div id="footer-placeholder"></div>
+  <script>
+    if (!window.isScriptLoaded || !window.isScriptLoaded('/js/include.js')) {
+        document.write('<script src="/js/include.js"><\/script>');
+    } else {
+        console.log('include.jsのロードをスキップしました');
+    }
+</script>
+
 
   <!-- 個別ツールのJavaScript -->
   <script>
@@ -402,5 +414,8 @@
       }
     });
   </script>
+
+<!-- footer -->
 </body>
 </html>
+

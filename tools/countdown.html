@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+    <script src="/js/prevent-duplicate-includes.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="まえゆきツールのカウントダウンタイマー - 日付や時間を指定して、イベントまでの残り時間をカウントダウン表示できる無料ツールです。">
@@ -246,11 +247,13 @@
   <meta property="og:image" content="/images/ogp_image_tools.webp">
   <meta property="og:type" content="website">
   <!-- インクルード処理 -->
-  <script src="/js/include.js"></script>
+  
 </head>
 <body>
+<!-- header -->
   <!-- ヘッダー -->
   <div id="header-placeholder"></div>
+  
 
   <!-- モバイルメニュー -->
   <div class="mobile-menu">
@@ -407,7 +410,9 @@
         </div>
       </div>
     </div>
-  </main>
+  </p>
+</li></li></li></li></li></li>
+</main>
 
   <!-- フッター（トップページと同じスタイルに変更） -->
   <footer class="site-footer">
@@ -794,8 +799,19 @@
       initializeApp();
     });
   </script>
+
+<!-- footer -->
 </body>
   <!-- フッター -->
   <div id="footer-placeholder"></div>
+  <script>
+    if (!window.isScriptLoaded || !window.isScriptLoaded('/js/include.js')) {
+        document.write('<script src="/js/include.js"><\/script>');
+    } else {
+        console.log('include.jsのロードをスキップしました');
+    }
+</script>
+
 </body>
 </html>
+

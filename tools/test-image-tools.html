@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+    <script src="/js/prevent-duplicate-includes.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>まえゆきツール - 画像ツールテスト</title>
@@ -65,6 +66,8 @@
   </style>
 </head>
 <body>
+<!-- header -->
+<main>
   <div class="container">
     <h1>画像ツール共通ユーティリティテスト</h1>
     
@@ -127,5 +130,15 @@
       document.body.appendChild(script);
     });
   </script>
+
+</main>
+<!-- footer -->
+<script>
+    if (!window.isScriptLoaded || !window.isScriptLoaded('/js/include.js')) {
+        document.write('<script src="/js/include.js"><\/script>');
+    } else {
+        console.log('include.jsのロードをスキップしました');
+    }
+</script>
 </body>
 </html>

@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+    <script src="/js/prevent-duplicate-includes.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="まえゆきツールの文字数カウント - 日本語の文字数を簡単にカウントできる無料ツールです。空白や改行を除外した文字数も確認できます。">
@@ -469,11 +470,13 @@
     }
   </style>
   <!-- インクルード処理 -->
-  <script src="/js/include.js"></script>
+  
 </head>
 <body>
+<!-- header -->
   <!-- ヘッダー -->
-  <div id="header-placeholder"></div>
+  <div id="header-placeholder">
+  
 
   <!-- メインコンテンツ -->
   <main>
@@ -586,7 +589,7 @@
                </ul>
             </div>
          </div>
-      </section>      <!-- コミュニティCTAセクション -->
+            <!-- コミュニティCTAセクション -->
       <section class="contact-cta-section">
          <div class="contact-cta-container">
             <span class="contact-cta-subtitle">より便利なツールを一緒に作ろう</span>
@@ -623,7 +626,9 @@
             <a href="password-generator.html" class="tool-link">パスワード生成</a>
          </div>
       </div>
-    </main>        </div>
+    </p></p></p></p></p></p>
+</li></li></li></li></li></li></li></li></li></li></li></li></li>
+</main>        </div>
       </div>
     </div>      </section>
     </div>
@@ -631,6 +636,14 @@
   
   <!-- フッターを共通コンポーネントとして読み込み -->
   <div id="footer-placeholder"></div>
+  <script>
+    if (!window.isScriptLoaded || !window.isScriptLoaded('/js/include.js')) {
+        document.write('<script src="/js/include.js"><\/script>');
+    } else {
+        console.log('include.jsのロードをスキップしました');
+    }
+</script>
+
   
   <!-- SVGアイコン -->
   <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -640,7 +653,7 @@
   </svg>
 
   <!-- 共通JavaScriptと文字数カウント用JavaScript -->
-  <script src="/js/include.js"></script>
+  
   <script>
      document.addEventListener('DOMContentLoaded', function() {
          // 要素の参照
@@ -757,8 +770,11 @@ HTML対応：<div>タグのカウント</div> もできます。
          countText();
      });
   </script>
+
+<!-- footer -->
 </body>
   <!-- フッター -->
-  <div id="footer-placeholder"></div>
+  
 </body>
 </html>
+

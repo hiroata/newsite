@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+    <script src="/js/prevent-duplicate-includes.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="まえゆきツールのカラーパレット - 配色の組み合わせを簡単に作成・保存できる無料ツールです。ウェブデザインやグラフィックデザインに最適。">
@@ -316,11 +317,13 @@
   <meta property="og:image" content="/images/tool-ogp.webp">
   <meta property="og:type" content="website">
   <!-- インクルード処理 -->
-  <script src="/js/include.js"></script>
+  
 </head>
 <body>
+<!-- header -->
   <!-- ヘッダー -->
   <div id="header-placeholder"></div>
+  
 
   <!-- メインコンテンツ -->
   <main>
@@ -443,10 +446,20 @@
         </div>
       </div>
     </section>
-  </main>
+  </p>
+</li></li></li></li></li></li></li></li></li>
+</main>
   
   <!-- フッターを共通コンポーネントとして読み込み -->
   <div id="footer-placeholder"></div>
+  <script>
+    if (!window.isScriptLoaded || !window.isScriptLoaded('/js/include.js')) {
+        document.write('<script src="/js/include.js"><\/script>');
+    } else {
+        console.log('include.jsのロードをスキップしました');
+    }
+</script>
+
   
   <!-- SVGアイコン -->
   <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -456,7 +469,7 @@
   </svg>
 
   <!-- 共通JavaScript -->
-  <script src="/js/include.js"></script>
+  
   
   <!-- カラーパレット用JavaScript -->
   <script>
@@ -822,8 +835,11 @@
       }
     });
   </script>
+
+<!-- footer -->
 </body>
   <!-- フッター -->
-  <div id="footer-placeholder"></div>
+  
 </body>
 </html>
+

@@ -1,4 +1,5 @@
 <!-- ツール共通テンプレート --><!DOCTYPE html><html lang="ja"><head>
+    <script src="/js/prevent-duplicate-includes.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="まえゆきツールのミームジェネレーター - 自分だけのオリジナルミームを簡単に作成できる無料ツールです。テキストを追加して画像をシェアしましょう。">
@@ -557,26 +558,17 @@
   <meta property="og:type" content="website">
   <meta property="og:image" content="/images/ogp_image_tools.webp">
   <meta property="og:type" content="website">
-<link rel="stylesheet" href="/css/image-tools-styles.css"><script src="/js/image-tools-utils.js"></script>  <!-- インクルード処理 -->
-  <script src="/js/include.js"></script>
+  <!-- インクルード処理 -->
+  
 </head>
 <body>
+<!-- header -->
   <!-- ヘッダー -->
   <div id="header-placeholder"></div>
+  
 
   <!-- メインコンテンツ -->
-  <main>
-    <!-- ツールのコンテナ -->
-    <div class="app-wrapper">
-      <div class="tool-container">
-        <div class="tool-header">
-          <h1>ミームジェネレーター</h1>
-          <p class="tool-description">{{sub_description}}</p>
-        </div>        <!-- ツール固有のコンテンツ -->
-        <div class="tool-content">
-          <div id="svg-defs-placeholder"></div>
-
-   <main class="site-main">
+  <main class="site-main">
       <!-- ツールセクション -->
       <section class="tool-section">
          <div class="tool-container">
@@ -804,14 +796,7 @@
             <a href="wareki-seireki.html" class="tool-link">年齢・和暦計算</a>
          </div>
       </div>
-   </main>
-<div id="footer-placeholder"></div>
-<script src="/js/include.js"></script>
-<script src="/js/script.js"></script>
-        </div>
-      </div>
-    </div>
-
+   
     <!-- ブログへの誘導セクション -->
     <section class="blog-cta-section section-padding">
       <div class="inner">
@@ -830,60 +815,19 @@
         </div>
       </div>
     </section>
-  </main>
 
-  <!-- フッター -->
-  <footer class="site-footer">
-    <div class="footer-container">
-      <div class="footer-info">
-        <div class="footer-logo">CLAN</div>
-        <p class="footer-desc">オンラインビジネス自動化サポート</p>
-      </div>
-      <div class="footer-links">
-        <div class="footer-links-group">
-          <h3 class="footer-links-title">サイトマップ</h3>
-          <ul>
-            <li><a href="/index.html">ホーム</a></li>
-            <li><a href="/about.html">オートウェビナー大学とは</a></li>
-            <li><a href="/blog/index.html">ブログ一覧</a></li>
-            <li><a href="/tools/index.html">まえゆきツール</a></li>
-            <li><a href="/achievement/index.html">お客様の声</a></li>
-          </ul>
-        </div>
-        <div class="footer-links-group">
-          <h3 class="footer-links-title">サービス</h3>
-          <ul>
-            <li><a href="/seminar/index.html">無料セミナー</a></li>
-            <li><a href="/free-consultation.html">無料相談</a></li>
-            <li><a href="/document.html">資料請求</a></li>
-            <li><a href="/course/index.html">有料講座</a></li>
-          </ul>
-        </div>
-        <div class="footer-links-group">
-          <h3 class="footer-links-title">お役立ち</h3>
-          <ul>
-            <li><a href="/owner.html">運営者情報</a></li>
-            <li><a href="/privacy.html">プライバシーポリシー</a></li>
-            <li><a href="/terms.html">利用規約</a></li>
-            <li><a href="/tokutei.html">特定商取引法に基づく表記</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="copyright">© 2025 CLAN All rights reserved.</div>
-  </footer>
+    <!-- SVGアイコン -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+      <symbol id="icon-pdf" viewBox="0 0 24 24">
+        <path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"></path>
+      </symbol>
+    </svg>
 
-  <!-- SVGアイコン -->
-  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-    <symbol id="icon-pdf" viewBox="0 0 24 24">
-      <path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"></path>
-    </symbol>
-  </svg>
+    <!-- 個別ツールのJavaScript -->
+    <script>
+      // ミームジェネレーター用のスクリプトはここに記述します
+    </script>
 
-  <!-- 個別ツールのJavaScript -->
-  <script>
-    
-  
     <!-- ツールリクエストセクション -->
     <section class="tool-request">
       <div class="request-card">
@@ -892,9 +836,20 @@
         <a href="https://forms.gle/b1VzXaEvLcetLwceA" class="request-button" target="_blank" rel="noopener">ツールをリクエストする</a>
       </div>
     </section>
-  </main>
+  </p></p></p></p></p></p></p></p></p>
+</li></li></li></li></li></li></li></li></li></li></li></li></li>
+</main>
 
   <!-- フッター -->
   <div id="footer-placeholder"></div>
+  <script>
+    if (!window.isScriptLoaded || !window.isScriptLoaded('/js/include.js')) {
+        document.write('<script src="/js/include.js"><\/script>');
+    } else {
+        console.log('include.jsのロードをスキップしました');
+    }
+</script>
+
+<!-- footer -->
 </body>
 </html>

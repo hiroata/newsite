@@ -1,4 +1,5 @@
 <!DOCTYPE html><html lang="ja"><head>
+    <script src="/js/prevent-duplicate-includes.js"></script>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">   <meta name="description" content="まえゆきツールは、Webブラウザで使える便利なツール集です。登録不要で無料でご利用いただけます。">
    <meta name="keywords" content="ウェブツール,オンラインツール,無料ツール,画像変換,テキスト変換,まえゆきツール">
@@ -9,7 +10,7 @@
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 
    <!-- インクルード処理 -->
-   <script src="/js/include.js"></script>
+   
    
    <!-- 画像遅延読み込み -->
    <script src="/js/lazy-loading.js" defer></script>
@@ -343,8 +344,10 @@
    <!-- モバイルCSSはstyle.cssに統合済み -->
 </head>
 <body>
+<!-- header -->
   <!-- ヘッダー -->
   <div id="header-placeholder"></div>
+  
 
 <!-- モバイルメニュー -->
 <div class="mobile-menu">
@@ -510,9 +513,21 @@
       </div>
     </div>
   </section>
+</p></p></p></p></p></p></p>
+</li></li></li></li></li></li></li>
 </main>
 
 <div id="footer-placeholder"></div>
+  <script>
+    if (!window.isScriptLoaded || !window.isScriptLoaded('/js/include.js')) {
+        document.write('<script src="/js/include.js"><\/script>');
+    } else {
+        console.log('include.jsのロードをスキップしました');
+    }
+</script>
+
 <script src="/js/script.js"></script>
+
+<!-- footer -->
 </body>
 </html>
