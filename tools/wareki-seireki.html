@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script src="/js/prevent-duplicate-includes.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="まえゆきツールの年齢・和暦計算ツール - 生年月日から現在の年齢や西暦/和暦の変換を簡単に計算できる無料ツールです。">
+  <meta name="keywords" content="年齢計算,和暦変換,西暦変換,令和,平成,昭和,大正,明治,生年月日計算">
+  <title>年齢・和暦計算ツール | まえゆきツール</title>
+
+  <!-- リソースの先読み -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- インクルード処理 -->
+
+  <!-- 共通CSSとフォント -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- ツール共通CSS -->
+  <link rel="stylesheet" href="/css/tools-common.css">
+
+  <!-- 個別ツールのスタイル -->
+  <style>
+    /* 年齢・和暦計算ツールスタイル */
+    .tool-section {
+      padding: 80px 0 40px;
+      margin-top: var(--header-h);
+      background: #f9f3e9;
+    }
+    .tool-container {
+      max-width: 840px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .tool-title {
+      font-size: 28px;
+      text-align: center;
+      margin-bottom: 1rem;
+      color: var(--text-dark);
+    }
+    .tool-subtitle {
+      font-size: 16px;
+      color: var(--text-mid);
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    .tool-label {
+      font-size: 12px;
+      display: table;
+      margin: 0 auto;
+      padding: 4px 10px;
+      border-radius: 15px;
+      background: var(--text-mid);
+      color: #fff;
+      letter-spacing: .05em;
+    }
+
+    /* カード共通スタイル */
+    .calc-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 25px;
+      margin: 30px 0;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      position: relative;
+    }
+    .calc-card-title {
+      font-size: 20px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      color: var(--primary);
+    }
+    .calc-card-title-icon {
+      width: 30px;
+      height: 30px;
+      margin-right: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--primary);
+      border-radius: 50%;
+      color: white;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    /* フォーム要素スタイル */
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+    .form-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+    .form-input {
+      width: 100%;
+      padding: 10px 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    .form-select {
+      padding: 10px 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 16px;
+      background-color: white;
+      min-width: 120px;
+    }
+    .form-button {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .form-button:hover {
+      background-color: #0055cc;
+    }
+    .input-group {
+      display: flex;
+      align-items: center;
+    }
+    .input-group .form-input {
+      flex-grow: 1;
+      margin-right: 10px;
+    }
+    .input-addon {
+      flex-shrink: 0;
+      font-size: 16px;
+      color: #666;
+    }
+
+    /* 結果表示エリア */
+    .result-area {
+      margin: 25px 0 15px;
+      padding: 20px;
+      background-color: #f5f9ff;
+      border-radius: 8px;
+      border-left: 4px solid var(--primary);
+    }
+    .result-row {
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px;
+      font-size: 16px;
+    }
+    .result-label {
+      width: 120px;
+      font-weight: bold;
+      color: #555;
+    }
+    .result-value {
+      flex-grow: 1;
+      font-size: 18px;
+    }
+    .result-highlight {
+      font-size: 24px;
+      color: var(--primary);
+      font-weight: bold;
+    }
+    .result-note {
+      font-size: 14px;
+      color: #666;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px dashed #ccc;
+    }
+
+    /* タブ切り替え */
+    .calc-tabs {
+      display: flex;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #ddd;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .calc-tab {
+      padding: 12px 20px;
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      font-size: 16px;
+      color: #666;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.3s;
+    }
+    .calc-tab.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+      font-weight: bold;
+    }
+    .calc-tab:hover:not(.active) {
+      background-color: #f5f5f5;
+    }
+    .calc-tab-content {
+      display: none;
+    }
+    .calc-tab-content.active {
+      display: block;
+    }
+
+    /* 和暦テーブル */
+    .wareki-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .wareki-table th, .wareki-table td {
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+    .wareki-table th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+    .wareki-table tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    .wareki-table tr:hover {
+      background-color: #f1f7ff;
+    }
+    
+    /* レスポンシブ対応 */
+    @media (max-width: 768px) {
+      .form-row {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .result-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .result-label {
+        width: 100%;
+        margin-bottom: 5px;
+      }
+      .calc-tab {
+        padding: 10px 15px;
+        font-size: 14px;
+      }
+    }
+  </style>
+
+  <!-- JavaScriptの遅延ロード -->
+  <script src="/js/script.js" defer></script>
+
+  <link rel="icon" href="/images/favicon.ico">
+  <meta property="og:title" content="年齢・和暦計算ツール | まえゆきツール">
+  <meta property="og:description" content="まえゆきツールの年齢・和暦計算ツール - 生年月日から現在の年齢や西暦/和暦の変換を簡単に計算できる無料ツールです。">
+  <meta property="og:image" content="/images/tool-ogp.webp">
+  <meta property="og:type" content="website">
+</head>
+<body>
+  <!-- ヘッダー -->
+  <div id="header-placeholder"></div>
+
+  <!-- メインコンテンツ -->
+  <main>
+    <!-- ツールセクション -->
+    <section class="tool-section">
+      <div class="tool-container">
+        <h1 class="tool-title">年齢・和暦計算ツール</h1>
+        <p class="tool-subtitle">生年月日から年齢計算・西暦和暦変換</p>
+        <span class="tool-label">複数機能</span>
+
+        <!-- タブメニュー -->
+        <div class="calc-tabs">
+          <button type="button" class="calc-tab active" data-tab="age-calc">年齢計算</button>
+          <button type="button" class="calc-tab" data-tab="seireki-wareki">西暦→和暦変換</button>
+          <button type="button" class="calc-tab" data-tab="wareki-seireki">和暦→西暦変換</button>
+          <button type="button" class="calc-tab" data-tab="wareki-table">和暦一覧表</button>
+        </div>
+
+        <!-- 年齢計算 -->
+        <div class="calc-tab-content active" id="age-calc">
+          <div class="calc-card">
+            <h2 class="calc-card-title">
+              <span class="calc-card-title-icon">1</span>生年月日から年齢を計算
+            </h2>
+            <div class="form-group">
+              <label class="form-label">生年月日を入力してください</label>
+              <div class="form-row">
+                <select id="ageBirthYear" class="form-select">
+                  <option value="">年</option>
+                  <!-- JavaScriptで動的に生成 -->
+                </select>
+                <select id="ageBirthMonth" class="form-select">
+                  <option value="">月</option>
+                  <!-- JavaScriptで動的に生成 -->
+                </select>
+                <select id="ageBirthDay" class="form-select">
+                  <option value="">日</option>
+                  <!-- JavaScriptで動的に生成 -->
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">計算基準日（デフォルトは今日）</label>
+              <div class="form-row">
+                <select id="ageTargetYear" class="form-select">
+                  <option value="">年</option>
+                  <!-- JavaScriptで動的に生成 -->
+                </select>
+                <select id="ageTargetMonth" class="form-select">
+                  <option value="">月</option>
+                  <!-- JavaScriptで動的に生成 -->
+                </select>
+                <select id="ageTargetDay" class="form-select">
+                  <option value="">日</option>
+                  <!-- JavaScriptで動的に生成 -->
+                </select>
+              </div>
+            </div>
+
+            <button id="calcAgeBtn" class="form-button">計算する</button>
+
+            <div id="ageResult" class="result-area" style="display: none;">
+              <div class="result-row">
+                <span class="result-label">満年齢</span>
+                <span id="ageValue" class="result-value result-highlight">0歳</span>
+              </div>
+              <div class="result-row">
+                <span class="result-label">生まれた元号</span>
+                <span id="birthWareki" class="result-value">昭和00年00月00日</span>
+              </div>
+              <div class="result-row">
+                <span class="result-label">生年月日</span>
+                <span id="birthDateDetail" class="result-value">生後000日目、000ヶ月と00日</span>
+              </div>
+              <div class="result-note">
+                ※満年齢は誕生日を迎えた後の年齢です。<br>
+                ※数え年は満年齢＋1歳です。
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 西暦→和暦変換 -->
+        <div class="calc-tab-content" id="seireki-wareki">
+          <div class="calc-card">
+            <h2 class="calc-card-title">
+              <span class="calc-card-title-icon">2</span>西暦から和暦に変換
+            </h2>
+            <div class="form-group">
+              <label class="form-label">西暦を入力してください</label>
+              <div class="form-row">
+                <div class="input-group">
+                  <input type="number" id="seirekiYear" class="form-input" placeholder="1989" min="1868" max="2100">
+                  <span class="input-addon">年</span>
+                </div>
+                <div class="input-group">
+                  <input type="number" id="seirekiMonth" class="form-input" placeholder="1" min="1" max="12">
+                  <span class="input-addon">月</span>
+                </div>
+                <div class="input-group">
+                  <input type="number" id="seirekiDay" class="form-input" placeholder="1" min="1" max="31">
+                  <span class="input-addon">日</span>
+                </div>
+              </div>
+            </div>
+
+            <button id="calcWarekiBtn" class="form-button">和暦に変換</button>
+
+            <div id="warekiResult" class="result-area" style="display: none;">
+              <div class="result-row">
+                <span class="result-label">和暦</span>
+                <span id="warekiValue" class="result-value result-highlight">令和0年0月0日</span>
+              </div>
+              <div class="result-row">
+                <span class="result-label">元号年</span>
+                <span id="warekiYear" class="result-value">元年（0年）</span>
+              </div>
+              <div class="result-note">
+                ※明治は1868年（明治元年）1月1日以降を変換できます。<br>
+                ※令和は2019年5月1日から始まりました。
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 和暦→西暦変換 -->
+        <div class="calc-tab-content" id="wareki-seireki">
+          <div class="calc-card">
+            <h2 class="calc-card-title">
+              <span class="calc-card-title-icon">3</span>和暦から西暦に変換
+            </h2>
+            <div class="form-group">
+              <label class="form-label">和暦を入力してください</label>
+              <div class="form-row">
+                <select id="eraName" class="form-select">
+                  <option value="reiwa">令和</option>
+                  <option value="heisei">平成</option>
+                  <option value="showa">昭和</option>
+                  <option value="taisho">大正</option>
+                  <option value="meiji">明治</option>
+                </select>
+                <div class="input-group">
+                  <input type="number" id="eraYear" class="form-input" placeholder="1" min="1" max="100">
+                  <span class="input-addon">年</span>
+                </div>
+                <div class="input-group">
+                  <input type="number" id="eraMonth" class="form-input" placeholder="1" min="1" max="12">
+                  <span class="input-addon">月</span>
+                </div>
+                <div class="input-group">
+                  <input type="number" id="eraDay" class="form-input" placeholder="1" min="1" max="31">
+                  <span class="input-addon">日</span>
+                </div>
+              </div>
+            </div>
+
+            <button id="calcSeirekiBtn" class="form-button">西暦に変換</button>
+
+            <div id="seirekiResult" class="result-area" style="display: none;">
+              <div class="result-row">
+                <span class="result-label">西暦</span>
+                <span id="seirekiValue" class="result-value result-highlight">0000年0月0日</span>
+              </div>
+              <div class="result-note">
+                ※「元年」は1年として計算しています。<br>
+                ※和暦の月日が存在しない場合はエラーとなります。
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 和暦一覧表 -->
+        <div class="calc-tab-content" id="wareki-table">
+          <div class="calc-card">
+            <h2 class="calc-card-title">
+              <span class="calc-card-title-icon">4</span>和暦・西暦対応表
+            </h2>
+            <p>明治以降の元号と西暦の対応表です。</p>
+            
+            <table class="wareki-table">
+              <thead>
+                <tr>
+                  <th>元号</th>
+                  <th>期間（西暦）</th>
+                  <th>期間（和暦）</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>令和</td>
+                  <td>2019年5月1日～現在</td>
+                  <td>令和元年5月1日～現在</td>
+                </tr>
+                <tr>
+                  <td>平成</td>
+                  <td>1989年1月8日～2019年4月30日</td>
+                  <td>平成元年1月8日～平成31年4月30日</td>
+                </tr>
+                <tr>
+                  <td>昭和</td>
+                  <td>1926年12月25日～1989年1月7日</td>
+                  <td>昭和元年12月25日～昭和64年1月7日</td>
+                </tr>
+                <tr>
+                  <td>大正</td>
+                  <td>1912年7月30日～1926年12月24日</td>
+                  <td>大正元年7月30日～大正15年12月24日</td>
+                </tr>
+                <tr>
+                  <td>明治</td>
+                  <td>1868年1月1日～1912年7月29日</td>
+                  <td>明治元年1月1日～明治45年7月29日</td>
+                </tr>
+              </tbody>
+            </table>
+            
+            <div class="result-note">
+              ※和暦は改元日から新しい元号になります。<br>
+              ※明治以前の元号はこのツールでは対応していません。
+            </div>
+          </div>
+        </div>
+
+        <!-- 使い方ボックス -->
+        <div class="calc-card">
+          <h3 class="calc-card-title">
+            <span class="calc-card-title-icon"><svg width="16" height="16" fill="white" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></svg></span>
+            年齢・和暦計算ツールの使い方
+          </h3>
+          <ul class="usage-list">
+            <li class="usage-item">年齢計算：生年月日を入力して現在の年齢や生まれた和暦を確認できます。特定の日付時点での年齢も計算可能です。</li>
+            <li class="usage-item">西暦→和暦変換：西暦の年月日を入力すると、対応する和暦（元号と年）に変換します。</li>
+            <li class="usage-item">和暦→西暦変換：元号と和暦年を選択すると、対応する西暦に変換します。</li>
+            <li class="usage-item">和暦一覧表：明治以降の元号と西暦の対応表を確認できます。</li>
+            <li class="usage-item">入力した生年月日や日付情報はサーバーに送信されないため安全にご利用いただけます。</li>
+          </ul>
+        </div>
+
+        <!-- 他のツールリンク -->        <div class="other-tools">
+          <h2 class="other-tools-title">その他のまえゆきツール</h2>
+          <div class="tools-list">
+
+            <a href="image-resize.html" class="tool-link">画像サイズ変更</a>
+            <a href="png-jpeg-to-webp.html" class="tool-link">WebP変換ツール</a>
+            <a href="png-to-jpeg.html" class="tool-link">PNG→JPEG変換</a>
+            <a href="meme-generator.html" class="tool-link">ミームジェネレーター</a>
+            <a href="letters-counter.html" class="tool-link">文字数カウント</a>
+            <a href="color-palette.html" class="tool-link">カラーパレット</a>
+            <a href="calc.html" class="tool-link">世界の単位換算ツール</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- フッター -->
+  <div id="footer-placeholder"></div>
+  <script>
+    if (!window.isScriptLoaded || !window.isScriptLoaded('/js/include.js')) {
+      document.write('<script src="/js/include.js"><\/script>');
+    } else {
+      console.log('include.jsのロードをスキップしました');
+    }
+  </script>
+
+  <!-- 年齢・和暦計算用JavaScript -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // 年月日のセレクトボックスを生成
+      function populateDateSelects() {
+        const currentYear = new Date().getFullYear();
+        
+        // 年齢計算用 - 生年月日
+        const ageBirthYear = document.getElementById('ageBirthYear');
+        for (let year = 1900; year <= currentYear; year++) {
+          const option = document.createElement('option');
+          option.value = year;
+          option.textContent = year;
+          ageBirthYear.appendChild(option);
+        }
+        
+        // 年齢計算用 - 計算基準日
+        const ageTargetYear = document.getElementById('ageTargetYear');
+        for (let year = 1900; year <= currentYear + 100; year++) {
+          const option = document.createElement('option');
+          option.value = year;
+          option.textContent = year;
+          if (year === currentYear) option.selected = true;
+          ageTargetYear.appendChild(option);
+        }
+        
+        // 月の選択肢を生成
+        const months = [
+          document.getElementById('ageBirthMonth'), 
+          document.getElementById('ageTargetMonth')
+        ];
+        months.forEach(select => {
+          for (let month = 1; month <= 12; month++) {
+            const option = document.createElement('option');
+            option.value = month;
+            option.textContent = month;
+            if (month === new Date().getMonth() + 1) {
+              if (select.id === 'ageTargetMonth') option.selected = true;
+            }
+            select.appendChild(option);
+          }
+        });
+        
+        // 日の選択肢を生成
+        const days = [
+          document.getElementById('ageBirthDay'), 
+          document.getElementById('ageTargetDay')
+        ];
+        days.forEach(select => {
+          for (let day = 1; day <= 31; day++) {
+            const option = document.createElement('option');
+            option.value = day;
+            option.textContent = day;
+            if (day === new Date().getDate()) {
+              if (select.id === 'ageTargetDay') option.selected = true;
+            }
+            select.appendChild(option);
+          }
+        });
+      }
+
+      // 和暦変換関数
+      function convertToWareki(year, month, day) {
+        // 元号の定義（開始日）
+        const eras = [
+          { name: '令和', nameEn: 'Reiwa', start: new Date(2019, 4, 1) },
+          { name: '平成', nameEn: 'Heisei', start: new Date(1989, 0, 8) },
+          { name: '昭和', nameEn: 'Showa', start: new Date(1926, 11, 25) },
+          { name: '大正', nameEn: 'Taisho', start: new Date(1912, 6, 30) },
+          { name: '明治', nameEn: 'Meiji', start: new Date(1868, 0, 1) }
+        ];
+        
+        const targetDate = new Date(year, month - 1, day);
+        
+        // 明治以前はエラー
+        if (targetDate < eras[4].start) {
+          return { success: false, message: '明治元年（1868年1月1日）以降の日付を入力してください' };
+        }
+        
+        // 該当する元号を検索
+        let era = null;
+        for (let i = 0; i < eras.length; i++) {
+          if (targetDate >= eras[i].start) {
+            era = eras[i];
+            break;
+          }
+        }
+        
+        if (era) {
+          // 元号年を計算
+          const eraYear = year - era.start.getFullYear() + 1;
+          const eraYearStr = eraYear === 1 ? '元' : eraYear;
+          
+          return {
+            success: true,
+            era: era.name,
+            year: eraYear,
+            yearStr: eraYearStr,
+            month: month,
+            day: day,
+            fullWareki: `${era.name}${eraYearStr}年${month}月${day}日`
+          };
+        } else {
+          return { success: false, message: '変換できませんでした' };
+        }
+      }
+
+      // 和暦から西暦への変換
+      function convertToSeireki(era, year, month, day) {
+        // 元号の定義（開始年）
+        const eraStartYears = {
+          reiwa: 2019 - 1,  // 令和元年 = 2019年
+          heisei: 1989 - 1, // 平成元年 = 1989年
+          showa: 1926 - 1,  // 昭和元年 = 1926年
+          taisho: 1912 - 1, // 大正元年 = 1912年
+          meiji: 1868 - 1   // 明治元年 = 1868年
+        };
+        
+        // 各元号の終了年月日
+        const eraEndDates = {
+          reiwa: null, // 現在進行中
+          heisei: new Date(2019, 3, 30), // 平成31年4月30日
+          showa: new Date(1989, 0, 7),   // 昭和64年1月7日
+          taisho: new Date(1926, 11, 24), // 大正15年12月24日
+          meiji: new Date(1912, 6, 29)    // 明治45年7月29日
+        };
+        
+        if (!eraStartYears[era]) {
+          return { success: false, message: '無効な元号です' };
+        }
+        
+        // 西暦を計算
+        const seirekiYear = eraStartYears[era] + year;
+        
+        // 日付の妥当性をチェック
+        const targetDate = new Date(seirekiYear, month - 1, day);
+        if (isNaN(targetDate.getTime())) {
+          return { success: false, message: '無効な日付です' };
+        }
+        
+        // 元号の範囲内かチェック
+        const startDate = new Date();
+        if (era === 'reiwa') {
+          startDate.setFullYear(2019, 4, 1); // 令和開始：2019年5月1日
+        } else if (era === 'heisei') {
+          startDate.setFullYear(1989, 0, 8); // 平成開始：1989年1月8日
+        } else if (era === 'showa') {
+          startDate.setFullYear(1926, 11, 25); // 昭和開始：1926年12月25日
+        } else if (era === 'taisho') {
+          startDate.setFullYear(1912, 6, 30); // 大正開始：1912年7月30日
+        } else if (era === 'meiji') {
+          startDate.setFullYear(1868, 0, 1); // 明治開始：1868年1月1日
+        }
+        
+        if (targetDate < startDate) {
+          return { success: false, message: 'この元号の開始日より前の日付です' };
+        }
+        
+        if (eraEndDates[era] && targetDate > eraEndDates[era]) {
+          return { success: false, message: 'この元号の終了日より後の日付です' };
+        }
+        
+        return {
+          success: true,
+          year: seirekiYear,
+          month: month,
+          day: day,
+          fullSeireki: `${seirekiYear}年${month}月${day}日`
+        };
+      }
+
+      // 年齢計算
+      function calculateAge(birthYear, birthMonth, birthDay, targetYear, targetMonth, targetDay) {
+        const birthDate = new Date(birthYear, birthMonth - 1, birthDay);
+        const targetDate = new Date(targetYear, targetMonth - 1, targetDay);
+        
+        // 日付の妥当性をチェック
+        if (isNaN(birthDate.getTime()) || isNaN(targetDate.getTime())) {
+          return { success: false, message: '無効な日付です' };
+        }
+        
+        // 未来の生年月日はエラー
+        if (birthDate > targetDate) {
+          return { success: false, message: '生年月日は計算基準日より前の日付にしてください' };
+        }
+        
+        // 年齢計算（誕生日が来ているかでマイナス1するかを判断）
+        let age = targetYear - birthYear;
+        if (
+          targetMonth < birthMonth || 
+          (targetMonth === birthMonth && targetDay < birthDay)
+        ) {
+          age--;
+        }
+        
+        // 経過日数の計算
+        const diffTime = targetDate.getTime() - birthDate.getTime();
+        const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+        
+        // 経過月数の計算
+        let months = (targetYear - birthYear) * 12 + (targetMonth - birthMonth);
+        if (targetDay < birthDay) {
+          months--;
+        }
+        const remainingDays = calculateRemainingDays(birthDay, birthMonth, birthYear, targetDay, targetMonth, targetYear);
+        
+        return {
+          success: true,
+          age: age,
+          days: diffDays,
+          months: months,
+          remainingDays: remainingDays,
+          warekiInfo: convertToWareki(birthYear, birthMonth, birthDay)
+        };
+      }
+
+      // 残りの日数を計算（月の日数を考慮）
+      function calculateRemainingDays(birthDay, birthMonth, birthYear, targetDay, targetMonth, targetYear) {
+        let lastTargetDay;
+        
+        if (targetDay >= birthDay) {
+          return targetDay - birthDay;
+        } else {
+          // 前月の最終日を取得
+          const lastDayOfPrevMonth = new Date(targetYear, targetMonth - 1, 0).getDate();
+          return lastDayOfPrevMonth - birthDay + targetDay;
+        }
+      }
+
+      // タブ切り替え機能
+      function setupTabs() {
+        const tabs = document.querySelectorAll('.calc-tab');
+        const tabContents = document.querySelectorAll('.calc-tab-content');
+        
+        tabs.forEach(tab => {
+          tab.addEventListener('click', function() {
+            // アクティブなタブを変更
+            tabs.forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+            
+            // 対応するコンテンツを表示
+            const tabId = this.getAttribute('data-tab');
+            tabContents.forEach(content => {
+              content.classList.remove('active');
+              if (content.id === tabId) {
+                content.classList.add('active');
+              }
+            });
+          });
+        });
+      }
+
+      // イベントリスナーの設定
+      function setupEventListeners() {
+        // 年齢計算ボタン
+        document.getElementById('calcAgeBtn').addEventListener('click', function() {
+          const birthYear = parseInt(document.getElementById('ageBirthYear').value);
+          const birthMonth = parseInt(document.getElementById('ageBirthMonth').value);
+          const birthDay = parseInt(document.getElementById('ageBirthDay').value);
+          
+          const targetYear = parseInt(document.getElementById('ageTargetYear').value);
+          const targetMonth = parseInt(document.getElementById('ageTargetMonth').value);
+          const targetDay = parseInt(document.getElementById('ageTargetDay').value);
+          
+          // 入力チェック
+          if (isNaN(birthYear) || isNaN(birthMonth) || isNaN(birthDay) ||
+              isNaN(targetYear) || isNaN(targetMonth) || isNaN(targetDay)) {
+            alert('日付を正しく入力してください');
+            return;
+          }
+          
+          const ageResult = calculateAge(birthYear, birthMonth, birthDay, targetYear, targetMonth, targetDay);
+          
+          if (ageResult.success) {
+            document.getElementById('ageValue').textContent = `${ageResult.age}歳`;
+            
+            if (ageResult.warekiInfo.success) {
+              document.getElementById('birthWareki').textContent = ageResult.warekiInfo.fullWareki;
+            } else {
+              document.getElementById('birthWareki').textContent = '計算できませんでした';
+            }
+            
+            document.getElementById('birthDateDetail').textContent = 
+              `生後${ageResult.days}日目、${ageResult.months}ヶ月と${ageResult.remainingDays}日`;
+            
+            document.getElementById('ageResult').style.display = 'block';
+          } else {
+            alert(ageResult.message);
+          }
+        });
+        
+        // 西暦→和暦変換ボタン
+        document.getElementById('calcWarekiBtn').addEventListener('click', function() {
+          const year = parseInt(document.getElementById('seirekiYear').value);
+          const month = parseInt(document.getElementById('seirekiMonth').value);
+          const day = parseInt(document.getElementById('seirekiDay').value);
+          
+          // 入力チェック
+          if (isNaN(year) || isNaN(month) || isNaN(day)) {
+            alert('日付を正しく入力してください');
+            return;
+          }
+          
+          // 日付の妥当性をチェック
+          const date = new Date(year, month - 1, day);
+          if (isNaN(date.getTime()) || date.getMonth() !== month - 1 || date.getDate() !== day) {
+            alert('存在しない日付です');
+            return;
+          }
+          
+          const warekiResult = convertToWareki(year, month, day);
+          
+          if (warekiResult.success) {
+            document.getElementById('warekiValue').textContent = warekiResult.fullWareki;
+            document.getElementById('warekiYear').textContent = 
+              warekiResult.year === 1 ? '元年（1年）' : `${warekiResult.year}年`;
+            document.getElementById('warekiResult').style.display = 'block';
+          } else {
+            alert(warekiResult.message);
+          }
+        });
+        
+        // 和暦→西暦変換ボタン
+        document.getElementById('calcSeirekiBtn').addEventListener('click', function() {
+          const era = document.getElementById('eraName').value;
+          const year = parseInt(document.getElementById('eraYear').value);
+          const month = parseInt(document.getElementById('eraMonth').value);
+          const day = parseInt(document.getElementById('eraDay').value);
+          
+          // 入力チェック
+          if (isNaN(year) || isNaN(month) || isNaN(day)) {
+            alert('日付を正しく入力してください');
+            return;
+          }
+          
+          const seirekiResult = convertToSeireki(era, year, month, day);
+          
+          if (seirekiResult.success) {
+            document.getElementById('seirekiValue').textContent = seirekiResult.fullSeireki;
+            document.getElementById('seirekiResult').style.display = 'block';
+          } else {
+            alert(seirekiResult.message);
+          }
+        });
+      }
+      
+      // 初期化
+      populateDateSelects();
+      setupTabs();
+      setupEventListeners();
+    });
+  </script>
+</body>
+</html>

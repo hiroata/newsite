@@ -7,16 +7,16 @@
 
   <!-- リソースの先読み -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <!-- 共通CSSとフォント -->
   <link rel="stylesheet" href="/css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&amp;display=swap" rel="stylesheet">
-  
+
   <!-- ツール共通CSS -->
   <link rel="stylesheet" href="/css/tools-common.css">
   <link rel="stylesheet" href="/css/image-tools-styles.css">
-  
+
   <!-- 共通スクリプト読み込み -->
   <script src="/js/image-tools-utils.js"></script>
 
@@ -93,7 +93,7 @@
          color: var(--text-mid);
          margin-bottom: 15px;
      }
-     
+
      /* ドロップエリア */
      .drop-area {
          border: 2px dashed #ccc;
@@ -138,7 +138,7 @@
      .file-input {
          display: none;
      }
-     
+
      /* テンプレート選択エリア */
      .template-grid {
          display: flex;
@@ -164,7 +164,7 @@
          border-color: var(--primary);
          box-shadow: 0 0 0 2px var(--primary);
      }
-     
+
      /* ミームエディタ */
      .meme-editor {
          display: none;
@@ -185,7 +185,7 @@
          margin: 0 auto;
          background: #fff;
      }
-     
+
      /* テキスト設定パネル */
      .text-panel {
          margin-top: 20px;
@@ -213,7 +213,7 @@
          border-color: var(--primary);
          outline: none;
      }
-     
+
      /* テキスト設定オプション */
      .text-options {
          display: flex;
@@ -244,7 +244,7 @@
          border-color: var(--primary);
          outline: none;
      }
-     
+
      /* ダウンロードボタン */
      .action-buttons {
          display: flex;
@@ -281,7 +281,7 @@
      .button-icon {
          margin-right: 8px;
      }
-     
+
      /* テンプレートなし時のメッセージ */
      .no-template-message {
          text-align: center;
@@ -290,7 +290,7 @@
          border-radius: 8px;
          margin-top: 20px;
      }
-     
+
      /* 使い方ボックス */
      .usage-box {
          background: #fff;
@@ -330,7 +330,7 @@
      .usage-link:hover {
          text-decoration: underline;
      }
-     
+
      /* シェアダイアログ */
      .share-modal {
          display: none;
@@ -400,7 +400,7 @@
      .share-facebook { background: #1877F2; }
      .share-line { background: #06C755; }
      .share-copy { background: #555; }
-     
+
      /* シェアセクション */
      .share-section {
          margin: 40px 0;
@@ -447,7 +447,7 @@
      .share-section-button:hover {
          transform: scale(1.1);
      }
-     
+
      /* 他のツールリンク */
      .other-tools {
          margin-top: 40px;
@@ -478,7 +478,7 @@
          transform: translateY(-2px);
          border-color: var(--primary);
      }
-     
+
      /* 読み込み中アニメーション */
      .loading {
          display: none;
@@ -504,7 +504,7 @@
          0% { transform: rotate(0deg); }
          100% { transform: rotate(360deg); }
      }
-     
+
      /* ドロップアニメーション */
      @keyframes drop-pulse {
          0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 102, 255, 0.4); }
@@ -514,7 +514,7 @@
      .drop-pulse {
          animation: drop-pulse 1.5s infinite;
      }
-     
+
      /* レスポンシブ対応 */
      @media (max-width: 768px) {
          .tool-section {
@@ -549,7 +549,7 @@
   </style>
 
   <!-- JavaScriptの遅延ロード -->
-  <script src="/js/script.js" defer=""></script>
+  <script src="/js/script.js" defer></script>
 
   <link rel="icon" href="/images/favicon.ico">
   <meta property="og:title" content="ミームジェネレーター | まえゆきツール">
@@ -559,13 +559,13 @@
   <meta property="og:image" content="/images/ogp_image_tools.webp">
   <meta property="og:type" content="website">
   <!-- インクルード処理 -->
-  
+
 </head>
 <body>
 <!-- header -->
   <!-- ヘッダー -->
   <div id="header-placeholder"></div>
-  
+
 
   <!-- メインコンテンツ -->
   <main class="site-main">
@@ -581,7 +581,7 @@
                <span class="step-number">1</span>
                <h2 class="step-title">ミーム画像を選択</h2>
                <p class="step-description">テンプレートから選ぶか、自分の画像をアップロードしましょう</p>
-               
+
                <div class="drop-area" id="dropArea">
                   <div class="drop-area-icon">
                      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -597,37 +597,35 @@
                      <input type="file" class="file-input" id="fileInput" accept="image/jpeg, image/png, image/gif">
                   </label>
                </div>
-               
+
                <p style="text-align: center; margin-top: 20px; margin-bottom: 10px; font-weight: bold;">または人気のテンプレートから選ぶ</p>
-               
+
                <div class="template-grid" id="templateGrid">
                   <!-- テンプレート画像は動的に追加されます -->
                </div>
-            </div>
 
             <!-- ステップ2: テキスト追加 -->
             <div class="step-section">
                <span class="step-number">2</span>
                <h2 class="step-title">テキストを追加</h2>
                <p class="step-description">ミームに上下のテキストを追加できます</p>
-               
+
                <div id="memeEditor" class="meme-editor">
                   <div class="meme-canvas-container" id="canvasContainer">
                      <canvas id="memeCanvas"></canvas>
                   </div>
-                  
+
                   <div class="text-panel">
                      <div class="text-input-group">
                         <label class="text-input-label" for="topText">上のテキスト</label>
                         <input type="text" id="topText" class="text-input" placeholder="ここに上のテキストを入力">
                      </div>
-                     
+
                      <div class="text-input-group">
                         <label class="text-input-label" for="bottomText">下のテキスト</label>
                         <input type="text" id="bottomText" class="text-input" placeholder="ここに下のテキストを入力">
                      </div>
-                  </div>
-                  
+
                   <div class="text-options">
                      <div class="option-group">
                         <label class="option-label" for="fontSize">フォントサイズ</label>
@@ -638,7 +636,7 @@
                            <option value="50">特大</option>
                         </select>
                      </div>
-                     
+
                      <div class="option-group">
                         <label class="option-label" for="fontFamily">フォント</label>
                         <select id="fontFamily" class="option-select">
@@ -650,32 +648,29 @@
                            <option value="'HGS創英角ｺﾞｼｯｸ UB', sans-serif">創英角ゴシック</option>
                         </select>
                      </div>
-                     
+
                      <div class="option-group">
                         <label class="option-label" for="textColor">テキスト色</label>
                         <input type="color" id="textColor" class="option-color" value="#ffffff">
                      </div>
-                     
+
                      <div class="option-group">
                         <label class="option-label" for="strokeColor">枠線色</label>
                         <input type="color" id="strokeColor" class="option-color" value="#000000">
                      </div>
-                  </div>
-               </div>
-               
+
                <div id="noTemplateMessage" class="no-template-message">
                   <p>画像を選択するとここにエディタが表示されます</p>
                </div>
-            </div>
 
             <!-- ステップ3: ダウンロード/シェア -->
             <div class="step-section">
                <span class="step-number">3</span>
                <h2 class="step-title">完成したミームをダウンロード・シェア</h2>
                <p class="step-description">作成したミームを保存して皆とシェアしましょう</p>
-               
+
                <div class="action-buttons">
-                  <button class="download-button" id="downloadBtn" disabled="">
+                  <button type="button" class="download-button" id="downloadBtn" disabled="">
                      <span class="button-icon">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
@@ -685,8 +680,8 @@
                      </span>
                      ダウンロード
                   </button>
-                  
-                  <button class="share-button" id="shareBtn" disabled="">
+
+                  <button type="button" class="share-button" id="shareBtn" disabled="">
                      <span class="button-icon">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                            <circle cx="18" cy="5" r="3"></circle>
@@ -699,7 +694,6 @@
                      SNSでシェア
                   </button>
                </div>
-            </div>
 
             <!-- 使い方ボックス -->
             <div class="usage-box">
@@ -713,7 +707,7 @@
                   </span>
                   ミームジェネレーターの使い方
                </h3>
-               
+
                <ul class="usage-list">
                   <li class="usage-item">Web（ブラウザ）上ですぐに使えるミーム作成ツールです。</li>
                   <li class="usage-item">用意されたテンプレートから選ぶか、自分の画像をアップロードできます。</li>
@@ -728,7 +722,6 @@
                   </li>
                </ul>
             </div>
-         </div>
       </section>
 
       <!-- シェアモーダル -->
@@ -754,67 +747,23 @@
                <div class="share-option share-copy" id="shareCopy">
                   <svg width="20" height="20" fill="#fff" viewBox="0 0 24 24"><path d="M20 2H10c-1.103 0-2 .897-2 2v4H4c-1.103 0-2 .897-2 2v10c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2v-4h4c1.103 0 2-.897 2-2V4c0-1.103-.897-2-2-2zM4 20V10h10l.002 10H4zm16-6h-4v-4c0-1.103-.897-2-2-2h-4V4h10v10z"></path></svg>
                </div>
-            </div>
-         </div>
-      </div>
 
       <!-- 読み込みインジケータ -->
       <div class="loading" id="loading">
          <div class="loading-spinner"></div>
-      </div>
 
-      <!-- Contact CTA Section -->
-      <section class="contact-cta-section">
-         <div class="contact-cta-container">
-            <span class="contact-cta-subtitle">IT導入補助金2025活用可能</span>
-            <h2 class="contact-cta-title">申請は完全丸投げOK！</h2>
-            <p class="contact-cta-lead">
-               UTAGEの導入で最大450万円の補助金が受けられます。<br class="pc-only">
-               面倒な申請手続きはすべてお任せください。<br class="pc-only">
-               あなたは事業成長に集中するだけでOKです。
-            </p>
-            <div class="contact-cta-buttons">               <a href="https://utage-system.com/p/EcESO02xLLoK" class="btn btn-contact">
-                  無料相談してみる
-               </a>
-               <a href="../document.html" class="btn btn-document">
-                  <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
-                  資料請求する
-               </a>
-            </div>
-         </div>
-      </section>
+      <!-- 他のツールリンク -->
       <div class="other-tools">
-         <h2 class="other-tools-title">その他のまえゆきツール</h2>
-         <div class="tools-list">
-            <a href="calc.html" class="tool-link">単位換算と計算</a>
-            <a href="countdown.html" class="tool-link">Webでカウントダウン</a>
-            <a href="roulette.html" class="tool-link">Webでルーレット</a>
-            <a href="bingo.html" class="tool-link">ビンゴ・マシーン</a>
-            <a href="image-resize.html" class="tool-link">画像リサイズ</a>
+         <h2 class="other-tools-title">その他のまえゆきツール</h2>          <div class="tools-list">
+            <a href="image-resize.html" class="tool-link">画像サイズ変更</a>
+            <a href="png-jpeg-to-webp.html" class="tool-link">WebP変換ツール</a>
             <a href="png-to-jpeg.html" class="tool-link">PNG→JPEG変換</a>
-            <a href="png-jpeg-to-webp.html" class="tool-link">WebP変換</a>
-            <a href="wareki-seireki.html" class="tool-link">年齢・和暦計算</a>
+            <a href="letters-counter.html" class="tool-link">文字数カウント</a>
+            <a href="color-palette.html" class="tool-link">カラーパレット</a>
+            <a href="wareki-seireki.html" class="tool-link">年齢・和暦計算ツール</a>
+            <a href="calc.html" class="tool-link">世界の単位換算ツール</a>
          </div>
       </div>
-   
-    <!-- ブログへの誘導セクション -->
-    <section class="blog-cta-section section-padding">
-      <div class="inner">
-        <div class="section-title-container">
-          <span class="section-subtitle">BLOG</span>
-          <h2 class="section-title">ビジネス自動化のヒント</h2>
-        </div>
-        <p class="section-description">
-          オンラインビジネスを効率的に運営するためのノウハウを発信しています。
-          ぜひご覧ください。
-        </p>
-        <div class="blog-cta">
-          <a href="/blog/index.html" class="btn-secondary">
-            ブログを見る
-          </a>
-        </div>
-      </div>
-    </section>
 
     <!-- SVGアイコン -->
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -827,17 +776,8 @@
     <script>
       // ミームジェネレーター用のスクリプトはここに記述します
     </script>
-
-    <!-- ツールリクエストセクション -->
-    <section class="tool-request">
-      <div class="request-card">
-        <h3>新しいツールをリクエスト</h3>
-        <p>ほしいツールがあれば教えてください！<br>可能な限り対応させていただきます。</p>
-        <a href="https://forms.gle/b1VzXaEvLcetLwceA" class="request-button" target="_blank" rel="noopener">ツールをリクエストする</a>
-      </div>
-    </section>
-  </p></p></p></p></p></p></p></p></p>
-</li></li></li></li></li></li></li></li></li></li></li></li></li>
+  </p>
+</li>
 </main>
 
   <!-- フッター -->

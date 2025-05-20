@@ -1,0 +1,2390 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script src="/js/prevent-duplicate-includes.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="まえゆきツールの世界の単位換算ツール - 長さ、重さ、面積、通貨、温度など様々な単位を簡単に変換できる無料ツールです。">
+  <meta name="keywords" content="単位換算,単位変換,インチ,フィート,ポンド,マイル,メートル,キログラム">
+  <title>世界の単位換算ツール | まえゆきツール</title>
+
+  <!-- リソースの先読み -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- インクルード処理 -->
+
+  <!-- 共通CSSとフォント -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- ツール共通CSS -->
+  <link rel="stylesheet" href="/css/tools-common.css">
+
+  <!-- 個別ツールのスタイル -->
+  <style>
+    /* 単位換算ツールスタイル */
+    :root {
+      --primary: #0066ff;
+      --secondary: #ff3a3a;
+      --accent: #ff9500;
+      --dark-blue: #0d3283;
+      --light-bg: #f8f9fa;
+      --text-dark: #333;
+      --text-mid: #555;
+    }
+
+    .tool-section {
+      padding: 80px 0 40px;
+      margin-top: var(--header-h);
+      background: #f9f3e9;
+    }
+    .tool-container {
+      max-width: 840px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .tool-title {
+      font-size: 28px;
+      text-align: center;
+      margin-bottom: 1rem;
+      color: var(--text-dark);
+    }
+    .tool-subtitle {
+      font-size: 16px;
+      color: var(--text-mid);
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    .tool-label {
+      font-size: 12px;
+      display: table;
+      margin: 0 auto;
+      padding: 4px 10px;
+      border-radius: 15px;
+      background: var(--text-mid);
+      color: #fff;
+      letter-spacing: .05em;
+    }
+
+    /* 単位カードスタイル */
+    .calculator-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 30px 0 20px;
+      justify-content: center;
+    }
+    .calculator-tab {
+      background: #fff;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: bold;
+      color: var(--text-mid);
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .calculator-tab.active {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .calculator-tab:hover:not(.active) {
+      background: #f0f0f0;
+      transform: translateY(-2px);
+    }
+    .calculator-tab-icon {
+      margin-right: 8px;
+      font-size: 16px;
+    }
+
+    .calculator-container {
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      margin-bottom: 30px;
+    }
+    .calculator-title {
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 15px;
+    }
+    .calculator-title-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 12px;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    /* 入力フォームスタイル */
+    .calculator-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .input-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px 20px;
+    }
+    .input-group {
+      flex: 1;
+      min-width: 200px;
+    }
+    .input-label {
+      font-size: 14px;
+      margin-bottom: 8px;
+      display: block;
+      color: var(--text-mid);
+    }
+    .input-field {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 16px;
+      transition: border-color 0.3s;
+    }
+    .input-field:focus {
+      border-color: var(--primary);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.1);
+    }
+    .unit-select {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 16px;
+      background-color: white;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path fill='%23aaa' d='M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z'/></svg>");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      cursor: pointer;
+    }
+    .swap-button {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f5f5f5;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .swap-button:hover {
+      background: #e0e0e0;
+      transform: rotate(180deg);
+    }
+    .swap-button svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--text-mid);
+    }
+
+    /* 結果スタイル */
+    .result-section {
+      margin-top: 20px;
+      padding: 15px;
+      background: #f5f9ff;
+      border-radius: 8px;
+      border-left: 4px solid var(--primary);
+    }
+    .result-heading {
+      font-size: 16px;
+      margin-bottom: 10px;
+      color: var(--text-dark);
+      font-weight: bold;
+    }
+    .result-value {
+      font-size: 24px;
+      color: var(--primary);
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .result-formula {
+      font-size: 14px;
+      color: var(--text-mid);
+      margin-top: 8px;
+      font-style: italic;
+    }
+    .result-details {
+      margin-top: 15px;
+    }
+    .detail-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      padding: 5px 0;
+      border-bottom: 1px dashed #eaeaea;
+    }
+
+    /* 換算一覧テーブル */
+    .conversion-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    .conversion-table th,
+    .conversion-table td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+    }
+    .conversion-table th {
+      background-color: #f5f5f5;
+      font-weight: bold;
+    }
+    .conversion-table tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    /* タブコンテンツ */
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+
+    /* レスポンシブ対応 */
+    @media (max-width: 768px) {
+      .calculator-container {
+        padding: 20px 15px;
+      }
+      .calculator-tab {
+        padding: 10px 15px;
+        font-size: 14px;
+      }
+      .input-row {
+        flex-direction: column;
+      }
+      .input-group {
+        width: 100%;
+      }
+      .swap-button {
+        margin: 10px auto;
+        transform: rotate(90deg);
+      }
+      .swap-button:hover {
+        transform: rotate(270deg);
+      }
+      .calculator-tab-icon {
+        margin-right: 5px;
+      }
+    }
+
+    /* その他のツール */
+    .other-tools {
+      margin-top: 40px;
+    }
+    .other-tools-title {
+      font-size: 18px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    .tools-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+    .tool-link {
+      display: inline-block;
+      padding: 8px 16px;
+      background: white;
+      border-radius: 20px;
+      border: 1px solid #e0e0e0;
+      font-size: 14px;
+      transition: all 0.3s;
+    }
+    .tool-link:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-2px);
+      border-color: var(--primary);
+    }
+
+    /* 使い方ボックス */
+    .usage-box {
+      margin-top: 30px;
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+    .usage-title {
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      color: var(--text-dark);
+    }
+    .usage-title-icon {
+      margin-right: 10px;
+      color: var(--primary);
+    }
+    .usage-list {
+      padding-left: 20px;
+    }
+    .usage-item {
+      margin-bottom: 10px;
+      position: relative;
+      line-height: 1.5;
+    }
+    .usage-item::before {
+      content: "•";
+      position: absolute;
+      left: -15px;
+      color: var(--primary);
+    }
+    
+    /* 新機能: 初回訪問者向けガイド */
+    .welcome-guide {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    .welcome-guide.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    .welcome-box {
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      max-width: 600px;
+      width: 90%;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      position: relative;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+    .welcome-title {
+      font-size: 24px;
+      color: var(--primary);
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    .welcome-subtitle {
+      font-size: 16px;
+      color: var(--text-mid);
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .welcome-steps {
+      counter-reset: step-counter;
+      margin-bottom: 20px;
+    }
+    .welcome-step {
+      position: relative;
+      padding: 0 0 20px 40px;
+      counter-increment: step-counter;
+    }
+    .welcome-step:before {
+      content: counter(step-counter);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 30px;
+      height: 30px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+    }
+    .welcome-step-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: var(--text-dark);
+    }
+    .welcome-image {
+      width: 100%;
+      border-radius: 8px;
+      margin: 10px 0;
+      border: 1px solid #eee;
+    }
+    .welcome-close {
+      position: absolute;
+      right: 15px;
+      top: 15px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #f0f0f0;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: var(--text-mid);
+      transition: all 0.2s;
+    }
+    .welcome-close:hover {
+      background: #e0e0e0;
+      transform: scale(1.1);
+    }
+    .welcome-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+    .welcome-button {
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+      border: none;
+    }
+    .welcome-button-primary {
+      background: var(--primary);
+      color: white;
+    }
+    .welcome-button-primary:hover {
+      background: var(--dark-blue);
+      transform: translateY(-2px);
+    }
+    .welcome-button-secondary {
+      background: #f0f0f0;
+      color: var(--text-dark);
+    }
+    .welcome-button-secondary:hover {
+      background: #e0e0e0;
+      transform: translateY(-2px);
+    }
+    .show-guide-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: white;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      z-index: 100;
+      transition: all 0.3s;
+    }
+    .show-guide-button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    /* 新機能: 履歴とお気に入り */
+    .history-favorites {
+      margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .history-box, .favorites-box {
+      flex: 1;
+      min-width: 300px;
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+    .history-title, .favorites-title {
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      color: var(--text-dark);
+    }
+    .history-title-icon, .favorites-title-icon {
+      margin-right: 10px;
+      color: var(--primary);
+      width: 24px;
+      height: 24px;
+    }
+    .history-list, .favorites-list {
+      max-height: 300px;
+      overflow-y: auto;
+    }
+    .history-item, .favorites-item {
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .history-item:last-child, .favorites-item:last-child {
+      border-bottom: none;
+    }
+    .history-text, .favorites-text {
+      flex: 1;
+    }
+    .history-value, .favorites-value {
+      font-weight: bold;
+      color: var(--primary);
+    }
+    .history-date, .favorites-date {
+      font-size: 12px;
+      color: var(--text-mid);
+      margin-top: 3px;
+    }
+    .history-actions, .favorites-actions {
+      display: flex;
+      gap: 5px;
+    }
+    .history-button, .favorites-button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 5px;
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+    .history-button:hover, .favorites-button:hover {
+      background: #f0f0f0;
+    }
+    .favorite-button {
+      color: #f8c32b;
+    }
+    .favorite-button.active {
+      color: #f8c32b;
+      text-shadow: 0 0 2px rgba(0,0,0,0.1);
+    }
+    .delete-button {
+      color: #e74c3c;
+    }
+
+    /* 新機能: 通貨換算 */
+    .exchange-rate-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #f9f9f9;
+      padding: 10px 15px;
+      border-radius: 6px;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+    .rate-update-time {
+      color: var(--text-mid);
+      font-style: italic;
+    }
+    .rate-provider {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--text-mid);
+      font-size: 12px;
+    }
+    .custom-amount-input {
+      margin-top: 15px;
+    }
+
+    /* 新機能: 専門的な単位変換 */
+    .subcategory-selector {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 15px 0;
+    }
+    .subcategory-item {
+      background: #f0f0f0;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .subcategory-item.active {
+      background: var(--primary);
+      color: white;
+    }
+    .subcategory-content {
+      display: none;
+    }
+    .subcategory-content.active {
+      display: block;
+    }
+    .specialized-info {
+      margin-top: 15px;
+      padding: 10px;
+      background: #fff9e6;
+      border-radius: 6px;
+      border-left: 4px solid var(--accent);
+    }
+    .specialized-info-title {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: var(--text-dark);
+    }
+    .specialized-info-text {
+      font-size: 14px;
+      color: var(--text-mid);
+      line-height: 1.5;
+    }
+  </style>
+
+  <!-- JavaScriptの遅延ロード -->
+  <script src="/js/script.js" defer></script>
+
+  <link rel="icon" href="/images/favicon.ico">
+  <meta property="og:title" content="世界の単位換算ツール | まえゆきツール">
+  <meta property="og:description" content="まえゆきツールの世界の単位換算ツール - 長さ、重さ、面積、通貨、温度など様々な単位を簡単に変換できる無料ツールです。">
+  <meta property="og:image" content="/images/tool-ogp.webp">
+  <meta property="og:type" content="website">
+</head>
+<body>
+  <!-- ヘッダー -->
+  <div id="header-placeholder"></div>
+
+  <!-- メインコンテンツ -->
+  <main>
+    <!-- ツールセクション -->    <section class="tool-section">
+      <div class="tool-container">
+        <h1 class="tool-title">世界の単位換算ツール</h1>
+        <p class="tool-subtitle">長さ、重さ、面積、通貨など様々な単位を変換</p>
+        <span class="tool-label">多機能</span>
+        
+        <!-- 初回訪問者向けのガイド -->
+        <div class="welcome-guide" id="welcomeGuide">
+          <div class="welcome-box">
+            <button class="welcome-close" id="welcomeClose">&times;</button>
+            <h2 class="welcome-title">単位換算ツールへようこそ！</h2>
+            <p class="welcome-subtitle">このツールの使い方をご紹介します</p>
+            <div class="welcome-steps">
+              <div class="welcome-step">
+                <h3 class="welcome-step-title">単位カテゴリを選ぶ</h3>
+                <p>画面上部のタブから、変換したい単位のカテゴリ（長さ、重さ、通貨など）を選びましょう。</p>
+              </div>
+              <div class="welcome-step">
+                <h3 class="welcome-step-title">値と単位を入力</h3>
+                <p>変換したい数値と単位を左側のフィールドに入力します。変換先の単位は右側で選択できます。</p>
+              </div>
+              <div class="welcome-step">
+                <h3 class="welcome-step-title">結果を確認</h3>
+                <p>変換結果が下部に自動で表示されます。便利な換算表や詳細情報も確認できます。</p>
+              </div>
+              <div class="welcome-step">
+                <h3 class="welcome-step-title">履歴とお気に入り</h3>
+                <p>良く使う変換はお気に入りに登録できます。変換履歴も自動で保存されるので後から参照できます。</p>
+              </div>
+            </div>
+            <div class="welcome-buttons">
+              <button class="welcome-button welcome-button-primary" id="welcomeStartBtn">はじめる</button>
+              <button class="welcome-button welcome-button-secondary" id="welcomeDontShowBtn">次回から表示しない</button>
+            </div>
+          </div>
+        </div>
+        <button class="show-guide-button" id="showGuideBtn" title="ガイドを表示">?</button>
+
+        <!-- 単位換算タブ -->        <div class="calculator-tabs">
+          <button class="calculator-tab active" data-tab="length">
+            <span class="calculator-tab-icon">📏</span>長さ
+          </button>
+          <button class="calculator-tab" data-tab="weight">
+            <span class="calculator-tab-icon">⚖️</span>重さ
+          </button>
+          <button class="calculator-tab" data-tab="area">
+            <span class="calculator-tab-icon">📐</span>面積
+          </button>
+          <button class="calculator-tab" data-tab="volume">
+            <span class="calculator-tab-icon">🧪</span>体積
+          </button>
+          <button class="calculator-tab" data-tab="temperature">
+            <span class="calculator-tab-icon">🌡️</span>温度
+          </button>
+          <button class="calculator-tab" data-tab="speed">
+            <span class="calculator-tab-icon">🚗</span>速度
+          </button>
+          <button class="calculator-tab" data-tab="currency">
+            <span class="calculator-tab-icon">💱</span>通貨
+          </button>
+          <button class="calculator-tab" data-tab="cooking">
+            <span class="calculator-tab-icon">🍳</span>料理
+          </button>
+          <button class="calculator-tab" data-tab="digital">
+            <span class="calculator-tab-icon">💾</span>データ
+          </button>
+          <button class="calculator-tab" data-tab="typography">
+            <span class="calculator-tab-icon">🔤</span>文字
+          </button>
+        </div>
+
+        <!-- 長さの単位変換 -->
+        <div id="length" class="tab-content active">
+          <div class="calculator-container">
+            <h2 class="calculator-title">
+              <div class="calculator-title-icon">📏</div>
+              長さの単位換算
+            </h2>
+            <div class="calculator-form">
+              <div class="input-row">
+                <div class="input-group">
+                  <label class="input-label">変換元の値</label>
+                  <input type="number" class="input-field" id="lengthInput" placeholder="数値を入力" value="1">
+                </div>
+                <div class="input-group">
+                  <label class="input-label">変換元の単位</label>
+                  <select class="unit-select" id="lengthFromUnit">
+                    <option value="m">メートル (m)</option>
+                    <option value="cm">センチメートル (cm)</option>
+                    <option value="mm">ミリメートル (mm)</option>
+                    <option value="km">キロメートル (km)</option>
+                    <option value="in">インチ (in)</option>
+                    <option value="ft">フィート (ft)</option>
+                    <option value="yd">ヤード (yd)</option>
+                    <option value="mi">マイル (mi)</option>
+                  </select>
+                </div>
+                <button class="swap-button" id="swapLengthBtn">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M16,17.01V10h-2v7.01h-3L15,21l4-3.99H16z M9,3L5,6.99h3V14h2V6.99h3L9,3z"/>
+                  </svg>
+                </button>
+                <div class="input-group">
+                  <label class="input-label">変換先の単位</label>
+                  <select class="unit-select" id="lengthToUnit">
+                    <option value="cm">センチメートル (cm)</option>
+                    <option value="m">メートル (m)</option>
+                    <option value="mm">ミリメートル (mm)</option>
+                    <option value="km">キロメートル (km)</option>
+                    <option value="in">インチ (in)</option>
+                    <option value="ft">フィート (ft)</option>
+                    <option value="yd">ヤード (yd)</option>
+                    <option value="mi">マイル (mi)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="result-section" id="lengthResult">
+              <h3 class="result-heading">変換結果</h3>
+              <div class="result-value" id="lengthResultValue">100 cm</div>
+              <div class="result-formula" id="lengthResultFormula">1 m = 100 cm</div>
+              <div class="result-details">
+                <div class="detail-row">
+                  <span>一般的な使用地域</span>
+                  <span id="lengthUsage">メートル法（SI単位系）- 世界中で使用</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="calculator-container">
+            <h3>一般的な長さの単位換算表</h3>
+            <table class="conversion-table">
+              <thead>
+                <tr>
+                  <th>変換元</th>
+                  <th>変換先</th>
+                  <th>換算係数</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1 メートル (m)</td>
+                  <td>センチメートル (cm)</td>
+                  <td>100 cm</td>
+                </tr>
+                <tr>
+                  <td>1 メートル (m)</td>
+                  <td>ミリメートル (mm)</td>
+                  <td>1,000 mm</td>
+                </tr>
+                <tr>
+                  <td>1 メートル (m)</td>
+                  <td>インチ (in)</td>
+                  <td>39.3701 in</td>
+                </tr>
+                <tr>
+                  <td>1 メートル (m)</td>
+                  <td>フィート (ft)</td>
+                  <td>3.28084 ft</td>
+                </tr>
+                <tr>
+                  <td>1 フィート (ft)</td>
+                  <td>メートル (m)</td>
+                  <td>0.3048 m</td>
+                </tr>
+                <tr>
+                  <td>1 インチ (in)</td>
+                  <td>センチメートル (cm)</td>
+                  <td>2.54 cm</td>
+                </tr>
+                <tr>
+                  <td>1 キロメートル (km)</td>
+                  <td>マイル (mi)</td>
+                  <td>0.621371 mi</td>
+                </tr>
+                <tr>
+                  <td>1 マイル (mi)</td>
+                  <td>キロメートル (km)</td>
+                  <td>1.60934 km</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 重さの単位変換 -->
+        <div id="weight" class="tab-content">
+          <div class="calculator-container">
+            <h2 class="calculator-title">
+              <div class="calculator-title-icon">⚖️</div>
+              重さの単位換算
+            </h2>
+            <div class="calculator-form">
+              <div class="input-row">
+                <div class="input-group">
+                  <label class="input-label">変換元の値</label>
+                  <input type="number" class="input-field" id="weightInput" placeholder="数値を入力" value="1">
+                </div>
+                <div class="input-group">
+                  <label class="input-label">変換元の単位</label>
+                  <select class="unit-select" id="weightFromUnit">
+                    <option value="kg">キログラム (kg)</option>
+                    <option value="g">グラム (g)</option>
+                    <option value="mg">ミリグラム (mg)</option>
+                    <option value="lb">ポンド (lb)</option>
+                    <option value="oz">オンス (oz)</option>
+                    <option value="t">トン (t)</option>
+                  </select>
+                </div>
+                <button class="swap-button" id="swapWeightBtn">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M16,17.01V10h-2v7.01h-3L15,21l4-3.99H16z M9,3L5,6.99h3V14h2V6.99h3L9,3z"/>
+                  </svg>
+                </button>
+                <div class="input-group">
+                  <label class="input-label">変換先の単位</label>
+                  <select class="unit-select" id="weightToUnit">
+                    <option value="lb">ポンド (lb)</option>
+                    <option value="kg">キログラム (kg)</option>
+                    <option value="g">グラム (g)</option>
+                    <option value="mg">ミリグラム (mg)</option>
+                    <option value="oz">オンス (oz)</option>
+                    <option value="t">トン (t)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="result-section" id="weightResult">
+              <h3 class="result-heading">変換結果</h3>
+              <div class="result-value" id="weightResultValue">2.20462 lb</div>
+              <div class="result-formula" id="weightResultFormula">1 kg = 2.20462 lb</div>
+              <div class="result-details">
+                <div class="detail-row">
+                  <span>一般的な使用地域</span>
+                  <span id="weightUsage">ポンド - アメリカ、イギリスなど</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 面積の単位変換 -->
+        <div id="area" class="tab-content">
+          <div class="calculator-container">
+            <h2 class="calculator-title">
+              <div class="calculator-title-icon">📐</div>
+              面積の単位換算
+            </h2>
+            <div class="calculator-form">
+              <div class="input-row">
+                <div class="input-group">
+                  <label class="input-label">変換元の値</label>
+                  <input type="number" class="input-field" id="areaInput" placeholder="数値を入力" value="1">
+                </div>
+                <div class="input-group">
+                  <label class="input-label">変換元の単位</label>
+                  <select class="unit-select" id="areaFromUnit">
+                    <option value="m2">平方メートル (m²)</option>
+                    <option value="cm2">平方センチメートル (cm²)</option>
+                    <option value="km2">平方キロメートル (km²)</option>
+                    <option value="ha">ヘクタール (ha)</option>
+                    <option value="acre">エーカー (acre)</option>
+                    <option value="sqft">平方フィート (ft²)</option>
+                    <option value="sqin">平方インチ (in²)</option>
+                    <option value="sqmi">平方マイル (mi²)</option>
+                    <option value="tsubo">坪</option>
+                  </select>
+                </div>
+                <button class="swap-button" id="swapAreaBtn">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M16,17.01V10h-2v7.01h-3L15,21l4-3.99H16z M9,3L5,6.99h3V14h2V6.99h3L9,3z"/>
+                  </svg>
+                </button>
+                <div class="input-group">
+                  <label class="input-label">変換先の単位</label>
+                  <select class="unit-select" id="areaToUnit">
+                    <option value="tsubo">坪</option>
+                    <option value="m2">平方メートル (m²)</option>
+                    <option value="cm2">平方センチメートル (cm²)</option>
+                    <option value="km2">平方キロメートル (km²)</option>
+                    <option value="ha">ヘクタール (ha)</option>
+                    <option value="acre">エーカー (acre)</option>
+                    <option value="sqft">平方フィート (ft²)</option>
+                    <option value="sqin">平方インチ (in²)</option>
+                    <option value="sqmi">平方マイル (mi²)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="result-section" id="areaResult">
+              <h3 class="result-heading">変換結果</h3>
+              <div class="result-value" id="areaResultValue">0.3025 坪</div>
+              <div class="result-formula" id="areaResultFormula">1 m² = 0.3025 坪</div>
+              <div class="result-details">
+                <div class="detail-row">
+                  <span>一般的な使用地域</span>
+                  <span id="areaUsage">坪 - 日本の不動産取引</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 体積の単位変換 -->
+        <div id="volume" class="tab-content">
+          <div class="calculator-container">
+            <h2 class="calculator-title">
+              <div class="calculator-title-icon">🧪</div>
+              体積・容量の単位換算
+            </h2>
+            <div class="calculator-form">
+              <div class="input-row">
+                <div class="input-group">
+                  <label class="input-label">変換元の値</label>
+                  <input type="number" class="input-field" id="volumeInput" placeholder="数値を入力" value="1">
+                </div>
+                <div class="input-group">
+                  <label class="input-label">変換元の単位</label>
+                  <select class="unit-select" id="volumeFromUnit">
+                    <option value="l">リットル (L)</option>
+                    <option value="ml">ミリリットル (mL)</option>
+                    <option value="m3">立方メートル (m³)</option>
+                    <option value="gal">ガロン (US)</option>
+                    <option value="galUK">ガロン (UK)</option>
+                    <option value="floz">液量オンス (US)</option>
+                    <option value="cup">カップ</option>
+                  </select>
+                </div>
+                <button class="swap-button" id="swapVolumeBtn">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M16,17.01V10h-2v7.01h-3L15,21l4-3.99H16z M9,3L5,6.99h3V14h2V6.99h3L9,3z"/>
+                  </svg>
+                </button>
+                <div class="input-group">
+                  <label class="input-label">変換先の単位</label>
+                  <select class="unit-select" id="volumeToUnit">
+                    <option value="ml">ミリリットル (mL)</option>
+                    <option value="l">リットル (L)</option>
+                    <option value="m3">立方メートル (m³)</option>
+                    <option value="gal">ガロン (US)</option>
+                    <option value="galUK">ガロン (UK)</option>
+                    <option value="floz">液量オンス (US)</option>
+                    <option value="cup">カップ</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="result-section" id="volumeResult">
+              <h3 class="result-heading">変換結果</h3>
+              <div class="result-value" id="volumeResultValue">1000 mL</div>
+              <div class="result-formula" id="volumeResultFormula">1 L = 1000 mL</div>
+              <div class="result-details">
+                <div class="detail-row">
+                  <span>一般的な使用地域</span>
+                  <span id="volumeUsage">ミリリットル - 世界中で使用</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 温度の単位変換 -->
+        <div id="temperature" class="tab-content">
+          <div class="calculator-container">
+            <h2 class="calculator-title">
+              <div class="calculator-title-icon">🌡️</div>
+              温度の単位換算
+            </h2>
+            <div class="calculator-form">
+              <div class="input-row">
+                <div class="input-group">
+                  <label class="input-label">変換元の値</label>
+                  <input type="number" class="input-field" id="tempInput" placeholder="数値を入力" value="0">
+                </div>
+                <div class="input-group">
+                  <label class="input-label">変換元の単位</label>
+                  <select class="unit-select" id="tempFromUnit">
+                    <option value="c">摂氏 (°C)</option>
+                    <option value="f">華氏 (°F)</option>
+                    <option value="k">ケルビン (K)</option>
+                  </select>
+                </div>
+                <button class="swap-button" id="swapTempBtn">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M16,17.01V10h-2v7.01h-3L15,21l4-3.99H16z M9,3L5,6.99h3V14h2V6.99h3L9,3z"/>
+                  </svg>
+                </button>
+                <div class="input-group">
+                  <label class="input-label">変換先の単位</label>
+                  <select class="unit-select" id="tempToUnit">
+                    <option value="f">華氏 (°F)</option>
+                    <option value="c">摂氏 (°C)</option>
+                    <option value="k">ケルビン (K)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="result-section" id="tempResult">
+              <h3 class="result-heading">変換結果</h3>
+              <div class="result-value" id="tempResultValue">32 °F</div>
+              <div class="result-formula" id="tempResultFormula">0 °C = 32 °F</div>
+              <div class="result-details">
+                <div class="detail-row">
+                  <span>一般的な使用地域</span>
+                  <span id="tempUsage">華氏 - アメリカ合衆国</span>
+                </div>
+                <div class="detail-row">
+                  <span>水の凝固点</span>
+                  <span>32 °F / 0 °C</span>
+                </div>
+                <div class="detail-row">
+                  <span>水の沸点</span>
+                  <span>212 °F / 100 °C</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>        <!-- 速度の単位変換 -->
+        <div id="speed" class="tab-content">
+          <div class="calculator-container">
+            <h2 class="calculator-title">
+              <div class="calculator-title-icon">🚗</div>
+              速度の単位換算
+            </h2>
+            <div class="calculator-form">
+              <div class="input-row">
+                <div class="input-group">
+                  <label class="input-label">変換元の値</label>
+                  <input type="number" class="input-field" id="speedInput" placeholder="数値を入力" value="1">
+                </div>
+                <div class="input-group">
+                  <label class="input-label">変換元の単位</label>
+                  <select class="unit-select" id="speedFromUnit">
+                    <option value="kph">キロメートル毎時 (km/h)</option>
+                    <option value="mph">マイル毎時 (mph)</option>
+                    <option value="mps">メートル毎秒 (m/s)</option>
+                    <option value="kt">ノット (knot)</option>
+                    <option value="ftps">フィート毎秒 (ft/s)</option>
+                  </select>
+                </div>
+                <button class="swap-button" id="swapSpeedBtn">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M16,17.01V10h-2v7.01h-3L15,21l4-3.99H16z M9,3L5,6.99h3V14h2V6.99h3L9,3z"/>
+                  </svg>
+                </button>
+                <div class="input-group">
+                  <label class="input-label">変換先の単位</label>
+                  <select class="unit-select" id="speedToUnit">
+                    <option value="mph">マイル毎時 (mph)</option>
+                    <option value="kph">キロメートル毎時 (km/h)</option>
+                    <option value="mps">メートル毎秒 (m/s)</option>
+                    <option value="kt">ノット (knot)</option>
+                    <option value="ftps">フィート毎秒 (ft/s)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="result-section" id="speedResult">
+              <h3 class="result-heading">変換結果</h3>
+              <div class="result-value" id="speedResultValue">0.621371 mph</div>
+              <div class="result-formula" id="speedResultFormula">1 km/h = 0.621371 mph</div>
+              <div class="result-details">
+                <div class="detail-row">
+                  <span>一般的な使用地域</span>
+                  <span id="speedUsage">マイル毎時 - アメリカ、イギリスなど</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 通貨換算 -->
+        <div id="currency" class="tab-content">
+          <div class="calculator-container">
+            <h2 class="calculator-title">
+              <div class="calculator-title-icon">💱</div>
+              通貨換算
+            </h2>
+            <div class="calculator-form">
+              <div class="input-row">
+                <div class="input-group">
+                  <label class="input-label">変換元の金額</label>
+                  <input type="number" class="input-field" id="currencyInput" placeholder="金額を入力" value="100">
+                </div>
+                <div class="input-group">
+                  <label class="input-label">変換元の通貨</label>
+                  <select class="unit-select" id="currencyFromUnit">
+                    <option value="JPY">日本円 (JPY)</option>
+                    <option value="USD">米ドル (USD)</option>
+                    <option value="EUR">ユーロ (EUR)</option>
+                    <option value="GBP">英ポンド (GBP)</option>
+                    <option value="CNY">中国元 (CNY)</option>
+                    <option value="KRW">韓国ウォン (KRW)</option>
+                    <option value="AUD">豪ドル (AUD)</option>
+                    <option value="CAD">カナダドル (CAD)</option>
+                    <option value="THB">タイバーツ (THB)</option>
+                    <option value="SGD">シンガポールドル (SGD)</option>
+                    <option value="HKD">香港ドル (HKD)</option>
+                    <option value="CHF">スイスフラン (CHF)</option>
+                  </select>
+                </div>
+                <button class="swap-button" id="swapCurrencyBtn">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M16,17.01V10h-2v7.01h-3L15,21l4-3.99H16z M9,3L5,6.99h3V14h2V6.99h3L9,3z"/>
+                  </svg>
+                </button>
+                <div class="input-group">
+                  <label class="input-label">変換先の通貨</label>
+                  <select class="unit-select" id="currencyToUnit">
+                    <option value="USD">米ドル (USD)</option>
+                    <option value="JPY">日本円 (JPY)</option>
+                    <option value="EUR">ユーロ (EUR)</option>
+                    <option value="GBP">英ポンド (GBP)</option>
+                    <option value="CNY">中国元 (CNY)</option>
+                    <option value="KRW">韓国ウォン (KRW)</option>
+                    <option value="AUD">豪ドル (AUD)</option>
+                    <option value="CAD">カナダドル (CAD)</option>
+                    <option value="THB">タイバーツ (THB)</option>
+                    <option value="SGD">シンガポールドル (SGD)</option>
+                    <option value="HKD">香港ドル (HKD)</option>
+                    <option value="CHF">スイスフラン (CHF)</option>
+                  </select>
+                </div>
+              </div>
+              <div class="exchange-rate-info">
+                <div class="current-rate">
+                  <span>現在のレート:</span>
+                  <strong id="currentExchangeRate">読み込み中...</strong>
+                </div>
+                <div class="rate-update-time" id="rateUpdateTime">最終更新: 読み込み中...</div>
+              </div>
+            </div>
+            <div class="result-section" id="currencyResult">
+              <h3 class="result-heading">変換結果</h3>
+              <div class="result-value" id="currencyResultValue">計算中...</div>
+              <div class="result-formula" id="currencyResultFormula"></div>
+              <div class="custom-amount-input">
+                <h4>カスタム金額の変換</h4>
+                <div class="input-row">
+                  <div class="input-group">
+                    <input type="number" class="input-field" id="customCurrencyAmount" placeholder="金額を入力">
+                  </div>
+                  <div class="input-group">
+                    <div id="customCurrencyResult" class="result-value" style="font-size: 18px;">-</div>
+                  </div>
+                </div>
+              </div>
+              <div class="rate-provider">
+                <span>データ提供: OpenExchangeRates API (参考レート)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 料理単位変換 -->
+        <div id="cooking" class="tab-content">
+          <div class="calculator-container">
+            <h2 class="calculator-title">
+              <div class="calculator-title-icon">🍳</div>
+              料理の単位換算
+            </h2>
+            <div class="subcategory-selector">
+              <button class="subcategory-item active" data-subcategory="volume">容量</button>
+              <button class="subcategory-item" data-subcategory="weight">重量</button>
+              <button class="subcategory-item" data-subcategory="temperature">温度</button>
+            </div>
+            <div class="subcategory-content active" id="cookingVolumeContent">
+              <div class="calculator-form">
+                <div class="input-row">
+                  <div class="input-group">
+                    <label class="input-label">変換元の値</label>
+                    <input type="number" class="input-field" id="cookingVolumeInput" placeholder="数値を入力" value="1">
+                  </div>
+                  <div class="input-group">
+                    <label class="input-label">変換元の単位</label>
+                    <select class="unit-select" id="cookingVolumeFromUnit">
+                      <option value="cup">カップ (cup)</option>
+                      <option value="tbsp">大さじ (tbsp)</option>
+                      <option value="tsp">小さじ (tsp)</option>
+                      <option value="ml">ミリリットル (ml)</option>
+                      <option value="l">リットル (l)</option>
+                      <option value="floz">液量オンス (fl oz)</option>
+                      <option value="pint">パイント (pt)</option>
+                      <option value="quart">クォート (qt)</option>
+                      <option value="gallon">ガロン (gal)</option>
+                    </select>
+                  </div>
+                  <button class="swap-button" id="swapCookingVolumeBtn">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M16,17.01V10h-2v7.01h-3L15,21l4-3.99H16z M9,3L5,6.99h3V14h2V6.99h3L9,3z"/>
+                    </svg>
+                  </button>
+                  <div class="input-group">
+                    <label class="input-label">変換先の単位</label>
+                    <select class="unit-select" id="cookingVolumeToUnit">
+                      <option value="tbsp">大さじ (tbsp)</option>
+                      <option value="cup">カップ (cup)</option>
+                      <option value="tsp">小さじ (tsp)</option>
+                      <option value="ml">ミリリットル (ml)</option>
+                      <option value="l">リットル (l)</option>
+                      <option value="floz">液量オンス (fl oz)</option>
+                      <option value="pint">パイント (pt)</option>
+                      <option value="quart">クォート (qt)</option>
+                      <option value="gallon">ガロン (gal)</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="result-section" id="cookingVolumeResult">
+                <h3 class="result-heading">変換結果</h3>
+                <div class="result-value" id="cookingVolumeResultValue">16 大さじ</div>
+                <div class="result-formula" id="cookingVolumeResultFormula">1 cup = 16 大さじ</div>
+                <div class="specialized-info">
+                  <div class="specialized-info-title">料理の豆知識</div>
+                  <div class="specialized-info-text">
+                    日本の1カップは200ml、米国の1カップは約240mlです。レシピの国や地域に注意しましょう。
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="subcategory-content" id="cookingWeightContent">
+              <div class="calculator-form">
+                <div class="input-row">
+                  <div class="input-group">
+                    <label class="input-label">変換元の値</label>
+                    <input type="number" class="input-field" id="cookingWeightInput" placeholder="数値を入力" value="1">
+                  </div>
+                  <div class="input-group">
+                    <label class="input-label">変換元の単位</label>
+                    <select class="unit-select" id="cookingWeightFromUnit">
+                      <option value="g">グラム (g)</option>
+                      <option value="kg">キログラム (kg)</option>
+                      <option value="oz">オンス (oz)</option>
+                      <option value="lb">ポンド (lb)</option>
+                    </select>
+                  </div>
+                  <button class="swap-button" id="swapCookingWeightBtn">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M16,17.01V10h-2v7.01h-3L15,21l4-3.99H16z M9,3L5,6.99h3V14h2V6.99h3L9,3z"/>
+                    </svg>
+                  </button>
+                  <div class="input-group">
+                    <label class="input-label">変換先の単位</label>
+                    <select class="unit-select" id="cookingWeightToUnit">
+                      <option value="oz">オンス (oz)</option>
+                      <option value="g">グラム (g)</option>
+                      <option value="kg">キログラム (kg)</option>
+                      <option value="lb">ポンド (lb)</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="result-section" id="cookingWeightResult">
+                <h3 class="result-heading">変換結果</h3>
+                <div class="result-value" id="cookingWeightResultValue">0.035274 oz</div>
+                <div class="result-formula" id="cookingWeightResultFormula">1 g = 0.035274 oz</div>
+              </div>
+            </div>
+            <div class="subcategory-content" id="cookingTemperatureContent">
+              <div class="calculator-form">
+                <div class="input-row">
+                  <div class="input-group">
+                    <label class="input-label">変換元の値</label>
+                    <input type="number" class="input-field" id="cookingTempInput" placeholder="数値を入力" value="180">
+                  </div>
+                  <div class="input-group">
+                    <label class="input-label">変換元の単位</label>
+                    <select class="unit-select" id="cookingTempFromUnit">
+                      <option value="c">摂氏 (°C)</option>
+                      <option value="f">華氏 (°F)</option>
+                      <option value="gasmark">ガスマーク (UK)</option>
+                    </select>
+                  </div>
+                  <button class="swap-button" id="swapCookingTempBtn">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M16,17.01V10h-2v7.01h-3L15,21l4-3.99H16z M9,3L5,6.99h3V14h2V6.99h3L9,3z"/>
+                    </svg>
+                  </button>
+                  <div class="input-group">
+                    <label class="input-label">変換先の単位</label>
+                    <select class="unit-select" id="cookingTempToUnit">
+                      <option value="f">華氏 (°F)</option>
+                      <option value="c">摂氏 (°C)</option>
+                      <option value="gasmark">ガスマーク (UK)</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="result-section" id="cookingTempResult">
+                <h3 class="result-heading">変換結果</h3>
+                <div class="result-value" id="cookingTempResultValue">356 °F</div>
+                <div class="result-formula" id="cookingTempResultFormula">180 °C = 356 °F</div>
+                <div class="specialized-info">
+                  <div class="specialized-info-title">オーブン温度の目安</div>
+                  <div class="specialized-info-text">
+                    <ul>
+                      <li>弱火: 140°C (275°F) - メレンゲ</li>
+                      <li>中火: 180°C (350°F) - クッキー、ケーキ</li>
+                      <li>強火: 220°C (425°F) - ピザ、パン</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- デジタルデータ単位変換 -->
+        <div id="digital" class="tab-content">
+          <div class="calculator-container">
+            <h2 class="calculator-title">
+              <div class="calculator-title-icon">💾</div>
+              デジタルデータの単位換算
+            </h2>
+            <div class="calculator-form">
+              <div class="input-row">
+                <div class="input-group">
+                  <label class="input-label">変換元の値</label>
+                  <input type="number" class="input-field" id="digitalInput" placeholder="数値を入力" value="1">
+                </div>
+                <div class="input-group">
+                  <label class="input-label">変換元の単位</label>
+                  <select class="unit-select" id="digitalFromUnit">
+                    <option value="B">バイト (B)</option>
+                    <option value="KB">キロバイト (KB)</option>
+                    <option value="MB">メガバイト (MB)</option>
+                    <option value="GB">ギガバイト (GB)</option>
+                    <option value="TB">テラバイト (TB)</option>
+                    <option value="PB">ペタバイト (PB)</option>
+                    <option value="KiB">キビバイト (KiB)</option>
+                    <option value="MiB">メビバイト (MiB)</option>
+                    <option value="GiB">ギビバイト (GiB)</option>
+                    <option value="TiB">テビバイト (TiB)</option>
+                    <option value="PiB">ペビバイト (PiB)</option>
+                  </select>
+                </div>
+                <button class="swap-button" id="swapDigitalBtn">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M16,17.01V10h-2v7.01h-3L15,21l4-3.99H16z M9,3L5,6.99h3V14h2V6.99h3L9,3z"/>
+                  </svg>
+                </button>
+                <div class="input-group">
+                  <label class="input-label">変換先の単位</label>
+                  <select class="unit-select" id="digitalToUnit">
+                    <option value="MB">メガバイト (MB)</option>
+                    <option value="B">バイト (B)</option>
+                    <option value="KB">キロバイト (KB)</option>
+                    <option value="GB">ギガバイト (GB)</option>
+                    <option value="TB">テラバイト (TB)</option>
+                    <option value="PB">ペタバイト (PB)</option>
+                    <option value="KiB">キビバイト (KiB)</option>
+                    <option value="MiB">メビバイト (MiB)</option>
+                    <option value="GiB">ギビバイト (GiB)</option>
+                    <option value="TiB">テビバイト (TiB)</option>
+                    <option value="PiB">ペビバイト (PiB)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="result-section" id="digitalResult">
+              <h3 class="result-heading">変換結果</h3>
+              <div class="result-value" id="digitalResultValue">1048576 B</div>
+              <div class="result-formula" id="digitalResultFormula">1 MB = 1048576 B</div>
+              <div class="specialized-info">
+                <div class="specialized-info-title">データ単位の違い</div>
+                <div class="specialized-info-text">
+                  <p>SI接頭辞（KB, MB, GB）: 1000進数 (1KB = 1000B)<br>
+                  バイナリ接頭辞（KiB, MiB, GiB）: 1024進数 (1KiB = 1024B)</p>
+                  <p>ストレージメーカーはSI接頭辞を使用しますが、OSはバイナリ接頭辞で計算することが多く、容量の表示に差が生じます。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- タイポグラフィ単位変換 -->
+        <div id="typography" class="tab-content">
+          <div class="calculator-container">
+            <h2 class="calculator-title">
+              <div class="calculator-title-icon">🔤</div>
+              タイポグラフィの単位換算
+            </h2>
+            <div class="calculator-form">
+              <div class="input-row">
+                <div class="input-group">
+                  <label class="input-label">変換元の値</label>
+                  <input type="number" class="input-field" id="typographyInput" placeholder="数値を入力" value="16">
+                </div>
+                <div class="input-group">
+                  <label class="input-label">変換元の単位</label>
+                  <select class="unit-select" id="typographyFromUnit">
+                    <option value="px">ピクセル (px)</option>
+                    <option value="pt">ポイント (pt)</option>
+                    <option value="em">エム (em)</option>
+                    <option value="rem">ルートエム (rem)</option>
+                    <option value="mm">ミリメートル (mm)</option>
+                    <option value="cm">センチメートル (cm)</option>
+                    <option value="in">インチ (in)</option>
+                    <option value="pc">パイカ (pc)</option>
+                    <option value="q">クォーター (Q)</option>
+                  </select>
+                </div>
+                <button class="swap-button" id="swapTypographyBtn">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M16,17.01V10h-2v7.01h-3L15,21l4-3.99H16z M9,3L5,6.99h3V14h2V6.99h3L9,3z"/>
+                  </svg>
+                </button>
+                <div class="input-group">
+                  <label class="input-label">変換先の単位</label>
+                  <select class="unit-select" id="typographyToUnit">
+                    <option value="pt">ポイント (pt)</option>
+                    <option value="px">ピクセル (px)</option>
+                    <option value="em">エム (em)</option>
+                    <option value="rem">ルートエム (rem)</option>
+                    <option value="mm">ミリメートル (mm)</option>
+                    <option value="cm">センチメートル (cm)</option>
+                    <option value="in">インチ (in)</option>
+                    <option value="pc">パイカ (pc)</option>
+                    <option value="q">クォーター (Q)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="result-section" id="typographyResult">
+              <h3 class="result-heading">変換結果</h3>
+              <div class="result-value" id="typographyResultValue">12 pt</div>
+              <div class="result-formula" id="typographyResultFormula">16 px = 12 pt</div>
+              <div class="specialized-info">
+                <div class="specialized-info-title">フォントサイズの目安</div>
+                <div class="specialized-info-text">
+                  <p>ウェブ標準: 16px (12pt)<br>
+                  見出し大: 24px-36px (18pt-27pt)<br>
+                  見出し中: 18px-24px (14pt-18pt)<br>
+                  小テキスト: 12px-14px (9pt-10.5pt)</p>
+                  <p>em/remはベースフォントサイズを基準とした相対単位です。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>        <!-- 履歴とお気に入り -->
+        <div class="history-favorites">
+          <div class="history-box">
+            <h3 class="history-title">
+              <span class="history-title-icon">
+                <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/>
+                </svg>
+              </span>
+              変換履歴
+            </h3>
+            <div class="history-list" id="conversionHistory">
+              <div class="history-item">
+                <div class="history-text">
+                  <div class="history-value">まだ履歴がありません</div>
+                  <div class="history-date">変換を行うと、ここに履歴が表示されます</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="favorites-box">
+            <h3 class="favorites-title">
+              <span class="favorites-title-icon">
+                <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                </svg>
+              </span>
+              お気に入り
+            </h3>
+            <div class="favorites-list" id="favoriteConversions">
+              <div class="favorites-item">
+                <div class="favorites-text">
+                  <div class="favorites-value">お気に入りがありません</div>
+                  <div class="favorites-date">履歴から星マークをクリックして追加</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 使い方ボックス -->
+        <div class="usage-box">
+          <h3 class="usage-title">
+            <span class="usage-title-icon">
+              <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/>
+              </svg>
+            </span>
+            単位換算ツールの使い方
+          </h3>
+          <ul class="usage-list">
+            <li class="usage-item">タブを選択して、変換したい単位のカテゴリー（長さ、重さなど）を選びます。</li>
+            <li class="usage-item">変換元の値と単位を入力・選択します。</li>
+            <li class="usage-item">変換先の単位を選択すると自動的に計算されます。</li>
+            <li class="usage-item">単位の間の矢印ボタンをクリックすると、変換元と変換先の単位を入れ替えることができます。</li>
+            <li class="usage-item">星マークをクリックすると、よく使う換算をお気に入りに保存できます。</li>
+            <li class="usage-item">計算はすべてブラウザ上で行われるため、プライバシーは保護されます。</li>
+            <li class="usage-item">疑問がある場合は、右下の「?」ボタンをクリックするとガイドが表示されます。</li>
+          </ul>
+        </div>
+
+        <!-- 他のツールリンク -->        <div class="other-tools">
+          <h2 class="other-tools-title">その他のまえゆきツール</h2>
+          <div class="tools-list">
+
+            <a href="image-resize.html" class="tool-link">画像サイズ変更</a>
+            <a href="png-jpeg-to-webp.html" class="tool-link">WebP変換ツール</a>
+            <a href="png-to-jpeg.html" class="tool-link">PNG→JPEG変換</a>
+            <a href="meme-generator.html" class="tool-link">ミームジェネレーター</a>
+            <a href="letters-counter.html" class="tool-link">文字数カウント</a>
+            <a href="color-palette.html" class="tool-link">カラーパレット</a>
+            <a href="wareki-seireki.html" class="tool-link">年齢・和暦計算ツール</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- フッター -->
+  <div id="footer-placeholder"></div>
+  <script>
+    if (!window.isScriptLoaded || !window.isScriptLoaded('/js/include.js')) {
+      document.write('<script src="/js/include.js"><\/script>');
+    } else {
+      console.log('include.jsのロードをスキップしました');
+    }
+  </script>
+
+  <!-- 単位換算用JavaScript -->  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // タブ切り替え機能
+      setupTabs();
+
+      // 初回ユーザーガイド
+      setupWelcomeGuide();
+
+      // 単位換算クラス
+      const UnitConverter = {
+        // 長さの変換係数（メートルを基準）
+        length: {
+          m: 1,
+          cm: 100,
+          mm: 1000,
+          km: 0.001,
+          in: 39.3701,
+          ft: 3.28084,
+          yd: 1.09361,
+          mi: 0.000621371
+        },
+        
+        // 重さの変換係数（キログラムを基準）
+        weight: {
+          kg: 1,
+          g: 1000,
+          mg: 1000000,
+          lb: 2.20462,
+          oz: 35.274,
+          t: 0.001
+        },
+        
+        // 面積の変換係数（平方メートルを基準）
+        area: {
+          m2: 1,
+          cm2: 10000,
+          km2: 0.000001,
+          ha: 0.0001,
+          acre: 0.000247105,
+          sqft: 10.7639,
+          sqin: 1550,
+          sqmi: 3.86102e-7,
+          tsubo: 0.3025
+        },
+        
+        // 体積の変換係数（リットルを基準）
+        volume: {
+          l: 1,
+          ml: 1000,
+          m3: 0.001,
+          gal: 0.264172,
+          galUK: 0.219969,
+          floz: 33.814,
+          cup: 4.16667
+        },
+        
+        // 速度の変換係数（km/hを基準）
+        speed: {
+          kph: 1,
+          mph: 0.621371,
+          mps: 0.277778,
+          kt: 0.539957,
+          ftps: 0.911344
+        },
+
+        // 料理の容量単位（ミリリットルを基準）
+        cookingVolume: {
+          ml: 1,
+          l: 0.001,
+          cup: 0.00425, // 日本のカップ (1カップ = 200ml)
+          tbsp: 0.0667, // 日本の大さじ (1大さじ = 15ml)
+          tsp: 0.2,     // 日本の小さじ (1小さじ = 5ml)
+          floz: 0.0338, // 液量オンス (1fl oz = 29.57ml)
+          pint: 0.00211, // 米国パイント (1pt = 473ml)
+          quart: 0.00106, // 米国クォート (1qt = 946ml)
+          gallon: 0.000264 // 米国ガロン (1gal = 3.785L)
+        },
+
+        // 料理の重量単位（グラムを基準）
+        cookingWeight: {
+          g: 1,
+          kg: 0.001,
+          oz: 0.035274,
+          lb: 0.00220462
+        },
+        
+        // デジタルデータの単位（バイトを基準）
+        digital: {
+          B: 1,
+          KB: 0.001,        // 1000進数
+          MB: 0.000001,     // 1000進数
+          GB: 1e-9,         // 1000進数
+          TB: 1e-12,        // 1000進数
+          PB: 1e-15,        // 1000進数
+          KiB: 0.0009765625, // 1024進数 (1/1024)
+          MiB: 9.5367e-7,   // 1024進数 (1/1024^2)
+          GiB: 9.3132e-10,  // 1024進数 (1/1024^3)
+          TiB: 9.0949e-13,  // 1024進数 (1/1024^4)
+          PiB: 8.8818e-16   // 1024進数 (1/1024^5)
+        },
+        
+        // タイポグラフィ単位（ピクセルを基準、96DPI設定を想定）
+        typography: {
+          px: 1,
+          pt: 1.33333,      // 1pt = 1/72インチ = 約1.33px (@96dpi)
+          em: 0.0625,       // 1em = 16px (基本フォントサイズ)
+          rem: 0.0625,      // 1rem = 16px (ルート要素のフォントサイズ)
+          mm: 3.78,         // 1mm = 3.78px (@96dpi)
+          cm: 0.378,        // 1cm = 0.378px (@96dpi)
+          in: 0.0104167,    // 1in = 96px (@96dpi)
+          pc: 0.1666667,    // 1pc = 12pt = 16px (@96dpi)
+          q: 15.11811       // 1Q = 0.25mm = 0.945px (@96dpi)
+        },
+        
+        // 変換関数
+        convert: function(value, fromUnit, toUnit, type) {
+          if (type === 'temperature') {
+            return this.convertTemperature(value, fromUnit, toUnit);
+          } else if (type === 'cookingTemperature') {
+            return this.convertCookingTemperature(value, fromUnit, toUnit);
+          } else if (type === 'currency') {
+            return this.convertCurrency(value, fromUnit, toUnit);
+          }
+          
+          const conversionFactors = this[type];
+          if (!conversionFactors) return null;
+          
+          // 基準単位に変換してから目標単位に変換
+          const baseValue = value / conversionFactors[fromUnit];
+          return baseValue * conversionFactors[toUnit];
+        },
+        
+        // 温度変換（特別処理）
+        convertTemperature: function(value, fromUnit, toUnit) {
+          let celsius;
+          
+          // まず摂氏に変換
+          switch (fromUnit) {
+            case 'c':
+              celsius = value;
+              break;
+            case 'f':
+              celsius = (value - 32) * 5/9;
+              break;
+            case 'k':
+              celsius = value - 273.15;
+              break;
+          }
+          
+          // 目標単位に変換
+          switch (toUnit) {
+            case 'c':
+              return celsius;
+            case 'f':
+              return celsius * 9/5 + 32;
+            case 'k':
+              return celsius + 273.15;
+          }
+        },
+
+        // 料理用温度変換（オーブンガスマーク対応）
+        convertCookingTemperature: function(value, fromUnit, toUnit) {
+          let celsius;
+          
+          // まず摂氏に変換
+          switch (fromUnit) {
+            case 'c':
+              celsius = value;
+              break;
+            case 'f':
+              celsius = (value - 32) * 5/9;
+              break;
+            case 'gasmark':
+              celsius = 135 + (value * 25); // ガスマークは約25°C単位
+              break;
+          }
+          
+          // 目標単位に変換
+          switch (toUnit) {
+            case 'c':
+              return celsius;
+            case 'f':
+              return celsius * 9/5 + 32;
+            case 'gasmark':
+              const gasmark = (celsius - 135) / 25;
+              return Math.round(gasmark * 2) / 2; // 0.5単位に丸める
+          }
+        },
+
+        // 通貨換算（動的レート）
+        convertCurrency: function(value, fromUnit, toUnit) {
+          // 為替レートはCurrencyAPI.ratesから取得
+          if (!CurrencyAPI.rates || !CurrencyAPI.rates[fromUnit] || !CurrencyAPI.rates[toUnit]) {
+            return null;
+          }
+          
+          // USDを基準に計算
+          const valueInUSD = value / CurrencyAPI.rates[fromUnit];
+          return valueInUSD * CurrencyAPI.rates[toUnit];
+        }
+      };
+
+      // 通貨API
+      const CurrencyAPI = {
+        rates: null,
+        lastUpdated: null,
+        
+        // レート初期化（ダミーデータ、実際はAPIから取得）
+        initRates: function() {
+          // 実際のAPIを使用する場合はここでfetchを使う
+          // 今回はデモのためサンプルレートを使用
+          this.rates = {
+            USD: 1,
+            JPY: 148.52,
+            EUR: 0.92,
+            GBP: 0.78,
+            CNY: 7.13,
+            KRW: 1330.45,
+            AUD: 1.51,
+            CAD: 1.37,
+            THB: 35.21,
+            SGD: 1.34,
+            HKD: 7.81,
+            CHF: 0.88
+          };
+          this.lastUpdated = new Date();
+          this.updateRateDisplay();
+          
+          // カスタム金額変換のリスナー設定
+          document.getElementById('customCurrencyAmount').addEventListener('input', this.updateCustomAmount);
+        },
+        
+        // レート表示の更新
+        updateRateDisplay: function() {
+          const from = document.getElementById('currencyFromUnit').value;
+          const to = document.getElementById('currencyToUnit').value;
+          
+          if (this.rates) {
+            const rate = this.rates[to] / this.rates[from];
+            document.getElementById('currentExchangeRate').textContent = 
+              `1 ${from} = ${smartRound(rate)} ${to}`;
+            
+            const dateOptions = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+            document.getElementById('rateUpdateTime').textContent = 
+              `最終更新: ${this.lastUpdated.toLocaleDateString('ja-JP', dateOptions)}`;
+          }
+        },
+        
+        // カスタム金額換算
+        updateCustomAmount: function() {
+          const from = document.getElementById('currencyFromUnit').value;
+          const to = document.getElementById('currencyToUnit').value;
+          const amount = parseFloat(document.getElementById('customCurrencyAmount').value);
+          
+          if (!isNaN(amount) && CurrencyAPI.rates) {
+            const result = UnitConverter.convert(amount, from, to, 'currency');
+            document.getElementById('customCurrencyResult').textContent = 
+              `${smartRound(result)} ${to}`;
+          } else {
+            document.getElementById('customCurrencyResult').textContent = '-';
+          }
+        }
+      };
+
+      // 履歴とお気に入り管理
+      const HistoryManager = {
+        history: [],
+        favorites: [],
+        maxHistoryItems: 10,
+        
+        // ローカルストレージからデータを読み込む
+        loadFromStorage: function() {
+          const storedHistory = localStorage.getItem('conversionHistory');
+          const storedFavorites = localStorage.getItem('conversionFavorites');
+          
+          if (storedHistory) {
+            this.history = JSON.parse(storedHistory);
+          }
+          
+          if (storedFavorites) {
+            this.favorites = JSON.parse(storedFavorites);
+          }
+          
+          this.renderHistory();
+          this.renderFavorites();
+        },
+        
+        // 履歴に追加
+        addToHistory: function(conversionData) {
+          // 同じ変換が既に履歴にある場合は削除
+          this.history = this.history.filter(item => 
+            !(item.value === conversionData.value && 
+              item.fromUnit === conversionData.fromUnit && 
+              item.toUnit === conversionData.toUnit && 
+              item.type === conversionData.type)
+          );
+          
+          // 新しい変換を先頭に追加
+          this.history.unshift({
+            ...conversionData,
+            id: Date.now(),
+            date: new Date().toISOString()
+          });
+          
+          // 最大件数を超えたら古いものを削除
+          if (this.history.length > this.maxHistoryItems) {
+            this.history.pop();
+          }
+          
+          // ストレージに保存
+          localStorage.setItem('conversionHistory', JSON.stringify(this.history));
+          
+          // 表示を更新
+          this.renderHistory();
+        },
+        
+        // お気に入りに追加/削除
+        toggleFavorite: function(id) {
+          const historyItem = this.history.find(item => item.id === id);
+          
+          if (!historyItem) return;
+          
+          const favoriteIndex = this.favorites.findIndex(item => 
+            item.value === historyItem.value && 
+            item.fromUnit === historyItem.fromUnit && 
+            item.toUnit === historyItem.toUnit && 
+            item.type === historyItem.type
+          );
+          
+          if (favoriteIndex === -1) {
+            // お気に入りに追加
+            this.favorites.unshift({
+              ...historyItem,
+              favoriteDate: new Date().toISOString()
+            });
+          } else {
+            // お気に入りから削除
+            this.favorites.splice(favoriteIndex, 1);
+          }
+          
+          // ストレージに保存
+          localStorage.setItem('conversionFavorites', JSON.stringify(this.favorites));
+          
+          // 表示を更新
+          this.renderHistory();
+          this.renderFavorites();
+        },
+        
+        // 履歴から削除
+        removeFromHistory: function(id) {
+          this.history = this.history.filter(item => item.id !== id);
+          localStorage.setItem('conversionHistory', JSON.stringify(this.history));
+          this.renderHistory();
+        },
+        
+        // お気に入りから削除
+        removeFromFavorites: function(id) {
+          this.favorites = this.favorites.filter(item => item.id !== id);
+          localStorage.setItem('conversionFavorites', JSON.stringify(this.favorites));
+          this.renderFavorites();
+        },
+        
+        // 履歴の表示
+        renderHistory: function() {
+          const historyList = document.getElementById('conversionHistory');
+          
+          if (this.history.length === 0) {
+            historyList.innerHTML = `
+              <div class="history-item">
+                <div class="history-text">
+                  <div class="history-value">まだ履歴がありません</div>
+                  <div class="history-date">変換を行うと、ここに履歴が表示されます</div>
+                </div>
+              </div>
+            `;
+            return;
+          }
+          
+          historyList.innerHTML = '';
+          
+          this.history.forEach(item => {
+            const isFavorite = this.favorites.some(fav => 
+              fav.value === item.value && 
+              fav.fromUnit === item.fromUnit && 
+              fav.toUnit === item.toUnit && 
+              fav.type === item.type
+            );
+            
+            const date = new Date(item.date);
+            const formattedDate = `${date.getFullYear()}/${(date.getMonth()+1).toString().padStart(2, '0')}/${date.getDate().toString().padStart(2, '0')} ${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}`;
+            
+            const historyItem = document.createElement('div');
+            historyItem.className = 'history-item';
+            historyItem.innerHTML = `
+              <div class="history-text">
+                <div class="history-value">${item.formattedResult}</div>
+                <div class="history-date">${formattedDate}</div>
+              </div>
+              <div class="history-actions">
+                <button class="history-button favorite-button ${isFavorite ? 'active' : ''}" data-id="${item.id}" title="${isFavorite ? 'お気に入りから削除' : 'お気に入りに追加'}">★</button>
+                <button class="history-button delete-button" data-id="${item.id}" title="履歴から削除">×</button>
+              </div>
+            `;
+            
+            historyList.appendChild(historyItem);
+          });
+          
+          // イベントリスナーを設定
+          historyList.querySelectorAll('.favorite-button').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+              const id = parseInt(e.currentTarget.dataset.id);
+              this.toggleFavorite(id);
+            });
+          });
+          
+          historyList.querySelectorAll('.delete-button').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+              const id = parseInt(e.currentTarget.dataset.id);
+              this.removeFromHistory(id);
+            });
+          });
+        },
+        
+        // お気に入りの表示
+        renderFavorites: function() {
+          const favoritesList = document.getElementById('favoriteConversions');
+          
+          if (this.favorites.length === 0) {
+            favoritesList.innerHTML = `
+              <div class="favorites-item">
+                <div class="favorites-text">
+                  <div class="favorites-value">お気に入りがありません</div>
+                  <div class="favorites-date">履歴から星マークをクリックして追加</div>
+                </div>
+              </div>
+            `;
+            return;
+          }
+          
+          favoritesList.innerHTML = '';
+          
+          this.favorites.forEach(item => {
+            const date = new Date(item.favoriteDate || item.date);
+            const formattedDate = `${date.getFullYear()}/${(date.getMonth()+1).toString().padStart(2, '0')}/${date.getDate().toString().padStart(2, '0')}`;
+            
+            const favoriteItem = document.createElement('div');
+            favoriteItem.className = 'favorites-item';
+            favoriteItem.innerHTML = `
+              <div class="favorites-text">
+                <div class="favorites-value">${item.formattedResult}</div>
+                <div class="favorites-date">${formattedDate} 追加</div>
+              </div>
+              <div class="favorites-actions">
+                <button class="favorites-button delete-button" data-id="${item.id}" title="お気に入りから削除">×</button>
+              </div>
+            `;
+            
+            favoritesList.appendChild(favoriteItem);
+          });
+          
+          // イベントリスナーを設定
+          favoritesList.querySelectorAll('.delete-button').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+              const id = parseInt(e.currentTarget.dataset.id);
+              this.removeFromFavorites(id);
+            });
+          });
+        }
+      };
+
+      // 地域情報とフォーマット
+      const UnitInfo = {
+        length: {
+          m: "メートル法（SI単位系）- 世界中で使用",
+          cm: "メートル法（SI単位系）- 世界中で使用",
+          mm: "メートル法（SI単位系）- 世界中で使用",
+          km: "メートル法（SI単位系）- 世界中で使用",
+          in: "インチ - アメリカ、イギリスなど",
+          ft: "フィート - アメリカ、イギリスなど",
+          yd: "ヤード - アメリカ、イギリスなど",
+          mi: "マイル - アメリカ、イギリスなど"
+        },
+        weight: {
+          kg: "キログラム（SI単位系）- 世界中で使用",
+          g: "グラム（SI単位系）- 世界中で使用",
+          mg: "ミリグラム（SI単位系）- 世界中で使用",
+          lb: "ポンド - アメリカ、イギリスなど",
+          oz: "オンス - アメリカ、イギリスなど",
+          t: "トン（メートルトン）- 世界中で使用"
+        },
+        area: {
+          m2: "平方メートル（SI単位系）- 世界中で使用",
+          cm2: "平方センチメートル - 世界中で使用",
+          km2: "平方キロメートル - 世界中で使用",
+          ha: "ヘクタール - 世界中で使用（農地・土地面積）",
+          acre: "エーカー - アメリカ、イギリスなど",
+          sqft: "平方フィート - アメリカ、イギリスなど",
+          sqin: "平方インチ - アメリカ、イギリスなど",
+          sqmi: "平方マイル - アメリカ、イギリスなど",
+          tsubo: "坪 - 日本の不動産取引"
+        },
+        volume: {
+          l: "リットル - 世界中で使用",
+          ml: "ミリリットル - 世界中で使用",
+          m3: "立方メートル - 世界中で使用",
+          gal: "ガロン - アメリカ",
+          galUK: "ガロン - イギリス",
+          floz: "液量オンス - アメリカ",
+          cup: "カップ - 料理で広く使用"
+        },
+        temperature: {
+          c: "摂氏 - 世界のほとんどの国",
+          f: "華氏 - アメリカ合衆国",
+          k: "ケルビン - 科学分野で使用"
+        },
+        speed: {
+          kph: "キロメートル毎時 - 世界のほとんどの国",
+          mph: "マイル毎時 - アメリカ、イギリスなど",
+          mps: "メートル毎秒 - 科学分野で使用",
+          kt: "ノット - 航空・海洋分野で使用",
+          ftps: "フィート毎秒 - アメリカなど"
+        }
+      };
+
+      // 単位表示名
+      const UnitLabels = {
+        // 基本単位
+        m: "m", cm: "cm", mm: "mm", km: "km", in: "in", ft: "ft", yd: "yd", mi: "mi",
+        kg: "kg", g: "g", mg: "mg", lb: "lb", oz: "oz", t: "t",
+        m2: "m²", cm2: "cm²", km2: "km²", ha: "ha", acre: "acre", sqft: "ft²", sqin: "in²", sqmi: "mi²", tsubo: "坪",
+        l: "L", ml: "mL", m3: "m³", gal: "gal (US)", galUK: "gal (UK)", floz: "fl oz", cup: "cup",
+        c: "°C", f: "°F", k: "K",
+        kph: "km/h", mph: "mph", mps: "m/s", kt: "knot", ftps: "ft/s",
+        
+        // 通貨単位
+        JPY: "円", USD: "$", EUR: "€", GBP: "£", CNY: "元", KRW: "₩",
+        AUD: "A$", CAD: "C$", THB: "฿", SGD: "S$", HKD: "HK$", CHF: "CHF",
+        
+        // 料理単位
+        tbsp: "大さじ", tsp: "小さじ", pint: "pt", quart: "qt", gallon: "gal",
+        gasmark: "ガスマーク",
+        
+        // デジタルデータ単位
+        B: "B", KB: "KB", MB: "MB", GB: "GB", TB: "TB", PB: "PB",
+        KiB: "KiB", MiB: "MiB", GiB: "GiB", TiB: "TiB", PiB: "PiB",
+        
+        // タイポグラフィ単位
+        px: "px", pt: "pt", em: "em", rem: "rem", pc: "pc", q: "Q"
+      };
+
+      // 換算フォームをセットアップ
+      setupConversionForm('length');
+      setupConversionForm('weight');
+      setupConversionForm('area');
+      setupConversionForm('volume');
+      setupConversionForm('temperature');
+      setupConversionForm('speed');
+      
+      // 新機能：通貨換算
+      setupConversionForm('currency');
+      CurrencyAPI.initRates();
+      
+      // 新機能：料理の単位換算
+      setupCookingSubcategories();
+      setupConversionForm('cookingVolume');
+      setupConversionForm('cookingWeight');
+      setupConversionForm('cookingTemp');
+      
+      // 新機能：デジタルデータ
+      setupConversionForm('digital');
+      
+      // 新機能：タイポグラフィ
+      setupConversionForm('typography');
+      
+      // 履歴とお気に入り
+      HistoryManager.loadFromStorage();
+
+      // タブ切り替え機能
+      function setupTabs() {
+        const tabs = document.querySelectorAll('.calculator-tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabs.forEach(tab => {
+          tab.addEventListener('click', function() {
+            // アクティブなタブを変更
+            tabs.forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+            
+            // 対応するコンテンツを表示
+            const tabId = this.getAttribute('data-tab');
+            tabContents.forEach(content => {
+              content.classList.remove('active');
+              if (content.id === tabId) {
+                content.classList.add('active');
+              }
+            });
+            
+            // 通貨タブが選択された場合、レート表示を更新
+            if (tabId === 'currency') {
+              CurrencyAPI.updateRateDisplay();
+            }
+          });
+        });
+      }
+      
+      // 料理単位のサブカテゴリ設定
+      function setupCookingSubcategories() {
+        const subcategoryButtons = document.querySelectorAll('.subcategory-item');
+        const subcategoryContents = document.querySelectorAll('.subcategory-content');
+        
+        subcategoryButtons.forEach(button => {
+          button.addEventListener('click', function() {
+            const subcategory = this.getAttribute('data-subcategory');
+            
+            // ボタンのアクティブ状態を変更
+            subcategoryButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            
+            // コンテンツの表示/非表示を切り替え
+            subcategoryContents.forEach(content => {
+              content.classList.remove('active');
+              if (content.id === 'cooking' + capitalizeFirstLetter(subcategory) + 'Content') {
+                content.classList.add('active');
+              }
+            });
+          });
+        });
+      }
+      
+      // 初回ユーザーガイド
+      function setupWelcomeGuide() {
+        const welcomeGuide = document.getElementById('welcomeGuide');
+        const closeButton = document.getElementById('welcomeClose');
+        const startButton = document.getElementById('welcomeStartBtn');
+        const dontShowButton = document.getElementById('welcomeDontShowBtn');
+        const showGuideButton = document.getElementById('showGuideBtn');
+        
+        // 初回訪問チェック
+        const hasVisited = localStorage.getItem('hasVisitedCalcTool');
+        
+        if (!hasVisited) {
+          // 初回訪問の場合、ガイドを表示
+          welcomeGuide.classList.add('show');
+        }
+        
+        // ボタンのイベントリスナー設定
+        closeButton.addEventListener('click', () => {
+          welcomeGuide.classList.remove('show');
+        });
+        
+        startButton.addEventListener('click', () => {
+          welcomeGuide.classList.remove('show');
+          localStorage.setItem('hasVisitedCalcTool', 'true');
+        });
+        
+        dontShowButton.addEventListener('click', () => {
+          welcomeGuide.classList.remove('show');
+          localStorage.setItem('hasVisitedCalcTool', 'true');
+        });
+        
+        showGuideButton.addEventListener('click', () => {
+          welcomeGuide.classList.add('show');
+        });
+      }
+
+      // 変換フォームのセットアップ
+      function setupConversionForm(type) {
+        const input = document.getElementById(`${type}Input`);
+        const fromUnit = document.getElementById(`${type}FromUnit`);
+        const toUnit = document.getElementById(`${type}ToUnit`);
+        const swapButton = document.getElementById(`swap${capitalizeFirstLetter(type)}Btn`);
+        
+        if (!input || !fromUnit || !toUnit || !swapButton) return;
+        
+        // 値が変わったときに変換
+        input.addEventListener('input', () => updateConversion(type));
+        fromUnit.addEventListener('change', () => updateConversion(type));
+        toUnit.addEventListener('change', () => updateConversion(type));
+        
+        // 単位を入れ替え
+        swapButton.addEventListener('click', () => {
+          const tempUnit = fromUnit.value;
+          fromUnit.value = toUnit.value;
+          toUnit.value = tempUnit;
+          updateConversion(type);
+          
+          // 通貨の場合はレート表示も更新
+          if (type === 'currency') {
+            CurrencyAPI.updateRateDisplay();
+            CurrencyAPI.updateCustomAmount();
+          }
+        });
+        
+        // 初期変換
+        updateConversion(type);
+      }
+
+      // 変換の更新と表示
+      function updateConversion(type) {
+        const input = document.getElementById(`${type}Input`);
+        const fromUnit = document.getElementById(`${type}FromUnit`);
+        const toUnit = document.getElementById(`${type}ToUnit`);
+        const resultValue = document.getElementById(`${type}ResultValue`);
+        const resultFormula = document.getElementById(`${type}ResultFormula`);
+        const usageInfo = document.getElementById(`${type}Usage`);
+        
+        if (!input || !fromUnit || !toUnit || !resultValue || !resultFormula) return;
+        
+        const value = parseFloat(input.value);
+        if (isNaN(value)) {
+          resultValue.textContent = "値を入力してください";
+          resultFormula.textContent = "";
+          return;
+        }
+        
+        // 変換実行
+        let convertType = type;
+        // 料理単位の場合は対応するタイプに変換
+        if (type === 'cookingTemp') convertType = 'cookingTemperature';
+        
+        const result = UnitConverter.convert(value, fromUnit.value, toUnit.value, convertType);
+        
+        // 結果の表示
+        if (result !== null) {
+          // 高精度な丸め
+          const roundedResult = smartRound(result);
+          
+          // 表示の更新
+          const fromUnitLabel = UnitLabels[fromUnit.value];
+          const toUnitLabel = UnitLabels[toUnit.value];
+          
+          resultValue.textContent = `${roundedResult} ${toUnitLabel}`;
+          resultFormula.textContent = `${value} ${fromUnitLabel} = ${roundedResult} ${toUnitLabel}`;
+          
+          // 使用地域の表示
+          if (usageInfo && UnitInfo[type] && UnitInfo[type][toUnit.value]) {
+            usageInfo.textContent = UnitInfo[type][toUnit.value];
+          }
+          
+          // 履歴に追加
+          if (type !== 'cookingTemp' && type !== 'cookingVolume' && type !== 'cookingWeight') {
+            HistoryManager.addToHistory({
+              type: type,
+              value: value,
+              fromUnit: fromUnit.value,
+              toUnit: toUnit.value,
+              result: result,
+              formattedResult: `${value} ${fromUnitLabel} = ${roundedResult} ${toUnitLabel}`
+            });
+          }
+        } else {
+          resultValue.textContent = "変換エラー";
+          resultFormula.textContent = "";
+        }
+      }
+
+      // スマートな丸め処理
+      function smartRound(num) {
+        if (Math.abs(num) >= 100) {
+          return Math.round(num);
+        } else if (Math.abs(num) >= 10) {
+          return Math.round(num * 10) / 10;
+        } else if (Math.abs(num) >= 1) {
+          return Math.round(num * 100) / 100;
+        } else if (Math.abs(num) >= 0.1) {
+          return Math.round(num * 1000) / 1000;
+        } else if (Math.abs(num) >= 0.01) {
+          return Math.round(num * 10000) / 10000;
+        } else {
+          return Math.round(num * 100000) / 100000;
+        }
+      }
+
+      // 文字列の先頭を大文字に
+      function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+      }
+    });
+  </script>
+</body>
+</html>

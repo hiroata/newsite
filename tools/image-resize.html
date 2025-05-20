@@ -1,5 +1,7 @@
-<!DOCTYPE html><html lang="ja"><head>
-    <script src="/js/prevent-duplicate-includes.js"></script>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script src="/js/prevent-duplicate-includes.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="まえゆきツールの画像サイズ変更ツール - ブラウザ上でJPEG・PNG画像をまとめてリサイズ・縮小できる無料ツールです。アスペクト比を保ったまま複数の画像を一括処理できます。">
@@ -8,25 +10,25 @@
 
   <!-- リソースの先読み -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <!-- インクルード処理 -->
-  
-  
+
+
   <!-- 画像遅延読み込み -->
-  <script src="/js/lazy-loading.js" defer=""></script>
+  <script src="/js/lazy-loading.js" defer></script>
 
   <!-- 共通CSSとフォント -->
   <link rel="stylesheet" href="/css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&amp;display=swap" rel="stylesheet">
-  
+
   <!-- ツール共通CSS -->
   <link rel="stylesheet" href="/css/tools-common.css">
   <link rel="stylesheet" href="/css/image-tools-styles.css">
-  
+
   <!-- 共通スクリプト読み込み -->
   <script src="/js/image-tools-utils.js"></script>
-  
+
   <!-- 個別ツールのスタイル -->
   <style>
     /* 画像リサイズツール固有のスタイル - 必要な場合のみ追加 */
@@ -124,7 +126,8 @@
     }
     .setting-row {
       display: flex;
-      align-items: center;
+      flex-wrap: wrap;
+      align-items: flex-start;
       margin-bottom: 20px;
       padding: 15px;
       background: #fff;
@@ -137,9 +140,12 @@
       font-size: 14px;
       display: flex;
       align-items: center;
+      margin-right: 10px;
+      margin-bottom: 5px;
     }
     .setting-icon {
       display: inline-block;
+      min-width: 24px;
       width: 24px;
       height: 24px;
       line-height: 24px;
@@ -148,11 +154,14 @@
       border-radius: 50%;
       margin-right: 8px;
       font-size: 12px;
+      flex-shrink: 0;
     }
     .setting-input {
       flex: 1;
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
+      min-width: 200px;
     }
     .size-input {
       width: 100px;
@@ -160,19 +169,26 @@
       border: 1px solid #ddd;
       border-radius: 4px;
       font-size: 14px;
+      flex-shrink: 0;
     }
     .size-unit {
       margin-left: 8px;
+      margin-right: 5px;
       font-size: 14px;
       color: #666;
+      flex-shrink: 0;
     }
     .size-note {
       margin-left: 8px;
+      margin-right: 5px;
       font-size: 12px;
       color: #999;
+      flex-shrink: 0;
     }
     .quality-note {
       margin-left: 8px;
+      margin-top: 5px;
+      width: 100%;
       font-size: 14px;
       color: #666;
     }
@@ -355,6 +371,7 @@
       display: flex;
       align-items: center;
       margin-top: 10px;
+      width: 100%;
       font-size: 14px;
       color: #666;
     }
@@ -363,7 +380,8 @@
       display: inline-block;
       width: 20px;
       height: 20px;
-      margin-right: 8px;
+      margin-right: 10px;
+      flex-shrink: 0;
     }
     .aspect-checkbox {
       position: absolute;
@@ -432,19 +450,18 @@
   </style>
 
   <!-- JavaScriptの遅延ロード -->
-  <script src="/js/script.js" defer=""></script>
+  <script src="/js/script.js" defer></script>
 
   <link rel="icon" href="/images/favicon.ico">
   <meta property="og:title" content="画像サイズ変更ツール | まえゆきツール">
   <meta property="og:description" content="まえゆきツールの画像サイズ変更ツール - ブラウザ上でJPEG・PNG画像をまとめてリサイズ・縮小できる無料ツールです。">
   <meta property="og:image" content="/images/tool-ogp.webp">
   <meta property="og:type" content="website">
-<link rel="stylesheet" href="/css/image-tools-styles.css"><script src="/js/image-tools-utils.js"></script></head>
+</head>
 <body>
-<!-- header -->
   <!-- ヘッダー -->
   <div id="header-placeholder"></div>
-  
+
 
   <!-- メインコンテンツ -->
   <main>
@@ -460,7 +477,7 @@
           <span class="step-number">1</span>
           <h2 class="step-title">サイズ変更する画像を選択</h2>
           <p class="step-description">複数枚を一括で縮小できます。JPEGもPNGもまとめてどうぞ！</p>
-          
+
           <div class="drop-area" id="dropArea">
             <div class="drop-area-icon">
               <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -480,22 +497,22 @@
           <div class="files-meta" id="filesMeta"></div>
           <div class="files-container" id="filesContainer"></div>
         </div>
-
+        
         <!-- ステップ2: 設定 -->
         <div class="step-section">
           <span class="step-number">2</span>
           <h2 class="step-title">目的に合わせて設定</h2>
           <p class="step-description">用途に合わせて最適なサイズを選びましょう。</p>
-          
+
           <!-- プリセットタブ -->
           <div class="preset-tabs" id="presetTabs">
-            <button class="preset-tab active" data-preset="custom">カスタム設定</button>
-            <button class="preset-tab" data-preset="web">Web用（軽量化）</button>
-            <button class="preset-tab" data-preset="sns">SNS投稿用</button>
-            <button class="preset-tab" data-preset="print">印刷用（高画質）</button>
-            <button class="preset-tab" data-preset="thumbnail">サムネイル作成</button>
+            <button type="button" class="preset-tab active" data-preset="custom">カスタム設定</button>
+            <button type="button" class="preset-tab" data-preset="web">Web用（軽量化）</button>
+            <button type="button" class="preset-tab" data-preset="sns">SNS投稿用</button>
+            <button type="button" class="preset-tab" data-preset="print">印刷用（高画質）</button>
+            <button type="button" class="preset-tab" data-preset="thumbnail">サムネイル作成</button>
           </div>
-          
+
           <div class="settings-container">
             <div class="setting-row">
               <div class="setting-title">
@@ -507,16 +524,18 @@
                 <span class="size-note">（ピクセル）</span>
               </div>
             </div>
-            
+
             <div class="setting-row">
               <div class="setting-title">
                 <span class="setting-icon">↕</span> 画像の最大高
               </div>
               <div class="setting-input" id="maxHeightContainer">
-                <input type="number" id="maxHeight" class="size-input" value="1200" min="1">
-                <span class="size-unit">px</span>
-                <span class="size-note">（ピクセル）</span>
-                
+                <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                  <input type="number" id="maxHeight" class="size-input" value="1200" min="1">
+                  <span class="size-unit">px</span>
+                  <span class="size-note">（ピクセル）</span>
+                </div>
+
                 <div class="lock-aspect-ratio">
                   <label class="checkbox-wrapper">
                     <input type="checkbox" class="aspect-checkbox" id="lockAspectRatio" checked="">
@@ -526,7 +545,7 @@
                 </div>
               </div>
             </div>
-            
+
             <!-- 簡易化した画質設定 -->
             <div class="setting-row">
               <div class="setting-title">
@@ -542,7 +561,7 @@
               </div>
             </div>
           </div>
-          
+
           <!-- 進捗表示エリア -->
           <div class="progress-container" id="progressContainer">
             <div class="progress-bar">
@@ -550,9 +569,9 @@
             </div>
             <div class="progress-text" id="progressText">処理中...</div>
           </div>
-          
+
           <div class="action-container">
-            <button class="resize-button" id="resizeBtn" disabled="">リサイズしてダウンロード</button>
+            <button type="button" class="resize-button" id="resizeBtn" disabled="">リサイズしてダウンロード</button>
           </div>
         </div>
 
@@ -567,7 +586,7 @@
             </span>
             画像のサイズ変更の仕方
           </h3>
-          
+
           <ul class="usage-list">
             <li class="usage-item">Web（ブラウザ）で使える画像リサイズツールです。</li>
             <li class="usage-item">JPEG/PNG/GIF画像を複数選択して縮小できます。</li>
@@ -586,51 +605,24 @@
             </li>
           </ul>
         </div>
-        
+
         <!-- 他のツールリンク -->
         <div class="other-tools">
           <h2 class="other-tools-title">その他のまえゆきツール</h2>
           <div class="tools-list">
-            <a href="calc.html" class="tool-link">単位換算と計算</a>
-            <a href="countdown.html" class="tool-link">Webでカウントダウン</a>
-            <a href="roulette.html" class="tool-link">Webでルーレット</a>
-            <a href="bingo.html" class="tool-link">ビンゴ・マシーン</a>
+    
             <a href="image-resize.html" class="tool-link">画像リサイズ</a>
             <a href="png-to-jpeg.html" class="tool-link">PNG→JPEG変換</a>
             <a href="png-jpeg-to-webp.html" class="tool-link">WebP変換</a>
-            <a href="wareki-seireki.html" class="tool-link">年齢・和暦計算</a>
+            <a href="meme-generator.html" class="tool-link">ミームジェネレーター</a>
+            <a href="letters-counter.html" class="tool-link">文字数カウント</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- フッター（トップページと同じスタイルに変更） -->
-    <footer class="site-footer" style="background-color: #e6f7ff;">
-      <div class="footer-container" style="display:flex;align-items:flex-start;gap:32px;flex-wrap:wrap;">
-        <div style="font-weight:bold;font-size:1.3rem;color:#333;letter-spacing:0.08em;min-width:80px;">オートウェビナー大学</div>
-        <div class="footer-widgets" style="display:flex;gap:32px;flex-wrap:wrap;flex:1;">
-          <div class="widget-area">
-            <h4 style="color:#1a5276;">無料コンテンツ</h4>
-            <ul>
-              <li><a href="/blog/index.html">ブログ</a></li>
-              <li><a href="/book/index.html">電子書籍</a></li>
-              <li><a href="/free-seminar.html">無料セミナー</a></li>
-              <li><a href="/free-consultation.html">無料相談</a></li>
-              <li><a href="/achievement/index.html">お客様の声</a></li>
-            </ul>
-          </div>
-          <div class="widget-area">
-            <h4 style="color:#1a5276;">運営情報</h4>
-            <ul>
-              <li><a href="/owner.html">運営者情報</a></li>
-              <li><a href="/terms.html">利用規約</a></li>
-              <li><a href="/privacy.html">プライバシーポリシー</a></li>
-              <li><a href="/tokutei.html">特定商取引法に基づく表記</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </footer>
+  <!-- JSZipの読み込み -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 
   <!-- SVGアイコン -->
   <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -638,9 +630,6 @@
       <path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"></path>
     </symbol>
   </svg>
-
-  <!-- JSZipの読み込み -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 
   <!-- 画像リサイズ用JavaScript -->
   <script>
@@ -659,12 +648,12 @@
         const progressContainer = document.getElementById('progressContainer');
         const progressBar = document.getElementById('progressBar');
         const progressText = document.getElementById('progressText');
-        
+
         // 状態管理
         let selectedFiles = [];
         let resizedImages = [];
         let originalAspectRatio = 1;
-        
+
         // プリセット設定
         const presets = {
             custom: {
@@ -698,26 +687,26 @@
                 description: "サムネイル用の小さいサイズ"
             }
         };
-        
+
         // プリセットタブ切り替え
         presetTabs.forEach(tab => {
             tab.addEventListener('click', function() {
                 // アクティブタブ切り替え
                 presetTabs.forEach(t => t.classList.remove('active'));
                 this.classList.add('active');
-                
+
                 // プリセット設定適用
                 const presetKey = this.getAttribute('data-preset');
                 const preset = presets[presetKey];
-                
+
                 maxWidthInput.value = preset.width;
                 maxHeightInput.value = preset.height;
-                
+
                 // 画質設定を更新
                 setQualityByValue(preset.quality);
             });
         });
-        
+
         // 画質値に対応するセレクトオプションを選択
         function setQualityByValue(value) {
             if (value <= 60) {
@@ -728,50 +717,50 @@
                 qualitySelect.value = '85';
             }
         }
-        
+
         // アスペクト比維持の処理
         function updateAspectRatio() {
             if (!lockAspectRatio.checked) return;
-            
+
             // 現在のフォーカスされている要素を取得
             const focused = document.activeElement;
-            
+
             // 幅が変更された場合は高さを調整
             if (focused === maxWidthInput) {
                 const newWidth = parseInt(maxWidthInput.value) || 0;
                 maxHeightInput.value = Math.round(newWidth / originalAspectRatio);
-            } 
+            }
             // 高さが変更された場合は幅を調整
             else if (focused === maxHeightInput) {
                 const newHeight = parseInt(maxHeightInput.value) || 0;
                 maxWidthInput.value = Math.round(newHeight * originalAspectRatio);
             }
         }
-        
+
         // 入力フィールドの変更をリッスン
         maxWidthInput.addEventListener('input', updateAspectRatio);
         maxHeightInput.addEventListener('input', updateAspectRatio);
-        
+
         // 共通関数を使用してファイルドロップ設定
         setupFileDropAndSelection(dropArea, fileInput, handleFiles);
-        
+
         // ファイル処理
         function handleFiles(files) {
             const validFiles = Array.from(files).filter(file => {
                 const type = file.type.toLowerCase();
                 return type === 'image/jpeg' || type === 'image/png' || type === 'image/gif';
             });
-            
+
             if (validFiles.length === 0) return;
-            
+
             // 既存のファイルに追加
             selectedFiles = [...selectedFiles, ...validFiles];
-            
+
             // 1つ目の画像のアスペクト比を計算し保存
             if (selectedFiles.length === validFiles.length) {
                 const img = new Image();
                 const reader = new FileReader();
-                
+
                 reader.onload = function(e) {
                     img.onload = function() {
                         originalAspectRatio = img.width / img.height;
@@ -784,19 +773,19 @@
                 };
                 reader.readAsDataURL(validFiles[0]);
             }
-            
+
             // UIを更新
             updateFilesUI();
             updateFilesMetaUI();
-            
+
             // リサイズボタンを有効化
             resizeBtn.disabled = selectedFiles.length === 0;
         }
-        
+
         // ファイルUI更新（共通関数の一部を活用）
         function updateFilesUI() {
             filesContainer.innerHTML = '';
-            
+
             selectedFiles.forEach((file, index) => {
                 const reader = new FileReader();
                 reader.onload = function(e) {
@@ -811,44 +800,44 @@
                 reader.readAsDataURL(file);
             });
         }
-        
+
         // ファイルメタ情報更新
         function updateFilesMetaUI() {
             if (selectedFiles.length === 0) {
                 filesMeta.textContent = '';
                 return;
             }
-            
+
             let totalSize = 0;
             selectedFiles.forEach(file => {
                 totalSize += file.size;
             });
-            
+
             const sizeInMB = (totalSize / (1024 * 1024)).toFixed(2);
             filesMeta.textContent = `${selectedFiles.length}枚の画像（合計 ${sizeInMB} MB）`;
         }
-        
+
         // リサイズボタン
         resizeBtn.addEventListener('click', async function() {
             if (selectedFiles.length === 0) return;
-            
+
             // ボタンを無効化して処理中表示
             resizeBtn.disabled = true;
             resizeBtn.textContent = '処理中...';
-            
+
             // 進捗表示を表示
             progressContainer.style.display = 'block';
             progressBar.style.width = '0%';
             progressText.textContent = '画像処理中 (0/' + selectedFiles.length + ')';
-            
+
             // サイズ設定を取得
             const maxWidth = parseInt(maxWidthInput.value) || 1200;
             const maxHeight = parseInt(maxHeightInput.value) || 1200;
             const quality = parseInt(qualitySelect.value);
-            
+
             // 画像を非同期でリサイズ
             resizedImages = [];
-            
+
             for (let i = 0; i < selectedFiles.length; i++) {
                 const file = selectedFiles[i];
                 try {
@@ -857,7 +846,7 @@
                         name: file.name,
                         blob: resizedBlob
                     });
-                    
+
                     // 進捗表示更新
                     const progress = Math.round(((i + 1) / selectedFiles.length) * 100);
                     progressBar.style.width = progress + '%';
@@ -868,16 +857,16 @@
                     updateUI('処理エラーが発生しました', true);
                 }
             }
-            
+
             // 処理完了メッセージを表示
             progressText.textContent = 'ダウンロード準備完了！';
-            
+
             // ZIPファイルを作成してダウンロード
             await downloadResizedImages();
-            
+
             // 共通関数でUI更新
             updateUI('画像処理が完了しました！');
-            
+
             // 進捗バーを非表示にして、ボタンを元に戻す
             setTimeout(() => {
                 progressContainer.style.display = 'none';
@@ -885,20 +874,37 @@
                 resizeBtn.disabled = false;
             }, 1000);
         });
-        
+
         // 画像リサイズ処理
-        // resizeImageは共通関数を使用
+        async function resizeImage(file, maxWidth, maxHeight, quality) {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                
+                img.onload = function() {
+                    const origWidth = img.width;
+                    const origHeight = img.height;
+                    const aspectRatio = origWidth / origHeight;
+                    
+                    // 初期サイズ
+                    let newWidth = origWidth;
+                    let newHeight = origHeight;
+                    
+                    // 最大幅に合わせてリサイズ
+                    if (newWidth > maxWidth) {
+                        newWidth = maxWidth;
+                        newHeight = newWidth / aspectRatio;
+                    }
                     
                     // 最大高さに合わせてリサイズ
                     if (newHeight > maxHeight) {
                         newHeight = maxHeight;
                         newWidth = newHeight * aspectRatio;
                     }
-                    
+
                     // 小数点以下を切り捨て
                     newWidth = Math.floor(newWidth);
                     newHeight = Math.floor(newHeight);
-                    
+
                     // リサイズの必要がなければ元の画像を返す
                     if (newWidth >= origWidth && newHeight >= origHeight) {
                         file.arrayBuffer().then(buffer => {
@@ -906,25 +912,25 @@
                         }).catch(reject);
                         return;
                     }
-                    
+
                     // キャンバスでリサイズ
                     const canvas = document.createElement('canvas');
                     canvas.width = newWidth;
                     canvas.height = newHeight;
-                    
+
                     const ctx = canvas.getContext('2d');
                     ctx.drawImage(img, 0, 0, newWidth, newHeight);
-                    
+
                     // JPEG/PNGで出力
                     const mimeType = file.type;
-                    
+
                     canvas.toBlob(blob => {
                         resolve(blob);
                     }, mimeType, quality / 100);
                 };
-                
+
                 img.onerror = reject;
-                
+
                 // 画像読み込み
                 const reader = new FileReader();
                 reader.onload = function(e) {
@@ -934,11 +940,11 @@
                 reader.readAsDataURL(file);
             });
         }
-        
+
         // 画像ダウンロード処理
         async function downloadResizedImages() {
             if (resizedImages.length === 0) return;
-            
+
             // 単一画像の場合は直接ダウンロード
             if (resizedImages.length === 1) {
                 const url = URL.createObjectURL(resizedImages[0].blob);
@@ -951,18 +957,18 @@
                 URL.revokeObjectURL(url);
                 return;
             }
-            
+
             // 複数画像の場合はZIPでダウンロード
             const zip = new JSZip();
-            
+
             // 画像をZIPに追加
             resizedImages.forEach(image => {
                 zip.file(image.name, image.blob);
             });
-            
+
             // 進捗テキスト更新
             progressText.textContent = 'ZIPファイル作成中...';
-            
+
             // ZIPを生成してダウンロード
             const content = await zip.generateAsync({ type: 'blob' });
             const url = URL.createObjectURL(content);
@@ -973,24 +979,26 @@
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
-            
+
             // 進捗テキスト更新
             progressText.textContent = 'ダウンロード完了！';
         }
     });
   </script>
 
-    <!-- ツールリクエストセクション -->
-    <section class="tool-request">
-      <div class="request-card">
-        <h3>新しいツールをリクエスト</h3>
-        <p>ほしいツールがあれば教えてください！<br>可能な限り対応させていただきます。</p>
-        <a href="https://forms.gle/b1VzXaEvLcetLwceA" class="request-button" target="_blank" rel="noopener">ツールをリクエストする</a>
+    <!-- 他のツールリンク -->
+    <div class="other-tools">
+      <h2 class="other-tools-title">その他のまえゆきツール</h2>
+      <div class="tools-list">            <a href="png-jpeg-to-webp.html" class="tool-link">WebP変換ツール</a>
+        <a href="png-to-jpeg.html" class="tool-link">PNG→JPEG変換</a>
+        <a href="meme-generator.html" class="tool-link">ミームジェネレーター</a>
+        <a href="letters-counter.html" class="tool-link">文字数カウント</a>
+        <a href="color-palette.html" class="tool-link">カラーパレット</a>
+        <a href="wareki-seireki.html" class="tool-link">年齢・和暦計算ツール</a>
+        <a href="calc.html" class="tool-link">世界の単位換算ツール</a>
       </div>
-    </section>
-  </p></p></p></p></p>
-</li></li></li></li></li></li></li></li></li>
-</main>
+    </div>
+  </main>
 
   <!-- フッター -->
   <div id="footer-placeholder"></div>
@@ -1000,10 +1008,6 @@
     } else {
         console.log('include.jsのロードをスキップしました');
     }
-</script>
-  
-
-
-<!-- footer -->
+  </script>
 </body>
 </html>

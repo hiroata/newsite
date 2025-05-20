@@ -15,7 +15,7 @@
   <!-- 共通CSSとフォント -->
   <link rel="stylesheet" href="/css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
-  
+
   <!-- ツール共通CSS -->
   <link rel="stylesheet" href="/css/tools-common.css">
 
@@ -43,7 +43,7 @@
          margin-bottom: 2rem;
          color: var(--text-dark);
      }
-     
+
      /* 文字入力エリア */
      .input-area {
          margin-top: 20px;
@@ -79,7 +79,7 @@
      .counter-textarea:focus {
          outline: none;
      }
-     
+
      /* 結果エリア */
      .result-area {
          margin-top: 30px;
@@ -112,7 +112,7 @@
          font-weight: 700;
          margin-left: 5px;
      }
-     
+
      /* 設定エリア */
      .settings-area {
          margin-top: 40px;
@@ -133,7 +133,7 @@
          margin-left: 10px;
          cursor: pointer;
      }
-     
+
      /* トグルスイッチ */
      .toggle-switch {
          position: relative;
@@ -174,7 +174,7 @@
      input:checked + .toggle-slider:before {
          transform: translateX(26px);
      }
-     
+
      /* 使い方ボックス */
      .usage-box {
          background: #fff;
@@ -214,7 +214,7 @@
      .usage-link:hover {
          text-decoration: underline;
      }
-     
+
      /* シェアセクション */
      .share-section {
          margin: 40px 0;
@@ -264,7 +264,7 @@
      .share-twitter { background: #1DA1F2; }
      .share-facebook { background: #1877F2; }
      .share-line { background: #06C755; }
-     
+
      /* 他のツールリンク */
      .other-tools {
          margin-top: 40px;
@@ -295,7 +295,7 @@
          transform: translateY(-2px);
          border-color: var(--primary);
      }
-     
+
      /* レスポンシブ対応 */
      @media (max-width: 768px) {
          .tool-section {
@@ -333,7 +333,7 @@
      .btn-clear:hover {
          background: #c0392b;
      }
-     
+
      /* 結果アクション領域 */
      .result-actions {
          display: flex;
@@ -405,7 +405,7 @@
       background-color: #0d3283;
       color: white;
     }
-    
+
     .site-footer .footer-container {
       max-width: 1200px;
       margin: 0 auto;
@@ -415,35 +415,35 @@
       align-items: flex-start;
       gap: 32px;
     }
-    
+
     .site-footer .footer-widgets {
       display: flex;
       flex: 1;
       flex-wrap: wrap;
       gap: 32px;
     }
-    
+
     .site-footer .widget-area {
       min-width: 160px;
     }
-    
+
     .site-footer .widget-area h4 {
       color: white;
       margin-bottom: 15px;
       font-size: 16px;
       font-weight: bold;
     }
-    
+
     .site-footer .widget-area ul {
       padding: 0;
       list-style: none;
     }
-    
+
     .site-footer .widget-area ul li {
       position: relative;
       margin-bottom: 10px;
     }
-    
+
     .site-footer .widget-area ul li a {
       position: relative;
       display: inline-block;
@@ -452,17 +452,17 @@
       text-decoration: none;
       transition: all 0.15s ease-out;
     }
-    
+
     .site-footer .widget-area ul li a:hover {
       color: white;
     }
-    
+
     @media (max-width: 768px) {
       .site-footer .footer-container {
         flex-direction: column;
         gap: 20px;
       }
-      
+
       .site-footer .footer-widgets {
         flex-direction: column;
         gap: 20px;
@@ -470,17 +470,16 @@
     }
   </style>
   <!-- インクルード処理 -->
-  
+
 </head>
 <body>
-<!-- header -->
   <!-- ヘッダー -->
-  <div id="header-placeholder">
-  
+  <div id="header-placeholder"></div>
 
   <!-- メインコンテンツ -->
   <main>
-    <!-- ツールのコンテナ -->    <div class="app-wrapper">
+    <!-- ツールのコンテナ -->    
+    <div class="app-wrapper">
       <div class="tool-container">
         <div class="tool-header">
           <h1>文字数カウント</h1>
@@ -488,152 +487,127 @@
         </div>
         <!-- ツール固有のコンテンツ -->
         <div class="tool-content">
-                  <!-- ツールセクション -->
-            <section class="tool-section">
-              <div class="tool-container"><!-- テキスト入力エリア -->
-            <div class="input-area">
-               <div class="counter-bar">
+          <!-- ツールセクション -->
+          <section class="tool-section">
+            <div class="tool-container">
+              <!-- テキスト入力エリア -->
+              <div class="input-area">
+                <div class="counter-bar">
                   ただ今の文字数は <strong id="currentCount">0</strong> 字
-               </div>
-               <div class="textarea-controls">
-                  <button id="sampleTextButton" class="btn-sample">
-                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                        <polyline points="14 2 14 8 20 8"></polyline>
-                        <line x1="16" y1="13" x2="8" y2="13"></line>
-                        <line x1="16" y1="17" x2="8" y2="17"></line>
-                        <line x1="10" y1="9" x2="8" y2="9"></line>
-                     </svg>
-                     サンプルテキストを挿入
+                </div>
+                <div class="textarea-controls">
+                  <button type="button" id="sampleTextButton" class="btn-sample">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                      <polyline points="14 2 14 8 20 8"></polyline>
+                      <line x1="16" y1="13" x2="8" y2="13"></line>
+                      <line x1="16" y1="17" x2="8" y2="17"></line>
+                      <line x1="10" y1="9" x2="8" y2="9"></line>
+                    </svg>
+                    サンプルテキストを挿入
                   </button>
-                  <button id="clearTextButton" class="btn-clear">
-                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="3 6 5 6 21 6"></polyline>
-                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                     </svg>
-                     クリア
+                  <button type="button" id="clearTextButton" class="btn-clear">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="3 6 5 6 21 6"></polyline>
+                      <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    </svg>
+                    クリア
                   </button>
-               </div>
-               <textarea id="textInput" class="counter-textarea" placeholder="カウントする文章を入力" autofocus=""></textarea>
-            </div>
-            
-            <!-- 結果表示エリア -->
-            <div class="result-area">
-               <h2 class="result-title">現在の文字数</h2>               <ul class="result-list">
+                </div>
+                <textarea id="textInput" class="counter-textarea" placeholder="カウントする文章を入力" autofocus=""></textarea>
+              </div>
+
+              <!-- 結果表示エリア -->
+              <div class="result-area">
+                <h2 class="result-title">現在の文字数</h2>
+                <ul class="result-list">
                   <li class="result-item">
-                     空白と改行をふくむ文字数... <span class="result-value" id="totalCount">0</span>
+                    空白と改行をふくむ文字数... <span class="result-value" id="totalCount">0</span>
                   </li>
                   <li class="result-item">
-                     空白と改行をのぞいた文字数... <span class="result-value" id="noSpaceCount">0</span>
+                    空白と改行をのぞいた文字数... <span class="result-value" id="noSpaceCount">0</span>
                   </li>
                   <li class="result-item">
-                     行数... <span class="result-value" id="lineCount">1</span>
+                    行数... <span class="result-value" id="lineCount">1</span>
                   </li>
                   <li class="result-item">
-                     バイト数 (UTF-8)... <span class="result-value" id="byteCount">0</span>
+                    バイト数 (UTF-8)... <span class="result-value" id="byteCount">0</span>
                   </li>
-               </ul>
-               <div class="result-actions">
-                  <button id="copyResultButton" class="btn-action">
-                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                     </svg>
-                     結果をコピー
+                </ul>
+                <div class="result-actions">
+                  <button type="button" id="copyResultButton" class="btn-action">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                    結果をコピー
                   </button>
                   <div id="copyMessage" class="copy-message">コピーしました！</div>
-               </div>
-            </div>
-            
-            <!-- 設定エリア -->
-            <div class="settings-area">
-               <h2 class="settings-title">カウントの仕方の設定</h2>
-               <div class="setting-option">
+                </div>
+              </div>
+
+              <!-- 設定エリア -->
+              <div class="settings-area">
+                <h2 class="settings-title">カウントの仕方の設定</h2>
+                <div class="setting-option">
                   <label class="toggle-switch">
-                     <input type="checkbox" id="htmlToggle">
-                     <span class="toggle-slider"></span>
+                    <input type="checkbox" id="htmlToggle">
+                    <span class="toggle-slider"></span>
                   </label>
                   <label for="htmlToggle">HTMLタグをカウントしない</label>
-               </div>
-               <div class="setting-option">
+                </div>
+                <div class="setting-option">
                   <label class="toggle-switch">
-                     <input type="checkbox" id="emojiToggle">
-                     <span class="toggle-slider"></span>
+                    <input type="checkbox" id="emojiToggle">
+                    <span class="toggle-slider"></span>
                   </label>
                   <label for="emojiToggle">絵文字を1文字としてカウント</label>
-               </div>
-            </div>
-            
-            <!-- 使い方ボックス -->
-            <div class="usage-box">
-               <h3 class="usage-title">
+                </div>
+              </div>
+
+              <!-- 使い方ボックス -->
+              <div class="usage-box">
+                <h3 class="usage-title">
                   <span class="usage-title-icon">
-                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <line x1="12" y1="16" x2="12" y2="12"></line>
-                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
-                     </svg>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <line x1="12" y1="16" x2="12" y2="12"></line>
+                      <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                    </svg>
                   </span>
                   文字数カウンターの使い方
-               </h3>
-               
-               <ul class="usage-list">
+                </h3>
+
+                <ul class="usage-list">
                   <li class="usage-item">シンプルな文字数カウンターです。文字数制限があるときや、書いた文章の文字数を知りたいときにご利用ください。</li>
                   <li class="usage-item">絵文字や異体字にも対応しています。</li>
                   <li class="usage-item">文章を入力すると、自動で文字数がカウントされます。</li>
                   <li class="usage-item">行数は改行ごとにカウントされます。</li>
                   <li class="usage-item">
-                     HTMLの文字数のカウントもできます。
-                     タグをカウントしたくないときは「HTMLタグをカウントしない」をONにしてください。
+                    HTMLの文字数のカウントもできます。
+                    タグをカウントしたくないときは「HTMLタグをカウントしない」をONにしてください。
                   </li>
-               </ul>
+                </ul>
+              </div>            
+              <!-- 他のツールリンク -->
+              <div class="other-tools">
+                <h2 class="other-tools-title">その他のまえゆきツール</h2>                <div class="tools-list">
+                  <a href="image-resize.html" class="tool-link">画像サイズ変更</a>
+                  <a href="png-jpeg-to-webp.html" class="tool-link">WebP変換ツール</a>
+                  <a href="png-to-jpeg.html" class="tool-link">PNG→JPEG変換</a>
+                  <a href="meme-generator.html" class="tool-link">ミームジェネレーター</a>
+                  <a href="color-palette.html" class="tool-link">カラーパレット</a>
+                  <a href="wareki-seireki.html" class="tool-link">年齢・和暦計算ツール</a>
+                  <a href="calc.html" class="tool-link">世界の単位換算ツール</a>
+                </div>
+              </div>
             </div>
-         </div>
-            <!-- コミュニティCTAセクション -->
-      <section class="contact-cta-section">
-         <div class="contact-cta-container">
-            <span class="contact-cta-subtitle">より便利なツールを一緒に作ろう</span>
-            <h2 class="contact-cta-title">ツールリクエスト募集中！</h2>
-            <p class="contact-cta-lead">
-               こんなツールがあったら便利！というアイデアをお持ちですか？<br class="pc-only">
-               まえゆきツールは、みなさんのフィードバックをもとに改善・拡張しています。<br class="pc-only">
-               ぜひあなたのアイデアをお聞かせください。
-            </p>
-            <div class="contact-cta-buttons">               
-               <a href="../free-consultation.html" class="btn btn-contact">
-                  ツールをリクエスト
-               </a>
-               <a href="../about.html" class="btn btn-document">
-                  <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
-                  サービス詳細
-               </a>
-            </div>
-         </div>
-      </section>      <!-- 他のツールリンク -->
-      <div class="other-tools">
-         <h2 class="other-tools-title">その他のまえゆきツール</h2>
-         <div class="tools-list">
-            <a href="calc.html" class="tool-link">単位換算と計算</a>
-            <a href="countdown.html" class="tool-link">Webでカウントダウン</a>
-            <a href="roulette.html" class="tool-link">Webでルーレット</a>
-            <a href="bingo.html" class="tool-link">ビンゴ・マシーン</a>
-            <a href="image-resize.html" class="tool-link">画像リサイズ</a>
-            <a href="png-to-jpeg.html" class="tool-link">PNG→JPEG変換</a>
-            <a href="png-jpeg-to-webp.html" class="tool-link">WebP変換</a>
-            <a href="wareki-seireki.html" class="tool-link">年齢・和暦計算</a>
-            <a href="meme-generator.html" class="tool-link">ミーム作成</a>
-            <a href="color-palette.html" class="tool-link">カラーパレット</a>
-            <a href="password-generator.html" class="tool-link">パスワード生成</a>
-         </div>
+          </section>
+        </div>
       </div>
-    </p></p></p></p></p></p>
-</li></li></li></li></li></li></li></li></li></li></li></li></li>
-</main>        </div>
-      </div>
-    </div>      </section>
     </div>
   </main>
-  
+
   <!-- フッターを共通コンポーネントとして読み込み -->
   <div id="footer-placeholder"></div>
   <script>
@@ -642,9 +616,8 @@
     } else {
         console.log('include.jsのロードをスキップしました');
     }
-</script>
+  </script>
 
-  
   <!-- SVGアイコン -->
   <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
     <symbol id="icon-pdf" viewBox="0 0 24 24">
@@ -653,7 +626,6 @@
   </svg>
 
   <!-- 共通JavaScriptと文字数カウント用JavaScript -->
-  
   <script>
      document.addEventListener('DOMContentLoaded', function() {
          // 要素の参照
@@ -665,41 +637,41 @@
          const byteCount = document.getElementById('byteCount');
          const htmlToggle = document.getElementById('htmlToggle');
          const emojiToggle = document.getElementById('emojiToggle');
-         
+
          // テキスト入力イベント
          textInput.addEventListener('input', countText);
-         
+
          // HTMLタグトグル
          htmlToggle.addEventListener('change', countText);
-         
+
          // 絵文字トグル
          emojiToggle.addEventListener('change', countText);
-         
+
          // 文字数カウント関数
          function countText() {
              // テキストを取得
              let text = textInput.value;
-             
+
              // HTMLタグを除外する場合
              if (htmlToggle.checked) {
                  text = text.replace(/<[^>]*>/g, '');
              }
-             
+
              // 絵文字を1文字としてカウント
              let totalChars = text.length;
-             
+
              // 絵文字を特殊処理する場合
              if (emojiToggle.checked) {
                  // サロゲートペア（絵文字など）を1文字としてカウント
                  totalChars = [...text].length;
              }
-             
+
              // 空白や改行を除外した文字数
              const noSpaceChars = text.replace(/\s+/g, '').length;
-             
+
              // 行数（改行ごとにカウント）
              const lines = text === '' ? 1 : text.split('\n').length;
-             
+
              // UTF-8バイト数
              const bytes = new TextEncoder().encode(text).length;
                // 結果を更新
@@ -709,7 +681,7 @@
              lineCount.textContent = lines;
              byteCount.textContent = bytes;
          }
-         
+
          // サンプルテキストボタン
          const sampleTextButton = document.getElementById('sampleTextButton');
          if (sampleTextButton) {
@@ -726,13 +698,13 @@
 
 HTML対応：<div>タグのカウント</div> もできます。
 絵文字対応：🎉✨🚀 絵文字も正確にカウントします。`;
-                 
+
                  textInput.value = sampleText;
                  countText();
                  textInput.focus();
              });
          }
-         
+
          // クリアボタン
          const clearTextButton = document.getElementById('clearTextButton');
          if (clearTextButton) {
@@ -742,7 +714,7 @@ HTML対応：<div>タグのカウント</div> もできます。
                  textInput.focus();
              });
          }
-         
+
          // 結果コピーボタン
          const copyResultButton = document.getElementById('copyResultButton');
          const copyMessage = document.getElementById('copyMessage');
@@ -754,7 +726,7 @@ HTML対応：<div>タグのカウント</div> もできます。
 空白と改行をのぞいた文字数: ${noSpaceCount.textContent}
 行数: ${lineCount.textContent}
 バイト数 (UTF-8): ${byteCount.textContent}`;
-                 
+
                  // クリップボードにコピー
                  navigator.clipboard.writeText(resultText).then(function() {
                      // コピー成功
@@ -765,16 +737,11 @@ HTML対応：<div>タグのカウント</div> もできます。
                  });
              });
          }
-         
+
          // 初期カウント
          countText();
      });
   </script>
-
-<!-- footer -->
-</body>
-  <!-- フッター -->
-  
 </body>
 </html>
 
