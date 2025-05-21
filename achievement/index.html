@@ -4,17 +4,17 @@
     <meta name="description" content="オートウェビナー大学の講座を受講された方々の成功事例やビジネス成果をご紹介します。実際にUTAGEを活用した自動化で売上アップを実現した事例を多数掲載。">
     <title>お客様の声・成功事例一覧 | オートウェビナー大学</title>    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/apple-style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
-    <link rel="icon" href="/assets/images/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&amp;display=swap" rel="stylesheet">    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/apple-style.css">    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"></noscript>
     <meta property="og:title" content="お客様の声・成功事例一覧 | オートウェビナー大学">
-    <meta property="og:description" content="オートウェビナー大学の講座を受講された方々の成功事例やビジネス成果をご紹介します。実際にUTAGEを活用した自動化で売上アップを実現した事例を多数掲載。">
-    <meta property="og:image" content="/assets/images/ogp_image_achievements.webp">
+    <meta property="og:description" content="オートウェビナー大学の講座を受講された方々の成功事例やビジネス成果をご紹介します。実際にUTAGEを活用した自動化で売上アップを実現した事例を多数掲載。">    <meta property="og:image" content="/assets/images/ogp_image_achievements.webp">
     <meta property="og:type" content="website">
     <script src="/assets/js/components.js" defer=""></script>
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" defer></script>
+    <script src="achievement.js" defer></script>
+    <link rel="stylesheet" href="/css/achievement.css">   <!-- モバイルUX向上のための追加CSS -->
+   <!-- モバイルCSSはachievement.cssに統合済み -->
     <style>
         :root {
             --primary-color: #0066ff;
@@ -24,9 +24,10 @@
             --light-bg: #f8f9fa;
             --gradient-primary: linear-gradient(135deg, #0066ff, #00b8ff);
             --gradient-secondary: linear-gradient(135deg, #ff3a3a, #ff7d7d);
-            --gradient-success: linear-gradient(135deg, #00c853, #69f0ae);            --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --gradient-success: linear-gradient(135deg, #00c853, #69f0ae);
+            --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08);
             --shadow-strong: 0 15px 40px rgba(0, 0, 0, 0.12);
-            --transition-fast: all 0.15s ease;
+            --transition-fast: all 0.3s ease;
             --border-radius: 12px;
         }
 
@@ -158,7 +159,9 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
             gap: 30px;
-        }        .achievement-card {
+        }
+
+        .achievement-card {
             background: white;
             border-radius: var(--border-radius);
             overflow: hidden;
@@ -167,22 +170,23 @@
             display: flex;
             flex-direction: column;
             position: relative;
+            text-decoration: none; /* リンクの下線を削除 */
+            color: inherit; /* 親要素の文字色を継承 */
+        }
+
+        /* クリック可能なカードのスタイル */
+        .clickable-card {
             cursor: pointer;
+        }
+
+        .clickable-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-strong);
         }
 
         .achievement-card:hover {
             transform: translateY(-10px);
             box-shadow: var(--shadow-strong);
-        }
-        
-        .achievement-card-link {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            text-indent: -9999px;
         }
 
         .achievement-card::before {
@@ -236,14 +240,11 @@
         .achievement-tag.tag-service {
             background: rgba(0, 200, 83, 0.1);
             color: #00c853;
-        }        .achievement-tag.tag-consulting {
+        }
+
+        .achievement-tag.tag-consulting {
             background: rgba(156, 39, 176, 0.1);
             color: #9c27b0;
-        }
-        
-        .achievement-tag {
-            position: relative;
-            z-index: 2;
         }
 
         .achievement-title {
@@ -323,13 +324,38 @@
         }
 
         .achievement-quote {
-            background: #f9f9f9;
+            background: #f0f7ff;
             border-left: 4px solid var(--primary-color);
-            padding: 15px;
+            padding: 20px 20px 20px 30px;
             font-style: italic;
-            color: #555;
-            font-size: 14px;
-            margin-bottom: 0;
+            color: #333;
+            font-size: 16px;
+            line-height: 1.6;
+            margin: 15px 0 5px;
+            border-radius: 8px;
+            position: relative;
+            box-shadow: 0 3px 15px rgba(0, 102, 255, 0.1);
+        }
+        
+        .achievement-quote::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 50px;
+            color: var(--primary-color);
+            opacity: 0.3;
+            font-family: serif;
+            line-height: 1;
+        }
+        
+        .achievement-quote::after {
+            content: '';
+            display: block;
+            margin-top: 10px;
+            height: 2px;
+            width: 40px;
+            background: var(--primary-color);
         }
 
         .achievement-cta {
@@ -496,6 +522,7 @@
 
    <!-- モバイルUX向上のための追加CSS -->
    <!-- モバイルCSSはstyle.cssに統合済み -->
+>>>>>>> 3c38702b1573cafde2c4926588d0444258ebefc6
 </head>
 <body>
 
@@ -596,6 +623,7 @@
                 UTAGEを活用した自動化で売上アップと時間の自由を実現した<br>
                 オートウェビナー大学のお客様の実績をご紹介します
             </p>
+<<<<<<< HEAD
 
             <div class="achievement-stats" data-aos="fade-up" data-aos-delay="300">
                 <div class="stat-item">
@@ -612,35 +640,20 @@
                 </div>
             </div>
         </div>
-    </section>
-
-    <section class="achievement-container">
-        <div class="filter-section">
-            <h2 class="filter-title">業種別で探す</h2>
-            <div class="filter-buttons">
-                <button class="filter-button active">すべて</button>
-                <button class="filter-button">コンサルタント</button>
-                <button class="filter-button">フリーランス</button>
-                <button class="filter-button">ECサイト</button>
-                <button class="filter-button">士業</button>
-                <button class="filter-button">サービス業</button>
-            </div>        </div>
-        
-        <div class="achievement-grid">            <!-- 事例1 -->
+    </section>    <section class="achievement-container">
+        <div class="achievement-grid"><!-- 事例1 -->
             <div class="achievement-card" data-aos="fade-up" data-aos-delay="100">
-                <a href="/achievement/customer1.html" class="achievement-card-link" aria-label="コーチング販売が完全自動化！の詳細を見る">詳細を見る</a>
-                <div class="achievement-image">
-                    <img src="/assets/images/achieve-1.webp" alt="コーチング販売が完全自動化！" loading="lazy">
-                </div>
-                <div class="achievement-header">
+                <a href="/achievement/customer1.html" class="achievement-card-link" aria-label="コーチング販売が完全自動化！の詳細を見る">詳細を見る</a>                <div class="achievement-image">
+                    <img src="/assets/images/achieve-1.webp" 
+                         alt="コーチング販売が完全自動化！" 
+                         loading="lazy" 
+                         width="400" 
+                         height="225" 
+                         fetchpriority="high">
+                </div>                <div class="achievement-header">
                     <span class="achievement-tag tag-consulting">コンサルタント</span>
-                    <h3 class="achievement-title">コーチング販売が完全自動化！</h3>
-                    <div class="achievement-meta">
-                        <div class="achievement-company">
-                            <span class="achievement-company-icon">
-                                <img src="/assets/images/company-icon1.webp" alt="企業アイコン" loading="lazy">
-                            </span>
-                            <span>ビジネスコーチ</span>
+                    <h3 class="achievement-title">離職率1%の企業の人材定着術</h3>                    <div class="achievement-meta">                        <div class="achievement-company">
+                            <span>株式会社笑認 髙安様</span>
                         </div>
                         <div class="achievement-date">2025年3月</div>
                     </div>
@@ -648,40 +661,35 @@
                 <div class="achievement-content">
                     <div class="achievement-stats-row">
                         <div class="achievement-stat">
-                            <span class="achievement-stat-number">350万</span>
-                            <span class="achievement-stat-label">月間売上</span>
+                            <span class="achievement-stat-number">220名</span>
+                            <span class="achievement-stat-label">従業員規模</span>
                         </div>
                         <div class="achievement-stat">
-                            <span class="achievement-stat-number">80%</span>
-                            <span class="achievement-stat-label">販売自動化率</span>
-                        </div>
-                        <div class="achievement-stat">
-                            <span class="achievement-stat-number">3週間</span>
-                            <span class="achievement-stat-label">導入期間</span>
-                        </div>
-                    </div>
-                    <p class="achievement-description">
-                        ビジネスコーチがコーチングプログラムの販売を自動化。セールスコールなしで高額商品が売れる仕組みを構築し、自由な時間を確保できるようになりました。
-                    </p>
-                    <blockquote class="achievement-quote">
-                        「UTAGEを使ったオートウェビナーは私の働き方を変えました。今は営業せずとも売上が上がり、本当にクライアントの役に立つ仕事に集中できています」
-                    </blockquote>
-                </div>
-            </div>            <!-- 事例2 -->
-            <div class="achievement-card" data-aos="fade-up" data-aos-delay="200">
-                <a href="/achievement/customer2.html" class="achievement-card-link" aria-label="ネット販売初心者が月商100万円達成！の詳細を見る">詳細を見る</a>
+                            <span class="achievement-stat-number">1%</span>
+                            <span class="achievement-stat-label">離職率</span>
+=======
+        </div>
+    </section>
+    
+    <section class="achievement-container">
+        <div class="filter-section" data-aos="fade-up">
+            <h2 class="section-title">成功事例</h2>
+        </div>
+        
+        <div class="achievement-grid">
+            <a href="/achievement/customer1.html" class="achievement-card clickable-card" data-aos="fade-up">
                 <div class="achievement-image">
-                    <img src="/assets/images/achieve-2.webp" alt="ネット販売初心者が月商100万円達成！" loading="lazy">
+                    <img src="/assets/images/achieve-1.webp" alt="Webデザイナー事例" loading="lazy">
                 </div>
                 <div class="achievement-header">
-                    <span class="achievement-tag tag-service">フリーランス</span>
-                    <h3 class="achievement-title">ネット販売初心者が月商100万円達成！</h3>
+                    <span class="achievement-tag tag-service">デザイン</span>
+                    <h3 class="achievement-title">営業時間ゼロでも月商2倍達成！</h3>
                     <div class="achievement-meta">
                         <div class="achievement-company">
                             <span class="achievement-company-icon">
-                                <img src="/assets/images/company-icon2.webp" alt="企業アイコン" loading="lazy">
+                                <img src="/assets/images/company-icon1.webp" alt="企業アイコン" loading="lazy">
                             </span>
-                            <span>デザイナー</span>
+                            <span>Webデザイナー</span>
                         </div>
                         <div class="achievement-date">2025年1月</div>
                     </div>
@@ -689,12 +697,12 @@
                 <div class="achievement-content">
                     <div class="achievement-stats-row">
                         <div class="achievement-stat">
-                            <span class="achievement-stat-number">100万</span>
-                            <span class="achievement-stat-label">月間売上</span>
+                            <span class="achievement-stat-number">2倍</span>
+                            <span class="achievement-stat-label">月商アップ</span>
                         </div>
                         <div class="achievement-stat">
-                            <span class="achievement-stat-number">90%</span>
-                            <span class="achievement-stat-label">時間削減率</span>
+                            <span class="achievement-stat-number">70%</span>
+                            <span class="achievement-stat-label">作業時間削減</span>
                         </div>
                         <div class="achievement-stat">
                             <span class="achievement-stat-number">4週間</span>
@@ -702,15 +710,56 @@
                         </div>
                     </div>
                     <p class="achievement-description">
-                        Web制作のスキルはあっても販売は未経験だったフリーランスデザイナーが、オートウェビナーで自分のデザインノウハウを商品化。IT知識ゼロから始めても成功しました。
+                        フリーランスWebデザイナーが集客からクロージングまでの全プロセスを自動化。見込み客の教育と販売を24時間自動で行う仕組みを構築しました。
                     </p>
                     <blockquote class="achievement-quote">
-                        「ITが苦手でも、サポートのおかげで簡単に仕組みが作れました。案件獲得に悩む日々から解放され、安定収入を得られるようになりました」
+                        「これまで営業に時間を取られていましたが、今は本業に集中でき、さらに収入も増えました。自動化の威力を実感しています」
                     </blockquote>
                 </div>
-            </div>            <!-- 事例3 -->
-            <div class="achievement-card" data-aos="fade-up" data-aos-delay="300">
-                <a href="/achievement/customer3.html" class="achievement-card-link" aria-label="24時間販売の自動化動線完成！の詳細を見る">詳細を見る</a>
+            </a>
+            
+            <a href="/achievement/customer2.html" class="achievement-card clickable-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="achievement-image">
+                    <img src="/assets/images/achieve-2.webp" alt="小売店事例" loading="lazy">
+                </div>
+                <div class="achievement-header">
+                    <span class="achievement-tag tag-ecommerce">小売</span>
+                    <h3 class="achievement-title">在庫管理と顧客対応の自動化で売上150%達成</h3>
+                    <div class="achievement-meta">
+                        <div class="achievement-company">
+                            <span class="achievement-company-icon">
+                                <img src="/assets/images/company-icon2.webp" alt="企業アイコン" loading="lazy">
+                            </span>
+                            <span>アパレル小売店</span>
+                        </div>
+                        <div class="achievement-date">2024年12月</div>
+                    </div>
+                </div>
+                <div class="achievement-content">
+                    <div class="achievement-stats-row">
+                        <div class="achievement-stat">
+                            <span class="achievement-stat-number">150%</span>
+                            <span class="achievement-stat-label">売上向上</span>
+                        </div>
+                        <div class="achievement-stat">
+                            <span class="achievement-stat-number">60%</span>
+                            <span class="achievement-stat-label">作業時間削減</span>
+                        </div>
+                        <div class="achievement-stat">
+                            <span class="achievement-stat-number">5週間</span>
+                            <span class="achievement-stat-label">導入期間</span>
+                        </div>
+                    </div>
+                    <p class="achievement-description">
+                        アパレル小売店が在庫管理システムと顧客対応を自動化。リピート率が向上し、スタッフの作業負担も大幅に軽減されました。
+                    </p>
+                    <blockquote class="achievement-quote">
+                        「UTAGEを導入して以来、顧客対応の質が向上し、在庫切れのミスもなくなりました。店舗運営が格段に楽になっています」
+                    </blockquote>
+                </div>
+            </a>
+            
+            <a href="/achievement/customer3.html" class="achievement-card clickable-card" data-aos="fade-up" data-aos-delay="200">
                 <div class="achievement-image">
                     <img src="/assets/images/achieve-3.webp" alt="24時間販売の自動化動線完成！" loading="lazy">
                 </div>
@@ -732,11 +781,99 @@
                         <div class="achievement-stat">
                             <span class="achievement-stat-number">450万</span>
                             <span class="achievement-stat-label">月間売上</span>
+>>>>>>> 3c38702b1573cafde2c4926588d0444258ebefc6
                         </div>
                         <div class="achievement-stat">
                             <span class="achievement-stat-number">100%</span>
                             <span class="achievement-stat-label">自動化率</span>
                         </div>
+<<<<<<< HEAD
+                    </div>
+                    <p class="achievement-description">
+                        労働集約型事業における人材定着の専門家。UTAGEで問い合わせや情報提供を自動化し、本業に集中できる環境を実現。著書『離職率1%の会社が編み出した 超人材定着術』の情報発信を効率化しています。
+                    </p>
+                    <blockquote class="achievement-quote">
+                        「UTAGEの仕組みを使って情報を届けることは非常に重要だと感じています。マーケティングの神様だと感じるほどの素晴らしいサポートでした」
+                    </blockquote>
+                </div>
+            </div>            <!-- 事例2 -->
+            <div class="achievement-card" data-aos="fade-up" data-aos-delay="200">
+                <a href="/achievement/customer2.html" class="achievement-card-link" aria-label="ネット販売初心者が月商100万円達成！の詳細を見る">詳細を見る</a>                <div class="achievement-image">
+                    <img src="/assets/images/achieve-2.webp" alt="ネット販売初心者が月商100万円達成！" loading="lazy" width="400" height="225">
+                </div>                <div class="achievement-header">
+                    <span class="achievement-tag tag-service">フリーランス</span>
+                    <h3 class="achievement-title">脳科学ゴルフで400万円売上達成！</h3>                    <div class="achievement-meta">                        <div class="achievement-company">
+                            <span>ゴルフコーチ 末岡様</span>
+                        </div>
+                        <div class="achievement-date">2025年1月</div>
+                    </div>
+                </div>
+                <div class="achievement-content">
+                    <div class="achievement-stats-row">
+                        <div class="achievement-stat">
+                            <span class="achievement-stat-number">400万</span>
+                            <span class="achievement-stat-label">初回売上</span>
+                        </div>
+                        <div class="achievement-stat">
+                            <span class="achievement-stat-number">2万人</span>
+                            <span class="achievement-stat-label">YouTube登録者</span>
+                        </div>
+                        <div class="achievement-stat">
+                            <span class="achievement-stat-number">100%</span>
+                            <span class="achievement-stat-label">予約自動化率</span>
+                        </div>
+                    </div>
+                    <p class="achievement-description">
+                        メンタル・脳科学・運動生理学に基づくゴルフ指導のパイオニア。UTAGEでZoomリンク自動送付・リマインド機能を活用し、オンラインレッスンの運営を効率化。IT知識ゼロから始めても成功しました。
+                    </p>
+                    <blockquote class="achievement-quote">
+                        「本当にプロっぽいものがすごくできて、びっくりしました。頼まなければコンテンツビジネスを諦めていたかもしれません。この分野が苦手な人こそ専門家に任せるべきです」
+                    </blockquote>
+                </div>
+            </div>            <!-- 事例3 -->
+            <div class="achievement-card" data-aos="fade-up" data-aos-delay="300">
+                <a href="/achievement/customer3.html" class="achievement-card-link" aria-label="24時間販売の自動化動線完成！の詳細を見る">詳細を見る</a>                <div class="achievement-image">
+                    <img src="/assets/images/achieve-3.webp" alt="24時間販売の自動化動線完成！" loading="lazy" width="400" height="225">
+                </div>                <div class="achievement-header">
+                    <span class="achievement-tag tag-consulting">コンサルタント</span>
+                    <h3 class="achievement-title">女子ウケマーケで24時間販売自動化！</h3>                    <div class="achievement-meta">                        <div class="achievement-company">
+                            <span>株式会社Global Associa 伊澤様</span>
+                        </div>
+                        <div class="achievement-date">2024年11月</div>
+                    </div>
+                </div>
+                <div class="achievement-content">
+                    <div class="achievement-stats-row">
+                        <div class="achievement-stat">
+                            <span class="achievement-stat-number">1万人</span>
+                            <span class="achievement-stat-label">協会会員数</span>
+                        </div>
+                        <div class="achievement-stat">
+                            <span class="achievement-stat-number">8000人</span>
+                            <span class="achievement-stat-label">指導実績</span>
+                        </div>
+                        <div class="achievement-stat">
+                            <span class="achievement-stat-number">100%</span>
+                            <span class="achievement-stat-label">自動化率</span>
+                        </div>
+                    </div>
+                    <p class="achievement-description">
+                        女性向けビジネスの第一人者が、オートウェビナーによるエバーグリーンローンチの仕組みを構築。デザインやコンセプトの一貫性を保ちつつ、時間と場所に縛られない安定した収益源を確立しました。
+                    </p>
+                    <blockquote class="achievement-quote">
+                        「時間と場所に縛られずに、安定した収益を生み出せるようになりました。この依頼をしていなかったら絶対にまだできていないと思います。女性だからこそ、こういった自動化は絶対に必要です」
+                    </blockquote>
+                </div>
+            </div>            <!-- 事例4 -->
+            <div class="achievement-card" data-aos="fade-up" data-aos-delay="400">
+                <a href="/achievement/customer4.html" class="achievement-card-link" aria-label="コーチング事業で月商8桁達成！の詳細を見る">詳細を見る</a>
+                <div class="achievement-image">
+                    <img src="/assets/images/achieve-4.webp" alt="コーチング事業で月商8桁達成！" loading="lazy" width="400" height="225">
+                </div>                <div class="achievement-header">
+                    <span class="achievement-tag tag-ecommerce">コーチング</span>
+                    <h3 class="achievement-title">コーチング事業で月商8桁達成！</h3>                    <div class="achievement-meta">                        <div class="achievement-company">
+                            <span>Girl Boss Elite 星様</span>
+=======
                         <div class="achievement-stat">
                             <span class="achievement-stat-number">6週間</span>
                             <span class="achievement-stat-label">導入期間</span>
@@ -749,9 +886,9 @@
                         「セミナー集客と販売に時間を取られていましたが、今は自動で売れる仕組みができ、新規コンテンツ開発に集中できています」
                     </blockquote>
                 </div>
-            </div>            <!-- 事例4 -->
-            <div class="achievement-card" data-aos="fade-up" data-aos-delay="400">
-                <a href="/achievement/customer4.html" class="achievement-card-link" aria-label="移行初月に月商8桁達成！の詳細を見る">詳細を見る</a>
+            </a>
+
+            <a href="/achievement/customer4.html" class="achievement-card clickable-card" data-aos="fade-up" data-aos-delay="300">
                 <div class="achievement-image">
                     <img src="/assets/images/achieve-4.webp" alt="移行初月に月商8桁達成！" loading="lazy">
                 </div>
@@ -764,6 +901,7 @@
                                 <img src="/assets/images/company-icon4.webp" alt="企業アイコン" loading="lazy">
                             </span>
                             <span>健康食品販売</span>
+>>>>>>> 3c38702b1573cafde2c4926588d0444258ebefc6
                         </div>
                         <div class="achievement-date">2024年10月</div>
                     </div>
@@ -771,6 +909,36 @@
                 <div class="achievement-content">
                     <div class="achievement-stats-row">
                         <div class="achievement-stat">
+<<<<<<< HEAD
+                            <span class="achievement-stat-number">8桁</span>
+                            <span class="achievement-stat-label">月間売上</span>
+                        </div>
+                        <div class="achievement-stat">
+                            <span class="achievement-stat-number">20%</span>
+                            <span class="achievement-stat-label">売上増加率</span>
+                        </div>
+                        <div class="achievement-stat">
+                            <span class="achievement-stat-number">100%</span>
+                            <span class="achievement-stat-label">自動化率</span>
+                        </div>
+                    </div>
+                    <p class="achievement-description">
+                        シンガポールを拠点にコーチングサービスを提供するCEOが、複雑なマーケティングファネルを構築。システム移行時の売上低下なく月商8桁を達成し、毎月20%以上の売上増加を実現しています。
+                    </p>
+                    <blockquote class="achievement-quote">
+                        「移行した月には過去最高クラスの月商8桁以上を達成できました。UTAGEでは顧客管理が一括でできる点も大きなメリットです」
+                    </blockquote>
+                </div>
+            </div>            <!-- 事例5 -->
+            <div class="achievement-card" data-aos="fade-up" data-aos-delay="500">
+                <a href="/achievement/customer5.html" class="achievement-card-link" aria-label="治療院向けビジネスを完全自動化の詳細を見る">詳細を見る</a>
+                <div class="achievement-image">
+                    <img src="/assets/images/achieve-5.webp" alt="治療院向けビジネスを完全自動化" loading="lazy" width="400" height="225">
+                </div>                <div class="achievement-header">
+                    <span class="achievement-tag">治療院</span>
+                    <h3 class="achievement-title">治療院向けビジネスを完全自動化</h3>                    <div class="achievement-meta">                        <div class="achievement-company">
+                            <span>株式会社NextStage 長門様</span>
+=======
                             <span class="achievement-stat-number">1200万</span>
                             <span class="achievement-stat-label">月間売上</span>
                         </div>
@@ -790,14 +958,14 @@
                         「これまでバラバラだったツールを統合し、一元管理できるようになったことで業務効率が劇的に改善。売上も想像以上に伸びました」
                     </blockquote>
                 </div>
-            </div>            <!-- 事例5 -->
-            <div class="achievement-card" data-aos="fade-up" data-aos-delay="500">
-                <a href="/achievement/customer5.html" class="achievement-card-link" aria-label="手作業対応ゼロ、新規商談が24時間自動化！の詳細を見る">詳細を見る</a>
+            </a>
+
+            <a href="/achievement/customer5.html" class="achievement-card clickable-card" data-aos="fade-up" data-aos-delay="400">
                 <div class="achievement-image">
                     <img src="/assets/images/achieve-5.webp" alt="手作業対応ゼロ、新規商談が24時間自動化！" loading="lazy">
                 </div>
                 <div class="achievement-header">
-                    <span class="achievement-tag">士業</span>
+                    <span class="achievement-tag">中小企業</span>
                     <h3 class="achievement-title">手作業対応ゼロ、新規商談が24時間自動化！</h3>
                     <div class="achievement-meta">
                         <div class="achievement-company">
@@ -805,6 +973,7 @@
                                 <img src="/assets/images/company-icon5.webp" alt="企業アイコン" loading="lazy">
                             </span>
                             <span>士業事務所</span>
+>>>>>>> 3c38702b1573cafde2c4926588d0444258ebefc6
                         </div>
                         <div class="achievement-date">2024年9月</div>
                     </div>
@@ -812,6 +981,28 @@
                 <div class="achievement-content">
                     <div class="achievement-stats-row">
                         <div class="achievement-stat">
+<<<<<<< HEAD
+                            <span class="achievement-stat-number">100%</span>
+                            <span class="achievement-stat-label">受注自動化</span>
+                        </div>
+                        <div class="achievement-stat">
+                            <span class="achievement-stat-number">新規</span>
+                            <span class="achievement-stat-label">顧客獲得</span>
+                        </div>
+                        <div class="achievement-stat">
+                            <span class="achievement-stat-number">0</span>
+                            <span class="achievement-stat-label">手動作業</span>
+                        </div>
+                    </div>
+                    <p class="achievement-description">
+                        治療院専門販売トレーナーが、問い合わせから登録・決済までを全て自動化。オフライン中心だった集客をWeb経由にシフトし、これまでつながりのなかった完全新規の顧客からの申し込みを獲得できるようになりました。
+                    </p>
+                    <blockquote class="achievement-quote">
+                        「登録、申し込みが全て自動化され、全く知らない方からの申し込みが入るようになりました。本当に何もしなくていいんです」
+                    </blockquote>
+                </div>
+            </div>
+=======
                             <span class="achievement-stat-number">300%</span>
                             <span class="achievement-stat-label">リード増加</span>
                         </div>
@@ -831,7 +1022,8 @@
                         「これまで新規開拓に多くの時間を費やしていましたが、今はリードが自動的に集まり、本業の専門業務に集中できるようになりました」
                     </blockquote>
                 </div>
-            </div>
+            </a>
+>>>>>>> 3c38702b1573cafde2c4926588d0444258ebefc6
         </div>
         
 
@@ -856,10 +1048,16 @@
                     </a>
                 </div>
             </div>
+<<<<<<< HEAD
         </section>    </section>
 </main>
 <div id="footer-placeholder"></div>
-<script src="/js/include.js"></script>    <script>
+<script src="/js/include.js"></script>
+=======
+        </section>
+    </section></main>
+    <div id="footer-placeholder"></div>    <script src="/js/include.js"></script>
+    <script>
         document.addEventListener('DOMContentLoaded', function() {
             // AOS初期化
             AOS.init({
@@ -869,37 +1067,56 @@
                 offset: 60
             });
             
+            // フィルタリング機能
             const filterButtons = document.querySelectorAll('.filter-button');
+            const achievementCards = document.querySelectorAll('.achievement-card');
+            
             filterButtons.forEach(button => {
                 button.addEventListener('click', function() {
+                    // アクティブボタンのスタイル更新
                     filterButtons.forEach(btn => btn.classList.remove('active'));
                     this.classList.add('active');
                     
-                    const cards = document.querySelectorAll('.achievement-card');
-                    cards.forEach(card => {
+                    // フィルタリング処理
+                    const filter = this.getAttribute('data-filter');
+                    
+                    achievementCards.forEach(card => {
+                        // トランジション効果
                         card.style.opacity = '0.5';
+                        card.style.transform = 'scale(0.95)';
+                        
                         setTimeout(() => {
-                            card.style.opacity = '1';
+                            if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                                card.style.display = 'flex';
+                                setTimeout(() => {
+                                    card.style.opacity = '1';
+                                    card.style.transform = 'scale(1)';
+                                }, 50);
+                            } else {
+                                card.style.display = 'none';
+                            }
                         }, 300);
                     });
                 });
             });
             
-            // achievement-cardをクリック可能にする
-            const achievementCards = document.querySelectorAll('.achievement-card');
-            achievementCards.forEach(card => {
-                card.addEventListener('click', function(e) {
-                    const link = this.querySelector('.achievement-card-link');
-                    // タグとリンク自体のクリックイベントは特に処理しない
-                    if (e.target.closest('.achievement-tag') || e.target === link) {
-                        return;
-                    }
-                    // それ以外のクリックではリンクに移動
-                    link.click();
+            // カード遷移時のアニメーション
+            document.querySelectorAll('.achievement-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    const img = this.querySelector('.achievement-image img');
+                    if (img) img.style.transform = 'scale(1.05)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    const img = this.querySelector('.achievement-image img');
+                    if (img) img.style.transform = 'scale(1)';
                 });
             });
         });
     </script>
+>>>>>>> 3c38702b1573cafde2c4926588d0444258ebefc6
 
 
 </body></html>
+```
+</copilot-edited-file>

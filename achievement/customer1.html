@@ -73,15 +73,13 @@
             font-size: 1.1rem;
             opacity: 0.9;
             margin-bottom: 20px;
-        }
-
-        /* メイン成果セクション */
+        }        /* メイン成果セクション */
         .main-results {
             background-color: #fff;
             border-radius: 10px;
             box-shadow: 0 5px 25px rgba(0,0,0,0.05);
             padding: 35px;
-            margin-top: -60px; /* ヘッダーとの重なり調整 */
+            margin-top: -40px; /* -60pxから-40pxに変更して重なりを解消 */
             position: relative;
             z-index: 10;
             text-align: center;
@@ -473,12 +471,39 @@
             transition: all 0.3s;
             font-size: 1.05rem;
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-
-        .cta-button:hover {
+        }        .cta-button:hover {
             background-color: white;
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        
+        /* 動画セクション */
+        .video-section {
+            margin-bottom: 50px;
+        }
+        
+        .video-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            padding: 25px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        
+        .video-container video {
+            border-radius: 8px;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            display: block;
+        }
+        
+        .video-caption {
+            text-align: center;
+            margin-top: 15px;
+            color: #666;
+            font-style: italic;
         }
 
         /* ナビゲーション */
@@ -640,10 +665,9 @@
                         <p>「パノラマ人事評価システム360」開発、クリーニングや介護事業、理美容事業などの労働集約型事業運営。<span class="yellow-highlight">離職率を20%から1%へと改善した実績</span>。著書『離職率1%の会社が編み出した 超人材定着術』</p>
                     </div>
                 </div>
-            </div>
-            <div class="section-image">
-                <!-- 絶対パスに変更 -->
-                <img src="/images/achieve-1.webp" alt="髙安敏行様プロフィール" loading="lazy"> <!-- パス修正 -->
+            </div>            <div class="section-image">
+                <!-- 新規画像用のパスに変更 -->
+                <img src="/assets/images/interview-profile.webp" alt="髙安敏行様プロフィール" loading="lazy"> <!-- 新しいファイル名に変更 -->
             </div>
         </section>
 
@@ -691,10 +715,9 @@
         <section class="interview-section" id="section1">
             <h2 class="section-header">
                 <i class="fas fa-question-circle"></i> UTAGE導入前の悩み・課題
-            </h2>
-            <div class="section-image">
-                <!-- 絶対パスに変更 -->
-                <img src="/images/achieve-2.webp" alt="導入前の課題" loading="lazy"> <!-- パス修正 -->
+            </h2>            <div class="section-image">
+                <!-- 新規画像用のパスに変更 -->
+                <img src="/assets/images/interview-challenge.webp" alt="導入前の課題" loading="lazy"> <!-- 新しいファイル名に変更 -->
             </div>
             <div class="interview-qa">
                 <div class="interview-question">前田： 皆さん、こんにちは。「UTAGE構築代行丸投げちゃん」の前田です。本日は、社員同士が相互に評価・承認し合う新しい人事システム「パノラマ人事評価システム360」を開発し、離職率を20%から1%へと劇的に改善された実績をお持ちの株式会社笑認の代表取締役、髙安敏行様をお迎えしております。</div>
@@ -724,10 +747,9 @@
         <section class="interview-section" id="section2">
             <h2 class="section-header">
                 <i class="fas fa-check-circle"></i> 「丸投げちゃん」を選んだ理由
-            </h2>
-            <div class="section-image">
-                <!-- 絶対パスに変更 -->
-                <img src="/images/achieve-3.webp" alt="選んだ理由" loading="lazy"> <!-- パス修正 -->
+            </h2>            <div class="section-image">
+                <!-- 新規画像用のパスに変更 -->
+                <img src="/assets/images/interview-reason.webp" alt="選んだ理由" loading="lazy"> <!-- 新しいファイル名に変更 -->
             </div>
             <div class="interview-qa">
                 <div class="interview-question">前田： 個別相談を受けていただいたかと思いますが、弊社の「UTAGE構築代行丸投げちゃん」のサービスを選んだ理由は何ですか？</div>
@@ -746,10 +768,9 @@
         <section class="interview-section" id="section3">
             <h2 class="section-header">
                 <i class="fas fa-chart-bar"></i> 導入後の変化と効果
-            </h2>
-            <div class="section-image">
-                <!-- 絶対パスに変更 -->
-                <img src="/images/achieve-4.webp" alt="導入後の効果" loading="lazy"> <!-- パス修正 -->
+            </h2>            <div class="section-image">
+                <!-- 新規画像用のパスに変更 -->
+                <img src="/assets/images/interview-effect.webp" alt="導入後の効果" loading="lazy"> <!-- 新しいファイル名に変更 -->
             </div>
             <div class="interview-qa">
                 <div class="interview-question">前田： 出版を機に、UTAGEを使って認知から個別相談やサービスを知っていただくようなファネルを組んでおくことは、実践された髙安様からするとおすすめですか？</div>
@@ -775,10 +796,9 @@
         <section class="interview-section" id="section4">
             <h2 class="section-header">
                 <i class="fas fa-comment-dots"></i> 迷っている方へのメッセージ
-            </h2>
-            <div class="section-image">
-                <!-- 絶対パスに変更 -->
-                <img src="/images/achieve-5.webp" alt="迷っている方へのメッセージ" loading="lazy"> <!-- パス修正 -->
+            </h2>            <div class="section-image">
+                <!-- 新規画像用のパスに変更 -->
+                <img src="/assets/images/interview-message.webp" alt="迷っている方へのメッセージ" loading="lazy"> <!-- 新しいファイル名に変更 -->
             </div>
             <div class="interview-qa">
                 <div class="interview-question">前田：視聴者の方に、率直なご意見をお聞きしたいのですが、構築代行というとやり取りのストレスや思いを汲み取ってもらえないことが起こりやすいと思います。その点、弊社の「丸投げちゃん」のコミュニケーションはいかがでしたか？</div>
@@ -792,10 +812,9 @@
         <section class="interview-section" id="section5">
             <h2 class="section-header">
                 <i class="fas fa-users"></i> 離職率を改善するアプローチ
-            </h2>
-            <div class="section-image">
-                <!-- 絶対パスに変更 -->
-                <img src="/images/achieve-6.webp" alt="離職率改善アプローチ" loading="lazy"> <!-- パス修正 -->
+            </h2>            <div class="section-image">
+                <!-- 新規画像用のパスに変更 -->
+                <img src="/assets/images/interview-approach.webp" alt="離職率改善アプローチ" loading="lazy"> <!-- 新しいファイル名に変更 -->
             </div>
             <div class="interview-qa">
                 <h3 style="margin-bottom: 20px; color: #0d3283; display: flex; align-items: center;">
@@ -805,6 +824,21 @@
                     <p>現在、世の中では人手不足が言われていますが、私はそれよりも、<span class="yellow-highlight">企業が社員に求めるものと、新しい人材が企業に求めるもののミスマッチが起きている</span>と感じています。弊社のシステムは「パノラマ人事評価システム」と名付けていますが、人が人を評価することは非常に難しいものです。離職率を下げていくためには、まず「人が人に関心を持つ」ことが重要だと考えています。</p>
                     <p>関心を持つ際にどこを見るかが、人間関係を構築する上で大切です。「笑認」という名前が示すように、通常の「承認」とは、<span class="bold-text">人の良いところに目を向け、その人の強みや長所を認めること</span>だと思います。これが人間関係や企業と従業員の関係、評価においてとても重要なのです。</p>
                     <p>私は人に対する仕組みは<span class="red-text">性善説で考えるべき</span>だと思います。会社の様々な仕組みは性悪説で運営している企業も多いですが、私たちの最大の理念は「<span class="yellow-highlight">世界で承認し合う世界を作る</span>」ことです。人事評価システムを売ることが目的ではなく、みんなが認め合える世界を作るというビジョンを達成するために、まずは企業内でスタッフ同士が認め合えるような仕組みづくりを行っています。</p>
+                </div>
+            </div>        </section>
+
+        <!-- 動画セクション -->
+        <section class="video-section">
+            <h2 class="section-header">
+                <i class="fas fa-video"></i> インタビュー動画
+            </h2>
+            <div class="video-container">
+                <video controls poster="/assets/images/interview-video-thumbnail.webp" preload="none" width="100%">
+                    <source src="/assets/videos/customer1-interview.mp4" type="video/mp4">
+                    お使いのブラウザは動画タグをサポートしていません。
+                </video>
+                <div class="video-caption">
+                    <p>髙安様インタビューの様子 - UTAGEを活用した情報発信の効果について</p>
                 </div>
             </div>
         </section>
