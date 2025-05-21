@@ -16,6 +16,7 @@
     "glob": "^8.1.0"
   },
   "devDependencies": {
-    "html-validate": "^9.5.3"
+    "html-validate": "^9.5.3",
+    "puppeteer": "^24.8.2"
   }
 }

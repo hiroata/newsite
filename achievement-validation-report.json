@@ -1,0 +1,16 @@
+{
+  "timestamp": "2025-05-18T07:35:25.682Z",
+  "page": "achievement/index.html",
+  "htmlValidation": {
+    "title": "お客様の声・成功事例一覧 | オートウェビナー大学",
+    "stylesheetsCount": 5,
+    "scriptsCount": 5,
+    "issues": []
+  },
+  "filterFunctionality": {
+    "success": true,
+    "filteredBy": "コンサルタント",
+    "visibleCardsCount": 5,
+    "totalCards": 5
+  }
+}
