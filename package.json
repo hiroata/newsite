@@ -1,15 +1,12 @@
 {
   "name": "newsite-optimizer",
   "version": "1.0.0",
-  "description": "ウェブサイト最適化ツール",
-  "scripts": {
+  "description": "ウェブサイト最適化ツール",  "scripts": {
     "add-lazy-loading": "node tools/add-lazy-loading.js",
-    "fix-paths": "node tools/fix-relative-paths.js",
     "cleanup": "node tools/cleanup-tools.js",
-    "update-share": "node tools/update-share-buttons.js",
-    "update-hatena": "node tools/update-hatena-bookmark.js",
-    "update-line": "node tools/update-line-button.js",
-    "remove-headers": "node tools/remove-header-from-blogs.js"
+    "remove-headers": "node tools/remove-header-from-blogs.js",
+    "add-prevention": "node tools/add-prevention-script.js",
+    "add-conditional": "node tools/add-conditional-include.js"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.12",
