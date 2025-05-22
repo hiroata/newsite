@@ -353,20 +353,17 @@
     }    .lock-aspect-ratio {
       display: flex;
       align-items: center;
-      margin-top: 20px;
-      margin-bottom: 10px;
-      padding: 5px;
+      margin-top: 15px;
       font-size: 14px;
       color: #666;
-      background-color: #f8f9fa;
-      border-radius: 4px;
+      padding-left: 5px;
     }
     .checkbox-wrapper {
       position: relative;
       display: inline-block;
-      width: 24px;
-      height: 24px;
-      margin-right: 15px;
+      width: 20px;
+      height: 20px;
+      margin-right: 12px;
       flex-shrink: 0;
     }
     .aspect-checkbox {
@@ -375,15 +372,15 @@
       cursor: pointer;
       height: 0;
       width: 0;
-    }    .checkmark {
+    }
+    .checkmark {
       position: absolute;
       top: 0;
       left: 0;
-      height: 22px;
-      width: 22px;
+      height: 20px;
+      width: 20px;
       background-color: #eee;
-      border-radius: 4px;
-      border: 1px solid #ccc;
+      border-radius: 3px;
     }
     .checkbox-wrapper:hover .checkmark {
       background-color: #ccc;
@@ -398,19 +395,15 @@
     }
     .aspect-checkbox:checked ~ .checkmark:after {
       display: block;
-    }    .checkbox-wrapper .checkmark:after {
-      left: 8px;
-      top: 4px;
-      width: 6px;
-      height: 11px;
+    }
+    .checkbox-wrapper .checkmark:after {
+      left: 7px;
+      top: 3px;
+      width: 5px;
+      height: 10px;
       border: solid white;
       border-width: 0 2px 2px 0;
       transform: rotate(45deg);
-    }
-    .aspect-checkbox-label {
-      margin-left: 4px;
-      white-space: nowrap;
-      font-size: 14px;
     }
     /* 進捗バー */
     .progress-container {
@@ -524,12 +517,13 @@
                 <input type="number" id="maxHeight" class="size-input" value="1200" min="1">
                 <span class="size-unit">px</span>
                 <span class="size-note">（ピクセル）</span>
-                  <div class="lock-aspect-ratio">
+                
+                <div class="lock-aspect-ratio">
                   <label class="checkbox-wrapper">
                     <input type="checkbox" class="aspect-checkbox" id="lockAspectRatio" checked="">
                     <span class="checkmark"></span>
                   </label>
-                  <span class="aspect-checkbox-label" style="padding-left: 5px; display: inline-block;">縦横比を維持する</span>
+                  <span class="aspect-checkbox-label">縦横比を維持する</span>
                 </div>
               </div>
             </div>
@@ -594,31 +588,50 @@
           </ul>
         </div>
         
-        <!-- 他のツールリンク -->        <div class="other-tools">          <h2 class="other-tools-title">その他のまえゆきツール</h2>
+        <!-- 他のツールリンク -->
+        <div class="other-tools">
+          <h2 class="other-tools-title">その他のまえゆきツール</h2>
           <div class="tools-list">
             <a href="calc.html" class="tool-link">単位換算と計算</a>
-            <a href="countdown.html" class="tool-link">カウントダウンタイマー</a>
-            <a href="roulette.html" class="tool-link">ルーレット</a>
+            <a href="countdown.html" class="tool-link">Webでカウントダウン</a>
+            <a href="roulette.html" class="tool-link">Webでルーレット</a>
+            <a href="bingo.html" class="tool-link">ビンゴ・マシーン</a>
+            <a href="image-resize.html" class="tool-link">画像リサイズ</a>
             <a href="png-to-jpeg.html" class="tool-link">PNG→JPEG変換</a>
             <a href="png-jpeg-to-webp.html" class="tool-link">WebP変換</a>
             <a href="wareki-seireki.html" class="tool-link">年齢・和暦計算</a>
-            <a href="meme-generator.html" class="tool-link">ミーム作成</a>
-            <a href="color-palette.html" class="tool-link">カラーパレット</a>
-            <a href="letters-counter.html" class="tool-link">文字数カウント</a>
-          </div>
           </div>
         </div>
-      </div>    </section>
+      </div>
+    </section>
 
-    <!-- フッター -->
-    <div id="footer-placeholder"></div>
-    <script>
-      if (!window.isScriptLoaded || !window.isScriptLoaded('/js/include.js')) {
-          document.write('<script src="/js/include.js"><\/script>');
-      } else {
-          console.log('include.jsのロードをスキップしました');
-      }
-    </script>
+    <!-- フッター（トップページと同じスタイルに変更） -->
+    <footer class="site-footer" style="background-color: #e6f7ff;">
+      <div class="footer-container" style="display:flex;align-items:flex-start;gap:32px;flex-wrap:wrap;">
+        <div style="font-weight:bold;font-size:1.3rem;color:#333;letter-spacing:0.08em;min-width:80px;">オートウェビナー大学</div>
+        <div class="footer-widgets" style="display:flex;gap:32px;flex-wrap:wrap;flex:1;">
+          <div class="widget-area">
+            <h4 style="color:#1a5276;">無料コンテンツ</h4>
+            <ul>
+              <li><a href="/blog/index.html">ブログ</a></li>
+              <li><a href="/book/index.html">電子書籍</a></li>
+              <li><a href="/free-seminar.html">無料セミナー</a></li>
+              <li><a href="/free-consultation.html">無料相談</a></li>
+              <li><a href="/achievement/index.html">お客様の声</a></li>
+            </ul>
+          </div>
+          <div class="widget-area">
+            <h4 style="color:#1a5276;">運営情報</h4>
+            <ul>
+              <li><a href="/owner.html">運営者情報</a></li>
+              <li><a href="/terms.html">利用規約</a></li>
+              <li><a href="/privacy.html">プライバシーポリシー</a></li>
+              <li><a href="/tokutei.html">特定商取引法に基づく表記</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
 
   <!-- SVGアイコン -->
   <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -990,4 +1003,3 @@
 <script src="/js/script.js"></script>
 </body>
 </html>
-

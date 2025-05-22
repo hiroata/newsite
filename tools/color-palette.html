@@ -405,60 +405,25 @@
           </ul>
         </div>
         
-        <!-- コミュニティCTAセクション -->
-        <section class="contact-cta-section">
-          <div class="contact-cta-container">
-            <span class="contact-cta-subtitle">より便利なツールを一緒に作ろう</span>
-            <h2 class="contact-cta-title">ツールリクエスト募集中！</h2>
-            <p class="contact-cta-lead">
-              こんなツールがあったら便利！というアイデアをお持ちですか？<br class="pc-only">
-              まえゆきツールは、みなさんのフィードバックをもとに改善・拡張しています。<br class="pc-only">
-              ぜひあなたのアイデアをお聞かせください。
-            </p>
-            <div class="contact-cta-buttons">               
-              <a href="../free-consultation.html" class="btn btn-contact">
-                ツールをリクエスト
-              </a>
-              <a href="../about.html" class="btn btn-document">
-                <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
-                サービス詳細
-              </a>
-            </div>
-          </div>
-        </section>
-        
         <!-- 他のツールリンク -->
-        <div class="other-tools">
-          <h2 class="other-tools-title">その他のまえゆきツール</h2>
+        <div class="other-tools">          <h2 class="other-tools-title">その他のまえゆきツール</h2>
           <div class="tools-list">
             <a href="letters-counter.html" class="tool-link">文字数カウント</a>
             <a href="calc.html" class="tool-link">単位換算と計算</a>
-            <a href="countdown.html" class="tool-link">Webでカウントダウン</a>
-            <a href="roulette.html" class="tool-link">Webでルーレット</a>
-            <a href="bingo.html" class="tool-link">ビンゴ・マシーン</a>
+            <a href="countdown.html" class="tool-link">カウントダウンタイマー</a>
+            <a href="roulette.html" class="tool-link">ルーレット</a>
             <a href="image-resize.html" class="tool-link">画像リサイズ</a>
             <a href="png-to-jpeg.html" class="tool-link">PNG→JPEG変換</a>
             <a href="png-jpeg-to-webp.html" class="tool-link">WebP変換</a>
             <a href="wareki-seireki.html" class="tool-link">年齢・和暦計算</a>
             <a href="meme-generator.html" class="tool-link">ミーム作成</a>
-            <a href="password-generator.html" class="tool-link">パスワード生成</a>
+          </div>
           </div>
         </div>
       </div>
+    </section>  </div>
     </section>
-  </p>
-</li></li></li></li></li></li></li></li></li>
-</main>
-  
-  <!-- フッターを共通コンポーネントとして読み込み -->
-  <div id="footer-placeholder"></div>
-  <script>
-    if (!window.isScriptLoaded || !window.isScriptLoaded('/js/include.js')) {
-        document.write('<script src="/js/include.js"><\/script>');
-    } else {
-        console.log('include.jsのロードをスキップしました');
-    }
-</script>
+  </main>
 
   
   <!-- SVGアイコン -->
@@ -831,15 +796,20 @@
           return hex.length === 1 ? '0' + hex : hex;
         };
         
-        return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
-      }
-    });
-  </script>
+        return `#${toHex(r)}${toHex(g)}${toHex(b)}`;      }
+    });  </script>
 
-<!-- footer -->
-</body>
-  <!-- フッター -->
-  
+<!-- フッター -->
+<div id="footer-placeholder"></div>
+<script>
+  if (!window.isScriptLoaded || !window.isScriptLoaded('/js/include.js')) {
+      document.write('<script src="/js/include.js"><\/script>');
+  } else {
+      console.log('include.jsのロードをスキップしました');
+  }
+</script>
+
+<script src="/js/script.js"></script>
 </body>
 </html>
 

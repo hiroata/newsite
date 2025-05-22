@@ -1,7 +1,8 @@
 <!-- ツール共通テンプレート --><!DOCTYPE html><html lang="ja"><head>
     <script src="/js/prevent-duplicate-includes.js"></script>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">  <meta name="description" content="まえゆきツールのWebP変換ツール - JPEG・PNG画像をまとめてWebP形式に変換できる無料ツールです。ファイルサイズを最大70%削減し、Webサイトの表示速度を向上できます。">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <meta name="description" content="まえゆきツールのWebP変換ツール - JPEG・PNG画像をまとめてWebP形式に変換できる無料ツールです。ファイルサイズを最大70%削減し、Webサイトの表示速度を向上できます。">
   <meta name="keywords" content="WebP変換,WebP画像,画像圧縮,JPEG変換,PNG変換,無料ツール,オンライン変換">
   <title>WebP変換ツール | まえゆきツール</title>
 
@@ -10,7 +11,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
   
   <!-- インクルード処理 -->
-  
   
   <!-- 画像遅延読み込み -->
   <script src="/js/lazy-loading.js" defer=""></script>
@@ -464,9 +464,8 @@
 <body>
 <!-- header -->
   <!-- ヘッダー -->
-  <div id="header-placeholder">
+  <div id="header-placeholder"></div>
   
-
   <!-- メインコンテンツ -->
   <main class="site-main">
       <!-- ツールセクション -->
@@ -489,6 +488,7 @@
                         <polyline points="17 8 12 3 7 8"></polyline>
                         <line x1="12" y1="3" x2="12" y2="15"></line>
                      </svg>
+                  </div>
                   
                   <p class="drop-area-text">ここに画像ファイルをドラッグ＆ドロップ</p>
                   <p class="drop-area-or">もしくは</p>
@@ -496,7 +496,7 @@
                      + ファイルを追加
                      <input type="file" class="file-input" id="fileInput" accept="image/jpeg, image/png, image/gif" multiple="">
                   </label>
-               
+               </div>
 
                <div class="files-meta" id="filesMeta"></div>
                <div class="files-container" id="filesContainer"></div>
@@ -568,51 +568,30 @@
          </div>
       </section>
 
-      <!-- Contact CTA Section -->
-      <section class="contact-cta-section">
-         <div class="contact-cta-container">
-            <span class="contact-cta-subtitle">IT導入補助金2025活用可能</span>
-            <h2 class="contact-cta-title">申請は完全丸投げOK！</h2>
-            <p class="contact-cta-lead">
-               UTAGEの導入で最大450万円の補助金が受けられます。<br class="pc-only">
-               面倒な申請手続きはすべてお任せください。<br class="pc-only">
-               あなたは事業成長に集中するだけでOKです。
-            </p>
-            <div class="contact-cta-buttons">               <a href="https://utage-system.com/p/EcESO02xLLoK" class="btn btn-contact">
-                  無料相談してみる
-               </a>
-               <a href="../document.html" class="btn btn-document">
-                  <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
-                  資料請求する
-               </a>
-            </div>
-         </div>
-      </section>
-
-      <div class="other-tools">
-         <h2 class="other-tools-title">その他のまえゆきツール</h2>
+      <div class="other-tools">         <h2 class="other-tools-title">その他のまえゆきツール</h2>
          <div class="tools-list">
             <a href="calc.html" class="tool-link">単位換算と計算</a>
-            <a href="countdown.html" class="tool-link">Webでカウントダウン</a>
-            <a href="roulette.html" class="tool-link">Webでルーレット</a>
-            <a href="bingo.html" class="tool-link">ビンゴ・マシーン</a>
+            <a href="countdown.html" class="tool-link">カウントダウンタイマー</a>
+            <a href="roulette.html" class="tool-link">ルーレット</a>
             <a href="image-resize.html" class="tool-link">画像リサイズ</a>
             <a href="png-to-jpeg.html" class="tool-link">PNG→JPEG変換</a>
-            <a href="png-jpeg-to-webp.html" class="tool-link">WebP変換</a>
             <a href="wareki-seireki.html" class="tool-link">年齢・和暦計算</a>
+            <a href="meme-generator.html" class="tool-link">ミーム作成</a>
+            <a href="color-palette.html" class="tool-link">カラーパレット</a>
+            <a href="letters-counter.html" class="tool-link">文字数カウント</a>
+         </div>
          </div>
       </div>
-   </p></p></p>
-</li></li></li></li></li></li></li></li></li></li>
-</th></th>
-</main>
+  </main>
+
+<!-- フッター -->
 <div id="footer-placeholder"></div>
-  <script>
-    if (!window.isScriptLoaded || !window.isScriptLoaded('/js/include.js')) {
-        document.write('<script src="/js/include.js"><\/script>');
-    } else {
-        console.log('include.jsのロードをスキップしました');
-    }
+<script>
+  if (!window.isScriptLoaded || !window.isScriptLoaded('/js/include.js')) {
+      document.write('<script src="/js/include.js"><\/script>');
+  } else {
+      console.log('include.jsのロードをスキップしました');
+  }
 </script>
 
 <script src="/js/script.js"></script>
@@ -879,350 +858,10 @@
                   document.body.appendChild(a);
                   a.click();
                   document.body.removeChild(a);
-                  URL.revokeObjectURL(url);
-              });
+                  URL.revokeObjectURL(url);              });
           });
       });
    </script>
-        </div>
-      </div>
-    </div>
+</body>
+</html>
 
-    <!-- ブログへの誘導セクション -->
-    <section class="blog-cta-section section-padding">
-      <div class="inner">
-        <div class="section-title-container">
-          <span class="section-subtitle">BLOG</span>
-          <h2 class="section-title">ビジネス自動化のヒント</h2>
-        </div>
-        <p class="section-description">
-          オンラインビジネスを効率的に運営するためのノウハウを発信しています。
-          ぜひご覧ください。
-        </p>
-        <div class="blog-cta">
-          <a href="/blog/index.html" class="btn-secondary">
-            ブログを見る
-          </a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- フッター -->
-  <footer class="site-footer">
-    <div class="footer-container">
-      <div class="footer-info">
-        <div class="footer-logo">CLAN</div>
-        <p class="footer-desc">オンラインビジネス自動化サポート</p>
-      </div>
-      <div class="footer-links">
-        <div class="footer-links-group">
-          <h3 class="footer-links-title">サイトマップ</h3>
-          <ul>
-            <li><a href="/index.html">ホーム</a></li>
-            <li><a href="/about.html">オートウェビナー大学とは</a></li>
-            <li><a href="/blog/index.html">ブログ一覧</a></li>
-            <li><a href="/tools/index.html">まえゆきツール</a></li>
-            <li><a href="/achievement/index.html">お客様の声</a></li>
-          </ul>
-        </div>
-        <div class="footer-links-group">
-          <h3 class="footer-links-title">サービス</h3>
-          <ul>
-            <li><a href="/seminar/index.html">無料セミナー</a></li>
-            <li><a href="/free-consultation.html">無料相談</a></li>
-            <li><a href="/document.html">資料請求</a></li>
-            <li><a href="/course/index.html">有料講座</a></li>
-          </ul>
-        </div>
-        <div class="footer-links-group">
-          <h3 class="footer-links-title">お役立ち</h3>
-          <ul>
-            <li><a href="/owner.html">運営者情報</a></li>
-            <li><a href="/privacy.html">プライバシーポリシー</a></li>
-            <li><a href="/terms.html">利用規約</a></li>
-            <li><a href="/tokutei.html">特定商取引法に基づく表記</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="copyright">© 2025 CLAN All rights reserved.</div>
-  </footer>
-
-  <!-- SVGアイコン -->
-  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-    <symbol id="icon-pdf" viewBox="0 0 24 24">
-      <path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"></path>
-    </symbol>
-  </svg>
-
-  <!-- 個別ツールのJavaScript -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-          // 要素の参照
-          const dropArea = document.getElementById('dropArea');
-          const fileInput = document.getElementById('fileInput');
-          const filesContainer = document.getElementById('filesContainer');
-          const filesMeta = document.getElementById('filesMeta');
-          const qualitySlider = document.getElementById('qualitySlider');
-          const qualityValue = document.getElementById('qualityValue');
-          const convertBtn = document.getElementById('convertBtn');
-          const downloadBtn = document.getElementById('downloadBtn');
-          const resultTableContainer = document.getElementById('resultTableContainer');
-          
-          // 状態管理
-          let selectedFiles = [];
-          let convertedImages = [];
-          let quality = 80;
-          
-          // WebPサポートチェック
-          // checkWebPSupportは共通関数を使用
-              
-              return canvas.toDataURL('image/webp').indexOf('data:image/webp') === 0;
-          }
-          
-          // WebPがサポートされていない場合の処理
-          if (!checkWebPSupport()) {
-              const errorMessage = document.createElement('div');
-              errorMessage.className = 'error-message';
-              errorMessage.style.color = '#f00';
-              errorMessage.style.padding = '10px';
-              errorMessage.style.marginTop = '20px';
-              errorMessage.style.background = '#ffeeee';
-              errorMessage.style.borderRadius = '5px';
-              errorMessage.innerHTML = '<strong>ご利用のブラウザはWebP形式をサポートしていません。</strong><br>Google Chrome、Microsoft Edgeなど、最新のブラウザでご利用ください。';
-              
-              dropArea.parentNode.appendChild(errorMessage);
-              dropArea.style.opacity = '0.5';
-              convertBtn.disabled = true;
-              downloadBtn.disabled = true;
-              return;
-          }
-          
-          // 共通関数を使用してファイルドロップ設定
-          setupFileDropAndSelection(dropArea, fileInput, handleFiles);
-          
-          // 品質スライダー
-          qualitySlider.addEventListener('input', function() {
-              quality = parseInt(this.value);
-              qualityValue.textContent = `${quality}%`;
-          });
-          
-          // ファイル処理
-          function handleFiles(files) {
-              const validFiles = Array.from(files).filter(file => {
-                  const type = file.type.toLowerCase();
-                  return type === 'image/jpeg' || type === 'image/png' || type === 'image/gif';
-              });
-              
-              if (validFiles.length === 0) {
-                  // 共通関数を使用してエラー表示
-                  updateUI('JPEG/PNG/GIF画像を選択してください。', true);
-                  return;
-              }
-              
-              // 既存のファイルに追加
-              selectedFiles = [...selectedFiles, ...validFiles];
-              
-              // UIを更新
-              updateFilesUI();
-              updateFilesMetaUI();
-              
-              // 変換ボタンを有効化
-              convertBtn.disabled = selectedFiles.length === 0;
-          }
-          
-          // ファイルUI更新（共通関数を使用）
-          function updateFilesUI() {
-              filesContainer.innerHTML = '';
-              
-              selectedFiles.forEach((file, index) => {
-                  const reader = new FileReader();
-                  reader.onload = function(e) {
-                      const fileItem = createFileItem(file, e.target.result, () => {
-                          selectedFiles.splice(index, 1);
-                          updateFilesUI();
-                          updateFilesMetaUI();
-                          convertBtn.disabled = selectedFiles.length === 0;
-                      });
-                      filesContainer.appendChild(fileItem);
-                  };
-                  reader.readAsDataURL(file);
-              });
-          }
-          
-          // ファイルメタ情報更新
-          function updateFilesMetaUI() {
-              if (selectedFiles.length === 0) {
-                  filesMeta.textContent = '';
-                  return;
-              }
-              
-              let totalSize = 0;
-              selectedFiles.forEach(file => {
-                  totalSize += file.size;
-              });
-              
-              const sizeInMB = (totalSize / (1024 * 1024)).toFixed(2);
-              filesMeta.textContent = `${selectedFiles.length}枚の画像（合計 ${sizeInMB} MB）`;
-          }
-          
-          // 変換ボタン
-          convertBtn.addEventListener('click', async function() {
-              if (selectedFiles.length === 0) return;
-              
-              convertBtn.disabled = true;
-              convertBtn.textContent = '変換中...';
-              
-              // 変換結果をクリア
-              convertedImages = [];
-              
-              // 表示用の結果テーブルを準備
-              resultTableContainer.innerHTML = `
-                  <table class="result-table">
-                      <thead>
-                          <tr>
-                              <th>元のファイル</th>
-                              <th>元のサイズ</th>
-                              <th>WebPサイズ</th>
-                              <th>削減率</th>
-                          </tr>
-                      </thead>
-                      <tbody id="resultTableBody">
-                      </tbody>
-                  </table>
-              `;
-              
-              const resultTableBody = document.getElementById('resultTableBody');
-              
-              // 各画像を変換
-              for (let i = 0; i < selectedFiles.length; i++) {
-                  const file = selectedFiles[i];
-                  try {
-                      const webpBlob = await convertToWebP(file, quality);
-                      
-                      // 元のファイル名から拡張子を取り除き、.webpを追加
-                      const originalName = file.name;
-                      const baseName = originalName.substring(0, originalName.lastIndexOf('.')) || originalName;
-                      const webpName = `${baseName}.webp`;
-                      
-                      // 変換結果を保存
-                      convertedImages.push({
-                          name: webpName,
-                          blob: webpBlob,
-                          originalSize: file.size,
-                          webpSize: webpBlob.size
-                      });
-                      
-                      // 結果テーブルに追加
-                      const row = document.createElement('tr');
-                      
-                      const originalSizeKB = (file.size / 1024).toFixed(1);
-                      const webpSizeKB = (webpBlob.size / 1024).toFixed(1);
-                      const reductionPercent = ((1 - webpBlob.size / file.size) * 100).toFixed(1);
-                      
-                      row.innerHTML = `
-                          <td>${originalName}</td>
-                          <td>${originalSizeKB} KB</td>
-                          <td>${webpSizeKB} KB</td>
-                          <td class="file-size-reduction">${reductionPercent}%</td>
-                      `;
-                      
-                      resultTableBody.appendChild(row);
-                  } catch (err) {
-                      console.error('変換エラー:', err);
-                      
-                      // 共通関数を使用してエラー表示
-                      updateUI('変換エラーが発生しました', true);
-                      
-                      // エラー行を追加
-                      const errorRow = document.createElement('tr');
-                      errorRow.innerHTML = `
-                          <td>${file.name}</td>
-                          <td colspan="3" style="color: red;">変換エラー</td>
-                      `;
-                      resultTableBody.appendChild(errorRow);
-                  }
-              }
-              
-              // 変換完了
-              convertBtn.textContent = '変換完了!';
-              downloadBtn.disabled = convertedImages.length === 0;
-              
-              // 共通関数を使用して成功メッセージを表示
-              updateUI('WebPへの変換が完了しました！');
-              
-              setTimeout(() => {
-                  convertBtn.textContent = '→ WebPに変換する';
-                  convertBtn.disabled = false;
-              }, 2000);
-          });
-          
-          // WebP形式に変換
-          // convertToWebPは共通関数を使用 else {
-                              reject(new Error('WebP変換に失敗しました'));
-                          }
-                      }, 'image/webp', quality / 100);
-                  };
-                  
-                  img.onerror = () => reject(new Error('画像の読み込みに失敗しました'));
-                  
-                  // 画像読み込み
-                  const reader = new FileReader();
-                  reader.onload = e => {
-                      img.src = e.target.result;
-                  };
-                  reader.onerror = () => reject(new Error('ファイルの読み込みに失敗しました'));
-                  reader.readAsDataURL(file);
-              });
-          }
-          
-          // ダウンロードボタン
-          downloadBtn.addEventListener('click', function(e) {
-              if (convertedImages.length === 0) {
-                  e.preventDefault();
-                  return;
-              }
-              
-              // 単一画像の場合は直接ダウンロード
-              if (convertedImages.length === 1) {
-                  const url = URL.createObjectURL(convertedImages[0].blob);
-                  const a = document.createElement('a');
-                  a.href = url;
-                  a.download = convertedImages[0].name;
-                  document.body.appendChild(a);
-                  a.click();
-                  document.body.removeChild(a);
-                  URL.revokeObjectURL(url);
-                  return;
-              }
-              
-              // 複数画像の場合はZIPでダウンロード
-              e.preventDefault();
-              
-              const zip = new JSZip();
-              
-              // 画像をZIPに追加
-              convertedImages.forEach(image => {
-                  zip.file(image.name, image.blob);
-              });
-              
-              // ZIPを生成してダウンロード
-              zip.generateAsync({ type: 'blob' }).then(content => {
-                  const url = URL.createObjectURL(content);
-                  const a = document.createElement('a');
-                  a.href = url;
-                  a.download = `webp_images_${new Date().toISOString().slice(0, 10)}.zip`;
-                  document.body.appendChild(a);
-                  a.click();
-                  document.body.removeChild(a);
-                  URL.revokeObjectURL(url);
-              });
-          });
-      });
-  </script>
-
-
-
-<!-- footer -->
-</body></html>

@@ -251,41 +251,8 @@
 </head>
 <body>
 <!-- header -->
-  <!-- ヘッダー -->
-  <div id="header-placeholder"></div>
+  <!-- ヘッダー -->  <div id="header-placeholder"></div>
   
-
-  <!-- モバイルメニュー -->
-  <div class="mobile-menu">
-    <nav>
-      <ul>
-        <li><a href="/index.html">ホーム</a></li>
-        <li><a href="/about.html">オートウェビナー大学とは</a></li>
-        <li><a href="/blog/index.html">ブログ</a></li>
-        <!-- <li><a href="/seminar/index.html">オンライン講座</a></li> -->
-        <li><a href="/tools/index.html">まえゆきツール</a></li>
-        <li><a href="/achievement/index.html">お客様の声</a></li>
-      </ul>
-    </nav>
-    <div class="mobile-cta">
-      <a href="/document.html" class="btn-document">
-        <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
-        資料請求する
-      </a>
-      <a href="https://utage-system.com/p/EcESO02xLLoK" class="btn-contact">
-        まず相談する
-      </a>
-    </div>
-  </div>
-
-  <!-- スマホ用フッター固定CTA -->
-  <div class="sp-fix-cta">
-    <ul>
-      <li class="mail"><a href="https://utage-system.com/p/EcESO02xLLoK">まずは相談する</a></li>
-      <li class="book"><a href="/document.html">資料請求する</a></li>
-    </ul>
-  </div>
-
   <!-- メインコンテンツ -->
   <main>
     <!-- ツールのコンテナ -->
@@ -404,50 +371,26 @@
               <a href="png-to-jpeg.html" class="tool-nav-link">PNG→JPEG変換</a>
               <a href="png-jpeg-to-webp.html" class="tool-nav-link">WebP変換</a>
               <a href="letters-counter.html" class="tool-nav-link">文字数チェック</a>
-              <a href="meme-generator.html" class="tool-nav-link">ミーム画像生成</a>
-            </div>
+              <a href="meme-generator.html" class="tool-nav-link">ミーム画像生成</a>            </div>
           </div>
+            <!-- その他のまえゆきツール -->
+          <div class="other-tools">
+            <h2 class="other-tools-title">その他のまえゆきツール</h2>
+            <div class="tools-list">
+              <a href="calc.html" class="tool-link">単位換算と計算</a>
+              <a href="roulette.html" class="tool-link">ルーレット</a>
+              <a href="image-resize.html" class="tool-link">画像リサイズ</a>
+              <a href="png-to-jpeg.html" class="tool-link">PNG→JPEG変換</a>
+              <a href="png-jpeg-to-webp.html" class="tool-link">WebP変換</a>
+              <a href="wareki-seireki.html" class="tool-link">年齢・和暦計算</a>
+              <a href="meme-generator.html" class="tool-link">ミーム作成</a>
+              <a href="color-palette.html" class="tool-link">カラーパレット</a>
+              <a href="letters-counter.html" class="tool-link">文字数カウント</a>
+            </div>          </div>
         </div>
       </div>
     </div>
-  </p>
-</li></li></li></li></li></li>
 </main>
-
-  <!-- フッター（トップページと同じスタイルに変更） -->
-  <footer class="site-footer">
-    <div class="footer-container">
-      <div class="footer-logo">オートウェビナー大学</div>
-      <div class="footer-widgets">
-        <div class="widget-area">
-          <h4>無料コンテンツ</h4>
-          <ul>
-            <li><a href="/blog/index.html">ブログ</a></li>
-            <li><a href="/book/index.html">電子書籍</a></li>
-            <li><a href="/free-seminar.html">無料セミナー</a></li>
-            <li><a href="/free-consultation.html">無料相談</a></li>
-            <li><a href="/achievement/index.html">お客様の声</a></li>
-          </ul>
-        </div>
-        <div class="widget-area">
-          <h4>運営情報</h4>
-          <ul>
-            <li><a href="/owner.html">運営者情報</a></li>
-            <li><a href="/terms.html">利用規約</a></li>
-            <li><a href="/privacy.html">プライバシーポリシー</a></li>
-            <li><a href="/tokutei.html">特定商取引法に基づく表記</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- SVGアイコン -->
-  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-    <symbol id="icon-pdf" viewBox="0 0 24 24">
-      <path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"/>
-    </symbol>
-  </svg>
 
   <!-- 個別ツールのJavaScript -->
   <script>
@@ -797,21 +740,20 @@
 
       // アプリケーション起動
       initializeApp();
-    });
-  </script>
+    });  </script>
 
-<!-- footer -->
-</body>
-  <!-- フッター -->
-  <div id="footer-placeholder"></div>
-  <script>
-    if (!window.isScriptLoaded || !window.isScriptLoaded('/js/include.js')) {
-        document.write('<script src="/js/include.js"><\/script>');
-    } else {
-        console.log('include.jsのロードをスキップしました');
-    }
+</main>
+<!-- フッターを共通コンポーネントとして読み込み -->
+<div id="footer-placeholder"></div>
+<script>
+  if (!window.isScriptLoaded || !window.isScriptLoaded('/js/include.js')) {
+      document.write('<script src="/js/include.js"><\/script>');
+  } else {
+      console.log('include.jsのロードをスキップしました');
+  }
 </script>
 
+<script src="/js/script.js"></script>
 </body>
 </html>
 
