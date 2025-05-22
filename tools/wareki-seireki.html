@@ -13,10 +13,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <!-- インクルード処理 -->
-  
-  <!-- 非クリティカルCSSは非同期ロード -->
+    <!-- 非クリティカルCSSは非同期ロード -->
   <link rel="stylesheet" href="/css/style.css" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="/css/tools-common.css" media="print" onload="this.media='all'">
+  <!-- その他のツールボタンスタイル -->
+  <link rel="stylesheet" href="/css/other-tools.css" media="print" onload="this.media='all'">
 
   <!-- クリティカルCSS インライン化 -->
   <style>
@@ -397,8 +398,23 @@
             <li><strong>年齢計算：</strong>生年月日を入力すると、現在の満年齢が計算されます。</li>
             <li><strong>特定日の年齢：</strong>生年月日と特定の日付を入力すると、その日の満年齢が計算されます。</li>
             <li><strong>和暦・西暦変換：</strong>西暦から和暦、和暦から西暦への相互変換ができます。</li>
-          </ul>
-          <p>※計算は満年齢（誕生日を迎えた後の年齢）を基準としています。</p>
+          </ul>          <p>※計算は満年齢（誕生日を迎えた後の年齢）を基準としています。</p>
+        </div>
+        
+        <!-- その他のまえゆきツール -->
+        <div class="other-tools">
+          <h2 class="other-tools-title">その他のまえゆきツール</h2>
+          <div class="tools-list">
+            <a href="bmi-calculator.html" class="tool-link">BMI・適正体重計算</a>
+            <a href="countdown.html" class="tool-link">カウントダウンタイマー</a>
+            <a href="calc.html" class="tool-link">単位換算と計算</a>
+            <a href="image-resize.html" class="tool-link">画像リサイズ</a>
+            <a href="png-to-jpeg.html" class="tool-link">PNG→JPEG変換</a>
+            <a href="png-jpeg-to-webp.html" class="tool-link">WebP変換</a>
+            <a href="meme-generator.html" class="tool-link">ミーム作成</a>
+            <a href="color-palette.html" class="tool-link">カラーパレット</a>
+            <a href="letters-counter.html" class="tool-link">文字数カウント</a>
+          </div>
         </div>
       </div>
     </section>
@@ -816,22 +832,6 @@
     }
   </script>
 
-  <!-- その他のまえゆきツール -->
-  <div class="other-tools">
-    <h2 class="other-tools-title">その他のまえゆきツール</h2>
-    <div class="tools-list">
-      <a href="countdown.html" class="tool-link">カウントダウンタイマー</a>
-      <a href="roulette.html" class="tool-link">ルーレット</a>
-      <a href="calc.html" class="tool-link">単位換算と計算</a>
-      <a href="image-resize.html" class="tool-link">画像リサイズ</a>
-      <a href="png-to-jpeg.html" class="tool-link">PNG→JPEG変換</a>
-      <a href="png-jpeg-to-webp.html" class="tool-link">WebP変換</a>
-      <a href="meme-generator.html" class="tool-link">ミーム作成</a>
-      <a href="color-palette.html" class="tool-link">カラーパレット</a>
-      <a href="letters-counter.html" class="tool-link">文字数カウント</a>
-    </div>
-  </div>
-
   <script>
     if (!window.isScriptLoaded || !window.isScriptLoaded('/js/include.js')) {
       document.write('<script src="/js/include.js"><\/script>');
@@ -841,3 +841,4 @@
   </script>
 </body>
 </html>
+

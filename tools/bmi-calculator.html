@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script src="/js/prevent-duplicate-includes.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="身長と体重からBMI（ボディマス指数）と適正体重を計算できる無料ツールです。肥満度判定や標準体重との比較もできます。">
+  <title>BMIと適正体重計算 | まえゆきツール</title>
+
+  <!-- リソースの先読み -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- 共通CSSとフォント -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- ツール共通CSS -->
+  <link rel="stylesheet" href="/css/tools-common.css">
+  <!-- フッターのスタイル -->
+  <link rel="stylesheet" href="/css/footer-hover.css">
+  <!-- その他のツールボタンスタイル -->
+  <link rel="stylesheet" href="/css/other-tools.css">
+  <!-- その他のツールボタンスタイル -->
+  <link rel="stylesheet" href="/css/other-tools.css">
+  
+  <!-- 個別ツールのスタイル -->
+  <style>
+    /* BMI計算ツールスタイル */
+    .tool-section {
+      padding: 80px 0 40px;
+      margin-top: var(--header-h);
+      background: #f9f3e9;
+    }
+    
+    .tool-container {
+      max-width: 840px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .tool-title {
+      font-size: 28px;
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--text-dark);
+    }
+    
+    /* メインコンテンツ */
+    .bmi-calculator {
+      background: #fff;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      margin-bottom: 30px;
+    }
+    
+    .input-group {
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    
+    .input-group label {
+      width: 80px;
+      font-weight: bold;
+      margin-right: 15px;
+      color: var(--text-dark);
+    }
+    
+    .input-field {
+      flex: 1;
+      min-width: 120px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .input-field input {
+      width: 100%;
+      max-width: 120px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 16px;
+      margin-right: 8px;
+    }
+    
+    .input-field span {
+      margin-left: 8px;
+      color: #666;
+    }
+    
+    .calculate-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin: 20px 0;
+      display: block;
+      width: 100%;
+    }
+    
+    .calculate-btn:hover {
+      background: var(--primary-dark);
+    }
+    
+    .result-area {
+      margin-top: 25px;
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 4px solid var(--primary);
+    }
+    
+    .result-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: var(--text-dark);
+    }
+    
+    .result-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    
+    .result-table th, .result-table td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    .result-table th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+      color: #333;
+    }
+    
+    .result-highlight {
+      font-weight: bold;
+      color: var(--primary);
+    }
+    
+    /* 説明エリア */
+    .info-box {
+      background: #fff;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      margin-top: 30px;
+    }
+    
+    .info-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: var(--text-dark);
+      padding-bottom: 10px;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .info-subtitle {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 25px 0 15px;
+      color: var(--text-dark);
+    }
+    
+    .info-text {
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+    
+    .info-formula {
+      background: #f8f9fa;
+      padding: 15px;
+      border-radius: 6px;
+      margin: 15px 0;
+      font-family: monospace;
+      font-size: 16px;
+    }
+    
+    .criteria-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    
+    .criteria-table th, .criteria-table td {
+      padding: 10px 15px;
+      text-align: left;
+      border: 1px solid #ddd;
+    }
+    
+    .criteria-table th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+    
+    .normal-weight {
+      background-color: #e8f5e9;
+    }
+    
+    .overweight {
+      background-color: #fff3e0;
+    }
+    
+    .obese {
+      background-color: #ffebee;
+    }
+    
+    .underweight {
+      background-color: #e3f2fd;
+    }
+    
+    .disclaimer {
+      margin-top: 30px;
+      padding: 15px;
+      background: #f8f9fa;
+      border-radius: 6px;
+      font-size: 14px;
+      color: #666;
+    }
+    
+    @media (max-width: 600px) {
+      .input-group {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .input-group label {
+        width: 100%;
+        margin-bottom: 8px;
+      }
+      
+      .input-field {
+        width: 100%;
+      }
+      
+      .input-field input {
+        max-width: 100%;
+      }
+      
+      .bmi-calculator, .info-box {
+        padding: 20px 15px;
+      }
+    }
+  </style>
+
+  <!-- JavaScriptの遅延ロード -->
+  <script src="/js/script.js" defer></script>
+  
+
+  <link rel="icon" href="/images/favicon.ico">
+  <meta property="og:title" content="BMIと適正体重計算 | まえゆきツール">
+  <meta property="og:description" content="身長と体重からBMI（ボディマス指数）と適正体重を計算できる無料ツールです。肥満度判定や標準体重との比較もできます。">
+  <meta property="og:image" content="/images/tool-ogp.webp">
+  <meta property="og:type" content="website">
+</head>
+<body>
+  <!-- ヘッダー -->
+  <div id="header-placeholder"></div>
+  
+
+  <!-- メインコンテンツ -->
+  <main>
+    <!-- ツールのコンテナ -->
+    <section class="tool-section">
+      <div class="tool-container">
+        <div class="tool-header">
+          <h1>BMIと適正体重計算</h1>
+          <p class="tool-description">身長と体重から肥満度を示すBMIと適正体重を計算します。</p>
+        </div>
+        
+        <!-- ツール固有のコンテンツ -->
+        <div class="tool-content">
+          <div class="bmi-calculator">
+            <div class="input-group">
+              <label for="height">身長</label>
+              <div class="input-field">
+                <input type="number" id="height" min="1" placeholder="例: 170">
+                <span>cm</span>
+              </div>
+            </div>
+            
+            <div class="input-group">
+              <label for="weight">体重</label>
+              <div class="input-field">
+                <input type="number" id="weight" min="1" placeholder="例: 65">
+                <span>kg</span>
+              </div>
+            </div>
+            
+            <button id="calculateBtn" class="calculate-btn">計算する</button>
+            
+            <div class="result-area" id="resultArea" style="display: none;">
+              <h3 class="result-title">計算結果</h3>
+              <table class="result-table">
+                <tr>
+                  <th>範囲</th>
+                  <th>肥満度</th>
+                  <th>適正体重</th>
+                  <th>適正体重と比較</th>
+                  <th>BMI</th>
+                </tr>
+                <tr>
+                  <td id="resultRange"></td>
+                  <td id="resultCategory"></td>
+                  <td id="resultIdealWeight"></td>
+                  <td id="resultComparison"></td>
+                  <td id="resultBMI" class="result-highlight"></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          
+          <div class="info-box">
+            <h2 class="info-title">BMIとは</h2>
+            <p class="info-text">BMI（Body Mass Index）はボディマス指数と呼ばれ、体重と身長から算出される肥満度を表す体格指数です。子供には別の指数が存在しますが、成人ではBMIが国際的な指標として用いられています。健康を維持するためは日頃からBMIを把握することが重要です。</p>
+            
+            <h3 class="info-subtitle">計算式</h3>
+            <div class="info-formula">
+              BMI ＝ 体重kg ÷ (身長m)²<br>
+              適正体重 ＝ (身長m)² ×22
+            </div>
+            
+            <h3 class="info-subtitle">判定基準</h3>
+            <p class="info-text">BMIの計算式は世界共通ですが、肥満の判定基準は国により異なります。</p>
+            
+            <h4>成人</h4>
+            <p>日本肥満学会の判定基準</p>
+            <table class="criteria-table">
+              <tr>
+                <th>BMI値</th>
+                <th>判定</th>
+              </tr>
+              <tr class="underweight">
+                <td>18.5未満</td>
+                <td>低体重(痩せ型)</td>
+              </tr>
+              <tr class="normal-weight">
+                <td>18.5〜25未満</td>
+                <td>普通体重</td>
+              </tr>
+              <tr class="overweight">
+                <td>25〜30未満</td>
+                <td>肥満(1度)</td>
+              </tr>
+              <tr class="obese">
+                <td>30〜35未満</td>
+                <td>肥満(2度)</td>
+              </tr>
+              <tr class="obese">
+                <td>35〜40未満</td>
+                <td>肥満(3度)</td>
+              </tr>
+              <tr class="obese">
+                <td>40以上</td>
+                <td>肥満(4度)</td>
+              </tr>
+            </table>
+            
+            <p>世界保健機関(WHO)の判定基準</p>
+            <table class="criteria-table">
+              <tr>
+                <th>BMI値</th>
+                <th>判定</th>
+              </tr>
+              <tr class="underweight">
+                <td>16未満</td>
+                <td>痩せすぎ</td>
+              </tr>
+              <tr class="underweight">
+                <td>16.00〜16.99以下</td>
+                <td>痩せ</td>
+              </tr>
+              <tr class="underweight">
+                <td>17.00〜18.49以下</td>
+                <td>痩せぎみ</td>
+              </tr>
+              <tr class="normal-weight">
+                <td>18.50〜24.99以下</td>
+                <td>普通体重</td>
+              </tr>
+              <tr class="overweight">
+                <td>25.00〜29.99以下</td>
+                <td>前肥満</td>
+              </tr>
+              <tr class="obese">
+                <td>30.00〜34.99以下</td>
+                <td>肥満(1度)</td>
+              </tr>
+              <tr class="obese">
+                <td>35.00〜39.99以下</td>
+                <td>肥満(2度)</td>
+              </tr>
+              <tr class="obese">
+                <td>40.00以上</td>
+                <td>肥満(3度)</td>
+              </tr>
+            </table>
+            
+            <h4>子供</h4>
+            <p class="info-text">幼児にはカウプ指数、学童にはローレル指数が用いられます。子供の肥満をご参照ください。</p>
+            
+            <h4>妊婦</h4>
+            <p class="info-text">妊娠中の肥満や痩せは、病気等のリスクが高くなります。また妊娠中の体重は、増えすぎも、増え無すぎも注意が必要です。妊娠前のBMIに応じた望ましい体重増加量については「妊娠中の体重増加の目安について」(日本産科婦人科学会)をご参照ください。</p>
+            
+            <h3 class="info-subtitle">適正体重</h3>
+            <p class="info-text">日本肥満学会では、BMIが22を適正体重（標準体重）とし、統計的に最も病気になりにくい体重とされています。25以上を肥満、18.5未満を低体重と分類しています。</p>
+            
+            <h3 class="info-subtitle">肥満や痩せの病気のリスク</h3>
+            <p class="info-text">肥満は、糖尿病、高血圧、脂質異常などの生活習慣病のリスクが高くなります。また痩せは栄養不良、慢性進行性疾患などが生じることがあります。(日本肥満学会)</p>
+            <p class="info-text">妊婦の場合は、肥満（BMIが25以上）になると、妊娠高血圧症候群、妊娠糖尿病、巨大児の発症率、帝王切開率が高くなり、痩せ（BMI が18.5未満）になると、切迫早産、早産、低出生体重児を出産するリスクが高くなります。（厚生労働省）</p>
+            
+            <h3 class="info-subtitle">メタボとの関係</h3>
+            <p class="info-text">BMIと内臓脂肪は必ずしも相関しないため、メタボの診断基準には盛りこまれていませんが、メタボ予備軍を拾い上げるために特定健診・特定保健指導の基準には採用されています。</p>
+            
+            <h3 class="info-subtitle">歴史</h3>
+            <p class="info-text">ベルギーのアドルフ・ケトレーが、1835年に統計手法を導入してBMIを提案しました。BMIは、同じ体重でも脂肪や筋肉量も違うので限界がありますが、計算式が簡単なこともあり、現在では世界共通に用いられています。</p>
+            
+            <div class="disclaimer">
+              ※計算結果や情報等に関して当サイトは一切責任を負いません。また個別相談は対応しません。
+            </div>
+          </div>
+        </div>
+        
+        <!-- その他のまえゆきツール -->
+        <div class="other-tools">
+          <h2 class="other-tools-title">その他のまえゆきツール</h2>
+          <div class="tools-list">
+            <a href="calc.html" class="tool-link">単位換算と計算</a>
+            <a href="countdown.html" class="tool-link">カウントダウンタイマー</a>
+            <a href="image-resize.html" class="tool-link">画像リサイズ</a>
+            <a href="png-to-jpeg.html" class="tool-link">PNG→JPEG変換</a>
+            <a href="png-jpeg-to-webp.html" class="tool-link">WebP変換</a>
+            <a href="wareki-seireki.html" class="tool-link">年齢・和暦計算</a>
+            <a href="meme-generator.html" class="tool-link">ミーム作成</a>
+            <a href="color-palette.html" class="tool-link">カラーパレット</a>
+            <a href="letters-counter.html" class="tool-link">文字数カウント</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- フッター -->
+  <div id="footer-placeholder"></div>
+  <script>
+    if (!window.isScriptLoaded || !window.isScriptLoaded('/js/include.js')) {
+        document.write('<script src="/js/include.js"><\/script>');
+    } else {
+        console.log('include.jsのロードをスキップしました');
+    }
+  </script>
+
+  <!-- 個別ツールのJavaScript -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // 要素の参照
+      const heightInput = document.getElementById('height');
+      const weightInput = document.getElementById('weight');
+      const calculateBtn = document.getElementById('calculateBtn');
+      const resultArea = document.getElementById('resultArea');
+      const resultRange = document.getElementById('resultRange');
+      const resultCategory = document.getElementById('resultCategory');
+      const resultIdealWeight = document.getElementById('resultIdealWeight');
+      const resultComparison = document.getElementById('resultComparison');
+      const resultBMI = document.getElementById('resultBMI');
+      
+      // 計算ボタンクリックイベント
+      calculateBtn.addEventListener('click', calculateBMI);
+      
+      // 入力フィールドでEnterキー押下時にも計算実行
+      heightInput.addEventListener('keyup', function(event) {
+        if (event.key === 'Enter') calculateBMI();
+      });
+      
+      weightInput.addEventListener('keyup', function(event) {
+        if (event.key === 'Enter') calculateBMI();
+      });
+      
+      // BMI計算関数
+      function calculateBMI() {
+        const height = parseFloat(heightInput.value);
+        const weight = parseFloat(weightInput.value);
+        
+        // 入力チェック
+        if (isNaN(height) || height <= 0 || isNaN(weight) || weight <= 0) {
+          alert('身長と体重を正しく入力してください');
+          return;
+        }
+        
+        // BMI計算
+        const heightInMeters = height / 100;
+        const bmi = weight / (heightInMeters * heightInMeters);
+        
+        // 適正体重計算
+        const idealWeight = 22 * (heightInMeters * heightInMeters);
+        
+        // 適正体重との差
+        const weightDiff = weight - idealWeight;
+        let comparisonText = '';
+        
+        if (Math.abs(weightDiff) < 1) {
+          comparisonText = 'ほぼ適正';
+        } else if (weightDiff > 0) {
+          comparisonText = `+${weightDiff.toFixed(1)}kg`;
+        } else {
+          comparisonText = `${weightDiff.toFixed(1)}kg`;
+        }
+        
+        // BMI区分判定（日本基準）
+        let category = '';
+        let rangeText = '';
+        
+        if (bmi < 18.5) {
+          category = '低体重(痩せ型)';
+          rangeText = '18.5未満';
+        } else if (bmi < 25) {
+          category = '普通体重';
+          rangeText = '18.5〜25未満';
+        } else if (bmi < 30) {
+          category = '肥満(1度)';
+          rangeText = '25〜30未満';
+        } else if (bmi < 35) {
+          category = '肥満(2度)';
+          rangeText = '30〜35未満';
+        } else if (bmi < 40) {
+          category = '肥満(3度)';
+          rangeText = '35〜40未満';
+        } else {
+          category = '肥満(4度)';
+          rangeText = '40以上';
+        }
+        
+        // 結果表示
+        resultRange.textContent = rangeText;
+        resultCategory.textContent = category;
+        resultIdealWeight.textContent = `${idealWeight.toFixed(1)}kg`;
+        resultComparison.textContent = comparisonText;
+        resultBMI.textContent = bmi.toFixed(1);
+        
+        // 結果エリア表示
+        resultArea.style.display = 'block';
+          // スムーズスクロール
+        resultArea.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });  </script>
+
+</body>
+</html>
+

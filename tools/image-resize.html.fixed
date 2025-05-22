@@ -17,13 +17,10 @@
   
   <!-- ツール共通CSS -->
   <link rel="stylesheet" href="/css/tools-common.css">
-  <link rel="stylesheet" href="/css/image-tools-styles.css">  
+  <link rel="stylesheet" href="/css/image-tools-styles.css">
+  
   <!-- フッターのスタイル -->
   <link rel="stylesheet" href="/css/footer-hover.css">
-  <!-- その他のツールボタンスタイル -->
-  <link rel="stylesheet" href="/css/other-tools.css">
-  <!-- その他のツールボタンスタイル -->
-  <link rel="stylesheet" href="/css/other-tools.css">
 
   <style>
     .tool-content {
@@ -378,6 +375,7 @@
             <h2 class="other-tools-title">その他のまえゆきツール</h2>
             <div class="tools-list">
               <a href="countdown.html" class="tool-link">カウントダウンタイマー</a>
+              <a href="roulette.html" class="tool-link">ルーレット</a>
               <a href="png-to-jpeg.html" class="tool-link">PNG→JPEG変換</a>
               <a href="png-jpeg-to-webp.html" class="tool-link">WebP変換</a>
               <a href="wareki-seireki.html" class="tool-link">年齢・和暦計算</a>
@@ -746,25 +744,9 @@
             // 進捗テキスト更新
             progressText.textContent = 'ダウンロード完了！';
         }
-    });  </script>
+    });
+  </script>
 </main>
-
-<!-- その他のまえゆきツール -->
-<div class="other-tools">
-  <h2 class="other-tools-title">その他のまえゆきツール</h2>
-  <div class="tools-list">
-    <a href="bmi-calculator.html" class="tool-link">BMI・適正体重計算</a>
-    <a href="countdown.html" class="tool-link">カウントダウンタイマー</a>
-    <a href="calc.html" class="tool-link">単位換算と計算</a>
-    <a href="image-resize.html" class="tool-link">画像リサイズ</a>
-    <a href="png-to-jpeg.html" class="tool-link">PNG→JPEG変換</a>
-    <a href="png-jpeg-to-webp.html" class="tool-link">WebP変換</a>
-    <a href="meme-generator.html" class="tool-link">ミーム作成</a>
-    <a href="color-palette.html" class="tool-link">カラーパレット</a>
-    <a href="wareki-seireki.html" class="tool-link">年齢・和暦計算</a>
-    <a href="letters-counter.html" class="tool-link">文字数カウント</a>
-  </div>
-</div>
 
 <!-- フッター -->
 <div id="footer-placeholder"></div>
@@ -779,4 +761,3 @@
 <script src="/js/script.js"></script>
 </body>
 </html>
-

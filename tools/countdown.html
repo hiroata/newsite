@@ -367,26 +367,11 @@
           <div class="related-tools">
             <h3 class="related-tools-title">関連ツール</h3>
             <div class="tool-navigation-list">
-              <a href="image-resize.html" class="tool-nav-link">画像リサイズ</a>
-              <a href="png-to-jpeg.html" class="tool-nav-link">PNG→JPEG変換</a>
+              <a href="image-resize.html" class="tool-nav-link">画像リサイズ</a>              <a href="png-to-jpeg.html" class="tool-nav-link">PNG→JPEG変換</a>
               <a href="png-jpeg-to-webp.html" class="tool-nav-link">WebP変換</a>
               <a href="letters-counter.html" class="tool-nav-link">文字数チェック</a>
               <a href="meme-generator.html" class="tool-nav-link">ミーム画像生成</a>            </div>
           </div>
-            <!-- その他のまえゆきツール -->
-          <div class="other-tools">
-            <h2 class="other-tools-title">その他のまえゆきツール</h2>
-            <div class="tools-list">
-              <a href="calc.html" class="tool-link">単位換算と計算</a>
-              <a href="roulette.html" class="tool-link">ルーレット</a>
-              <a href="image-resize.html" class="tool-link">画像リサイズ</a>
-              <a href="png-to-jpeg.html" class="tool-link">PNG→JPEG変換</a>
-              <a href="png-jpeg-to-webp.html" class="tool-link">WebP変換</a>
-              <a href="wareki-seireki.html" class="tool-link">年齢・和暦計算</a>
-              <a href="meme-generator.html" class="tool-link">ミーム作成</a>
-              <a href="color-palette.html" class="tool-link">カラーパレット</a>
-              <a href="letters-counter.html" class="tool-link">文字数カウント</a>
-            </div>          </div>
         </div>
       </div>
     </div>
@@ -429,18 +414,18 @@
       };
 
       // タイマー処理ID
-      let timerInterval;
-
-      // URLパラメータから設定を読み込む
+      let timerInterval;      // URLパラメータから設定を読み込む
       const loadSettingsFromUrl = () => {
           const queryParams = new URLSearchParams(window.location.search);
 
           if (queryParams.has('t')) { // Title
-              appSettings.title = decodeURIComponent(queryParams.get('t'));
+              // URLパラメータは既にデコードされているので追加のデコードは不要
+              appSettings.title = queryParams.get('t');
           }
 
           if (queryParams.has('s')) { // Subtitle
-              appSettings.subtitle = decodeURIComponent(queryParams.get('s'));
+              // URLパラメータは既にデコードされているので追加のデコードは不要
+              appSettings.subtitle = queryParams.get('s');
           }
 
           if (queryParams.has('d') && queryParams.has('tm')) { // Date & Time
@@ -463,14 +448,13 @@
           if (queryParams.has('c')) { // Color
               appSettings.themeStyle = queryParams.get('c');
           }
-      };
-
-      // 現在の設定をURLパラメータに反映
+      };      // 現在の設定をURLパラメータに反映
       const updateUrlParameters = () => {
           const params = new URLSearchParams();
 
-          params.set('t', encodeURIComponent(appSettings.title));
-          params.set('s', encodeURIComponent(appSettings.subtitle));
+          // エンコードをせずにそのまま設定
+          params.set('t', appSettings.title);
+          params.set('s', appSettings.subtitle);
 
           if (appSettings.isDurationTimer) {
               // タイマーの場合は残り秒数を記録
@@ -705,17 +689,15 @@
             const totalSeconds = hours * 3600 + minutes * 60 + seconds;
             applyDurationTimer(totalSeconds);
           });
-      };
-
-      // アプリケーション起動時の初期処理
+      };      // アプリケーション起動時の初期処理
       const initializeApp = () => {
           // URLパラメータから設定を読み込む
           loadSettingsFromUrl();
 
           // URLパラメータを最新の設定で更新
           const params = new URLSearchParams();
-          params.set('t', encodeURIComponent(appSettings.title));
-          params.set('s', encodeURIComponent(appSettings.subtitle));
+          params.set('t', appSettings.title);
+          params.set('s', appSettings.subtitle);
           
           if (appSettings.isDurationTimer) {
               const remainingSeconds = Math.max(0, Math.floor((appSettings.targetMoment - new Date()) / 1000));
@@ -743,6 +725,9 @@
     });  </script>
 
 </main>
+
+
+
 <!-- フッターを共通コンポーネントとして読み込み -->
 <div id="footer-placeholder"></div>
 <script>
@@ -756,4 +741,5 @@
 <script src="/js/script.js"></script>
 </body>
 </html>
+
 

@@ -18,10 +18,11 @@
   <script src="/js/lazy-loading.js" defer=""></script>
   <!-- 共通CSSとフォント -->
   <link rel="stylesheet" href="/css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&amp;display=swap" rel="stylesheet">
-  <!-- ツール共通CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&amp;display=swap" rel="stylesheet">  <!-- ツール共通CSS -->
   <link rel="stylesheet" href="/css/tools-common.css">
   <link rel="stylesheet" href="/css/image-tools-styles.css">
+  <!-- その他のツールボタンスタイル -->
+  <link rel="stylesheet" href="/css/other-tools.css">
   <!-- 共通スクリプト読み込み -->
   <script src="/js/image-tools-utils.js"></script>
   <!-- 個別ツールのスタイル -->
@@ -437,31 +438,20 @@
   <link rel="icon" href="/images/favicon.ico">
   <meta property="og:title" content="PNG→JPEG変換ツール | まえゆきツール">
   <meta property="og:description" content="まえゆきツールのPNG→JPEG変換ツール - PNG画像をJPEG形式に一括変換できる無料ツールです。">
-  <meta property="og:image" content="/images/tool-ogp.webp">
-  <meta property="og:type" content="website">
+  <meta property="og:image" content="/images/tool-ogp.webp">  <meta property="og:type" content="website">
   <meta property="og:image" content="/images/ogp_image_tools.webp">
-  <meta property="og:type" content="website">
-<link rel="stylesheet" href="/css/image-tools-styles.css"><script src="/js/image-tools-utils.js"></script></head>
+</head>
 <body>
 <!-- header -->
   <!-- ヘッダー -->
   <div id="header-placeholder"></div>
-  <!-- メインコンテンツ -->
-  <main>
-    <!-- ツールのコンテナ -->
-    <div class="app-wrapper">
+  <!-- メインコンテンツ -->  <main>
+    <!-- ツールセクション -->
+    <section class="tool-section">
       <div class="tool-container">
-        <div class="tool-header">          <h1>PNG→JPEG変換ツール</h1>
-          <p class="tool-description">PNG画像をJPEG形式に一括変換できる無料ツールです。品質調整も可能で、透過部分の背景色も自由に設定できます。</p>
-        </div>        <!-- ツール固有のコンテンツ -->
-        <div class="tool-content">
-          <div id="svg-defs-placeholder"></div>
-      <!-- ツールセクション -->
-      <section class="tool-section">
-         <div class="tool-container">
-            <h1 class="tool-title">PNG→JPEG変換ツール</h1>
-            <p class="tool-subtitle">Web上で一括変換！</p>
-            <span class="tool-label">PNG対応</span>
+        <h1 class="tool-title">PNG→JPEG変換ツール</h1>
+        <p class="tool-subtitle">Web上で一括変換！</p>
+        <span class="tool-label">PNG対応</span>
             <!-- ステップ1: 画像選択 -->
             <div class="step-section">
                <span class="step-number">1</span>
@@ -540,28 +530,46 @@
                   <li class="usage-item">Web（ブラウザ）上ですぐに使えるPNG→JPEG変換ツールです。</li>
                   <li class="usage-item">複数のPNG画像をまとめてJPEG形式に変換できます。</li>
                   <li class="usage-item">透明部分は指定した背景色（デフォルトは白）で塗りつぶされます。</li>
-                  <li class="usage-item">品質を下げると、ファイルサイズを小さくできますが、画質は低下します。</li>
-                  <li class="usage-item">変換後のファイル名は「元のファイル名.jpg」となります。</li>
-                  <a href="../tools/image-resize/" class="tool-link">画像サイズ変更</a>     
-                  <a href="../tools/png-jpeg-to-webp/" class="tool-link">WebP変換ツール</a> 
-                  <a href="../tools/countdown/" class="tool-link">Webでカウントダウン</a>   
-                  <a href="../tools/roulette/" class="tool-link">Webでルーレット</a>        
-                  <a href="../tools/bingo/" class="tool-link">ビンゴ・マシーン</a>
-                  <a href="../tools/letters-counter/" class="tool-link">文字数カウント</a>  
+                  <li class="usage-item">品質を下げると、ファイルサイズを小さくできますが、画質は低下します。</li>                  <li class="usage-item">変換後のファイル名は「元のファイル名.jpg」となります。</li>
+                  <li class="usage-item">
+                    <span>関連ツール：</span>
+                    <a href="image-resize.html" class="usage-link">画像リサイズ</a>、
+                    <a href="png-jpeg-to-webp.html" class="usage-link">WebP変換ツール</a>、
+                    <a href="letters-counter.html" class="usage-link">文字数カウント</a>
+                  </li>
                </ul>
-            </div>            <div class="other-tools">               <h2 class="other-tools-title">その他のまえゆきツール</h2>
+            </div>            <div class="other-tools">
+               <h2 class="other-tools-title">その他のまえゆきツール</h2>
                <div class="tools-list">
                   <a href="calc.html" class="tool-link">単位換算と計算</a>
-                  <a href="countdown.html" class="tool-link">カウントダウンタイマー</a>        
-                  <a href="roulette.html" class="tool-link">ルーレット</a>
+                  <a href="countdown.html" class="tool-link">カウントダウンタイマー</a>
                   <a href="image-resize.html" class="tool-link">画像リサイズ</a>
+                  <a href="letters-counter.html" class="tool-link">文字数カウント</a>
                   <a href="png-jpeg-to-webp.html" class="tool-link">WebP変換</a>
-                  <a href="wareki-seireki.html" class="tool-link">年齢・和暦計算</a> 
+                  <a href="wareki-seireki.html" class="tool-link">年齢・和暦計算</a>
                   <a href="meme-generator.html" class="tool-link">ミーム作成</a>
                   <a href="color-palette.html" class="tool-link">カラーパレット</a>
-                  <a href="letters-counter.html" class="tool-link">文字数カウント</a>       
                </div>
-      </div>
+            </div>      </section>
+      <!-- Contact CTA Section -->
+      <section class="contact-cta-section">
+         <div class="contact-cta-container">
+            <span class="contact-cta-subtitle">IT導入補助金2025活用可能</span>
+            <h2 class="contact-cta-title">申請は完全丸投げOK！</h2>
+            <p class="contact-cta-lead">
+               UTAGEの導入で最大450万円の補助金が受けられます。<br class="pc-only">
+               面倒な申請手続きはすべてお任せください。<br class="pc-only">
+               あなたは事業成長に集中するだけでOKです。
+            </p>
+            <div class="contact-cta-buttons">               
+               <a href="https://utage-system.com/p/EcESO02xLLoK" class="btn btn-contact">
+                  無料相談してみる
+               </a>
+               <a href="../document.html" class="btn btn-document">
+                  <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>      
+                  資料請求する
+               </a>            </div>
+         </div>
       </section>
   </main>
 
@@ -770,10 +778,10 @@
               a.click();
               document.body.removeChild(a);
               URL.revokeObjectURL(url);
-          });
-      });
+          });      });
   });
 </script>
+
 <script src="/js/script.js"></script>
 </body>
 </html>
