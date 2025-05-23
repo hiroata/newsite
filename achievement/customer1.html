@@ -491,7 +491,7 @@
             overflow: hidden;
         }
         
-        .video-container video {
+        .video-container iframe {
             border-radius: 8px;
             width: 100%;
             max-width: 800px;
@@ -825,17 +825,15 @@
                     <p>関心を持つ際にどこを見るかが、人間関係を構築する上で大切です。「笑認」という名前が示すように、通常の「承認」とは、<span class="bold-text">人の良いところに目を向け、その人の強みや長所を認めること</span>だと思います。これが人間関係や企業と従業員の関係、評価においてとても重要なのです。</p>
                     <p>私は人に対する仕組みは<span class="red-text">性善説で考えるべき</span>だと思います。会社の様々な仕組みは性悪説で運営している企業も多いですが、私たちの最大の理念は「<span class="yellow-highlight">世界で承認し合う世界を作る</span>」ことです。人事評価システムを売ることが目的ではなく、みんなが認め合える世界を作るというビジョンを達成するために、まずは企業内でスタッフ同士が認め合えるような仕組みづくりを行っています。</p>
                 </div>
-            </div>        </section>
-
-        <!-- 動画セクション -->
+            </div>        </section>        <!-- 動画セクション -->
         <section class="video-section">
             <h2 class="section-header">
                 <i class="fas fa-video"></i> インタビュー動画
             </h2>
             <div class="video-container">
-                <video controls poster="/assets/images/interview-video-thumbnail.webp" preload="none" width="100%">
-                    <source src="/assets/videos/customer1-interview.mp4" type="video/mp4">
-                    お使いのブラウザは動画タグをサポートしていません。
+                <video id="interview-video" controls preload="metadata" poster="/assets/images/interview-profile.webp" style="width:100%; max-width:800px; border-radius:8px; margin:0 auto; display:block;">
+                    <source src="/assets/videos/takayasusama-interview.mp4" type="video/mp4">
+                    お使いのブラウザは動画再生をサポートしていません。
                 </video>
                 <div class="video-caption">
                     <p>髙安様インタビューの様子 - UTAGEを活用した情報発信の効果について</p>
