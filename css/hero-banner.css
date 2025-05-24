@@ -1,9 +1,17 @@
 /* Hero banner スタイル */
+.hero-image-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    text-align: center;
+}
+
 .hero-banner {
-    max-width: 100%;
+    max-width: 80%;  /* 100%から20%縮小 */
     height: auto;
     box-shadow: var(--apple-shadow);
     border-radius: var(--apple-border-radius);
+    margin: 0 auto;  /* 中央寄せ */
 }
 
 /* データ属性用のスタイリング - アニメーション無効化 */
