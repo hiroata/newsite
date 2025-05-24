@@ -59,8 +59,7 @@ function runCommand(command) {
 
 // 最適化モジュールを読み込み
 const addLazyLoading = safeRequire("./add-lazy-loading");
-const fs = require('fs');
-const path = require('path');
+// fs と path は既に上部で宣言済み
 const cleanupTools = safeRequire("./cleanup-tools");
 const fixRelativePaths = safeRequire("./fix-relative-paths");
 const fixWhitespace = safeRequire("./fix-whitespace");

@@ -5,6 +5,10 @@ on:
     branches:
       - master   
 
+# GitHub Pagesのデプロイを無効にする設定
+env:
+  PAGES_DEPLOYMENT_DISABLED: true
+
 jobs:
   optimize-and-deploy:
     name: Optimize and FTP Deploy
