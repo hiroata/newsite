@@ -1,0 +1,56 @@
+name: Deploy to Lolipop
+
+on:
+  push:
+    branches:
+      - master   
+
+# GitHub Pagesのデプロイを無効にする設定
+env:
+  PAGES_DEPLOYMENT_DISABLED: true
+
+jobs:
+  optimize-and-deploy:
+    name: Optimize and FTP Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          
+      - name: Install optimization tools
+        run: npm install -g clean-css-cli terser html-minifier-terser imagemin-cli
+
+      - name: Optimize CSS
+        run: |
+          for file in $(find . -name "*.css" -type f -not -path "./node_modules/*"); do
+            npx clean-css-cli -o "$file" "$file"
+          done
+          
+      - name: Optimize JavaScript
+        run: |
+          for file in $(find . -name "*.js" -type f -not -path "./node_modules/*" -not -path "./node_modules/*"); do
+            npx terser "$file" -c -m -o "$file"
+          done
+          
+      - name: Compress HTML
+        run: |
+          echo "HTML圧縮をスキップしています - SVGパースの問題を回避するため"
+          # 問題のあるSVGパースによるエラーを回避するため、HTML圧縮をスキップします
+          # for file in $(find . -name "*.html" -type f); do
+          #   npx html-minifier-terser --collapse-whitespace --remove-comments --remove-optional-tags --remove-redundant-attributes --remove-script-type-attributes --minify-css true --minify-js true "$file" -o "$file"
+          # done
+
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.0  
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: ${{ secrets.FTP_REMOTE_ROOT }}
+          local-dir: ./
