@@ -16,67 +16,313 @@
 
     <script src="/js/script.js" defer=""></script>
     <script src="/assets/js/components.js" defer=""></script>
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>    <style>
+        /* Apple風のデザイン変数 */
+        :root {
+            --apple-primary: #0071e3;
+            --apple-primary-dark: #0051a0;
+            --apple-secondary: #86868b;
+            --apple-text-dark: #1d1d1f;
+            --apple-text-light: #86868b;
+            --apple-text-medium: #424245;
+            --apple-bg-light: #f5f5f7;
+            --apple-bg-medium: #e8e8ed;
+            --apple-accent: #ff6131;
+            --apple-border-radius: 12px;
+            --apple-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --apple-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
 
-    <style>
-        /* free-consultationページ固有の追加スタイルのみ残す */
-        .consultation-hero-section {
-            background: var(--gradient-secondary);
-            padding: 120px 0 80px;
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: var(--apple-text-dark);
+            background-color: #fff;
+            line-height: 1.5;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Hero Section - Appleスタイル */
+        .hero-section {
+            height: 70vh;
+            min-height: 600px;
+            background: linear-gradient(135deg, #0071e3, #00c2ff);
             color: white;
-            text-align: center;
             position: relative;
             overflow: hidden;
-            margin-bottom: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .consultation-hero-section::before {
+
+        .hero-video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.3;
+        }
+
+        .hero-video-container::after {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('/images/dots-pattern.webp');
-            opacity: 0.07;
-            z-index: 1;
+            background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.6) 100%);
         }
-        .consultation-hero-container {
+
+        .hero-content {
             position: relative;
-            z-index: 2;
-            max-width: 900px;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 8px 24px;
+            border-radius: 980px;
+            margin-bottom: 24px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.95;
+        }
+
+        .hero-cta {
+            margin-top: 2rem;
+            display: inline-flex;
+            gap: 16px;
+        }
+
+        .hero-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            color: var(--apple-primary);
+            font-weight: 600;
+            font-size: 16px;
+            padding: 16px 32px;
+            border-radius: 980px;
+            text-decoration: none;
+            transition: var(--apple-transition);
+            min-width: 200px;
+        }
+
+        .hero-cta-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .hero-cta-secondary {
+            background: rgba(255,255,255,0.12);
+            color: white;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-cta-secondary:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* Section共通スタイル */
+        .section {
+            padding: 120px 0;
+            position: relative;
+        }
+
+        .section-white {
+            background-color: #fff;
+        }
+
+        .section-light {
+            background-color: var(--apple-bg-light);
+        }
+
+        .section-title {
+            font-size: 2.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-align: center;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            color: var(--apple-text-dark);
+        }
+
+        .section-subtitle {
+            font-size: 1.25rem;
+            font-weight: 300;
+            max-width: 650px;
+            margin: 0 auto 3rem;
+            text-align: center;
+            color: var(--apple-text-light);
+        }
+
+        /* コンテナ */
+        .container {
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        .consultation-hero-title {
-            font-size: 42px;
-            font-weight: 900;
-            margin-bottom: 20px;
-            letter-spacing: -0.02em;
+
+        /* 有料プランセクション */
+        .premium-plan-section {
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+            margin-top: 40px;
         }
-        .consultation-hero-lead {
-            font-size: 18px;
-            max-width: 800px;
+
+        .premium-plan-card {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: var(--apple-border-radius);
+            padding: 40px;
+            max-width: 600px;
             margin: 0 auto;
-            opacity: 0.9;
-            line-height: 1.8;
+            backdrop-filter: blur(10px);
         }
-        .hero-free-badge {
-            display: inline-block;
-            background-color: #fff;
-            color: var(--secondary-color);
-            font-size: 18px;
+
+        .premium-plan-title {
+            font-size: 2rem;
             font-weight: 700;
-            padding: 5px 20px;
-            border-radius: 50px;
-            margin-bottom: 20px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
         }
-        /* レスポンシブ（free-consultation固有部分のみ） */
+
+        .premium-plan-description {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .premium-plan-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--apple-accent);
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+            padding: 16px 32px;
+            border-radius: 980px;
+            text-decoration: none;
+            transition: var(--apple-transition);
+        }
+
+        .premium-plan-btn:hover {
+            background: #e54e21;
+            transform: translateY(-2px);
+        }
+
+        /* カードスタイル */
+        .feature-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 60px;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: var(--apple-border-radius);
+            overflow: hidden;
+            box-shadow: var(--apple-shadow);
+            transition: var(--apple-transition);
+            padding: 40px;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--apple-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--apple-text-dark);
+        }
+
+        .feature-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--apple-text-light);
+        }
+
+        /* レスポンシブデザイン */
         @media (max-width: 768px) {
-            .consultation-hero-section { padding: 100px 0 60px; }
-            .consultation-hero-title { font-size: 30px; }
-            .consultation-hero-lead { font-size: 16px; }
-            .hero-free-badge { font-size: 16px; padding: 4px 15px; }
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            .section {
+                padding: 80px 0;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+            .hero-cta-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            .feature-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            .section {
+                padding: 60px 0;
+            }
         }
     </style>
 
@@ -111,171 +357,231 @@
       <span></span><span></span><span></span>
     </button>
   </div>
-</header>
-
-    <main class="site-main">        <!-- ヒーローセクション -->
-        <section class="apple-hero-section">
-            <div class="apple-hero-container">
-                <span class="hero-free-badge" data-aos="fade-up" data-aos-delay="50">無料相談実施中</span>
-                <h1 class="apple-hero-title" data-aos="fade-up" data-aos-delay="100">ビジネス自動化の専門家に相談する</h1>
-                <p class="apple-hero-subtitle" data-aos="fade-up" data-aos-delay="200">
+</header>    <main class="site-main">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-video-container">
+                <!-- 背景装飾 -->
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"40\" height=\"40\" viewBox=\"0 0 40 40\"><circle cx=\"20\" cy=\"20\" r=\"1\" fill=\"%23ffffff\" opacity=\"0.1\"/></svg>'); opacity: 0.3;"></div>
+            </div>
+            <div class="hero-content">
+                <span class="hero-badge" data-aos="fade-up" data-aos-delay="50">無料相談実施中</span>
+                <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100">ビジネス自動化の<br>専門家に相談する</h1>
+                <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
                     「集客から販売までの自動化」「IT導入補助金の活用」について<br>
                     あなたのビジネスに最適なプランを無料でご提案します。
                 </p>
+                <div class="hero-cta" data-aos="fade-up" data-aos-delay="300">
+                    <a href="https://utage-system.com/event/tgNspV9MaQ68/register" target="_blank" class="hero-cta-btn">
+                        無料相談に申し込む
+                    </a>
+                    <a href="/document.html" class="hero-cta-btn hero-cta-secondary">
+                        資料をダウンロード
+                    </a>
+                </div>
             </div>
         </section>
 
-        <div class="consultation-container">            <div class="service-intro-section">
-                <div class="service-intro-content" data-aos="fade-up">
-                    <h2 class="service-intro-title">ビジネスの悩みを無料で相談できます</h2>
-                    <p class="service-intro-description">
-                        「もっと効率的に売上を上げたい」「繰り返し作業から解放されたい」「リピート率を高めたい」など、ビジネスの悩みはさまざまです。無料相談では、300件以上のUTAGE導入実績を持つ専門家が、あなたのビジネスに最適な自動化プランをご提案します。
-                    </p>
-                    <ul class="service-intro-list">
-                        <li class="service-intro-item">集客から販売までのプロセスを自動化する方法</li>
-                        <li class="service-intro-item">IT導入補助金を活用してコストを抑える方法</li>
-                        <li class="service-intro-item">UTAGEの機能とあなたのビジネスへの適用方法</li>
-                        <li class="service-intro-item">導入までのスケジュールとコスト</li>
-                        <li class="service-intro-item">UTAGE導入による売上アップ事例</li>
-                    </ul>
-                </div>
-                <div class="service-intro-image">
-                    <img src="/images/consultation.webp" alt="無料相談" loading="lazy">
+        <!-- 無料相談の価値提案セクション -->
+        <section class="section section-white">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">なぜ無料で相談できるのか？</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                    300件以上のUTAGE導入実績を持つ専門家が、あなたのビジネスの成長を真剣に考えているからです。
+                </p>
+                
+                <div class="feature-cards" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-card">
+                        <div class="feature-icon">💡</div>
+                        <h3 class="feature-title">専門家の知見</h3>
+                        <p class="feature-text">300件以上のUTAGE導入実績から得た、業界別・規模別の成功パターンをお伝えします。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3 class="feature-title">個別最適化</h3>
+                        <p class="feature-text">あなたのビジネスモデルに最適な自動化プランを、無料でご提案いたします。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💰</div>
+                        <h3 class="feature-title">IT導入補助金</h3>
+                        <p class="feature-text">最大450万円のIT導入補助金活用方法も含めて、コスト面からサポートします。</p>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <div class="process-section">
-                <h2 class="section-title">無料相談の流れ</h2>
-                <div class="process-steps">
-                    <div class="process-step">
-                        <div class="step-number">1</div>
-                        <h3 class="step-title">お申し込み</h3>
-                        <p class="step-description">下記フォームに必要事項を入力し、無料相談をお申し込みください。</p>
+        <!-- 相談内容セクション -->
+        <section class="section section-light">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">無料相談で解決できること</h2>
+                <div class="feature-cards" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-card">
+                        <div class="feature-icon">🔄</div>
+                        <h3 class="feature-title">プロセス自動化</h3>
+                        <p class="feature-text">集客から販売、顧客フォローまでの一連のプロセスを自動化する具体的な方法をご提案します。</p>
                     </div>
-                    <div class="process-step">
-                        <div class="step-number">2</div>
-                        <h3 class="step-title">日程調整</h3>
-                        <p class="step-description">担当者からメールまたはお電話で、相談日程の調整をさせていただきます。</p>
+                    <div class="feature-card">
+                        <div class="feature-icon">📈</div>
+                        <h3 class="feature-title">売上アップ戦略</h3>
+                        <p class="feature-text">リピート率向上、客単価アップ、新規獲得効率化など、売上向上の具体的な施策をお伝えします。</p>
                     </div>
-                    <div class="process-step">
-                        <div class="step-number">3</div>
-                        <h3 class="step-title">相談実施</h3>
-                        <p class="step-description">オンラインまたはお電話で、ビジネスの状況や課題についてヒアリングを行います。</p>
-                    </div>
-                    <div class="process-step">
-                        <div class="step-number">4</div>
-                        <h3 class="step-title">プラン提案</h3>
-                        <p class="step-description">あなたのビジネスに最適な自動化プランと導入ステップをご提案します。</p>
+                    <div class="feature-card">
+                        <div class="feature-icon">⏰</div>
+                        <h3 class="feature-title">時間効率化</h3>
+                        <p class="feature-text">繰り返し作業の自動化により、あなたの貴重な時間をより価値の高い業務に集中できます。</p>
                     </div>
                 </div>
-            </div>            <div class="case-studies-section">
+            </div>
+        </section>
+
+        <!-- 有料相談プランセクション -->
+        <section class="premium-plan-section">
+            <div class="container">
+                <div class="premium-plan-card" data-aos="fade-up">
+                    <h2 class="premium-plan-title">より本格的なサポートをお求めの方へ</h2>
+                    <p class="premium-plan-description">
+                        無料相談の次のステップとして、実際の導入から運用まで<br>
+                        専門家が伴走する有料コンサルティングプランもご用意しています。
+                    </p>
+                    <a href="https://site.skillmade.online/p/XcyQTlbtJUcQ" target="_blank" class="premium-plan-btn">
+                        有料相談プランを確認する
+                    </a>
+                </div>
+            </div>
+        </section>        <!-- 無料相談の流れセクション -->
+        <section class="section section-white">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">無料相談の流れ</h2>
+                <div class="feature-cards" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-card">
+                        <div class="feature-icon" style="background: #28a745;">1</div>
+                        <h3 class="feature-title">お申し込み</h3>
+                        <p class="feature-text">下記フォームに必要事項を入力し、無料相談をお申し込みください。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon" style="background: #17a2b8;">2</div>
+                        <h3 class="feature-title">日程調整</h3>
+                        <p class="feature-text">担当者からメールまたはお電話で、相談日程の調整をさせていただきます。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon" style="background: #ffc107; color: #333;">3</div>
+                        <h3 class="feature-title">相談実施</h3>
+                        <p class="feature-text">オンラインまたはお電話で、ビジネスの状況や課題についてヒアリングを行います。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon" style="background: #dc3545;">4</div>
+                        <h3 class="feature-title">プラン提案</h3>
+                        <p class="feature-text">あなたのビジネスに最適な自動化プランと導入ステップをご提案します。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 成功事例セクション -->
+        <section class="section section-light">
+            <div class="container">
                 <h2 class="section-title" data-aos="fade-up">無料相談から始まった成功事例</h2>
-                <div class="case-studies-grid" data-aos="fade-up" data-aos-delay="100">
-                    <div class="case-study-item">
-                        <img src="/images/case-study1.webp" alt="ケース1" class="case-study-image" loading="lazy">
-                        <div class="case-study-content">
-                            <span class="case-study-category">コンサルタント</span>
-                            <h3 class="case-study-title">セミナー集客から顧客管理までを自動化</h3>
-                            <p class="case-study-result">無料相談を機にUTAGEを導入。セミナー集客から顧客フォローまでを自動化した結果、<span class="result-highlight">月商が2倍に増加</span>し、<span class="result-highlight">作業時間は60%削減</span>しました。</p>
-                        </div>
+                <div class="feature-cards" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-card">
+                        <h3 class="feature-title">コンサルタント業</h3>
+                        <p class="feature-text">
+                            セミナー集客から顧客管理までを自動化した結果、<strong style="color: var(--apple-primary);">月商が2倍に増加</strong>し、<strong style="color: var(--apple-primary);">作業時間は60%削減</strong>しました。
+                        </p>
                     </div>
-                    <div class="case-study-item">
-                        <img src="/images/case-study2.webp" alt="ケース2" class="case-study-image" loading="lazy">
-                        <div class="case-study-content">
-                            <span class="case-study-category">美容サロン</span>
-                            <h3 class="case-study-title">問い合わせ対応と予約管理を自動化</h3>
-                            <p class="case-study-result">無料相談から始まったUTAGE導入で、問い合わせ対応と顧客管理を自動化。<span class="result-highlight">顧客対応時間が50%削減</span>され、<span class="result-highlight">リピート率が30%向上</span>しました。</p>
-                        </div>
+                    <div class="feature-card">
+                        <h3 class="feature-title">美容サロン</h3>
+                        <p class="feature-text">
+                            問い合わせ対応と顧客管理を自動化。<strong style="color: var(--apple-primary);">顧客対応時間が50%削減</strong>され、<strong style="color: var(--apple-primary);">リピート率が30%向上</strong>しました。
+                        </p>
                     </div>
-                    <div class="case-study-item">
-                        <img src="/images/case-study3.webp" alt="ケース3" class="case-study-image" loading="lazy">
-                        <div class="case-study-content">
-                            <span class="case-study-category">専門スクール</span>
-                            <h3 class="case-study-title">オンライン講座の販売を24時間自動化</h3>
-                            <p class="case-study-result">無料相談後にUTAGEを活用してオンライン講座販売を自動化。<span class="result-highlight">初月から800万円の売上</span>を達成し、手作業による販売管理から完全に解放されました。</p>
-                        </div>
+                    <div class="feature-card">
+                        <h3 class="feature-title">専門スクール</h3>
+                        <p class="feature-text">
+                            オンライン講座販売を自動化。<strong style="color: var(--apple-primary);">初月から800万円の売上</strong>を達成し、手作業による販売管理から完全に解放されました。
+                        </p>
                     </div>
                 </div>
-            </div>            <div class="form-section">
-                <h2 class="form-section-title" data-aos="fade-up">無料相談のお申し込み</h2>
-                <p class="form-section-lead" data-aos="fade-up" data-aos-delay="100">
-                    以下のボタンから無料相談フォームにアクセスいただくと、<br class="pc-only">
+            </div>
+        </section>
+
+        <!-- 申し込みセクション -->
+        <section class="section section-white">
+            <div class="container" style="text-align: center;">
+                <h2 class="section-title" data-aos="fade-up">無料相談のお申し込み</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                    以下のボタンから無料相談フォームにアクセスいただくと、<br>
                     担当者から24時間以内にご連絡いたします。
                 </p>
 
-                <div style="text-align: center; margin-top: 40px;">
-                    <a href="https://utage-system.com/event/tgNspV9MaQ68/register" target="_blank" class="form-submit-button" style="display: inline-block; text-decoration: none; position: relative;">
+                <div style="margin-top: 40px;" data-aos="fade-up" data-aos-delay="200">
+                    <a href="https://utage-system.com/event/tgNspV9MaQ68/register" target="_blank" 
+                       class="hero-cta-btn" style="position: relative; display: inline-block;">
                         無料相談フォームに進む
                         <span style="position: absolute; top: -10px; right: -10px; background-color: #fff; color: #ff3a3a; font-size: 14px; padding: 4px 10px; border-radius: 20px; font-weight: bold; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">無料</span>
                     </a>
-                    <p style="margin-top: 20px; font-size: 14px; color: #666;">
-                      
-                    </p>
                 </div>
             </div>
-
-            <div class="faq-section">
-                <h2 class="section-title">よくある質問</h2>
-                <div class="faq-list">
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            相談は本当に無料ですか？
-                            <span>+</span>
-                        </div>
-                        <div class="faq-answer">
-                            <p>はい、相談は完全無料です。料金は一切いただきませんので、お気軽にご相談ください。</p>
-                        </div>
+        </section>        <!-- FAQ セクション -->
+        <section class="section section-white">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">よくある質問</h2>
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <div class="feature-card" style="margin-bottom: 20px;" data-aos="fade-up" data-aos-delay="100">
+                        <h3 class="feature-title" style="text-align: left;">相談は本当に無料ですか？</h3>
+                        <p class="feature-text" style="text-align: left;">はい、相談は完全無料です。料金は一切いただきませんので、お気軽にご相談ください。</p>
                     </div>
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            相談時間はどのくらいですか？
-                            <span>+</span>
-                        </div>
-                        <div class="faq-answer">
-                            <p>通常は45分〜60分程度です。お客様の状況や課題によって柔軟に対応いたします。</p>
-                        </div>
+                    <div class="feature-card" style="margin-bottom: 20px;" data-aos="fade-up" data-aos-delay="200">
+                        <h3 class="feature-title" style="text-align: left;">相談時間はどのくらいですか？</h3>
+                        <p class="feature-text" style="text-align: left;">通常は45分〜60分程度です。お客様の状況や課題によって柔軟に対応いたします。</p>
                     </div>
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            相談後に必ず契約しなければいけませんか？
-                            <span>+</span>
-                        </div>
-                        <div class="faq-answer">
-                            <p>いいえ、契約の義務はございません。相談内容を踏まえて、ご自身でご判断ください。「今は様子を見たい」というお声も多くいただいています。</p>
-                        </div>
+                    <div class="feature-card" style="margin-bottom: 20px;" data-aos="fade-up" data-aos-delay="300">
+                        <h3 class="feature-title" style="text-align: left;">相談後に必ず契約しなければいけませんか？</h3>
+                        <p class="feature-text" style="text-align: left;">いいえ、契約の義務はございません。相談内容を踏まえて、ご自身でご判断ください。「今は様子を見たい」というお声も多くいただいています。</p>
                     </div>
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            UTAGEは小規模事業者でも導入できますか？
-                            <span>+</span>
-                        </div>
-                        <div class="faq-answer">
-                            <p>はい、個人事業主様から中小企業様まで幅広く導入いただいています。規模に関わらず、集客や販売プロセスを自動化したいビジネスに適しています。また、IT導入補助金を活用すれば、導入コストを大幅に抑えることも可能です。詳しくは無料相談でご案内いたします。</p>
-                        </div>
+                    <div class="feature-card" style="margin-bottom: 20px;" data-aos="fade-up" data-aos-delay="400">
+                        <h3 class="feature-title" style="text-align: left;">UTAGEは小規模事業者でも導入できますか？</h3>
+                        <p class="feature-text" style="text-align: left;">はい、個人事業主様から中小企業様まで幅広く導入いただいています。規模に関わらず、集客や販売プロセスを自動化したいビジネスに適しています。また、IT導入補助金を活用すれば、導入コストを大幅に抑えることも可能です。</p>
                     </div>
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            IT導入補助金とは何ですか？
-                            <span>+</span>
-                        </div>
-                        <div class="faq-answer">
-                            <p>IT導入補助金は、中小企業・小規模事業者等のデジタル化を支援する経済産業省の補助金制度です。UTAGEの導入にこの補助金を活用すると、最大450万円の補助を受けることができます。申請手続きなどは弊社が全面的にサポートしますので、お気軽にご相談ください。</p>
-                        </div>
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
+                        <h3 class="feature-title" style="text-align: left;">IT導入補助金とは何ですか？</h3>
+                        <p class="feature-text" style="text-align: left;">IT導入補助金は、中小企業・小規模事業者等のデジタル化を支援する経済産業省の補助金制度です。UTAGEの導入にこの補助金を活用すると、最大450万円の補助を受けることができます。申請手続きなどは弊社が全面的にサポートします。</p>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <div class="notes-section">
-                <h3 class="notes-title">ご相談に関する注意事項</h3>
-                <ul class="notes-list">
-                    <li class="notes-item">お申し込み後、24時間以内に担当者よりご連絡いたします（土日祝を除く）。</li>
-                    <li class="notes-item">ご相談はオンライン（Zoom）または電話にて行います。</li>
-                    <li class="notes-item">IT導入補助金のご相談は、申請期限や予算状況により対応できない場合があります。お早めにご相談ください。</li>
-                    <li class="notes-item">ご相談内容によっては、お答えできない場合や別途お時間をいただく場合がございます。</li>
-                    <li class="notes-item">競合他社様からのお問い合わせや、当社事業と関連性の低いご相談は、お断りする場合がございます。</li>
-                </ul>
+        <!-- 注意事項セクション -->
+        <section class="section section-light">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">ご相談に関する注意事項</h2>
+                <div style="max-width: 800px; margin: 0 auto;" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-card">
+                        <ul style="text-align: left; list-style: none; padding: 0;">
+                            <li style="margin-bottom: 15px; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--apple-primary);">•</span>
+                                お申し込み後、24時間以内に担当者よりご連絡いたします（土日祝を除く）。
+                            </li>
+                            <li style="margin-bottom: 15px; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--apple-primary);">•</span>
+                                ご相談はオンライン（Zoom）または電話にて行います。
+                            </li>
+                            <li style="margin-bottom: 15px; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--apple-primary);">•</span>
+                                IT導入補助金のご相談は、申請期限や予算状況により対応できない場合があります。お早めにご相談ください。
+                            </li>
+                            <li style="margin-bottom: 15px; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--apple-primary);">•</span>
+                                ご相談内容によっては、お答えできない場合や別途お時間をいただく場合がございます。
+                            </li>
+                            <li style="padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--apple-primary);">•</span>
+                                競合他社様からのお問い合わせや、当社事業と関連性の低いご相談は、お断りする場合がございます。
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
 
         <!-- Contact CTA Section -->
         <section class="contact-cta-section">
