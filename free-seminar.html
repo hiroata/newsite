@@ -16,19 +16,19 @@
 
     <script src="/js/script.js" defer=""></script>
     <script src="/assets/js/components.js" defer=""></script>
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-
-    <style>
-        /* free-seminarページ固有の追加スタイルのみ残す */
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>    <style>
+        /* ブラッシュアップされた free-seminar スタイル */
         .seminar-hero-section {
-            background: var(--gradient-primary);
-            padding: 120px 0 80px;
+            background: linear-gradient(135deg, var(--apple-primary), #0090ff);
+            padding: 140px 0 100px;
             color: white;
             text-align: center;
             position: relative;
             overflow: hidden;
-            margin-bottom: 60px;
+            margin-bottom: 80px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
         }
+        
         .seminar-hero-section::before {
             content: '';
             position: absolute;
@@ -36,10 +36,24 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('/images/dots-pattern.webp');
+            background-image: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ccircle cx=%2250%22 cy=%2250%22 r=%221%22 fill=%22%23ffffff%22 /%3E%3C/svg%3E');
+            background-size: 24px 24px;
             opacity: 0.07;
             z-index: 1;
+            animation: gradientMove 60s linear infinite;
         }
+        
+        .seminar-hero-section::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.15));
+            z-index: 1;
+        }
+        
         .seminar-hero-container {
             position: relative;
             z-index: 2;
@@ -47,49 +61,490 @@
             margin: 0 auto;
             padding: 0 20px;
         }
+        
         .seminar-hero-title {
-            font-size: 42px;
+            font-size: 48px;
             font-weight: 900;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
             letter-spacing: -0.02em;
+            background: linear-gradient(to right, #fff, #e6f3ff);
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            position: relative;
+            display: inline-block;
         }
+        
+        .seminar-hero-title::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 2px;
+        }
+        
         .seminar-hero-lead {
             font-size: 18px;
             max-width: 800px;
-            margin: 0 auto;
+            margin: 32px auto 0;
             opacity: 0.9;
             line-height: 1.8;
+            font-weight: 500;
         }
+        
+        /* 改良されたフィルターボタン */
         .seminar-filter {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 40px;
+            gap: 12px;
+            margin: -20px auto 50px;
+            position: relative;
+            z-index: 10;
+            padding: 0 15px;
+            max-width: 900px;
         }
+        
         .filter-button {
-            background-color: #f5f5f5;
-            color: #555;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: var(--apple-text-medium);
             border: none;
-            padding: 10px 20px;
+            padding: 12px 24px;
             border-radius: 30px;
             font-weight: 700;
             font-size: 14px;
             cursor: pointer;
-            transition: var(--transition-fast);
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
         }
+        
         .filter-button:hover {
-            background-color: #e0e0e0;
+            background-color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.12);
         }
+        
         .filter-button.active {
-            background-color: var(--secondary-color);
+            background-color: var(--apple-accent);
             color: white;
+            box-shadow: 0 6px 15px rgba(255, 97, 49, 0.3);
+            transform: translateY(-2px);
         }
-        /* レスポンシブ（free-seminar固有部分のみ） */
+        
+        /* セミナーカードのスタイル改善 */
+        .seminar-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .seminar-card {
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+            position: relative;
+        }
+        
+        .seminar-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .seminar-header {
+            padding: 24px 24px 16px;
+            background: linear-gradient(to right, #f9f9f9, #f2f2f2);
+            position: relative;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .seminar-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--apple-text-dark);
+            margin-bottom: 8px;
+            margin-right: 70px;
+            line-height: 1.4;
+        }
+        
+        .seminar-badge {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            padding: 6px 12px;
+            font-size: 12px;
+            font-weight: 700;
+            border-radius: 20px;
+        }
+        
+        .badge-new {
+            background-color: var(--apple-accent);
+            color: #fff;
+        }
+        
+        .badge-online {
+            background-color: #28a745;
+            color: #fff;
+        }
+        
+        .badge-offline {
+            background-color: #6c757d;
+            color: #fff;
+        }
+        
+        .seminar-content {
+            padding: 24px;
+        }
+        
+        .seminar-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+            background: rgba(0,0,0,0.02);
+            border-radius: 10px;
+            padding: 16px;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: var(--apple-text-medium);
+        }
+        
+        .info-icon {
+            margin-right: 8px;
+            font-size: 16px;
+        }
+        
+        .seminar-type {
+            font-weight: 600;
+        }
+        
+        .seminar-description {
+            margin-bottom: 24px;
+        }
+        
+        .seminar-description p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--apple-text-medium);
+            margin-bottom: 16px;
+        }
+        
+        .seminar-description ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .seminar-description li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: var(--apple-text-medium);
+            list-style: none;
+        }
+        
+        .seminar-description li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--apple-primary);
+            font-weight: bold;
+        }
+        
+        .seminar-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 16px;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .seminar-price {
+            font-size: 16px;
+            font-weight: 700;
+        }
+        
+        .price-free {
+            color: var(--apple-accent);
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .price-free::before {
+            content: '★';
+            margin-right: 5px;
+        }
+        
+        .register-button {
+            display: inline-block;
+            background: var(--apple-primary);
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 700;
+            transition: all 0.2s ease;
+        }
+        
+        .register-button:hover {
+            background: var(--apple-primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,113,227,0.3);
+        }
+        
+        /* セクションタイトルの改善 */
+        .section-title-container {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-subtitle {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--apple-primary);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        .section-title {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--apple-text-dark);
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+        
+        .section-subtitle-desc {
+            font-size: 16px;
+            color: var(--apple-text-light);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .section-divider {
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(to right, var(--apple-primary), var(--apple-accent));
+            margin: 24px auto 0;
+            border-radius: 2px;
+        }
+        
+        /* セミナーCTAエリア */
+        .seminar-cta-container {
+            max-width: 800px;
+            margin: 60px auto 0;
+            padding: 0 20px;
+        }
+        
+        .seminar-cta {
+            background: linear-gradient(to right, #f8f9fa, #eef2f7);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .seminar-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, transparent, rgba(0,113,227,0.05));
+            border-radius: 0 0 0 150px;
+        }
+        
+        .seminar-cta-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--apple-text-dark);
+            margin-bottom: 16px;
+        }
+        
+        .seminar-cta-text {
+            font-size: 16px;
+            color: var(--apple-text-medium);
+            margin-bottom: 24px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .seminar-cta-button {
+            display: inline-flex;
+            align-items: center;
+            background: var(--apple-primary);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 30px;
+            font-weight: 700;
+            transition: all 0.2s ease;
+        }
+        
+        .seminar-cta-button:hover {
+            background: var(--apple-primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,113,227,0.2);
+        }
+        
+        .arrow-icon {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+            margin-left: 8px;
+            transition: transform 0.2s ease;
+        }
+        
+        .seminar-cta-button:hover .arrow-icon {
+            transform: translateX(4px);
+        }
+        
+        /* 過去のセミナーセクション */
+        .past-seminars-section {
+            background-color: #f8f9fa;
+            padding: 80px 0;
+            margin-top: 80px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .past-seminars-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .past-seminar-item {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.25s ease;
+            position: relative;
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+        
+        .past-seminar-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .past-seminar-date {
+            font-size: 14px;
+            color: var(--apple-text-light);
+            margin-bottom: 12px;
+            display: block;
+        }
+        
+        .past-seminar-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--apple-text-dark);
+            margin-bottom: 14px;
+            line-height: 1.4;
+        }
+        
+        .past-seminar-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            font-size: 12px;
+            background-color: #f1f1f1;
+            color: var(--apple-text-medium);
+            border-radius: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .past-seminar-link {
+            display: inline-block;
+            color: var(--apple-primary);
+            font-weight: 600;
+            font-size: 14px;
+            position: relative;
+            padding-bottom: 2px;
+        }
+        
+        .past-seminar-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: var(--apple-primary);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+        
+        .past-seminar-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        /* レスポンシブ調整 */
         @media (max-width: 768px) {
-            .seminar-hero-section { padding: 100px 0 60px; }
-            .seminar-hero-title { font-size: 30px; }
-            .seminar-hero-lead { font-size: 16px; }
+            .seminar-hero-section { 
+                padding: 120px 0 80px; 
+            }
+            .seminar-hero-title { 
+                font-size: 32px; 
+            }
+            .seminar-hero-lead { 
+                font-size: 16px; 
+                margin-top: 24px;
+            }
+            .seminar-list {
+                grid-template-columns: 1fr;
+            }
+            .seminar-info {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            .past-seminars-section {
+                padding: 60px 0;
+                margin-top: 60px;
+            }
+            
+            .seminar-cta {
+                padding: 30px 20px;
+            }
+            
+            .seminar-cta-title {
+                font-size: 22px;
+            }
+        }
+        
+        /* アニメーション */
+        @keyframes gradientMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 100% 100%; }
         }
     </style>
 
@@ -204,14 +659,14 @@
             <button class="filter-button">会場開催</button>
             <button class="filter-button">初級者向け</button>
             <button class="filter-button">中級者向け</button>
-        </div>
-
-        <!-- 最新セミナーセクション -->
+        </div>        <!-- 最新セミナーセクション -->
         <section class="seminars-section">
             <div class="section-title-container" data-aos="fade-up" data-aos-delay="200">
                 <span class="section-subtitle">UPCOMING SEMINARS</span>
                 <h2 class="section-title">開催予定のセミナー</h2>
-            </div>            <div class="seminar-list">
+                <div class="section-subtitle-desc">最新のマーケティングと自動化についての<br>無料セミナーを開催しています</div>
+                <div class="section-divider"></div>
+            </div><div class="seminar-list">
                 <!-- セミナー1 -->
                 <div class="seminar-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="seminar-header">
@@ -448,9 +903,56 @@
                             </ul>
                         </div>
                         <div class="seminar-footer">
-                            <div class="seminar-price price-free">無料</div>
-                            <a href="#" class="register-button">申し込む</a>
+                            <div class="seminar-price price-free">無料</div>                            <a href="#" class="register-button">申し込む</a>
                         </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="seminar-cta-container" data-aos="fade-up">
+                <div class="seminar-cta">
+                    <h3 class="seminar-cta-title">見逃したセミナーがありますか？</h3>
+                    <p class="seminar-cta-text">セミナーの録画版や追加資料をご希望の方はこちらからお問い合わせください。</p>
+                    <a href="/contact.html" class="seminar-cta-button">
+                        <span>セミナー資料を請求する</span>
+                        <svg class="arrow-icon" viewBox="0 0 24 24">
+                            <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8-8-8z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 過去のセミナーアーカイブ -->
+        <section class="past-seminars-section">
+            <div class="container">
+                <div class="section-title-container" data-aos="fade-up">
+                    <span class="section-subtitle">ARCHIVES</span>
+                    <h2 class="section-title">過去のセミナー</h2>
+                    <div class="section-subtitle-desc">人気のセミナーは定期的に再開催しています</div>
+                    <div class="section-divider"></div>
+                </div>
+                
+                <div class="past-seminars-list" data-aos="fade-up" data-aos-delay="100">
+                    <div class="past-seminar-item">
+                        <div class="past-seminar-date">2025/4/15</div>
+                        <h3 class="past-seminar-title">ChatGPTを活用したマーケティング自動化</h3>
+                        <div class="past-seminar-badge">オンライン</div>
+                        <a href="#" class="past-seminar-link">録画視聴を申し込む</a>
+                    </div>
+                    
+                    <div class="past-seminar-item">
+                        <div class="past-seminar-date">2025/3/28</div>
+                        <h3 class="past-seminar-title">Instagram広告完全攻略セミナー</h3>
+                        <div class="past-seminar-badge">会場開催</div>
+                        <a href="#" class="past-seminar-link">録画視聴を申し込む</a>
+                    </div>
+                    
+                    <div class="past-seminar-item">
+                        <div class="past-seminar-date">2025/2/10</div>
+                        <h3 class="past-seminar-title">ECサイト売上アップの秘訣</h3>
+                        <div class="past-seminar-badge">オンライン</div>
+                        <a href="#" class="past-seminar-link">録画視聴を申し込む</a>
                     </div>
                 </div>
             </div>
@@ -572,18 +1074,39 @@
 
 <div id="footer-placeholder"></div>
 <script src="/js/include.js"></script>
-<script src="/js/script.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // AOS初期化
-        AOS.init({
-            duration: 450,
-            easing: 'ease-out',
-            once: true,
-            offset: 60
+<script src="/js/script.js"></script>    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // AOSアニメーション初期化 - 洗練された設定
+            AOS.init({
+                duration: 600,
+                easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
+                once: true,
+                offset: 100,
+                delay: 50,
+                anchorPlacement: 'top-bottom'
+            });
+            
+            // フィルターボタンの動作
+            const filterButtons = document.querySelectorAll('.filter-button');
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // フィルターアクション時の視覚的フィードバック
+                    const cards = document.querySelectorAll('.seminar-card');
+                    cards.forEach(card => {
+                        card.style.opacity = '0.6';
+                        card.style.transform = 'scale(0.98)';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = '';
+                        }, 300);
+                    });
+                });
+            });
         });
-    });
-</script>
+    </script>
 
 
 </body></html>
