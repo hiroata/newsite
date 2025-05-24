@@ -1,1 +1,9 @@
-*.mp4 filter=lfs diff=lfs merge=lfs -text
+# MP4ファイルはGitではなくGoogle Cloud Storageで管理するため、Git LFS設定はコメントアウト
+# *.mp4 filter=lfs diff=lfs merge=lfs -text
+
+# テキストファイルの改行コード設定
+*.html text eol=lf
+*.css text eol=lf
+*.js text eol=lf
+*.md text eol=lf
+*.json text eol=lf
