@@ -251,7 +251,9 @@
 }
 .preset-tab.active {
   background: var(--primary);
-  color: white;
+  color: #fff;
+  /* キャレット（テキストカーソル）色も白に */
+  caret-color: #fff;
 }
 .preset-tab:not(.active):hover {
   background: #e0e0e0;

@@ -260,6 +260,7 @@
 
   <!-- JavaScriptの遅延ロード -->
   <script src="/js/script.js" defer></script>
+  <script src="/js/image-tools-utils.js"></script>
 
   <link rel="icon" href="/images/favicon.ico">
   <meta property="og:title" content="画像リサイズツール | まえゆきツール">
@@ -291,8 +292,8 @@
                   <line x1="12" y1="3" x2="12" y2="15"></line>
                 </svg>
                 <p>ここに画像をドラッグ＆ドロップ<br>または</p>
-                <label class="file-select-button">
-                  画像を選択
+                <label class="file-select-button" style="display:inline-block;">
+                  <button type="button" id="fileSelectBtn" style="padding:10px 24px;font-size:16px;background:var(--primary,#1976d2);color:#fff;border:none;border-radius:5px;cursor:pointer;">画像を選択</button>
                   <input type="file" id="fileInput" accept="image/*" multiple hidden>
                 </label>
               </span>
@@ -371,20 +372,6 @@
               </ul>
             </div>
             
-          </div>
-          
-          <!-- その他のまえゆきツール -->
-          <div class="other-tools">
-            <h2 class="other-tools-title">その他のまえゆきツール</h2>
-            <div class="tools-list">
-              <a href="countdown.html" class="tool-link">カウントダウンタイマー</a>
-              <a href="png-to-jpeg.html" class="tool-link">PNG→JPEG変換</a>
-              <a href="png-jpeg-to-webp.html" class="tool-link">WebP変換</a>
-              <a href="wareki-seireki.html" class="tool-link">年齢・和暦計算</a>
-              <a href="meme-generator.html" class="tool-link">ミーム作成</a>
-              <a href="color-palette.html" class="tool-link">カラーパレット</a>
-              <a href="letters-counter.html" class="tool-link">文字数カウント</a>
-            </div>
           </div>
         </div>
       </div>
