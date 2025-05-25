@@ -148,32 +148,33 @@
 }
 
 /* --- 目次sticky対応・サイドバー修正 --- */
+/* Grid layout override for 3-column articles */
 .article-container {
-  display: flex;
-  align-items: flex-start;
-  gap: 40px; /* 記事とサイドバー間の間隔を確保 */
+  display: grid;
+  grid-template-columns: 2fr 6fr 2fr;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
   position: relative;
-  max-width: 100%;
 }
 
 .article-main {
-  flex: 1;
-  min-width: 0; /* flexboxアイテムが親コンテナをはみ出さないように */
-  max-width: calc(100% - 360px); /* サイドバーとの間隔を考慮 */
-  overflow-wrap: break-word; /* 長い単語を改行 */
-  word-break: break-word; /* 必要に応じて単語を途中で改行 */
-  padding-right: 10px; /* 右側の余白を追加 */
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  padding: 40px;
+  position: relative;
+  min-width: 0; /* For potential overflow issues with grid items */
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .article-right-sidebar {
-  width: 320px;
-  flex-shrink: 0;
-  height: auto; /* 高さを制限しない */
-  margin-left: auto; /* 右側に配置 */
+  position: relative;
   display: flex;
   flex-direction: column;
-  position: relative;
-  overflow: visible; /* Ensure right sidebar and container allow sticky positioning */
+  overflow: visible;
 }
 
 .sidebar-section {
@@ -217,29 +218,7 @@
   background: #999;
 }
 
-@media (max-width: 768px) {
-  .article-container {
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  .article-main {
-    max-width: 100%;
-  }
-  
-  .article-right-sidebar {
-    width: 100%;
-    margin-top: 30px;
-  }
-  
-  .sidebar-toc {
-    position: static;
-    max-height: none;
-    overflow: visible;
-  }
-}
-
-/* レスポンシブ対応 */
+/* レスポンシブ対応 - 統合版 */
 @media (max-width: 768px) {
     .site-main {
         padding-top: 20px; /* モバイルではヘッダーが固定されていないため調整 */
@@ -247,6 +226,30 @@
     
     .page-container {
         margin-top: 10px;
+    }
+    
+    /* グリッドレイアウトをモバイル用に変更 */
+    .article-container {
+        display: block;
+        padding: 0 15px;
+    }
+    
+    .article-left-sidebar {
+        display: none; /* モバイルでは左サイドバーを非表示 */
+    }
+    
+    .article-main {
+        margin-bottom: 30px;
+    }
+    
+    .article-right-sidebar {
+        width: 100%;
+    }
+    
+    .sidebar-toc {
+        position: static;
+        max-height: none;
+        overflow: visible;
     }
     
     .article-page-title h1 {
@@ -326,13 +329,80 @@
     font-weight: bold;
 }
 
-/* 以下、今回の改修で追加されるCSS */
+/* カラーパレット定義の追加 */
+:root {
+  /* 見出しバーの色 */
+  --heading-green-bar: #4CAF50;
+  --heading-blue-bar: #2196F3;
+  --heading-red-bar: #F44336;
+  --heading-yellow-bar: #FFC107;
+  --heading-pink-bar: #E91E63;
+  
+  /* テキスト色 */
+  --text-green: #4CAF50;
+  --text-blue: #2196F3;
+  --text-red: #F44336;
+  --text-yellow: #FFC107;
+  --text-pink: #E91E63;
+  
+  /* ハイライト背景色 */
+  --highlight-green-bg: rgba(76, 175, 80, 0.1);
+  --highlight-blue-bg: rgba(33, 150, 243, 0.1);
+  --highlight-red-bg: rgba(244, 67, 54, 0.1);
+  --highlight-yellow-bg: rgba(255, 193, 7, 0.1);
+  --highlight-pink-bg: rgba(233, 30, 99, 0.1);
+}
+
+/* テキスト・ハイライト色の適用 */
+.text-red {
+    color: var(--text-red) !important;
+}
+.text-green {
+    color: var(--text-green) !important;
+}
+.text-blue {
+    color: var(--text-blue) !important;
+}
+.text-yellow {
+    color: var(--text-yellow) !important;
+}
+.text-pink {
+    color: var(--text-pink) !important;
+}
+
+.highlight-red {
+    background-color: var(--highlight-red-bg);
+    padding: 0.1em 0.3em;
+    border-radius: 3px;
+}
+.highlight-green {
+    background-color: var(--highlight-green-bg);
+    padding: 0.1em 0.3em;
+    border-radius: 3px;
+}
+.highlight-blue {
+    background-color: var(--highlight-blue-bg);
+    padding: 0.1em 0.3em;
+    border-radius: 3px;
+}
+.highlight-yellow {
+    background-color: var(--highlight-yellow-bg);
+    padding: 0.1em 0.3em;
+    border-radius: 3px;
+}
+.highlight-pink {
+    background-color: var(--highlight-pink-bg);
+    padding: 0.1em 0.3em;
+    border-radius: 3px;
+}
 
 /* 1. 左側のソーシャルボタン修正（いいね・ブックマークのみ残す） */
 .article-left-sidebar .social-buttons {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    position: sticky;
+    top: 100px;
 }
 
 .article-left-sidebar .social-button {
@@ -340,20 +410,27 @@
     flex-direction: column;
     align-items: center;
     gap: 5px;
-    color: var(--text-mid);
+    color: #666;
     text-decoration: none;
     font-size: 12px;
+    padding: 10px;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
+    min-width: 60px;
 }
 
 .article-left-sidebar .social-button:hover {
     color: var(--primary);
     transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .article-left-sidebar .social-button svg {
     width: 24px;
     height: 24px;
+    fill: currentColor;
 }
 
 /* 不要なソーシャルボタン非表示（いいね・ブックマーク以外を非表示） */
@@ -373,303 +450,47 @@
     margin-right: auto;
 }
 
-/* 4. YUKIとニャン太の会話を四角い吹き出し枠に変更 */
+/* 4. YUKIとニャン太の会話スタイルを既存記事と統一 */
 .conversation-container {
-    display: flex;
-    margin: 25px 0;
-    gap: 15px;
+    margin: 30px 0;
+    padding: 25px;
     background: #f8f9fa;
-    border-radius: 8px;
-    padding: 15px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    border-radius: 15px;
+    border-left: 5px solid var(--primary);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
 }
 
 .conversation-container.yuki {
-    border-left: 4px solid var(--text-blue);
+    border-left-color: #4CAF50;
+    background: linear-gradient(135deg, #f0f8f0 0%, #e8f5e8 100%);
 }
 
 .conversation-container.nyanta {
-    border-left: 4px solid var(--text-green);
+    border-left-color: #FF9800;
+    background: linear-gradient(135deg, #fff8f0 0%, #ffefe0 100%);
 }
 
-.conversation-container .character-icon {
-    flex-shrink: 0;
-}
-
-.conversation-container .conversation-content {
+/* 会話コンテナのコンテンツ部分 */
+.conversation-content {
     flex: 1;
 }
 
-.conversation-container .character-name {
+.character-name {
     font-weight: bold;
     margin-bottom: 5px;
-}
-
-.conversation-container.yuki .character-name {
-    color: var(--text-blue);
-}
-
-.conversation-container.nyanta .character-name {
-    color: var(--text-green);
-}
-
-/* スマホ対応 */
-@media (max-width: 768px) {
-    .conversation-container {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 12px;
-    }
-    
-    .conversation-container .character-icon {
-        margin-bottom: 10px;
-    }
-}
-
-/* AIニュース カテゴリのスタイル */
-.blog-category {
-    padding: 3px 8px;
-    border-radius: 12px;
-    font-size: 12px;
-    font-weight: bold;
-    color: white;
-    display: inline-block;
-    margin-left: 10px;
-}
-
-/* AIニュースカテゴリのスタイル */
-.blog-category:contains("AIニュース"),
-.article-category:contains("AIニュース") {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    font-weight: 600;
-}
-
-/* チャット対話スタイル */
-.chat-dialogue {
-    margin: 30px 0;
-    padding: 0;
-}
-
-.chat-item {
-    display: flex;
-    margin-bottom: 20px;
-    align-items: flex-start;
-}
-
-.chat-avatar {
-    flex-shrink: 0;
-    margin-right: 15px;
-}
-
-.avatar-circle {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 12px;
-}
-
-.chat-item.yuki .avatar-circle {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-}
-
-.chat-item.nyanta .avatar-circle {
-    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
-    font-size: 18px;
-}
-
-.chat-content {
-    background: #f8f9fa;
-    border-radius: 15px;
-    padding: 15px 20px;
-    max-width: calc(100% - 60px);
-    position: relative;
-}
-
-.chat-item.yuki .chat-content {
-    background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
-}
-
-.chat-item.nyanta .chat-content {
-    background: linear-gradient(135deg, #fff3e0 0%, #fce4ec 100%);
-}
-
-.chat-content::before {
-    content: "";
-    position: absolute;
-    top: 15px;
-    left: -8px;
-    width: 0;
-    height: 0;
-    border-top: 8px solid transparent;
-    border-bottom: 8px solid transparent;
-    border-right: 8px solid #f8f9fa;
-}
-
-.chat-item.yuki .chat-content::before {
-    border-right-color: #e3f2fd;
-}
-
-.chat-item.nyanta .chat-content::before {
-    border-right-color: #fff3e0;
-}
-
-.chat-content p {
-    margin: 0;
-    line-height: 1.6;
     font-size: 14px;
 }
 
-/* 重要ボックス */
-.important-box {
-    background: linear-gradient(135deg, #fff8e1 0%, #f3e5f5 100%);
-    border-left: 4px solid #ff6b6b;
-    padding: 20px;
-    margin: 30px 0;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+.conversation-container.yuki .character-name {
+    color: #4CAF50;
 }
 
-.important-box h4 {
-    margin: 0 0 15px 0;
-    color: #d32f2f;
-    font-size: 16px;
-    font-weight: 700;
+.conversation-container.nyanta .character-name {
+    color: #FF9800;
 }
 
-.important-box p {
-    margin: 0 0 10px 0;
-    line-height: 1.7;
-}
 
-.important-box p:last-child {
-    margin-bottom: 0;
-}
-
-/* 記事タグ */
-.article-tags {
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid #eee;
-}
-
-.tag {
-    display: inline-block;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 5px 12px;
-    border-radius: 15px;
-    font-size: 12px;
-    margin: 5px 5px 5px 0;
-    font-weight: 500;
-}
-
-/* 記事まとめボックス */
-.article-summary {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    border: 2px solid #dee2e6;
-    border-radius: 12px;
-    padding: 25px;
-    margin: 40px 0;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-}
-
-.article-summary h3 {
-    margin: 0 0 20px 0;
-    color: #495057;
-    font-size: 18px;
-    font-weight: 700;
-    border-bottom: 2px solid #6c757d;
-    padding-bottom: 8px;
-}
-
-.article-summary ul {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 15px 0;
-}
-
-.article-summary li {
-    position: relative;
-    padding: 8px 0 8px 25px;
-    margin-bottom: 8px;
-    line-height: 1.6;
-}
-
-.article-summary li:before {
-    content: "✓";
-    position: absolute;
-    left: 0;
-    top: 8px;
-    color: #28a745;
-    font-weight: bold;
-    font-size: 16px;
-}
-
-.article-summary p {
-    margin: 15px 0 0 0;
-    font-weight: 600;
-    color: #495057;
-    font-style: italic;
-    border-top: 1px solid #dee2e6;
-    padding-top: 15px;
-}
-
-@media (max-width: 768px) {
-    .chat-item {
-        margin-bottom: 15px;
-    }
-    
-    .avatar-circle {
-        width: 35px;
-        height: 35px;
-        font-size: 10px;
-    }
-    
-    .chat-item.nyanta .avatar-circle {
-        font-size: 14px;
-    }
-    
-    .chat-content {
-        padding: 12px 15px;
-        max-width: calc(100% - 50px);
-    }
-    
-    .chat-content p {
-        font-size: 13px;
-    }
-    
-    .important-box {
-        padding: 15px;
-        margin: 20px 0;
-    }
-    
-    .important-box h4 {
-        font-size: 14px;
-    }
-    
-    .tag {
-        font-size: 11px;
-        padding: 4px 10px;
-    }
-    
-    .article-summary {
-        padding: 20px;
-        margin: 30px 0;
-    }
-    
-    .article-summary h3 {
-        font-size: 16px;
-    }
-    
-    .article-summary li {
-        padding: 6px 0 6px 20px;
-        font-size: 14px;
-    }
-}
+/* 既存の .chat-dialogue, .chat-item 関連のスタイルは削除またはコメントアウトを推奨 */
