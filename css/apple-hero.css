@@ -15,7 +15,11 @@
   --apple-border-radius: 12px;
   --apple-transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
   --apple-shadow: 0 12px 48px rgba(0,0,0,0.15);
-  --apple-shadow-hover: 0 16px 64px rgba(0,0,0,0.25);
+  --apple-shadow-hover: 0 16px 64px rgba(0,0,0,0.25);    /* ヘッダー関連の動的設定 - 完全ギャップ解消 */
+  --header-height: 60px;
+  --hero-top-spacing: 10px; /* ヘッダー下の余白を最小化 */
+  --mobile-header-height: 50px;
+  --mobile-hero-top-spacing: 8px; /* モバイルヘッダー下の余白を最小化 */
 }
 
 /* Apple風グローバルスタイル上書き */
@@ -27,12 +31,12 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* Apple風ヒーローセクション - 完全リニューアル */
+/* Apple風ヒーローセクション - ダーク背景で一貫性確保 */
 .apple-hero {
   position: relative;
   width: 100%;
   min-height: 100vh;
-  background: linear-gradient(135deg, #f5f5f7 0%, #ffffff 50%, #f5f5f7 100%);
+  background: linear-gradient(135deg, #1d1d1f 0%, #000000 50%, #1d1d1f 100%);
   margin-top: 0;
   padding: 0;
   overflow: hidden;
@@ -60,7 +64,7 @@ body {
   z-index: 10;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 140px 40px 60px 40px;
+  padding: calc(var(--header-height) + var(--hero-top-spacing)) 40px 60px 40px; /* CSS変数を活用 */
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -339,7 +343,7 @@ body {
 /* レスポンシブデザイン - タブレット */
 @media (max-width: 1024px) {
   .apple-hero-container {
-    padding: 120px 30px 50px 30px;
+    padding: calc(var(--header-height) + var(--hero-top-spacing) + 20px) 30px 50px 30px;
     min-height: 100vh;
   }
   
@@ -368,9 +372,8 @@ body {
   .apple-hero {
     min-height: 100vh;
   }
-  
-  .apple-hero-container {
-    padding: 100px 20px 40px 20px;
+    .apple-hero-container {
+    padding: calc(var(--mobile-header-height) + var(--mobile-hero-top-spacing)) 20px 40px 20px; /* CSS変数を使用した動的計算 */
     min-height: 100vh;
   }
   
@@ -423,9 +426,8 @@ body {
 }
 
 /* レスポンシブデザイン - 小さなモバイル */
-@media (max-width: 480px) {
-  .apple-hero-container {
-    padding: 90px 16px 30px 16px;
+@media (max-width: 480px) {  .apple-hero-container {
+    padding: calc(var(--mobile-header-height) + var(--mobile-hero-top-spacing)) 16px 30px 16px; /* CSS変数を使用した一貫性のある計算 */
   }
   
   .apple-hero-title {
