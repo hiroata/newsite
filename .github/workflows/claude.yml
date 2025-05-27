@@ -39,5 +39,6 @@ jobs:
         uses: anthropics/claude-code-action@beta
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          model: "claude-sonnet-4-20250514"  # Claude Sonnet 4 を使用
           # オプション: 使用可能なツールを制限
           allowed_tools: '["bash", "git", "gh"]'
