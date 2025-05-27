@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html><html lang="ja"><head>
+<!DOCTYPE html><html lang="ja"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- タイトルとメタデータ -->
@@ -13,10 +13,53 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/blog-unified.css">
-    <link rel="stylesheet" href="../css/layout-updates.css">
-    <link rel="icon" href="../assets/images/favicon.ico">
+    
+    <link rel="stylesheet" href="../css/blog-optimized.css">
+
+<link rel="icon" href="../assets/images/favicon.ico">
+    <!-- レイアウト修正用の強制スタイル -->
+    <style>
+    /* 最優先でレイアウトを修正 */
+    .article-container,
+    .article-container.two-column {
+        display: grid !important;
+        grid-template-columns: 8fr 2fr !important;
+        gap: 40px !important;
+        max-width: 1400px !important;
+        width: 100% !important;
+        margin: 0 auto !important;
+        padding: 20px !important;
+        box-sizing: border-box !important;
+    }
+    
+    .article-main {
+        grid-column: 1 !important;
+        width: 100% !important;
+    }
+    
+    .article-right-sidebar {
+        grid-column: 2 !important;
+        width: 100% !important;
+    }
+    
+    .article-left-sidebar {
+        display: none !important;
+    }
+    
+    @media (max-width: 768px) {
+        .article-container,
+        .article-container.two-column {
+            grid-template-columns: 1fr !important;
+            gap: 20px !important;
+            padding: 15px !important;
+        }
+        
+        .article-main,
+        .article-right-sidebar {
+            grid-column: 1 !important;
+        }
+    }
+    </style>
 <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "BlogPosting",
@@ -41,7 +84,7 @@
     "@type": "WebPage",
     "@id": "https://autowebinar-daigaku.com/blog/business-process-automation.html"
   }
-}</script>    <script src="../js/layout-debug.js" defer></script>
+}</script>    
     </head>
 <body>
 <svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden" xmlns="http://www.w3.org/2000/svg">
@@ -226,7 +269,7 @@
                         <h3 id="section2-1">ステップ1：目的と自動化したい業務を明確にする</h3> <!-- IDをsection2-1に設定 -->
 
                         <p>まずは、「何のためにマーケティング自動化を導入したいのか」という<span class="highlight-green">目的を明確にすること</span>が<span class="highlight-yellow">重要</span>です。<span class="highlight-blue">「見込み客リストをもっと増やしたい」「獲得した見込み客からの問い合わせを増やしたい」「既存顧客のリピート購入を増やしたい」</span>など、具体的な目標を設定しましょう。</p> <!-- highlight-green/yellow/blue追加 -->
-                        <p>次に、その目標達成のために<span class="text-red">「どの業務を自動化したいか」</span>を具体的に洗い出します。<span class="highlight-yellow">「メルマガの一斉配信」「資料請求者へのサンキューメール」「特定商品の購入者への関連商品案内」</span>など、手作業で時間がかかっている、あるいは自動化できたら<span class="highlight-yellow">効果が出そうな業務をリストアップ</span>してみましょう。</p> <!-- 黄色ハイライト追加 -->
+                        <p>次に、その目標達成のために<span class="text-red">「どの業務を自動化したいか」</span>を具体的に洗い出します。<span class="highlight-yellow">「メルマガの一斉配信」「資料請求者へのサンキューメール」「特定商品の購入者への関連商品案内」</span>など、手作業で時間がかかかる、あるいは自動化できたら<span class="highlight-yellow">効果が出そうな業務をリストアップ</span>してみましょう。</p> <!-- 黄色ハイライト追加 -->
 
                         <h3 id="section2-2">ステップ2：自社に合ったマーケティング自動化ツールを選ぶ</h3> <!-- IDをsection2-2に設定 -->
 
@@ -281,9 +324,9 @@
 
                         <h2 id="section4"><span class="highlight-green">まとめ</span>：<span class="highlight-blue">初心者</span>でもマーケティング自動化で<span class="highlight-green">効率アップ</span>！</h2> <!-- IDをsection4に設定、highlight-green/blue追加 -->
 
-                        <p><span class="highlight-green">マーケティング自動化は</span>、もはや<span class="highlight-yellow">大企業だけのものではありません</span>。<span class="highlight-blue">中小企業や個人事業主でも</span>、<span class="highlight-yellow">適切に導入</span>すれば、<span class="highlight-green">日々の業務負担を減らし、見込み客育成や売上アップを効率的に実現できる強力な味方</span>となります。</p> <!-- highlight-green/yellow/blue追加 -->
+                        <p><span class="highlight-green">マーケティング自動化は</span>、もはや<span class="highlight-yellow">大企業だけのものではありません</span>。<span class="highlight-blue">中小企業や個人事業主でも</span>、<span class="highlight黄色">適切に導入</span>すれば、<span class="highlight-green">日々の業務負担を減らし、見込み客育成や売上アップを効率的に実現できる強力な味方</span>となります。</p> <!-- highlight-green/yellow/blue追加 -->
 
-                        <p>「<span class="highlight-yellow">初心者だから…</span>」と尻込みする必要はありません。まずは「<span class="highlight-green">何のために自動化したいか</span>」「<span class="highlight-green">どの業務を自動化したいか</span>」を<span class="highlight-yellow">明確にし</span>、<span class="highlight-blue">自社に合った使いやすいツールを選んで</span>、<span class="highlight-pink">小さなステップから始めてみましょう</span>。そして、<span class="highlight-yellow">運用しながら効果測定と改善を繰り返すこと</span>が<span class="highlight-red">成功の鍵</span>です。🔑</p> <!-- 黄色ハイライト追加、highlight-green/blue/pink/red追加 -->
+                        <p>「<span class="highlight黄色">初心者だから…</span>」と尻込みする必要はありません。まずは「<span class="highlight-green">何のために自動化したいか</span>」「<span class="highlight-green">どの業務を自動化したいか</span>」を<span class="highlight黄色">明確にし</span>、<span class="highlight-blue">自社に合った使いやすいツールを選んで</span>、<span class="highlight-pink">小さなステップから始めてみましょう</span>。そして、<span class="highlight黄色">運用しながら効果測定と改善を繰り返すこと</span>が<span class="highlight-red">成功の鍵</span>です。🔑</p> <!-- 黄色ハイライト追加、highlight-green/blue/pink/red追加 -->
 
                         <p><span class="highlight-green">マーケティング自動化を活用</span>して、あなたのビジネスを<span class="text-red">効率化し、目標達成を加速させてください</span>！🚀✨</p> <!-- highlight-green/text-red追加 -->
 
@@ -295,7 +338,7 @@
 
                     <img src="../assets/images/business-automation-5.webp" alt="ビジネス自動化の成功事例イメージ" class="article-image" loading="lazy">
 
-                    <p><span class="highlight-yellow">小さな一歩から始めて</span>、徐々に<span class="text-blue">自動化の範囲を広げていく</span>ことで、<span class="text-green">ビジネスの成長と安定</span>へとつながります。この記事で紹介した様々な<span class="highlight-blue">ツール</span>や<span class="highlight-pink">方法</span>を参考に、あなたのビジネスにとっての<span class="text-red">最適な自動化戦略</span>を見つけてください。</p>
+                    <p><span class="highlight黄色">小さな一歩から始めて</span>、徐々に<span class="text-blue">自動化の範囲を広げていく</span>ことで、<span class="text-green">ビジネスの成長と安定</span>へとつながります。この記事で紹介した様々な<span class="highlight-blue">ツール</span>や<span class="highlight-pink">方法</span>を参考に、あなたのビジネスにとっての<span class="text-red">最適な自動化戦略</span>を見つけてください。</p>
                     
                 </div>
             </div>
@@ -388,6 +431,5 @@
     </div>
 </footer>
 
-<script src="../js/script.js"></script>
-
-</body></html>
+<script src="../js/script.js"></script>    <script src="../js/blog-optimized.js" defer></script>
+</html>

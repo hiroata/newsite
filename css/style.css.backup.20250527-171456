@@ -466,7 +466,49 @@ body.menu-open {
   color: #666;
   margin-bottom: 15px;
 }
-
+.share-social-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+.social-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.social-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+.share-twitter { background: #1DA1F2; }
+.share-facebook { background: #1877F2; }
+.share-line { background: #06C755; }
+.preset-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.preset-link {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 14px;
+  transition: all 0.1s ease;
+  color: var(--text-dark);
+}
+.preset-link:hover {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
 .guide-list {
   padding-left: 20px;
   list-style: none;
@@ -525,6 +567,38 @@ body.theme-red { --primary: #ff3a3a; }
 body.theme-green { --primary: #06C755; }
 body.theme-purple { --primary: #7b68ee; }
 body.theme-orange { --primary: #ff9500; }
+
+/* 目次のアクティブ項目のスタイルを強化 */
+.toc-list a.active {
+    color: var(--toc-active-color);
+    font-weight: bold;
+    position: relative;
+    background-color: rgba(0, 102, 255, 0.05);
+    border-radius: 4px;
+    padding: 4px 8px;
+    margin-left: -8px;
+    display: block;
+}
+
+.toc-list a.active::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background-color: var(--primary);
+    border-radius: 2px;
+}
+
+/* 目次リンクのホバー状態も改善 */
+.toc-list a:hover {
+    background-color: rgba(0, 102, 255, 0.03);
+    border-radius: 4px;
+    padding: 4px 8px;
+    margin-left: -8px;
+    display: block;
+}
 
 @media (min-width:769px){.section-padding{padding:80px 0}.pc-nav{display:block}.header-cta{display:flex}.hamburger-button{display:none}.sp-fix-cta{display:none}.hero-section{padding:25px 0 15px} /* ファーストビューの高さをさらに縮小 */.hero-container{flex-direction:row;align-items:flex-start;text-align:left}.hero-text{flex-basis:60%;padding-right:20px;margin-bottom:0}.hero-catch{font-size:36px;margin-bottom:10px}.hero-lead{font-size:16px;margin-bottom:15px} /* ヒーローテキストをさらに縮小 */.hero-cta-buttons{flex-direction:row;max-width:none;justify-content:flex-start}.hero-cta-buttons .btn-contact,.hero-cta-buttons .btn-document{width:auto}.section-title-container{margin-bottom:40px}.section-subtitle{font-size:14px}.section-title{font-size:32px}.important-notice h2{font-size:24px}.achievement-card-list{grid-template-columns:repeat(3,1fr);gap:30px}.online-courses-grid{grid-template-columns:repeat(3,1fr);gap:30px}.blog-list{grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:30px}.course-image{height:200px}.course-title{font-size:18px;margin-bottom:12px}.course-content{padding:20px}.course-description{font-size:14px;line-height:1.6;margin-bottom:20px}.contact-cta-section{padding:80px 0}.contact-cta-title{font-size:32px;margin-bottom:20px}.contact-cta-lead{font-size:16px;margin-bottom:40px}.contact-cta-buttons{flex-direction:row;justify-content:center;gap:20px;margin-top:30px}.footer-widgets{flex-direction:row;flex-wrap:wrap;gap:30px;margin-bottom:60px}.widget-area{flex-grow:1;flex-shrink:1;flex-basis:20%;min-width:150px}.footer-widget-1{flex-basis:20%;min-width:200px;text-align:left}.footer-logo{margin:0 0 25px;max-width:200px}.sp-nav{display:none!important}.pc-only{display:block}}
 @media (min-width:769px) and (max-width:1024px){.achievement-card-list,.online-courses-grid{grid-template-columns:repeat(2,1fr)}.section-title,.contact-cta-title{font-size:28px}}

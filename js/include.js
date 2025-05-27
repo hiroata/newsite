@@ -106,6 +106,16 @@ document.addEventListener('DOMContentLoaded', function() {
          * ハンバーガーメニューの初期化
          */
         initializeHamburgerMenu: function() {
+            // ブログページではblog-optimized.jsがハンバーガーメニューを管理するため、スキップ
+            const isBlogPage = window.location.pathname.includes('/blog/') || 
+                              document.body.classList.contains('blog-page') ||
+                              document.querySelector('.article-container');
+                              
+            if (isBlogPage && typeof window.blogOptimizer !== 'undefined') {
+                console.log('📄 ブログページ検出: blog-optimized.jsがハンバーガーメニューを管理');
+                return;
+            }
+            
             const hamburgerButton = document.querySelector('.hamburger-button');
             const mobileMenu = document.querySelector('.mobile-menu');
             

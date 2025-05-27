@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>レイアウトテスト - 8:2 2カラム</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+        }
+        
+        .page-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .article-container {
+            display: grid;
+            grid-template-columns: 8fr 2fr;
+            gap: 40px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .article-main {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 4px;
+            min-height: 600px;
+        }
+        
+        .article-right-sidebar {
+            background: #fff3e0;
+            padding: 20px;
+            border-radius: 4px;
+            min-height: 400px;
+        }
+        
+        @media (max-width: 768px) {
+            .article-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <h1>レイアウトテスト - 8:2 2カラム</h1>
+        
+        <div class="article-container">
+            <div class="article-main">
+                <h2>メインコンテンツエリア (8fr)</h2>
+                <p>このエリアが8frの幅を持ち、記事の本文が表示されます。</p>
+                <p>期待される比率：メインコンテンツが全体の約80%の幅を占める</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+            
+            <div class="article-right-sidebar">
+                <h3>右サイドバー (2fr)</h3>
+                <p>このエリアが2frの幅を持ちます。</p>
+                <p>期待される比率：約20%の幅</p>
+                <ul>
+                    <li>プロフィール</li>
+                    <li>目次</li>
+                    <li>関連記事</li>
+                </ul>
+            </div>
+        </div>
+    </div>    <script src="../js/blog-optimized.js" defer></script>
+
+</html>

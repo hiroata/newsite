@@ -1,10 +1,22 @@
 /**
  * オートファネル大学 JavaScriptファイル (最適化済み)
+ * Note: ブログページでは blog-optimized.js を使用
  */
 (function() {
   'use strict';
   
-  // 読み込み完了後に実行
+  // ブログページかどうかを判定
+  const isBlogPage = window.location.pathname.includes('/blog/') || 
+                    document.body.classList.contains('blog-page') ||
+                    document.querySelector('.article-container');
+  
+  // ブログページの場合は blog-optimized.js に処理を委譲
+  if (isBlogPage && typeof window.blogOptimizer !== 'undefined') {
+    console.log('📄 ブログページ検出: blog-optimized.js を使用');
+    return;
+  }
+  
+  // 読み込み完了後に実行（非ブログページのみ）
   document.addEventListener('DOMContentLoaded', initPage);
   
   function initPage() {
@@ -23,7 +35,7 @@
     // モバイルメニューの改善
     enhanceMobileMenu();
     
-    // 目次ハイライト機能は削除済み
+    console.log('🚀 メインサイトJS初期化完了');
   }
   
   // ハンバーガーメニューの初期化
