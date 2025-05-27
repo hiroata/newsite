@@ -317,8 +317,11 @@
 
 /* ヘッダースタイル */
 header {
-  background-color: #fff;
-  box-shadow: var(--shadow-soft);
+  background-color: rgba(0,0,0,0.92)!important;
+  backdrop-filter: blur(20px)!important;
+  -webkit-backdrop-filter: blur(20px)!important;
+  border-bottom: 1px solid rgba(255,255,255,0.08)!important;
+  box-shadow: none!important;
   position: fixed;
   width: 100%;
   top: 0;
