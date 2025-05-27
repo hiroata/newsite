@@ -1,6 +1,7 @@
-/* 
+/*
    レイアウト更新用のCSS
-   - 3カラムレイアウトを2:6:2の比率に変更
+   - 3カラムレイアウトを2カラム（7:3比率）に変更
+   - 左サイドバーを完全に非表示
    - シェアボタンを非表示化
    - レスポンシブ対応の修正
 */
@@ -10,42 +11,112 @@
   display: none !important;
 }
 
+/* 関連記事セクションを非表示化 */
+.related-articles {
+  display: none !important;
+}
+
 /* リセットとレイアウト修正 */
 html, body {
   overflow-x: hidden; /* 横スクロールを防止 */
 }
 
-/* 記事コンテナのグリッドレイアウト変更 - 1:7:2の比率 */
+/* 記事コンテナのグリッドレイアウト変更 - 7:3の比率 */
 .article-container {
   display: grid !important;
-  grid-template-columns: 1fr 7fr 2fr !important;
-  gap: 30px !important;
-  width: 100% !important;
-  max-width: 1200px !important;
-  margin: 0 auto !important;
+  grid-template-columns: 7fr 3fr !important; /* 本文7、右サイドバー3の比率 */
+  gap: 40px !important; /* 本文とサイドバーの間の余白 */
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
   overflow: visible !important;
+  contain: none !important;
+  transform: none !important;
 }
 
-/* 左サイドバーの幅調整 */
+/* 左サイドバーを完全に非表示 */
 .article-left-sidebar {
-  width: 100% !important;
-  min-width: 60px !important;
-  display: block !important; /* レスポンシブ対応で非表示にならないように */
+  display: none !important;
 }
 
-/* 右サイドバーの幅調整 */
-.article-right-sidebar {
-  width: 100% !important;
-  max-width: none !important;
-  display: block !important; /* レスポンシブ対応で非表示にならないように */
-}
-
-/* 本文エリアの余白調整 */
+/* 本文エリアの調整 */
 .article-main {
   width: 100% !important;
   max-width: 100% !important;
-  padding: 0 10px !important;
-  overflow: visible !important;
+  background: #fff;
+  border-radius: var(--radius, 12px);
+  box-shadow: var(--shadow-soft, 0 5px 15px rgba(0,0,0,.08));
+  padding: 40px;
+  position: relative;
+  min-height: auto;
+}
+
+/* 親要素のoverflow問題を解決 */
+html, body, .site-main, .page-container {
+  overflow-x: hidden !important;
+  overflow-y: visible !important;
+}
+
+/* 右サイドバーの調整 - レスポンシブ設計 */
+.article-right-sidebar {
+  width: 100% !important;
+  max-width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 20px !important;
+  position: static !important;
+  /* 既存のstickyを無効化 */
+  top: unset !important;
+  height: auto !important;
+}
+
+/* プロフィールセクション - 静的配置 */
+.sidebar-section.sidebar-author-profile {
+  background: #fff !important;
+  border-radius: var(--radius, 12px) !important;
+  box-shadow: var(--shadow-soft, 0 5px 15px rgba(0,0,0,.08)) !important;
+  padding: 25px !important;
+  position: static !important;
+  margin-bottom: 0 !important;
+  transform: none !important;
+  contain: none !important;
+}
+
+/* 目次セクション - 強制的なスティッキー配置 */
+.sidebar-section.sidebar-toc {
+  background: #fff !important;
+  border-radius: var(--radius, 12px) !important;
+  box-shadow: var(--shadow-soft, 0 5px 15px rgba(0,0,0,.08)) !important;
+  padding: 20px !important;
+  position: sticky !important;
+  top: 80px !important; /* ヘッダー高さを考慮して調整 */
+  height: fit-content !important;
+  max-height: calc(100vh - 100px) !important;
+  overflow-y: auto !important;
+  z-index: 100 !important;
+  transform: none !important;
+  contain: none !important;
+  will-change: auto !important;
+}
+
+/* 目次のスクロールバーのスタイリング */
+.sidebar-section.sidebar-toc::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar-section.sidebar-toc::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 2px;
+}
+
+.sidebar-section.sidebar-toc::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 2px;
+}
+
+.sidebar-section.sidebar-toc::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
 }
 
 /* 記事コンテンツエリアの調整 */
@@ -53,32 +124,65 @@ html, body {
   width: 100% !important;
   max-width: 100% !important;
   overflow: visible !important;
+  line-height: 1.8;
 }
 
 /* タブレット向けレスポンシブ対応（上書き） */
 @media (max-width: 992px) {
   .article-container {
-    grid-template-columns: 0.8fr 7.5fr 1.7fr !important;
-    gap: 20px !important;
+    grid-template-columns: 7fr 3fr !important; /* タブレットでも7:3の比率を維持 */
+    gap: 30px !important;
   }
   
   /* タブレットサイズでの記事本文エリアの調整 */
   .article-main {
-    padding: 0 15px !important;
+    padding: 30px !important;
+  }
+  
+  .article-right-sidebar {
+    padding: 20px !important;
   }
 }
 
 /* モバイル向けレスポンシブ対応（上書き） */
 @media (max-width: 768px) {
   .article-container {
-    grid-template-columns: 0.5fr 9fr 0.5fr !important;
-    gap: 10px !important;
+    grid-template-columns: 1fr !important; /* モバイルでは1カラムにする */
+    gap: 20px !important;
+    padding: 10px !important;
+  }
+  
+  /* モバイルでの本文エリア調整 */
+  .article-main {
+    padding: 20px !important;
+    order: 1; /* メインコンテンツを上に表示 */
+  }
+  
+  /* モバイルでの右サイドバー調整 */
+  .article-right-sidebar {
+    order: 2; /* サイドバーをメインコンテンツの下に表示 */
+    gap: 15px !important;
+  }
+  
+  /* モバイルでのプロフィールセクション */
+  .sidebar-section.sidebar-author-profile {
+    padding: 20px !important;
+    position: static !important;
+  }
+  
+  /* モバイルでの目次セクション - スティッキー解除 */
+  .sidebar-section.sidebar-toc {
+    padding: 20px !important;
+    position: static !important;
+    max-height: none !important;
+    overflow-y: visible !important;
   }
   
   /* スマホサイズでの記事コンテンツエリアの調整 */
   .article-content {
     width: 100% !important;
     padding: 0 !important;
+    line-height: 1.7;
   }
   
   /* 記事内の画像がはみ出さないようにする */
@@ -90,6 +194,188 @@ html, body {
   /* テキストの行長を調整 */
   .article-content p {
     max-width: 100% !important;
-    word-break: break-word !important;
+    word-break: break-word;
   }
+  
+  /* 記事タイトルのモバイル調整 */
+  .article-page-title h1 {
+    font-size: 24px !important;
+    line-height: 1.4 !important;
+  }
+}
+
+/* 小さなモバイルデバイス向け */
+@media (max-width: 480px) {
+  .article-main {
+    padding: 15px !important;
+  }
+  
+  .sidebar-section.sidebar-author-profile,
+  .sidebar-section.sidebar-toc {
+    padding: 15px !important;
+  }
+  
+  .article-page-title h1 {
+    font-size: 22px !important;
+  }
+}
+
+/* 目次の拡張スタイリング */
+.sidebar-toc .toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-toc .toc-list li {
+  margin-bottom: 8px;
+  border-left: 3px solid transparent;
+  padding-left: 10px;
+  transition: all 0.2s ease;
+}
+
+.sidebar-toc .toc-list li:hover {
+  border-left-color: var(--primary, #0066ff);
+  background-color: rgba(0, 102, 255, 0.05);
+}
+
+.sidebar-toc .toc-list li a {
+  color: var(--text-mid, #555);
+  text-decoration: none;
+  font-size: 14px;
+  display: block;
+  padding: 5px 0;
+  transition: color 0.2s ease;
+}
+
+.sidebar-toc .toc-list li a:hover,
+.sidebar-toc .toc-list li a.active {
+  color: var(--primary, #0066ff);
+  font-weight: 600;
+}
+
+.sidebar-toc .toc-list li ul {
+  margin-top: 8px;
+  padding-left: 15px;
+}
+
+.sidebar-toc .toc-list li ul li {
+  margin-bottom: 5px;
+  border-left: 2px solid transparent;
+  padding-left: 8px;
+}
+
+.sidebar-toc .toc-list li ul li a {
+  font-size: 13px;
+  color: var(--text-light, #777);
+}
+
+/* プロフィールセクションの拡張スタイリング */
+.sidebar-author-profile {
+  text-align: center;
+}
+
+.sidebar-author-profile .author-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 0 auto 15px auto;
+  display: block;
+  border: 3px solid #f0f0f0;
+  transition: transform 0.2s ease;
+}
+
+.sidebar-author-profile .author-image:hover {
+  transform: scale(1.05);
+}
+
+.sidebar-author-profile .author-name {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: var(--text-dark, #333);
+}
+
+.sidebar-author-profile .author-title {
+  font-size: 13px;
+  color: var(--primary, #0066ff);
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.sidebar-author-profile .author-bio {
+  font-size: 13px;
+  line-height: 1.5;
+  margin-bottom: 15px;
+  color: var(--text-mid, #555);
+  padding: 0 10px;
+}
+
+.sidebar-author-profile .author-sns {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.sidebar-author-profile .author-sns a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #f8f9fa;
+  transition: all 0.2s ease;
+}
+
+.sidebar-author-profile .author-sns a:hover {
+  background-color: var(--primary, #0066ff);
+  transform: translateY(-2px);
+}
+
+.sidebar-author-profile .author-sns a:hover svg {
+  fill: white;
+}
+
+.sidebar-author-profile .author-sns svg {
+  width: 16px;
+  height: 16px;
+  fill: var(--text-mid, #555);
+  transition: fill 0.2s ease;
+}
+
+.sidebar-author-profile .author-link,
+.sidebar-author-profile .cta-button {
+  display: inline-block;
+  margin: 5px;
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.sidebar-author-profile .author-link {
+  color: var(--text-mid, #555);
+  border: 1px solid #e0e0e0;
+  background-color: #fff;
+}
+
+.sidebar-author-profile .author-link:hover {
+  background-color: #f8f9fa;
+  border-color: var(--primary, #0066ff);
+  color: var(--primary, #0066ff);
+}
+
+.sidebar-author-profile .cta-button {
+  background: var(--grad-primary, linear-gradient(135deg,#0066ff,#00b8ff));
+  color: white;
+  border: none;
+}
+
+.sidebar-author-profile .cta-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 102, 255, 0.3);
 }
