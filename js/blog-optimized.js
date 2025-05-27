@@ -449,7 +449,8 @@ class BlogOptimizer {
    * パフォーマンス情報の取得
    */
   getPerformanceInfo() {
-    const memory = (performance as any).memory;
+    // TypeScript構文 (as any) をJavaScript互換に修正
+    const memory = performance && performance.memory ? performance.memory : undefined;
     
     return {
       loadTime: Math.round(this.performanceMetrics.loadTime),
