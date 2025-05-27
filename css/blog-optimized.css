@@ -162,7 +162,7 @@ body {
 
 .article-container {
   display: grid;
-  grid-template-columns: 8.5fr 2.5fr; /* 8fr 2fr から拡張 */
+  grid-template-columns: 9.2fr 3.0fr; /* 記事本文を約4cm、サイドバーを約2-3cm拡張 */
   gap: 50px; /* 40px から拡張 */
   max-width: var(--container-max-width);
   margin: 0 auto;
@@ -185,7 +185,7 @@ body {
   box-shadow: var(--box-shadow);
   position: sticky;
   top: 90px;
-  min-width: 280px; /* 現在より約2cm拡張 */
+  min-width: 320px; /* サイドバー幅を約3cm拡張 */
   max-height: calc(100vh - 120px);
   overflow-y: auto;
 }
@@ -493,7 +493,7 @@ body {
 /* Large screens (992px to 1199px) */
 @media (max-width: 1199px) {
   .article-container {
-    grid-template-columns: 7fr 3fr;
+    grid-template-columns: 7.5fr 3.2fr;
     gap: 40px;
   }
   
@@ -503,7 +503,7 @@ body {
   }
   
   .article-right-sidebar {
-    min-width: 250px;
+    min-width: 280px;
   }
 }
 
