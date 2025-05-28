@@ -79,7 +79,22 @@ document.addEventListener('DOMContentLoaded', function() {
         loadFooter: function() {
             const footerPlaceholder = document.getElementById('footer-placeholder');
             if (footerPlaceholder) {
-                this.loadComponent('/common/footer.html', '#footer-placeholder');
+                // 現在のページパスに基づいて相対パスを決定
+                const currentPath = window.location.pathname;
+                
+                // サブディレクトリにいるかどうかの判定を改善
+                const isSubpage = currentPath.includes('/blog/') || 
+                                currentPath.includes('/tools/') ||
+                                currentPath.includes('/achievement/') ||
+                                currentPath.includes('/course/') ||
+                                currentPath.includes('blog/') ||
+                                currentPath.includes('tools/') ||
+                                currentPath.includes('achievement/') ||
+                                currentPath.includes('course/');
+                                
+                const footerPath = isSubpage ? '../common/footer.html' : '/common/footer.html';
+                
+                this.loadComponent(footerPath, '#footer-placeholder');
             }
         },
         

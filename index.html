@@ -9,10 +9,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap&amp;subset=japanese&amp;font-display=swap" rel="stylesheet">
     <!-- 画像遅延読み込み -->
     <script src="js/lazy-loading.js" defer=""></script>
-    <link rel="stylesheet" href="css/apple-hero.css">
-    <link rel="stylesheet" href="css/hero-banner.css">
-    <link rel="stylesheet" href="css/blog-card.css">
+    <!-- CSS読み込み順序の最適化 - apple-style.cssに統合済み -->
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/apple-style.css">
 
     <!-- クリティカルCSS インライン化 -->
     <style>
@@ -31,6 +31,7 @@
             --apple-shadow: 0 8px 30px rgba(0,0,0,0.12);
         }
 
+        /* body設定はstyle.cssに統合済み、ダーク背景強制適用
         body {
             font-family: 'Noto Sans JP', sans-serif;
             color: var(--apple-text-dark);
@@ -40,6 +41,7 @@
             padding: 0;
             -webkit-font-smoothing: antialiased;
         }
+        */
 
         /* 実績数値のハイライト表示スタイル */
         .highlight-metric {
@@ -199,16 +201,6 @@
             background: #0051d5;
         }
 
-        .btn-document {
-            border-radius: 980px;
-            padding: 8px 20px;
-            font-size: 14px;
-            font-weight: 400;
-            color: #ffffff;
-            text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
         /* 重要告知セクション */
         .important-notice {
             background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
@@ -250,10 +242,12 @@
             display: none !important;
         }
         
-        /* Apple風ヒーロー用のマージン調整 */
+        /* Apple風ヒーロー用のマージン調整 - apple-hero.cssに統合済み */
+        /* 
         .apple-hero {
-            margin-top: 0; /* ヘッダーと重なるように全画面表示 */
+            margin-top: 0;
         }
+        */
 
         /* 旧ヒーロー関連コンテナ - 無効化 */
         .hero-container,
@@ -268,10 +262,12 @@
                 display: none !important;
             }
             
-            /* Apple風ヒーロー用のモバイル調整 */
+            /* Apple風ヒーロー用のモバイル調整 - apple-hero.cssに統合済み */
+            /*
             .apple-hero {
-                margin-top: 0; /* モバイルでも全画面表示 */
+                margin-top: 0;
             }
+            */
         }
 
         /* 旧ヒーロー背景エフェクト - 無効化 */
@@ -660,12 +656,6 @@
             </ul>
         </nav>
         <div class="header-cta">
-            <a href="document.html" class="btn-document">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/>
-                </svg>
-                資料ダウンロード
-            </a>
             <a href="https://utage-system.com/p/EcESO02xLLoK" class="btn-contact">
                 無料相談
             </a>
@@ -909,7 +899,6 @@
 
 <div id="footer-placeholder"></div>
 <script src="js/script.js?v=20250505"></script>
-<script src="assets/js/components.js" defer=""></script>
 <script src="js/include.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 <script>    document.addEventListener('DOMContentLoaded', function() {

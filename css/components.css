@@ -1,6 +1,55 @@
 /* オートウェビナー大学 コンポーネントCSS */
 /* ヘッダー、フッターなどの共通コンポーネント用のスタイル */
 
+/* ==========================================
+   ヒーロー画像バナー
+   ========================================== */
+
+/* Hero banner スタイル */
+.hero-image-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+.hero-banner {
+    max-width: 80%;  /* 100%から20%縮小 */
+    height: auto;
+    box-shadow: var(--apple-shadow);
+    border-radius: var(--apple-border-radius);
+    margin: 0 auto;  /* 中央寄せ */
+}
+
+/* データ属性用のスタイリング - アニメーション無効化 */
+/* アニメーションをすべて無効にして、常に表示状態にする */
+[data-aos] {
+    transition-duration: 0s !important;
+    opacity: 1 !important; /* すべての要素をデフォルトで表示 */
+    transform: none !important; /* 変形をリセット */
+}
+
+/* 個別のアニメーション効果をすべて無効化 */
+[data-aos="fade-up"],
+[data-aos="fade-down"],
+[data-aos="fade-left"],
+[data-aos="fade-right"],
+[data-aos="zoom-in"],
+[data-aos="zoom-out"] {
+    transform: none !important;
+    opacity: 1 !important; /* デフォルトで表示 */
+}
+
+/* アニメーションされた要素のスタイルを強制適用 */
+[data-aos].aos-animate {
+    transform: none !important;
+    opacity: 1 !important;
+}
+
+/* ==========================================
+   ニュースレター登録セクション
+   ========================================== */
+
 /* ニュースレター登録セクションのスタイル */
 .newsletter-section {
     background-color: var(--apple-bg-light);
@@ -315,7 +364,7 @@
     }
 }
 
-/* ヘッダースタイル */
+/* ヘッダースタイル - style.cssに統合済み、ここではコメントアウト
 header {
   background-color: rgba(0,0,0,0.92)!important;
   backdrop-filter: blur(20px)!important;
@@ -327,6 +376,7 @@ header {
   top: 0;
   z-index: 1000;
 }
+*/
 
 .header-container {
   display: flex;

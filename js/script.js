@@ -35,6 +35,9 @@
     // モバイルメニューの改善
     enhanceMobileMenu();
     
+    // フッターエフェクト初期化
+    initFooterEffects();
+    
     console.log('🚀 メインサイトJS初期化完了');
   }
   
@@ -196,6 +199,50 @@
     
     elements.forEach(element => {
       observer.observe(element);
+    });
+  }
+
+  /**
+   * フッターのホバーエフェクト強化
+   * footer-effects.js から統合
+   */
+  function initFooterEffects() {
+    // 右からインサート用のエフェクト（footer-widget-3）
+    const widget3Links = document.querySelectorAll('.footer-widget-3 ul li a');
+    widget3Links.forEach(link => {
+      link.innerHTML = '→ ' + link.innerHTML;
+      link.style.paddingLeft = '0';
+      link.style.transform = 'translateX(0)';
+      link.style.transition = 'all 0.075s ease-out';
+      
+      link.addEventListener('mouseenter', () => {
+        link.style.transform = 'translateX(8px)';
+        link.style.paddingLeft = '5px';
+      });
+      
+      link.addEventListener('mouseleave', () => {
+        link.style.transform = 'translateX(0)';
+        link.style.paddingLeft = '0';
+      });
+    });
+    
+    // 左からインサート用のエフェクト（footer-widget-4）
+    const widget4Links = document.querySelectorAll('.footer-widget-4 ul li a');
+    widget4Links.forEach(link => {
+      link.innerHTML = link.innerHTML + ' ←';
+      link.style.paddingRight = '0';
+      link.style.transform = 'translateX(0)';
+      link.style.transition = 'all 0.075s ease-out';
+      
+      link.addEventListener('mouseenter', () => {
+        link.style.transform = 'translateX(-8px)';
+        link.style.paddingRight = '5px';
+      });
+      
+      link.addEventListener('mouseleave', () => {
+        link.style.transform = 'translateX(0)';
+        link.style.paddingRight = '0';
+      });
     });
   }
 })();

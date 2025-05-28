@@ -13,9 +13,7 @@
     <meta property="og:description" content="オートウェビナー大学の無料相談ページ。ビジネス自動化の専門家が、あなたの状況に合ったUTAGE活用法を無料でアドバイスします。IT導入補助金の申請サポートも実施中。">
     <meta property="og:image" content="/images/ogp_image_consultation.webp">
     <meta property="og:type" content="article">
-
     <script src="/js/script.js" defer=""></script>
-    <script src="/assets/js/components.js" defer=""></script>
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>    <style>
         /* Apple風のデザイン変数 */
         :root {
@@ -32,7 +30,6 @@
             --apple-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             --apple-shadow: 0 8px 30px rgba(0,0,0,0.12);
         }
-
         body {
             font-family: 'Noto Sans JP', sans-serif;
             color: var(--apple-text-dark);
@@ -42,7 +39,6 @@
             padding: 0;
             -webkit-font-smoothing: antialiased;
         }
-
         /* Hero Section - Appleスタイル */
         .hero-section {
             height: 70vh;
@@ -55,7 +51,6 @@
             align-items: center;
             justify-content: center;
         }
-
         .hero-video-container {
             position: absolute;
             top: 0;
@@ -65,7 +60,6 @@
             z-index: 0;
             opacity: 0.3;
         }
-
         .hero-video-container::after {
             content: '';
             position: absolute;
@@ -75,7 +69,6 @@
             height: 100%;
             background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.6) 100%);
         }
-
         .hero-content {
             position: relative;
             z-index: 1;
@@ -83,7 +76,6 @@
             max-width: 800px;
             padding: 0 20px;
         }
-
         .hero-badge {
             display: inline-block;
             background: rgba(255,255,255,0.15);
@@ -96,7 +88,6 @@
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255,255,255,0.2);
         }
-
         .hero-title {
             font-size: 3.5rem;
             font-weight: 700;
@@ -104,7 +95,6 @@
             line-height: 1.1;
             letter-spacing: -0.03em;
         }
-
         .hero-subtitle {
             font-size: 1.4rem;
             font-weight: 300;
@@ -114,13 +104,11 @@
             margin-right: auto;
             opacity: 0.95;
         }
-
         .hero-cta {
             margin-top: 2rem;
             display: inline-flex;
             gap: 16px;
         }
-
         .hero-cta-btn {
             display: inline-flex;
             align-items: center;
@@ -135,36 +123,29 @@
             transition: var(--apple-transition);
             min-width: 200px;
         }
-
         .hero-cta-btn:hover {
             transform: translateY(-4px);
             box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         }
-
         .hero-cta-secondary {
             background: rgba(255,255,255,0.12);
             color: white;
             backdrop-filter: blur(10px);
         }
-
         .hero-cta-secondary:hover {
             background: rgba(255,255,255,0.2);
         }
-
         /* Section共通スタイル */
         .section {
             padding: 120px 0;
             position: relative;
         }
-
         .section-white {
             background-color: #fff;
         }
-
         .section-light {
             background-color: var(--apple-bg-light);
         }
-
         .section-title {
             font-size: 2.75rem;
             font-weight: 700;
@@ -174,7 +155,6 @@
             letter-spacing: -0.02em;
             color: var(--apple-text-dark);
         }
-
         .section-subtitle {
             font-size: 1.25rem;
             font-weight: 300;
@@ -183,14 +163,12 @@
             text-align: center;
             color: var(--apple-text-light);
         }
-
         /* コンテナ */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-
         /* 有料プランセクション */
         .premium-plan-section {
             background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
@@ -199,7 +177,6 @@
             padding: 80px 0;
             margin-top: 40px;
         }
-
         .premium-plan-card {
             background: rgba(255,255,255,0.1);
             border: 1px solid rgba(255,255,255,0.2);
@@ -209,19 +186,16 @@
             margin: 0 auto;
             backdrop-filter: blur(10px);
         }
-
         .premium-plan-title {
             font-size: 2rem;
             font-weight: 700;
             margin-bottom: 1rem;
         }
-
         .premium-plan-description {
             font-size: 1.1rem;
             margin-bottom: 2rem;
             opacity: 0.9;
         }
-
         .premium-plan-btn {
             display: inline-flex;
             align-items: center;
@@ -235,12 +209,10 @@
             text-decoration: none;
             transition: var(--apple-transition);
         }
-
         .premium-plan-btn:hover {
             background: #e54e21;
             transform: translateY(-2px);
         }
-
         /* カードスタイル */
         .feature-cards {
             display: grid;
@@ -248,7 +220,6 @@
             gap: 24px;
             margin-top: 60px;
         }
-
         .feature-card {
             background: white;
             border-radius: var(--apple-border-radius);
@@ -258,11 +229,9 @@
             padding: 40px;
             text-align: center;
         }
-
         .feature-card:hover {
             transform: translateY(-8px);
         }
-
         .feature-icon {
             width: 80px;
             height: 80px;
@@ -275,20 +244,17 @@
             font-size: 2rem;
             color: white;
         }
-
         .feature-title {
             font-size: 1.5rem;
             font-weight: 600;
             margin-bottom: 1rem;
             color: var(--apple-text-dark);
         }
-
         .feature-text {
             font-size: 1rem;
             line-height: 1.6;
             color: var(--apple-text-light);
         }
-
         /* レスポンシブデザイン */
         @media (max-width: 768px) {
             .hero-title {
@@ -315,7 +281,6 @@
                 grid-template-columns: 1fr;
             }
         }
-
         @media (max-width: 480px) {
             .hero-title {
                 font-size: 2rem;
@@ -325,7 +290,6 @@
             }
         }
     </style>
-
    <!-- モバイルUX向上のための追加CSS -->
    <!-- モバイルCSSはstyle.cssに統合済み -->
 </head>
@@ -343,10 +307,7 @@
       </ul>
     </nav>
     <div class="header-cta">
-      <!-- <a href="/document.html" class="btn-document">
-        <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
-        資料請求する
-      </a> -->      <a href="https://utage-system.com/p/EcESO02xLLoK" class="btn-contact">
+      <a href="https://utage-system.com/p/EcESO02xLLoK" class="btn-contact">
         まずは相談する
       </a>
     </div>
@@ -378,7 +339,6 @@
                 </div>
             </div>
         </section>
-
         <!-- 無料相談の価値提案セクション -->
         <section class="section section-white">
             <div class="container">
@@ -386,7 +346,6 @@
                 <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
                     300件以上のUTAGE導入実績を持つ専門家が、あなたのビジネスの成長を真剣に考えているからです。
                 </p>
-                
                 <div class="feature-cards" data-aos="fade-up" data-aos-delay="200">
                     <div class="feature-card">
                         <div class="feature-icon">💡</div>
@@ -406,7 +365,6 @@
                 </div>
             </div>
         </section>
-
         <!-- 相談内容セクション -->
         <section class="section section-light">
             <div class="container">
@@ -430,7 +388,6 @@
                 </div>
             </div>
         </section>
-
         <!-- 有料相談プランセクション -->
         <section class="premium-plan-section">
             <div class="container">
@@ -473,7 +430,6 @@
                 </div>
             </div>
         </section>
-
         <!-- 成功事例セクション -->
         <section class="section section-light">
             <div class="container">
@@ -500,7 +456,6 @@
                 </div>
             </div>
         </section>
-
         <!-- 申し込みセクション -->
         <section class="section section-white">
             <div class="container" style="text-align: center;">
@@ -509,7 +464,6 @@
                     以下のボタンから無料相談フォームにアクセスいただくと、<br>
                     担当者から24時間以内にご連絡いたします。
                 </p>
-
                 <div style="margin-top: 40px;" data-aos="fade-up" data-aos-delay="200">
                     <a href="https://utage-system.com/event/tgNspV9MaQ68/register" target="_blank" 
                        class="hero-cta-btn" style="position: relative; display: inline-block;">
@@ -546,7 +500,6 @@
                 </div>
             </div>
         </section>
-
         <!-- 注意事項セクション -->
         <section class="section section-light">
             <div class="container">
@@ -579,32 +532,8 @@
                 </div>
             </div>
         </section>
-
         <!-- Contact CTA Section -->
-        <section class="contact-cta-section">
-            <svg class="contact-cta-bg-deco contact-cta-bg-triangle1"><use xlink:href="#svg-triangle-color"></use></svg>
-            <svg class="contact-cta-bg-deco contact-cta-bg-triangle2"><use xlink:href="#svg-triangle-color"></use></svg>
-            <span class="contact-cta-bg-deco contact-cta-bg-circle1"></span>
-            <span class="contact-cta-bg-deco contact-cta-bg-circle2"></span>
-
-            <div class="contact-cta-container">
-                <span class="contact-cta-subtitle">詳しい資料も用意しています</span>
-                <h2 class="contact-cta-title">UTAGEの詳細資料をダウンロード</h2>
-                <p class="contact-cta-lead">
-                    UTAGEの機能や導入事例、活用方法などをまとめた<br class="pc-only">
-                    詳細資料をご用意しています。<br class="pc-only">
-                    無料でダウンロードいただけます。
-                </p>
-                <div class="contact-cta-buttons">
-                    <!-- <a href="/document.html" class="btn btn-document">
-                        <svg><use xlink:href="#icon-pdf"></use></svg>
-                        資料をダウンロードする
-                    </a> -->
-                </div>
-            </div>
-        </section>
     </main>
-
     <div id="footer-placeholder"></div>    <script src="/js/include.js"></script>
     <script src="/js/script.js"></script>
     <script>
@@ -618,6 +547,4 @@
             });
         });
     </script>
-
-
 </body></html>

@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="icon" href="/images/favicon.ico">
     <!-- 共通JS追加 -->
-    <script src="/assets/js/components.js" defer=""></script>
     <style>
         /* 基本スタイル */
         * {
@@ -14,7 +13,6 @@
             margin: 0;
             padding: 0;
         }
-
         body {
             font-family: 'Noto Sans JP', sans-serif;
             color: #333;
@@ -22,29 +20,24 @@
             background-color: #f9f9f9;
             font-size: 16px;
         }
-
         .container {
             max-width: 900px;
             margin: 0 auto;
             padding: 0 20px;
         }
-
         img {
             max-width: 100%;
             height: auto;
             display: block;
             border-radius: 8px;
         }
-
         .section-image {
             margin: 20px 0;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
-
         /* ヘッダー用のスタイル削除 (共通CSSで管理) */
-
         /* メインヘッダー */
         .header {
             background: linear-gradient(135deg, #0d3283 0%, #082258 100%);
@@ -53,14 +46,12 @@
             /* ヘッダーがfixedでなくなるため調整 */
             /* margin-top: 86px; */ /* headerの高さを考慮する必要がなくなる */
         }
-
         .main-header-container {
             max-width: 900px;
             margin: 0 auto;
             padding: 0 20px;
             position: relative;
         }
-
         .header-title {
             font-size: 2.2rem;
             font-weight: 700;
@@ -68,7 +59,6 @@
             line-height: 1.3;
             color: #fff;
         }
-
         .header-subtitle {
             font-size: 1.1rem;
             opacity: 0.9;
@@ -84,7 +74,6 @@
             z-index: 10;
             text-align: center;
         }
-
         /* 目次 */
         .toc {
             background-color: #f5f5f5;
@@ -92,7 +81,6 @@
             padding: 25px;
             margin: 40px 0;
         }
-
         .toc-title {
             font-size: 20px;
             font-weight: bold;
@@ -101,40 +89,33 @@
             align-items: center;
             color: #0d3283;
         }
-
         .toc-title i {
             margin-right: 10px;
             color: #0d3283;
         }
-
         .toc-list {
             list-style-type: none;
         }
-
         .toc-list li {
             margin-bottom: 10px;
             position: relative;
             padding-left: 25px;
         }
-
         .toc-list li i {
             position: absolute;
             left: 0;
             top: 5px;
             color: #0d3283;
         }
-
         .toc-list a {
             color: #333;
             text-decoration: none;
             transition: color 0.3s;
             font-weight: 500;
         }
-
         .toc-list a:hover {
             color: #0d3283;
         }
-
         /* プロフィールセクション */
         .profile-section {
             background-color: white;
@@ -143,7 +124,6 @@
             margin-bottom: 40px;
             overflow: hidden;
         }
-
         .profile-header {
             background-color: #f0f7ff;
             padding: 20px;
@@ -151,29 +131,24 @@
             display: flex;
             align-items: center;
         }
-
         .profile-header i {
             margin-right: 10px;
             color: #0d3283;
             font-size: 20px;
         }
-
         .profile-header h2 {
             margin: 0;
             color: #0d3283;
             font-size: 1.3rem;
         }
-
         .profile-details {
             display: flex;
             flex-wrap: wrap;
             padding: 25px;
         }
-
         .profile-info {
             flex: 1;
         }
-
         .profile-name {
             font-size: 1.6rem;
             margin-bottom: 10px;
@@ -181,12 +156,10 @@
             display: flex;
             align-items: center;
         }
-
         .profile-name i {
             margin-right: 10px;
             color: #0d3283;
         }
-
         .profile-company {
             font-size: 1rem;
             margin-bottom: 15px;
@@ -194,18 +167,15 @@
             display: flex;
             align-items: center;
         }
-
         .profile-company i {
             margin-right: 10px;
             color: #666;
             font-size: 14px;
         }
-
         .profile-description p {
             margin-bottom: 15px;
             line-height: 1.7;
         }
-
         /* 成果ボックス */
         .results-section {
             background: linear-gradient(135deg, #0d3283 0%, #1a5cb5 100%);
@@ -217,7 +187,6 @@
             position: relative;
             overflow: hidden;
         }
-
         .results-section::before {
             content: '';
             position: absolute;
@@ -228,7 +197,6 @@
             background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%);
             border-radius: 50%;
         }
-
         .results-title {
             font-size: 1.5rem;
             margin-bottom: 25px;
@@ -236,19 +204,16 @@
             align-items: center;
             justify-content: center;
         }
-
         .results-title i {
             margin-right: 10px;
             color: #ffdd57;
         }
-
         .results-grid {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-around;
             gap: 20px;
         }
-
         .result-item {
             flex: 1;
             min-width: 150px;
@@ -258,23 +223,19 @@
             border: 1px solid rgba(255,255,255,0.2);
             transition: transform 0.3s, background-color 0.3s;
         }
-
         .result-item:hover {
             transform: translateY(-5px);
             background-color: rgba(255,255,255,0.2);
         }
-
         .result-number {
             font-size: 2.5rem;
             font-weight: bold;
             margin-bottom: 5px;
             color: #7bdcb5;
         }
-
         .result-label {
             font-size: 0.9rem;
         }
-
         /* 引用ボックス */
         .highlight-box {
             background-color: #fff9e5;
@@ -284,7 +245,6 @@
             border-radius: 0 8px 8px 0;
             position: relative;
         }
-
         .highlight-box::before {
             content: '"';
             position: absolute;
@@ -295,7 +255,6 @@
             font-family: serif;
             line-height: 1;
         }
-
         .highlight-box p {
             font-size: 1.05rem;
             color: #333;
@@ -304,7 +263,6 @@
             position: relative;
             padding-left: 15px;
         }
-
         /* セクションヘッダー */
         .section-header {
             background: linear-gradient(135deg, #0d3283 0%, #1a5cb5 100%);
@@ -319,11 +277,9 @@
             display: flex;
             align-items: center;
         }
-
         .section-header i {
             margin-right: 10px;
         }
-
         .section-header::after {
             content: '';
             position: absolute;
@@ -333,12 +289,10 @@
             width: 40px;
             background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.15) 100%);
         }
-
         /* インタビューQ&A */
         .interview-section {
             margin-bottom: 50px;
         }
-
         .interview-qa {
             background-color: white;
             border-radius: 8px;
@@ -346,7 +300,6 @@
             padding: 25px;
             margin-bottom: 20px;
         }
-
         .interview-question {
             color: #0d3283;
             font-weight: bold;
@@ -358,7 +311,6 @@
             border-radius: 0 8px 8px 0;
             position: relative;
         }
-
         .interview-question::before {
             content: 'Q';
             position: absolute;
@@ -374,13 +326,11 @@
             justify-content: center;
             font-size: 14px;
         }
-
         .interview-answer {
             padding-left: 20px;
             margin-bottom: 20px;
             position: relative;
         }
-
         .interview-answer::before {
             content: 'A';
             position: absolute;
@@ -396,16 +346,13 @@
             justify-content: center;
             font-size: 14px;
         }
-
         .interview-answer p {
             margin-bottom: 15px;
             line-height: 1.7;
         }
-
         .interview-answer p:last-child {
             margin-bottom: 0;
         }
-
         /* CTA セクション */
         .cta-section {
             background: linear-gradient(135deg, #0d3283 0%, #1a5cb5 100%);
@@ -417,7 +364,6 @@
             position: relative;
             overflow: hidden;
         }
-
         .cta-section::before,
         .cta-section::after {
             content: '';
@@ -427,17 +373,14 @@
             background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
             border-radius: 50%;
         }
-
         .cta-section::before {
             top: -100px;
             right: -100px;
         }
-
         .cta-section::after {
             bottom: -100px;
             left: -100px;
         }
-
         .cta-title {
             font-size: 1.7rem;
             margin-bottom: 20px;
@@ -446,12 +389,10 @@
             align-items: center;
             justify-content: center;
         }
-
         .cta-title i {
             margin-right: 15px;
             color: #ffdd57;
         }
-
         .cta-description {
             margin-bottom: 25px;
             max-width: 700px;
@@ -459,7 +400,6 @@
             margin-right: auto;
             line-height: 1.7;
         }
-
         .cta-button {
             display: inline-block;
             background-color: #7bdcb5;
@@ -476,12 +416,10 @@
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0,0,0,0.15);
         }
-        
         /* 動画セクション */
         .video-section {
             margin-bottom: 50px;
         }
-        
         .video-container {
             background-color: white;
             border-radius: 8px;
@@ -490,7 +428,6 @@
             margin-bottom: 20px;
             overflow: hidden;
         }
-        
         .video-container iframe {
             border-radius: 8px;
             width: 100%;
@@ -498,21 +435,18 @@
             margin: 0 auto;
             display: block;
         }
-        
         .video-caption {
             text-align: center;
             margin-top: 15px;
             color: #666;
             font-style: italic;
         }
-
         /* ナビゲーション */
         .navigation {
             display: flex;
             justify-content: space-between;
             margin: 40px 0;
         }
-
         .nav-button {
             display: flex;
             align-items: center;
@@ -525,23 +459,19 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.05);
             transition: all 0.3s;
         }
-
         .nav-button:hover {
             transform: translateY(-3px);
             color: #0d3283;
             box-shadow: 0 8px 16px rgba(0,0,0,0.1);
         }
-
         .nav-prev::before {
             content: '←';
             margin-right: 10px;
         }
-
         .nav-next::after {
             content: '→';
             margin-left: 10px;
         }
-
         /* ハイライト */
         .highlight {
             background-color: #fffde7;
@@ -550,7 +480,6 @@
             box-shadow: 4px 0 0 #fffde7, -4px 0 0 #fffde7;
             box-decoration-break: clone;
         }
-
         .yellow-highlight {
             background-color: #ffff00;
             padding: 2px 0;
@@ -558,16 +487,13 @@
             box-shadow: 4px 0 0 #ffff00, -4px 0 0 #ffff00;
             box-decoration-break: clone;
         }
-
         .red-text {
             color: #ff0000;
             font-weight: bold;
         }
-
         .bold-text {
             font-weight: bold;
         }
-
         .badge {
             display: inline-block;
             background-color: #ff6347;
@@ -579,61 +505,49 @@
             margin-left: 10px;
             vertical-align: middle;
         }
-
         /* レスポンシブ対応 */
         @media (max-width: 768px) {
             .header-title {
                 font-size: 1.8rem;
             }
-
             .profile-details {
                 flex-direction: column;
             }
-
             .section-header {
                 font-size: 1.2rem;
             }
-
             .results-grid {
                 flex-direction: column;
                 max-width: 280px;
                 margin: 0 auto;
             }
         }
-
         /* アニメーション */
         @keyframes pulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
         }
-
         .pulse {
             animation: pulse 2s infinite;
         }
     </style>
-
    <!-- モバイルUX向上のための追加CSS -->
    <!-- モバイルCSSはstyle.cssに統合済み -->
 </head>
 <body>
     <!-- SVGプレースホルダー -->
     <svg-icons></svg-icons>
-
     <!-- ヘッダープレースホルダー -->
     <site-header></site-header>
-
     <!-- モバイルメニュー削除 -->
-
     <!-- スマホ用固定CTA削除 -->
-
     <div class="header">
         <div class="main-header-container">
             <h1 class="header-title">株式会社笑認 髙安様 - UTAGE導入事例</h1>
             <p class="header-subtitle">離職率20%→1%への劇的改善を実現した「パノラマ人事評価システム360」開発者</p>
         </div>
     </div>
-
     <div class="container">
         <!-- メイン成果バナー -->
         <div class="main-results">
@@ -645,7 +559,6 @@
                 <br>UTAGE導入の効果とビジネス成長への影響
             </p>
         </div>
-
         <!-- プロフィールセクション -->
         <section class="profile-section">
             <div class="profile-header">
@@ -670,7 +583,6 @@
                 <img src="/assets/images/interview-profile.webp" alt="髙安敏行様プロフィール" loading="lazy"> <!-- 新しいファイル名に変更 -->
             </div>
         </section>
-
         <!-- 目次 -->
         <section class="toc">
             <h3 class="toc-title">
@@ -684,7 +596,6 @@
                 <li><i class="fas fa-angle-right"></i> <a href="#section5">離職率を改善するアプローチ</a></li>
             </ol>
         </section>
-
         <!-- 成果セクション -->
         <section class="results-section">
             <h2 class="results-title">
@@ -705,12 +616,10 @@
                 </div>
             </div>
         </section>
-
         <!-- 引用セクション -->
         <div class="highlight-box">
             <p>"結果として、<span class="yellow-highlight">UTAGEのシステムを通じて新規の依頼や新しいつながりをいただき</span>、非常に嬉しく思っています。今でも、私の本を読んでくださった方から問い合わせや導入依頼があります。実は昨日も、当社ハートサービスグループで3月にオープン予定のデイサービス事業と介護用品ジムのスタッフ募集に対し、<span class="red-text">私の本を読んでQRコードを読み込み、話を聞きに来てくださった方を最終面接で採用したばかりです</span>。これは本当に嬉しかったですし、情報発信の効果だと実感しています。"</p>
         </div>
-
         <!-- インタビューセクション -->
         <section class="interview-section" id="section1">
             <h2 class="section-header">
@@ -724,18 +633,15 @@
                 <div class="interview-answer">
                     <p>髙安： ありがとうございます。</p>
                 </div>
-
                 <div class="interview-question">前田： 髙安様は、著書『離職率1%の会社が編み出した 超人材定着術』の執筆や、セミナー講師としてもご活躍中です。今回は、弊社の「UTAGE構築代行丸投げちゃん」をご利用いただいたご縁で、髙安様にお話を伺います。どうぞよろしくお願いいたします。</div>
                 <div class="interview-answer">
                     <p>髙安： よろしくお願いします。</p>
                 </div>
-
                 <div class="interview-question">前田： では髙安様、簡単に自己紹介をお願いいたします。</div>
                 <div class="interview-answer">
                     <p>髙安： はい。皆さん初めまして。株式会社笑認代表の髙安敏行と申します。こう見えて、私47歳です。ちょっと上に見られるんですけど。私自身が現在笑認の代表取締役を務める一方で、ハートサービスグループという、クリーニングや介護事業、理美容事業といった<span class="bold-text">労働集約型の事業を専務取締役として運営</span>しています。</p>
                     <p>今期が35期目を迎え、従業員は約220名ほどの規模になっています。株式会社笑認では、グループ会社の人事評価や人材定着の仕組みを私が長年構築してきました。その取り組みの結果、前田さんからご紹介いただいたように<span class="yellow-highlight">離職率1%を実現</span>し、現在はその仕組みを人手不足で困っている企業に提供しています。前田さんには、その仕組みの普及のためにご協力いただいているご縁で、本日はこの場に参加させていただいております。</p>
                 </div>
-
                 <div class="interview-question">前田： 髙安様、ありがとうございます。では、ここからお話を伺っていきたいのですが、まず、UTAGEの構築代行を利用する前に、どのような悩みや課題がありましたか？</div>
                 <div class="interview-answer">
                     <p>髙安： はい、ありがとうございます。UTAGEの構築代行を依頼する前は、<span class="red-text">メールの問い合わせや様々なマーケティング配信などを人力に頼っていたため、対応を忘れたり遅れたりすることがありました</span>。そこでUTAGEのシステムを知り、導入を検討しました。</p>
@@ -743,7 +649,6 @@
                 </div>
             </div>
         </section>
-
         <section class="interview-section" id="section2">
             <h2 class="section-header">
                 <i class="fas fa-check-circle"></i> 「丸投げちゃん」を選んだ理由
@@ -756,7 +661,6 @@
                 <div class="interview-answer">
                     <p>髙安： 理由は2点あります。まず、お話をさせていただく中で、<span class="bold-text">前田さんが非常にシステムを理解されている方だと感じたこと</span>。そしてもう一点は、<span class="yellow-highlight">前田さん自身がUTAGEの仕組みを使って既に良い実績を上げられていた、成功事例をお持ちだった</span>ことです。この2点が決め手となりました。</p>
                 </div>
-
                 <div class="interview-question">前田： そうですか。他のサービスを検討すれば、もう少し安かったり納期が短かったりする選択肢もあったかもしれません。弊社は比較的価格が高めで、しっかりと時間をかけてサービスを提供しています。そういった中で、より安くて早い代行を探さなかった理由を振り返るとどのようなことが考えられますか？</div>
                 <div class="interview-answer">
                     <p>髙安： これは私のビジネス感覚やこだわりにも通じることですが、当社は<span class="red-text">「何をやるか」や「いくらでやるか」よりも「誰とやるか」を非常に重視</span>しています。前田さんという、UTAGEのサービスをバックでサポートしていただける方が、私たちにとって良いパートナーだと感じました。</p>
@@ -764,7 +668,6 @@
                 </div>
             </div>
         </section>
-
         <section class="interview-section" id="section3">
             <h2 class="section-header">
                 <i class="fas fa-chart-bar"></i> 導入後の変化と効果
@@ -778,7 +681,6 @@
                     <p>髙安： はい、<span class="red-text">それは絶対にやっておいた方がいい</span>と思います。より深く情報提供したり思いを伝えたりする意味で、一件一件の問い合わせに個別に返答するのは大変ですし、適切に対応できないこともあります。そういった意味では、<span class="yellow-highlight">UTAGEの仕組みを使って情報を届けることは非常に重要</span>だと感じています。</p>
                 </div>
             </div>
-
             <!-- ポイント要約ボックス -->
             <div style="background-color: #f0f7ff; border-radius: 8px; padding: 20px; margin-top: 20px;">
                 <h4 style="color: #0d3283; margin-bottom: 15px; font-size: 1.1rem;">
@@ -792,7 +694,6 @@
                 </ul>
             </div>
         </section>
-
         <section class="interview-section" id="section4">
             <h2 class="section-header">
                 <i class="fas fa-comment-dots"></i> 迷っている方へのメッセージ
@@ -808,7 +709,6 @@
                 </div>
             </div>
         </section>
-
         <section class="interview-section" id="section5">
             <h2 class="section-header">
                 <i class="fas fa-users"></i> 離職率を改善するアプローチ
@@ -839,7 +739,6 @@
                 </div>
             </div>
         </section>
-
         <!-- ナビゲーション -->
         <div class="navigation">
             <!-- 絶対パスに変更 -->
@@ -847,9 +746,6 @@
             <a href="/achievement/customer2.html" class="nav-button nav-next">次の事例</a>
         </div>
     </div>
-
     <!-- フッタープレースホルダー -->
     <site-footer></site-footer>
-
-
 </body></html>

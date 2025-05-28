@@ -13,9 +13,7 @@
     <meta property="og:description" content="オートウェビナー大学が主催する無料セミナー情報ページです。マーケティング自動化、ファネル構築、集客・販売の効率化に関する最新セミナーをご紹介します。">
     <meta property="og:image" content="/assets/images/ogp_image_seminar.webp">
     <meta property="og:type" content="article">
-
     <script src="/js/script.js" defer=""></script>
-    <script src="/assets/js/components.js" defer=""></script>
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>    <style>
         /* ブラッシュアップされた free-seminar スタイル */
         .seminar-hero-section {
@@ -28,7 +26,6 @@
             margin-bottom: 80px;
             box-shadow: 0 5px 30px rgba(0,0,0,0.1);
         }
-        
         .seminar-hero-section::before {
             content: '';
             position: absolute;
@@ -42,7 +39,6 @@
             z-index: 1;
             animation: gradientMove 60s linear infinite;
         }
-        
         .seminar-hero-section::after {
             content: '';
             position: absolute;
@@ -53,7 +49,6 @@
             background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.15));
             z-index: 1;
         }
-        
         .seminar-hero-container {
             position: relative;
             z-index: 2;
@@ -61,7 +56,6 @@
             margin: 0 auto;
             padding: 0 20px;
         }
-        
         .seminar-hero-title {
             font-size: 48px;
             font-weight: 900;
@@ -69,12 +63,12 @@
             letter-spacing: -0.02em;
             background: linear-gradient(to right, #fff, #e6f3ff);
             -webkit-background-clip: text;
+            background-clip: text;
             color: transparent;
             text-shadow: 0 1px 2px rgba(0,0,0,0.1);
             position: relative;
             display: inline-block;
         }
-        
         .seminar-hero-title::after {
             content: '';
             position: absolute;
@@ -86,7 +80,6 @@
             background: rgba(255, 255, 255, 0.4);
             border-radius: 2px;
         }
-        
         .seminar-hero-lead {
             font-size: 18px;
             max-width: 800px;
@@ -95,7 +88,6 @@
             line-height: 1.8;
             font-weight: 500;
         }
-        
         /* 改良されたフィルターボタン */
         .seminar-filter {
             display: flex;
@@ -108,7 +100,6 @@
             padding: 0 15px;
             max-width: 900px;
         }
-        
         .filter-button {
             background-color: rgba(255, 255, 255, 0.9);
             color: var(--apple-text-medium);
@@ -121,20 +112,17 @@
             transition: all 0.2s ease;
             box-shadow: 0 2px 10px rgba(0,0,0,0.08);
         }
-        
         .filter-button:hover {
             background-color: #ffffff;
             transform: translateY(-2px);
             box-shadow: 0 6px 15px rgba(0,0,0,0.12);
         }
-        
         .filter-button.active {
             background-color: var(--apple-accent);
             color: white;
             box-shadow: 0 6px 15px rgba(255, 97, 49, 0.3);
             transform: translateY(-2px);
         }
-        
         /* セミナーカードのスタイル改善 */
         .seminar-list {
             display: grid;
@@ -144,7 +132,6 @@
             margin: 0 auto;
             padding: 0 20px;
         }
-        
         .seminar-card {
             background: #fff;
             border-radius: 16px;
@@ -154,19 +141,16 @@
             border: 1px solid rgba(0,0,0,0.05);
             position: relative;
         }
-        
         .seminar-card:hover {
             transform: translateY(-6px);
             box-shadow: 0 15px 35px rgba(0,0,0,0.15);
         }
-        
         .seminar-header {
             padding: 24px 24px 16px;
             background: linear-gradient(to right, #f9f9f9, #f2f2f2);
             position: relative;
             border-bottom: 1px solid rgba(0,0,0,0.05);
         }
-        
         .seminar-title {
             font-size: 20px;
             font-weight: 700;
@@ -175,7 +159,6 @@
             margin-right: 70px;
             line-height: 1.4;
         }
-        
         .seminar-badge {
             position: absolute;
             top: 24px;
@@ -185,26 +168,21 @@
             font-weight: 700;
             border-radius: 20px;
         }
-        
         .badge-new {
             background-color: var(--apple-accent);
             color: #fff;
         }
-        
         .badge-online {
             background-color: #28a745;
             color: #fff;
         }
-        
         .badge-offline {
             background-color: #6c757d;
             color: #fff;
         }
-        
         .seminar-content {
             padding: 24px;
         }
-        
         .seminar-info {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -214,39 +192,32 @@
             border-radius: 10px;
             padding: 16px;
         }
-        
         .info-item {
             display: flex;
             align-items: center;
             font-size: 14px;
             color: var(--apple-text-medium);
         }
-        
         .info-icon {
             margin-right: 8px;
             font-size: 16px;
         }
-        
         .seminar-type {
             font-weight: 600;
         }
-        
         .seminar-description {
             margin-bottom: 24px;
         }
-        
         .seminar-description p {
             font-size: 15px;
             line-height: 1.7;
             color: var(--apple-text-medium);
             margin-bottom: 16px;
         }
-        
         .seminar-description ul {
             padding-left: 20px;
             margin-bottom: 20px;
         }
-        
         .seminar-description li {
             position: relative;
             padding-left: 20px;
@@ -255,7 +226,6 @@
             color: var(--apple-text-medium);
             list-style: none;
         }
-        
         .seminar-description li::before {
             content: '✓';
             position: absolute;
@@ -263,7 +233,6 @@
             color: var(--apple-primary);
             font-weight: bold;
         }
-        
         .seminar-footer {
             display: flex;
             justify-content: space-between;
@@ -271,24 +240,20 @@
             padding-top: 16px;
             border-top: 1px solid rgba(0,0,0,0.05);
         }
-        
         .seminar-price {
             font-size: 16px;
             font-weight: 700;
         }
-        
         .price-free {
             color: var(--apple-accent);
             display: flex;
             align-items: center;
             position: relative;
         }
-        
         .price-free::before {
             content: '★';
             margin-right: 5px;
         }
-        
         .register-button {
             display: inline-block;
             background: var(--apple-primary);
@@ -299,20 +264,17 @@
             font-weight: 700;
             transition: all 0.2s ease;
         }
-        
         .register-button:hover {
             background: var(--apple-primary-dark);
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(0,113,227,0.3);
         }
-        
         /* セクションタイトルの改善 */
         .section-title-container {
             text-align: center;
             margin-bottom: 50px;
             position: relative;
         }
-        
         .section-subtitle {
             font-size: 14px;
             font-weight: 600;
@@ -322,7 +284,6 @@
             display: block;
             margin-bottom: 8px;
         }
-        
         .section-title {
             font-size: 36px;
             font-weight: 800;
@@ -330,7 +291,6 @@
             margin-bottom: 16px;
             letter-spacing: -0.02em;
         }
-        
         .section-subtitle-desc {
             font-size: 16px;
             color: var(--apple-text-light);
@@ -338,7 +298,6 @@
             margin: 0 auto;
             line-height: 1.6;
         }
-        
         .section-divider {
             width: 60px;
             height: 4px;
@@ -346,14 +305,12 @@
             margin: 24px auto 0;
             border-radius: 2px;
         }
-        
         /* セミナーCTAエリア */
         .seminar-cta-container {
             max-width: 800px;
             margin: 60px auto 0;
             padding: 0 20px;
         }
-        
         .seminar-cta {
             background: linear-gradient(to right, #f8f9fa, #eef2f7);
             border-radius: 20px;
@@ -364,7 +321,6 @@
             overflow: hidden;
             border: 1px solid rgba(0,0,0,0.05);
         }
-        
         .seminar-cta::before {
             content: '';
             position: absolute;
@@ -375,14 +331,12 @@
             background: linear-gradient(135deg, transparent, rgba(0,113,227,0.05));
             border-radius: 0 0 0 150px;
         }
-        
         .seminar-cta-title {
             font-size: 24px;
             font-weight: 700;
             color: var(--apple-text-dark);
             margin-bottom: 16px;
         }
-        
         .seminar-cta-text {
             font-size: 16px;
             color: var(--apple-text-medium);
@@ -391,7 +345,6 @@
             margin-left: auto;
             margin-right: auto;
         }
-        
         .seminar-cta-button {
             display: inline-flex;
             align-items: center;
@@ -402,13 +355,11 @@
             font-weight: 700;
             transition: all 0.2s ease;
         }
-        
         .seminar-cta-button:hover {
             background: var(--apple-primary-dark);
             transform: translateY(-2px);
             box-shadow: 0 10px 20px rgba(0,113,227,0.2);
         }
-        
         .arrow-icon {
             width: 18px;
             height: 18px;
@@ -416,30 +367,25 @@
             margin-left: 8px;
             transition: transform 0.2s ease;
         }
-        
         .seminar-cta-button:hover .arrow-icon {
             transform: translateX(4px);
         }
-        
         /* 過去のセミナーセクション */
         .past-seminars-section {
             background-color: #f8f9fa;
             padding: 80px 0;
             margin-top: 80px;
         }
-        
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
         .past-seminars-list {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 25px;
         }
-        
         .past-seminar-item {
             background: white;
             border-radius: 12px;
@@ -449,19 +395,16 @@
             position: relative;
             border: 1px solid rgba(0,0,0,0.03);
         }
-        
         .past-seminar-item:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
-        
         .past-seminar-date {
             font-size: 14px;
             color: var(--apple-text-light);
             margin-bottom: 12px;
             display: block;
         }
-        
         .past-seminar-title {
             font-size: 18px;
             font-weight: 700;
@@ -469,7 +412,6 @@
             margin-bottom: 14px;
             line-height: 1.4;
         }
-        
         .past-seminar-badge {
             display: inline-block;
             padding: 5px 12px;
@@ -480,7 +422,6 @@
             font-weight: 600;
             margin-bottom: 20px;
         }
-        
         .past-seminar-link {
             display: inline-block;
             color: var(--apple-primary);
@@ -489,7 +430,6 @@
             position: relative;
             padding-bottom: 2px;
         }
-        
         .past-seminar-link::after {
             content: '';
             position: absolute;
@@ -502,12 +442,10 @@
             transform-origin: right;
             transition: transform 0.3s ease;
         }
-        
         .past-seminar-link:hover::after {
             transform: scaleX(1);
             transform-origin: left;
         }
-        
         /* レスポンシブ調整 */
         @media (max-width: 768px) {
             .seminar-hero-section { 
@@ -531,28 +469,23 @@
                 padding: 60px 0;
                 margin-top: 60px;
             }
-            
             .seminar-cta {
                 padding: 30px 20px;
             }
-            
             .seminar-cta-title {
                 font-size: 22px;
             }
         }
-        
         /* アニメーション */
         @keyframes gradientMove {
             0% { background-position: 0 0; }
             100% { background-position: 100% 100%; }
         }
     </style>
-
    <!-- モバイルUX向上のための追加CSS -->
    <!-- モバイルCSSはstyle.cssに統合済み -->
 </head>
 <body>
-
 <!-- SVGアイコン定義 -->
 <svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden" xmlns="http://www.w3.org/2000/svg">
     <defs>
@@ -579,7 +512,6 @@
         </symbol>
     </defs>
 </svg>
-
 <!-- ヘッダー -->
 <header class="site-header">
     <div class="header-container">
@@ -593,10 +525,6 @@
                 <li><a href="/achievement/index.html">お客様の声</a></li>
             </ul>
         </nav>        <div class="header-cta">
-            <a href="/document.html" class="btn-document">
-                <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
-                資料請求する
-            </a>
             <a href="https://utage-system.com/p/EcESO02xLLoK" class="btn-contact">
                 まずは相談する
             </a>
@@ -608,7 +536,6 @@
         </button>
     </div>
 </header>
-
 <!-- モバイルメニュー -->
 <div class="mobile-menu">
     <nav>
@@ -621,23 +548,17 @@
             <li><a href="/achievement/index.html">お客様の声</a></li>
         </ul>
     </nav>    <div class="mobile-cta">
-        <a href="/document.html" class="btn-document">
-            <svg width="14" height="14"><use xlink:href="#icon-pdf"></use></svg>
-            資料請求する
-        </a>
         <a href="https://utage-system.com/p/EcESO02xLLoK" class="btn-contact">
             まずは相談する
         </a>
     </div>
 </div>
-
 <!-- スマホ用フッター固定CTA -->
 <div class="sp-fix-cta">
     <ul>
         <li class="mail" style="flex: 1;"><a href="https://utage-system.com/p/EcESO02xLLoK">まずは相談する</a></li>
     </ul>
 </div>
-
 <main class="site-main">    <!-- ヒーローセクション -->
     <section class="apple-hero-section">
         <div class="apple-hero-container">
@@ -781,7 +702,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- セミナー4 -->
                 <div class="seminar-card">
                     <div class="seminar-header">
@@ -822,7 +742,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- セミナー5 -->
                 <div class="seminar-card">
                     <div class="seminar-header">
@@ -863,7 +782,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- セミナー6 -->
                 <div class="seminar-card">
                     <div class="seminar-header">
@@ -904,7 +822,6 @@
                     </div>
                 </div>
             </div>
-            
             <div class="seminar-cta-container" data-aos="fade-up">
                 <div class="seminar-cta">
                     <h3 class="seminar-cta-title">見逃したセミナーがありますか？</h3>
@@ -918,7 +835,6 @@
                 </div>
             </div>
         </section>
-        
         <!-- 過去のセミナーアーカイブ -->
         <section class="past-seminars-section">
             <div class="container">
@@ -928,7 +844,6 @@
                     <div class="section-subtitle-desc">人気のセミナーは定期的に再開催しています</div>
                     <div class="section-divider"></div>
                 </div>
-                
                 <div class="past-seminars-list" data-aos="fade-up" data-aos-delay="100">
                     <div class="past-seminar-item">
                         <div class="past-seminar-date">2025/4/15</div>
@@ -936,14 +851,12 @@
                         <div class="past-seminar-badge">オンライン</div>
                         <a href="#" class="past-seminar-link">録画視聴を申し込む</a>
                     </div>
-                    
                     <div class="past-seminar-item">
                         <div class="past-seminar-date">2025/3/28</div>
                         <h3 class="past-seminar-title">Instagram広告完全攻略セミナー</h3>
                         <div class="past-seminar-badge">会場開催</div>
                         <a href="#" class="past-seminar-link">録画視聴を申し込む</a>
                     </div>
-                    
                     <div class="past-seminar-item">
                         <div class="past-seminar-date">2025/2/10</div>
                         <h3 class="past-seminar-title">ECサイト売上アップの秘訣</h3>
@@ -953,31 +866,25 @@
                 </div>
             </div>
         </section>
-
         <!-- セミナーカレンダー -->
         <section class="calendar-section">
             <div class="section-title-container">
                 <span class="section-subtitle">SCHEDULE</span>
                 <h2 class="section-title">セミナーカレンダー</h2>
             </div>
-
             <div class="calendar-container">
                 <p class="calendar-description">オートウェビナー大学が開催する全てのセミナーをカレンダーでご確認いただけます。<br>日程や時間をクリックすると詳細が表示されます。</p>
-                
                 <iframe src="https://calendar.google.com/calendar/embed?src=example%40example.com&amp;ctz=Asia%2FTokyo" class="calendar-frame"></iframe>
             </div>
         </section>
-
         <!-- メール通知設定 -->
         <section class="options-section">
             <div class="section-title-container">
                 <span class="section-subtitle">NOTIFICATIONS</span>
                 <h2 class="section-title">セミナー通知設定</h2>
             </div>
-
             <div class="options-form">
                 <p class="options-description">関心のあるテーマを選択して、新しいセミナーが追加された際にメールでお知らせします。</p>
-                
                 <div class="options-grid">
                     <div class="option-item">
                         <h3 class="option-title">Webマーケティング</h3>
@@ -987,7 +894,6 @@
                             <label for="web-marketing">通知を受け取る</label>
                         </div>
                     </div>
-                    
                     <div class="option-item">
                         <h3 class="option-title">UTAGE活用</h3>
                         <p class="option-description">基本操作、機能活用、自動化など</p>
@@ -996,7 +902,6 @@
                             <label for="utage">通知を受け取る</label>
                         </div>
                     </div>
-                    
                     <div class="option-item">
                         <h3 class="option-title">ファネル構築</h3>
                         <p class="option-description">設計、構築、最適化など</p>
@@ -1005,7 +910,6 @@
                             <label for="funnel">通知を受け取る</label>
                         </div>
                     </div>
-                    
                     <div class="option-item">
                         <h3 class="option-title">ランディングページ</h3>
                         <p class="option-description">デザイン、コピーライティングなど</p>
@@ -1014,7 +918,6 @@
                             <label for="landing-page">通知を受け取る</label>
                         </div>
                     </div>
-                    
                     <div class="option-item">
                         <h3 class="option-title">IT導入補助金</h3>
                         <p class="option-description">活用方法、申請手続きなど</p>
@@ -1023,7 +926,6 @@
                             <label for="subsidy">通知を受け取る</label>
                         </div>
                     </div>
-                    
                     <div class="option-item">
                         <h3 class="option-title">ステップメール</h3>
                         <p class="option-description">設計、ライティング、自動化など</p>
@@ -1033,21 +935,18 @@
                         </div>
                     </div>
                 </div>
-                
                 <div class="submit-container">
                     <button type="submit" class="submit-button">設定を保存する</button>
                 </div>
             </div>
         </section>
     </div>
-
     <!-- Contact CTA Section -->
     <section class="contact-cta-section">
         <svg class="contact-cta-bg-deco contact-cta-bg-triangle1"><use xlink:href="#svg-triangle-color"></use></svg>
         <svg class="contact-cta-bg-deco contact-cta-bg-triangle2"><use xlink:href="#svg-triangle-color"></use></svg>
         <span class="contact-cta-bg-deco contact-cta-bg-circle1"></span>
         <span class="contact-cta-bg-deco contact-cta-bg-circle2"></span>
-
         <div class="contact-cta-container">
             <span class="contact-cta-subtitle">Contact</span>
             <h2 class="contact-cta-title">まずは無料でご相談ください</h2>
@@ -1059,15 +958,10 @@
                 <a href="https://utage-system.com/p/EcESO02xLLoK" class="btn btn-contact">
                     無料相談してみる
                 </a>
-                <a href="/document.html" class="btn btn-document">
-                    <svg><use xlink:href="#icon-pdf"></use></svg>
-                    資料請求する
-                </a>
             </div>
         </div>
     </section>
 </main>
-
 <div id="footer-placeholder"></div>
 <script src="/js/include.js"></script>
 <script src="/js/script.js"></script>    <script>
@@ -1081,14 +975,12 @@
                 delay: 50,
                 anchorPlacement: 'top-bottom'
             });
-            
             // フィルターボタンの動作
             const filterButtons = document.querySelectorAll('.filter-button');
             filterButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     filterButtons.forEach(btn => btn.classList.remove('active'));
                     this.classList.add('active');
-                    
                     // フィルターアクション時の視覚的フィードバック
                     const cards = document.querySelectorAll('.seminar-card');
                     cards.forEach(card => {
@@ -1103,6 +995,4 @@
             });
         });
     </script>
-
-
 </body></html>
