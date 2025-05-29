@@ -1,0 +1,546 @@
+/* INDEX PAGE ONLY - Apple Style Design System - トップページ専用最適化版 */
+/* このファイルはindex.htmlでのみ使用されます。他のページには適用しないでください。 */
+
+/* トップページ専用のスコープ */
+.index-page {
+    /* カラーパレット */
+    --apple-primary: #0071e3;
+    --apple-primary-dark: #0051a0;
+    --apple-secondary: #86868b;
+    --apple-accent: #ff6131;
+    
+    /* テキストカラー */
+    --apple-text-dark: #1d1d1f;
+    --apple-text-light: #86868b;
+    --apple-text-medium: #424245;
+    --apple-hero-text-dark: #ffffff;
+    --apple-hero-text-light: #cccccc;
+    
+    /* 背景カラー */
+    --apple-bg-light: #f5f5f7;
+    --apple-bg-medium: #e8e8ed;
+    
+    /* デザインシステム */
+    --apple-font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+    --apple-border-radius: 12px;
+    --apple-transition: all 0.075s cubic-bezier(0.25, 0.1, 0.25, 1);
+    --apple-hero-transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    --apple-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    
+    /* レスポンシブ設定 */
+    --header-height: 60px;
+    --hero-top-spacing: 10px;
+    --mobile-header-height: 50px;
+    --mobile-hero-top-spacing: 8px;
+}
+
+/* トップページのベース設定 - 他のページには影響しません */
+.index-page {
+    background: #ffffff !important;
+    margin: 0;
+    padding: 0;
+}
+
+/* トップページ専用ヘッダースタイル */
+.index-page .site-header {
+    background: rgba(0,0,0,0.92) !important;
+    border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+}
+
+.index-page .site-logo-text a {
+    color: #ffffff !important;
+}
+
+.index-page .global-nav a {
+    color: #ffffff !important;
+}
+
+.index-page .global-nav a:hover {
+    color: #0071e3 !important;
+}
+
+/* Apple Hero Section - トップページ専用 */
+.index-page .apple-hero {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 25%, #2d2d2d 50%, #1a1a1a 75%, #000000 100%) !important;
+    margin-top: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.index-page .apple-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 120% 80% at 50% 0%, rgba(0, 113, 227, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.index-page .apple-hero-container {
+    position: relative;
+    z-index: 10;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: calc(var(--header-height) + var(--hero-top-spacing)) 40px 60px 40px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.index-page .apple-hero-title {
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-weight: 800;
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    color: var(--apple-hero-text-dark) !important;
+    margin: 0 0 1.5rem 0;
+    max-width: 1100px;
+    opacity: 0;
+    animation: fadeInUp 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+}
+
+.index-page .apple-hero-subtitle {
+    font-size: clamp(1.375rem, 3.5vw, 2rem);
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    color: var(--apple-hero-text-light) !important;
+    margin: 0 0 3.5rem 0;
+    max-width: 900px;
+    opacity: 0;
+    animation: fadeInUp 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.6s forwards;
+}
+
+.index-page .apple-hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 4rem;
+    opacity: 0;
+    animation: fadeInUp 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.9s forwards;
+}
+
+/* ボタンスタイル - トップページ専用 */
+.index-page .apple-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--apple-primary);
+    color: white;
+    font-size: 1.125rem;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    padding: 1rem 2rem;
+    border-radius: 980px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: var(--apple-hero-transition);
+    min-width: 180px;
+    box-shadow: 0 4px 20px rgba(0, 113, 227, 0.25);
+}
+
+.index-page .apple-btn-primary:hover {
+    background: var(--apple-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0, 113, 227, 0.35);
+}
+
+.index-page .apple-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    color: var(--apple-primary);
+    font-size: 1.125rem;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    padding: 1rem 2rem;
+    border: 2px solid var(--apple-primary);
+    border-radius: 980px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: var(--apple-hero-transition);
+    min-width: 180px;
+}
+
+.index-page .apple-btn-secondary:hover {
+    background: var(--apple-primary);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0, 113, 227, 0.25);
+}
+
+/* ベネフィットアイテム - トップページ専用 */
+.index-page .apple-hero-benefits {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem;
+    margin: 3rem 0 4rem 0;
+    opacity: 0;
+    animation: fadeInUp 1.2s cubic-bezier(0.4, 0, 0.2, 1) 1.2s forwards;
+}
+
+.index-page .apple-benefit-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--apple-hero-text-dark);
+    gap: 0.75rem;
+    padding: 0.75rem 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: var(--apple-hero-transition);
+}
+
+.index-page .apple-benefit-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.index-page .apple-benefit-item::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: var(--apple-primary);
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+/* ヒーロー画像 - トップページ専用 */
+.index-page .apple-hero-visual {
+    position: relative;
+    max-width: 1000px;
+    margin: 2rem auto 0;
+    opacity: 0;
+    animation: fadeInScale 1.5s cubic-bezier(0.4, 0, 0.2, 1) 1.5s forwards;
+}
+
+.index-page .apple-hero-image {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+}
+
+.index-page .apple-hero-visual:hover .apple-hero-image {
+    transform: scale(1.02);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.2);
+}
+
+/* スクロールインジケーター - トップページ専用 */
+.index-page .scroll-indicator {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--apple-hero-text-light);
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out 2.5s forwards;
+    cursor: pointer;
+}
+
+.index-page .scroll-indicator::before {
+    content: '';
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, transparent, var(--apple-hero-text-light));
+    margin-bottom: 12px;
+}
+
+.index-page .scroll-indicator::after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    border-right: 2px solid var(--apple-hero-text-light);
+    border-bottom: 2px solid var(--apple-hero-text-light);
+    transform: rotate(45deg);
+    animation: bounce 2s infinite;
+}
+
+/* セクションスタイル - トップページ専用 */
+.index-page .section {
+    padding: 120px 0;
+    position: relative;
+}
+
+.index-page .section-white { background-color: #fff; }
+.index-page .section-light { background-color: var(--apple-bg-light); }
+.index-page .section-dark { 
+    background-color: #000; 
+    color: white; 
+}
+
+.index-page .section-title {
+    font-size: 2.75rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-align: center;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+.index-page .section-subtitle {
+    font-size: 1.25rem;
+    font-weight: 300;
+    max-width: 650px;
+    margin: 0 auto 3rem;
+    text-align: center;
+    color: var(--apple-text-light);
+}
+
+/* キーフレーム - トップページ専用 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: rotate(45deg) translateY(0);
+        opacity: 1;
+    }
+    40% {
+        transform: rotate(45deg) translateY(8px);
+        opacity: 0.7;
+    }
+    60% {
+        transform: rotate(45deg) translateY(4px);
+        opacity: 0.9;
+    }
+}
+
+/* レスポンシブデザイン - トップページ専用 */
+@media (max-width: 1024px) {
+    .index-page .section:not(.apple-hero) .apple-hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .index-page .apple-hero-container {
+        padding: calc(var(--header-height) + var(--hero-top-spacing) + 20px) 30px 50px 30px;
+        min-height: 100vh;
+    }
+    
+    .index-page .apple-hero .apple-hero-title {
+        margin-bottom: 1.25rem;
+        font-size: clamp(3rem, 7vw, 5.5rem);
+    }
+    
+    .index-page .apple-hero .apple-hero-subtitle {
+        margin-bottom: 3rem;
+        font-size: clamp(1.25rem, 3vw, 1.75rem);
+    }
+
+    .index-page .apple-hero-visual {
+        max-width: 800px;
+        margin-top: 2rem;
+    }
+
+    .index-page .apple-hero-benefits {
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .index-page .apple-hero {
+        min-height: 100vh;
+    }
+    
+    .index-page .apple-hero-container {
+        padding: calc(var(--mobile-header-height) + var(--mobile-hero-top-spacing)) 20px 40px 20px;
+        min-height: 100vh;
+    }
+    
+    .index-page .apple-hero-title {
+        font-size: clamp(2.5rem, 8vw, 4rem);
+        margin-bottom: 1rem;
+        line-height: 1.05;
+        letter-spacing: -0.02em;
+    }
+    
+    .index-page .apple-hero-subtitle {
+        font-size: clamp(1.125rem, 4vw, 1.5rem);
+        margin-bottom: 2.5rem;
+        line-height: 1.3;
+    }
+    
+    .index-page .apple-hero-cta {
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 3rem;
+    }
+    
+    .index-page .apple-btn-primary,
+    .index-page .apple-btn-secondary {
+        width: 100%;
+        max-width: 320px;
+        font-size: 1.0625rem;
+        padding: 1rem 1.75rem;
+    }
+    
+    .index-page .apple-hero-benefits {
+        flex-direction: column;
+        gap: 1rem;
+        margin: 2rem 0 3rem 0;
+    }
+    
+    .index-page .apple-benefit-item {
+        justify-content: center;
+        font-size: 0.9375rem;
+        padding: 0.625rem 1.25rem;
+    }
+
+    .index-page .apple-hero-visual {
+        margin-top: 1.5rem;
+    }
+
+    .index-page .scroll-indicator {
+        bottom: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .index-page .apple-hero-container {
+        padding: calc(var(--mobile-header-height) + var(--mobile-hero-top-spacing)) 16px 30px 16px;
+    }
+    
+    .index-page .apple-hero-title {
+        font-size: clamp(2rem, 7vw, 3rem);
+        line-height: 1.08;
+        margin-bottom: 0.875rem;
+    }
+    
+    .index-page .apple-hero-subtitle {
+        font-size: clamp(1rem, 4vw, 1.25rem);
+        margin-bottom: 2rem;
+    }
+    
+    .index-page .apple-hero-cta {
+        margin-bottom: 2.5rem;
+    }
+    
+    .index-page .apple-btn-primary,
+    .index-page .apple-btn-secondary {
+        padding: 0.875rem 1.5rem;
+        font-size: 1rem;
+        max-width: 280px;
+    }
+
+    .index-page .apple-benefit-item {
+        font-size: 0.875rem;
+        padding: 0.5rem 1rem;
+    }
+
+    .index-page .apple-hero-benefits {
+        margin: 1.5rem 0 2.5rem 0;
+    }
+}
+
+/* アクセシビリティ - トップページ専用 */
+@media (prefers-reduced-motion: reduce) {
+    .index-page .apple-hero-title,
+    .index-page .apple-hero-subtitle,
+    .index-page .apple-hero-cta,
+    .index-page .apple-hero-visual,
+    .index-page .apple-hero-benefits,
+    .index-page .scroll-indicator {
+        animation: none !important;
+        opacity: 1 !important;
+    }
+    
+    .index-page .scroll-indicator::after {
+        animation: none !important;
+    }
+
+    .index-page .apple-btn-primary:hover,
+    .index-page .apple-btn-secondary:hover,
+    .index-page .apple-benefit-item:hover,
+    .index-page .apple-hero-visual:hover .apple-hero-image {
+        transform: none !important;
+    }
+}
+
+/* ダークモード - トップページ専用 */
+@media (prefers-color-scheme: dark) {
+    .index-page .apple-hero::before {
+        background: radial-gradient(ellipse 120% 80% at 50% 0%, rgba(0, 113, 227, 0.1) 0%, transparent 50%);
+    }
+    
+    .index-page .apple-benefit-item {
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--apple-hero-text-dark) !important;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+    }
+}
+
+/* 高解像度ディスプレイ - トップページ専用 */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .index-page .apple-hero-image {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* フォーカス状態 - トップページ専用 */
+.index-page .apple-btn-primary:focus,
+.index-page .apple-btn-secondary:focus {
+    outline: 3px solid rgba(0, 113, 227, 0.5);
+    outline-offset: 2px;
+}
+
+/* タッチデバイス - トップページ専用 */
+@media (hover: none) {
+    .index-page .apple-btn-primary:hover,
+    .index-page .apple-btn-secondary:hover,
+    .index-page .apple-benefit-item:hover,
+    .index-page .apple-hero-visual:hover .apple-hero-image {
+        transform: none;
+        box-shadow: initial;
+    }
+}
