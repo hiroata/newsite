@@ -2,10 +2,7 @@
 const CACHE_NAME = 'maeyuki-tools-cache-v1';
 const STATIC_ASSETS = [
   // 共通スクリプトとスタイル
-  '/js/image-tools-utils.js',
-  '/css/image-tools-styles.css',
-  '/css/tools-common.css',
-  '/js/lazy-loading.js',
+  '/js/main.js',
   '/css/style.css',
   // よく使用される外部ライブラリ
   'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js',

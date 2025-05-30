@@ -1,144 +1,465 @@
-<!DOCTYPE html><html lang="ja"><head>  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>運営者情報 | オートウェビナー大学</title>
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/apple-style.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <style>
-    .owner-main-card {
-      background: #fff;
-      border-radius: 18px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.10);
-      max-width: 520px;
-      margin: 60px auto 40px auto;
-      padding: 36px 24px 32px 24px;
-      text-align: center;
-    }
-    .owner-photo {
-      width: 120px;
-      height: 120px;
-      object-fit: cover;
-      border-radius: 50%;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.10);
-      margin: 0 auto 18px auto;
-      display: block;
-      border: 4px solid #f8f9fa;
-      background: #f8f9fa;
-    }
-    .owner-name {
-      font-size: 1.3rem;
-      font-weight: bold;
-      margin-bottom: 0.2em;
-      color: var(--dark-blue, #0d3283);
-    }
-    .owner-title {
-      color: var(--secondary, #ff3a3a);
-      font-size: 1.05rem;
-      margin-bottom: 1em;
-      font-weight: 500;
-    }
-    .owner-profile {
-      font-size: 0.98em;
-      color: #444;
-      margin-bottom: 1.2em;
-      line-height: 1.8;
-    }
-    .owner-list {
-      text-align: left;
-      margin: 1.2em auto 1.5em auto;
-      padding-left: 1.2em;
-      max-width: 350px;
-      font-size: 0.97em;
-      color: #333;
-    }
-    .owner-list li {
-      margin-bottom: 0.5em;
-      list-style: disc;
-    }
-    .owner-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 0 auto 0.5em auto;
-      background: #f8f9fa;
-      border-radius: 10px;
-      overflow: hidden;
-      font-size: 0.98em;
-      box-shadow: 0 1px 6px rgba(0,0,0,0.04);
-    }
-    .owner-table th, .owner-table td {
-      padding: 8px 10px;
-      text-align: left;
-    }
-    .owner-table th {
-      color: var(--secondary, #ff3a3a);
-      background: #f3f3f3;
-      width: 34%;
-      font-weight: 700;
-      border-right: 1px solid #eee;
-    }
-    .owner-table td {
-      color: #333;
-      background: #fff;
-    }
-    @media (max-width: 600px) {
-      .owner-main-card { padding: 18px 4vw 18px 4vw; }
-      .owner-photo { width: 90px; height: 90px; }
-      .owner-table th, .owner-table td { padding: 7px 5px; font-size: 0.97em; }
-    }
-  </style>
+<!DOCTYPE html><html lang="ja"><head>    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="オートウェビナー大学の運営者情報。代表の前田由紀子（株式会社CLAN）のプロフィール、会社概要、連絡先をご確認いただけます。">
+    <title>運営者情報｜オートウェビナー大学｜マーケティング自動化とウェビナー構築でビジネスを加速</title>
+    <!-- フォントの最適化: プリロードとサブセット化 -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap&amp;subset=japanese&amp;font-display=swap" as="style">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap&amp;subset=japanese&amp;font-display=swap" rel="stylesheet">    <!-- 統合JavaScriptファイル -->    <script src="js/main.js" defer></script>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Apple風デザインスタイル -->
+    <style>
+        :root {
+            --primary: #0071e3;
+            --primary-dark: #0056b3;
+            --text-dark: #1d1d1f;
+            --text-light: #86868b;
+            --bg-light: #f5f5f7;
+            --border-radius: 18px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+            --shadow: 0 12px 40px rgba(0,0,0,0.08);
+            --shadow-hover: 0 20px 60px rgba(0,0,0,0.12);
+        }
 
-   <!-- モバイルUX向上のための追加CSS -->
-   <!-- モバイルCSSはstyle.cssに統合済み -->
+        .apple-hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 120px 20px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .apple-hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.1) 0%, transparent 50%);
+        }
+
+        .apple-hero-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .apple-hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin: 0 0 1.5rem 0;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .apple-hero-subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            opacity: 0.9;
+            margin: 0;
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        .apple-page-container {
+            max-width: 900px;
+            margin: -40px auto 80px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 3;
+        }
+
+        .profile-card {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 60px 40px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .profile-card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-5px);
+        }
+
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            display: block;
+            border: 6px solid #f8f9fa;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            transition: var(--transition);
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+        }
+
+        .profile-name {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .profile-title {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .profile-bio {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .profile-highlights {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .highlights-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .highlights-list li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .highlights-list li::before {
+            content: '✦';
+            color: var(--primary);
+            font-weight: bold;
+            margin-right: 12px;
+            font-size: 1.2rem;
+            margin-top: 2px;
+        }
+
+        .company-info-card {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .company-info-card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-3px);
+        }
+
+        .company-info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #43cea2 0%, #185a9d 100%);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0 0 2rem 0;
+            color: var(--text-dark);
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .company-table {
+            width: 100%;
+            border-collapse: collapse;
+            line-height: 1.8;
+        }
+
+        .company-table th {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            width: 30%;
+            text-align: left;
+            vertical-align: top;
+            padding: 1rem 1.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            border: 1px solid #e9ecef;
+            border-right: 3px solid var(--primary);
+        }
+
+        .company-table td {
+            padding: 1rem 1.5rem;
+            border: 1px solid #e9ecef;
+            color: #333;
+        }
+
+        .company-table tr:hover {
+            background: rgba(0, 113, 227, 0.02);
+        }
+
+        .company-table a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .company-table a:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .apple-hero-section {
+                padding: 100px 20px 60px;
+            }
+
+            .profile-card, .company-info-card {
+                padding: 40px 24px;
+                margin-bottom: 24px;
+            }
+
+            .apple-page-container {
+                margin-top: -30px;
+                padding: 0 16px;
+            }
+
+            .profile-image {
+                width: 120px;
+                height: 120px;
+            }
+
+            .profile-name {
+                font-size: 1.6rem;
+            }
+
+            .profile-title {
+                font-size: 1.1rem;
+            }
+
+            .profile-bio {
+                font-size: 1rem;
+            }
+
+            .company-table th,
+            .company-table td {
+                padding: 0.8rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .company-table th {
+                width: 35%;
+            }
+        }
+    </style>
 </head>
 <body>
-<div id="header-placeholder"></div>
-<main>
-  <section class="apple-hero-section">
+
+<!-- SVGアイコン定義 -->
+<svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <!-- PDFアイコン -->
+        <symbol id="icon-pdf" viewBox="0 0 32 32">
+            <path d="M20 2H4C2.9 2 2 2.9 2 4v24c0 1.1.9 2 2 2h24c1.1 0 2-.9 2-2V10L20 2zm4 26H6V4h14v8h6v16zM13.3 14.7c-.7 0-1.3.6-1.3 1.3s.6 1.3 1.3 1.3 1.3-.6 1.3-1.3-.6-1.3-1.3-1.3zm4 8c0-1.5-2.7-2.3-4-2.3s-4 .8-4 2.3v.7h8v-.7z"></path>
+        </symbol>
+        <!-- メールアイコン -->
+        <symbol id="icon-mail" viewBox="0 0 32 32">
+            <path d="M16 0C7.2 0 0 7.2 0 16s7.2 16 16 16 16-7.2 16-16S24.8 0 16 0zM8 8h16c.3 0 .6.1.8.2L16 18.5 7.2 8.2c.2-.1.5-.2.8-.2zm-2 14v-12c0-.1 0-.1 0-.1l5.9 6.8-5.8 5.8c0-.2-.1-.3-.1-.5zm18 2H8c-.2 0-.4 0-.5-.1l5.7-5.7 2.8 3.3 2.8-3.3 5.7 5.7c-.2 0-.3.1-.5.1zm2-2c0 .2 0 .4-.1.5l-5.8-5.8 5.9-6.8v12.1z"></path>
+        </symbol>
+        <!-- 本アイコン -->
+        <symbol id="icon-book" viewBox="0 0 32 32">
+            <path d="M28 4v26H7c-1.7 0-3-1.3-3-3s1.3-3 3-3h19V4H7C4.8 4 3 5.8 3 8v24c0 2.2 1.8 4 4 4h24V4h-3z"></path>
+            <path d="M7 26c-.6 0-1 .4-1 1s.4 1 1 1h19v-2H7z"></path>
+        </symbol>
+        <!-- カラフルな三角形 -->
+        <symbol id="svg-triangle-color" viewBox="0 0 200 200">
+            <polygon points="0,0 200,0 0,200" fill="rgba(255,255,255,.15)"></polygon>
+        </symbol>
+        <!-- 検索アイコン -->
+        <symbol id="icon-search" viewBox="0 0 32 32">
+            <path d="M31 27.2l-7.6-6.4c-.8-.7-1.6-1-2.3-1 1.8-2.1 2.9-4.8 2.9-7.8 0-6.6-5.4-12-12-12S0 5.4 0 12s5.4 12 12 12c3 0 5.7-1.1 7.8-2.9 0 .7.3 1.5 1 2.3l6.4 7.6c1.1 1.2 2.9 1.3 4 .2s1-2.9-.2-4zM12 20c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8z"></path>
+        </symbol>
+    </defs>
+</svg>
+
+<!-- ヘッダー -->
+<header class="site-header">
+    <div class="header-container">
+        <div class="site-logo-text">
+            <a href="index.html">CLAN</a>
+        </div>        <nav class="global-nav pc-nav" aria-label="グローバルナビゲーション">
+            <ul>
+                <li><a href="index.html">ホーム</a></li>
+                <li><a href="achievement/index.html">お客様の声</a></li>
+            </ul>
+        </nav>
+        <div class="header-cta">
+            <a href="https://utage-system.com/p/EcESO02xLLoK" class="btn-contact">
+                無料相談
+            </a>
+        </div>        <button class="hamburger-button sp-nav" aria-label="メニューを開く" type="button">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</header>    <!-- モバイルメニュー -->    <div class="mobile-menu">
+    <nav aria-label="モバイルメニュー">
+        <ul>
+            <li><a href="index.html">ホーム</a></li>
+            <li><a href="achievement/index.html">お客様の声</a></li>
+        </ul>
+    </nav>    <div class="mobile-cta">
+        <a href="https://utage-system.com/p/EcESO02xLLoK" class="btn-contact">
+            無料相談
+        </a>
+    </div>
+</div>
+
+
+
+<main class="site-main">
+<section class="apple-hero-section">
     <div class="apple-hero-container">
-      <h1 class="apple-hero-title" data-aos="fade-up" data-aos-delay="100">運営者情報</h1>
-      <p class="apple-hero-subtitle" data-aos="fade-up" data-aos-delay="200">オートウェビナー大学を運営するチームのご紹介</p>
+      <h1 class="apple-hero-title">運営者情報</h1>
+      <p class="apple-hero-subtitle">オートウェビナー大学を運営するチームのご紹介</p>
     </div>
-  </section>
-  <div class="apple-page-container" data-aos="fade-up" data-aos-delay="300">
-    <div class="owner-main-card">
-    <img src="/assets/images/profile-owner.webp" alt="前田由紀子 プロフィール写真" class="owner-photo" loading="lazy">
-    <div class="owner-name">前田 由紀子</div>
-    <div class="owner-title">Web集客コンサルタント</div>
-    <div class="owner-profile">
-      1980年鹿児島県生まれ。高校卒業後、ブルガリなどのハイブランドで13年間勤務。2011年、ローフードとファスティングの事業で福岡で起業。協会設立を経て、東京・青山に料理教室を開講。現在、株式会社CLANの代表取締役として活動中。
+</section>
+
+<div class="apple-page-container">
+    <!-- プロフィールカード -->
+    <div class="profile-card">
+        <div class="profile-header">
+            <img src="assets/images/profile-owner.webp" alt="前田由紀子 プロフィール写真" 
+                 class="profile-image" loading="lazy">
+            <h2 class="profile-name">前田 由紀子</h2>
+            <p class="profile-title">Web集客コンサルタント・株式会社CLAN代表取締役</p>
+        </div>
+        
+        <p class="profile-bio">
+            1980年鹿児島県生まれ。高校卒業後、ブルガリなどのハイブランドで13年間勤務し、接客とセールスの基礎を身に着ける。2011年、ローフードとファスティングの事業で福岡で起業。協会設立を経て、東京・青山に料理教室を開講。現在は、株式会社CLANの代表取締役として、中小企業のマーケティング自動化とオンライン集客の支援に力を注いでいる。
+        </p>
+        
+        <div class="profile-highlights">
+            <ul class="highlights-list">
+                <li><strong>著書:</strong> <a href="https://www.amazon.co.jp/dp/B09X1Y2L4F" target="_blank" rel="noopener">美人は7日でつくられる</a></li>
+                <li><strong>専門分野:</strong> オートマーケティング、セールスファネル構築、集客戦略策定</li>
+                <li><strong>実績:</strong> 自動化マーケティングによる売上改善事例300件以上</li>
+                <li><strong>資格:</strong> IT導入支援事業者、マーケティング戦略コンサルタント</li>
+                <li><strong>得意業界:</strong> 教育・コーチング・コンサルティング・健康美容業界</li>
+            </ul>
+        </div>
     </div>
-    <ul class="owner-list">
-      <li>著書: <a href="https://www.amazon.co.jp/dp/B09X1Y2L4F" target="_blank" rel="noopener">美人は7日でつくられる</a></li>
-      <li>専門分野: オートマーケティング、セールスファネル構築、集客戦略策定</li>      <li>実績: 自動化マーケティングによる売上改善事例300件以上</li>
-    </ul>
-    <h2 style="font-size:1.1rem;font-weight:bold;margin:2em 0 0.7em 0;color:var(--apple-primary);">会社概要</h2>
-    <table class="owner-table">
-      <tbody>
-        <tr><th>社名</th><td>株式会社CLAN</td></tr>
-        <tr><th>所在地</th><td>〒892-0851 鹿児島県鹿児島市上竜尾町1番2号</td></tr>
-        <tr><th>代表者</th><td>前田 由紀子</td></tr>
-        <tr><th>資本金</th><td>3,000,000円</td></tr>
-        <tr><th>連絡先</th><td><a href="mailto:info@clanbiz.net">info@clanbiz.net</a></td></tr>
-        <tr><th>受付時間</th><td>9:00〜18:00（土日祝を除く）</td></tr>
-        <tr><th>事業内容</th><td>セールスファネル構築代行</td></tr>
-      </tbody>
-    </table>
+    
+    <!-- 会社概要カード -->
+    <div class="company-info-card">
+        <h3 class="section-title">会社概要</h3>
+        <table class="company-table">
+            <tbody>
+                <tr>
+                    <th>社名</th>
+                    <td>株式会社CLAN</td>
+                </tr>
+                <tr>
+                    <th>所在地</th>
+                    <td>〒892-0851 鹿児島県鹿児島市上竜尾町1番2号</td>
+                </tr>
+                <tr>
+                    <th>代表者</th>
+                    <td>前田 由紀子</td>
+                </tr>
+                <tr>
+                    <th>設立</th>
+                    <td>2021年4月</td>
+                </tr>
+                <tr>
+                    <th>資本金</th>
+                    <td>3,000,000円</td>
+                </tr>
+                <tr>
+                    <th>事業内容</th>
+                    <td>セールスファネル構築代行・マーケティング自動化支援・IT導入補助金申請サポート</td>
+                </tr>
+                <tr>
+                    <th>連絡先</th>
+                    <td><a href="mailto:info@clanbiz.net">info@clanbiz.net</a></td>
+                </tr>
+                <tr>
+                    <th>受付時間</th>
+                    <td>9:00〜18:00（土日祝を除く）</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-brand">
+      <h2>オートウェビナー大学</h2>
+    </div>
+    <div class="footer-links">
+      <ul>
+        <li><a href="https://utage-system.com/p/EcESO02xLLoK">無料相談</a></li>
+        <li><a href="achievement/index.html">お客様の声</a></li>
+        <li><a href="owner.html">運営者情報</a></li>
+        <li><a href="terms.html">利用規約</a></li>
+        <li><a href="privacy.html">プライバシーポリシー</a></li>
+        <li><a href="tokutei.html">特定商取引法に基づく表記</a></li>
+      </ul>
+    </div>
   </div>
-</div></main>
-<div id="footer-placeholder"></div>
-<script src="/js/include.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // AOS初期化
-        AOS.init({
-            duration: 450,
-            easing: 'ease-out',
-            once: true,
-            offset: 60
-        });
-    });
-</script>
+</footer>
 
-
+<script src="js/main.js"></script>
 </body></html>

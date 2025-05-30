@@ -1,163 +1,243 @@
 <!DOCTYPE html><html lang="ja"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>利用規約 | オートウェビナー大学</title>
     <meta name="description" content="オートウェビナー大学の利用規約です。当サイトをご利用いただく際の規約条件について詳しく説明しています。">
-    <title>利用規約 | オートウェビナー大学</title>    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&amp;display=swap" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap&subset=japanese&font-display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/apple-style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
     <link rel="icon" href="/images/favicon.ico">
+    
     <meta property="og:title" content="利用規約 | オートウェビナー大学">
     <meta property="og:description" content="オートウェビナー大学の利用規約です。当サイトをご利用いただく際の規約条件について詳しく説明しています。">
-    <meta property="og:image" content="/images/ogp_image_about.webp">    <meta property="og:type" content="article">
+    <meta property="og:image" content="/images/ogp_image_about.webp">
+    <meta property="og:type" content="article">
 
-    <!-- JavaScriptの遅延ロード -->
-    <script src="/js/script.js" defer=""></script>
+    <script src="/js/main.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    
-    <!-- 共通部分読み込み用のスクリプト - 削除 -->
-    
-    <!-- 法的ページのスタイル -->
-    <link rel="stylesheet" href="/css/legal-pages.css">
-
-   <!-- モバイルUX向上のための追加CSS -->
-   <!-- モバイルCSSはstyle.cssに統合済み -->
 </head>
 <body>
-<div id="header-placeholder"></div>
 
-<main class="site-main">    <!-- ヒーローセクション -->
-    <section class="legal-hero-section">
-        <div class="legal-hero-container">
-            <h1 class="legal-hero-title" data-aos="fade-up" data-aos-delay="100">利用規約</h1>
-            <p class="legal-hero-subtitle" data-aos="fade-up" data-aos-delay="200">オートウェビナー大学をご利用いただく際のルールとお約束事項</p>
+<!-- SVGアイコン定義 -->
+<svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <!-- PDFアイコン -->
+        <symbol id="icon-pdf" viewBox="0 0 32 32">
+            <path d="M20 2H4C2.9 2 2 2.9 2 4v24c0 1.1.9 2 2 2h24c1.1 0 2-.9 2-2V10L20 2zm4 26H6V4h14v8h6v16zM13.3 14.7c-.7 0-1.3.6-1.3 1.3s.6 1.3 1.3 1.3 1.3-.6 1.3-1.3-.6-1.3-1.3-1.3zm4 8c0-1.5-2.7-2.3-4-2.3s-4 .8-4 2.3v.7h8v-.7z"></path>
+        </symbol>
+        <!-- メールアイコン -->
+        <symbol id="icon-mail" viewBox="0 0 32 32">
+            <path d="M16 0C7.2 0 0 7.2 0 16s7.2 16 16 16 16-7.2 16-16S24.8 0 16 0zM8 8h16c.3 0 .6.1.8.2L16 18.5 7.2 8.2c.2-.1.5-.2.8-.2zm-2 14v-12c0-.1 0-.1 0-.1l5.9 6.8-5.8 5.8c0-.2-.1-.3-.1-.5zm18 2H8c-.2 0-.4 0-.5-.1l5.7-5.7 2.8 3.3 2.8-3.3 5.7 5.7c-.2 0-.3.1-.5.1zm2-2c0 .2 0 .4-.1.5l-5.8-5.8 5.9-6.8v12.1z"></path>
+        </symbol>
+        <!-- 本アイコン -->
+        <symbol id="icon-book" viewBox="0 0 32 32">
+            <path d="M28 4v26H7c-1.7 0-3-1.3-3-3s1.3-3 3-3h19V4H7C4.8 4 3 5.8 3 8v24c0 2.2 1.8 4 4 4h24V4h-3z"></path>
+            <path d="M7 26c-.6 0-1 .4-1 1s.4 1 1 1h19v-2H7z"></path>
+        </symbol>
+        <!-- カラフルな三角形 -->
+        <symbol id="svg-triangle-color" viewBox="0 0 200 200">
+            <polygon points="0,0 200,0 0,200" fill="rgba(255,255,255,.15)"></polygon>
+        </symbol>
+        <!-- 検索アイコン -->
+        <symbol id="icon-search" viewBox="0 0 32 32">
+            <path d="M31 27.2l-7.6-6.4c-.8-.7-1.6-1-2.3-1 1.8-2.1 2.9-4.8 2.9-7.8 0-6.6-5.4-12-12-12S0 5.4 0 12s5.4 12 12 12c3 0 5.7-1.1 7.8-2.9 0 .7.3 1.5 1 2.3l6.4 7.6c1.1 1.2 2.9 1.3 4 .2s1-2.9-.2-4zM12 20c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8z"></path>
+        </symbol>
+    </defs>
+</svg>
+
+<!-- ヘッダー -->
+<header class="site-header">
+    <div class="header-container">
+        <div class="site-logo-text">
+            <a href="/index.html">CLAN</a>
+        </div>        <nav class="global-nav pc-nav" role="navigation" aria-label="メインナビゲーション">
+            <ul>
+                <li><a href="/index.html" aria-current="page">ホーム</a></li>
+                <li><a href="/achievement/index.html">お客様の声</a></li>
+            </ul>
+        </nav><div class="header-cta">
+            <a href="https://utage-system.com/p/EcESO02xLLoK" class="btn-contact" aria-label="無料相談する">
+                まずは相談する
+            </a>
         </div>
-    </section>    <div class="legal-container">
-        <div class="legal-card" data-aos="fade-up">
-            <!-- 目次 -->
-            <div class="legal-toc">
-                <div class="legal-toc-title">目次</div>
-                <ul>
-                    <li><a href="#intro">はじめに</a></li>
-                    <li><a href="#application">第1条（適用範囲）</a></li>
-                    <li><a href="#definition">第2条（定義）</a></li>
-                    <li><a href="#change">第3条（規約の変更）</a></li>
-                    <li><a href="#prohibition">第4条（禁止事項）</a></li>
-                    <li><a href="#copyright">第5条（著作権）</a></li>
-                    <li><a href="#disclaimer">第6条（免責事項）</a></li>
-                    <li><a href="#suspension">第7条（当サイトの中断・停止・変更）</a></li>
-                    <li><a href="#privacy">第8条（個人情報の取扱い）</a></li>
-                    <li><a href="#governing-law">第9条（準拠法・管轄裁判所）</a></li>
-                </ul>
-            </div>
-              <div class="legal-section" id="intro">
-                <p>この利用規約（以下「<span class="keyword">本規約</span>」）は、株式会社CLAN（以下「<span class="keyword">当社</span>」）が運営するウェブサイト「オートウェビナー大学」（以下「<span class="keyword">当サイト</span>」）の利用条件を定めるものです。当サイトをご利用される方（以下「<span class="keyword">ユーザー</span>」）は、本規約に同意したものとみなします。</p>
-            </div>
-              <div class="legal-section" id="application">
-                <h2>第1条（適用範囲）</h2>
-                <p>本規約は、当サイトの利用に関する当社とユーザーとの間の権利義務関係を定めることを目的とし、ユーザーと当社との間の当サイトの利用に関わる一切の関係に適用されます。</p>
-            </div>
-            
-            <div class="legal-section" id="definition">
-                <h2>第2条（定義）</h2>
-                <p>本規約において使用する以下の用語は、各々以下に定める意味を有するものとします。</p>
-                <ol>
-                    <li>「<span class="keyword">コンテンツ</span>」とは、当サイト上で提供される文章、画像、動画、音声、プログラム、データベース等の情報を指します。</li>
-                    <li>「<span class="keyword">本サービス</span>」とは、当社が提供する当サイト上の全てのサービスを指します。</li>
-                    <li>「<span class="keyword">知的財産権</span>」とは、著作権、特許権、実用新案権、商標権、意匠権その他の知的財産権（それらの権利を取得し、またはそれらの権利につき登録等を出願する権利を含みます）を指します。</li>
-                </ol>
-            </div>
-            
-            <div class="legal-section" id="change">
-                <h2>第3条（規約の変更）</h2>
-                <p>当社は、必要と判断した場合には、ユーザーに通知することなく本規約を変更することができるものとします。変更後の利用規約は、当サイト上に表示した時点で効力を生じるものとし、ユーザーは本規約の変更後も当サイトを継続して利用することにより、変更後の規約に同意したものとみなされます。</p>
-            </div>
-            
-            <div class="legal-section" id="prohibition">
-                <h2>第4条（禁止事項）</h2>
-                <p>ユーザーは、当サイトの利用にあたり、以下の行為をしてはなりません。</p>
-                <ol>
-                    <li>法令または公序良俗に違反する行為</li>
-                    <li>犯罪行為に関連する行為</li>
-                    <li>当社、他のユーザー、またはその他の第三者の知的財産権、肖像権、プライバシー権、名誉権、その他の権利または利益を侵害する行為</li>
-                    <li>当サイトの運営を妨害する行為</li>
-                    <li>当サイトのネットワークまたはシステム等に過度の負荷をかける行為</li>
-                    <li>当サイトのシステムに対する不正アクセス行為</li>
-                    <li>他のユーザーのアカウントを利用する行為</li>
-                    <li>当社が許可しない当サイト上での宣伝、広告、勧誘、または営業行為</li>
-                    <li>当サイトを通じて入手した情報を、当社の事前の承諾なく複製、送信、出版、頒布、放送その他方法のいかんを問わず第三者の利用に供する行為</li>
-                    <li>その他、当社が不適切と判断する行為</li>
-                </ol>
-            </div>
-            
-            <div class="legal-section" id="copyright">
-                <h2>第5条（著作権）</h2>
-                <div class="important-clause">
-                    <p>当サイト上のコンテンツの著作権は、当社または当社に利用を許諾した第三者に帰属します。ユーザーは、当社または当該第三者の許諾を得ることなく、当サイト上のコンテンツを複製、送信、出版、頒布、放送その他方法のいかんを問わず第三者の利用に供することはできません。</p>
-                </div>
-            </div>
-            
-            <div class="legal-section" id="disclaimer">
-                <h2>第6条（免責事項）</h2>
-                <p>当社は、当サイトに掲載されている情報の正確性、完全性、最新性、有用性等について一切の保証を行いません。また、当サイトの利用によりユーザーに生じたいかなる損害についても、当社の故意または重過失による場合を除き、一切責任を負いません。</p>
-                <p>当サイトからリンクされた第三者のウェブサイトの内容について、当社は一切責任を負いません。リンク先のウェブサイトの利用は、ユーザー自身の責任において行ってください。</p>
-            </div>
-            
-            <div class="legal-section" id="suspension">
-                <h2>第7条（当サイトの中断・停止・変更）</h2>
-                <p>当社は、以下のいずれかの事由が生じた場合には、ユーザーに事前に通知することなく、当サイトの提供を一時的に中断または停止することができるものとします。</p>
-                <ol>
-                    <li>当サイトのシステムの保守点検または更新を行う場合</li>
-                    <li>地震、落雷、火災、停電または天災などの不可抗力により、当サイトの提供が困難となった場合</li>
-                    <li>コンピュータまたは通信回線等が事故により停止した場合</li>
-                    <li>その他、当社が当サイトの提供が困難と判断した場合</li>
-                </ol>
-                <p>当社は、当サイトの提供の中断または停止により、ユーザーまたは第三者が被ったいかなる不利益または損害について、当社の故意または重過失による場合を除き、一切の責任を負わないものとします。</p>
-            </div>
-            
-            <div class="legal-section" id="privacy">
-                <h2>第8条（個人情報の取扱い）</h2>
-                <p>当社は、当サイトの利用によって取得する個人情報については、当社<a href="/privacy.html">「プライバシーポリシー」</a>に従い適切に取り扱います。</p>
-            </div>
-            
-            <div class="legal-section" id="governing-law">
-                <h2>第9条（準拠法・管轄裁判所）</h2>
-                <p>本規約の解釈にあたっては、日本法を準拠法とします。</p>
-                <p>当サイトに関して紛争が生じた場合には、東京地方裁判所を第一審の専属的合意管轄裁判所とします。</p>
-            </div>
-              <div class="update-info">
-                <p>2024年4月1日 制定<br>
-                2025年1月15日 改定<br>
-                2025年5月21日 デザイン更新</p>
-            </div>
-        </div>
+        <button class="hamburger-button sp-nav" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </div>
+</header>
 
-    <!-- Contact CTA Section -->
-    <section class="contact-cta-section">
-        <span class="contact-cta-bg-deco contact-cta-bg-circle1"></span>
-        <span class="contact-cta-bg-deco contact-cta-bg-circle2"></span>
+<!-- モバイルメニュー -->
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true" role="dialog" aria-modal="true" aria-label="モバイルメニュー">    <nav aria-label="モバイルメニュー">
+        <ul>
+            <li><a href="/index.html">ホーム</a></li>
+            <li><a href="/achievement/index.html">お客様の声</a></li>
+        </ul>
+    </nav><div class="mobile-cta">
+        <a href="https://utage-system.com/p/EcESO02xLLoK" class="btn-contact" aria-label="無料相談する">
+            まずは相談する
+        </a>
+    </div>
+</div>
 
-        <div class="contact-cta-container">
-            <span class="contact-cta-subtitle">Contact</span>
-            <h2 class="contact-cta-title">まずは無料でご相談ください</h2>
-            <p class="contact-cta-lead">
-                オートファネルの構築やマーケティングの自動化について、<br class="pc-only">
-                専門家があなたの状況をお伺いし、最適なステップをご提案します。<br class="pc-only">
-                まずはお気軽にお問い合わせください。
-            </p>
-            <div class="contact-cta-buttons">                <a href="https://utage-system.com/p/EcESO02xLLoK" class="btn btn-contact">
-                    無料相談してみる
-                </a>
-            </div>
+
+
+<main class="site-main">
+    <section class="apple-hero-section">
+        <div class="apple-hero-container">
+            <h1 class="apple-hero-title" data-aos="fade-up" data-aos-delay="100">利用規約</h1>
+            <p class="apple-hero-subtitle" data-aos="fade-up" data-aos-delay="200">オートウェビナー大学をご利用いただく際のルールとお約束事項</p>
         </div>
     </section>
+
+    <div class="apple-page-container">
+        <div class="apple-card" data-aos="fade-up">
+            <!-- 目次 -->
+            <div style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); padding: 2rem; border-radius: 16px; margin-bottom: 3rem; border-left: 4px solid var(--primary);">
+                <h2 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--primary);">目次</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+                    <ul style="margin: 0; padding-left: 1.5rem; color: #555; line-height: 1.8;">
+                        <li style="margin-bottom: 0.5rem;"><a href="#intro" style="color: var(--primary); text-decoration: none; font-weight: 500;">はじめに</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#application" style="color: var(--primary); text-decoration: none; font-weight: 500;">第1条（適用範囲）</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#definition" style="color: var(--primary); text-decoration: none; font-weight: 500;">第2条（定義）</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#change" style="color: var(--primary); text-decoration: none; font-weight: 500;">第3条（規約の変更）</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#prohibition" style="color: var(--primary); text-decoration: none; font-weight: 500;">第4条（禁止事項）</a></li>
+                    </ul>
+                    <ul style="margin: 0; padding-left: 1.5rem; color: #555; line-height: 1.8;">
+                        <li style="margin-bottom: 0.5rem;"><a href="#copyright" style="color: var(--primary); text-decoration: none; font-weight: 500;">第5条（著作権）</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#disclaimer" style="color: var(--primary); text-decoration: none; font-weight: 500;">第6条（免責事項）</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#suspension" style="color: var(--primary); text-decoration: none; font-weight: 500;">第7条（サイトの中断・停止）</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#privacy" style="color: var(--primary); text-decoration: none; font-weight: 500;">第8条（個人情報の取扱い）</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#governing-law" style="color: var(--primary); text-decoration: none; font-weight: 500;">第9条（準拠法・管轄裁判所）</a></li>
+                    </ul>
+                </div>
+            </div>            <div class="apple-legal-section" id="intro" style="margin-bottom: 3rem; padding: 2rem; background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+                <p style="font-size: 1.1rem; color: #555; line-height: 1.8; margin: 0;">
+                    この利用規約（以下「<span style="color: var(--primary); font-weight: 600;">本規約</span>」）は、株式会社CLAN（以下「<span style="color: var(--primary); font-weight: 600;">当社</span>」）が運営するウェブサイト「オートウェビナー大学」（以下「<span style="color: var(--primary); font-weight: 600;">当サイト</span>」）の利用条件を定めるものです。当サイトをご利用される方（以下「<span style="color: var(--primary); font-weight: 600;">ユーザー</span>」）は、本規約に同意したものとみなします。
+                </p>
+            </div>
+              
+            <div class="apple-legal-section" id="application" style="margin-bottom: 3rem; padding: 2rem; background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+                <h2 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--primary); border-bottom: 2px solid #e9ecef; padding-bottom: 0.5rem;">第1条（適用範囲）</h2>
+                <p style="font-size: 1rem; color: #555; line-height: 1.8; margin: 0;">
+                    本規約は、当サイトの利用に関する当社とユーザーとの間の権利義務関係を定めることを目的とし、ユーザーと当社との間の当サイトの利用に関わる一切の関係に適用されます。
+                </p>
+            </div>
+            
+            <div class="apple-legal-section" id="definition" style="margin-bottom: 3rem; padding: 2rem; background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+                <h2 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--primary); border-bottom: 2px solid #e9ecef; padding-bottom: 0.5rem;">第2条（定義）</h2>
+                <p style="font-size: 1rem; color: #555; line-height: 1.8; margin-bottom: 1.5rem;">本規約において使用する以下の用語は、各々以下に定める意味を有するものとします。</p>
+                <ol style="margin: 0; padding-left: 2rem; color: #555; line-height: 1.8;">
+                    <li style="margin-bottom: 1rem;">「<span style="color: var(--primary); font-weight: 600;">コンテンツ</span>」とは、当サイト上で提供される文章、画像、動画、音声、プログラム、データベース等の情報を指します。</li>
+                    <li style="margin-bottom: 1rem;">「<span style="color: var(--primary); font-weight: 600;">本サービス</span>」とは、当社が提供する当サイト上の全てのサービスを指します。</li>
+                    <li style="margin-bottom: 0;">「<span style="color: var(--primary); font-weight: 600;">知的財産権</span>」とは、著作権、特許権、実用新案権、商標権、意匠権その他の知的財産権（それらの権利を取得し、またはそれらの権利につき登録等を出願する権利を含みます）を指します。</li>
+                </ol>
+            </div>
+            
+            <div class="apple-legal-section" id="change" style="margin-bottom: 3rem; padding: 2rem; background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+                <h2 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--primary); border-bottom: 2px solid #e9ecef; padding-bottom: 0.5rem;">第3条（規約の変更）</h2>
+                <p style="font-size: 1rem; color: #555; line-height: 1.8; margin: 0;">
+                    当社は、必要と判断した場合には、ユーザーに通知することなく本規約を変更することができるものとします。変更後の利用規約は、当サイト上に表示した時点で効力を生じるものとし、ユーザーは本規約の変更後も当サイトを継続して利用することにより、変更後の規約に同意したものとみなされます。
+                </p>
+            </div>
+            
+            <div class="apple-legal-section" id="prohibition" style="margin-bottom: 3rem; padding: 2rem; background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+                <h2 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--primary); border-bottom: 2px solid #e9ecef; padding-bottom: 0.5rem;">第4条（禁止事項）</h2>
+                <p style="font-size: 1rem; color: #555; line-height: 1.8; margin-bottom: 1.5rem;">ユーザーは、当サイトの利用にあたり、以下の行為をしてはなりません。</p>
+                <ol style="margin: 0; padding-left: 2rem; color: #555; line-height: 1.8;">
+                    <li style="margin-bottom: 0.8rem;">法令または公序良俗に違反する行為</li>
+                    <li style="margin-bottom: 0.8rem;">犯罪行為に関連する行為</li>
+                    <li style="margin-bottom: 0.8rem;">当社、他のユーザー、またはその他の第三者の知的財産権、肖像権、プライバシー権、名誉権、その他の権利または利益を侵害する行為</li>
+                    <li style="margin-bottom: 0.8rem;">当サイトの運営を妨害する行為</li>
+                    <li style="margin-bottom: 0.8rem;">当サイトのネットワークまたはシステム等に過度の負荷をかける行為</li>
+                    <li style="margin-bottom: 0.8rem;">当サイトのシステムに対する不正アクセス行為</li>
+                    <li style="margin-bottom: 0.8rem;">他のユーザーのアカウントを利用する行為</li>
+                    <li style="margin-bottom: 0.8rem;">当社が許可しない当サイト上での宣伝、広告、勧誘、または営業行為</li>
+                    <li style="margin-bottom: 0.8rem;">当サイトを通じて入手した情報を、当社の事前の承諾なく複製、送信、出版、頒布、放送その他方法のいかんを問わず第三者の利用に供する行為</li>
+                    <li style="margin-bottom: 0;">その他、当社が不適切と判断する行為</li>
+                </ol>
+            </div>            
+            <div class="apple-legal-section" id="copyright" style="margin-bottom: 3rem; padding: 2rem; background: linear-gradient(135deg, #fff5f5 0%, #fef5e7 100%); border-radius: 12px; border-left: 4px solid #e74c3c;">
+                <h2 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 1.5rem; color: #e74c3c; border-bottom: 2px solid #fadbd8; padding-bottom: 0.5rem;">第5条（著作権）</h2>
+                <p style="font-size: 1rem; color: #555; line-height: 1.8; margin: 0; font-weight: 500;">
+                    当サイト上のコンテンツの著作権は、当社または当社に利用を許諾した第三者に帰属します。ユーザーは、当社または当該第三者の許諾を得ることなく、当サイト上のコンテンツを複製、送信、出版、頒布、放送その他方法のいかんを問わず第三者の利用に供することはできません。
+                </p>
+            </div>
+            
+            <div class="apple-legal-section" id="disclaimer" style="margin-bottom: 3rem; padding: 2rem; background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+                <h2 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--primary); border-bottom: 2px solid #e9ecef; padding-bottom: 0.5rem;">第6条（免責事項）</h2>
+                <p style="font-size: 1rem; color: #555; line-height: 1.8; margin-bottom: 1.5rem;">
+                    当社は、当サイトに掲載されている情報の正確性、完全性、最新性、有用性等について一切の保証を行いません。また、当サイトの利用によりユーザーに生じたいかなる損害についても、当社の故意または重過失による場合を除き、一切責任を負いません。
+                </p>
+                <p style="font-size: 1rem; color: #555; line-height: 1.8; margin: 0;">
+                    当サイトからリンクされた第三者のウェブサイトの内容について、当社は一切責任を負いません。リンク先のウェブサイトの利用は、ユーザー自身の責任において行ってください。
+                </p>
+            </div>
+            
+            <div class="apple-legal-section" id="suspension" style="margin-bottom: 3rem; padding: 2rem; background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+                <h2 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--primary); border-bottom: 2px solid #e9ecef; padding-bottom: 0.5rem;">第7条（当サイトの中断・停止・変更）</h2>
+                <p style="font-size: 1rem; color: #555; line-height: 1.8; margin-bottom: 1.5rem;">当社は、以下のいずれかの事由が生じた場合には、ユーザーに事前に通知することなく、当サイトの提供を一時的に中断または停止することができるものとします。</p>
+                <ol style="margin: 0 0 1.5rem 0; padding-left: 2rem; color: #555; line-height: 1.8;">
+                    <li style="margin-bottom: 0.8rem;">当サイトのシステムの保守点検または更新を行う場合</li>
+                    <li style="margin-bottom: 0.8rem;">地震、落雷、火災、停電または天災などの不可抗力により、当サイトの提供が困難となった場合</li>
+                    <li style="margin-bottom: 0.8rem;">コンピュータまたは通信回線等が事故により停止した場合</li>
+                    <li style="margin-bottom: 0;">その他、当社が当サイトの提供が困難と判断した場合</li>
+                </ol>
+                <p style="font-size: 1rem; color: #555; line-height: 1.8; margin: 0;">
+                    当社は、当サイトの提供の中断または停止により、ユーザーまたは第三者が被ったいかなる不利益または損害について、当社の故意または重過失による場合を除き、一切の責任を負わないものとします。
+                </p>
+            </div>
+            
+            <div class="apple-legal-section" id="privacy" style="margin-bottom: 3rem; padding: 2rem; background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+                <h2 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--primary); border-bottom: 2px solid #e9ecef; padding-bottom: 0.5rem;">第8条（個人情報の取扱い）</h2>
+                <p style="font-size: 1rem; color: #555; line-height: 1.8; margin: 0;">
+                    当社は、当サイトの利用によって取得する個人情報については、当社<a href="/privacy.html" style="color: var(--primary); text-decoration: underline; font-weight: 500;">「プライバシーポリシー」</a>に従い適切に取り扱います。
+                </p>
+            </div>
+            
+            <div class="apple-legal-section" id="governing-law" style="margin-bottom: 3rem; padding: 2rem; background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+                <h2 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--primary); border-bottom: 2px solid #e9ecef; padding-bottom: 0.5rem;">第9条（準拠法・管轄裁判所）</h2>
+                <p style="font-size: 1rem; color: #555; line-height: 1.8; margin-bottom: 1.5rem;">
+                    本規約の解釈にあたっては、日本法を準拠法とします。
+                </p>
+                <p style="font-size: 1rem; color: #555; line-height: 1.8; margin: 0;">
+                    当サイトに関して紛争が生じた場合には、東京地方裁判所を第一審の専属的合意管轄裁判所とします。
+                </p>
+            </div>
+              
+            <div style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); padding: 2rem; border-radius: 16px; margin-bottom: 2rem; text-align: center; border-left: 4px solid var(--primary);">
+                <p style="color: #555; font-size: 1rem; margin: 0; line-height: 1.6;">
+                    <strong style="color: var(--primary);">最終更新日：</strong>2024年4月1日 制定<br>
+                    <strong style="color: var(--primary);">改定日：</strong>2025年1月15日 改定<br>
+                    <strong style="color: var(--primary);">デザイン更新日：</strong>2025年5月31日
+                </p>
+            </div>
+        </div>    </div>
 </main>
-<div id="footer-placeholder"></div>
-<script src="/js/script.js"></script>
-<script src="/js/include.js"></script>
+
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-brand">
+      <h2>オートウェビナー大学</h2>
+    </div>
+    <div class="footer-links">
+      <ul>
+        <li><a href="https://utage-system.com/p/EcESO02xLLoK">無料相談</a></li>
+        <li><a href="/achievement/index.html">お客様の声</a></li>
+        <li><a href="/owner.html">運営者情報</a></li>
+        <li><a href="/terms.html">利用規約</a></li>
+        <li><a href="/privacy.html">プライバシーポリシー</a></li>
+        <li><a href="/tokutei.html">特定商取引法に基づく表記</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         // AOS初期化
