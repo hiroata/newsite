@@ -10,19 +10,18 @@
 
 GitHubリポジトリの Settings > Secrets and variables > Actions で以下のSecretsを設定してください：
 
-- `FTP_SERVER`: ロリポップのFTPサーバー名（例: ftpXXX.lolipop.jp）
-- `FTP_USERNAME`: ロリポップのFTPアカウント名（例: lolipop.jp-XXXXXX）
-- `FTP_PASSWORD`: ロリポップのFTPパスワード
-- `REMOTE_DIR`: アップロード先ディレクトリ（例: public_html/）
-- `FTP_PORT`: SFTPポート番号（オプション、デフォルト: 22）
+- `FTP_SERVER`: `ftp.lolipop.jp` (ロリポップのFTPサーバー)
+- `FTP_USERNAME`: `main.jp-3385b51a75b81a95` (ロリポップのFTPアカウント名)
+- `FTP_PASSWORD`: ロリポップのFTPパスワード (セキュリティのため実際の値はここに記載しません)
+- `REMOTE_DIR`: `/shakedude/` (アップロード先ディレクトリ)
 
-**注意**: GitHub ActionsのFTP-Deploy-Actionでは、アップロード先ディレクトリのパラメータは `server-dir` として使用されますが、Secretsでは `REMOTE_DIR` として設定してください。
+**重要**: パスワードは絶対にコードやドキュメントに直接記載せず、GitHub Secretsで管理してください。
 
 ### デプロイフロー
 
 1. `master` ブランチにプッシュ
 2. GitHub Actions が自動実行
-3. ロリポップサーバーにSFTP経由でファイルアップロード
+3. ロリポップサーバーにFTP経由でファイルアップロード
 4. サイト更新完了
 
 ## 📁 プロジェクト構造
@@ -94,3 +93,4 @@ git push origin master
 ```
 
 プッシュ後、自動的にデプロイが開始されます。
+# デプロイテスト 05/31/2025 06:46:18
