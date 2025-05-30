@@ -1,0 +1,39 @@
+name: Deploy Static Site to Lolipop
+
+on:
+  push:
+    branches:
+      - master  # masterブランチにプッシュされた時のみ実行
+      # - main # mainブランチを使用している場合はこちら
+
+jobs:
+  deploy:
+    name: Deploy to Lolipop
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Deploy to Lolipop via SFTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          port: ${{ secrets.FTP_PORT || '22' }} # SecretsにFTP_PORTがなければ22 (SFTPの標準ポート) を使用
+          protocol: sftp # sftp / ftp / ftps から選択。ロリポップはSFTP推奨
+          local-dir: ./ # アップロードしたいファイルが格納されているディレクトリ
+                        # プロジェクトルートにHTMLファイルがある場合は ./
+                        # もし 'public' や 'dist' などのサブディレクトリに公開ファイルがある場合は ./public/ や ./dist/ に変更
+          server-dir: ${{ secrets.REMOTE_DIR }}
+          # オプション: デプロイ前にリモートディレクトリの内容をクリーンアップする場合 (注意して使用)
+          # dangerous-clean-slate: true 
+          # (trueにすると server-dir 内の全ファイルが削除されてからアップロードされます)
+          exclude: | # アップロードから除外するファイルやディレクトリのパターン
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            .github/**
+            README.md 
+            # その他不要なファイルやディレクトリ
