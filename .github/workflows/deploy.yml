@@ -7,23 +7,12 @@ on:
 
 jobs:
   deploy:
-    name: Deploy to Lolipop
     runs-on: ubuntu-latest
-    
     steps:
-      - name: Checkout Repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Check Secrets
-        run: |
-          echo "Checking secrets..."
-          echo "FTP_SERVER exists: ${{ secrets.FTP_SERVER != '' }}"
-          echo "FTP_USERNAME exists: ${{ secrets.FTP_USERNAME != '' }}"
-          echo "FTP_PASSWORD exists: ${{ secrets.FTP_PASSWORD != '' }}"
-          echo "REMOTE_DIR exists: ${{ secrets.REMOTE_DIR != '' }}"
-
-      - name: Deploy to Lolipop via SFTP
-        if: ${{ secrets.FTP_SERVER != '' && secrets.FTP_USERNAME != '' && secrets.FTP_PASSWORD != '' && secrets.REMOTE_DIR != '' }}
+      - name: Deploy to server
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_SERVER }}
@@ -39,14 +28,5 @@ jobs:
             **/node_modules/**
             .github/**
             README.md
-
-      - name: Deployment Failed - Secrets Missing
-        if: ${{ secrets.FTP_SERVER == '' || secrets.FTP_USERNAME == '' || secrets.FTP_PASSWORD == '' || secrets.REMOTE_DIR == '' }}
-        run: |
-          echo "Deployment failed: Required secrets are missing."
-          echo "Please set the following secrets in your GitHub repository:"
-          echo "- FTP_SERVER"
-          echo "- FTP_USERNAME" 
-          echo "- FTP_PASSWORD"
-          echo "- REMOTE_DIR"
-          exit 1
+            GITHUB_SETUP.md
+            .gitignore
