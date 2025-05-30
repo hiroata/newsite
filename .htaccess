@@ -38,6 +38,9 @@
   Header append Vary User-Agent env=!dont-vary
 </IfModule>
 
+# デフォルトページの設定
+DirectoryIndex index.html
+
 # セキュリティヘッダーの追加
 <IfModule mod_headers.c>
   # XSS保護
