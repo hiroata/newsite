@@ -16,6 +16,8 @@ GitHubリポジトリの Settings > Secrets and variables > Actions で以下の
 - `REMOTE_DIR`: アップロード先ディレクトリ（例: public_html/）
 - `FTP_PORT`: SFTPポート番号（オプション、デフォルト: 22）
 
+**注意**: GitHub ActionsのFTP-Deploy-Actionでは、アップロード先ディレクトリのパラメータは `server-dir` として使用されますが、Secretsでは `REMOTE_DIR` として設定してください。
+
 ### デプロイフロー
 
 1. `master` ブランチにプッシュ
