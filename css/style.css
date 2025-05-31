@@ -20,7 +20,7 @@
   
   /* シャドウ */
   --shadow-card: 0 4px 24px rgba(0,0,0,0.08);
-  --shadow-hover: 0 8px 32px rgba(0,102,255,0.15);
+  --shadow-hover: 0 8px 32px rgba(0, 102, 255, 0.15);
     /* トランジション */
   --transition: all 0.2s ease;
   --transition-slow: all 0.3s ease;
@@ -409,6 +409,15 @@ footer { flex-shrink: 0; }
   line-height: 1.4;
   margin-bottom: 3rem;
   max-width: 800px;
+}
+
+/* PCでは元のサブタイトルを表示、モバイル版は非表示 */
+.index-page .apple-hero-subtitle {
+  display: block;
+}
+
+.index-page .apple-hero-subtitle-mobile {
+  display: none;
 }
 
 .index-page .apple-hero-cta {  display: flex;
@@ -927,6 +936,17 @@ footer { flex-shrink: 0; }
   .hamburger-button {
     display: flex;
   }
+
+  /* モバイルでヘッダーの無料相談ボタンを右端に配置 */
+  .header-cta {
+    order: 2;
+    margin-left: auto;
+  }
+  
+  .hamburger-button {
+    order: 3;
+    margin-left: 10px;
+  }
   /* Mobile Menu Adjustments */
   .mobile-menu {
     top: var(--header-height);
@@ -1002,9 +1022,24 @@ footer { flex-shrink: 0; }
     flex-direction: column;
     align-items: center;
   }
-
   .index-page .apple-hero-container {
     padding: calc(50px + 8px) 20px 40px 20px;
+  }
+
+  /* モバイル用のヒーローサブタイトル調整 */
+  .index-page .apple-hero-subtitle {
+    display: none; /* PC版のサブタイトルを非表示 */
+  }
+
+  .index-page .apple-hero-subtitle-mobile {
+    display: block; /* モバイル版のサブタイトルを表示 */
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 1.5rem 0 2.5rem 0;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .legal-container {
