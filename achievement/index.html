@@ -1,16 +1,215 @@
 <!DOCTYPE html><html lang="ja"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="オートウェビナー大学の講座を受講された方々の成功事例やビジネス成果をご紹介します。実際にUTAGEを活用した自動化で売上アップを実現した事例を多数掲載。">
-    <title>お客様の声・成功事例一覧 | オートウェビナー大学</title>    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <meta name="description" content="CLANの講座を受講された方々の成功事例やビジネス成果をご紹介します。実際にUTAGEを活用した自動化で売上アップを実現した事例を多数掲載。">
+    <title>お客様の声・成功事例一覧 | CLAN</title>    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&amp;display=swap" rel="stylesheet">    <link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"></noscript>
-    <meta property="og:title" content="お客様の声・成功事例一覧 | オートウェビナー大学">
-    <meta property="og:description" content="オートウェビナー大学の講座を受講された方々の成功事例やビジネス成果をご紹介します。実際にUTAGEを活用した自動化で売上アップを実現した事例を多数掲載。">    <meta property="og:image" content="/assets/images/ogp_image_achievements.webp">
+    <meta property="og:title" content="お客様の声・成功事例一覧 | CLAN">
+    <meta property="og:description" content="CLANの講座を受講された方々の成功事例やビジネス成果をご紹介します。実際にUTAGEを活用した自動化で売上アップを実現した事例を多数掲載。">    <meta property="og:image" content="/assets/images/ogp_image_achievements.webp">
     <meta property="og:type" content="website">
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" defer></script>    <script src="achievement.js" defer></script>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">    <style>
+        .apple-hero-container {
+            text-align: center;
+        }
+        
+        /* ヒーローセクションの強化デザイン */
+        .apple-hero-section {
+            background: linear-gradient(135deg, #0d3283 0%, #1a5cb5 50%, #0d3283 100%);
+            color: white;
+            padding: 80px 0 120px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .apple-hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .apple-hero-container {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .apple-hero-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 25px;
+            background: linear-gradient(45deg, #ffffff, #e3f2fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 4px 20px rgba(255, 255, 255, 0.2);
+            line-height: 1.2;
+        }
+        
+        .apple-hero-subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 50px;
+            opacity: 0.95;
+            line-height: 1.6;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .apple-hero-subtitle br {
+            display: block;
+        }
+        
+        /* 統計セクションの強化 */
+        .achievement-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            margin-top: 60px;
+        }
+        
+        .stat-item {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 35px 30px;
+            text-align: center;
+            min-width: 180px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .stat-item:hover::before {
+            left: 100%;
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.25);
+        }
+        
+        .stat-number {
+            font-size: 3.2rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #ffdd57, #ffc107);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 2px 10px rgba(255, 221, 87, 0.3);
+            line-height: 1;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+            letter-spacing: 0.5px;
+        }
+        
+        /* レスポンシブ対応 */
+        @media (max-width: 768px) {
+            .apple-hero-section {
+                padding: 60px 0 80px;
+            }
+            
+            .apple-hero-title {
+                font-size: 2.5rem;
+                margin-bottom: 20px;
+            }
+            
+            .apple-hero-subtitle {
+                font-size: 1.2rem;
+                margin-bottom: 40px;
+            }
+            
+            .achievement-stats {
+                gap: 30px;
+                margin-top: 40px;
+            }
+            
+            .stat-item {
+                min-width: 150px;
+                padding: 25px 20px;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+            
+            .stat-label {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .apple-hero-title {
+                font-size: 2rem;
+            }
+            
+            .apple-hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .achievement-stats {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+            
+            .stat-item {
+                width: 100%;
+                max-width: 280px;
+            }
+        }
+        
+        /* アニメーション効果 */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .stat-item:nth-child(1) {
+            animation: float 6s ease-in-out infinite;
+            animation-delay: 0s;
+        }
+        
+        .stat-item:nth-child(2) {
+            animation: float 6s ease-in-out infinite;
+            animation-delay: 2s;
+        }
+        
+        .stat-item:nth-child(3) {
+            animation: float 6s ease-in-out infinite;
+            animation-delay: 4s;
+        }
+    </style>
 </head>
 <body>
 <!-- SVGアイコン定義 -->
@@ -77,32 +276,34 @@
 
 
 
-<main class="site-main">
-    <section class="apple-hero-section">
+<main class="site-main">    <section class="apple-hero-section">
         <div class="apple-hero-container">
-            <h1 class="apple-hero-title" data-aos="fade-up" data-aos-delay="100">ビジネス自動化の成功事例</h1>
+            <h1 class="apple-hero-title" data-aos="fade-up" data-aos-delay="100">
+                🚀 ビジネス自動化の成功事例
+            </h1>
             <p class="apple-hero-subtitle" data-aos="fade-up" data-aos-delay="200">
-                UTAGEを活用した自動化で売上アップと時間の自由を実現した<br>
-                オートウェビナー大学のお客様の実績をご紹介します            </p>
+                💡 UTAGEを活用した自動化で売上アップと時間の自由を実現した<br>
+                ⭐ CLANのお客様の実績をご紹介します
+            </p>
             <div class="achievement-stats" data-aos="fade-up" data-aos-delay="300">
                 <div class="stat-item">
                     <div class="stat-number">300+</div>
-                    <div class="stat-label">導入事例</div>
+                    <div class="stat-label">📊 導入事例</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number">85%</div>
-                    <div class="stat-label">作業時間削減率</div>
+                    <div class="stat-label">⏰ 作業時間削減率</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number">2.8倍</div>
-                    <div class="stat-label">平均売上増加</div>
+                    <div class="stat-label">📈 平均売上増加</div>
                 </div>
             </div>
         </div>
-    </section>    <section class="achievement-container">
-        <div class="achievement-grid"><!-- 事例1 -->
+    </section><section class="achievement-container">
+        <div class="achievement-grid">            <!-- 事例1 -->
             <div class="achievement-card" data-aos="fade-up" data-aos-delay="100">
-                <a href="/achievement/customer1.html" class="achievement-card-link" aria-label="コーチング販売が完全自動化！の詳細を見る">詳細を見る</a>                <div class="achievement-image">
+                <a href="/achievement/customer1.html" class="achievement-card-link" aria-label="コーチング販売が完全自動化！の詳細を見る"></a>                <div class="achievement-image">
                     <img src="/assets/images/achieve-1.webp" 
                          alt="コーチング販売が完全自動化！" 
                          loading="lazy" 
@@ -140,7 +341,7 @@
                 </div>
             </div>            <!-- 事例2 -->
             <div class="achievement-card" data-aos="fade-up" data-aos-delay="200">
-                <a href="/achievement/customer2.html" class="achievement-card-link" aria-label="ネット販売初心者が月商100万円達成！の詳細を見る">詳細を見る</a><div class="achievement-image">
+                <a href="/achievement/customer2.html" class="achievement-card-link" aria-label="ネット販売初心者が月商100万円達成！の詳細を見る"></a><div class="achievement-image">
                     <img src="/assets/images/achieve-2.webp" alt="ネット販売初心者が月商100万円達成！" loading="lazy" width="400" height="225">
                 </div>                <div class="achievement-header">
                     <span class="achievement-tag tag-service">フリーランス</span>
@@ -174,7 +375,7 @@
                 </div>
             </div>            <!-- 事例3 -->
             <div class="achievement-card" data-aos="fade-up" data-aos-delay="300">
-                <a href="/achievement/customer3.html" class="achievement-card-link" aria-label="24時間販売の自動化動線完成！の詳細を見る">詳細を見る</a>                <div class="achievement-image">
+                <a href="/achievement/customer3.html" class="achievement-card-link" aria-label="24時間販売の自動化動線完成！の詳細を見る"></a>                <div class="achievement-image">
                     <img src="/assets/images/achieve-3.webp" alt="24時間販売の自動化動線完成！" loading="lazy" width="400" height="225">
                 </div>                <div class="achievement-header">
                     <span class="achievement-tag tag-consulting">コンサルタント</span>
@@ -208,7 +409,7 @@
                 </div>
             </div>            <!-- 事例4 -->
             <div class="achievement-card" data-aos="fade-up" data-aos-delay="400">
-                <a href="/achievement/customer4.html" class="achievement-card-link" aria-label="コーチング事業で月商8桁達成！の詳細を見る">詳細を見る</a>
+                <a href="/achievement/customer4.html" class="achievement-card-link" aria-label="コーチング事業で月商8桁達成！の詳細を見る"></a>
                 <div class="achievement-image">
                     <img src="/assets/images/achieve-4.webp" alt="コーチング事業で月商8桁達成！" loading="lazy" width="400" height="225">
                 </div>                <div class="achievement-header">
@@ -242,7 +443,7 @@
                 </div>
             </div>            <!-- 事例5 -->
             <div class="achievement-card" data-aos="fade-up" data-aos-delay="500">
-                <a href="/achievement/customer5.html" class="achievement-card-link" aria-label="治療院向けビジネスを完全自動化の詳細を見る">詳細を見る</a>
+                <a href="/achievement/customer5.html" class="achievement-card-link" aria-label="治療院向けビジネスを完全自動化の詳細を見る"></a>
                 <div class="achievement-image">
                     <img src="/assets/images/achieve-5.webp" alt="治療院向けビジネスを完全自動化" loading="lazy" width="400" height="225">
                 </div>                <div class="achievement-header">
@@ -281,7 +482,7 @@
 <footer class="site-footer">
   <div class="footer-container">
     <div class="footer-brand">
-      <h2>オートウェビナー大学</h2>
+      <h2>CLAN</h2>
     </div>
     <div class="footer-links">
       <ul>
